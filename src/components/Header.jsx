@@ -134,8 +134,6 @@ export const Header = ({ activeLink = 'accueil' }) => {
         { name: t.ac, desc: t.acDesc, href: '/entretien/climatisation' },
       ],
     },
-    { name: t.opportunities, href: '/jobs', key: 'jobs' },
-    { name: t.faq || 'FAQ', href: '/faq', key: 'faq' },
     { name: t.contact, href: '/contact', key: 'contact' },
   ];
 

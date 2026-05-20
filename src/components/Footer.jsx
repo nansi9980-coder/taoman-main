@@ -13,6 +13,7 @@ export const Footer = () => {
     { name: 'Investissement', href: '/investissement' },
     ...(isAuthenticated ? [{ name: 'Dashboard', href: '/dashboard' }] : []),
     { name: 'Opportunités', href: '/jobs' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
     { name: 'À propos', href: '/about' },
   ];

@@ -1,29 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { API_URL } from "../config";
+import { applyThemePalette } from '../utils/applyThemePalette';
 
 const ThemeContext = createContext();
-
-function applyThemeToRoot(theme) {
-  if (!theme) return;
-  const root = document.documentElement;
-  const primary = theme.primary || theme.palette?.primary;
-  const secondary = theme.secondary || theme.palette?.secondary || primary;
-  const surface = theme.surface || theme.palette?.surface;
-  const background = theme.background || theme.palette?.background;
-
-  if (primary) {
-    root.style.setProperty('--color-primary', primary);
-    root.style.setProperty('--color-primary-container', secondary);
-    root.style.setProperty('--color-on-primary', '#ffffff');
-    root.style.setProperty('--color-on-primary-container', '#ffffff');
-  }
-  if (secondary) {
-    root.style.setProperty('--color-secondary', secondary);
-    root.style.setProperty('--color-secondary-container', secondary);
-  }
-  if (surface) root.style.setProperty('--color-surface', surface);
-  if (background) root.style.setProperty('--color-background', background);
-}
 
 export function ThemeProvider({ children }) {
   const [themeLoaded, setThemeLoaded] = useState(false);
@@ -68,7 +47,7 @@ export function ThemeProvider({ children }) {
       .then(res => res.json())
       .then((theme) => {
         if (colorMode === 'light' && theme) {
-          applyThemeToRoot(theme);
+          applyThemePalette(theme);
         }
       })
       .catch(err => console.error("Error loading theme:", err))
