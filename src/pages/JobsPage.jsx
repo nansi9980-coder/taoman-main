@@ -2,8 +2,12 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { API_URL } from "../config";
+import { useSiteContent } from '../context/SiteContentContext';
+import { mergeCmsSection } from '../utils/cmsSectionDefaults';
 
 export const JobsPage = () => {
+  const { section } = useSiteContent();
+  const jobsContent = mergeCmsSection('jobs', section('jobs'));
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [jobListings, setJobListings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -52,15 +56,9 @@ export const JobsPage = () => {
     console.warn('Erreur de chargement des emplois:', error);
   }
 
-  const categories = [
-    { value: 'all', label: 'Tous les postes' },
-    { value: 'btp', label: 'BTP' },
-    { value: 'transport', label: 'Transport & Logistique' },
-    { value: 'agro', label: 'Agrobusiness' },
-    { value: 'entretien', label: 'Entretien' },
-    { value: 'admin', label: 'Administration' },
-    { value: 'tech', label: 'Technologie' }
-  ];
+  const categories = jobsContent.categories?.length
+    ? jobsContent.categories
+    : [{ value: 'all', label: 'Tous les postes' }];
 
 
   return (
@@ -71,12 +69,8 @@ export const JobsPage = () => {
         {/* Hero Section */}
         <section className="bg-primary py-xxl text-on-primary">
           <div className="max-w-[1200px] mx-auto px-lg text-center">
-            <h1 className="font-display text-display text-on-primary mb-md">
-              Rejoignez notre équipe
-            </h1>
-            <p className="text-body-lg text-on-primary/90 mb-xl max-w-3xl mx-auto">
-              TAOMAN Groupe Investissement recrute des talents motivés pour contribuer à nos projets ambitieux d'investissement et de services professionnels.
-            </p>
+            <h1 className="font-display text-display text-on-primary mb-md">{jobsContent.title}</h1>
+            <p className="text-body-lg text-on-primary/90 mb-xl max-w-3xl mx-auto">{jobsContent.subtitle}</p>
           </div>
         </section>
 
@@ -84,9 +78,7 @@ export const JobsPage = () => {
         <section className="py-xxl max-w-[1200px] mx-auto px-lg w-full">
           {/* Filters */}
           <div className="mb-xl">
-            <h2 className="text-headline-md text-on-surface font-bold mb-md">
-              Filtrer par catégorie
-            </h2>
+            <h2 className="text-headline-md text-on-surface font-bold mb-md">{jobsContent.filterTitle || 'Filtrer par catégorie'}</h2>
             <div className="flex flex-wrap gap-md">
               {categories.map((cat) => (
                 <button
@@ -165,7 +157,7 @@ export const JobsPage = () => {
           {filteredJobs.length === 0 && (
             <div className="text-center py-xxl">
               <p className="text-headline-md text-on-surface-variant">
-                Aucune offre d'emploi dans cette catégorie.
+                {jobsContent.emptyMessage || "Aucune offre d'emploi dans cette catégorie."}
               </p>
             </div>
           )}

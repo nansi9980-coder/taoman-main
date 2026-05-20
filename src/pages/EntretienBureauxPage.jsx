@@ -3,6 +3,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
+import { DevisPageHero } from '../components/DevisPageHero';
 
 export const EntretienBureauxPage = () => {
   const [formData, setFormData] = useState({
@@ -76,15 +77,7 @@ export const EntretienBureauxPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary to-primary-container py-20 px-6 text-white">
-          <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Obtenez votre devis gratuit pour l'entretien des bureaux !</h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Services complets d'entretien et de nettoyage pour vos espaces de bureaux professionnels
-            </p>
-          </div>
-        </section>
+        <DevisPageHero sectionKey="devisBureaux" />
 
         {/* Main Content */}
         <section className="py-20 px-6">

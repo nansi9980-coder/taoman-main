@@ -3,14 +3,34 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
+import { useSiteContent } from '../context/SiteContentContext';
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportIcon from '../assets/transport_sector.jpeg';
 import programmeImg from '../assets/programme.jpeg';
 import simulateurImg from '../assets/simulateur.jpeg';
 
+const DEFAULT_INVESTMENT = {
+  badge: 'Investissement structuré',
+  title: 'TAOMAN Groupe Investissement',
+  description:
+    'Une plateforme claire pour comprendre les projets, simuler les intérêts, suivre le capital et recevoir un reporting exploitable.',
+  stats: [
+    { value: '500K FCFA', label: 'Ticket minimum' },
+    { value: '10 mois', label: 'Horizon maximum demandé' },
+    { value: '3 modes', label: 'Simulation simple, avancée, pro' },
+    { value: '24/7', label: 'Suivi portefeuille après connexion' },
+  ],
+};
+
 export const InvestmentPage = () => {
   const navigate = useNavigate();
+  const { section } = useSiteContent();
+  const inv = section('investment');
+  const badge = inv.badge || DEFAULT_INVESTMENT.badge;
+  const title = inv.title || DEFAULT_INVESTMENT.title;
+  const description = inv.description || DEFAULT_INVESTMENT.description;
+  const statRows = (inv.stats?.length ? inv.stats : DEFAULT_INVESTMENT.stats).map((s) => [s.value, s.label]);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
   const [apiInvestments, setApiInvestments] = useState([]);
 
@@ -50,12 +70,7 @@ export const InvestmentPage = () => {
     }
   ];
 
-  const stats = [
-    ['500K FCFA', 'Ticket minimum'],
-    ['10 mois', 'Horizon maximum demandé'],
-    ['3 modes', 'Simulation simple, avancée, pro'],
-    ['24/7', 'Suivi portefeuille après connexion'],
-  ];
+  const stats = statRows;
 
   const process = [
     ['01', 'Créer le compte', 'Inscription rapide, profil investisseur et accès sécurisé.'],
@@ -74,13 +89,9 @@ export const InvestmentPage = () => {
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
           <div className="relative z-10 mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">Investissement structuré</p>
-              <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] md:text-7xl">
-                TAOMAN Groupe Investissement
-              </h1>
-              <p className="mb-8 max-w-2xl text-xl text-white/75">
-                Une plateforme claire pour comprendre les projets, simuler les intérêts, suivre le capital et recevoir un reporting exploitable.
-              </p>
+              <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{badge}</p>
+              <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] md:text-7xl">{title}</h1>
+              <p className="mb-8 max-w-2xl text-xl text-white/75">{description}</p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <button onClick={() => navigate('/investissement/simulateur')} className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105">
                   Simuler sur 10 mois

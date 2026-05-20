@@ -2,20 +2,34 @@ import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { useSiteContent } from '../context/SiteContentContext';
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportIcon from '../assets/transport_sector.jpeg';
 
-export const TaoEconomicInvestmentPage = () => {
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('overview');
-
-  const investmentStats = [
+const DEFAULT_TIE = {
+  title: 'TAOMAN Groupe Investissement',
+  subtitle: 'Bâtissez votre indépendance financière',
+  description:
+    'Une opportunité transformative pour les investisseurs recherchant des rendements durables et un impact communautaire significatif à Lomé et au-delà.',
+  stats: [
     { label: 'Investissement Minimum', value: '500K FCFA', icon: '💰' },
     { label: 'Rendement Moyen', value: '150K FCFA/mois', icon: '📈' },
     { label: 'Délai Retour', value: '10 mois', icon: '⏱️' },
     { label: 'Retour Total Moyen', value: '2M FCFA', icon: '🎯' },
-  ];
+  ],
+};
+
+export const TaoEconomicInvestmentPage = () => {
+  const navigate = useNavigate();
+  const { section } = useSiteContent();
+  const tie = section('investmentTie');
+  const [activeTab, setActiveTab] = useState('overview');
+
+  const investmentStats = tie.stats?.length ? tie.stats : DEFAULT_TIE.stats;
+  const heroTitle = tie.title || DEFAULT_TIE.title;
+  const heroSubtitle = tie.subtitle || DEFAULT_TIE.subtitle;
+  const heroDescription = tie.description || DEFAULT_TIE.description;
 
   const sectors = [
     {
@@ -58,11 +72,9 @@ export const TaoEconomicInvestmentPage = () => {
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary via-primary-container to-primary py-20 px-6 text-white">
           <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">TAOMAN Groupe Investissement</h1>
-            <h2 className="text-3xl md:text-4xl font-bold text-white/90 mb-6">Bâtissez votre indépendance financière</h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-              Une opportunité transformative pour les investisseurs recherchant des rendements durables et un impact communautaire significatif à Lomé et au-delà.
-            </p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">{heroTitle}</h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-white/90 mb-6">{heroSubtitle}</h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">{heroDescription}</p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <button
                 onClick={() => navigate('/investissement/simulateur')}

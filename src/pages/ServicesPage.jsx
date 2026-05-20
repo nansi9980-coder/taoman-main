@@ -3,6 +3,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { API_URL, mediaUrl } from '../config';
+import { useSiteContent } from '../context/SiteContentContext';
 
 const Icons = {
   car: (
@@ -47,8 +48,24 @@ function resolveHref(title = '') {
   return key ? hrefByTitle[key] : `/services/${encodeURIComponent(title)}`;
 }
 
+const DEFAULT_SERVICES_PAGE = {
+  badge: 'Services opérationnels',
+  title: 'Des services terrain clairs, rapides et suivis.',
+  description:
+    'TAOMAN Groupe Investissement combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.',
+  btn1: 'Demander un devis',
+  btn2: "Voir l'investissement",
+};
+
 export const ServicesPage = () => {
   const navigate = useNavigate();
+  const { section } = useSiteContent();
+  const sp = section('servicesPage');
+  const heroBadge = sp.badge || DEFAULT_SERVICES_PAGE.badge;
+  const heroTitle = sp.title || DEFAULT_SERVICES_PAGE.title;
+  const heroDesc = sp.description || DEFAULT_SERVICES_PAGE.description;
+  const btn1 = sp.btn1 || DEFAULT_SERVICES_PAGE.btn1;
+  const btn2 = sp.btn2 || DEFAULT_SERVICES_PAGE.btn2;
   const [services, setServices] = useState(defaultServices);
 
   useEffect(() => {
@@ -84,25 +101,21 @@ export const ServicesPage = () => {
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">Services opérationnels</p>
-            <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] text-white mb-6">
-              Des services terrain clairs, rapides et suivis.
-            </h1>
-            <p className="text-xl text-white/75 mb-8 max-w-3xl">
-              TAOMAN Groupe Investissement combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.
-            </p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{heroBadge}</p>
+            <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] text-white mb-6">{heroTitle}</h1>
+            <p className="text-xl text-white/75 mb-8 max-w-3xl">{heroDesc}</p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => navigate('/contact')}
                 className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105"
               >
-                Demander un devis
+                {btn1}
               </button>
               <button
                 onClick={() => navigate('/investissement')}
                 className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f]"
               >
-                Voir l'investissement
+                {btn2}
               </button>
             </div>
             </div>
