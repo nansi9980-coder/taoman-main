@@ -26,7 +26,7 @@ import './App.css';
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           {/* Pages Principales */}
           <Route path="/" element={<HomePage />} />
