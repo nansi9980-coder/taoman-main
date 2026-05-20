@@ -21,12 +21,19 @@ import { InvestmentSimulatorPage } from './pages/InvestmentSimulatorPage';
 import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { ThemeProvider } from './context/ThemeContext';
+import { SiteContentProvider } from './context/SiteContentContext';
+import { HelmetProvider } from 'react-helmet-async';
+import { SeoHead } from './components/SeoHead';
+import { FaqPage } from './pages/FaqPage';
 import './App.css';
 
 function App() {
   return (
     <ThemeProvider>
-      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <HelmetProvider>
+        <SiteContentProvider>
+          <SeoHead />
+          <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           {/* Pages Principales */}
           <Route path="/" element={<HomePage />} />
@@ -41,6 +48,7 @@ function App() {
           {/* Pages Secondaires */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/lavage-auto/devis" element={<LavageAutoDevisPage />} />
           <Route path="/demenagement/devis" element={<DemenagementDevisPage />} />
           <Route path="/entretien/bureaux" element={<EntretienBureauxPage />} />
@@ -59,7 +67,9 @@ function App() {
           <Route path="/confidentialite" element={<PrivacyPage />} />
           <Route path="/termes-conditions" element={<TermsConditionsPage />} />
         </Routes>
-      </Router>
+          </Router>
+        </SiteContentProvider>
+      </HelmetProvider>
     </ThemeProvider>
   );
 }

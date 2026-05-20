@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export const Footer = () => {
+  const { section } = useSiteContent();
+  const footer = section('footer');
+  const contact = section('contact');
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
   const navigationLinks = [
     { name: 'Accueil', href: '/' },
@@ -37,7 +41,8 @@ export const Footer = () => {
             </div>
           </div>
           <p className="text-outline-variant text-sm leading-relaxed">
-            TAOMAN Groupe Investissement développe une plateforme claire pour l'investissement, les services terrain, le reporting et l'accompagnement client.
+            {footer.description ||
+              "TAOMAN Groupe Investissement développe une plateforme claire pour l'investissement, les services terrain, le reporting et l'accompagnement client."}
           </p>
         </div>
 
@@ -82,23 +87,22 @@ export const Footer = () => {
             <div className="flex items-start gap-3">
               <span className="text-2xl">📍</span>
               <div>
-                <p className="text-sm text-outline-variant">Vakpossito, Lomé</p>
-                <p className="text-sm text-outline-variant">Togo</p>
+                <p className="text-sm text-outline-variant">{contact.address || 'Vakpossito, Lomé — Togo'}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-2xl">📞</span>
-              <a href="tel:+22890421377" className="text-primary-fixed font-bold hover:text-surface transition-colors">
-                +228 90 42 13 77
+              <a href={`tel:${(contact.phone || '+22890421377').replace(/\s/g, '')}`} className="text-primary-fixed font-bold hover:text-surface transition-colors">
+                {contact.phone || '+228 90 42 13 77'}
               </a>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-2xl">✉️</span>
-              <a href="mailto:taomancontact@gmail.com" className="text-primary-fixed font-bold hover:text-surface transition-colors break-all text-sm">
-                taomancontact@gmail.com
+              <a href={`mailto:${contact.email || 'taomancontact@gmail.com'}`} className="text-primary-fixed font-bold hover:text-surface transition-colors break-all text-sm">
+                {contact.email || 'taomancontact@gmail.com'}
               </a>
             </div>
-            <p className="text-sm text-outline-variant">24h/24, 7j/7</p>
+            <p className="text-sm text-outline-variant">{contact.hours || '24h/24, 7j/7'}</p>
           </div>
         </div>
       </div>

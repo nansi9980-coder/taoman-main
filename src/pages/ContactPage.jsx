@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from "../config";
+import { useSiteContent } from '../context/SiteContentContext';
+import { getApiErrorMessage } from '../utils/apiError';
 
 export const ContactPage = () => {
+  const { section } = useSiteContent();
+  const contactInfo = section('contact') || {};
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,11 +52,12 @@ export const ContactPage = () => {
           setSubmitted(false);
         }, 3000);
       } else {
-        throw new Error('Erreur lors de l\'envoi du message');
+        const msg = await getApiErrorMessage(response, "Erreur lors de l'envoi du message");
+        throw new Error(msg);
       }
     } catch (error) {
       console.error('Erreur réseau:', error);
-      setSubmitError("Votre message n'a pas pu être envoyé. Vérifiez votre connexion puis réessayez.");
+      setSubmitError(error.message || "Votre message n'a pas pu être envoyé. Vérifiez votre connexion puis réessayez.");
     } finally {
       setSubmitting(false);
     }
@@ -93,19 +98,19 @@ export const ContactPage = () => {
               <div className="space-y-6 text-on-primary">
                 <div>
                   <p className="text-sm text-on-primary/70">Téléphone</p>
-                  <p className="text-2xl font-semibold">+228 90 42 13 77</p>
+                  <p className="text-2xl font-semibold">{contactInfo.phone || '+228 90 42 13 77'}</p>
                 </div>
                 <div>
                   <p className="text-sm text-on-primary/70">Email</p>
-                  <p className="text-2xl font-semibold">taomancontact@gmail.com</p>
+                  <p className="text-2xl font-semibold">{contactInfo.email || 'taomancontact@gmail.com'}</p>
                 </div>
                 <div>
                   <p className="text-sm text-on-primary/70">Adresse</p>
-                  <p className="text-2xl font-semibold">Vakpossito, Lomé - Togo</p>
+                  <p className="text-2xl font-semibold">{contactInfo.address || 'Vakpossito, Lomé - Togo'}</p>
                 </div>
                 <div className="rounded-3xl bg-primary/10 p-5 border border-primary/20">
                   <p className="text-sm uppercase tracking-[0.3em] text-primary mb-2">Horaires</p>
-                  <p className="text-on-primary">Lun - Dim : 08h00 - 20h00</p>
+                  <p className="text-on-primary">{contactInfo.hours || 'Lun - Dim : 08h00 - 20h00'}</p>
                 </div>
               </div>
             </div>
@@ -225,9 +230,9 @@ export const ContactPage = () => {
                 <h3 className="text-2xl font-bold text-on-surface mb-4">Vous pouvez aussi nous joindre</h3>
                 <div className="space-y-5">
                   {[
-                    { title: 'Téléphone', value: '+228 90 42 13 77' },
-                    { title: 'Email', value: 'taomancontact@gmail.com' },
-                    { title: 'Adresse', value: 'Vakpossito, Lomé - Togo' },
+                    { title: 'Téléphone', value: contactInfo.phone || '+228 90 42 13 77' },
+                    { title: 'Email', value: contactInfo.email || 'taomancontact@gmail.com' },
+                    { title: 'Adresse', value: contactInfo.address || 'Vakpossito, Lomé - Togo' },
                   ].map((item, idx) => (
                     <div key={idx} className="rounded-3xl bg-surface p-5 border border-outline-variant/20">
                       <p className="text-sm text-on-surface-variant uppercase tracking-[0.25em] mb-2">{item.title}</p>
@@ -267,6 +272,7 @@ export const QuotePage = () => {
     description: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
@@ -292,6 +298,7 @@ export const QuotePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
     
     try {
       const response = await fetch(`${API_URL}/quotes/submit`, {
@@ -312,10 +319,11 @@ export const QuotePage = () => {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        console.error('Erreur lors de l\'envoi du devis');
+        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
       }
     } catch (error) {
       console.error('Erreur réseau:', error);
+      setSubmitError(error.message || "Erreur réseau. Réessayez plus tard.");
     }
   };
 
@@ -365,6 +373,11 @@ export const QuotePage = () => {
               ) : (
                 <>
                   <h2 className="text-3xl font-bold text-on-surface mb-8">Remplissez le formulaire</h2>
+                  {submitError && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 font-semibold">
+                      {submitError}
+                    </div>
+                  )}
 
                   <div className="space-y-6">
                 {/* Service */}

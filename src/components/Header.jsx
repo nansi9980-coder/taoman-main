@@ -29,6 +29,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
       services: 'Services',
       opportunities: 'Opportunités',
       contact: 'Contact',
+      faq: 'FAQ',
       features: 'Fonctionnalités',
       quickAccess: 'Accès rapide aux espaces',
       profile: 'Profil de TAOMAN',
@@ -129,6 +130,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
       ],
     },
     { name: t.opportunities, href: '/jobs', key: 'jobs' },
+    { name: t.faq || 'FAQ', href: '/faq', key: 'faq' },
     { name: t.contact, href: '/contact', key: 'contact' },
   ];
 

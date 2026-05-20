@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
+import { getApiErrorMessage } from '../utils/apiError';
 
 export const DemenagementDevisPage = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ export const DemenagementDevisPage = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -66,9 +68,12 @@ export const DemenagementDevisPage = () => {
           address: ''
         });
         setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
       }
     } catch (error) {
       console.error('Erreur:', error);
+      setSubmitError(error.message || "Erreur réseau. Réessayez plus tard.");
     } finally {
       setLoading(false);
     }
@@ -98,6 +103,11 @@ export const DemenagementDevisPage = () => {
               {submitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 animate-fade-in-up">
                   ✓ Votre demande a été envoyée avec succès ! Nous vous recontacterons sous peu.
+                </div>
+              )}
+              {submitError && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-500 rounded-lg text-red-700">
+                  {submitError}
                 </div>
               )}
 

@@ -9,7 +9,8 @@ import mecanique2 from '../assets/realisations/mecanique2.jpg';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 import { API_URL, mediaUrl } from "../config";
-import { parseSiteContentMap, buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
+import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
+import { useSiteContent } from "../context/SiteContentContext";
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportIcon from '../assets/transport_sector.jpeg';
@@ -22,30 +23,23 @@ export const HomePage = () => {
   const [lightbox, setLightbox] = useState(null);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
-  const [apiServices, setApiServices] = useState([]);
+  const { content: apiSiteContent, services: apiServicesRaw } = useSiteContent();
   const [apiRealisations, setApiRealisations] = useState([]);
-  const [apiSiteContent, setApiSiteContent] = useState({});
+
+  const apiServices = apiServicesRaw.length > 0
+    ? apiServicesRaw.map((s) => ({
+        icon: s.icon || 'star',
+        imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
+        title: s.title,
+        description: s.description,
+        price: s.actionText || 'En savoir plus',
+        features: s.actionLink ? [s.actionLink] : [],
+        href: s.actionLink || null,
+      }))
+    : [];
 
   useEffect(() => {
     setIsLoaded(true);
-
-    // Fetch Services
-    fetch(`${API_URL}/content/services`)
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setApiServices(data.filter(s => s.published).map(s => ({
-            icon: s.icon || 'star',
-            imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
-            title: s.title,
-            description: s.description,
-            price: s.actionText || 'En savoir plus',
-            features: s.actionLink ? [s.actionLink] : [],
-            href: s.actionLink || null,
-          })));
-        }
-      })
-      .catch(err => console.error("Error fetching services:", err));
 
     // Fetch Realisations
     fetch(`${API_URL}/media`)
@@ -68,16 +62,6 @@ export const HomePage = () => {
         }
       })
       .catch(err => console.error("Error fetching media:", err));
-
-    // Fetch Site Content
-    fetch(`${API_URL}/content/texts`)
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setApiSiteContent(parseSiteContentMap(data));
-        }
-      })
-      .catch(err => console.error("Error fetching site content:", err));
   }, []);
 
   const services = apiServices.length > 0 ? apiServices : [
@@ -149,6 +133,7 @@ export const HomePage = () => {
   ];
 
   const heroSection = apiSiteContent.hero || apiSiteContent.heroBanner || {};
+  const ctaSection = apiSiteContent.cta || {};
   const heroData = {
     title: heroSection.titleFr || heroSection.title || "TAOMAN Groupe Investissement",
     subtitle: heroSection.titleEn || heroSection.subtitle || "la plateforme qui relie capital, services et exécution terrain",
@@ -652,9 +637,11 @@ export const HomePage = () => {
         {/* ============ CTA ============ */}
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary">
           <div className="max-w-[1400px] mx-auto text-center animate-fade-in">
-            <h2 className="text-5xl font-bold text-on-primary mb-6">Prêt à transformer votre avenir?</h2>
+            <h2 className="text-5xl font-bold text-on-primary mb-6">
+              {ctaSection.title || 'Prêt à transformer votre avenir?'}
+            </h2>
             <p className="text-xl text-on-primary/90 mb-10 max-w-2xl mx-auto">
-              Rejoignez des milliers de clients satisfaits et commencez votre parcours vers la liberté financière.
+              {ctaSection.subtitle || 'Rejoignez des milliers de clients satisfaits et commencez votre parcours vers la liberté financière.'}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               {!localStorage.getItem('user') && (
@@ -669,7 +656,7 @@ export const HomePage = () => {
                 onClick={() => navigate('/contact')}
                 className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
               >
-                Nous contacter
+                {ctaSection.buttonText || 'Nous contacter'}
               </button>
             </div>
           </div>

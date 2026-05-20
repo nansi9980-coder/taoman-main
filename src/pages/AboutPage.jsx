@@ -1,23 +1,13 @@
-import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-import { API_URL, mediaUrl } from '../config';
-import { parseSiteContentMap } from '../utils/siteContent';
+import { mediaUrl } from '../config';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export const AboutPage = () => {
   const navigate = useNavigate();
-  const [about, setAbout] = useState(null);
-
-  useEffect(() => {
-    fetch(`${API_URL}/content/texts`)
-      .then((res) => res.json())
-      .then((data) => {
-        const map = parseSiteContentMap(data);
-        if (map.about) setAbout(map.about);
-      })
-      .catch(() => {});
-  }, []);
+  const { section } = useSiteContent();
+  const about = section('about');
 
   const coreValues = [
     {
