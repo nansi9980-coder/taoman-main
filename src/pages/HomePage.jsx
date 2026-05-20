@@ -9,6 +9,7 @@ import mecanique2 from '../assets/realisations/mecanique2.jpg';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 import { API_URL, mediaUrl } from "../config";
+import { parseSiteContentMap, buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportIcon from '../assets/transport_sector.jpeg';
@@ -73,15 +74,7 @@ export const HomePage = () => {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
-          const contentMap = data.reduce((acc, item) => {
-            try {
-              acc[item.section] = JSON.parse(item.content);
-            } catch (e) {
-              acc[item.section] = item.content;
-            }
-            return acc;
-          }, {});
-          setApiSiteContent(contentMap);
+          setApiSiteContent(parseSiteContentMap(data));
         }
       })
       .catch(err => console.error("Error fetching site content:", err));
@@ -118,20 +111,31 @@ export const HomePage = () => {
     }
   ];
 
-  const investmentStats = apiSiteContent.investmentStats || [
+  const investmentStats =
+    buildStatsFromSection(apiSiteContent.statistics) ||
+    apiSiteContent.investmentStats || [
     { label: 'Ticket minimum',      value: '500K FCFA',     icon: '01' },
     { label: 'Horizon maximum',    value: '10 mois',  icon: '02' },
     { label: 'Suivi portefeuille',       value: '24/7',    icon: '03' },
     { label: 'Reporting investisseur', value: 'PDF + Web',    icon: '04' },
   ];
 
-  const sectors = apiSiteContent.sectors || [
+  const defaultSectors = [
     { title: 'BTP & Immobilier',       icon: btpIcon, description: 'Projets de construction durable' },
     { title: 'Agro & Énergie',         icon: agroIcon, description: 'Agriculture moderne et énergies renouvelables' },
     { title: 'Transport & Logistique', icon: transportIcon, description: 'Solutions logistiques intégrées' },
   ];
+  const sectorItems = normalizeItemsSection(apiSiteContent.sectors, []);
+  const sectors = sectorItems.length
+    ? sectorItems.map((s, i) => ({
+        title: s.title,
+        description: s.description,
+        icon: s.imageUrl ? mediaUrl(s.imageUrl) : [btpIcon, agroIcon, transportIcon][i % 3],
+      }))
+    : defaultSectors;
 
-  const testimonials = apiSiteContent.testimonials || [
+  const testimonialItems = normalizeItemsSection(apiSiteContent.testimonials, []);
+  const testimonials = testimonialItems.length ? testimonialItems : [
     {
       name: 'Jean Tchakondo',
       role: 'Investisseur Privé',

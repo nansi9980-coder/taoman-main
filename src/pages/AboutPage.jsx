@@ -1,9 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { API_URL, mediaUrl } from '../config';
+import { parseSiteContentMap } from '../utils/siteContent';
 
 export const AboutPage = () => {
   const navigate = useNavigate();
+  const [about, setAbout] = useState(null);
+
+  useEffect(() => {
+    fetch(`${API_URL}/content/texts`)
+      .then((res) => res.json())
+      .then((data) => {
+        const map = parseSiteContentMap(data);
+        if (map.about) setAbout(map.about);
+      })
+      .catch(() => {});
+  }, []);
 
   const coreValues = [
     {
@@ -63,11 +77,14 @@ export const AboutPage = () => {
             <div>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">À propos</p>
             <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] mb-6 animate-fade-in-up">
-              TAOMAN Groupe Investissement construit une plateforme de confiance.
+              {about?.title || 'TAOMAN Groupe Investissement construit une plateforme de confiance.'}
             </h1>
             <p className="text-xl text-white/75 max-w-3xl animate-fade-in">
-              Notre ambition est de relier services terrain, investissement structuré, reporting et accompagnement client dans une expérience claire.
+              {about?.description || about?.subtitle || 'Notre ambition est de relier services terrain, investissement structuré, reporting et accompagnement client dans une expérience claire.'}
             </p>
+            {about?.imageUrl && (
+              <img src={mediaUrl(about.imageUrl)} alt="" className="mt-6 max-h-48 rounded-2xl object-cover" />
+            )}
             </div>
             <div className="rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur">
               <div className="grid gap-4">
@@ -88,7 +105,7 @@ export const AboutPage = () => {
               <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white font-black">M</div>
               <h2 className="text-4xl font-bold text-on-surface mb-6">Notre Mission</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed">
-                Offrir des services professionnels de qualité supérieure et créer des opportunités d'investissement transparentes qui transforment les vies de nos clients.
+                {about?.mission || "Offrir des services professionnels de qualité supérieure et créer des opportunités d'investissement transparentes qui transforment les vies de nos clients."}
               </p>
             </div>
 
@@ -96,7 +113,7 @@ export const AboutPage = () => {
               <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white font-black">V</div>
               <h2 className="text-4xl font-bold text-on-surface mb-6">Notre Vision</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed">
-                Être le leader régional dans la gestion d'investissements et les services professionnels, reconnu pour notre intégrité et notre excellence.
+                {about?.vision || "Être le leader régional dans la gestion d'investissements et les services professionnels, reconnu pour notre intégrité et notre excellence."}
               </p>
             </div>
           </div>
