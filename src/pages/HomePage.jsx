@@ -34,11 +34,13 @@ export const HomePage = () => {
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
           setApiServices(data.filter(s => s.published).map(s => ({
-            icon: s.icon || 'star', // fallback icon if it was not provided correctly
+            icon: s.icon || 'star',
+            imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
             title: s.title,
             description: s.description,
             price: s.actionText || 'En savoir plus',
-            features: s.actionLink ? [s.actionLink] : []
+            features: s.actionLink ? [s.actionLink] : [],
+            href: s.actionLink || null,
           })));
         }
       })
@@ -49,10 +51,13 @@ export const HomePage = () => {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
-          const images = data.filter(m => m.type && m.type.startsWith('image/')).map(m => ({
+          const allImages = data.filter(m => m.type && m.type.startsWith('image/'));
+          const realisationImages = allImages.filter(m => m.category === 'realisation');
+          const source = realisationImages.length > 0 ? realisationImages : allImages;
+          const images = source.map(m => ({
             src: mediaUrl(m.url || m.path || m.src),
             alt: m.name,
-            category: m.category || 'Terrain',
+            category: m.category === 'realisation' ? 'Réalisation' : (m.category || 'Terrain'),
             label: m.name?.split('.')[0] || 'Réalisation',
             progress: m.progress || 72,
           })).filter(m => m.src);
@@ -139,14 +144,17 @@ export const HomePage = () => {
     }
   ];
 
+  const heroSection = apiSiteContent.hero || apiSiteContent.heroBanner || {};
   const heroData = {
-    ...(apiSiteContent.heroBanner || {}),
-    title: "TAOMAN Groupe Investissement",
-    subtitle: "la plateforme qui relie capital, services et exécution terrain",
-    description: "TAOMAN Groupe Investissement met l'entreprise au centre : projets réels, réalisations visibles, simulation claire, dashboard investisseur et suivi transparent.",
-    btn1: "Simuler mon rendement",
-    btn2: isAuthenticated ? "Ouvrir le dashboard" : "Se connecter",
-    imageCaption: "Projets suivis sur le terrain"
+    title: heroSection.titleFr || heroSection.title || "TAOMAN Groupe Investissement",
+    subtitle: heroSection.titleEn || heroSection.subtitle || "la plateforme qui relie capital, services et exécution terrain",
+    description: heroSection.description || heroSection.subtitle || "TAOMAN Groupe Investissement met l'entreprise au centre : projets réels, réalisations visibles, simulation claire, dashboard investisseur et suivi transparent.",
+    btn1: heroSection.primaryButton || heroSection.btn1 || "Simuler mon rendement",
+    btn2: heroSection.secondaryButton || heroSection.btn2 || (isAuthenticated ? "Ouvrir le dashboard" : "Se connecter"),
+    imageCaption: heroSection.imageCaption || heroSection.badge || "Projets suivis sur le terrain",
+    heroImage: (heroSection.heroImage || heroSection.backgroundImage)
+      ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
+      : null,
   };
 
   // ── Réalisations ──────────────────────────────────────────────────────────
@@ -230,7 +238,7 @@ export const HomePage = () => {
         {/* ============ HERO ============ */}
         <section className="relative overflow-hidden bg-[#07111f] pt-12 pb-20 text-white md:pt-20 md:pb-32">
           <div className="absolute inset-0 z-0">
-            <img src={transport2} alt="" className="h-full w-full object-cover opacity-20" />
+            <img src={heroData.heroImage || transport2} alt="" className="h-full w-full object-cover opacity-20" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,82,204,0.45),transparent_35%),linear-gradient(120deg,#07111f_0%,rgba(7,17,31,0.92)_45%,rgba(7,17,31,0.65)_100%)]"></div>
             <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-blob"></div>
             <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl animate-blob-delay"></div>
@@ -351,7 +359,13 @@ export const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {services.map((service, idx) => (
                 <div key={service.title} className="group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: `${idx * 100}ms` }}>
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black">{service.icon}</div>
+                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden">
+                    {service.imageUrl ? (
+                      <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+                    ) : (
+                      service.icon
+                    )}
+                  </div>
                   <h3 className="text-2xl font-bold text-on-surface">{service.title}</h3>
                   <p className="mt-3 text-on-surface-variant">{service.description}</p>
                   <p className="mt-5 font-bold text-primary">{service.price}</p>

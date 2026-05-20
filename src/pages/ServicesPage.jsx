@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../config';
+import { API_URL, mediaUrl } from '../config';
 
 const Icons = {
   car: (
@@ -58,13 +58,14 @@ export const ServicesPage = () => {
         if (!Array.isArray(data) || data.length === 0) return;
         const icons = [Icons.car, Icons.truck, Icons.building, Icons.ac];
         setServices(
-          data.map((s, i) => ({
+          data.filter((s) => s.published !== false).map((s, i) => ({
             id: s.id,
             icon: icons[i % icons.length],
+            imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
             title: s.title,
             description: s.description,
-            href: s.id ? `/services/${s.id}` : resolveHref(s.title),
-            sla: 'Sur devis',
+            href: s.actionLink || (s.id ? `/services/${s.id}` : resolveHref(s.title)),
+            sla: s.actionText || 'Sur devis',
             badge: s.published ? 'Disponible' : 'Bientôt',
           }))
         );
@@ -126,7 +127,13 @@ export const ServicesPage = () => {
               <div key={service.title} className="bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group h-full flex flex-col animate-fade-in-up border border-outline-variant/30" style={{animationDelay: `${index * 50}ms`}}>
                 <div className="p-7 flex flex-col h-full">
                   <div className="mb-5 flex items-start justify-between gap-4">
-                    <div className="text-primary text-4xl group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+                    <div className="text-primary text-4xl group-hover:scale-110 transition-transform duration-300 w-14 h-14 flex items-center justify-center overflow-hidden rounded-2xl">
+                      {service.imageUrl ? (
+                        <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+                      ) : (
+                        service.icon
+                      )}
+                    </div>
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">{service.badge}</span>
                   </div>
                   <h3 className="text-xl font-bold text-on-surface mb-2">{service.title}</h3>

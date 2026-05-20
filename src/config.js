@@ -14,7 +14,15 @@ export async function apiAuthFetch(path, options = {}) {
     ...(options.headers || {}),
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
   };
-  const response = await fetch(`${API_URL}${path}`, { ...options, headers });
+  const response = await fetch(`${API_URL}${path}`, {
+    ...options,
+    cache: "no-store",
+    headers: {
+      ...headers,
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+    },
+  });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
     throw new Error(data.message || data.error || "Erreur API");
