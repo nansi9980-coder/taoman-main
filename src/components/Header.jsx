@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
+import { useSiteContent } from '../context/SiteContentContext';
+import { mediaUrl } from '../config';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,6 +11,9 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const [user, setUser] = useState(null);
   const [language, setLanguage] = useState(() => localStorage.getItem('taoman-language') || 'FR');
   const { colorMode, setColorMode } = useTheme();
+  const { section } = useSiteContent();
+  const branding = section('branding');
+  const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
 
   const languageOptions = [
     { code: 'FR', label: 'Français', lang: 'fr' },
@@ -175,27 +180,33 @@ export const Header = ({ activeLink = 'accueil' }) => {
         ? 'bg-surface shadow-lg backdrop-blur-md bg-opacity-95' 
         : 'bg-transparent'
     }`}>
-      <div className="mx-auto flex h-24 max-w-[1680px] items-center justify-between px-6 xl:px-10">
-        {/* Logo */}
-        <Link to="/" className="group flex items-center gap-4 transition-transform duration-300 hover:scale-105">
+      <div className="mx-auto flex h-20 max-w-[1680px] min-w-0 items-center gap-2 px-3 sm:px-5 xl:px-8">
+        {/* Logo — ne rétrécit pas */}
+        <Link
+          to="/"
+          className="group flex shrink-0 items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-[1.02] max-w-[42%] sm:max-w-none"
+        >
           <img
-            src={logo}
+            src={logoSrc}
             alt="TAOMAN Groupe Investissement"
-            className="h-16 w-auto object-contain drop-shadow-md"
+            className="h-11 w-auto sm:h-12 object-contain drop-shadow-md"
           />
-          <div className="hidden sm:block leading-tight">
-            <p className="text-base font-black tracking-[0.2em] text-primary">TAOMAN</p>
-            <p className="text-sm font-bold text-on-surface-variant">Groupe Investissement</p>
+          <div className="hidden md:block leading-tight min-w-0">
+            <p className="text-sm xl:text-base font-black tracking-[0.15em] xl:tracking-[0.2em] text-primary truncate">TAOMAN</p>
+            <p className="text-xs xl:text-sm font-bold text-on-surface-variant truncate hidden xl:block">Groupe Investissement</p>
           </div>
         </Link>
 
-        {/* Navigation Desktop */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        {/* Navigation Desktop — zone scrollable si trop de liens */}
+        <nav
+          className="nav-scroll-x hidden lg:flex flex-1 min-w-0 items-center gap-0.5 mx-1 xl:mx-3 py-1"
+          aria-label="Navigation principale"
+        >
           {navigationItems.map((link) => (
-            <div key={`${link.key}-${link.name}`} className="group relative">
+            <div key={`${link.key}-${link.name}`} className="group relative shrink-0">
               <Link
                 to={link.href}
-                className={`relative flex items-center gap-1 rounded-full px-4 py-4 text-[16px] font-black leading-tight transition-colors duration-300 xl:px-5 xl:text-[17px] ${
+                className={`relative flex items-center gap-1 rounded-full px-2.5 py-2.5 text-[13px] font-bold leading-tight transition-colors duration-300 xl:px-3 xl:text-[14px] whitespace-nowrap ${
                   activeLink === link.key
                     ? 'bg-primary/10 text-primary'
                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
@@ -229,12 +240,12 @@ export const Header = ({ activeLink = 'accueil' }) => {
           ))}
         </nav>
 
-        {/* Boutons Right */}
-        <div className="flex items-center gap-4">
-          <div className="group relative hidden sm:block">
+        {/* Boutons droite — ne poussent pas le menu hors écran */}
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 xl:gap-3">
+          <div className="group relative hidden md:block">
             <button
               type="button"
-              className="rounded-xl border border-outline-variant bg-surface px-4 py-3 text-base font-black text-on-surface shadow-sm hover:border-primary hover:text-primary"
+              className="rounded-xl border border-outline-variant bg-surface px-2.5 py-2 text-sm font-bold text-on-surface shadow-sm hover:border-primary hover:text-primary xl:px-3 xl:py-2.5"
               aria-label="Choisir la langue"
             >
               🌐 {language}
@@ -256,14 +267,14 @@ export const Header = ({ activeLink = 'accueil' }) => {
           <button
             type="button"
             onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-            className="hidden h-12 w-12 items-center justify-center rounded-xl border border-outline-variant bg-surface text-xl shadow-sm hover:border-primary sm:flex"
+            className="hidden h-10 w-10 xl:h-11 xl:w-11 items-center justify-center rounded-xl border border-outline-variant bg-surface text-lg shadow-sm hover:border-primary md:flex"
             aria-label={colorMode === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'}
           >
             {colorMode === 'dark' ? '☀' : '☾'}
           </button>
 
           {user ? (
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="hidden xl:flex items-center gap-2">
               <div className="flex cursor-pointer items-center gap-2 rounded-full border border-outline-variant bg-surface-container-low px-4 py-2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-base font-bold text-white">
                   {user.firstName ? user.firstName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
@@ -281,13 +292,13 @@ export const Header = ({ activeLink = 'accueil' }) => {
             <>
               <Link
                 to="/connexion"
-                className="hidden rounded-xl border-2 border-primary px-6 py-3 text-base font-black text-primary transition-all duration-300 hover:bg-primary hover:text-white sm:block"
+                className="hidden rounded-xl border-2 border-primary px-3 py-2 text-sm font-bold text-primary transition-all duration-300 hover:bg-primary hover:text-white md:inline-block xl:px-5 xl:py-2.5 xl:text-base"
               >
                 {t.login}
               </Link>
               <Link
                 to="/inscription"
-                className="hidden rounded-xl bg-gradient-to-r from-primary to-primary-container px-6 py-3 text-base font-black text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl sm:block"
+                className="hidden rounded-xl bg-gradient-to-r from-primary to-primary-container px-3 py-2 text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-90 md:inline-block xl:px-5 xl:py-2.5 xl:text-base"
               >
                 {t.register}
               </Link>

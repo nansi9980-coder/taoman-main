@@ -69,48 +69,48 @@ export const ContactPage = () => {
 
       <main className="flex-grow pt-24">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-primary to-primary-container py-20 px-6 text-on-primary">
-          <div className="absolute -left-24 top-10 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute right-0 top-16 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 py-20 px-6 text-white">
+          <div className="absolute -left-24 top-10 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute right-0 top-16 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
           <div className="max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.4fr_1fr] items-center">
             <div className="relative z-10">
-              <p className="text-sm uppercase tracking-[0.4em] text-on-primary/70 mb-4">Nous sommes à votre écoute</p>
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">Nous sommes à votre écoute</p>
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
                 Contactez TAOMAN Groupe Investissement
               </h1>
-              <p className="text-xl text-on-primary/90 max-w-2xl mb-8">
+              <p className="text-xl text-white/90 max-w-2xl mb-8">
                 Pour toute demande de service, partenariat ou information, notre équipe répond avec réactivité et professionnalisme.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl bg-white/10 p-6 border border-white/10 shadow-lg">
-                  <p className="text-xs uppercase tracking-[0.3em] text-on-primary/60 mb-3">Délai</p>
-                  <p className="text-3xl font-bold">Réponse en 24h</p>
+                <div className="rounded-2xl bg-white/15 p-6 border border-white/20 shadow-lg">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">Délai</p>
+                  <p className="text-3xl font-bold text-white">Réponse en 24h</p>
                 </div>
-                <div className="rounded-2xl bg-white/10 p-6 border border-white/10 shadow-lg">
-                  <p className="text-xs uppercase tracking-[0.3em] text-on-primary/60 mb-3">Support</p>
-                  <p className="text-3xl font-bold">Assistance dédiée</p>
+                <div className="rounded-2xl bg-white/15 p-6 border border-white/20 shadow-lg">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">Support</p>
+                  <p className="text-3xl font-bold text-white">Assistance dédiée</p>
                 </div>
               </div>
             </div>
 
-            <div className="relative z-10 rounded-[2rem] bg-white/10 p-8 shadow-2xl backdrop-blur-xl border border-white/20">
-              <h2 className="text-3xl font-bold mb-6">Nos coordonnées</h2>
-              <div className="space-y-6 text-on-primary">
+            <div className="relative z-10 rounded-[2rem] bg-white/95 p-8 shadow-2xl border border-white/30 text-slate-800">
+              <h2 className="text-3xl font-bold mb-6 text-slate-900">Nos coordonnées</h2>
+              <div className="space-y-6">
                 <div>
-                  <p className="text-sm text-on-primary/70">Téléphone</p>
-                  <p className="text-2xl font-semibold">{contactInfo.phone || '+228 90 42 13 77'}</p>
+                  <p className="text-sm text-slate-600">Téléphone</p>
+                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.phone || '+228 90 42 13 77'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-on-primary/70">Email</p>
-                  <p className="text-2xl font-semibold">{contactInfo.email || 'taomancontact@gmail.com'}</p>
+                  <p className="text-sm text-slate-600">Email</p>
+                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.email || 'taomancontact@gmail.com'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-on-primary/70">Adresse</p>
-                  <p className="text-2xl font-semibold">{contactInfo.address || 'Vakpossito, Lomé - Togo'}</p>
+                  <p className="text-sm text-slate-600">Adresse</p>
+                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.address || 'Vakpossito, Lomé - Togo'}</p>
                 </div>
-                <div className="rounded-3xl bg-primary/10 p-5 border border-primary/20">
-                  <p className="text-sm uppercase tracking-[0.3em] text-primary mb-2">Horaires</p>
-                  <p className="text-on-primary">{contactInfo.hours || 'Lun - Dim : 08h00 - 20h00'}</p>
+                <div className="rounded-3xl bg-slate-100 p-5 border border-slate-200">
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-600 mb-2">Horaires</p>
+                  <p className="text-slate-800 font-medium">{contactInfo.hours || 'Lun - Dim : 08h00 - 20h00'}</p>
                 </div>
               </div>
             </div>

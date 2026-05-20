@@ -3,6 +3,28 @@ import { API_URL } from "../config";
 
 const ThemeContext = createContext();
 
+function applyThemeToRoot(theme) {
+  if (!theme) return;
+  const root = document.documentElement;
+  const primary = theme.primary || theme.palette?.primary;
+  const secondary = theme.secondary || theme.palette?.secondary || primary;
+  const surface = theme.surface || theme.palette?.surface;
+  const background = theme.background || theme.palette?.background;
+
+  if (primary) {
+    root.style.setProperty('--color-primary', primary);
+    root.style.setProperty('--color-primary-container', secondary);
+    root.style.setProperty('--color-on-primary', '#ffffff');
+    root.style.setProperty('--color-on-primary-container', '#ffffff');
+  }
+  if (secondary) {
+    root.style.setProperty('--color-secondary', secondary);
+    root.style.setProperty('--color-secondary-container', secondary);
+  }
+  if (surface) root.style.setProperty('--color-surface', surface);
+  if (background) root.style.setProperty('--color-background', background);
+}
+
 export function ThemeProvider({ children }) {
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [colorMode, setColorMode] = useState(() => localStorage.getItem('taoman-color-mode') || 'light');
@@ -39,36 +61,14 @@ export function ThemeProvider({ children }) {
     root.style.setProperty('--color-on-surface-variant', palette.onSurfaceVariant);
     root.style.setProperty('--color-outline-variant', palette.outlineVariant);
     root.style.setProperty('--color-background', palette.background);
-  }, [colorMode, themeLoaded]);
+  }, [colorMode]);
 
   useEffect(() => {
     fetch(`${API_URL}/theme/active`)
       .then(res => res.json())
-      .then(theme => {
-        if (colorMode === 'light' && theme && theme.palette) {
-          const p = theme.palette;
-          const root = document.documentElement;
-          
-          if (p.primary) root.style.setProperty('--color-primary', p.primary);
-          if (p.primaryContainer) root.style.setProperty('--color-primary-container', p.primaryContainer);
-          if (p.onPrimary) root.style.setProperty('--color-on-primary', p.onPrimary);
-          if (p.onPrimaryContainer) root.style.setProperty('--color-on-primary-container', p.onPrimaryContainer);
-          
-          if (p.secondary) root.style.setProperty('--color-secondary', p.secondary);
-          if (p.secondaryContainer) root.style.setProperty('--color-secondary-container', p.secondaryContainer);
-          if (p.onSecondary) root.style.setProperty('--color-on-secondary', p.onSecondary);
-          if (p.onSecondaryContainer) root.style.setProperty('--color-on-secondary-container', p.onSecondaryContainer);
-
-          if (p.tertiary) root.style.setProperty('--color-tertiary', p.tertiary);
-          if (p.tertiaryContainer) root.style.setProperty('--color-tertiary-container', p.tertiaryContainer);
-          if (p.onTertiary) root.style.setProperty('--color-on-tertiary', p.onTertiary);
-          if (p.onTertiaryContainer) root.style.setProperty('--color-on-tertiary-container', p.onTertiaryContainer);
-
-          if (p.surface) root.style.setProperty('--color-surface', p.surface);
-          if (p.surfaceContainerLow) root.style.setProperty('--color-surface-container-low', p.surfaceContainerLow);
-          if (p.surfaceContainer) root.style.setProperty('--color-surface-container', p.surfaceContainer);
-          if (p.onSurface) root.style.setProperty('--color-on-surface', p.onSurface);
-          if (p.onSurfaceVariant) root.style.setProperty('--color-on-surface-variant', p.onSurfaceVariant);
+      .then((theme) => {
+        if (colorMode === 'light' && theme) {
+          applyThemeToRoot(theme);
         }
       })
       .catch(err => console.error("Error loading theme:", err))
@@ -77,7 +77,7 @@ export function ThemeProvider({ children }) {
 
   return (
     <ThemeContext.Provider value={{ themeLoaded, colorMode, setColorMode }}>
-      <div className={`transition-opacity duration-500 ${themeLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`transition-opacity duration-500 ${themeLoaded ? 'opacity-100' : 'opacity-100'}`}>
         {children}
       </div>
     </ThemeContext.Provider>

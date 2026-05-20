@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { API_URL } from '../config';
+import { parseSiteContentMap } from '../utils/siteContent';
 
 export const InvestmentSimulatorPage = () => {
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
@@ -13,6 +15,24 @@ export const InvestmentSimulatorPage = () => {
   const [inflation, setInflation] = useState('3');
   const [taxRate, setTaxRate] = useState('5');
   const [placementType, setPlacementType] = useState('Diversifie');
+
+  useEffect(() => {
+    fetch(`${API_URL}/content/texts`)
+      .then((res) => res.json())
+      .then((data) => {
+        const map = parseSiteContentMap(data);
+        const sim = map.simulator;
+        if (!sim || typeof sim !== 'object') return;
+        if (sim.investment) setInvestment(String(sim.investment));
+        if (sim.duration) setDuration(String(sim.duration));
+        if (sim.annualRate) setAnnualRate(String(sim.annualRate));
+        if (sim.monthlyContribution) setMonthlyContribution(String(sim.monthlyContribution));
+        if (sim.compoundFrequency) setCompoundFrequency(String(sim.compoundFrequency));
+        if (sim.inflation) setInflation(String(sim.inflation));
+        if (sim.taxRate) setTaxRate(String(sim.taxRate));
+      })
+      .catch(() => {});
+  }, []);
 
   const formatMoney = (value) => `${Math.round(value).toLocaleString('fr-FR')} FCFA`;
 

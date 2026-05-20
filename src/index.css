@@ -57,6 +57,24 @@ body {
   color: #f4f7fb;
 }
 
+/* Navbar : défilement horizontal si trop de liens (évite le débordement) */
+.nav-scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #0052cc transparent;
+}
+
+.nav-scroll-x::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-scroll-x::-webkit-scrollbar-thumb {
+  background: #0052cc;
+  border-radius: 4px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

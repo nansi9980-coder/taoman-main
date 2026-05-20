@@ -21,6 +21,7 @@ export const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [activeProject, setActiveProject] = useState(0);
   const [lightbox, setLightbox] = useState(null);
+  const [carouselPaused, setCarouselPaused] = useState(false);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
   const { content: apiSiteContent, services: apiServicesRaw } = useSiteContent();
@@ -97,7 +98,7 @@ export const HomePage = () => {
 
   const investmentStats =
     buildStatsFromSection(apiSiteContent.statistics) ||
-    apiSiteContent.investmentStats || [
+    buildStatsFromSection(apiSiteContent.investmentStats) || [
     { label: 'Ticket minimum',      value: '500K FCFA',     icon: '01' },
     { label: 'Horizon maximum',    value: '10 mois',  icon: '02' },
     { label: 'Suivi portefeuille',       value: '24/7',    icon: '03' },
@@ -134,13 +135,20 @@ export const HomePage = () => {
 
   const heroSection = apiSiteContent.hero || apiSiteContent.heroBanner || {};
   const ctaSection = apiSiteContent.cta || {};
+  const heroBadges = Array.isArray(heroSection.badges)
+    ? heroSection.badges
+    : ['KYC & conformité', 'Reporting PDF', 'Mobile Money', 'Alertes WhatsApp'];
   const heroData = {
-    title: heroSection.titleFr || heroSection.title || "TAOMAN Groupe Investissement",
-    subtitle: heroSection.titleEn || heroSection.subtitle || "la plateforme qui relie capital, services et exécution terrain",
-    description: heroSection.description || heroSection.subtitle || "TAOMAN Groupe Investissement met l'entreprise au centre : projets réels, réalisations visibles, simulation claire, dashboard investisseur et suivi transparent.",
-    btn1: heroSection.primaryButton || heroSection.btn1 || "Simuler mon rendement",
-    btn2: heroSection.secondaryButton || heroSection.btn2 || (isAuthenticated ? "Ouvrir le dashboard" : "Se connecter"),
-    imageCaption: heroSection.imageCaption || heroSection.badge || "Projets suivis sur le terrain",
+    badgeMain: heroSection.badgeMain || heroSection.badge || 'Entreprise TAOMAN Groupe Investissement',
+    badges: heroBadges,
+    title: heroSection.title || heroSection.titleFr || 'TAOMAN Groupe Investissement',
+    subtitle: heroSection.subtitle || heroSection.titleEn || 'la plateforme qui relie capital, services et exécution terrain',
+    description:
+      heroSection.description ||
+      "TAOMAN Groupe Investissement met l'entreprise au centre : projets réels, réalisations visibles, simulation claire, dashboard investisseur et suivi transparent.",
+    btn1: heroSection.btn1 || heroSection.primaryButton || 'Simuler mon rendement',
+    btn2: heroSection.btn2 || heroSection.secondaryButton || (isAuthenticated ? 'Ouvrir le dashboard' : 'Se connecter'),
+    imageCaption: heroSection.imageCaption || 'Projets suivis sur le terrain',
     heroImage: (heroSection.heroImage || heroSection.backgroundImage)
       ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
       : null,
@@ -194,14 +202,14 @@ export const HomePage = () => {
   }, [activeFilter]);
 
   useEffect(() => {
-    if (carouselItems.length <= 1) return undefined;
+    if (carouselItems.length <= 1 || carouselPaused) return undefined;
 
     const timer = setInterval(() => {
       setActiveProject((current) => (current + 1) % carouselItems.length);
-    }, 3800);
+    }, 2200);
 
     return () => clearInterval(timer);
-  }, [carouselItems.length]);
+  }, [carouselItems.length, carouselPaused]);
 
   const showPreviousProject = () => {
     setActiveProject((current) => (current - 1 + carouselItems.length) % carouselItems.length);
@@ -211,7 +219,7 @@ export const HomePage = () => {
     setActiveProject((current) => (current + 1) % carouselItems.length);
   };
 
-  const trustBadges = ['KYC & conformité', 'Reporting PDF', 'Mobile Money', 'Alertes WhatsApp'];
+  const trustBadges = heroData.badges;
   const dashboardPreview = [
     { label: 'Capital investi', value: '12,8M', change: '+18%' },
     { label: 'ROI moyen', value: '16,4%', change: '+2,1%' },
@@ -237,7 +245,7 @@ export const HomePage = () => {
             <div className="animate-fade-in-up">
               <div className="mb-6 flex flex-wrap gap-3">
                 <span className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur">
-                  Entreprise TAOMAN Groupe Investissement
+                  {heroData.badgeMain}
                 </span>
                 {trustBadges.map((badge) => (
                   <span key={badge} className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white/85 backdrop-blur">
@@ -450,8 +458,18 @@ export const HomePage = () => {
                   ›
                 </button>
 
-                <div className="absolute right-6 top-6 z-10 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-bold text-white backdrop-blur">
-                  {((activeProject % carouselItems.length) + 1).toString().padStart(2, '0')} / {carouselItems.length.toString().padStart(2, '0')}
+                <div className="absolute right-6 top-6 z-10 flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCarouselPaused((p) => !p)}
+                    className="rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-bold text-white backdrop-blur hover:bg-black/60"
+                    aria-label={carouselPaused ? 'Reprendre le défilement' : 'Pause'}
+                  >
+                    {carouselPaused ? '▶' : '⏸'}
+                  </button>
+                  <span className="rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-bold text-white backdrop-blur">
+                    {((activeProject % carouselItems.length) + 1).toString().padStart(2, '0')} / {carouselItems.length.toString().padStart(2, '0')}
+                  </span>
                 </div>
 
                 <div className="absolute bottom-4 left-8 right-8 z-10 flex gap-2">
@@ -545,8 +563,31 @@ export const HomePage = () => {
                   );
                 })}
               </div>
-              <p className="mt-4 text-center text-sm text-white/55">
-                Le carrousel défile automatiquement. Cliquez sur une miniature pour afficher la réalisation, double-cliquez pour l'agrandir.
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={showPreviousProject}
+                  className="rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-bold text-white hover:bg-white/20"
+                >
+                  ← Précédent
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCarouselPaused((p) => !p)}
+                  className="rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-bold text-white hover:bg-white/20"
+                >
+                  {carouselPaused ? 'Lecture auto' : 'Pause'}
+                </button>
+                <button
+                  type="button"
+                  onClick={showNextProject}
+                  className="rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-bold text-white hover:bg-white/20"
+                >
+                  Suivant →
+                </button>
+              </div>
+              <p className="mt-3 text-center text-sm text-white/55">
+                Défilement rapide (2,2 s). Utilisez les flèches, la pause ou les miniatures.
               </p>
             </div>
 

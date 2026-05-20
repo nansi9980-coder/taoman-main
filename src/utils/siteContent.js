@@ -14,6 +14,13 @@ export function parseSiteContentMap(data) {
 
 /** Admin statistics section → home page stat cards */
 export function buildStatsFromSection(section) {
+  if (Array.isArray(section) && section.length > 0) {
+    return section.map((s, i) => ({
+      label: s.label || '',
+      value: s.value || '',
+      icon: s.icon || String(i + 1).padStart(2, '0'),
+    }));
+  }
   if (!section || typeof section !== 'object') return null;
   const items = [];
   for (let i = 0; i < 4; i++) {
