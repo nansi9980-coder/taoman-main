@@ -137,7 +137,7 @@ export const ServicesPage = () => {
         <section className="py-xxl max-w-[1400px] mx-auto px-lg w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <div key={service.title} className="bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group h-full flex flex-col animate-fade-in-up border border-outline-variant/30" style={{animationDelay: `${index * 50}ms`}}>
+              <div key={service.title} className="interactive interactive-lift bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group h-full flex flex-col animate-fade-in-up border border-outline-variant/30 motion-reduce:hover:translate-y-0" style={{animationDelay: `${index * 50}ms`}}>
                 <div className="p-7 flex flex-col h-full">
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div className="text-primary text-4xl group-hover:scale-110 transition-transform duration-300 w-14 h-14 flex items-center justify-center overflow-hidden rounded-2xl">

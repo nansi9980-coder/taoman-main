@@ -55,7 +55,7 @@ export const Footer = () => {
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="text-outline-variant hover:text-primary-fixed transition-colors duration-300 hover:translate-x-1 inline-block"
+                  className="interactive text-outline-variant hover:text-primary-fixed transition-all duration-300 hover:translate-x-1 inline-block"
                 >
                   {link.name} →
                 </Link>
@@ -72,7 +72,7 @@ export const Footer = () => {
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="text-outline-variant hover:text-primary-fixed transition-colors duration-300 hover:translate-x-1 inline-block text-sm"
+                  className="interactive text-outline-variant hover:text-primary-fixed transition-all duration-300 hover:translate-x-1 inline-block text-sm"
                 >
                   {link.name} →
                 </Link>

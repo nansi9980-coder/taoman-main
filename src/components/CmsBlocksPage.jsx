@@ -55,7 +55,7 @@ export function CmsBlocksPage({ sectionKey, activeLink, variant = 'gradient' }) 
               (data.blocks || []).map((block, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-8 rounded-2xl shadow-md border border-outline-variant/20 animate-fade-in-up"
+                  className="interactive interactive-lift bg-white p-8 rounded-2xl shadow-md border border-outline-variant/20 animate-fade-in-up motion-reduce:hover:translate-y-0"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
                   <h2 className="text-2xl font-bold text-on-surface mb-4">{block.title}</h2>

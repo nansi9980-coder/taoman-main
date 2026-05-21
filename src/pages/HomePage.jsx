@@ -263,7 +263,7 @@ export const HomePage = () => {
               <div className="flex gap-4 flex-col sm:flex-row">
                 <button
                   onClick={() => navigate('/investissement/simulateur')}
-                  className="px-8 py-4 bg-white text-[#07111f] font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="interactive interactive-lift px-8 py-4 bg-white text-[#07111f] font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 motion-reduce:hover:scale-100"
                 >
                   {heroData.btn1}
                 </button>
@@ -332,7 +332,7 @@ export const HomePage = () => {
               {investmentStats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="group bg-surface-container-low p-8 rounded-3xl border border-outline-variant/40 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-fade-in-up"
+                  className="interactive interactive-lift group bg-surface-container-low p-8 rounded-3xl border border-outline-variant/40 hover:border-primary/40 transition-all duration-300 animate-fade-in-up motion-reduce:hover:translate-y-0"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
                   <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white font-black">{stat.icon}</div>

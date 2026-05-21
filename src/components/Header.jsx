@@ -4,12 +4,14 @@ import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
 import { useSiteContent } from '../context/SiteContentContext';
 import { mediaUrl } from '../config';
+import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [language, setLanguage] = useState(() => localStorage.getItem('taoman-language') || 'FR');
+  const [mobileExpanded, setMobileExpanded] = useState(null);
   const { colorMode, setColorMode } = useTheme();
   const { section } = useSiteContent();
   const branding = section('branding');
@@ -106,7 +108,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
     {
       name: t.projects,
       href: '/investissement',
-      key: 'investissement',
+      key: 'projets',
       children: [
         { name: t.tie, desc: t.tieDesc, href: '/investissement/tie' },
         { name: t.fieldWork, desc: t.fieldWorkDesc, href: '/#realisations' },
@@ -143,7 +145,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
       try {
         setUser(JSON.parse(userData));
       } catch (e) {
-        console.error("Erreur parsing user data", e);
+        console.error('Erreur parsing user data', e);
       }
     }
   }, []);
@@ -172,89 +174,93 @@ export const Header = ({ activeLink = 'accueil' }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    setMobileExpanded(null);
+  };
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-surface shadow-lg backdrop-blur-md bg-opacity-95' 
-        : 'bg-transparent'
-    }`}>
-      <div className="mx-auto flex h-20 max-w-[1680px] min-w-0 items-center gap-2 px-3 sm:px-5 xl:px-8">
-        {/* Logo — ne rétrécit pas */}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300 ${
+        scrolled
+          ? 'bg-surface shadow-lg backdrop-blur-md bg-opacity-95'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-20 max-w-[1680px] min-w-0 items-center gap-1 overflow-visible px-3 sm:gap-2 sm:px-5 xl:px-8">
         <Link
           to="/"
-          className="group flex shrink-0 items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-[1.02] max-w-[42%] sm:max-w-none"
+          className="interactive group flex shrink-0 items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-[1.02] max-w-[38%] sm:max-w-none motion-reduce:hover:scale-100"
         >
           <img
             src={logoSrc}
             alt="TAOMAN Groupe Investissement"
-            className="h-11 w-auto sm:h-12 object-contain drop-shadow-md"
+            className="h-10 w-auto sm:h-12 object-contain drop-shadow-md"
           />
           <div className="hidden md:block leading-tight min-w-0">
-            <p className="text-sm xl:text-base font-black tracking-[0.15em] xl:tracking-[0.2em] text-primary truncate">TAOMAN</p>
-            <p className="text-xs xl:text-sm font-bold text-on-surface-variant truncate hidden xl:block">Groupe Investissement</p>
+            <p className="text-sm xl:text-base font-black tracking-[0.15em] xl:tracking-[0.2em] text-primary truncate">
+              TAOMAN
+            </p>
+            <p className="text-xs xl:text-sm font-bold text-on-surface-variant truncate hidden xl:block">
+              Groupe Investissement
+            </p>
           </div>
         </Link>
 
-        {/* Navigation Desktop — zone scrollable si trop de liens */}
         <nav
-          className="nav-scroll-x hidden lg:flex flex-1 min-w-0 items-center gap-0.5 mx-1 xl:mx-3 py-1"
+          className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-0 overflow-visible px-1"
           aria-label="Navigation principale"
         >
-          {navigationItems.map((link) => (
-            <div key={`${link.key}-${link.name}`} className="group relative shrink-0">
+          {navigationItems.map((link) =>
+            link.children ? (
+              <NavDropdownDesktop
+                key={`${link.key}-${link.name}`}
+                link={link}
+                activeLink={activeLink}
+                featuresLabel={t.features}
+                quickAccessLabel={t.quickAccess}
+                language={language}
+              />
+            ) : (
               <Link
+                key={`${link.key}-${link.name}`}
                 to={link.href}
-                className={`relative flex items-center gap-1 rounded-full px-2.5 py-2.5 text-[13px] font-bold leading-tight transition-colors duration-300 xl:px-3 xl:text-[14px] whitespace-nowrap ${
+                className={`nav-link-hover interactive relative shrink-0 cursor-pointer rounded-full px-2 py-2 text-[12px] font-bold leading-tight transition-all duration-300 xl:px-2.5 xl:text-[13px] whitespace-nowrap motion-reduce:transition-none ${
                   activeLink === link.key
                     ? 'bg-primary/10 text-primary'
                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
                 }`}
               >
                 {link.name}
-                {link.children && <span className="text-xs">⌄</span>}
               </Link>
-
-              {link.children && (
-                <div className="invisible absolute left-0 top-full z-50 mt-4 w-[420px] translate-y-2 rounded-[1.75rem] border border-outline-variant/40 bg-surface p-4 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  <div className="mb-3 rounded-2xl bg-primary/10 p-4">
-                    <p className="text-xs font-black uppercase tracking-[0.25em] text-primary">{t.features}</p>
-                    <p className="mt-1 text-sm font-semibold text-on-surface">{t.quickAccess} {link.name.toLowerCase()}</p>
-                  </div>
-                  <div className="grid gap-2">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.name}
-                        to={child.href}
-                        className="rounded-2xl p-4 transition hover:bg-surface-container-low"
-                      >
-                        <p className="font-bold text-on-surface">{child.name}</p>
-                        <p className="mt-1 text-sm text-on-surface-variant">{child.desc}</p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+            )
+          )}
         </nav>
 
-        {/* Boutons droite — ne poussent pas le menu hors écran */}
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 xl:gap-3">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 xl:gap-2">
           <div className="group relative hidden md:block">
             <button
               type="button"
-              className="rounded-xl border border-outline-variant bg-surface px-2.5 py-2 text-sm font-bold text-on-surface shadow-sm hover:border-primary hover:text-primary xl:px-3 xl:py-2.5"
+              className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-2 py-2 text-sm font-bold text-on-surface shadow-sm transition-all duration-300 hover:border-primary hover:text-primary xl:px-3"
               aria-label="Choisir la langue"
             >
-              🌐 {language}
+              <span className="lg:hidden" aria-hidden="true">
+                🌐
+              </span>
+              <span className="hidden lg:inline">🌐 {language}</span>
             </button>
-            <div className="invisible absolute right-0 top-full z-50 mt-3 w-44 translate-y-2 rounded-2xl border border-outline-variant/40 bg-surface p-2 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none absolute right-0 top-full z-40 h-3 w-full" aria-hidden="true" />
+            <div className="invisible absolute right-0 top-full z-50 mt-2 w-44 origin-top-right scale-95 rounded-2xl border border-outline-variant/40 bg-surface p-2 opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none">
               {languageOptions.map((item) => (
                 <button
                   key={item.code}
                   type="button"
                   onClick={() => setLanguage(item.code)}
-                  className={`block w-full rounded-xl px-3 py-2 text-left text-sm font-bold ${language === item.code ? 'bg-primary text-white' : 'text-on-surface hover:bg-surface-container-low'}`}
+                  className={`interactive block w-full cursor-pointer rounded-xl px-3 py-2 text-left text-sm font-bold transition-colors duration-200 ${
+                    language === item.code
+                      ? 'bg-primary text-white'
+                      : 'text-on-surface hover:bg-surface-container-low'
+                  }`}
                 >
                   {item.code} - {item.label}
                 </button>
@@ -265,7 +271,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
           <button
             type="button"
             onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-            className="hidden h-10 w-10 xl:h-11 xl:w-11 items-center justify-center rounded-xl border border-outline-variant bg-surface text-lg shadow-sm hover:border-primary md:flex"
+            className="interactive hidden h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-outline-variant bg-surface text-lg shadow-sm transition-all duration-300 hover:border-primary md:flex xl:h-10 xl:w-10"
             aria-label={colorMode === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'}
           >
             {colorMode === 'dark' ? '☀' : '☾'}
@@ -273,15 +279,20 @@ export const Header = ({ activeLink = 'accueil' }) => {
 
           {user ? (
             <div className="hidden xl:flex items-center gap-2">
-              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-outline-variant bg-surface-container-low px-4 py-2">
+              <div className="interactive flex cursor-pointer items-center gap-2 rounded-full border border-outline-variant bg-surface-container-low px-4 py-2 transition-shadow duration-200 hover:shadow-md">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-base font-bold text-white">
-                  {user.firstName ? user.firstName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+                  {user.firstName
+                    ? user.firstName.charAt(0).toUpperCase()
+                    : user.email.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-base font-bold text-on-surface">{user.firstName || 'Client'}</span>
+                <span className="text-base font-bold text-on-surface">
+                  {user.firstName || 'Client'}
+                </span>
               </div>
               <button
+                type="button"
                 onClick={handleLogout}
-                className="text-base font-bold text-error hover:underline"
+                className="interactive cursor-pointer text-base font-bold text-error transition-colors hover:underline"
               >
                 Déconnexion
               </button>
@@ -290,75 +301,66 @@ export const Header = ({ activeLink = 'accueil' }) => {
             <>
               <Link
                 to="/connexion"
-                className="hidden rounded-xl border-2 border-primary px-3 py-2 text-sm font-bold text-primary transition-all duration-300 hover:bg-primary hover:text-white md:inline-block xl:px-5 xl:py-2.5 xl:text-base"
+                className="interactive hidden cursor-pointer rounded-xl border-2 border-primary px-2.5 py-2 text-xs font-bold text-primary transition-all duration-300 hover:bg-primary hover:text-white md:inline-block xl:px-4 xl:py-2 xl:text-sm"
               >
                 {t.login}
               </Link>
               <Link
                 to="/inscription"
-                className="hidden rounded-xl bg-gradient-to-r from-primary to-primary-container px-3 py-2 text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-90 md:inline-block xl:px-5 xl:py-2.5 xl:text-base"
+                className="interactive hidden cursor-pointer rounded-xl bg-gradient-to-r from-primary to-primary-container px-2.5 py-2 text-xs font-bold text-white shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg md:inline-block xl:px-4 xl:py-2 xl:text-sm"
               >
                 {t.register}
               </Link>
             </>
           )}
 
-          {/* Mobile Menu Toggle */}
           <button
+            type="button"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={menuOpen}
-            className="lg:hidden p-2 text-on-surface hover:text-primary transition-colors"
+            className="interactive cursor-pointer p-2 text-on-surface transition-colors hover:text-primary lg:hidden"
           >
             {menuOpen ? '✕' : '☰'}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden bg-surface border-t border-outline-variant shadow-xl animate-fade-down">
           <nav className="flex flex-col gap-0 p-6">
             {navigationItems.map((link) => (
-              <div key={`${link.key}-${link.name}`} className="border-b border-outline-variant/40 py-2 last:border-b-0">
-                <Link
-                  to={link.href}
-                  className="block py-3 px-4 font-bold text-on-surface hover:text-primary hover:bg-surface-container rounded-lg transition-all duration-200"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-                {link.children && (
-                  <div className="ml-4 grid gap-1 pb-2">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.name}
-                        to={child.href}
-                        className="rounded-lg px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+              <div
+                key={`${link.key}-${link.name}`}
+                className="border-b border-outline-variant/40 py-2 last:border-b-0"
+              >
+                <NavDropdownMobile
+                  link={link}
+                  expanded={mobileExpanded === link.key}
+                  onToggle={() =>
+                    setMobileExpanded((prev) => (prev === link.key ? null : link.key))
+                  }
+                  onNavigate={closeMobileMenu}
+                />
               </div>
             ))}
             <div className="mt-4 grid grid-cols-2 gap-3">
               <select
                 value={language}
                 onChange={(event) => setLanguage(event.target.value)}
-                className="rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface"
+                className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface"
                 aria-label="Choisir la langue"
               >
                 {languageOptions.map((item) => (
-                  <option key={item.code} value={item.code}>{item.code} - {item.label}</option>
+                  <option key={item.code} value={item.code}>
+                    {item.code} - {item.label}
+                  </option>
                 ))}
               </select>
               <button
                 type="button"
                 onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-                className="rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface"
+                className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface transition-colors hover:border-primary"
               >
                 {colorMode === 'dark' ? t.light : t.dark}
               </button>
@@ -368,13 +370,18 @@ export const Header = ({ activeLink = 'accueil' }) => {
                 <>
                   <div className="flex items-center gap-3 px-4 py-2">
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
-                      {user.firstName ? user.firstName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+                      {user.firstName
+                        ? user.firstName.charAt(0).toUpperCase()
+                        : user.email.charAt(0).toUpperCase()}
                     </div>
-                    <span className="font-bold text-on-surface">{user.firstName || 'Client'}</span>
+                    <span className="font-bold text-on-surface">
+                      {user.firstName || 'Client'}
+                    </span>
                   </div>
                   <button
+                    type="button"
                     onClick={handleLogout}
-                    className="block w-full py-2.5 text-center text-error font-bold border-2 border-error rounded-lg hover:bg-error hover:text-white transition-all"
+                    className="interactive block w-full cursor-pointer py-2.5 text-center text-error font-bold border-2 border-error rounded-lg transition-all hover:bg-error hover:text-white"
                   >
                     {t.logout}
                   </button>
@@ -383,15 +390,15 @@ export const Header = ({ activeLink = 'accueil' }) => {
                 <>
                   <Link
                     to="/connexion"
-                    className="block w-full py-2.5 text-center text-primary font-bold border-2 border-primary rounded-lg transition-all duration-300 hover:bg-primary hover:text-white"
-                    onClick={() => setMenuOpen(false)}
+                    className="interactive block w-full cursor-pointer py-2.5 text-center text-primary font-bold border-2 border-primary rounded-lg transition-all duration-300 hover:bg-primary hover:text-white"
+                    onClick={closeMobileMenu}
                   >
                     {t.login}
                   </Link>
                   <Link
                     to="/inscription"
-                    className="block w-full py-2.5 text-center bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-all"
-                    onClick={() => setMenuOpen(false)}
+                    className="interactive block w-full cursor-pointer py-2.5 text-center bg-primary text-white font-bold rounded-lg transition-all hover:opacity-90"
+                    onClick={closeMobileMenu}
                   >
                     {t.register}
                   </Link>
