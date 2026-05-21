@@ -1,132 +1,72 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useSiteContent } from '../context/SiteContentContext';
+import { Link } from 'react-router-dom';
 
-export const Header = ({ activeLink = '' }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [currentLang, setCurrentLang] = useState('fr');
-  const location = useLocation();
-  const { section } = useSiteContent();
-
-  // Dark mode
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setIsDark(savedTheme === 'dark');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    if (newIsDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
-  const languages = [
-    { code: 'fr', label: 'FR', flag: '🇫🇷' },
-    { code: 'en', label: 'EN', flag: '🇬🇧' },
-  ];
-
+export const Footer = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#0a0f1c]/95 backdrop-blur-md border-b border-outline-variant/50">
-      <div className="max-w-[1400px] mx-auto px-6">
-        <div className="h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-2xl group-hover:rotate-12 transition-transform">
-              T
+    <footer className="bg-surface-container-low border-t border-outline-variant mt-auto">
+      <div className="max-w-[1400px] mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Colonne 1 - Logo & Description */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-2xl">
+                T
+              </div>
+              <span className="font-black text-3xl tracking-tighter">TAOMAN</span>
             </div>
-            <div>
-              <span className="font-black text-3xl tracking-tighter text-on-surface dark:text-white">TAOMAN</span>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              La plateforme qui relie capital, services et exécution terrain au Togo.
+            </p>
+          </div>
+
+          {/* Colonne 2 - Navigation */}
+          <div>
+            <h4 className="font-bold text-on-surface mb-4">Navigation</h4>
+            <div className="space-y-2 text-sm">
+              <Link to="/" className="block hover:text-primary transition-colors">Accueil</Link>
+              <Link to="/services" className="block hover:text-primary transition-colors">Services</Link>
+              <Link to="/investissement" className="block hover:text-primary transition-colors">Investissement</Link>
+              <Link to="/jobs" className="block hover:text-primary transition-colors">Emplois</Link>
             </div>
-          </Link>
+          </div>
 
-          {/* Navigation Desktop - Police plus grande */}
-          <nav className="hidden md:flex items-center gap-10 text-[17px] font-semibold">
-            <Link to="/" className={`hover:text-primary transition-colors ${activeLink === 'home' ? 'text-primary' : 'text-on-surface dark:text-white'}`}>
-              Accueil
-            </Link>
-            <Link to="/services" className={`hover:text-primary transition-colors ${activeLink === 'services' ? 'text-primary' : 'text-on-surface dark:text-white'}`}>
-              Services
-            </Link>
-            <Link to="/investissement" className={`hover:text-primary transition-colors ${activeLink === 'investissement' ? 'text-primary' : 'text-on-surface dark:text-white'}`}>
-              Investir
-            </Link>
-            <Link to="/jobs" className={`hover:text-primary transition-colors ${activeLink === 'jobs' ? 'text-primary' : 'text-on-surface dark:text-white'}`}>
-              Emplois
-            </Link>
-            <Link to="/contact" className={`hover:text-primary transition-colors ${activeLink === 'contact' ? 'text-primary' : 'text-on-surface dark:text-white'}`}>
-              Contact
-            </Link>
-          </nav>
+          {/* Colonne 3 - Services */}
+          <div>
+            <h4 className="font-bold text-on-surface mb-4">Services</h4>
+            <div className="space-y-2 text-sm">
+              <Link to="/lavage-auto/devis" className="block hover:text-primary transition-colors">Lavage Auto</Link>
+              <Link to="/demenagement/devis" className="block hover:text-primary transition-colors">Déménagement</Link>
+              <Link to="/entretien/bureaux" className="block hover:text-primary transition-colors">Entretien Bureaux</Link>
+              <Link to="/entretien/climatisation" className="block hover:text-primary transition-colors">Climatisation</Link>
+            </div>
+          </div>
 
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            {/* Langues avec drapeaux */}
-            <div className="hidden md:flex items-center border border-outline-variant rounded-full px-1 py-1">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => setCurrentLang(lang.code)}
-                  className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${currentLang === lang.code ? 'bg-primary text-white' : 'hover:bg-surface-container'}`}
-                >
-                  <span className="text-lg">{lang.flag}</span>
-                  {lang.label}
-                </button>
-              ))}
+          {/* Colonne 4 - Contact & Légal */}
+          <div>
+            <h4 className="font-bold text-on-surface mb-4">Contact</h4>
+            <div className="space-y-2 text-sm text-on-surface-variant">
+              <p>Lomé, Togo</p>
+              <p>+228 90 00 00 00</p>
+              <p>contact@taoman.tg</p>
             </div>
 
-            {/* Dark/Light Mode amélioré */}
-            <button
-              onClick={toggleDarkMode}
-              className="w-11 h-11 flex items-center justify-center rounded-2xl hover:bg-surface-container transition-colors text-2xl"
-              title={isDark ? "Mode clair" : "Mode sombre"}
-            >
-              {isDark ? '☀️' : '🌙'}
-            </button>
-
-            {/* Bouton Connexion */}
-            <Link
-              to="/connexion"
-              className="hidden md:block px-6 py-3 bg-primary text-white font-semibold rounded-2xl hover:bg-primary-container transition-all active:scale-95"
-            >
-              Se connecter
-            </Link>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-11 h-11 flex items-center justify-center text-3xl"
-            >
-              {isMenuOpen ? '✕' : '☰'}
-            </button>
+            <div className="mt-8">
+              <h4 className="font-bold text-on-surface mb-3">Légal</h4>
+              <div className="flex flex-col gap-2 text-sm">
+                <Link to="/mentions-legales" className="hover:text-primary">Mentions légales</Link>
+                <Link to="/confidentialite" className="hover:text-primary">Confidentialité</Link>
+                <Link to="/conditions" className="hover:text-primary">Conditions d'utilisation</Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Sous-titre réduit */}
-      <div className="border-t border-outline-variant/30 bg-white/80 dark:bg-[#0a0f1c]/80 backdrop-blur-sm">
-        <div className="max-w-[1400px] mx-auto px-6 py-2.5 text-center">
-          <p className="text-sm md:text-[15px] text-on-surface-variant dark:text-gray-400 font-medium">
-            La plateforme qui relie capital, services et exécution terrain
-          </p>
+        <div className="mt-16 pt-8 border-t border-outline-variant text-center text-xs text-on-surface-variant">
+          © {new Date().getFullYear()} TAOMAN Groupe Investissement. Tous droits réservés.
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden border-t bg-white dark:bg-[#0a0f1c] py-6 px-6">
-          {/* ... menu mobile inchangé ... */}
-        </div>
-      )}
-    </header>
+    </footer>
   );
 };
+
+// Export par défaut (au cas où)
+export default Footer;
