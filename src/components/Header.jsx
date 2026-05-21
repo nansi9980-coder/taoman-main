@@ -18,14 +18,16 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
 
   const languageOptions = [
-    { code: 'FR', label: 'Français', lang: 'fr' },
-    { code: 'EN', label: 'English', lang: 'en' },
-    { code: 'ES', label: 'Español', lang: 'es' },
-    { code: 'PT', label: 'Português', lang: 'pt' },
-    { code: 'DE', label: 'Deutsch', lang: 'de' },
-    { code: 'AR', label: 'العربية', lang: 'ar' },
-    { code: 'ZH', label: '中文', lang: 'zh' },
+    { code: 'FR', label: 'Français', lang: 'fr', flag: '🇫🇷' },
+    { code: 'EN', label: 'English', lang: 'en', flag: '🇬🇧' },
+    { code: 'ES', label: 'Español', lang: 'es', flag: '🇪🇸' },
+    { code: 'PT', label: 'Português', lang: 'pt', flag: '🇵🇹' },
+    { code: 'DE', label: 'Deutsch', lang: 'de', flag: '🇩🇪' },
+    { code: 'AR', label: 'العربية', lang: 'ar', flag: '🇸🇦' },
+    { code: 'ZH', label: '中文', lang: 'zh', flag: '🇨🇳' },
   ];
+
+  const currentLanguage = languageOptions.find((item) => item.code === language) || languageOptions[0];
 
   const dictionary = {
     FR: {
@@ -225,7 +227,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
               <Link
                 key={`${link.key}-${link.name}`}
                 to={link.href}
-                className={`nav-link-hover interactive relative shrink-0 cursor-pointer rounded-full px-2 py-2 text-[12px] font-bold leading-tight transition-all duration-300 xl:px-2.5 xl:text-[13px] whitespace-nowrap motion-reduce:transition-none ${
+                className={`nav-link-hover interactive relative shrink-0 cursor-pointer rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
                   activeLink === link.key
                     ? 'bg-primary/10 text-primary'
                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
@@ -244,10 +246,13 @@ export const Header = ({ activeLink = 'accueil' }) => {
               className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-2 py-2 text-sm font-bold text-on-surface shadow-sm transition-all duration-300 hover:border-primary hover:text-primary xl:px-3"
               aria-label="Choisir la langue"
             >
-              <span className="lg:hidden" aria-hidden="true">
-                🌐
+              <span className="lg:hidden text-base" aria-hidden="true">
+                {currentLanguage.flag}
               </span>
-              <span className="hidden lg:inline">🌐 {language}</span>
+              <span className="hidden lg:inline xl:hidden text-base">{currentLanguage.flag}</span>
+              <span className="hidden xl:inline">
+                {currentLanguage.flag} {language}
+              </span>
             </button>
             <div className="pointer-events-none absolute right-0 top-full z-40 h-3 w-full" aria-hidden="true" />
             <div className="invisible absolute right-0 top-full z-50 mt-2 w-44 origin-top-right scale-95 rounded-2xl border border-outline-variant/40 bg-surface p-2 opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none">
@@ -262,7 +267,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
                       : 'text-on-surface hover:bg-surface-container-low'
                   }`}
                 >
-                  {item.code} - {item.label}
+                  {item.flag} {item.code} - {item.label}
                 </button>
               ))}
             </div>
@@ -274,7 +279,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
             className="interactive hidden h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-outline-variant bg-surface text-lg shadow-sm transition-all duration-300 hover:border-primary md:flex xl:h-10 xl:w-10"
             aria-label={colorMode === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'}
           >
-            {colorMode === 'dark' ? '☀' : '☾'}
+            {colorMode === 'dark' ? '☀️' : '🌙'}
           </button>
 
           {user ? (
@@ -353,7 +358,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
               >
                 {languageOptions.map((item) => (
                   <option key={item.code} value={item.code}>
-                    {item.code} - {item.label}
+                    {item.flag} {item.code} - {item.label}
                   </option>
                 ))}
               </select>
@@ -362,7 +367,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
                 onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
                 className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface transition-colors hover:border-primary"
               >
-                {colorMode === 'dark' ? t.light : t.dark}
+                {colorMode === 'dark' ? `☀️ ${t.light}` : `🌙 ${t.dark}`}
               </button>
             </div>
             <div className="border-t border-outline-variant mt-4 pt-4 space-y-2">

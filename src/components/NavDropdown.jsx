@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export function NavChevron() {
   return (
     <svg
-      className="ml-0.5 h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-out group-hover:rotate-180 motion-reduce:transition-none"
+      className="ml-0.5 h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover:rotate-180 motion-reduce:transition-none"
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden="true"
@@ -26,7 +26,7 @@ export function NavDropdownDesktop({ link, activeLink, featuresLabel, quickAcces
     <div className="group relative shrink-0">
       <Link
         to={link.href}
-        className={`nav-link-hover interactive relative flex cursor-pointer items-center gap-0.5 rounded-full px-2 py-2 text-[12px] font-bold leading-tight transition-all duration-300 xl:px-2.5 xl:text-[13px] whitespace-nowrap motion-reduce:transition-none ${
+        className={`nav-link-hover interactive relative flex cursor-pointer items-center gap-0.5 rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
           isActive
             ? 'bg-primary/10 text-primary'
             : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
