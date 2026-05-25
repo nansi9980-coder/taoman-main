@@ -109,7 +109,7 @@ export const JobsPage = () => {
                       {job.title}
                     </h3>
                     <p className="text-body-sm text-on-surface-variant mb-md">
-                      TAOMAN Groupe Investissement • {job.location || 'Lomé, Togo'}
+                      TAOMAN Group Investment • {job.location || 'Lomé, Togo'}
                     </p>
                     <span className="inline-block px-md py-xs bg-primary-container/10 text-primary-container rounded-lg text-label-sm font-bold">
                       {job.type}
@@ -167,7 +167,7 @@ export const JobsPage = () => {
         <section className="bg-surface-container-low py-xxl">
           <div className="max-w-[1200px] mx-auto px-lg">
             <h2 className="text-headline-lg text-on-surface font-bold mb-xl text-center">
-              Pourquoi rejoindre TAOMAN Groupe Investissement ?
+              Pourquoi rejoindre TAOMAN Group Investment ?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
               {[

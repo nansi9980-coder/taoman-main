@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSiteContent } from '../context/SiteContentContext';
-import btpIcon from '../assets/btp_sector.jpeg';
-import agroIcon from '../assets/agro_sector.jpeg';
-import transportIcon from '../assets/transport_sector.jpeg';
+import { BRAND_NAME } from '../constants/branding';
+import { normalizeSectors } from '../data/sectors-defaults';
 
-const DEFAULT_TIE = {
-  title: 'TAOMAN Groupe Investissement',
+const DEFAULT_TGI = {
+  title: BRAND_NAME,
   subtitle: 'Bâtissez votre indépendance financière',
   description:
     'Une opportunité transformative pour les investisseurs recherchant des rendements durables et un impact communautaire significatif à Lomé et au-delà.',
@@ -23,37 +22,14 @@ const DEFAULT_TIE = {
 export const TaoEconomicInvestmentPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
-  const tie = section('investmentTie');
-  const [activeTab, setActiveTab] = useState('overview');
+  const tgi = section('investmentTgi') || section('investmentTie');
 
-  const investmentStats = tie.stats?.length ? tie.stats : DEFAULT_TIE.stats;
-  const heroTitle = tie.title || DEFAULT_TIE.title;
-  const heroSubtitle = tie.subtitle || DEFAULT_TIE.subtitle;
-  const heroDescription = tie.description || DEFAULT_TIE.description;
+  const investmentStats = tgi.stats?.length ? tgi.stats : DEFAULT_TGI.stats;
+  const heroTitle = tgi.title || DEFAULT_TGI.title;
+  const heroSubtitle = tgi.subtitle || DEFAULT_TGI.subtitle;
+  const heroDescription = tgi.description || DEFAULT_TGI.description;
 
-  const sectors = [
-    {
-      title: 'BTP & Immobilier',
-      icon: btpIcon,
-      description: 'Projets de construction durable',
-      details: 'Investissez dans des projets immobiliers de qualité avec un potentiel de croissance élevé',
-      opportunities: 'Villas residential, Immeubles de bureaux, Centres commerciaux'
-    },
-    {
-      title: 'Agro & Énergie',
-      icon: agroIcon,
-      description: 'Agriculture moderne et énergies renouvelables',
-      details: 'Participez à la révolution agricole et énergétique en Afrique de l\'Ouest',
-      opportunities: 'Fermes modernes, Panneaux solaires, Biocarburants'
-    },
-    {
-      title: 'Transport & Logistique',
-      icon: transportIcon,
-      description: 'Solutions logistiques intégrées',
-      details: 'Investissez dans les chaînes d\'approvisionnement modernes et rentables',
-      opportunities: 'Flottes de véhicules, Entrepôts, Services de déménagement'
-    }
-  ];
+  const sectors = normalizeSectors(section('sectors'));
 
   const benefits = [
     { icon: '✓', title: 'Transparence Totale', desc: 'Accès complet aux rapports et données d\'investissement' },
@@ -77,10 +53,10 @@ export const TaoEconomicInvestmentPage = () => {
             <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">{heroDescription}</p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <button
-                onClick={() => navigate('/investissement/simulateur')}
+                onClick={() => navigate('/contact?topic=invest')}
                 className="px-8 py-4 bg-white text-primary font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                Simuler mes Revenus
+                Nous contacter pour investir
               </button>
               <button
                 onClick={() => navigate('/inscription')}
@@ -115,7 +91,7 @@ export const TaoEconomicInvestmentPage = () => {
         {/* Three Pillars */}
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-4xl font-bold text-center text-on-surface mb-12">Les Trois Piliers de TIE</h2>
+            <h2 className="text-4xl font-bold text-center text-on-surface mb-12">Les trois piliers de TGI</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-gradient-to-br from-primary/10 to-primary-container/10 rounded-2xl p-8 border border-primary/20 hover:shadow-lg transition-all animate-fade-in-up" style={{ animationDelay: '0ms' }}>
                 <div className="text-5xl mb-4">💰</div>
@@ -144,34 +120,42 @@ export const TaoEconomicInvestmentPage = () => {
           </div>
         </section>
 
-        {/* Sectors Section */}
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-4xl font-bold text-center text-on-surface mb-16">Secteurs d'Investissement</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center mb-12">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Diversification</p>
+              <h2 className="text-4xl font-black text-on-surface mb-4">Secteurs d'investissement</h2>
+              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
+                Cinq secteurs stratégiques mobilisés par TGI : chaque domaine dispose de sa page dédiée.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {sectors.map((sector, idx) => (
-                <div
-                  key={idx}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 100}ms` }}
+                <Link
+                  key={sector.slug || idx}
+                  to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
+                  className="group bg-white rounded-2xl p-6 border border-outline-variant/40 hover:shadow-xl hover:-translate-y-1 transition-all animate-fade-in-up"
+                  style={{ animationDelay: `${idx * 80}ms` }}
                 >
-                  <div className="bg-gradient-to-br from-primary/20 to-primary-container/20 p-8 border-b border-outline/20">
-                    <img src={sector.icon} alt={sector.title} className="w-20 h-20 object-contain mb-4 bg-white/50 rounded-xl p-2" />
-                    <h3 className="text-2xl font-bold text-on-surface mb-2">{sector.title}</h3>
-                    <p className="text-on-surface-variant">{sector.description}</p>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div>
-                      <p className="font-bold text-on-surface mb-2">À propos:</p>
-                      <p className="text-on-surface-variant">{sector.details}</p>
-                    </div>
-                    <div>
-                      <p className="font-bold text-on-surface mb-2">Opportunités:</p>
-                      <p className="text-on-surface-variant text-sm">{sector.opportunities}</p>
-                    </div>
-                  </div>
-                </div>
+                  <span className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                    {sector.tag || 'Secteur'}
+                  </span>
+                  <h3 className="mt-4 text-xl font-black text-on-surface group-hover:text-primary transition-colors">
+                    {sector.title}
+                  </h3>
+                  <p className="mt-2 text-on-surface-variant text-sm leading-relaxed line-clamp-3">
+                    {sector.short || sector.description || ''}
+                  </p>
+                  <p className="mt-4 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center gap-2">
+                    Découvrir →
+                  </p>
+                </Link>
               ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link to="/secteurs" className="inline-flex items-center gap-2 font-bold text-primary hover:underline">
+                Voir tous les secteurs →
+              </Link>
             </div>
           </div>
         </section>
@@ -205,7 +189,7 @@ export const TaoEconomicInvestmentPage = () => {
           <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Prêt à Commencer?</h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Rejoignez les investisseurs qui construisent leur avenir financier avec TAOMAN Groupe Investissement.
+              {`Rejoignez les investisseurs qui construisent leur avenir financier avec ${BRAND_NAME}.`}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <button
@@ -215,10 +199,10 @@ export const TaoEconomicInvestmentPage = () => {
                 S'inscrire Maintenant
               </button>
               <button
-                onClick={() => navigate('/investissement/simulateur')}
+                onClick={() => navigate('/contact?topic=invest')}
                 className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
               >
-                Calculer mes Rendements
+                Parler à un conseiller
               </button>
             </div>
           </div>

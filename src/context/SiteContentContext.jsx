@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { API_URL } from '../config';
 import { parseSiteContentMap } from '../utils/siteContent';
+import { loadContentOverrides } from '../utils/siteContentOverrides';
 
 const SiteContentContext = createContext(null);
 
 export function SiteContentProvider({ children }) {
   const [content, setContent] = useState({});
+  const [overrides, setOverrides] = useState(() => loadContentOverrides());
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +34,25 @@ export function SiteContentProvider({ children }) {
     load();
   }, [load]);
 
-  const section = useCallback((key) => content[key] || {}, [content]);
+  useEffect(() => {
+    const sync = () => setOverrides(loadContentOverrides());
+    window.addEventListener('taoman-cms-updated', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('taoman-cms-updated', sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
+
+  const section = useCallback(
+    (key) => {
+      const base = content[key] || {};
+      const patch = overrides[key];
+      if (!patch || typeof patch !== 'object') return base;
+      return { ...base, ...patch };
+    },
+    [content, overrides],
+  );
 
   const value = useMemo(
     () => ({ content, services, loading, section, reload: load }),

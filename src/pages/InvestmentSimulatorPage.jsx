@@ -230,10 +230,12 @@ export const InvestmentSimulatorPage = () => {
                 {showField('placementType') && <div className="space-y-3 animate-fade-in-up" style={{animationDelay: '350ms'}}>
                   <label className="block text-sm font-bold text-on-surface uppercase tracking-[0.2em]">Type de placement</label>
                   <select value={placementType} onChange={(e) => setPlacementType(e.target.value)} className="w-full px-6 py-4 border-2 border-outline-variant rounded-2xl focus:border-primary bg-surface text-on-surface font-bold text-lg">
-                    <option>Diversifie</option>
-                    <option>Agro & Énergie</option>
-                    <option>Transport & Logistique</option>
+                    <option>Diversifié</option>
                     <option>BTP & Immobilier</option>
+                    <option>Agro Business</option>
+                    <option>Commerce général</option>
+                    <option>Logistique & Transports</option>
+                    <option>Numérique & Services</option>
                   </select>
                 </div>}
 
@@ -335,7 +337,7 @@ export const InvestmentSimulatorPage = () => {
                 className="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-fade-in-up"
                 style={{animationDelay: '300ms'}}
               >
-                {isAuthenticated ? 'Ouvrir le dashboard complet' : 'Se connecter pour ouvrir le dashboard'}
+                {isAuthenticated ? 'Ouvrir mon espace investisseur' : 'Se connecter à mon espace investisseur'}
               </button>
             </div>
           </div>

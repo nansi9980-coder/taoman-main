@@ -1,55 +1,70 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useSiteContent } from '../context/SiteContentContext';
+import { getBrandName } from '../constants/branding';
+import { getFooterTranslations } from '../i18n/navigation';
 
 export const Footer = () => {
   const { section } = useSiteContent();
   const footer = section('footer');
   const contact = section('contact');
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
+  const [language, setLanguage] = useState(() => localStorage.getItem('taoman-language') || 'FR');
+
+  useEffect(() => {
+    const syncLanguage = () => {
+      setLanguage(localStorage.getItem('taoman-language') || 'FR');
+    };
+    window.addEventListener('storage', syncLanguage);
+    const interval = window.setInterval(syncLanguage, 500);
+    return () => {
+      window.removeEventListener('storage', syncLanguage);
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  const t = getFooterTranslations(language);
+  const brandName = getBrandName(language);
+
   const navigationLinks = [
-    { name: 'Accueil', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Investissement', href: '/investissement' },
-    ...(isAuthenticated ? [{ name: 'Dashboard', href: '/dashboard' }] : []),
-    { name: 'Opportunités', href: '/jobs' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'À propos', href: '/about' },
+    { name: t.home, href: '/' },
+    { name: t.services, href: '/services' },
+    { name: t.invest, href: '/investissement' },
+    ...(isAuthenticated ? [{ name: t.dashboard, href: '/dashboard' }] : []),
+    { name: t.opportunities, href: '/jobs' },
+    { name: t.faq, href: '/faq' },
+    { name: t.contactLink, href: '/contact' },
+    { name: t.about, href: '/about' },
   ];
+
   const quickLinks = [
-    { name: 'Lavage Auto', href: '/lavage-auto/devis' },
-    { name: 'Déménagement', href: '/demenagement/devis' },
-    { name: 'Entretien Bureau', href: '/entretien/bureaux' },
-    { name: 'Climatisation', href: '/entretien/climatisation' },
-    { name: 'Personnel Déménagement', href: '/demenagement/personnels' },
-    { name: 'Investissement TIE', href: '/investissement/tie' },
-    { name: 'Simulateur', href: '/investissement/simulateur' },
-    ...(isAuthenticated ? [{ name: 'Dashboard complet', href: '/dashboard' }] : []),
+    { name: t.carWash, href: '/lavage-auto/devis' },
+    { name: t.moving, href: '/demenagement/devis' },
+    { name: t.officeCare, href: '/entretien/bureaux' },
+    { name: t.movingStaff, href: '/demenagement/personnels' },
+    { name: 'TAOMAN TGI', href: '/investissement/tgi' },
+    { name: t.simulator, href: '/investissement/simulateur' },
   ];
 
   return (
     <footer className="bg-black text-white pt-16 pb-8">
-      {/* Main Footer Content */}
       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-12">
-        {/* Column 1 - Brand */}
         <div className="group">
           <div className="flex items-center gap-5 mb-6">
-            <img src={logo} alt="TAOMAN Groupe Investissement" className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl" />
+            <img src={logo} alt={brandName} className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl" />
             <div>
-              <h3 className="text-3xl font-black leading-tight">TAOMAN Groupe Investissement</h3>
-              <p className="text-sm font-semibold text-outline-variant">Investissement, services & confiance</p>
+              <h3 className="text-3xl font-black leading-tight">{brandName}</h3>
+              <p className="text-sm font-semibold text-outline-variant">{t.tagline}</p>
             </div>
           </div>
           <p className="text-outline-variant text-sm leading-relaxed">
-            {footer.description ||
-              "TAOMAN Groupe Investissement développe une plateforme claire pour l'investissement, les services terrain, le reporting et l'accompagnement client."}
+            {footer.description || t.description}
           </p>
         </div>
 
-        {/* Column 2 - Navigation */}
         <div>
-          <h4 className="text-lg font-bold mb-4 text-surface">Navigation</h4>
+          <h4 className="text-lg font-bold mb-4 text-surface">{t.navigation}</h4>
           <ul className="space-y-2">
             {navigationLinks.map((link) => (
               <li key={link.href}>
@@ -64,9 +79,8 @@ export const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3 - Services */}
         <div>
-          <h4 className="text-lg font-bold mb-4 text-surface">Accès rapides</h4>
+          <h4 className="text-lg font-bold mb-4 text-surface">{t.quickLinks}</h4>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
@@ -81,9 +95,8 @@ export const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4 - Contact */}
         <div>
-          <h4 className="text-lg font-bold mb-4 text-surface">Contact</h4>
+          <h4 className="text-lg font-bold mb-4 text-surface">{t.contact}</h4>
           <div className="space-y-3">
             <div className="flex items-start gap-3">
               <span className="text-2xl">📍</span>
@@ -93,13 +106,19 @@ export const Footer = () => {
             </div>
             <div className="flex items-center gap-3">
               <span className="text-2xl">📞</span>
-              <a href={`tel:${(contact.phone || '+22890421377').replace(/\s/g, '')}`} className="text-primary-fixed font-bold hover:text-surface transition-colors">
+              <a
+                href={`tel:${(contact.phone || '+22890421377').replace(/\s/g, '')}`}
+                className="text-primary-fixed font-bold hover:text-surface transition-colors"
+              >
                 {contact.phone || '+228 90 42 13 77'}
               </a>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-2xl">✉️</span>
-              <a href={`mailto:${contact.email || 'taomancontact@gmail.com'}`} className="text-primary-fixed font-bold hover:text-surface transition-colors break-all text-sm">
+              <a
+                href={`mailto:${contact.email || 'taomancontact@gmail.com'}`}
+                className="text-primary-fixed font-bold hover:text-surface transition-colors break-all text-sm"
+              >
                 {contact.email || 'taomancontact@gmail.com'}
               </a>
             </div>
@@ -108,42 +127,54 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Divider */}
       <div className="max-w-[1400px] mx-auto px-6 border-t border-surface-variant/20 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-          {/* Social Links */}
           <div className="flex gap-4 justify-center md:justify-start">
-            <a href="mailto:taomancontact@gmail.com" aria-label="Contacter Taoman par email" className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110">
+            <a
+              href="mailto:taomancontact@gmail.com"
+              aria-label={`${brandName} — email`}
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+            >
               <span className="text-surface">@</span>
             </a>
-            <a href="mailto:taomancontact@gmail.com" aria-label="LinkedIn Taoman" className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110">
+            <a
+              href="mailto:taomancontact@gmail.com"
+              aria-label={`${brandName} — LinkedIn`}
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+            >
               <span className="text-surface">in</span>
             </a>
-            <a href="tel:+22890421377" aria-label="Appeler Taoman" className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110">
+            <a
+              href="tel:+22890421377"
+              aria-label={`${brandName} — téléphone`}
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+            >
               <span className="text-surface">tel</span>
             </a>
-            <a href="/contact" aria-label="Page contact Taoman" className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110">
+            <a
+              href="/contact"
+              aria-label={`${brandName} — contact`}
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+            >
               <span className="text-surface">?</span>
             </a>
           </div>
 
-          {/* Copyright */}
           <p className="text-center text-outline-variant text-sm">
-            © TAOMAN Groupe Investissement. Tous droits réservés.
+            © {brandName}. {t.rights}
           </p>
 
-          {/* Legal Links */}
           <div className="flex gap-4 justify-center md:justify-end text-sm">
             <Link to="/mentions-legales" className="text-outline-variant hover:text-primary-fixed transition-colors">
-              Mentions Légales
+              {t.legal}
             </Link>
             <span className="text-outline-variant">/</span>
             <Link to="/confidentialite" className="text-outline-variant hover:text-primary-fixed transition-colors">
-              Confidentialité
+              {t.privacy}
             </Link>
             <span className="text-outline-variant">/</span>
             <Link to="/termes-conditions" className="text-outline-variant hover:text-primary-fixed transition-colors">
-              Termes & Conditions
+              {t.terms}
             </Link>
           </div>
         </div>

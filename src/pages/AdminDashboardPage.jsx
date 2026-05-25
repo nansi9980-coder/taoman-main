@@ -1,6 +1,8 @@
 import { Navigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { SiteContentEditor } from '../components/admin/SiteContentEditor';
+import { BRAND_NAME } from '../constants/branding';
 
 export const AdminDashboardPage = () => {
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
@@ -27,7 +29,7 @@ export const AdminDashboardPage = () => {
     ['Documents', 'Contrats, reçus, rapports PDF, attestations et archivage sécurisé.'],
     ['Reporting', 'Chiffres clés, performance, ventes, conversions et rapports mensuels.'],
     ['Notifications', 'Emails, SMS, WhatsApp, rappels automatiques et alertes internes.'],
-    ['Services TAOMAN', 'Lavage, déménagement, entretien bureaux, climatisation et demandes terrain.'],
+    ['Services TAOMAN', 'Lavage, déménagement, entretien bureaux et demandes terrain.'],
     ['Sécurité & audit', 'Logs, sessions, actions sensibles, sauvegardes et contrôle d’accès.'],
   ];
 
@@ -35,7 +37,7 @@ export const AdminDashboardPage = () => {
     { client: 'Kossi Mensah', service: 'Lavage auto', amount: '35 000 FCFA', status: 'Nouveau' },
     { client: 'Ama Koffi', service: 'Déménagement', amount: '280 000 FCFA', status: 'À valider' },
     { client: 'TGI Holding', service: 'Entretien bureaux', amount: '650 000 FCFA', status: 'Envoyé' },
-    { client: 'Marc Lawson', service: 'Climatisation', amount: '420 000 FCFA', status: 'Accepté' },
+    { client: 'Marc Lawson', service: 'Investissement TGI', amount: '420 000 FCFA', status: 'Accepté' },
   ];
 
   const workflows = [
@@ -57,7 +59,7 @@ export const AdminDashboardPage = () => {
           <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
           <div className="relative z-10 mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
             <div>
-              <p className="mb-4 text-sm font-black uppercase tracking-[0.35em] text-cyan-200">TAOMAN Groupe</p>
+              <p className="mb-4 text-sm font-black uppercase tracking-[0.35em] text-cyan-200">{BRAND_NAME}</p>
               <h1 className="text-5xl font-black tracking-[-0.05em] md:text-7xl">Administration</h1>
               <p className="mt-6 max-w-2xl text-xl text-white/75">
                 URL dédiée : <span className="font-black text-cyan-200">/admin</span>. Un centre de contrôle pour piloter les devis, clients, services, investissements, médias, documents et rapports.
@@ -177,13 +179,15 @@ export const AdminDashboardPage = () => {
           </div>
         </section>
 
+        <SiteContentEditor />
+
         <section id="fonctionnalites-admin" className="px-6 py-20">
           <div className="mx-auto max-w-[1500px]">
             <div className="mb-10 text-center">
               <p className="text-sm font-black uppercase tracking-[0.3em] text-primary">Fonctionnalités dashboard</p>
               <h2 className="mt-3 text-4xl font-black text-on-surface">Administration complète du site</h2>
               <p className="mx-auto mt-4 max-w-3xl text-on-surface-variant">
-                Liste claire des modules à intégrer pour administrer correctement TAOMAN Groupe Investissement et toutes les activités du groupe.
+                Liste claire des modules à intégrer pour administrer correctement {BRAND_NAME} et toutes les activités du groupe.
               </p>
             </div>
 

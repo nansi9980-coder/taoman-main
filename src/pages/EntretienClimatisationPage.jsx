@@ -263,7 +263,7 @@ export const EntretienClimatisationPage = () => {
               {/* Sidebar Info */}
               <div className="animate-fade-in-down">
                 <div className="bg-gradient-to-br from-primary/10 to-primary-container/10 rounded-2xl p-8 border border-primary/20">
-                  <h3 className="text-2xl font-bold text-on-surface mb-6">Pourquoi TAOMAN Groupe Investissement ?</h3>
+                  <h3 className="text-2xl font-bold text-on-surface mb-6">Pourquoi TAOMAN Group Investment ?</h3>
                   
                   <p className="text-on-surface-variant mb-8 leading-relaxed">
                     Nous vous proposons une expérience client nouvelle basée sur des services techniques professionnels et de qualité.

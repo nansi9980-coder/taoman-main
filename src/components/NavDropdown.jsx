@@ -17,7 +17,7 @@ export function NavChevron() {
   );
 }
 
-export function NavDropdownDesktop({ link, activeLink, featuresLabel, quickAccessLabel, language }) {
+export function NavDropdownDesktop({ link, activeLink, language }) {
   const isActive = activeLink === link.key;
   const showShortInvest =
     language === 'FR' && link.key === 'investissement' && link.children;
@@ -54,14 +54,6 @@ export function NavDropdownDesktop({ link, activeLink, featuresLabel, quickAcces
             className="invisible absolute left-0 top-full z-50 w-[min(420px,calc(100vw-2rem))] origin-top-left scale-95 rounded-[1.75rem] border border-outline-variant/40 bg-surface p-4 opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none"
             style={{ marginTop: '0.5rem' }}
           >
-            <div className="mb-3 rounded-2xl bg-primary/10 p-4">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-primary">
-                {featuresLabel}
-              </p>
-              <p className="mt-1 text-sm font-semibold text-on-surface">
-                {quickAccessLabel} {link.name.toLowerCase()}
-              </p>
-            </div>
             <div className="grid gap-2">
               {link.children.map((child) => (
                 <Link

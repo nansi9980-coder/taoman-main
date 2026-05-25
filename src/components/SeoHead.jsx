@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import { useSiteContent } from '../context/SiteContentContext';
+import { BRAND_NAME, BRAND_TAGLINE } from '../constants/branding';
 
-const DEFAULT_TITLE = 'TAOMAN Groupe Investissement';
-const DEFAULT_DESC =
-  'Investissement structuré, services terrain et accompagnement client au Togo.';
+const DEFAULT_TITLE = BRAND_NAME;
+const DEFAULT_DESC = BRAND_TAGLINE.fr;
 
 export function SeoHead() {
   const { section } = useSiteContent();

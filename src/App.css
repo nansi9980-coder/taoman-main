@@ -139,6 +139,36 @@ body {
   }
 }
 
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 8s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes sliderProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-slider-progress {
+  transform-origin: left center;
+  animation-name: sliderProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 @keyframes blob {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -328,7 +358,8 @@ h3 {
 p {
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--on-surface-variant);
+  /* La couleur est héritée par défaut. Les utilitaires Tailwind (text-*)
+     peuvent ainsi s'appliquer sans être écrasés par cette règle globale. */
 }
 
 strong {
@@ -436,13 +467,80 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* ============ DARK MODE READY ============ */
+/* ============ DARK MODE ============ */
 
 [data-theme='dark'] {
-  --surface: #07111f;
+  --primary: #4d8bff;
+  --primary-container: #1e6fff;
+  --surface: #0a1424;
+  --surface-container-low: #111d31;
+  --surface-container-high: #1a2840;
   --on-surface: #f4f7fb;
   --on-surface-variant: #b8c4d6;
+  --outline: #2a3e5c;
   --outline-variant: #31445f;
+}
+
+/* Réécritures ciblées des utilitaires Tailwind hardcodés
+   pour qu'ils s'adaptent correctement au dark mode. */
+[data-theme='dark'] .bg-white {
+  background-color: var(--surface-container-low) !important;
+  color: var(--on-surface);
+}
+
+[data-theme='dark'] .bg-white\/95 {
+  background-color: rgba(26, 40, 64, 0.95) !important;
+}
+
+[data-theme='dark'] .text-on-surface,
+[data-theme='dark'] .text-slate-800,
+[data-theme='dark'] .text-slate-900 {
+  color: var(--on-surface) !important;
+}
+
+[data-theme='dark'] .text-on-surface-variant,
+[data-theme='dark'] .text-slate-600,
+[data-theme='dark'] .text-slate-700 {
+  color: var(--on-surface-variant) !important;
+}
+
+/* Champs de formulaire en dark mode */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface);
+  border-color: var(--outline-variant);
+}
+
+[data-theme='dark'] input::placeholder,
+[data-theme='dark'] textarea::placeholder {
+  color: var(--on-surface-variant);
+  opacity: 0.65;
+}
+
+/* Bordures et conteneurs */
+[data-theme='dark'] .border-outline-variant,
+[data-theme='dark'] .border-outline {
+  border-color: var(--outline-variant);
+}
+
+/* Cards avec fonds clairs spécifiques dans les sections claires */
+[data-theme='dark'] .bg-green-50 {
+  background-color: rgba(46, 125, 50, 0.15) !important;
+}
+[data-theme='dark'] .bg-red-50 {
+  background-color: rgba(198, 40, 40, 0.15) !important;
+}
+[data-theme='dark'] .bg-amber-50\/40,
+[data-theme='dark'] .bg-amber-50 {
+  background-color: rgba(245, 124, 0, 0.12) !important;
+}
+[data-theme='dark'] .bg-green-50\/40 {
+  background-color: rgba(46, 125, 50, 0.12) !important;
+}
+[data-theme='dark'] .bg-cyan-50\/40 {
+  background-color: rgba(46, 125, 200, 0.10) !important;
 }
 
 /* ============ HIGH CONTRAST MODE ============ */

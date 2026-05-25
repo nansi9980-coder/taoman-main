@@ -1,256 +1,528 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams, Link } from 'react-router-dom';
+import {
+  Info,
+  TrendingUp,
+  Handshake,
+  Lightbulb,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ShieldCheck,
+  Send,
+  Check,
+  ChevronRight,
+  Building2,
+  Sparkles,
+  ArrowRight,
+} from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { API_URL } from "../config";
+import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { getApiErrorMessage } from '../utils/apiError';
+import { DEFAULT_SECTORS } from '../data/sectors-defaults';
 
-export const ContactPage = () => {
-  const { section } = useSiteContent();
-  const contactInfo = section('contact') || {};
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
+/**
+ * 4 sujets de contact, chacun avec son propre formulaire dédié.
+ * Le sujet est sélectionné via l'URL `?topic=...` ou via les boutons.
+ */
+const TOPICS = {
+  info: {
+    id: 'info',
+    icon: Info,
+    badge: 'Information',
+    title: 'Demande d\'information générale',
+    headline: 'Une question sur TAOMAN Group Investment ?',
+    desc: "Vous voulez en savoir plus sur le groupe, ses activités, ses services opérationnels (lavage, déménagement, entretien, mécanique, transport) ou son programme d'investissement TGI ? Posez-nous votre question, notre équipe vous répond sous 24 heures.",
+    fields: ['name', 'email', 'phone', 'question', 'message'],
+    submitLabel: 'Envoyer ma question',
+    successText: 'Votre demande a bien été reçue. Notre équipe vous répond sous 24 heures.',
+    serviceTag: 'Contact – Information',
+  },
+  invest: {
+    id: 'invest',
+    icon: TrendingUp,
+    badge: 'Investissement',
+    title: 'Investir avec TAOMAN',
+    headline: 'Manifester un intérêt d\'investissement',
+    desc: "Vous souhaitez allouer un capital à des projets opérés par TAOMAN Group Investment ? Indiquez votre profil, votre ticket envisagé et le ou les secteurs qui vous intéressent. Notre équipe vous rappelle pour une présentation détaillée des opportunités en cours.",
+    fields: ['name', 'email', 'phone', 'profile', 'ticket', 'sector', 'horizon', 'message'],
+    submitLabel: 'Envoyer ma manifestation d\'intérêt',
+    successText: 'Votre manifestation d\'intérêt a bien été enregistrée. Un conseiller vous contacte sous 48 heures.',
+    serviceTag: 'Contact – Investissement',
+  },
+  partner: {
+    id: 'partner',
+    icon: Handshake,
+    badge: 'Partenariat',
+    title: 'Devenir partenaire opérationnel',
+    headline: 'Construire un partenariat avec TAOMAN',
+    desc: "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec TAOMAN Group Investment (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition et nous étudions ensemble les synergies possibles.",
+    fields: ['organization', 'sectorOrg', 'name', 'role', 'email', 'phone', 'proposalType', 'message'],
+    submitLabel: 'Envoyer ma proposition',
+    successText: 'Votre proposition de partenariat a bien été reçue. Notre direction étudie chaque dossier et revient vers vous sous 5 jours ouvrés.',
+    serviceTag: 'Contact – Partenariat',
+  },
+  project: {
+    id: 'project',
+    icon: Lightbulb,
+    badge: 'Projet à financer',
+    title: 'Soumettre un projet à financer',
+    headline: 'Présentez votre projet à notre comité',
+    desc: "Vous portez un projet entrepreneurial à fort potentiel et vous cherchez un financement structuré ? Décrivez votre projet, son secteur, son ticket et son horizon. Notre comité d'investissement examine chaque dossier et revient vers vous avec une décision motivée sous 5 jours ouvrés.",
+    fields: ['name', 'email', 'phone', 'projectName', 'sector', 'location', 'ticket', 'horizon', 'stage', 'message'],
+    submitLabel: 'Soumettre mon projet',
+    successText: 'Votre projet a bien été reçu. Le comité d\'investissement revient vers vous sous 5 jours ouvrés.',
+    serviceTag: 'Contact – Soumission projet',
+  },
+};
+
+const FIELD_LABELS = {
+  name: { label: 'Votre nom complet', placeholder: 'Ex : Komla Mensah', type: 'text', required: true },
+  email: { label: 'Adresse email', placeholder: 'votre@email.com', type: 'email', required: true },
+  phone: { label: 'Téléphone', placeholder: '+228 90 00 00 00', type: 'tel', required: true },
+  organization: { label: 'Nom de votre organisation', placeholder: 'Ex : SARL Mensah & Fils', type: 'text', required: true },
+  role: { label: 'Votre fonction', placeholder: 'Ex : Directeur Général', type: 'text', required: true },
+  sectorOrg: {
+    label: "Secteur d'activité de votre organisation",
+    placeholder: 'Ex : Distribution, BTP, Logistique...',
+    type: 'text',
+    required: true,
+  },
+  proposalType: {
+    label: 'Type de partenariat envisagé',
+    type: 'select',
+    required: true,
+    options: [
+      'Fournisseur / Sous-traitant',
+      'Distribution / Revente',
+      'Co-investissement sur projet',
+      'Partenariat institutionnel',
+      'Échange de compétences',
+      'Autre',
+    ],
+  },
+  profile: {
+    label: 'Votre profil',
+    type: 'select',
+    required: true,
+    options: [
+      'Particulier',
+      'Diaspora togolaise',
+      'Entreprise / PME',
+      'Family Office',
+      'Institutionnel',
+    ],
+  },
+  ticket: {
+    label: 'Ticket envisagé',
+    type: 'select',
+    required: false,
+    options: [
+      'Moins de 500 000 FCFA',
+      '500 000 – 2 000 000 FCFA',
+      '2 000 000 – 10 000 000 FCFA',
+      '10 000 000 – 50 000 000 FCFA',
+      'Plus de 50 000 000 FCFA',
+    ],
+  },
+  sector: {
+    label: 'Secteur concerné',
+    type: 'select',
+    required: false,
+    options: DEFAULT_SECTORS.map((s) => s.title).concat(['Autre / Tous secteurs']),
+  },
+  horizon: {
+    label: 'Horizon envisagé',
+    type: 'select',
+    required: false,
+    options: ['3 mois', '6 mois', '10 mois', 'Au-delà de 10 mois', 'Pas encore décidé'],
+  },
+  projectName: { label: 'Nom du projet', placeholder: "Ex : Mini-usine d'huile de palme", type: 'text', required: true },
+  location: { label: 'Localisation du projet', placeholder: 'Ex : Lomé, Kara, Atakpamé', type: 'text', required: false },
+  stage: {
+    label: "État d'avancement",
+    type: 'select',
+    required: true,
+    options: [
+      'Idée / Concept',
+      'Étude de faisabilité réalisée',
+      'Prototype / MVP',
+      "Activité lancée, en croissance",
+      'Activité existante à développer',
+    ],
+  },
+  question: { label: 'Sujet de votre question', placeholder: 'Ex : Renseignement sur le service Lavage Auto', type: 'text', required: true },
+  message: {
+    label: 'Votre message',
+    placeholder: 'Décrivez votre demande, votre projet ou votre question avec autant de détails que possible.',
+    type: 'textarea',
+    required: true,
+  },
+};
+
+const ContactCard = ({ topic, onSelect, active }) => {
+  const Icon = topic.icon;
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(topic.id)}
+      className={`group text-left rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+        active
+          ? 'bg-gradient-to-br from-primary to-primary-container text-white border-primary shadow-2xl'
+          : 'bg-white border-outline-variant/40 hover:border-primary/40'
+      }`}
+    >
+      <span
+        className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ${
+          active ? 'bg-white/15 text-white' : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'
+        } transition-all`}
+      >
+        <Icon className="h-6 w-6" strokeWidth={2.2} />
+      </span>
+      <p className={`mt-5 text-xs font-black uppercase tracking-[0.3em] ${active ? 'text-cyan-200' : 'text-primary'}`}>
+        {topic.badge}
+      </p>
+      <h3 className={`mt-2 text-xl font-black ${active ? 'text-white' : 'text-on-surface'}`}>{topic.title}</h3>
+      <p className={`mt-3 text-sm leading-relaxed ${active ? 'text-white/85' : 'text-on-surface-variant'}`}>
+        {topic.desc}
+      </p>
+      <span
+        className={`mt-5 inline-flex items-center gap-1.5 text-sm font-bold ${
+          active ? 'text-white' : 'text-primary'
+        }`}
+      >
+        {active ? 'Sélectionné' : 'Choisir ce formulaire'}{' '}
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+      </span>
+    </button>
+  );
+};
+
+const ContactForm = ({ topic, contactInfo }) => {
+  const [formData, setFormData] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Réinitialise quand on change de topic
+  useEffect(() => {
+    setFormData({});
+    setSubmitted(false);
+    setError('');
+  }, [topic.id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(false);
-    setSubmitError('');
-    setSubmitting(true);
-    
+    setLoading(true);
+    setError('');
+
     try {
+      // Construit un message lisible avec toutes les valeurs renseignées
+      const lines = topic.fields
+        .filter((f) => f !== 'message' && f !== 'name' && f !== 'email' && f !== 'phone')
+        .map((f) => `${FIELD_LABELS[f]?.label || f} : ${formData[f] || '—'}`);
+      const description = `Sujet : ${topic.title}\n${lines.join('\n')}\n\n${formData.message || ''}`.trim();
+
       const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
+          name: formData.name || formData.organization || 'Contact TAOMAN',
           email: formData.email,
           phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
+          subject: `${topic.serviceTag} – ${formData.projectName || formData.question || topic.title}`,
+          message: description,
         }),
       });
 
       if (response.ok) {
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setSubmitted(true);
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 3000);
+        setFormData({});
+        setTimeout(() => setSubmitted(false), 6000);
       } else {
-        const msg = await getApiErrorMessage(response, "Erreur lors de l'envoi du message");
-        throw new Error(msg);
+        setError(await getApiErrorMessage(response, "Impossible d'envoyer votre message."));
       }
-    } catch (error) {
-      console.error('Erreur réseau:', error);
-      setSubmitError(error.message || "Votre message n'a pas pu être envoyé. Vérifiez votre connexion puis réessayez.");
+    } catch (err) {
+      console.error('Erreur:', err);
+      setError(err.message || 'Erreur réseau. Réessayez plus tard.');
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
   };
+
+  const Icon = topic.icon;
+
+  return (
+    <div className="grid lg:grid-cols-[1.5fr_0.85fr] gap-8">
+      {/* FORMULAIRE */}
+      <div className="rounded-3xl bg-white border border-outline-variant/40 shadow-lg overflow-hidden">
+        <div className="bg-gradient-to-br from-primary to-primary-container px-7 py-5 flex items-center gap-3">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white">
+            <Icon className="h-5 w-5" strokeWidth={2.2} />
+          </span>
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">{topic.badge}</p>
+            <h3 className="text-xl font-black text-white">{topic.headline}</h3>
+          </div>
+        </div>
+
+        <div className="p-7">
+          <p className="text-on-surface-variant leading-relaxed">{topic.desc}</p>
+
+          {submitted && (
+            <div className="mt-5 p-4 bg-green-50 border border-green-500 rounded-2xl text-green-700 flex items-start gap-3">
+              <Check className="h-5 w-5 mt-0.5 shrink-0" strokeWidth={2.5} />
+              <div>
+                <p className="font-bold">Message envoyé.</p>
+                <p className="text-sm mt-1">{topic.successText}</p>
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="mt-5 p-4 bg-red-50 border border-red-500 rounded-2xl text-red-700">{error}</div>
+          )}
+
+          <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {topic.fields.map((field) => {
+              const config = FIELD_LABELS[field];
+              if (!config) return null;
+              const span = config.type === 'textarea' ? 'md:col-span-2' : '';
+              return (
+                <div key={field} className={span}>
+                  <label className="block text-sm font-bold text-on-surface mb-2">
+                    {config.label} {config.required && <span className="text-red-500">*</span>}
+                  </label>
+                  {config.type === 'textarea' ? (
+                    <textarea
+                      name={field}
+                      value={formData[field] || ''}
+                      onChange={handleChange}
+                      placeholder={config.placeholder}
+                      rows={5}
+                      required={config.required}
+                      className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface placeholder:text-on-surface-variant/60"
+                    />
+                  ) : config.type === 'select' ? (
+                    <select
+                      name={field}
+                      value={formData[field] || ''}
+                      onChange={handleChange}
+                      required={config.required}
+                      className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface"
+                    >
+                      <option value="">Sélectionner</option>
+                      {config.options.map((o) => (
+                        <option key={o} value={o}>
+                          {o}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type={config.type}
+                      name={field}
+                      value={formData[field] || ''}
+                      onChange={handleChange}
+                      placeholder={config.placeholder}
+                      required={config.required}
+                      className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface placeholder:text-on-surface-variant/60"
+                    />
+                  )}
+                </div>
+              );
+            })}
+            <div className="md:col-span-2 mt-1">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white font-bold py-3.5 px-6 shadow-md hover:shadow-xl hover:scale-[1.01] transition-all disabled:opacity-50"
+              >
+                {loading ? (
+                  'Envoi en cours...'
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" strokeWidth={2.5} />
+                    {topic.submitLabel}
+                  </>
+                )}
+              </button>
+              <p className="mt-3 text-xs text-on-surface-variant text-center">
+                En envoyant ce formulaire, vous acceptez d'être recontacté par TAOMAN Group Investment.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* SIDEBAR INFOS */}
+      <aside className="space-y-5 lg:sticky lg:top-28 self-start">
+        <div className="rounded-3xl bg-white border border-outline-variant/40 p-6">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">Nous joindre directement</p>
+          <div className="mt-5 space-y-4">
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                <Phone className="h-5 w-5" strokeWidth={2.2} />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Téléphone</p>
+                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.phone || '+228 90 42 13 77'}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                <Mail className="h-5 w-5" strokeWidth={2.2} />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</p>
+                <p className="mt-0.5 font-bold text-on-surface break-all">{contactInfo.email || 'contact@taoman.group'}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                <MapPin className="h-5 w-5" strokeWidth={2.2} />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Adresse</p>
+                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.address || 'Vakpossito, Lomé – Togo'}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                <Clock className="h-5 w-5" strokeWidth={2.2} />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Horaires</p>
+                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.hours || 'Lun – Dim : 08h – 20h'}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-3xl bg-gradient-to-br from-[#08111d] via-[#0d1a30] to-[#08111d] text-white p-6">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/15 text-cyan-200">
+            <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />
+          </span>
+          <p className="mt-4 text-xs font-bold uppercase tracking-widest text-cyan-200">Notre engagement</p>
+          <h4 className="mt-2 text-lg font-black text-white">Confidentialité et suivi personnalisé</h4>
+          <p className="mt-3 text-sm text-white/75 leading-relaxed">
+            Chaque demande est traitée par un interlocuteur unique. Vos données ne sont jamais transmises à des tiers et sont utilisées uniquement pour répondre à votre demande.
+          </p>
+        </div>
+      </aside>
+    </div>
+  );
+};
+
+export const ContactPage = () => {
+  const { section } = useSiteContent();
+  const contactInfo = section('contact') || {};
+  const [searchParams, setSearchParams] = useSearchParams();
+  const topicId = searchParams.get('topic') || 'info';
+  const topic = TOPICS[topicId] || TOPICS.info;
+
+  const selectTopic = (id) => {
+    setSearchParams({ topic: id });
+    // Scroll to form
+    setTimeout(() => {
+      const el = document.getElementById('contact-form');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const topicsList = useMemo(() => Object.values(TOPICS), []);
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Header activeLink="contact" />
 
       <main className="flex-grow pt-24">
-        {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 py-20 px-6 text-white">
-          <div className="absolute -left-24 top-10 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-          <div className="absolute right-0 top-16 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
-          <div className="max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.4fr_1fr] items-center">
-            <div className="relative z-10">
-              <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">Nous sommes à votre écoute</p>
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
-                Contactez TAOMAN Groupe Investissement
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mb-8">
-                Pour toute demande de service, partenariat ou information, notre équipe répond avec réactivité et professionnalisme.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl bg-white/15 p-6 border border-white/20 shadow-lg">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">Délai</p>
-                  <p className="text-3xl font-bold text-white">Réponse en 24h</p>
-                </div>
-                <div className="rounded-2xl bg-white/15 p-6 border border-white/20 shadow-lg">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">Support</p>
-                  <p className="text-3xl font-bold text-white">Assistance dédiée</p>
-                </div>
-              </div>
-            </div>
+        {/* HERO */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#08111d] via-[#0d1a30] to-[#08111d] py-20 px-6 text-white">
+          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/40 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
+          <div className="relative max-w-[1200px] mx-auto text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> Contact
+            </span>
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05]">
+              Parlons de votre projet
+            </h1>
+            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 leading-relaxed">
+              <strong className="text-white">TAOMAN Group Investment</strong> opère et finance des projets concrets au Togo et dans la sous-région. Choisissez le formulaire qui correspond à votre demande pour bénéficier d'une réponse <strong className="text-white">précise, rapide et personnalisée</strong>.
+            </p>
+          </div>
+        </section>
 
-            <div className="relative z-10 rounded-[2rem] bg-white/95 p-8 shadow-2xl border border-white/30 text-slate-800">
-              <h2 className="text-3xl font-bold mb-6 text-slate-900">Nos coordonnées</h2>
-              <div className="space-y-6">
-                <div>
-                  <p className="text-sm text-slate-600">Téléphone</p>
-                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.phone || '+228 90 42 13 77'}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-slate-600">Email</p>
-                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.email || 'taomancontact@gmail.com'}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-slate-600">Adresse</p>
-                  <p className="text-2xl font-semibold text-slate-900">{contactInfo.address || 'Vakpossito, Lomé - Togo'}</p>
-                </div>
-                <div className="rounded-3xl bg-slate-100 p-5 border border-slate-200">
-                  <p className="text-sm uppercase tracking-[0.3em] text-slate-600 mb-2">Horaires</p>
-                  <p className="text-slate-800 font-medium">{contactInfo.hours || 'Lun - Dim : 08h00 - 20h00'}</p>
-                </div>
-              </div>
+        {/* 4 OPTIONS */}
+        <section className="py-16 px-6 bg-surface">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-center mb-10">
+              <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary">
+                <Building2 className="h-4 w-4" strokeWidth={2.4} /> 4 formulaires dédiés
+              </p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface tracking-tight">
+                Quel est l'objet de votre demande ?
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-on-surface-variant text-lg">
+                Chaque formulaire est conçu pour aller à l'essentiel et orienter votre demande vers la bonne équipe TAOMAN.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+              {topicsList.map((t) => (
+                <ContactCard key={t.id} topic={t} onSelect={selectTopic} active={t.id === topicId} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ============ FORM & DETAILS ============ */}
-        <section className="py-20 px-6">
-          <div className="max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.5fr_1fr]">
-            <div>
-              <div className="mb-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-primary mb-3">Formulaire de contact</p>
-                <h2 className="text-4xl font-bold text-on-surface">Envoyez-nous une demande claire et précise</h2>
-                <p className="text-lg text-on-surface-variant max-w-2xl mt-4">
-                  Remplissez les informations ci-dessous afin que notre équipe vous réponde rapidement avec une proposition adaptée.
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="bg-surface-container-high p-10 rounded-[2rem] shadow-xl border border-outline-variant/20">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <label className="space-y-3">
-                    <span className="block text-sm font-bold text-on-surface">Nom complet *</span>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-3xl border border-outline-variant/60 bg-surface px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none"
-                      placeholder="Votre nom"
-                    />
-                  </label>
-
-                  <label className="space-y-3">
-                    <span className="block text-sm font-bold text-on-surface">Email *</span>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-3xl border border-outline-variant/60 bg-surface px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none"
-                      placeholder="votre@email.com"
-                    />
-                  </label>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-2 mt-6">
-                  <label className="space-y-3">
-                    <span className="block text-sm font-bold text-on-surface">Téléphone</span>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full rounded-3xl border border-outline-variant/60 bg-surface px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none"
-                      placeholder="+228 XX XX XX XX"
-                    />
-                  </label>
-
-                  <label className="space-y-3">
-                    <span className="block text-sm font-bold text-on-surface">Sujet *</span>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full rounded-3xl border border-outline-variant/60 bg-surface px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none"
-                      placeholder="Objet de votre message"
-                    />
-                  </label>
-                </div>
-
-                <label className="space-y-3 mt-6">
-                  <span className="block text-sm font-bold text-on-surface">Message *</span>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="6"
-                    className="w-full rounded-[1.75rem] border border-outline-variant/60 bg-surface px-4 py-4 text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none resize-none"
-                    placeholder="Expliquez-nous votre projet, votre besoin ou votre demande de devis."
-                  />
-                </label>
-
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold shadow-lg hover:shadow-xl transition duration-300 hover:-translate-y-0.5"
-                  >
-                    {submitting ? 'Envoi en cours...' : 'Envoyer le message'}
-                  </button>
-                  <p className="text-sm text-on-surface-variant">
-                    Nous répondons généralement sous 24 heures.
-                  </p>
-                </div>
-
-                {submitted && (
-                  <div className="mt-6 rounded-3xl bg-green-50 border border-green-200 p-4 text-green-900 font-semibold animate-fade-in">
-                    ✓ Votre message a bien été envoyé. Merci, nous vous recontacterons rapidement.
-                  </div>
-                )}
-
-                {submitError && (
-                  <div className="mt-6 rounded-3xl bg-red-50 border border-red-200 p-4 text-red-900 font-semibold animate-fade-in">
-                    {submitError}
-                  </div>
-                )}
-              </form>
+        {/* FORMULAIRE SELECTIONNE */}
+        <section id="contact-form" className="py-16 px-6 bg-gradient-to-b from-surface-container-low to-surface scroll-mt-24">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="mb-8 flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
+              <span>Contact</span>
+              <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
+              <span className="text-primary font-bold">{topic.badge}</span>
+              <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
+              <span className="text-on-surface font-bold">{topic.title}</span>
             </div>
+            <ContactForm topic={topic} contactInfo={contactInfo} />
+          </div>
+        </section>
 
-            <aside className="space-y-6">
-              <div className="rounded-[2rem] bg-white p-8 shadow-xl border border-outline-variant/20">
-                <h3 className="text-2xl font-bold text-on-surface mb-4">Vous pouvez aussi nous joindre</h3>
-                <div className="space-y-5">
-                  {[
-                    { title: 'Téléphone', value: contactInfo.phone || '+228 90 42 13 77' },
-                    { title: 'Email', value: contactInfo.email || 'taomancontact@gmail.com' },
-                    { title: 'Adresse', value: contactInfo.address || 'Vakpossito, Lomé - Togo' },
-                  ].map((item, idx) => (
-                    <div key={idx} className="rounded-3xl bg-surface p-5 border border-outline-variant/20">
-                      <p className="text-sm text-on-surface-variant uppercase tracking-[0.25em] mb-2">{item.title}</p>
-                      <p className="text-lg font-semibold text-on-surface">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-[2rem] bg-gradient-to-br from-primary/10 via-white/60 to-primary-container/10 p-8 shadow-xl border border-primary/10">
-                <h3 className="text-2xl font-bold text-on-surface mb-4">Engagement qualité</h3>
-                <ul className="space-y-4 text-on-surface-variant">
-                  <li>• Réponse rapide et suivi personnalisé</li>
-                  <li>• Conseils adaptés à votre besoin</li>
-                  <li>• Confidentialité et transparence</li>
-                </ul>
-              </div>
-            </aside>
+        {/* BANDEAU GROUPE TAOMAN */}
+        <section className="py-16 px-6 bg-gradient-to-br from-primary to-primary-container">
+          <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_0.8fr] gap-8 items-center text-white">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">TAOMAN Group Investment</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-black leading-tight">
+                Un groupe togolais multi-activités, des services concrets, des investissements suivis.
+              </h2>
+              <p className="mt-4 text-lg text-white/85 max-w-2xl leading-relaxed">
+                Services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) + Programme d'investissement TGI sur 5 secteurs (Logistique, Agro, Commerce, BTP, Numérique).
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-primary px-6 py-3.5 font-bold shadow-md hover:scale-[1.02] transition"
+              >
+                Voir nos services <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </Link>
+              <Link
+                to="/investissement"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-primary transition"
+              >
+                Découvrir TGI <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </Link>
+            </div>
           </div>
         </section>
       </main>
@@ -260,8 +532,9 @@ export const ContactPage = () => {
   );
 };
 
-// ============ QUOTE PAGE ============
-
+/**
+ * QuotePage – formulaire de devis générique (conservé pour compatibilité).
+ */
 export const QuotePage = () => {
   const [formData, setFormData] = useState({
     service: '',
@@ -269,7 +542,7 @@ export const QuotePage = () => {
     email: '',
     phone: '',
     date: '',
-    description: ''
+    description: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -279,33 +552,30 @@ export const QuotePage = () => {
     if (userData) {
       try {
         const user = JSON.parse(userData);
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
           name: [user.firstName, user.lastName].filter(Boolean).join(' ') || prev.name,
           email: user.email || prev.email,
-          phone: user.phone || prev.phone
+          phone: user.phone || prev.phone,
         }));
-      } catch(e) {
-        console.error("Erreur de parsing user data", e);
+      } catch (e) {
+        console.error('Erreur de parsing user data', e);
       }
     }
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
-    
     try {
       const response = await fetch(`${API_URL}/quotes/submit`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -315,46 +585,34 @@ export const QuotePage = () => {
           service: formData.service,
         }),
       });
-
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
-      }
+      if (response.ok) setSubmitted(true);
+      else setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
     } catch (error) {
       console.error('Erreur réseau:', error);
-      setSubmitError(error.message || "Erreur réseau. Réessayez plus tard.");
+      setSubmitError(error.message || 'Erreur réseau. Réessayez plus tard.');
     }
   };
 
-  const services = [
-    'Lavage Auto',
-    'Déménagement',
-    'Entretien Bureau',
-    'Climatisation',
-    'Autre'
-  ];
+  const services = ['Lavage Auto', 'Déménagement', 'Entretien Bureau', 'Autre'];
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Header activeLink="devis" />
-
       <main className="flex-grow pt-24">
-        {/* ============ HERO ============ */}
-        <section className="bg-gradient-to-r from-primary to-primary-container py-16 px-6 text-on-primary">
+        <section className="bg-gradient-to-r from-primary to-primary-container py-16 px-6 text-white">
           <div className="max-w-[1400px] mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-4">Demander un devis</h1>
-            <p className="text-xl text-on-primary/90">Service gratuit et sans engagement</p>
+            <h1 className="text-5xl font-bold mb-4" style={{ color: '#ffffff' }}>Demander un devis</h1>
+            <p className="text-xl" style={{ color: 'rgba(255,255,255,0.9)' }}>Service gratuit et sans engagement</p>
           </div>
         </section>
-
-        {/* ============ FORM ============ */}
         <section className="py-16 px-6">
           <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20">
+            <form onSubmit={handleSubmit} className="bg-white p-10 rounded-3xl shadow-lg border border-outline-variant/40">
               {submitted ? (
-                <div className="text-center py-10 animate-fade-in">
-                  <div className="text-6xl mb-6">✅</div>
+                <div className="text-center py-10">
+                  <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-green-700 mb-6">
+                    <Check className="h-8 w-8" strokeWidth={2.5} />
+                  </div>
                   <h2 className="text-3xl font-bold text-on-surface mb-4">Demande envoyée !</h2>
                   <p className="text-lg text-on-surface-variant mb-8">
                     Votre demande de devis a bien été soumise. Vous recevrez une réponse par email dans les plus brefs délais.
@@ -363,9 +621,9 @@ export const QuotePage = () => {
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData(prev => ({ ...prev, service: '', date: '', description: '' }));
+                      setFormData((prev) => ({ ...prev, service: '', date: '', description: '' }));
                     }}
-                    className="px-8 py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+                    className="px-8 py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                   >
                     Faire une autre demande
                   </button>
@@ -374,122 +632,39 @@ export const QuotePage = () => {
                 <>
                   <h2 className="text-3xl font-bold text-on-surface mb-8">Remplissez le formulaire</h2>
                   {submitError && (
-                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 font-semibold">
-                      {submitError}
-                    </div>
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 font-semibold">{submitError}</div>
                   )}
-
                   <div className="space-y-6">
-                {/* Service */}
-                <div className="animate-fade-in-up">
-                  <label htmlFor="service" className="block text-on-surface font-bold mb-2">
-                    Service demandé *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors"
-                  >
-                    <option value="">Sélectionnez un service...</option>
-                    {services.map(service => (
-                      <option key={service} value={service}>{service}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Name */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-                  <label htmlFor="name" className="block text-on-surface font-bold mb-2">
-                    Nom complet *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors"
-                    placeholder="Votre nom"
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-                  <label htmlFor="email" className="block text-on-surface font-bold mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors"
-                    placeholder="votre@email.com"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '150ms' }}>
-                  <label htmlFor="phone" className="block text-on-surface font-bold mb-2">
-                    Téléphone *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors"
-                    placeholder="+228 XX XX XX XX"
-                  />
-                </div>
-
-                {/* Preferred Date */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-                  <label htmlFor="date" className="block text-on-surface font-bold mb-2">
-                    Date souhaitée
-                  </label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors"
-                  />
-                </div>
-
-                {/* Description */}
-                <div className="animate-fade-in-up" style={{ animationDelay: '250ms' }}>
-                  <label htmlFor="description" className="block text-on-surface font-bold mb-2">
-                    Description du projet
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    rows="5"
-                    className="w-full px-4 py-3 border-2 border-outline-variant rounded-lg focus:border-primary focus:outline-none transition-colors resize-none"
-                    placeholder="Décrivez votre projet en détail..."
-                  ></textarea>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
-                >
-                  Demander un devis
-                </button>
-
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Service demandé *</label>
+                      <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface">
+                        <option value="">Sélectionnez un service...</option>
+                        {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Nom complet *</label>
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="Votre nom" />
+                    </div>
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Email *</label>
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="votre@email.com" />
+                    </div>
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Téléphone *</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="+228 XX XX XX XX" />
+                    </div>
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Date souhaitée</label>
+                      <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" />
+                    </div>
+                    <div>
+                      <label className="block text-on-surface font-bold mb-2">Description du projet</label>
+                      <textarea name="description" value={formData.description} onChange={handleChange} rows="5" className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="Décrivez votre projet en détail..." />
+                    </div>
+                    <button type="submit" className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                      Demander un devis
+                    </button>
                   </div>
                 </>
               )}
@@ -497,7 +672,6 @@ export const QuotePage = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

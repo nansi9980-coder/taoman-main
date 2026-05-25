@@ -65,7 +65,7 @@ export const LoginPage = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
             <h1 className="text-3xl font-bold text-on-surface text-center mb-2">Connexion</h1>
-            <p className="text-center text-on-surface-variant mb-8">Accédez à votre compte TAOMAN Groupe Investissement</p>
+            <p className="text-center text-on-surface-variant mb-8">Accédez à votre compte TAOMAN Group Investment</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -225,7 +225,7 @@ export const RegisterPage = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
             <h1 className="text-3xl font-bold text-on-surface text-center mb-2">S'inscrire</h1>
-            <p className="text-center text-on-surface-variant mb-8">Créez votre compte TAOMAN Groupe Investissement</p>
+            <p className="text-center text-on-surface-variant mb-8">Créez votre compte TAOMAN Group Investment</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
