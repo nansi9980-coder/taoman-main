@@ -17,7 +17,10 @@ import {
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
+import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { normalizeItemsSection } from '../utils/siteContent';
+import { SeoHead, buildFaqLd } from '../components/SeoHead';
 
 const CATEGORIES = [
   { id: 'all', label: 'Toutes', icon: HelpCircle },
@@ -222,6 +225,8 @@ const DEFAULT_FAQ = [
 
 export const FaqPage = () => {
   const { section, loading } = useSiteContent();
+  const { content: tc, nav: tNav } = useLanguage();
+  const tFaq = tc.faq;
   const faq = section('faq');
   const overridden = normalizeItemsSection(faq, []);
   const items = overridden.length > 0 ? overridden : DEFAULT_FAQ;
@@ -243,26 +248,33 @@ export const FaqPage = () => {
     });
   }, [items, activeCategory, query]);
 
+  const faqLd = buildFaqLd(
+    items.slice(0, 25).map((it) => ({ q: it.question, a: it.answer }))
+  );
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tNav.faq}
+        description={tFaq.seoDescription}
+        path="/faq"
+        jsonLd={faqLd}
+        keywords="FAQ TAOMAN, questions fréquentes Togo, investissement Togo FAQ, services Togo"
+      />
       <Header activeLink="faq" />
 
-      <main className="flex-grow pt-24">
-        {/* HERO FAQ */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0a1830] via-[#0f1c34] to-[#0a1830] py-20 px-6 text-white">
-          <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
-            <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-primary/40 blur-3xl" />
-            <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/30 blur-3xl" />
-          </div>
-          <div className="relative max-w-[1100px] mx-auto text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
-              <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> Centre d'aide
+      <main id="main-content" className="flex-grow pt-24">
+        <section className="relative overflow-hidden py-20 px-6 text-white">
+          <PremiumBackdrop variant="dark" intensity="normal" particles={12} />
+          <div className="relative z-10 max-w-[1100px] mx-auto text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
+              <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tFaq.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-tight">
-              Questions fréquentes
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
+              {tFaq.hero.title}
             </h1>
             <p className="mt-5 max-w-2xl mx-auto text-lg text-white/75 leading-relaxed">
-              Tout ce que vous voulez savoir sur nos <strong className="text-white">services opérationnels</strong> (lavage, déménagement, entretien, mécanique, transport), notre <strong className="text-white">groupe</strong> et notre programme <strong className="text-white">d'investissement TGI</strong>.
+              {tFaq.hero.description}
             </p>
             <div className="relative mt-8 max-w-xl mx-auto">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">
@@ -272,7 +284,8 @@ export const FaqPage = () => {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Rechercher dans les questions..."
+                placeholder={tFaq.searchPlaceholder}
+                aria-label={tc.common.search}
                 className="w-full rounded-2xl bg-white/95 pl-12 pr-4 py-3.5 text-on-surface placeholder:text-on-surface-variant/70 shadow-2xl ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300"
               />
             </div>
@@ -308,13 +321,13 @@ export const FaqPage = () => {
         <section className="py-16 px-6 bg-surface">
           <div className="max-w-[900px] mx-auto">
             {loading ? (
-              <p className="text-center text-on-surface-variant">Chargement...</p>
+              <p className="text-center text-on-surface-variant">{tc.common.loading}</p>
             ) : filtered.length === 0 ? (
               <div className="rounded-3xl border border-outline-variant/40 bg-surface-container-low p-10 text-center">
                 <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mx-auto">
                   <Search className="h-6 w-6" strokeWidth={2.2} />
                 </span>
-                <h3 className="mt-4 text-xl font-black text-on-surface">Aucune question ne correspond à votre recherche</h3>
+                <h3 className="mt-4 text-xl font-black text-on-surface">{tFaq.noResults}</h3>
                 <p className="mt-2 text-on-surface-variant">Essayez un autre mot-clé ou changez de catégorie.</p>
               </div>
             ) : (

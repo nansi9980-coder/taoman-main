@@ -24,10 +24,12 @@ export const ServiceCard = ({
         {/* Image Container with Overlay */}
         <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-primary/10 to-primary-container/10">
           {image ? (
-            <img 
-              src={image} 
+            <img
+              src={image}
               alt={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-primary-container to-primary/30">

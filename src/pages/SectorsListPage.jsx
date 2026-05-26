@@ -2,28 +2,42 @@ import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
+import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { normalizeSectors } from '../data/sectors-defaults';
+import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
+import { Reveal } from '../components/Reveal';
 
 export const SectorsListPage = () => {
   const { section } = useSiteContent();
+  const { content: tc, nav: tNav } = useLanguage();
+  const tSec = tc.sectors;
   const sectors = normalizeSectors(section('sectors'));
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tNav.projects}
+        description={tSec.hero.description}
+        path="/secteurs"
+        jsonLd={buildBreadcrumb([
+          { name: tNav.home, path: '/' },
+          { name: tNav.projects, path: '/secteurs' },
+        ])}
+        keywords="secteurs investissement Togo, logistique, agro business, BTP, numérique, commerce, opportunités sectorielles"
+      />
       <Header activeLink="projets" />
 
-      <main className="flex-grow pt-24">
-        <section className="relative overflow-hidden bg-[#07111f] py-24 px-6 text-white">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[700px] rounded-full bg-primary/25 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan-400/15 blur-3xl pointer-events-none" />
-
-          <div className="relative max-w-[1100px] mx-auto text-center animate-fade-in-up">
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">Nos projets</p>
-            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6">
-              Secteurs d'activité
+      <main id="main-content" className="flex-grow pt-24">
+        <section className="relative overflow-hidden py-24 px-6 text-white">
+          <PremiumBackdrop variant="dark" intensity="normal" particles={14} />
+          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up">
+            <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">{tSec.hero.eyebrow}</p>
+            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6 bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
+              {tSec.hero.title}
             </h1>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Cinq domaines stratégiques au cœur de l'économie togolaise. Chaque secteur dispose d'une feuille de route claire, d'opportunités identifiées et d'indicateurs suivis.
+              {tSec.hero.description}
             </p>
           </div>
         </section>

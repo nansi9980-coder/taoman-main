@@ -18,9 +18,12 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Header } from '../components/Header';
+import { SeoHead } from '../components/SeoHead';
 import { Footer } from '../components/Footer';
+import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
 
@@ -423,6 +426,8 @@ const ContactForm = ({ topic, contactInfo }) => {
 
 export const ContactPage = () => {
   const { section } = useSiteContent();
+  const { content: tc, nav: tNav } = useLanguage();
+  const tContact = tc.contact;
   const contactInfo = section('contact') || {};
   const [searchParams, setSearchParams] = useSearchParams();
   const topicId = searchParams.get('topic') || 'info';
@@ -441,22 +446,26 @@ export const ContactPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tNav.contact}
+        description={tContact.seoDescription}
+        path="/contact"
+        keywords="contact TAOMAN, devis Togo, partenariat investissement, soumettre projet Lomé"
+      />
       <Header activeLink="contact" />
 
-      <main className="flex-grow pt-24">
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#08111d] via-[#0d1a30] to-[#08111d] py-20 px-6 text-white">
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/40 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none" />
-          <div className="relative max-w-[1200px] mx-auto text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> Contact
+      <main id="main-content" className="flex-grow pt-24">
+        <section className="relative overflow-hidden py-20 px-6 text-white">
+          <PremiumBackdrop variant="dark" intensity="normal" particles={12} />
+          <div className="relative z-10 max-w-[1200px] mx-auto text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05]">
-              Parlons de votre projet
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
+              {tContact.hero.title}
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 leading-relaxed">
-              <strong className="text-white">TAOMAN Group Investment</strong> opère et finance des projets concrets au Togo et dans la sous-région. Choisissez le formulaire qui correspond à votre demande pour bénéficier d'une réponse <strong className="text-white">précise, rapide et personnalisée</strong>.
+              {tContact.hero.description}
             </p>
           </div>
         </section>

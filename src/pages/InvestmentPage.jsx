@@ -18,6 +18,7 @@ import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors } from '../data/sectors-defaults';
+import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import programmeImg from '../assets/programme.jpeg';
 
 /* ============================================================
@@ -370,9 +371,19 @@ export const InvestmentPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface pt-[80px]">
+      <SeoHead
+        title="Investir avec nous au Togo"
+        description={`Pourquoi investir avec ${BRAND_NAME} : secteurs, programmes, opportunités et reporting transparent au Togo et CEDEAO.`}
+        path="/investissement"
+        jsonLd={buildBreadcrumb([
+          { name: 'Accueil', path: '/' },
+          { name: 'Investissement', path: '/investissement' },
+        ])}
+        keywords="investir Togo, opportunités investissement Lomé, TGI, secteurs porteurs Togo, partenariat investisseur"
+      />
       <Header activeLink="investissement" />
 
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         <section className="relative overflow-hidden bg-[#07111f] py-24 px-6 text-white">
           <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl"></div>
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
@@ -446,7 +457,7 @@ export const InvestmentPage = () => {
 
                 <div className="flex items-start justify-between mb-8">
                   <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                    <img src={programmeImg} alt="TGI" className="w-full h-full object-cover rounded-lg" />
+                    <img src={programmeImg} alt="TGI" className="w-full h-full object-cover rounded-lg" loading="lazy" decoding="async" />
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10">
                     <span className="text-xs font-bold text-white tracking-widest uppercase">Premium</span>

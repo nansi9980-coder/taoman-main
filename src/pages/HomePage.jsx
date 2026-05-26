@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { SeoHead } from '../components/SeoHead';
+import { Reveal } from '../components/Reveal';
+import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { PremiumImageFrame } from '../components/PremiumImageFrame';
+import { StatsBand } from '../components/StatsBand';
+import { PartnersBand } from '../components/PartnersBand';
+import { useLanguage } from '../context/LanguageContext';
+import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight } from 'lucide-react';
 import lavage1    from '../assets/realisations/lavage1.jpg';
 import lavage2    from '../assets/realisations/lavage2.jpg';
 import mecanique1 from '../assets/realisations/mecanique1.png';
@@ -16,10 +24,13 @@ import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors } from '../data/sectors-defaults';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 
+const ALL_FILTER = '__all__';
+
 export const HomePage = () => {
   const navigate = useNavigate();
+  const { content: t, nav: tNav } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeFilter, setActiveFilter] = useState('Tous');
+  const [activeFilter, setActiveFilter] = useState(ALL_FILTER);
   const [activeProject, setActiveProject] = useState(0);
   const [lightbox, setLightbox] = useState(null);
   const [carouselPaused, setCarouselPaused] = useState(false);
@@ -170,10 +181,9 @@ export const HomePage = () => {
 
   const realisations = apiRealisations.length > 0 ? apiRealisations : uploadedRealisations.concat(fallbackRealisations);
 
-  // Extract unique filters from the current realisations list, including 'Tous'
-  const filters = ['Tous', ...new Set(realisations.map(r => r.category))];
-  
-  const filtered = activeFilter === 'Tous'
+  const filters = [ALL_FILTER, ...new Set(realisations.map(r => r.category))];
+
+  const filtered = activeFilter === ALL_FILTER
     ? realisations
     : realisations.filter(r => r.category === activeFilter);
 
@@ -207,97 +217,200 @@ export const HomePage = () => {
 
   return (
     <div className={`flex flex-col min-h-screen bg-surface transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <SeoHead
+        title={tNav.home}
+        description={t.home.seoDescription}
+        path="/"
+        keywords="TAOMAN Group Investment, investissement Togo, déménagement Lomé, lavage auto Togo, services opérationnels, partenariats public-privé"
+      />
       <Header activeLink="accueil" />
 
-      <main className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-24">
 
-        {/* ============ HERO — sobre & dynamique, sans image ============ */}
-        <section className="relative overflow-hidden bg-[#07111f] pt-20 pb-24 text-white md:pt-28 md:pb-32">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,82,204,0.45),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(34,211,238,0.25),transparent_45%),linear-gradient(120deg,#07111f_0%,#0b1a30_55%,#07111f_100%)]"></div>
-            <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-blob"></div>
-            <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl animate-blob-delay"></div>
-            <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:48px_48px]"></div>
-          </div>
+        {/* ============ HERO PREMIUM — split cinématique ============ */}
+        <section className="relative overflow-hidden pt-20 pb-24 text-white md:pt-28 md:pb-32">
+          <PremiumBackdrop variant="dark" intensity="strong" particles={18} />
 
-          <div className="relative z-10 max-w-[1100px] mx-auto px-6 text-center animate-fade-in-up">
-            <div className="mb-8 flex flex-wrap justify-center gap-3">
-              <span className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur">
-                {heroData.badgeMain}
-              </span>
-            </div>
-
-            <h1 className="mb-6 leading-tight tracking-[-0.04em]">
-              <span className="block text-5xl md:text-7xl font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
-                {heroData.title}
-              </span>
-              <span className="mt-4 block text-xl md:text-3xl font-bold text-white/90">
-                {heroData.subtitle}
-              </span>
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-lg md:text-xl text-white/70 mb-10 leading-relaxed">
-              {heroData.description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <button
-                onClick={() => navigate('/contact?topic=invest')}
-                className="interactive interactive-lift px-8 py-4 bg-white text-[#07111f] font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                {heroData.btn1}
-              </button>
-              <button
-                onClick={() => navigate(isAuthenticated ? '/dashboard' : '/connexion')}
-                className="px-8 py-4 border border-white/25 bg-white/10 text-white font-bold rounded-2xl backdrop-blur hover:bg-white hover:text-[#07111f] transition-all duration-300 hover:scale-105"
-              >
-                {heroData.btn2}
-              </button>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-              {trustBadges.map((badge) => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs md:text-sm font-semibold text-white/80 backdrop-blur"
-                >
-                  {badge}
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+            {/* Colonne texte */}
+            <div className="lg:col-span-7 animate-fade-in-up">
+              <div className="mb-6 flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur">
+                  <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(125,211,252,0.9)]" />
+                  {heroData.badgeMain}
                 </span>
+              </div>
+
+              <h1 className="mb-6 leading-[0.95] tracking-[-0.045em]">
+                <span className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
+                  {heroData.title}
+                </span>
+                <span className="mt-5 block text-xl md:text-3xl font-bold text-white/90">
+                  {heroData.subtitle}
+                </span>
+              </h1>
+
+              <p className="max-w-xl text-lg md:text-xl text-white/70 mb-10 leading-relaxed">
+                {heroData.description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <button
+                  onClick={() => navigate('/contact?topic=invest')}
+                  className="btn-glow group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-2xl transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                >
+                  {heroData.btn1}
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+                <button
+                  onClick={() => navigate(isAuthenticated ? '/dashboard' : '/connexion')}
+                  className="px-8 py-4 rounded-2xl border border-white/25 bg-white/5 text-white font-bold backdrop-blur transition-all duration-300 hover:bg-white hover:text-[#07111f] hover:scale-[1.03]"
+                >
+                  {heroData.btn2}
+                </button>
+              </div>
+
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {trustBadges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs md:text-sm font-semibold text-white/80 backdrop-blur"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Colonne mosaïque cinématique */}
+            <div className="lg:col-span-5 relative h-[460px] md:h-[560px] hidden lg:block">
+              <div className="absolute top-0 right-0 w-[68%] h-[58%] animate-fade-in" style={{ animationDelay: '180ms' }}>
+                <PremiumImageFrame
+                  src={transport1}
+                  alt={t.home.hero.mosaic.logistics.title}
+                  ratio="aspect-auto h-full"
+                  rounded="rounded-[2rem]"
+                  tone="cool"
+                  eager
+                  priority
+                  imageClassName="animate-ken-burns"
+                >
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/40 backdrop-blur px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-cyan-200 border border-cyan-200/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 animate-pulse" />
+                    {t.home.hero.liveLabel}
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.logistics.tag}</p>
+                    <p className="text-lg font-black tracking-tight">{t.home.hero.mosaic.logistics.title}</p>
+                  </div>
+                </PremiumImageFrame>
+              </div>
+
+              <div className="absolute top-[18%] left-0 w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '380ms' }}>
+                <PremiumImageFrame
+                  src={lavage1}
+                  alt={t.home.hero.mosaic.services.title}
+                  ratio="aspect-auto h-full"
+                  rounded="rounded-[1.5rem]"
+                  tone="warm"
+                >
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.services.tag}</p>
+                    <p className="text-base font-black tracking-tight">{t.home.hero.mosaic.services.title}</p>
+                  </div>
+                </PremiumImageFrame>
+              </div>
+
+              <div className="absolute bottom-0 right-[8%] w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '580ms' }}>
+                <PremiumImageFrame
+                  src={mecanique1}
+                  alt={t.home.hero.mosaic.teams.title}
+                  ratio="aspect-auto h-full"
+                  rounded="rounded-[1.5rem]"
+                  tone="neutral"
+                >
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.teams.tag}</p>
+                    <p className="text-base font-black tracking-tight">{t.home.hero.mosaic.teams.title}</p>
+                  </div>
+                </PremiumImageFrame>
+              </div>
+
+              <div className="absolute -bottom-2 left-[5%] z-20 rounded-2xl glass-premium p-4 animate-fade-in-up" style={{ animationDelay: '780ms' }}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/90 mb-1">{t.home.hero.livePill}</p>
+                <p className="text-2xl font-black text-white stat-number">96<span className="text-cyan-300">%</span></p>
+                <p className="text-xs text-white/65">{t.home.hero.kpiLabel}</p>
+              </div>
+            </div>
+
+            {/* Mobile : mini-mosaïque horizontale */}
+            <div className="lg:hidden grid grid-cols-3 gap-2 mt-4">
+              {[transport1, lavage1, mecanique1].map((src, i) => (
+                <PremiumImageFrame
+                  key={i}
+                  src={src}
+                  alt=""
+                  ratio="aspect-square"
+                  rounded="rounded-2xl"
+                  tone={i === 1 ? 'warm' : 'cool'}
+                  eager={i === 0}
+                  priority={i === 0}
+                />
               ))}
             </div>
           </div>
         </section>
 
+        {/* ============ STATS PREMIUM ============ */}
+        <StatsBand
+          eyebrow={t.home.stats.eyebrow}
+          title={t.home.stats.title}
+          description={t.home.stats.description}
+          items={[
+            { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
+            { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
+            { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
+            { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
+          ]}
+          className="bg-[#07111f] text-white"
+          backdrop={<PremiumBackdrop variant="dark" intensity="soft" particles={10} showGrid={false} />}
+        />
+
         {/* ============ SERVICES ============ */}
         <section className="py-20 px-6">
           <div className="max-w-[1400px] mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
-              <h2 className="text-5xl font-bold text-on-surface mb-6">Nos Services Professionnels</h2>
-              <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
-                Découvrez notre offre complète de services de haute qualité conçus pour répondre à tous vos besoins.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, idx) => (
-                <div key={service.title} className="group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: `${idx * 100}ms` }}>
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden">
-                    {service.imageUrl ? (
-                      <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
-                    ) : (
-                      service.icon
-                    )}
+            <Reveal preset="fadeUp">
+              <div className="text-center mb-16">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{t.home.services.eyebrow}</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5">{t.home.services.title}</h2>
+                <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
+                  {t.home.services.description}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".service-card" stagger={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {services.map((service) => (
+                  <div key={service.title} className="service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30">
+                    <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                      {service.imageUrl ? (
+                        <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                      ) : (
+                        service.icon
+                      )}
+                    </div>
+                    <h3 className="text-2xl font-bold text-on-surface">{service.title}</h3>
+                    <p className="mt-3 text-on-surface-variant leading-relaxed">{service.description}</p>
+                    <p className="mt-5 font-bold text-primary">{service.price}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {service.features.map((feature) => (
+                        <span key={feature} className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">{feature}</span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-on-surface">{service.title}</h3>
-                  <p className="mt-3 text-on-surface-variant">{service.description}</p>
-                  <p className="mt-5 font-bold text-primary">{service.price}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {service.features.map((feature) => (
-                      <span key={feature} className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">{feature}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -308,16 +421,15 @@ export const HomePage = () => {
 
           <div className="max-w-[1400px] mx-auto relative">
             <div className="text-center mb-14 animate-fade-in">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">Réalisations terrain</p>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">{t.home.realisations.eyebrow}</p>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-                Nos projets en images
+                {t.home.realisations.title}
               </h2>
               <p className="text-lg text-white/65 max-w-2xl mx-auto">
-                Une galerie vivante, alimentée par les équipes sur le terrain.
+                {t.home.realisations.description}
               </p>
             </div>
 
-            {/* Filtres */}
             <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
               {filters.map((f) => (
                 <button
@@ -329,7 +441,7 @@ export const HomePage = () => {
                       : 'bg-white/5 text-white/80 border border-white/15 hover:border-cyan-300 hover:text-white'
                   }`}
                 >
-                  {f}
+                  {f === ALL_FILTER ? t.common.filterAll : f}
                 </button>
               ))}
             </div>
@@ -381,7 +493,7 @@ export const HomePage = () => {
                 type="button"
                 onClick={showPreviousProject}
                 className="absolute left-4 md:left-6 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-[#07111f] shadow-xl transition hover:scale-110"
-                aria-label="Réalisation précédente"
+                aria-label={t.common.previous}
               >
                 ‹
               </button>
@@ -389,7 +501,7 @@ export const HomePage = () => {
                 type="button"
                 onClick={showNextProject}
                 className="absolute right-4 md:right-6 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-[#07111f] shadow-xl transition hover:scale-110"
-                aria-label="Réalisation suivante"
+                aria-label={t.common.next}
               >
                 ›
               </button>
@@ -398,9 +510,9 @@ export const HomePage = () => {
                 type="button"
                 onClick={() => setCarouselPaused((p) => !p)}
                 className="absolute right-6 bottom-6 z-10 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-xs font-bold text-white backdrop-blur hover:bg-black/70"
-                aria-label={carouselPaused ? 'Reprendre' : 'Pause'}
+                aria-label={carouselPaused ? t.common.resume : t.common.pause}
               >
-                {carouselPaused ? '▶ Reprendre' : '⏸ Pause'}
+                {carouselPaused ? `▶ ${t.common.resume}` : `⏸ ${t.common.pause}`}
               </button>
             </div>
 
@@ -443,7 +555,7 @@ export const HomePage = () => {
                 onClick={() => navigate(isAuthenticated ? '/dashboard' : '/connexion')}
                 className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition-transform"
               >
-                {isAuthenticated ? 'Voir le suivi complet des projets' : 'Se connecter à mon espace investisseur'}
+                {isAuthenticated ? t.home.realisations.ctaAuth : t.home.realisations.ctaGuest}
               </button>
             </div>
           </div>
@@ -475,51 +587,52 @@ export const HomePage = () => {
         {/* ============ SECTEURS D'INVESTISSEMENT ============ */}
         <section className="py-24 px-6 bg-surface">
           <div className="max-w-[1400px] mx-auto">
-            <div className="text-center mb-14 animate-fade-in">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Domaines d'activité</p>
-              <h2 className="text-5xl font-bold text-on-surface">Secteurs d'Investissement</h2>
-              <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Une diversification équilibrée portée par des équipes terrain et des projets concrets.
-              </p>
-            </div>
+            <Reveal preset="fadeUp">
+              <div className="text-center mb-14">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{t.home.sectors.eyebrow}</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface">{t.home.sectors.title}</h2>
+                <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
+                  {t.home.sectors.description}
+                </p>
+              </div>
+            </Reveal>
 
+            <Reveal preset="fadeUp" childSelector=".sector-card" stagger={0.12}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {sectors.map((sector, idx) => (
                 <Link
                   key={`${sector.title}-${idx}`}
                   to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
-                  className="group relative h-[420px] rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-up motion-reduce:hover:translate-y-0"
-                  style={{ animationDelay: `${idx * 120}ms` }}
+                  className="sector-card block"
                 >
-                  <img
+                  <PremiumImageFrame
                     src={sector.image}
                     alt={sector.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/50 to-transparent"></div>
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/15 transition-colors duration-500"></div>
-
-                  {sector.tag && (
-                    <span className="absolute top-5 left-5 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-widest text-primary backdrop-blur">
-                      {sector.tag}
-                    </span>
-                  )}
-
-                  <div className="absolute inset-x-0 bottom-0 p-7 text-white">
-                    <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3 leading-tight">
-                      {sector.title}
-                    </h3>
-                    <p className="text-white/80 leading-relaxed mb-5 line-clamp-3">{sector.description}</p>
-                    <span className="inline-flex items-center gap-2 text-cyan-200 font-bold transition-transform duration-300 group-hover:translate-x-1">
-                      En savoir plus
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M13 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
+                    ratio="aspect-auto h-[420px]"
+                    rounded="rounded-[2rem]"
+                    tone={idx % 2 === 0 ? 'cool' : 'warm'}
+                    className="shadow-xl hover:shadow-2xl"
+                  >
+                    {sector.tag && (
+                      <span className="absolute top-5 left-5 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-widest text-primary backdrop-blur">
+                        {sector.tag}
+                      </span>
+                    )}
+                    <div className="absolute inset-x-0 bottom-0 p-7 text-white z-10">
+                      <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3 leading-tight">
+                        {sector.title}
+                      </h3>
+                      <p className="text-white/85 leading-relaxed mb-5 line-clamp-3">{sector.description}</p>
+                      <span className="inline-flex items-center gap-2 text-cyan-200 font-bold transition-transform duration-300 group-hover:translate-x-1">
+                        {t.common.learnMore}
+                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </PremiumImageFrame>
                 </Link>
               ))}
             </div>
+            </Reveal>
           </div>
         </section>
 
@@ -527,7 +640,7 @@ export const HomePage = () => {
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1400px] mx-auto">
             <h2 className="text-5xl font-bold text-center text-on-surface mb-16 animate-fade-in">
-              Ce que disent nos clients
+              {t.home.testimonials.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {testimonials.map((t, idx) => (
@@ -553,14 +666,19 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* ============ CTA ============ */}
+        <PartnersBand
+          eyebrow={t.home.partners.eyebrow}
+          title={t.home.partners.title}
+          items={t.home.partners.items}
+        />
+
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary">
           <div className="max-w-[1400px] mx-auto text-center animate-fade-in">
             <h2 className="text-5xl font-bold text-on-primary mb-6">
-              {ctaSection.title || 'Prêt à transformer votre avenir?'}
+              {ctaSection.title || t.home.cta.title}
             </h2>
             <p className="text-xl text-on-primary/90 mb-10 max-w-2xl mx-auto">
-              {ctaSection.subtitle || 'Rejoignez des milliers de clients satisfaits et commencez votre parcours vers la liberté financière.'}
+              {ctaSection.subtitle || t.home.cta.subtitle}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               {!localStorage.getItem('user') && (
@@ -568,14 +686,14 @@ export const HomePage = () => {
                   onClick={() => navigate('/inscription')}
                   className="px-10 py-4 bg-white text-primary font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  S'inscrire gratuitement
+                  {t.common.registerFree}
                 </button>
               )}
               <button
                 onClick={() => navigate('/contact')}
                 className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
               >
-                {ctaSection.buttonText || 'Nous contacter'}
+                {ctaSection.buttonText || t.home.cta.button}
               </button>
             </div>
           </div>

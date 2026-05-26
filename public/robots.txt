@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /connexion
+Disallow: /inscription
+Disallow: /password/reset
+
+# Performance / fichiers techniques
+Disallow: /api/
+Disallow: /*.json$
+
+Sitemap: https://taoman-main.vercel.app/sitemap.xml

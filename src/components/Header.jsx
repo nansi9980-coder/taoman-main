@@ -3,27 +3,24 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { mediaUrl } from '../config';
 import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
 import { getBrandName } from '../constants/branding';
-import { LANGUAGE_OPTIONS, getNavTranslations } from '../i18n/navigation';
 import { Flag } from './Flag';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
-  const [language, setLanguage] = useState(() => localStorage.getItem('taoman-language') || 'FR');
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const { colorMode, setColorMode } = useTheme();
   const { section } = useSiteContent();
+  const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t } = useLanguage();
   const branding = section('branding');
   const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
 
-  const languageOptions = LANGUAGE_OPTIONS;
-  const currentLanguage = languageOptions.find((item) => item.code === language) || languageOptions[0];
   const brandName = getBrandName(language);
-  const t = getNavTranslations(language);
   const navigationItems = [
     { name: t.home, href: '/', key: 'accueil' },
     {
@@ -31,8 +28,8 @@ export const Header = ({ activeLink = 'accueil' }) => {
       href: '/about',
       key: 'about',
       children: [
-        { name: t.profile, desc: t.profileDesc, href: '/about' },
-        { name: t.governance, desc: t.governanceDesc, href: '/about' },
+        { name: t.profile, desc: t.profileDesc, href: '/about#profile' },
+        { name: t.governance, desc: t.governanceDesc, href: '/about#governance' },
         { name: t.institutionalContact, desc: t.institutionalContactDesc, href: '/contact' },
       ],
     },
@@ -73,6 +70,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
         { name: t.officeCare, desc: t.officeCareDesc, href: '/entretien/bureaux' },
         { name: t.mechanic, desc: t.mechanicDesc, href: '/contact?topic=info&service=mecanique' },
         { name: t.transport, desc: t.transportDesc, href: '/contact?topic=info&service=transport' },
+        { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
       ],
     },
     { name: t.contact, href: '/contact', key: 'contact' },
@@ -88,15 +86,6 @@ export const Header = ({ activeLink = 'accueil' }) => {
       }
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('taoman-language', language);
-    const selectedLanguage = languageOptions.find((item) => item.code === language);
-    if (selectedLanguage) {
-      document.documentElement.lang = selectedLanguage.lang;
-      document.documentElement.dir = selectedLanguage.code === 'AR' ? 'rtl' : 'ltr';
-    }
-  }, [language]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');

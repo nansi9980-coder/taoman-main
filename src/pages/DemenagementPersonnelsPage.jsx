@@ -164,7 +164,7 @@ export const DemenagementPersonnelsPage = () => {
             <div className="relative">
               <div className="absolute -inset-4 rounded-[2.5rem] bg-cyan-300/20 blur-2xl" aria-hidden="true" />
               <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/20 shadow-2xl">
-                <img src={transport1} alt="Équipe TAOMAN avec camion de déménagement" className="w-full h-[420px] object-cover" />
+                <img src={transport1} alt="Équipe TAOMAN avec camion de déménagement" className="w-full h-[420px] object-cover" loading="eager" fetchpriority="high" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
                   <span className="rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f]">

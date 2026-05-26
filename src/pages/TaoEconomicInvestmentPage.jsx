@@ -22,6 +22,8 @@ import {
 import { useSiteContent } from '../context/SiteContentContext';
 import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors } from '../data/sectors-defaults';
+import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
+import { Reveal } from '../components/Reveal';
 
 const STAT_ICONS = [Wallet, TrendingUp, Clock, Target];
 
@@ -83,11 +85,24 @@ export const TaoEconomicInvestmentPage = () => {
 
   const sectors = normalizeSectors(section('sectors'));
 
+  const breadcrumbLd = buildBreadcrumb([
+    { name: 'Accueil', path: '/' },
+    { name: 'Investissement', path: '/investissement' },
+    { name: 'TGI', path: '/investissement/tgi' },
+  ]);
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title="Programme TGI — Investir au Togo"
+        description="TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 2M FCFA sur 10 mois."
+        path="/investissement/tgi"
+        jsonLd={breadcrumbLd}
+        keywords="TGI Togo, investissement Togo, rendement, TAOMAN, 500K FCFA, programme investissement"
+      />
       <Header activeLink="investissement" />
 
-      <main className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO ============ */}
         <section className="relative overflow-hidden bg-[#07111f] py-24 px-6 text-white">
           <div className="absolute inset-0">
@@ -128,21 +143,23 @@ export const TaoEconomicInvestmentPage = () => {
         {/* ============ STATS ============ */}
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Performance</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Nos chiffres clés</h2>
-              <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.
-              </p>
-            </div>
+            <Reveal preset="fadeUp">
+              <div className="text-center mb-14">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Performance</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface">Nos chiffres clés</h2>
+                <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
+                  Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal preset="scale" childSelector=".stat-card" stagger={0.12}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {investmentStats.map((stat, idx) => {
                 const { Icon } = stat;
                 return (
                   <div
                     key={idx}
-                    className="group relative overflow-hidden bg-white rounded-3xl p-8 border border-outline-variant/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
-                    style={{ animationDelay: `${idx * 100}ms` }}
+                    className="stat-card group relative overflow-hidden bg-white rounded-3xl p-8 border border-outline-variant/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
                   >
                     <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/5 group-hover:bg-primary/15 transition-colors duration-500" />
                     <div className="relative">
@@ -156,6 +173,7 @@ export const TaoEconomicInvestmentPage = () => {
                 );
               })}
             </div>
+            </Reveal>
           </div>
         </section>
 
@@ -169,14 +187,14 @@ export const TaoEconomicInvestmentPage = () => {
                 Rentabilité, impact et autonomie : nos décisions d'investissement reposent sur cet équilibre.
               </p>
             </div>
+            <Reveal preset="fadeUp" childSelector=".pillar-card" stagger={0.15}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PILLARS.map((pillar, idx) => {
+              {PILLARS.map((pillar) => {
                 const { icon: Icon, title, desc, tone } = pillar;
                 return (
                   <div
                     key={title}
-                    className={`group relative rounded-3xl border border-outline-variant/40 p-8 bg-gradient-to-br ${tone} bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up`}
-                    style={{ animationDelay: `${idx * 120}ms` }}
+                    className={`pillar-card group relative rounded-3xl border border-outline-variant/40 p-8 bg-gradient-to-br ${tone} bg-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-500`}
                   >
                     <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-md ring-1 ring-black/5 mb-5">
                       <Icon className="h-7 w-7" strokeWidth={2.2} />
@@ -187,6 +205,7 @@ export const TaoEconomicInvestmentPage = () => {
                 );
               })}
             </div>
+            </Reveal>
           </div>
         </section>
 

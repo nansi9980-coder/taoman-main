@@ -27,11 +27,15 @@ import {
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors } from '../data/sectors-defaults';
+import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 
 export const SectorDetailPage = () => {
   const { slug } = useParams();
   const { section } = useSiteContent();
+  const { content: tc, nav: tNav } = useLanguage();
+  const tSec = tc.sectors;
   const sectors = normalizeSectors(section('sectors'));
   const sector = getSectorBySlug(slug, sectors) || getSectorBySlug(slug, DEFAULT_SECTORS);
 
@@ -118,9 +122,22 @@ export const SectorDetailPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={`${sector.title} — Secteur d'investissement`}
+        description={sector.short || sector.intro || `Découvrez le secteur ${sector.title} chez TAOMAN Group Investment.`}
+        path={`/secteurs/${sector.slug}`}
+        image={sector.image}
+        type="article"
+        jsonLd={buildBreadcrumb([
+          { name: 'Accueil', path: '/' },
+          { name: 'Secteurs', path: '/secteurs' },
+          { name: sector.title, path: `/secteurs/${sector.slug}` },
+        ])}
+        keywords={`${sector.title}, secteur Togo, investissement ${sector.title}, TAOMAN`}
+      />
       <Header activeLink="projets" />
 
-      <main className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-24">
         {/* BREADCRUMB */}
         <nav className="bg-surface-container-low border-b border-outline-variant/30 px-6 py-3">
           <div className="max-w-[1200px] mx-auto flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
@@ -376,9 +393,9 @@ export const SectorDetailPage = () => {
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="rounded-3xl border border-green-500/20 bg-green-50/40 p-6">
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-green-700">
-                    <CheckCircle2 className="h-4 w-4" strokeWidth={2.4} /> Avantages clés
+                    <CheckCircle2 className="h-4 w-4" strokeWidth={2.4} /> {tSec.keyAdvantages}
                   </p>
-                  <h3 className="mt-3 text-xl font-black text-on-surface">Pourquoi ce secteur</h3>
+                  <h3 className="mt-3 text-xl font-black text-on-surface">{tSec.whySector}</h3>
                   <ul className="mt-4 space-y-2 text-sm text-on-surface">
                     <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Marché local concret et identifié</li>
                     <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Opérations pilotées par les équipes TAOMAN</li>
@@ -388,9 +405,9 @@ export const SectorDetailPage = () => {
                 </div>
                 <div className="rounded-3xl border border-amber-500/20 bg-amber-50/40 p-6">
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-amber-700">
-                    <AlertTriangle className="h-4 w-4" strokeWidth={2.4} /> Points de vigilance
+                    <AlertTriangle className="h-4 w-4" strokeWidth={2.4} /> {tSec.vigilancePoints}
                   </p>
-                  <h3 className="mt-3 text-xl font-black text-on-surface">Risques & mitigation</h3>
+                  <h3 className="mt-3 text-xl font-black text-on-surface">{tSec.risksAndMitigation}</h3>
                   <ul className="mt-4 space-y-2 text-sm text-on-surface">
                     <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Risque de marché local (saison, demande)</li>
                     <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Risque opérationnel (équipe, exécution)</li>

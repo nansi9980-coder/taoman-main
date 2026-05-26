@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { getBrandName } from '../constants/branding';
 import { getFooterTranslations } from '../i18n/navigation';
 
@@ -10,19 +10,7 @@ export const Footer = () => {
   const footer = section('footer');
   const contact = section('contact');
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
-  const [language, setLanguage] = useState(() => localStorage.getItem('taoman-language') || 'FR');
-
-  useEffect(() => {
-    const syncLanguage = () => {
-      setLanguage(localStorage.getItem('taoman-language') || 'FR');
-    };
-    window.addEventListener('storage', syncLanguage);
-    const interval = window.setInterval(syncLanguage, 500);
-    return () => {
-      window.removeEventListener('storage', syncLanguage);
-      window.clearInterval(interval);
-    };
-  }, []);
+  const { language } = useLanguage();
 
   const t = getFooterTranslations(language);
   const brandName = getBrandName(language);
@@ -52,7 +40,7 @@ export const Footer = () => {
       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-12">
         <div className="group">
           <div className="flex items-center gap-5 mb-6">
-            <img src={logo} alt={brandName} className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl" />
+            <img src={logo} alt={brandName} className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl" loading="lazy" decoding="async" width="96" height="96" />
             <div>
               <h3 className="text-3xl font-black leading-tight">{brandName}</h3>
               <p className="text-sm font-semibold text-outline-variant">{t.tagline}</p>

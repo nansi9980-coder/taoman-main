@@ -17,10 +17,15 @@ import {
   Users,
   ClipboardCheck,
   Award,
+  BarChart3,
+  FileText,
 } from 'lucide-react';
 import { API_URL, mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { PhotoSlider } from '../components/PhotoSlider';
+import { SeoHead, buildServiceLd } from '../components/SeoHead';
+import { Reveal } from '../components/Reveal';
+import { useLanguage } from '../context/LanguageContext';
 import lavageCard from '../assets/realisations/lavage1.jpg';
 import lavageCard2 from '../assets/realisations/lavage2.jpg';
 import demenagementCard from '../assets/realisations/transport2.jpg';
@@ -36,6 +41,7 @@ const Icons = {
   bus: <Bus className="w-6 h-6" strokeWidth={2.2} />,
   snow: <Snowflake className="w-6 h-6" strokeWidth={2.2} />,
   shield: <ShieldCheck className="w-6 h-6" strokeWidth={2.2} />,
+  audit: <BarChart3 className="w-6 h-6" strokeWidth={2.2} />,
 };
 
 const defaultServices = [
@@ -151,6 +157,22 @@ const defaultServices = [
     ],
     priceFrom: 'Sur devis',
   },
+  {
+    icon: Icons.audit,
+    image: bureauxCard,
+    title: 'Audits & Reporting',
+    description:
+      "Audits financiers, opérationnels et conformité KYC pour PME, investisseurs et institutions. Reporting structuré (mensuel, trimestriel, annuel) conforme aux standards SYSCOA et CEDEAO. Tableaux de bord investisseur, alertes de performance et accompagnement à la gouvernance.",
+    href: '/contact?topic=info&service=audit',
+    sla: '7 – 21 jours',
+    badge: 'Conformité',
+    bullets: [
+      'Audit financier et opérationnel des PME',
+      'Reporting investisseur structuré (PDF + tableaux de bord)',
+      'Conformité KYC, AML, SYSCOA et CEDEAO',
+    ],
+    priceFrom: 'Sur devis',
+  },
 ];
 
 const HERO_SLIDES = [
@@ -188,6 +210,8 @@ const DEFAULT_SERVICES_PAGE = {
 export const ServicesPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
+  const { content: tc, nav: tNav } = useLanguage();
+  const tServ = tc.services;
   const sp = section('servicesPage');
   const heroBadge = sp.badge || DEFAULT_SERVICES_PAGE.badge;
   const heroTitle = sp.title || DEFAULT_SERVICES_PAGE.title;
@@ -201,8 +225,8 @@ export const ServicesPage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!Array.isArray(data) || data.length === 0) return;
-        const icons = [Icons.car, Icons.truck, Icons.building, Icons.wrench, Icons.bus, Icons.snow, Icons.shield];
-        const fallbackImages = [lavageCard, demenagementCard, bureauxCard, mecaniqueCard, transportCard, lavageCard2, mecaniqueCard];
+        const icons = [Icons.car, Icons.truck, Icons.building, Icons.wrench, Icons.bus, Icons.snow, Icons.shield, Icons.audit];
+        const fallbackImages = [lavageCard, demenagementCard, bureauxCard, mecaniqueCard, transportCard, lavageCard2, mecaniqueCard, bureauxCard];
         setServices(
           data
             .filter((s) => s.published !== false)
@@ -221,11 +245,29 @@ export const ServicesPage = () => {
       .catch(() => {});
   }, []);
 
+  const servicesJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Services TAOMAN Group Investment',
+    itemListElement: services.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: buildServiceLd({ name: s.title, description: s.description, image: s.image }),
+    })),
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background pt-[80px]">
+      <SeoHead
+        title={tServ.hero.title}
+        description="Lavage auto, déménagement, entretien de bureaux, mécanique automobile, transport, climatisation, conciergerie — 7 services TAOMAN Group Investment au Togo et CEDEAO."
+        path="/services"
+        jsonLd={servicesJsonLd}
+        keywords="services Togo, lavage auto Lomé, déménagement Lomé, entretien bureaux, mécanique auto, transport Togo, climatisation, conciergerie"
+      />
       <Header activeLink="services" />
 
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         <section className="relative overflow-hidden bg-[#07111f] py-20 px-6 text-white">
           <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl"></div>
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
@@ -264,19 +306,21 @@ export const ServicesPage = () => {
 
         {/* Services Grid */}
         <section className="py-20 max-w-[1400px] mx-auto px-6 w-full">
-          <div className="mb-12 text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Nos prestations</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-on-surface">Sept services, une seule promesse</h2>
-            <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg leading-relaxed">
-              Lavage auto, déménagement, entretien de bureaux, mécanique automobile, transport, climatisation et conciergerie : un groupe multi-activités avec devis clair, équipe identifiée, délai annoncé et suivi après service. Chaque prestation est encadrée par un chef de chantier et un responsable client dédié.
-            </p>
-          </div>
+          <Reveal preset="fadeUp">
+            <div className="mb-12 text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tServ.hero.eyebrow}</p>
+              <h2 className="mt-3 text-4xl md:text-5xl font-black text-on-surface">{tServ.sectionTitle}</h2>
+              <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg leading-relaxed">
+                {tServ.hero.description}
+              </p>
+            </div>
+          </Reveal>
+          <Reveal preset="fadeUp" childSelector=".service-grid-card" stagger={0.08}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <div
                 key={service.title}
-                className="interactive interactive-lift bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col animate-fade-in-up border border-outline-variant/30 motion-reduce:hover:translate-y-0"
-                style={{ animationDelay: `${index * 60}ms` }}
+                className="service-grid-card interactive interactive-lift bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col border border-outline-variant/30 motion-reduce:hover:translate-y-0"
               >
                 {service.image && (
                   <div className="relative h-56 overflow-hidden">
@@ -285,6 +329,7 @@ export const ServicesPage = () => {
                       alt={service.title}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                     <span className="absolute top-4 right-4 rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f] shadow">
@@ -330,14 +375,14 @@ export const ServicesPage = () => {
               </div>
             ))}
           </div>
+          </Reveal>
         </section>
 
         {/* ============ EXPLICATIONS DÉTAILLÉES ============ */}
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">En profondeur</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Comprendre nos métiers</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tServ.detailedTitle}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
                 Au-delà du devis, nous croyons à la transparence : voici comment nous travaillons, ce que nous incluons,
                 et pourquoi nos clients renouvellent leurs contrats avec TAOMAN Group Investment.
@@ -421,6 +466,19 @@ export const ServicesPage = () => {
                     "Accueil visiteurs, gestion des accès, distribution du courrier et signalement des incidents.",
                     "Petite manutention, jardinage, entretien des parties communes (escaliers, hall, parking).",
                     "Coordination directe avec le syndic ou le propriétaire via une application mobile dédiée.",
+                  ],
+                },
+                {
+                  Icon: BarChart3,
+                  title: 'Audits & Reporting',
+                  intro: "TAOMAN met son expertise opérationnelle et financière au service des PME, investisseurs et institutions togolaises qui ont besoin de transparence et de structuration. Nos audits débouchent sur des plans d'action concrets et nos rapports sont conformes aux standards SYSCOA et CEDEAO.",
+                  points: [
+                    "Audit financier complet : analyse des comptes, contrôle des flux de trésorerie, identification des risques cachés et recommandations chiffrées avec plan de remédiation à 90 jours.",
+                    "Audit opérationnel : revue des processus métier, contrôle qualité terrain, audit RH, conformité interne et cartographie des risques opérationnels.",
+                    "Reporting investisseur structuré : tableaux de bord mensuels, rapports trimestriels PDF, indicateurs de performance (KPI), alertes automatiques en cas de déviation et reporting consolidé annuel.",
+                    "Conformité réglementaire et KYC : vérifications d'identité, lutte anti-blanchiment (AML), conformité SYSCOA, normes CEDEAO et préparation des dossiers d'investisseur institutionnel.",
+                    "Accompagnement à la gouvernance : préparation des conseils d'administration, rédaction des comptes-rendus, structuration des comités d'audit et formation des dirigeants à la lecture financière.",
+                    "Outils digitaux : accès à notre portail web sécurisé avec téléchargement des rapports, suivi des KPI en temps réel et notifications WhatsApp en cas de seuil critique.",
                   ],
                 },
               ].map((cat, idx) => {

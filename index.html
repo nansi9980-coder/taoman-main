@@ -2,28 +2,58 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
-    <link rel="apple-touch-icon" href="/src/assets/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="TAOMAN Group Investment — Investissement stratégique, partenariats public-privé et projets au Togo" />
-    <meta name="theme-color" content="#003d9b" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Favicon & manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#003d9b" />
+
+    <!-- Theme color (light / dark) -->
+    <meta name="theme-color" content="#003d9b" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#07111f" media="(prefers-color-scheme: dark)" />
+
+    <!-- SEO de base (sera complété dynamiquement par react-helmet-async) -->
+    <title>TAOMAN Group Investment — Investir au Togo</title>
+    <meta name="description" content="TAOMAN Group Investment — Investissement stratégique, partenariats public-privé et services opérationnels au Togo." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="TAOMAN Group Investment S.A." />
+
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- PWA basics -->
+    <meta name="application-name" content="TAOMAN Group Investment" />
+    <meta name="apple-mobile-web-app-title" content="TAOMAN" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Open Graph fallback (overridden per-page) -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="TAOMAN Group Investment — Votre partenaire stratégique au Togo" />
-    <meta property="og:description" content="TAOMAN Group Investment — Investissement structuré, partenariats et projets dans les infrastructures, l'énergie, l'agro et la logistique." />
-    <meta property="og:image" content="/src/assets/logo.png" />
+    <meta property="og:site_name" content="TAOMAN Group Investment" />
+    <meta property="og:title" content="TAOMAN Group Investment — Investir au Togo" />
+    <meta property="og:description" content="Investissement, partenariats et services opérationnels au Togo." />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:locale" content="fr_FR" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TAOMAN Group Investment — Votre partenaire stratégique au Togo" />
-    <meta name="twitter:description" content="TAOMAN Group Investment — Investissement structuré, partenariats et projets au Togo." />
-    <meta name="twitter:image" content="/src/assets/logo.png" />
-
-    <title>TAOMAN Group Investment — Investir avec nous au Togo</title>
+    <meta name="twitter:title" content="TAOMAN Group Investment" />
+    <meta name="twitter:description" content="Investissement, partenariats et services opérationnels au Togo." />
+    <meta name="twitter:image" content="/logo.png" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif; text-align: center;">
+        Cette application nécessite JavaScript pour fonctionner. Veuillez activer JavaScript dans votre navigateur.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
