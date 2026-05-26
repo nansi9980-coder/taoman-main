@@ -12,7 +12,7 @@ import { API_URL, mediaUrl } from "../config";
 import { normalizeItemsSection } from "../utils/siteContent";
 import { useSiteContent } from "../context/SiteContentContext";
 import { BRAND_NAME } from '../constants/branding';
-import { DEFAULT_QUICK_ACCESS, DEFAULT_HERO } from '../data/home-defaults';
+import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors } from '../data/sectors-defaults';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 
@@ -119,7 +119,6 @@ export const HomePage = () => {
   ];
 
   const heroSection = section('hero') || section('heroBanner') || apiSiteContent.hero || apiSiteContent.heroBanner || {};
-  const quickAccessSection = section('quickAccess') || apiSiteContent.quickAccess || {};
   const ctaSection = apiSiteContent.cta || {};
   const heroBadges = Array.isArray(heroSection.badges)
     ? heroSection.badges
@@ -205,14 +204,6 @@ export const HomePage = () => {
   };
 
   const trustBadges = heroData.badges;
-  const quickAccessLinks =
-    quickAccessSection.links?.length > 0 ? quickAccessSection.links : DEFAULT_QUICK_ACCESS.links;
-  const quickAccessData = {
-    eyebrow: quickAccessSection.eyebrow || DEFAULT_QUICK_ACCESS.eyebrow,
-    title: quickAccessSection.title || DEFAULT_QUICK_ACCESS.title,
-    ctaLabel: quickAccessSection.ctaLabel || DEFAULT_QUICK_ACCESS.ctaLabel,
-    links: quickAccessLinks.filter((item) => !/climatisation/i.test(item.href || '')),
-  };
 
   return (
     <div className={`flex flex-col min-h-screen bg-surface transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
@@ -305,30 +296,6 @@ export const HomePage = () => {
                     ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============ ACCÈS RAPIDE ============ */}
-        <section className="py-16 px-6 bg-surface-container-low">
-          <div className="max-w-[1400px] mx-auto">
-            <div className="text-center mb-12 animate-fade-in">
-              <p className="text-sm uppercase tracking-[0.35em] text-primary mb-3">{quickAccessData.eyebrow}</p>
-              <h2 className="text-4xl font-bold text-on-surface">{quickAccessData.title}</h2>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {quickAccessData.links.map((item) => (
-                <Link
-                  key={`${item.href}-${item.label}`}
-                  to={item.href}
-                  className="group rounded-3xl border border-outline-variant bg-white p-8 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <p className="text-lg font-semibold text-on-surface mb-2">{item.label}</p>
-                  <span className="text-sm text-on-surface-variant group-hover:text-primary transition-colors">
-                    {quickAccessData.ctaLabel}
-                  </span>
-                </Link>
               ))}
             </div>
           </div>

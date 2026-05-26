@@ -1,100 +1,409 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Search,
+  MapPin,
+  Truck,
+  Package,
+  ShieldCheck,
+  Users,
+  Clock,
+  CheckCircle2,
+  Phone,
+  ArrowRight,
+  Boxes,
+  Building2,
+  HomeIcon,
+  Sparkles,
+} from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import transport1 from '../assets/realisations/transport1.jpg';
+import transport2 from '../assets/realisations/transport2.jpg';
+import mecanique1 from '../assets/realisations/mecanique1.png';
 
-const vehicles = [
+const VEHICLES = [
   {
-    title: 'Camion de déménagement',
-    location: 'Adewi Lomé',
-    details: 'Aménagement & déménagement',
+    title: 'Camion de déménagement 10 m³',
+    location: 'Adewi, Lomé',
+    details: "Idéal pour studios, F2, F3 ou bureaux compacts. Hauteur sous bâche suffisante pour armoires et électroménager.",
+    capacity: '10 m³',
+    crew: '2 déménageurs',
     availability: 'Disponible',
-    price: 'sur demande',
-    image: 'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80'
+    price: 'À partir de 75 000 FCFA',
+    image: transport2,
+    badge: 'Populaire',
+    features: ['Sangles & couvertures', 'Hayon élévateur', 'Bâche imperméable'],
   },
   {
-    title: 'Fourgon de transport',
-    location: 'Agoè Zongo',
-    details: 'Transport et logistique',
+    title: 'Fourgon utilitaire 6 m³',
+    location: 'Agoè Zongo, Lomé',
+    details: "Pour petits volumes, déménagement étudiant, transfert de mobilier ou livraison de gros électroménager.",
+    capacity: '6 m³',
+    crew: '1 conducteur + 1 manutentionnaire',
     availability: 'Disponible',
-    price: 'sur demande',
-    image: 'https://images.unsplash.com/photo-1518128957394-9f6d34a92e82?auto=format&fit=crop&w=1200&q=80'
+    price: 'À partir de 45 000 FCFA',
+    image: mecanique1,
+    badge: 'Économique',
+    features: ['Chargement rapide', 'Carburant inclus', 'Sangles fournies'],
   },
   {
-    title: 'Camion utilitaire',
+    title: 'Camion 20 m³ longue distance',
     location: 'Lomé Centre',
-    details: 'Aménagement & déménagement',
-    availability: 'Disponible',
-    price: 'sur demande',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80'
-  }
+    details: "Pour déménagements villas, bureaux entiers ou trajets inter-villes (Kara, Atakpamé, Sokodé, Cotonou, Accra).",
+    capacity: '20 m³',
+    crew: '3 déménageurs',
+    availability: 'Sur réservation',
+    price: 'À partir de 150 000 FCFA',
+    image: transport1,
+    badge: 'Longue distance',
+    features: ['Itinéraire CEDEAO', 'Démontage / remontage', 'Assurance marchandise'],
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    icon: Phone,
+    title: '1. Premier contact',
+    desc: "Appelez-nous ou remplissez le formulaire. Nous évaluons votre besoin en 5 minutes.",
+  },
+  {
+    icon: Search,
+    title: '2. Visite technique',
+    desc: "Un chef d'équipe se déplace gratuitement pour mesurer le volume et identifier les contraintes.",
+  },
+  {
+    icon: CheckCircle2,
+    title: '3. Devis détaillé',
+    desc: "Vous recevez sous 24h un devis clair : prix, équipe, matériel, planning et conditions.",
+  },
+  {
+    icon: Truck,
+    title: '4. Jour J',
+    desc: "Notre équipe arrive avec le matériel adapté, emballe, transporte et réinstalle chez vous.",
+  },
+];
+
+const COMMITMENTS = [
+  { icon: ShieldCheck, title: 'Marchandise assurée', desc: "Vos biens sont couverts pendant tout le transport." },
+  { icon: Users, title: 'Équipe identifiée', desc: 'Tous nos déménageurs sont en uniforme TAOMAN et identifiables.' },
+  { icon: Boxes, title: 'Matériel fourni', desc: 'Cartons, papier bulle, sangles, couvertures, diables — tout est inclus.' },
+  { icon: Clock, title: 'Délais respectés', desc: 'Engagement de ponctualité avec pénalité automatique en cas de retard.' },
+];
+
+const TYPES = [
+  {
+    icon: HomeIcon,
+    title: 'Particuliers',
+    desc: "Studios, F2, F3, villas — nous emballons, transportons, déballons et réinstallons. Visite technique gratuite à domicile.",
+  },
+  {
+    icon: Building2,
+    title: 'Entreprises',
+    desc: "Bureaux, archives, serveurs, mobilier — planification hors heures ouvrées pour limiter l'interruption d'activité.",
+  },
+  {
+    icon: Package,
+    title: 'Commerces & ateliers',
+    desc: "Stock, présentoirs, équipements lourds — transfert sécurisé avec équipe spécialisée et matériel adapté.",
+  },
 ];
 
 export const DemenagementPersonnelsPage = () => {
   const [search, setSearch] = useState('');
-  const filteredVehicles = vehicles.filter(v =>
-    v.title.toLowerCase().includes(search.toLowerCase()) ||
-    v.location.toLowerCase().includes(search.toLowerCase()) ||
-    v.details.toLowerCase().includes(search.toLowerCase())
-  );
+
+  const filteredVehicles = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return VEHICLES;
+    return VEHICLES.filter((v) =>
+      [v.title, v.location, v.details, v.capacity].some((field) => field.toLowerCase().includes(q))
+    );
+  }, [search]);
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <section className="bg-gradient-to-r from-primary to-primary-container py-20 px-6 text-white">
-          <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Une équipe professionnelle de déménagement</h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Trouvez des véhicules et une équipe professionnelle pour vos déménagements avec TAOMAN Group Investment.
-            </p>
+        {/* ============ HERO ============ */}
+        <section className="relative overflow-hidden bg-[#07111f] py-20 px-6 text-white">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(0,82,204,0.45),transparent_45%),radial-gradient(circle_at_85%_80%,rgba(34,211,238,0.28),transparent_45%)]" />
+            <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-blob" />
+            <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl animate-blob-delay" />
+          </div>
+
+          <div className="relative z-10 max-w-[1300px] mx-auto grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <div className="animate-fade-in-up">
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
+                <Truck className="h-4 w-4" /> Personnel & flotte TAOMAN
+              </span>
+              <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
+                Une équipe professionnelle de déménagement
+              </h1>
+              <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-8 leading-relaxed">
+                TAOMAN Group Investment met à votre disposition une flotte de véhicules adaptés et une équipe de déménageurs formés
+                pour vos déménagements à Lomé, en province et dans la sous-région CEDEAO. Particuliers, entreprises ou commerces —
+                chaque chantier est piloté par un chef d'équipe identifié.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/demenagement/devis"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-[#07111f] px-7 py-4 font-bold shadow-xl hover:scale-105 transition"
+                >
+                  Demander un devis <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/contact?topic=info&service=demenagement"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 text-white px-7 py-4 font-bold backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                >
+                  <Phone className="h-4 w-4" /> Nous contacter
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-[2.5rem] bg-cyan-300/20 blur-2xl" aria-hidden="true" />
+              <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/20 shadow-2xl">
+                <img src={transport1} alt="Équipe TAOMAN avec camion de déménagement" className="w-full h-[420px] object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+                  <span className="rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f]">
+                    Flotte propre
+                  </span>
+                  <span className="text-xs font-bold text-white/85">Lomé • Togo • CEDEAO</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
+        {/* ============ KPI strip ============ */}
+        <section className="py-10 px-6 bg-surface-container-low border-y border-outline-variant/30">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { value: '+ 150', label: 'Déménagements réalisés' },
+              { value: '24 / 7', label: 'Service & support' },
+              { value: '6 – 20 m³', label: 'Capacités véhicules' },
+              { value: '15 villes', label: 'Couverture Togo + CEDEAO' },
+            ].map((kpi) => (
+              <div key={kpi.label} className="flex flex-col">
+                <span className="text-3xl md:text-4xl font-black text-primary">{kpi.value}</span>
+                <span className="mt-1 text-sm font-semibold text-on-surface-variant">{kpi.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ============ Types de déménagement ============ */}
         <section className="py-20 px-6">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Qui accompagnons-nous ?</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Trois profils, une même exigence</h2>
+              <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
+                Que vous soyez un particulier, une entreprise ou un commerçant, nos équipes adaptent leur méthode et leur matériel à votre besoin.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+              {TYPES.map((t, idx) => {
+                const { icon: Icon, title, desc } = t;
+                return (
+                  <div
+                    key={title}
+                    className="group bg-white rounded-3xl p-8 border border-outline-variant/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
+                    style={{ animationDelay: `${idx * 120}ms` }}
+                  >
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Icon className="h-7 w-7" strokeWidth={2.2} />
+                    </div>
+                    <h3 className="text-2xl font-black text-on-surface mb-3">{title}</h3>
+                    <p className="text-on-surface-variant leading-relaxed">{desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ Véhicules disponibles ============ */}
+        <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1400px] mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 animate-fade-in-up">
+            <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-12">
               <div>
-                <h2 className="text-4xl font-bold text-on-surface">Véhicules disponibles</h2>
-                <p className="text-on-surface-variant mt-2 max-w-2xl">
-                  Parcourez notre sélection de véhicules adaptés à tous types de déménagements professionnels et particuliers.
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Notre flotte</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface">Véhicules disponibles</h2>
+                <p className="mt-4 text-lg text-on-surface-variant max-w-2xl">
+                  Trois formats pour s'adapter à votre volume, votre distance et votre budget. Tous nos véhicules sont entretenus dans notre atelier TAOMAN.
                 </p>
               </div>
-              <div className="w-full md:w-96">
+              <div className="w-full lg:w-96 relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-on-surface-variant" />
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Rechercher par type, lieu ou service"
-                  className="w-full px-4 py-3 border border-outline rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Rechercher par type, lieu ou volume..."
+                  className="w-full pl-12 pr-4 py-3 border border-outline-variant/60 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               {filteredVehicles.map((vehicle, idx) => (
-                <div key={idx} className="group overflow-hidden rounded-3xl shadow-2xl border border-outline/20 bg-white hover:shadow-2xl transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${idx * 80}ms` }}>
-                  <div className="relative h-72 overflow-hidden">
-                    <img src={vehicle.image} alt={vehicle.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute top-4 left-4 bg-primary text-white rounded-full px-4 py-2 text-sm font-semibold">{vehicle.availability}</div>
+                <div
+                  key={vehicle.title}
+                  className="group bg-white rounded-3xl overflow-hidden border border-outline-variant/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up flex flex-col"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="relative h-60 overflow-hidden">
+                    <img
+                      src={vehicle.image}
+                      alt={vehicle.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    <span className="absolute top-4 left-4 rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f] shadow">
+                      {vehicle.badge}
+                    </span>
+                    <span className="absolute top-4 right-4 rounded-full bg-emerald-400/95 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow">
+                      {vehicle.availability}
+                    </span>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-xl md:text-2xl font-black text-white leading-tight drop-shadow-lg">{vehicle.title}</h3>
+                      <p className="mt-1 inline-flex items-center gap-1.5 text-sm text-white/90">
+                        <MapPin className="h-4 w-4" /> {vehicle.location}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-2xl font-bold text-on-surface">{vehicle.title}</h3>
-                      <span className="text-sm text-on-surface-variant">{vehicle.price}</span>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <p className="text-sm text-on-surface-variant leading-relaxed mb-4">{vehicle.details}</p>
+                    <div className="grid grid-cols-2 gap-3 mb-5">
+                      <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Capacité</p>
+                        <p className="text-base font-black text-on-surface mt-1">{vehicle.capacity}</p>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Équipe</p>
+                        <p className="text-sm font-bold text-on-surface mt-1">{vehicle.crew}</p>
+                      </div>
                     </div>
-                    <p className="text-on-surface-variant mb-4">{vehicle.details}</p>
-                    <div className="flex items-center gap-3 text-sm text-on-surface-variant mb-6">
-                      <span className="inline-flex items-center gap-2">
-                        <span className="text-primary"></span> {vehicle.location}
-                      </span>
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {vehicle.features.map((f) => (
+                        <span key={f} className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-bold text-primary">
+                          <CheckCircle2 className="h-3 w-3" /> {f}
+                        </span>
+                      ))}
                     </div>
-                    <button className="w-full bg-gradient-to-r from-primary to-primary-container text-white font-bold px-5 py-3 rounded-2xl hover:shadow-xl transition-all duration-300">
-                      Réserver maintenant
-                    </button>
+                    <div className="mt-auto border-t border-outline-variant/30 pt-4 flex items-end justify-between gap-3">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">À partir de</p>
+                        <p className="text-lg font-black text-primary">{vehicle.price}</p>
+                      </div>
+                      <Link
+                        to="/demenagement/devis"
+                        className="inline-flex items-center gap-1.5 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white px-4 py-2.5 text-sm font-bold shadow-md hover:shadow-xl hover:scale-105 transition"
+                      >
+                        Réserver <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {filteredVehicles.length === 0 && (
+              <div className="rounded-3xl border border-dashed border-outline-variant/60 bg-white p-12 text-center mt-8">
+                <Sparkles className="h-10 w-10 text-primary mx-auto mb-3" />
+                <p className="text-lg font-bold text-on-surface mb-2">Aucun véhicule trouvé</p>
+                <p className="text-on-surface-variant">Contactez-nous directement, nous adaptons notre flotte à votre besoin spécifique.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* ============ Engagements ============ */}
+        <section className="py-20 px-6">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Nos engagements</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Ce que nous garantissons</h2>
+              <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
+                Quatre promesses simples qui font la différence sur le terrain.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {COMMITMENTS.map((c, idx) => {
+                const { icon: Icon, title, desc } = c;
+                return (
+                  <div
+                    key={title}
+                    className="bg-white rounded-3xl p-6 border border-outline-variant/40 hover:shadow-xl hover:border-primary/40 transition-all duration-300 animate-fade-in-up"
+                    style={{ animationDelay: `${idx * 80}ms` }}
+                  >
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+                      <Icon className="h-6 w-6" strokeWidth={2.2} />
+                    </div>
+                    <h3 className="text-lg font-black text-on-surface mb-2">{title}</h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ Process ============ */}
+        <section className="py-20 px-6 bg-surface-container-low">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Méthode</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Du contact à l'installation</h2>
+              <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
+                Une procédure claire en quatre étapes pour un déménagement sans stress.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {PROCESS_STEPS.map((step, idx) => {
+                const { icon: Icon, title, desc } = step;
+                return (
+                  <div
+                    key={title}
+                    className="relative bg-white rounded-3xl p-6 border border-outline-variant/40 hover:shadow-xl transition-all animate-fade-in-up"
+                    style={{ animationDelay: `${idx * 100}ms` }}
+                  >
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow mb-4">
+                      <Icon className="h-6 w-6" strokeWidth={2.2} />
+                    </div>
+                    <h3 className="text-lg font-black text-on-surface mb-2">{title}</h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ CTA ============ */}
+        <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary text-white">
+          <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-black mb-5">Un déménagement à organiser ?</h2>
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Demandez votre devis gratuit en ligne ou appelez-nous directement.
+              Notre équipe vous rappelle dans la journée.
+            </p>
+            <div className="flex gap-4 flex-col sm:flex-row justify-center">
+              <Link
+                to="/demenagement/devis"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-primary px-10 py-4 font-bold shadow-xl hover:scale-105 transition"
+              >
+                Demander un devis gratuit <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/contact?topic=info&service=demenagement"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white text-white px-10 py-4 font-bold hover:bg-white hover:text-primary transition"
+              >
+                <Phone className="h-4 w-4" /> Nous appeler
+              </Link>
             </div>
           </div>
         </section>
