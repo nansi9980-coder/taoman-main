@@ -199,32 +199,6 @@ export const DemenagementDevisPage = () => {
           </div>
         </section>
 
-        {/* PROCESSUS DETAILLE */}
-        <section className="py-20 px-6 bg-surface">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-12">
-              <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary">
-                <Wrench className="h-4 w-4" strokeWidth={2.4} /> {t.process.eyebrow}
-              </p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{t.process.title}</h2>
-              <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
-                {t.process.description}
-              </p>
-            </div>
-            <div className="space-y-4">
-              {t.process.steps.map(({ num, title, desc }) => (
-                <div key={num} className="flex gap-5 rounded-2xl border border-outline-variant/40 bg-white p-6 hover:shadow-md transition-all">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-black shadow-md">{num}</span>
-                  <div>
-                    <h3 className="text-lg font-black text-on-surface">{title}</h3>
-                    <p className="mt-1 text-on-surface-variant leading-relaxed">{desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* FLOTTE */}
         <section className="py-20 px-6 bg-gradient-to-b from-surface-container-low to-surface">
           <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
@@ -252,30 +226,6 @@ export const DemenagementDevisPage = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* EMBALLAGE & PROTECTION */}
-        <section className="py-20 px-6 bg-surface">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-10">
-              <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary">
-                <Package className="h-4 w-4" strokeWidth={2.4} /> {t.packaging.eyebrow}
-              </p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{t.packaging.title}</h2>
-              <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
-                {t.packaging.description}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {emballages.map((e) => (
-                <div key={e.title} className="rounded-2xl bg-surface-container-low p-5 border border-outline-variant/30 hover:shadow-sm hover:border-primary/30 transition-all">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">{e.icon}</span>
-                  <p className="mt-3 font-black text-on-surface">{e.title}</p>
-                  <p className="mt-1 text-sm text-on-surface-variant leading-relaxed">{e.desc}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>

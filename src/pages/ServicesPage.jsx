@@ -92,14 +92,13 @@ const defaultServices = [
     image: lavageCard,
     title: 'Lavage automobile & moto',
     description:
-      "Nettoyage intérieur et extérieur premium, vitres, jantes, pneus, polissage carrosserie. En centre TAOMAN ou en mobile à domicile pour les particuliers, et contrats flotte multi-véhicules pour les entreprises et institutions.",
+      "Nettoyage complet intérieur/extérieur en centre ou à domicile.",
     href: '/lavage-auto/devis',
     sla: '45 – 90 min',
     badge: 'Populaire',
     bullets: [
-      'Lavage extérieur + intérieur complet',
-      'Polish, lustrage et protection carrosserie',
-      'Contrats flotte avec planning hebdomadaire',
+      'Lavage + lustrage carrosserie',
+      'Contrats flotte disponibles',
     ],
     priceFrom: 'Dès 3 500 FCFA',
   },
@@ -108,14 +107,13 @@ const defaultServices = [
     image: demenagementCard,
     title: 'Déménagement & aménagement',
     description:
-      "Déménagement de particuliers, d'entreprises et institutionnels. Emballage, démontage / remontage du mobilier, transport sécurisé Lomé – villes intérieures – sous-région CEDEAO. Visite technique gratuite à domicile.",
+      "Déménagement sécurisé avec emballage et équipe dédiée.",
     href: '/demenagement/devis',
     sla: 'Sur rendez-vous',
     badge: 'Équipe dédiée',
     bullets: [
-      'Visite technique gratuite et devis détaillé',
-      'Cartons, papier bulle et couvertures fournis',
-      "Trajet Lomé – Kara – Cotonou – Accra disponible",
+      'Visite technique gratuite',
+      'Transport Togo & CEDEAO',
     ],
     priceFrom: 'Dès 45 000 FCFA',
   },
@@ -124,14 +122,13 @@ const defaultServices = [
     image: bureauxCard,
     title: 'Entretien des bureaux',
     description:
-      "Nettoyage professionnel régulier de bureaux, commerces, cliniques et écoles. Contrats journaliers, hebdomadaires ou mensuels avec reporting photo, contrôle qualité terrain et superviseur dédié.",
+      "Nettoyage professionnel régulier avec équipe formée.",
     href: '/entretien/bureaux',
     sla: 'Journalier / hebdo',
     badge: 'Contrat pro',
     bullets: [
-      'Équipe identifiée en uniforme TAOMAN',
-      'Produits écologiques et matériel professionnel',
-      'Reporting mensuel et contrôle qualité',
+      'Équipe TAOMAN en uniforme',
+      'Contrôle qualité mensuel',
     ],
     priceFrom: 'Sur devis',
   },
@@ -140,14 +137,13 @@ const defaultServices = [
     image: mecaniqueCard,
     title: 'Mécanique automobile',
     description:
-      "Atelier multimarques TAOMAN : entretien préventif, vidange, freins, suspension, embrayage, climatisation auto, diagnostic électronique OBD. Contrats flotte avec carnet de suivi par véhicule.",
+      "Atelier multimarques pour entretien et réparation.",
     href: '/contact?topic=info&service=mecanique',
     sla: 'Devis 24h',
     badge: 'Atelier pro',
     bullets: [
       'Diagnostic électronique multimarques',
-      'Pièces neuves ou reconditionnées',
-      'Suivi flotte avec carnet d’entretien digital',
+      'Suivi flotte disponible',
     ],
     priceFrom: 'Devis transparent',
   },
@@ -156,14 +152,13 @@ const defaultServices = [
     image: transportCard,
     title: 'Transport & livraison',
     description:
-      "Flotte de camions, fourgons, utilitaires et VTC. Transport de marchandises B2B, livraison du dernier kilomètre, déplacements professionnels et navettes inter-villes au Togo et dans la sous-région CEDEAO.",
+      "Transport et livraison avec suivi GPS.",
     href: '/contact?topic=info&service=transport',
     sla: 'Lomé & sous-région',
     badge: 'Flotte propre',
     bullets: [
-      'Livraison du dernier kilomètre à Lomé',
-      'Transport B2B vers Cotonou, Accra, Ouaga',
-      'Suivi GPS et confirmation de livraison',
+      'Livraison du dernier kilomètre',
+      'Suivi GPS et confirmation',
     ],
     priceFrom: 'Tarifs km',
   },
@@ -172,14 +167,13 @@ const defaultServices = [
     image: lavageCard2,
     title: 'Climatisation & froid',
     description:
-      "Installation, entretien et dépannage de climatiseurs split et VRV pour bureaux, commerces et résidences. Maintenance de vitrines réfrigérées et chambres froides pour restaurateurs et distributeurs.",
+      "Installation, entretien et dépannage climatiseurs.",
     href: '/contact?topic=info&service=climatisation',
     sla: 'Intervention 48h',
     badge: 'Maintenance',
     bullets: [
-      'Installation split et VRV résidentiel / pro',
-      'Recharge gaz et nettoyage filtres',
-      'Contrats maintenance préventive',
+      'Installation split et VRV',
+      'Maintenance préventive',
     ],
     priceFrom: 'Dès 15 000 FCFA',
   },
@@ -188,14 +182,13 @@ const defaultServices = [
     image: mecaniqueCard,
     title: 'Conciergerie & gardiennage',
     description:
-      "Services de conciergerie pour résidences, immeubles et entreprises : gardiennage, accueil visiteurs, gestion courrier, petite manutention, jardinage et entretien des parties communes.",
+      "Services de gardiennage et conciergerie 24/7.",
     href: '/contact?topic=info&service=conciergerie',
     sla: '24/7 disponible',
     badge: 'Nouveau',
     bullets: [
       'Gardiennage jour / nuit',
-      'Accueil visiteurs et gestion accès',
-      'Conciergerie d’immeuble clés en main',
+      "Accueil et gestion d'accès",
     ],
     priceFrom: 'Sur devis',
   },
@@ -204,14 +197,13 @@ const defaultServices = [
     image: bureauxCard,
     title: 'Audits & Reporting',
     description:
-      "Audits financiers, opérationnels et conformité KYC pour PME, investisseurs et institutions. Reporting structuré (mensuel, trimestriel, annuel) conforme aux standards SYSCOA et CEDEAO. Tableaux de bord investisseur, alertes de performance et accompagnement à la gouvernance.",
+      "Audits financiers et reporting conforme aux standards.",
     href: '/contact?topic=info&service=audit',
     sla: '7 – 21 jours',
     badge: 'Conformité',
     bullets: [
-      'Audit financier et opérationnel des PME',
-      'Reporting investisseur structuré (PDF + tableaux de bord)',
-      'Conformité KYC, AML, SYSCOA et CEDEAO',
+      'Audit financier et opérationnel',
+      'Conformité KYC et standards SYSCOA',
     ],
     priceFrom: 'Sur devis',
   },
@@ -443,83 +435,31 @@ export const ServicesPage = () => {
           </Reveal>
         </section>
 
-        {/* ============ EXPLICATIONS DÉTAILLÉES ============ */}
-        <section className="py-20 px-6 bg-surface-container-low">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tServ.detailedTitle}</h2>
-              <p className="mt-4 text-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-                {tServExt.detailed.description}
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {tServExt.detailed.items.map((cat, idx) => {
-                const Icon = DETAILED_ICONS[cat.id] || Sparkles;
-                const { title, intro, points } = cat;
-                return (
-                  <details
-                    key={title}
-                    className="group bg-white rounded-3xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-lg transition-shadow animate-fade-in-up"
-                    style={{ animationDelay: `${idx * 60}ms` }}
-                  >
-                    <summary className="flex items-center gap-4 p-5 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-                      <div className="flex-shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-open:bg-primary group-open:text-white transition-colors">
-                        <Icon className="h-6 w-6" strokeWidth={2.2} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg md:text-xl font-black text-on-surface">{title}</h3>
-                        <p className="text-sm text-on-surface-variant line-clamp-1 group-open:line-clamp-none">{intro}</p>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-on-surface-variant transition-transform group-open:rotate-90 flex-shrink-0" />
-                    </summary>
-                    <div className="px-5 pb-6 pt-2 border-t border-outline-variant/30 bg-gradient-to-br from-surface to-surface-container-low">
-                      <ul className="grid sm:grid-cols-2 gap-3 mt-4">
-                        {points.map((p) => (
-                          <li key={p} className="flex items-start gap-2 text-sm text-on-surface leading-relaxed">
-                            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.2} />
-                            <span>{p}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </details>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* Méthode - timeline horizontale */}
-        <section className="py-20 px-6">
+        <section className="py-16 px-6">
           <div className="max-w-[1200px] mx-auto">
-            <div className="mb-14 text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tServExt.method.eyebrow}</p>
-              <h2 className="mt-3 text-4xl md:text-5xl font-black text-on-surface">{tServExt.method.title}</h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-on-surface-variant">
-                {tServExt.method.description}
-              </p>
+            <div className="mb-10 text-center">
+              <h2 className="text-3xl md:text-4xl font-black text-on-surface">{tServExt.method.title}</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {tServExt.method.steps.map((step, idx) => {
                 const stepIcons = [ClipboardCheck, Award, Users, CheckCircle2];
                 const Icon = stepIcons[idx] || ClipboardCheck;
                 const num = String(idx + 1).padStart(2, '0');
-                const { title, desc } = step;
+                const { title } = step;
                 return (
                   <div
                     key={num}
-                    className="bg-white rounded-3xl border border-outline-variant/40 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
+                    className="bg-white rounded-2xl border border-outline-variant/40 p-4 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow">
-                        <Icon className="h-5 w-5" strokeWidth={2.2} />
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Icon className="h-4 w-4" strokeWidth={2.2} />
                       </span>
-                      <span className="text-3xl font-black text-primary/40">{num}</span>
+                      <span className="text-2xl font-black text-primary/40">{num}</span>
                     </div>
-                    <h3 className="text-lg font-black text-on-surface mb-2">{title}</h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
+                    <h3 className="text-sm font-bold text-on-surface">{title}</h3>
                   </div>
                 );
               })}
