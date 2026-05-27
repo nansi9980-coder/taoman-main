@@ -201,18 +201,31 @@ export const HomePage = () => {
 
   const heroSection = section('hero') || section('heroBanner') || apiSiteContent.hero || apiSiteContent.heroBanner || {};
   const ctaSection = apiSiteContent.cta || {};
-  const heroBadges = Array.isArray(heroSection.badges)
-    ? heroSection.badges
-    : DEFAULT_HERO.badges;
+
+  // Traductions i18n du hero — PRIORITÉ sur les données API (fixes en FR)
+  const tHero = t.home?.hero || {};
+  const tCommon = t.common || {};
+
+  // Les badges traduits : i18n d'abord, sinon API, sinon DEFAULT_HERO
+  const heroBadges = Array.isArray(tHero.badges) && tHero.badges.length > 0
+    ? tHero.badges
+    : Array.isArray(heroSection.badges)
+      ? heroSection.badges
+      : DEFAULT_HERO.badges;
+
   const heroData = {
-    badgeMain: heroSection.badgeMain || heroSection.badge || DEFAULT_HERO.badgeMain,
+    // badge principal : i18n > API > défaut
+    badgeMain: tHero.badgeMain || heroSection.badgeMain || heroSection.badge || DEFAULT_HERO.badgeMain,
     badges: heroBadges,
-    title: heroSection.title || heroSection.titleFr || DEFAULT_HERO.title,
-    subtitle: heroSection.subtitle || heroSection.titleEn || DEFAULT_HERO.subtitle,
-    description: heroSection.description || DEFAULT_HERO.description,
-    btn1: heroSection.btn1 || heroSection.primaryButton || DEFAULT_HERO.btn1,
-    btn2: heroSection.btn2 || heroSection.secondaryButton || (isAuthenticated ? 'Mon espace' : DEFAULT_HERO.btn2),
-    imageCaption: heroSection.imageCaption || DEFAULT_HERO.imageCaption,
+    // titre & sous-titre : i18n > API > défaut
+    title: tHero.title || heroSection.title || heroSection.titleFr || DEFAULT_HERO.title,
+    subtitle: tHero.subtitle || heroSection.subtitle || heroSection.titleEn || DEFAULT_HERO.subtitle,
+    // description : i18n > API > défaut
+    description: tHero.description || heroSection.description || DEFAULT_HERO.description,
+    // boutons : i18n > API > common > défaut
+    btn1: tHero.btn1 || heroSection.btn1 || heroSection.primaryButton || tCommon.contactInvest || DEFAULT_HERO.btn1,
+    btn2: tHero.btn2 || heroSection.btn2 || heroSection.secondaryButton || (isAuthenticated ? (tCommon.mySpace || 'Mon espace') : (tCommon.registerFree || DEFAULT_HERO.btn2)),
+    imageCaption: heroSection.imageCaption || tHero.livePill || DEFAULT_HERO.imageCaption,
     heroImage: (heroSection.heroImage || heroSection.backgroundImage)
       ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
       : null,
