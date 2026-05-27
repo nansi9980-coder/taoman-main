@@ -67,6 +67,7 @@ export const LanguageProvider = ({ children }) => {
 
   const value = useMemo(() => {
     const meta = LANGUAGE_OPTIONS.find((l) => l.code === language) || LANGUAGE_OPTIONS[0];
+    const content = getContentTranslations(language);
     return {
       language,
       setLanguage,
@@ -74,7 +75,8 @@ export const LanguageProvider = ({ children }) => {
       isRTL: RTL_CODES.has(language),
       languages: LANGUAGE_OPTIONS,
       nav: getNavTranslations(language),
-      content: getContentTranslations(language),
+      content,
+      translations: content,
     };
   }, [language, setLanguage]);
 
@@ -85,6 +87,7 @@ export const useLanguage = () => {
   const ctx = useContext(LanguageContext);
   if (!ctx) {
     // Fallback safe (par exemple si un composant est monté hors du provider)
+    const content = getContentTranslations(DEFAULT_CODE);
     return {
       language: DEFAULT_CODE,
       setLanguage: () => {},
@@ -92,7 +95,8 @@ export const useLanguage = () => {
       isRTL: false,
       languages: LANGUAGE_OPTIONS,
       nav: getNavTranslations(DEFAULT_CODE),
-      content: getContentTranslations(DEFAULT_CODE),
+      content,
+      translations: content,
     };
   }
   return ctx;

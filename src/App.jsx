@@ -6,6 +6,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
+import { SplashScreen } from './components/SplashScreen';
 import { HomePage } from './pages/HomePage';
 import './App.css';
 
@@ -52,6 +53,7 @@ function App() {
       <LanguageProvider>
       <HelmetProvider>
         <SiteContentProvider>
+          <SplashScreen minDuration={1800} />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <a

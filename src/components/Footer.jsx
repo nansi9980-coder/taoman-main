@@ -39,13 +39,25 @@ export const Footer = () => {
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-12">
         <div className="group">
-          <div className="flex items-center gap-5 mb-6">
-            <img src={logo} alt={brandName} className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl" loading="lazy" decoding="async" width="96" height="96" />
+          <Link
+            to="/"
+            aria-label={brandName}
+            className="flex items-center gap-5 mb-6 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-3xl motion-reduce:hover:scale-100"
+          >
+            <img
+              src={logo}
+              alt={brandName}
+              className="h-24 w-24 object-contain bg-white rounded-3xl p-3 shadow-2xl"
+              loading="lazy"
+              decoding="async"
+              width="96"
+              height="96"
+            />
             <div>
               <h3 className="text-3xl font-black leading-tight">{brandName}</h3>
               <p className="text-sm font-semibold text-outline-variant">{t.tagline}</p>
             </div>
-          </div>
+          </Link>
           <p className="text-outline-variant text-sm leading-relaxed">
             {footer.description || t.description}
           </p>

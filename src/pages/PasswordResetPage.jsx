@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { API_URL } from '../config';
+import { useLanguage } from '../context/LanguageContext';
+import { getAuthMessages } from '../i18n/authMessages';
 
 export const PasswordResetPage = () => {
   const navigate = useNavigate();
+  const { translations: tc, language } = useLanguage();
+  const tR = tc?.auth?.reset || {};
+  const tMsg = getAuthMessages(language).reset;
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
@@ -25,11 +30,11 @@ export const PasswordResetPage = () => {
         body: JSON.stringify({ email }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Erreur serveur');
-      setSuccess('Un code a été envoyé à votre email.');
+      if (!response.ok) throw new Error(data.message || tMsg.errorRequest);
+      setSuccess(tMsg.successCodeSent);
       setStep(2);
     } catch (err) {
-      setError(err.message || 'Erreur lors de la requête.');
+      setError(err.message || tMsg.errorRequest);
     } finally {
       setLoading(false);
     }
@@ -47,11 +52,11 @@ export const PasswordResetPage = () => {
         body: JSON.stringify({ email, otp, newPassword }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Code invalide');
-      setSuccess('Mot de passe mis à jour. Redirection...');
+      if (!response.ok) throw new Error(data.message || tMsg.errorInvalidCode);
+      setSuccess(tMsg.successPasswordUpdated);
       setTimeout(() => navigate('/connexion'), 2000);
     } catch (err) {
-      setError(err.message || 'Erreur lors de la réinitialisation.');
+      setError(err.message || tMsg.errorReset);
     } finally {
       setLoading(false);
     }
@@ -62,9 +67,9 @@ export const PasswordResetPage = () => {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-on-surface mb-2">Récupération</h1>
+            <h1 className="text-4xl font-bold text-on-surface mb-2">{tR.title || 'Récupération'}</h1>
             <p className="text-on-surface-variant">
-              {step === 1 ? 'Recevez un code par email' : 'Code OTP et nouveau mot de passe'}
+              {step === 1 ? (tR.subtitle || 'Recevez un code par email') : tMsg.subtitleStep2}
             </p>
           </div>
           {success && <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 text-center">{success}</div>}
@@ -72,30 +77,30 @@ export const PasswordResetPage = () => {
           {step === 1 ? (
             <form onSubmit={handleForgot} className="space-y-6">
               <div>
-                <label className="block text-sm font-bold text-on-surface mb-2">Email</label>
+                <label className="block text-sm font-bold text-on-surface mb-2">{tR.email || 'Email'}</label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full px-4 py-3 border border-outline rounded-lg focus:ring-2 focus:ring-primary" />
               </div>
               <button type="submit" disabled={loading} className="w-full bg-primary text-white font-bold py-3 rounded-lg disabled:opacity-50">
-                {loading ? 'Envoi...' : 'Envoyer le code'}
+                {loading ? (tc?.common?.loading || 'Chargement…') : (tR.submit || 'Envoyer le code')}
               </button>
             </form>
           ) : (
             <form onSubmit={handleReset} className="space-y-6">
               <div>
-                <label className="block text-sm font-bold text-on-surface mb-2">Code OTP</label>
+                <label className="block text-sm font-bold text-on-surface mb-2">{tMsg.otpLabel}</label>
                 <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} required maxLength={6} className="w-full px-4 py-3 border border-outline rounded-lg" />
               </div>
               <div>
-                <label className="block text-sm font-bold text-on-surface mb-2">Nouveau mot de passe</label>
+                <label className="block text-sm font-bold text-on-surface mb-2">{tMsg.newPasswordLabel}</label>
                 <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required minLength={6} className="w-full px-4 py-3 border border-outline rounded-lg" />
               </div>
               <button type="submit" disabled={loading} className="w-full bg-primary text-white font-bold py-3 rounded-lg disabled:opacity-50">
-                {loading ? 'Mise à jour...' : 'Réinitialiser'}
+                {loading ? tMsg.updating : tMsg.confirm}
               </button>
             </form>
           )}
           <div className="mt-8 text-center">
-            <Link to="/connexion" className="text-primary font-bold hover:underline">Retour à la connexion</Link>
+            <Link to="/connexion" className="text-primary font-bold hover:underline">{tR.back || 'Retour à la connexion'}</Link>
           </div>
         </div>
       </div>

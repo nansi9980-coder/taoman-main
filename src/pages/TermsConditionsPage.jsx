@@ -1,5 +1,5 @@
 import { CmsBlocksPage } from '../components/CmsBlocksPage';
 
 export const TermsConditionsPage = () => (
-  <CmsBlocksPage sectionKey="terms" activeLink="about" variant="terms" />
+  <CmsBlocksPage sectionKey="terms" activeLink="about" variant="terms" i18nNamespace="terms" />
 );

@@ -3,10 +3,15 @@ import { Footer } from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { API_URL } from "../config";
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { mergeCmsSection } from '../utils/cmsSectionDefaults';
+import { getJobsTranslations } from '../i18n/jobs';
 
 export const JobsPage = () => {
   const { section } = useSiteContent();
+  const { translations: tc, language } = useLanguage();
+  const tJ = tc?.jobs?.hero || {};
+  const tJobs = getJobsTranslations(language);
   const jobsContent = mergeCmsSection('jobs', section('jobs'));
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [jobListings, setJobListings] = useState([]);
@@ -44,7 +49,7 @@ export const JobsPage = () => {
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-gray-600">Chargement des emplois...</p>
+            <p className="text-gray-600">{tJobs.loading}</p>
           </div>
         </main>
         <Footer />
@@ -58,7 +63,7 @@ export const JobsPage = () => {
 
   const categories = jobsContent.categories?.length
     ? jobsContent.categories
-    : [{ value: 'all', label: 'Tous les postes' }];
+    : [{ value: 'all', label: tJobs.filterAll }];
 
 
   return (
@@ -69,8 +74,11 @@ export const JobsPage = () => {
         {/* Hero Section */}
         <section className="bg-primary py-xxl text-on-primary">
           <div className="max-w-[1200px] mx-auto px-lg text-center">
-            <h1 className="font-display text-display text-on-primary mb-md">{jobsContent.title}</h1>
-            <p className="text-body-lg text-on-primary/90 mb-xl max-w-3xl mx-auto">{jobsContent.subtitle}</p>
+            {tJ.eyebrow && (
+              <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] text-on-primary/80">{tJ.eyebrow}</p>
+            )}
+            <h1 className="font-display text-display text-on-primary mb-md">{tJ.title || jobsContent.title}</h1>
+            <p className="text-body-lg text-on-primary/90 mb-xl max-w-3xl mx-auto">{tJ.description || jobsContent.subtitle}</p>
           </div>
         </section>
 
@@ -78,7 +86,7 @@ export const JobsPage = () => {
         <section className="py-xxl max-w-[1200px] mx-auto px-lg w-full">
           {/* Filters */}
           <div className="mb-xl">
-            <h2 className="text-headline-md text-on-surface font-bold mb-md">{jobsContent.filterTitle || 'Filtrer par catégorie'}</h2>
+            <h2 className="text-headline-md text-on-surface font-bold mb-md">{jobsContent.filterTitle || tJobs.filterTitle}</h2>
             <div className="flex flex-wrap gap-md">
               {categories.map((cat) => (
                 <button
@@ -109,7 +117,7 @@ export const JobsPage = () => {
                       {job.title}
                     </h3>
                     <p className="text-body-sm text-on-surface-variant mb-md">
-                      TAOMAN Group Investment • {job.location || 'Lomé, Togo'}
+                      TAOMAN Group Investment • {job.location || tJobs.defaultLocation}
                     </p>
                     <span className="inline-block px-md py-xs bg-primary-container/10 text-primary-container rounded-lg text-label-sm font-bold">
                       {job.type}
@@ -118,13 +126,13 @@ export const JobsPage = () => {
 
                   <div className="md:col-span-1">
                     <p className="text-headline-md text-primary font-bold mb-md">
-                      {job.startDate ? new Date(job.startDate).toLocaleDateString("fr-FR") : "Dès que possible"}
+                      {job.startDate ? new Date(job.startDate).toLocaleDateString(tJobs.locale) : tJobs.dateAsap}
                     </p>
                   </div>
 
                   <div className="md:col-span-1 text-right">
                     <button className="w-full md:w-auto bg-primary text-on-primary px-lg py-md rounded-lg font-label-md font-bold hover:opacity-90 transition-all">
-                      Candidater
+                      {tJobs.apply}
                     </button>
                   </div>
                 </div>
@@ -137,7 +145,7 @@ export const JobsPage = () => {
                   {job.skills && (
                     <div>
                       <p className="text-label-md font-bold text-on-surface mb-md">
-                        Compétences & Qualifications requises:
+                        {tJobs.skillsLabel}
                       </p>
                       <ul className="space-y-xs">
                         {job.skills.split(',').map((req, idx) => (
@@ -157,7 +165,7 @@ export const JobsPage = () => {
           {filteredJobs.length === 0 && (
             <div className="text-center py-xxl">
               <p className="text-headline-md text-on-surface-variant">
-                {jobsContent.emptyMessage || "Aucune offre d'emploi dans cette catégorie."}
+                {jobsContent.emptyMessage || tJobs.empty}
               </p>
             </div>
           )}
@@ -167,17 +175,10 @@ export const JobsPage = () => {
         <section className="bg-surface-container-low py-xxl">
           <div className="max-w-[1200px] mx-auto px-lg">
             <h2 className="text-headline-lg text-on-surface font-bold mb-xl text-center">
-              Pourquoi rejoindre TAOMAN Group Investment ?
+              {tJobs.whyJoin.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
-              {[
-                { title: 'Carrière prometteuse', desc: 'Évolutivité rapide et formation continue' },
-                { title: 'Équipe diverse', desc: 'Travailler avec des talents de différentes nationalités' },
-                { title: 'Avantages compétitifs', desc: 'Salaires attractifs et bénéfices sociaux' },
-                { title: 'Impact social', desc: 'Contribuer à des projets durables' },
-                { title: 'Environnement bienveillant', desc: 'Équilibre travail-vie personnelle' },
-                { title: 'Innovation', desc: 'Travailler avec les dernières technologies' }
-              ].map((item, idx) => (
+              {tJobs.whyJoin.items.map((item, idx) => (
                 <div key={idx} className="bg-white p-xl rounded-xl shadow-sm">
                   <h3 className="text-headline-md text-on-surface font-bold mb-md">
                     {item.title}
@@ -195,13 +196,13 @@ export const JobsPage = () => {
         <section className="bg-primary py-xxl">
           <div className="max-w-[1200px] mx-auto px-lg text-center">
             <h2 className="text-headline-lg text-on-primary font-bold mb-md">
-              N'avez-vous pas trouvé le poste idéal?
+              {tJobs.cta.title}
             </h2>
             <p className="text-body-lg text-on-primary/90 mb-xl">
-              Envoyez-nous votre CV et nous vous contacterons dès qu'une opportunité correspondra à votre profil.
+              {tJobs.cta.description}
             </p>
             <button className="bg-on-primary text-primary px-xl py-md rounded-lg font-label-md font-bold hover:opacity-90 transition-all">
-              Envoyer votre CV
+              {tJobs.cta.button}
             </button>
           </div>
         </section>

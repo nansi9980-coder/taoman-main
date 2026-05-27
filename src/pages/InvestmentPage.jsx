@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
@@ -151,6 +152,8 @@ const FAQ_ITEMS = [
 ];
 
 const FaqInvestissement = () => {
+  const { translations: tc } = useLanguage();
+  const tInv = tc?.invest || {};
   const [active, setActive] = useState('all');
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(null);
@@ -174,7 +177,7 @@ const FaqInvestissement = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-primary">
-            <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> Centre d'aide
+            <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tInv.help?.eyebrow || "Centre d'aide"}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-black tracking-tight text-on-surface">
             Questions fréquentes
@@ -341,10 +344,13 @@ export const InvestmentPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { section } = useSiteContent();
+  const { translations: tc } = useLanguage();
+  const tInv = tc?.invest || {};
+  const tCommon = tc?.common || {};
   const inv = section('investment');
-  const badge = inv.badge || DEFAULT_INVESTMENT.badge;
-  const title = inv.title || DEFAULT_INVESTMENT.title;
-  const description = inv.description || DEFAULT_INVESTMENT.description;
+  const badge = inv.badge || tInv.hero?.eyebrow || DEFAULT_INVESTMENT.badge;
+  const title = inv.title || tInv.hero?.title || DEFAULT_INVESTMENT.title;
+  const description = inv.description || tInv.hero?.description || DEFAULT_INVESTMENT.description;
   const statRows = (inv.stats?.length ? inv.stats : DEFAULT_INVESTMENT.stats).map((s) => [s.value, s.label]);
   const [apiInvestments, setApiInvestments] = useState([]);
 
@@ -372,8 +378,8 @@ export const InvestmentPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-surface pt-[80px]">
       <SeoHead
-        title="Investir avec nous au Togo"
-        description={`Pourquoi investir avec ${BRAND_NAME} : secteurs, programmes, opportunités et reporting transparent au Togo et CEDEAO.`}
+        title={tInv.hero?.title || 'Investir avec nous au Togo'}
+        description={tInv.seoDescription || `Pourquoi investir avec ${BRAND_NAME} : secteurs, programmes, opportunités et reporting transparent au Togo et CEDEAO.`}
         path="/investissement"
         jsonLd={buildBreadcrumb([
           { name: 'Accueil', path: '/' },
@@ -393,10 +399,10 @@ export const InvestmentPage = () => {
             <p className="mb-10 mx-auto max-w-2xl text-xl text-white/75">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
-                Nous contacter pour investir
+                {tCommon.contactInvest || 'Nous contacter pour investir'}
               </Link>
               <Link to="/contact?topic=project" className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition">
-                Soumettre un projet
+                {tInv.submit?.cta || 'Soumettre un projet'}
               </Link>
             </div>
           </div>
@@ -445,8 +451,8 @@ export const InvestmentPage = () => {
         <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
           <div className="mx-auto max-w-[1400px]">
             <div className="mb-12 text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Programmes TAOMAN</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Deux portes d'entrée simples</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow || 'Programmes TAOMAN'}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.programs?.title || "Deux portes d'entrée simples"}</h2>
               <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant">
                 Choisissez le programme TAOMAN qui vous correspond, ou commencez par simuler votre rendement.
               </p>
@@ -516,8 +522,8 @@ export const InvestmentPage = () => {
           <div className="mx-auto max-w-[1200px]">
             <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Soumettre un projet</p>
-                <h2 className="mt-3 text-4xl font-black text-on-surface">Présentez votre projet à TAOMAN</h2>
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
+                <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présentez votre projet à TAOMAN'}</h2>
                 <p className="mt-4 text-on-surface-variant leading-relaxed text-lg">
                   Vous avez un projet à financer ? Un porteur de projet à structurer ? Notre comité d'investissement examine chaque dossier et revient vers vous sous 5 jours ouvrés.
                 </p>
@@ -574,8 +580,8 @@ export const InvestmentPage = () => {
         <section id="opportunites" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Opportunités d'investissement</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Cinq secteurs porteurs, des projets concrets</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.opportunities?.eyebrow || "Opportunités d'investissement"}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title || 'Cinq secteurs porteurs, des projets concrets'}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
                 TAOMAN structure ses investissements autour de cinq filières prioritaires. Chacune dispose d'une page dédiée détaillant les axes, les opportunités et le profil de rendement.
               </p>
@@ -657,8 +663,8 @@ export const InvestmentPage = () => {
         <section id="criteres" className="scroll-mt-32 py-20 px-6">
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Critères d'investissement</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Comment TAOMAN sélectionne les projets</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.criteria?.eyebrow || "Critères d'investissement"}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title || 'Comment TAOMAN sélectionne les projets'}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
                 Nous appliquons une grille structurée pour évaluer chaque projet : viabilité économique, équipe, gouvernance et capacité de reporting.
               </p>
@@ -697,8 +703,8 @@ export const InvestmentPage = () => {
         <section className="bg-[#07111f] py-20 px-6 text-white">
           <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">Engagement TAOMAN</p>
-              <h2 className="mt-3 text-4xl font-black">Ce que nous garantissons aux investisseurs</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tInv.guarantee?.eyebrow || 'Engagement TAOMAN'}</p>
+              <h2 className="mt-3 text-4xl font-black">{tInv.guarantee?.title || 'Ce que nous garantissons aux investisseurs'}</h2>
               <p className="mt-4 text-white/70">
                 Un investisseur doit comprendre le rendement, le risque, les documents, les flux et le statut de chaque projet avant de s'engager.
               </p>

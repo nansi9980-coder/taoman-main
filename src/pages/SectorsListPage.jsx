@@ -12,8 +12,18 @@ export const SectorsListPage = () => {
   const { section } = useSiteContent();
   const { content: tc, nav: tNav } = useLanguage();
   const tSec = tc.sectors;
-  const sectors = normalizeSectors(section('sectors'));
-
+  const rawSectors = normalizeSectors(section('sectors'));
+  const sectors = rawSectors.map((s) => {
+    const tr = tSec.items?.[s.slug];
+    if (!tr) return s;
+    return {
+      ...s,
+      title: tr.title || s.title,
+      tag: tr.tag || s.tag,
+      short: tr.short || s.short,
+      highlights: tr.highlights?.length ? tr.highlights : s.highlights,
+    };
+  });
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead
@@ -64,7 +74,7 @@ export const SectorsListPage = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" aria-hidden="true" />
                       <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
                         <span className="rounded-full bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary shadow-sm">
-                          {sector.tag || 'Secteur'}
+                          {sector.tag || tSec.tagFallback}
                         </span>
                         <span className="text-2xl font-black text-white/90 drop-shadow">
                           {String(idx + 1).padStart(2, '0')}
@@ -84,7 +94,7 @@ export const SectorsListPage = () => {
                       <>
                         <div className="flex items-start justify-between mb-5">
                           <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-black uppercase tracking-widest text-primary">
-                            {sector.tag || 'Secteur'}
+                            {sector.tag || tSec.tagFallback}
                           </span>
                           <span className="text-2xl font-black text-primary/30">
                             {String(idx + 1).padStart(2, '0')}
@@ -112,7 +122,7 @@ export const SectorsListPage = () => {
                     )}
 
                     <div className="mt-auto flex items-center gap-2 pt-4 border-t border-outline-variant/40 text-primary font-bold transition-transform duration-300 group-hover:translate-x-1">
-                      Découvrir le secteur
+                      {tSec.discover}
                       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M5 12h14M13 5l7 7-7 7" />
                       </svg>
@@ -123,34 +133,8 @@ export const SectorsListPage = () => {
             </div>
 
             {sectors.length === 0 && (
-              <p className="text-center text-on-surface-variant">Aucun secteur publié pour l'instant.</p>
+              <p className="text-center text-on-surface-variant">{tSec.empty}</p>
             )}
-          </div>
-        </section>
-
-        <section className="py-16 px-6 bg-surface-container-low">
-          <div className="max-w-[1100px] mx-auto text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-4">Cahier des charges</p>
-            <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-4">
-              Un cadre clair, des projets traçables
-            </h2>
-            <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
-              Pour chaque secteur, TAOMAN définit le profil de risque, le ticket minimum, la durée
-              cible, les indicateurs suivis et les preuves d'exécution attendues sur le terrain.
-            </p>
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                ['Ticket', '500K FCFA'],
-                ['Durée', '10 mois'],
-                ['Reporting', 'PDF + Web'],
-                ['Suivi', '24 / 7'],
-              ].map(([label, value]) => (
-                <div key={label} className="rounded-2xl bg-white p-5 border border-outline-variant/40">
-                  <p className="text-xs uppercase tracking-widest text-on-surface-variant">{label}</p>
-                  <p className="mt-2 text-2xl font-black text-on-surface">{value}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>

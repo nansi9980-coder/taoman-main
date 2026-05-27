@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
@@ -18,7 +18,6 @@ import {
   ClipboardCheck,
   Award,
   BarChart3,
-  FileText,
 } from 'lucide-react';
 import { API_URL, mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -26,6 +25,7 @@ import { PhotoSlider } from '../components/PhotoSlider';
 import { SeoHead, buildServiceLd } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { useLanguage } from '../context/LanguageContext';
+import { getServicesTranslations } from '../i18n/services';
 import lavageCard from '../assets/realisations/lavage1.jpg';
 import lavageCard2 from '../assets/realisations/lavage2.jpg';
 import demenagementCard from '../assets/realisations/transport2.jpg';
@@ -44,6 +44,48 @@ const Icons = {
   audit: <BarChart3 className="w-6 h-6" strokeWidth={2.2} />,
 };
 
+const SERVICE_ID_TO_ICON = {
+  lavage: Icons.car,
+  demenagement: Icons.truck,
+  'entretien-bureaux': Icons.building,
+  mecanique: Icons.wrench,
+  transport: Icons.bus,
+  climatisation: Icons.snow,
+  conciergerie: Icons.shield,
+  audits: Icons.audit,
+};
+const DETAILED_ICONS = {
+  lavage: Sparkles,
+  demenagement: Truck,
+  'entretien-bureaux': Brush,
+  mecanique: Wrench,
+  transport: Bus,
+  climatisation: Snowflake,
+  conciergerie: ShieldCheck,
+  audits: BarChart3,
+};
+const SERVICE_ID_TO_HREF = {
+  lavage: '/lavage-auto/devis',
+  demenagement: '/demenagement/devis',
+  'entretien-bureaux': '/entretien/bureaux',
+  mecanique: '/contact?topic=info&service=mecanique',
+  transport: '/contact?topic=info&service=transport',
+  climatisation: '/contact?topic=info&service=climatisation',
+  conciergerie: '/contact?topic=info&service=conciergerie',
+  audits: '/contact?topic=info&service=audit',
+};
+const SERVICE_ID_TO_IMAGE = {};
+
+SERVICE_ID_TO_IMAGE.lavage = lavageCard;
+SERVICE_ID_TO_IMAGE.demenagement = demenagementCard;
+SERVICE_ID_TO_IMAGE['entretien-bureaux'] = bureauxCard;
+SERVICE_ID_TO_IMAGE.mecanique = mecaniqueCard;
+SERVICE_ID_TO_IMAGE.transport = transportCard;
+SERVICE_ID_TO_IMAGE.climatisation = lavageCard2;
+SERVICE_ID_TO_IMAGE.conciergerie = mecaniqueCard;
+SERVICE_ID_TO_IMAGE.audits = bureauxCard;
+
+// eslint-disable-next-line no-unused-vars
 const defaultServices = [
   {
     icon: Icons.car,
@@ -210,15 +252,38 @@ const DEFAULT_SERVICES_PAGE = {
 export const ServicesPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, language } = useLanguage();
   const tServ = tc.services;
+  const tServExt = useMemo(() => getServicesTranslations(language), [language]);
   const sp = section('servicesPage');
   const heroBadge = sp.badge || DEFAULT_SERVICES_PAGE.badge;
   const heroTitle = sp.title || DEFAULT_SERVICES_PAGE.title;
   const heroDesc = sp.description || DEFAULT_SERVICES_PAGE.description;
-  const btn1 = sp.btn1 || DEFAULT_SERVICES_PAGE.btn1;
-  const btn2 = sp.btn2 || DEFAULT_SERVICES_PAGE.btn2;
-  const [services, setServices] = useState(defaultServices);
+  const btn1 = sp.btn1 || tServExt.finalCta.btnQuote;
+  const btn2 = sp.btn2 || tServExt.finalCta.btnInvest;
+
+  const translatedDefaults = useMemo(
+    () =>
+      tServExt.items.map((it) => ({
+        id: it.id,
+        icon: SERVICE_ID_TO_ICON[it.id] || Icons.car,
+        image: SERVICE_ID_TO_IMAGE[it.id] || lavageCard,
+        title: it.title,
+        description: it.description,
+        href: SERVICE_ID_TO_HREF[it.id] || `/services/${it.id}`,
+        sla: it.sla,
+        badge: it.badge,
+        bullets: it.bullets,
+        priceFrom: it.priceFrom,
+      })),
+    [tServExt]
+  );
+
+  const [services, setServices] = useState(translatedDefaults);
+
+  useEffect(() => {
+    setServices(translatedDefaults);
+  }, [translatedDefaults]);
 
   useEffect(() => {
     fetch(`${API_URL}/content/services`)
@@ -237,13 +302,13 @@ export const ServicesPage = () => {
               title: s.title,
               description: s.description,
               href: s.actionLink || (s.id ? `/services/${s.id}` : resolveHref(s.title)),
-              sla: s.actionText || 'Sur devis',
-              badge: s.published ? 'Disponible' : 'Bientôt',
+              sla: s.actionText || tServExt.labels.priceFromFallback,
+              badge: s.published ? tServExt.labels.badgeAvailable : tServExt.labels.badgeSoon,
             }))
         );
       })
       .catch(() => {});
-  }, []);
+  }, [tServExt]);
 
   const servicesJsonLd = {
     '@context': 'https://schema.org',
@@ -356,19 +421,19 @@ export const ServicesPage = () => {
                   <div className="mt-auto">
                     <div className="grid grid-cols-2 gap-2 mb-4">
                       <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-on-surface-variant font-bold">Délai</p>
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-on-surface-variant font-bold">{tServExt.labels.timeLabel}</p>
                         <p className="font-black text-primary text-sm mt-1">{service.sla}</p>
                       </div>
                       <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-on-surface-variant font-bold">Tarif</p>
-                        <p className="font-black text-on-surface text-sm mt-1">{service.priceFrom || 'Sur devis'}</p>
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-on-surface-variant font-bold">{tServExt.labels.priceLabel}</p>
+                        <p className="font-black text-on-surface text-sm mt-1">{service.priceFrom || tServExt.labels.priceFromFallback}</p>
                       </div>
                     </div>
                     <button
                       onClick={() => navigate(service.href)}
                       className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-container text-white py-3 rounded-2xl font-bold text-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-95"
                     >
-                      Demander un devis <ArrowRight className="h-4 w-4" />
+                      {tServExt.labels.requestQuoteCta} <ArrowRight className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
@@ -384,105 +449,14 @@ export const ServicesPage = () => {
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tServ.detailedTitle}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-                Au-delà du devis, nous croyons à la transparence : voici comment nous travaillons, ce que nous incluons,
-                et pourquoi nos clients renouvellent leurs contrats avec TAOMAN Group Investment.
+                {tServExt.detailed.description}
               </p>
             </div>
 
             <div className="space-y-6">
-              {[
-                {
-                  Icon: Sparkles,
-                  title: 'Lavage automobile & moto',
-                  intro: "Notre centre de lavage TAOMAN combine équipements professionnels, produits adaptés à chaque type de carrosserie et personnel formé.",
-                  points: [
-                    "Trois formules : Express (15 min), Premium (45 min, intérieur + extérieur), Complet (90 min avec polish et protection).",
-                    "Service mobile à domicile sur rendez-vous, avec eau et matériel apportés par l'équipe.",
-                    "Contrats flotte mensuels pour entreprises : tarif dégressif, planning fixe, reporting photographique.",
-                    "Produits biodégradables certifiés et eau recyclée — démarche écologique réelle.",
-                  ],
-                },
-                {
-                  Icon: Truck,
-                  title: 'Déménagement & aménagement',
-                  intro: "Un déménagement bien préparé représente 80 % de la réussite. Nous appliquons un protocole strict de la visite technique au remontage final.",
-                  points: [
-                    "Visite technique gratuite à domicile : mesure du volume, identification des objets fragiles, repérage des accès.",
-                    "Fourniture incluse : cartons standards et grands modèles, papier bulle, couvertures, sangles, diables.",
-                    "Démontage des meubles, transport sécurisé en camion bâché, remontage et réinstallation chez vous.",
-                    "Trajets longue distance Lomé – Kara – Atakpamé – Cotonou – Accra avec assurance marchandise incluse.",
-                  ],
-                },
-                {
-                  Icon: Brush,
-                  title: 'Entretien de bureaux',
-                  intro: "Un environnement de travail propre booste la productivité. Nos contrats sont conçus pour s'intégrer sans perturber votre activité.",
-                  points: [
-                    "Passage journalier (matin avant ouverture), hebdomadaire ou bi-hebdomadaire selon votre besoin.",
-                    "Prestations incluses : sols, surfaces, sanitaires, vitres, vidage corbeilles, désinfection des points de contact.",
-                    "Équipes en uniforme TAOMAN, identifiables, et superviseur dédié joignable 24/7.",
-                    "Reporting mensuel avec photos avant/après, suivi qualité et plan d'amélioration trimestriel.",
-                  ],
-                },
-                {
-                  Icon: Wrench,
-                  title: 'Mécanique automobile',
-                  intro: "Notre atelier multimarques traite véhicules thermiques et hybrides avec outils de diagnostic récents et techniciens certifiés.",
-                  points: [
-                    "Entretien préventif : vidange, filtres, courroie, freins, suspension, climatisation, distribution.",
-                    "Diagnostic électronique OBD pour identifier les pannes complexes (moteur, ABS, ESP, airbag).",
-                    "Devis transparent avant intervention, pièces neuves ou reconditionnées au choix.",
-                    "Contrats flotte avec carnet d'entretien digital par véhicule et rappels automatiques.",
-                  ],
-                },
-                {
-                  Icon: Bus,
-                  title: 'Transport & livraison',
-                  intro: "Notre flotte couvre toute la chaîne logistique du dernier kilomètre au transport international vers la sous-région CEDEAO.",
-                  points: [
-                    "Livraison du dernier kilomètre à Lomé : utilisation de motos, fourgons et VTC selon le volume.",
-                    "Transport B2B vers Cotonou, Accra, Ouagadougou, Niamey, Abidjan avec dédouanement coordonné.",
-                    "Suivi GPS en temps réel, confirmation de livraison signée et preuve photo si demandé.",
-                    "Tarification kilométrique transparente, sans frais cachés.",
-                  ],
-                },
-                {
-                  Icon: Snowflake,
-                  title: 'Climatisation & froid',
-                  intro: "Le climat togolais exige des installations adaptées et un entretien régulier pour garantir performance et longévité.",
-                  points: [
-                    "Installation neuve : étude thermique, choix du modèle (split, multi-split, VRV), pose certifiée.",
-                    "Maintenance préventive : nettoyage filtres, vérification gaz, contrôle des sécurités électriques.",
-                    "Dépannage rapide avec stock de pièces des principales marques disponibles à Lomé.",
-                    "Contrats annuels pour bureaux, commerces, restaurants et chambres froides avec passages programmés.",
-                  ],
-                },
-                {
-                  Icon: ShieldCheck,
-                  title: 'Conciergerie & gardiennage',
-                  intro: "Sécurité physique, accueil et entretien des espaces communs : un service unique pour vos immeubles et résidences.",
-                  points: [
-                    "Gardiennage 24/7 avec relève d'équipe, registre d'entrée/sortie et rondes signées.",
-                    "Accueil visiteurs, gestion des accès, distribution du courrier et signalement des incidents.",
-                    "Petite manutention, jardinage, entretien des parties communes (escaliers, hall, parking).",
-                    "Coordination directe avec le syndic ou le propriétaire via une application mobile dédiée.",
-                  ],
-                },
-                {
-                  Icon: BarChart3,
-                  title: 'Audits & Reporting',
-                  intro: "TAOMAN met son expertise opérationnelle et financière au service des PME, investisseurs et institutions togolaises qui ont besoin de transparence et de structuration. Nos audits débouchent sur des plans d'action concrets et nos rapports sont conformes aux standards SYSCOA et CEDEAO.",
-                  points: [
-                    "Audit financier complet : analyse des comptes, contrôle des flux de trésorerie, identification des risques cachés et recommandations chiffrées avec plan de remédiation à 90 jours.",
-                    "Audit opérationnel : revue des processus métier, contrôle qualité terrain, audit RH, conformité interne et cartographie des risques opérationnels.",
-                    "Reporting investisseur structuré : tableaux de bord mensuels, rapports trimestriels PDF, indicateurs de performance (KPI), alertes automatiques en cas de déviation et reporting consolidé annuel.",
-                    "Conformité réglementaire et KYC : vérifications d'identité, lutte anti-blanchiment (AML), conformité SYSCOA, normes CEDEAO et préparation des dossiers d'investisseur institutionnel.",
-                    "Accompagnement à la gouvernance : préparation des conseils d'administration, rédaction des comptes-rendus, structuration des comités d'audit et formation des dirigeants à la lecture financière.",
-                    "Outils digitaux : accès à notre portail web sécurisé avec téléchargement des rapports, suivi des KPI en temps réel et notifications WhatsApp en cas de seuil critique.",
-                  ],
-                },
-              ].map((cat, idx) => {
-                const { Icon, title, intro, points } = cat;
+              {tServExt.detailed.items.map((cat, idx) => {
+                const Icon = DETAILED_ICONS[cat.id] || Sparkles;
+                const { title, intro, points } = cat;
                 return (
                   <details
                     key={title}
@@ -520,34 +494,34 @@ export const ServicesPage = () => {
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="mb-14 text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">Méthode</p>
-              <h2 className="mt-3 text-4xl md:text-5xl font-black text-on-surface">Du devis au suivi, un parcours clair</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tServExt.method.eyebrow}</p>
+              <h2 className="mt-3 text-4xl md:text-5xl font-black text-on-surface">{tServExt.method.title}</h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-on-surface-variant">
-                Nous appliquons la même méthode à chaque prestation pour garantir une qualité constante.
+                {tServExt.method.description}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                { Icon: ClipboardCheck, num: '01', title: 'Diagnostic', desc: 'Lieu, volume, contraintes, délais et résultat attendu — analysé sur place ou à distance.' },
-                { Icon: Award, num: '02', title: 'Devis', desc: 'Prix, périmètre, planning, équipe et conditions lisibles, sans frais cachés.' },
-                { Icon: Users, num: '03', title: 'Exécution', desc: 'Checklist, matériel adapté et responsable identifié sur le terrain.' },
-                { Icon: CheckCircle2, num: '04', title: 'Contrôle', desc: 'Retour client, photos avant/après, suivi et corrections post-prestation.' },
-              ].map(({ Icon, num, title, desc }, idx) => (
-                <div
-                  key={num}
-                  className="bg-white rounded-3xl border border-outline-variant/40 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 100}ms` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow">
-                      <Icon className="h-5 w-5" strokeWidth={2.2} />
-                    </span>
-                    <span className="text-3xl font-black text-primary/40">{num}</span>
+              {tServExt.method.steps.map((step, idx) => {
+                const stepIcons = [ClipboardCheck, Award, Users, CheckCircle2];
+                const Icon = stepIcons[idx] || ClipboardCheck;
+                const num = String(idx + 1).padStart(2, '0');
+                const { title, desc } = step;
+                  <div
+                    key={num}
+                    className="bg-white rounded-3xl border border-outline-variant/40 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
+                    style={{ animationDelay: `${idx * 100}ms` }}
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow">
+                        <Icon className="h-5 w-5" strokeWidth={2.2} />
+                      </span>
+                      <span className="text-3xl font-black text-primary/40">{num}</span>
+                    </div>
+                    <h3 className="text-lg font-black text-on-surface mb-2">{title}</h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
                   </div>
-                  <h3 className="text-lg font-black text-on-surface mb-2">{title}</h3>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -558,31 +532,34 @@ export const ServicesPage = () => {
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true" />
           <div className="max-w-[1200px] mx-auto relative">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">Pourquoi TAOMAN</p>
-              <h2 className="mt-3 text-4xl md:text-5xl font-black">Trois engagements simples</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tServExt.whyUs.eyebrow}</p>
+              <h2 className="mt-3 text-4xl md:text-5xl font-black">{tServExt.whyUs.title}</h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-white/70">
-                Disponibilité, professionnalisme et suivi : nos trois piliers de qualité.
+                {tServExt.whyUs.description}
               </p>
             </div>
             <div className="grid lg:grid-cols-3 gap-6">
-              {[
-                { Icon: Clock, num: '24/7', title: 'Disponibilité', desc: 'Service disponible jour et nuit, 7 jours sur 7, support WhatsApp et téléphone.' },
-                { Icon: Award, num: '100%', title: 'Professionnel', desc: 'Équipe formée et identifiée, équipements adaptés, procédures qualité claires.' },
-                { Icon: CheckCircle2, num: 'Qualité', title: 'Suivi client', desc: 'Contrôle après intervention, photos documentées et retours intégrés au plan de progrès.' },
-              ].map(({ Icon, num, title, desc }, idx) => (
-                <div
-                  key={title}
-                  className="text-center rounded-3xl border border-white/15 bg-white/5 backdrop-blur p-8 hover:bg-white/10 hover:scale-105 transition-all duration-500 animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 120}ms` }}
-                >
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-300/20 text-cyan-200 mb-5">
-                    <Icon className="h-7 w-7" strokeWidth={2.2} />
+              {tServExt.whyUs.items.map((item, idx) => {
+                const whyIcons = [Clock, Award, CheckCircle2];
+                const whyNums = ['24/7', '100%', '★'];
+                const Icon = whyIcons[idx] || Clock;
+                const num = whyNums[idx] || '';
+                const { title, desc } = item;
+                return (
+                  <div
+                    key={title}
+                    className="text-center rounded-3xl border border-white/15 bg-white/5 backdrop-blur p-8 hover:bg-white/10 hover:scale-105 transition-all duration-500 animate-fade-in-up"
+                    style={{ animationDelay: `${idx * 120}ms` }}
+                  >
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-300/20 text-cyan-200 mb-5">
+                      <Icon className="h-7 w-7" strokeWidth={2.2} />
+                    </div>
+                    <div className="text-4xl font-black text-cyan-200 mb-2">{num}</div>
+                    <h3 className="text-xl font-black mb-2">{title}</h3>
+                    <p className="text-white/70 leading-relaxed">{desc}</p>
                   </div>
-                  <div className="text-4xl font-black text-cyan-200 mb-2">{num}</div>
-                  <h3 className="text-xl font-black mb-2">{title}</h3>
-                  <p className="text-white/70 leading-relaxed">{desc}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -591,29 +568,29 @@ export const ServicesPage = () => {
         <section className="bg-gradient-to-br from-primary to-primary-container py-20 px-6">
           <div className="max-w-[1200px] mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black text-on-primary mb-4">
-              Prêt à transformer vos espaces ?
+              {tServExt.finalCta.title}
             </h2>
             <p className="text-lg md:text-xl text-on-primary/90 mb-10 max-w-2xl mx-auto">
-              Contactez-nous aujourd'hui pour un devis gratuit et sans engagement. Notre équipe vous rappelle dans la journée.
+              {tServExt.finalCta.description}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-on-primary text-primary px-8 py-4 font-bold hover:scale-105 hover:shadow-xl transition"
               >
-                Demander un devis <ArrowRight className="h-4 w-4" />
+                {tServExt.finalCta.btnQuote} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact?topic=info"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-on-primary text-on-primary px-8 py-4 font-bold hover:bg-on-primary hover:text-primary transition"
               >
-                <Phone className="h-4 w-4" /> Nous appeler
+                <Phone className="h-4 w-4" /> {tServExt.finalCta.btnCall}
               </Link>
               <Link
                 to="/investissement"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/15 backdrop-blur text-on-primary px-8 py-4 font-bold hover:bg-white/25 transition border border-on-primary/30"
               >
-                Voir l'investissement
+                {tServExt.finalCta.btnInvest}
               </Link>
             </div>
           </div>

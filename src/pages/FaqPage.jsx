@@ -21,18 +21,20 @@ import { useLanguage } from '../context/LanguageContext';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { normalizeItemsSection } from '../utils/siteContent';
 import { SeoHead, buildFaqLd } from '../components/SeoHead';
+import { getFaqTranslations } from '../i18n/faq';
 
-const CATEGORIES = [
-  { id: 'all', label: 'Toutes', icon: HelpCircle },
-  { id: 'lavage', label: 'Lavage Auto', icon: Sparkles },
-  { id: 'demenagement', label: 'Déménagement', icon: Truck },
-  { id: 'entretien', label: 'Entretien bureaux', icon: Brush },
-  { id: 'mecanique', label: 'Mécanique', icon: Wrench },
-  { id: 'transport', label: 'Transport', icon: Truck },
-  { id: 'groupe', label: 'Le Groupe', icon: Building2 },
-  { id: 'investissement', label: 'Investissement', icon: TrendingUp },
-];
+const CATEGORY_ICONS = {
+  all: HelpCircle,
+  lavage: Sparkles,
+  demenagement: Truck,
+  entretien: Brush,
+  mecanique: Wrench,
+  transport: Truck,
+  groupe: Building2,
+  investissement: TrendingUp,
+};
 
+// eslint-disable-next-line no-unused-vars
 const DEFAULT_FAQ = [
   // ---- LAVAGE AUTO ----
   {
@@ -225,11 +227,16 @@ const DEFAULT_FAQ = [
 
 export const FaqPage = () => {
   const { section, loading } = useSiteContent();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, nav: tNav, language } = useLanguage();
   const tFaq = tc.faq;
+  const tFaqExt = getFaqTranslations(language);
   const faq = section('faq');
   const overridden = normalizeItemsSection(faq, []);
-  const items = overridden.length > 0 ? overridden : DEFAULT_FAQ;
+  const items = overridden.length > 0 ? overridden : tFaqExt.items;
+  const categories = tFaqExt.categories.map((c) => ({
+    ...c,
+    icon: CATEGORY_ICONS[c.id] || HelpCircle,
+  }));
 
   const [activeCategory, setActiveCategory] = useState('all');
   const [query, setQuery] = useState('');
@@ -295,7 +302,7 @@ export const FaqPage = () => {
         {/* CATEGORIES */}
         <section className="sticky top-20 z-30 bg-surface/95 backdrop-blur border-b border-outline-variant/30 px-6 py-4">
           <div className="max-w-[1200px] mx-auto flex flex-wrap gap-2 justify-center">
-            {CATEGORIES.map((cat) => {
+            {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = activeCategory === cat.id;
               return (
@@ -328,12 +335,12 @@ export const FaqPage = () => {
                   <Search className="h-6 w-6" strokeWidth={2.2} />
                 </span>
                 <h3 className="mt-4 text-xl font-black text-on-surface">{tFaq.noResults}</h3>
-                <p className="mt-2 text-on-surface-variant">Essayez un autre mot-clé ou changez de catégorie.</p>
+                <p className="mt-2 text-on-surface-variant">{tFaqExt.noResultsHelp}</p>
               </div>
             ) : (
               <div className="space-y-3">
                 {filtered.map((item, index) => {
-                  const cat = CATEGORIES.find((c) => c.id === item.category) || CATEGORIES[0];
+                  const cat = categories.find((c) => c.id === item.category) || categories[0];
                   const Icon = cat.icon;
                   return (
                     <details
@@ -375,13 +382,13 @@ export const FaqPage = () => {
           <div className="max-w-[1100px] mx-auto">
             <div className="text-center mb-10">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary">
-                <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Pas trouvé votre réponse ?
+                <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> {tFaqExt.contact.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface">
-                Notre équipe est là pour vous accompagner
+                {tFaqExt.contact.title}
               </h2>
               <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant text-lg">
-                Que ce soit pour un devis service ou une question d'investissement, choisissez le canal qui vous convient.
+                {tFaqExt.contact.description}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -392,9 +399,9 @@ export const FaqPage = () => {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <MessageCircle className="h-6 w-6" strokeWidth={2.2} />
                 </span>
-                <h3 className="mt-4 text-xl font-black text-on-surface">Nous écrire</h3>
+                <h3 className="mt-4 text-xl font-black text-on-surface">{tFaqExt.contact.writeTitle}</h3>
                 <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                  Formulaire de contact pour toute question, demande de partenariat ou candidature.
+                  {tFaqExt.contact.writeDesc}
                 </p>
               </Link>
               <a
@@ -404,9 +411,9 @@ export const FaqPage = () => {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <Phone className="h-6 w-6" strokeWidth={2.2} />
                 </span>
-                <h3 className="mt-4 text-xl font-black text-on-surface">Nous appeler</h3>
+                <h3 className="mt-4 text-xl font-black text-on-surface">{tFaqExt.contact.callTitle}</h3>
                 <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                  Une équipe support joignable du lundi au vendredi pour vos demandes urgentes.
+                  {tFaqExt.contact.callDesc}
                 </p>
               </a>
               <a
@@ -416,9 +423,9 @@ export const FaqPage = () => {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <Mail className="h-6 w-6" strokeWidth={2.2} />
                 </span>
-                <h3 className="mt-4 text-xl font-black text-on-surface">Email</h3>
+                <h3 className="mt-4 text-xl font-black text-on-surface">{tFaqExt.contact.emailTitle}</h3>
                 <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                  Pour les dossiers d'investissement et les demandes structurées avec pièces jointes.
+                  {tFaqExt.contact.emailDesc}
                 </p>
               </a>
             </div>

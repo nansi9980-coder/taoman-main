@@ -20,6 +20,7 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
@@ -73,13 +74,16 @@ const BENEFITS = [
 export const TaoEconomicInvestmentPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
+  const { translations: tc } = useLanguage();
+  const tT = tc?.tgi || {};
+  const tCommon = tc?.common || {};
   const tgi = section('investmentTgi') || section('investmentTie');
 
   const investmentStats = (tgi.stats?.length ? tgi.stats : DEFAULT_TGI.stats).map((s, i) => ({
     ...s,
     Icon: STAT_ICONS[i % STAT_ICONS.length],
   }));
-  const heroTitle = tgi.title || DEFAULT_TGI.title;
+  const heroTitle = tgi.title || tT.hero?.title || DEFAULT_TGI.title;
   const heroSubtitle = tgi.subtitle || DEFAULT_TGI.subtitle;
   const heroDescription = tgi.description || DEFAULT_TGI.description;
 
@@ -94,8 +98,8 @@ export const TaoEconomicInvestmentPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead
-        title="Programme TGI — Investir au Togo"
-        description="TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 2M FCFA sur 10 mois."
+        title={tT.hero?.title || 'Programme TGI — Investir au Togo'}
+        description={tT.seoDescription || "TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 2M FCFA sur 10 mois."}
         path="/investissement/tgi"
         jsonLd={breadcrumbLd}
         keywords="TGI Togo, investissement Togo, rendement, TAOMAN, 500K FCFA, programme investissement"
@@ -114,7 +118,7 @@ export const TaoEconomicInvestmentPage = () => {
 
           <div className="relative z-10 max-w-[1200px] mx-auto text-center animate-fade-in-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
-              <Sparkles className="h-4 w-4" /> Programme d'investissement TGI
+              <Sparkles className="h-4 w-4" /> {tT.hero?.badge || "Programme d'investissement TGI"}
             </span>
             <h1 className="text-5xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
               {heroTitle}
@@ -128,13 +132,13 @@ export const TaoEconomicInvestmentPage = () => {
                 onClick={() => navigate('/contact?topic=invest')}
                 className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition"
               >
-                Nous contacter pour investir
+                {tCommon.contactInvest || 'Nous contacter pour investir'}
               </button>
               <button
                 onClick={() => navigate('/inscription')}
                 className="rounded-2xl border border-white/25 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
               >
-                Commencer à investir
+                {tCommon.registerFree || 'Commencer à investir'}
               </button>
             </div>
           </div>
@@ -145,8 +149,8 @@ export const TaoEconomicInvestmentPage = () => {
           <div className="max-w-[1200px] mx-auto">
             <Reveal preset="fadeUp">
               <div className="text-center mb-14">
-                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Performance</p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface">Nos chiffres clés</h2>
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.stats?.eyebrow || 'Performance'}</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tT.stats?.title || 'Nos chiffres clés'}</h2>
                 <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                   Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.
                 </p>
@@ -181,8 +185,8 @@ export const TaoEconomicInvestmentPage = () => {
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Notre philosophie</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Les trois piliers de TGI</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.pillars?.eyebrow || 'Notre philosophie'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tT.pillars?.title || 'Les trois piliers de TGI'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Rentabilité, impact et autonomie : nos décisions d'investissement reposent sur cet équilibre.
               </p>
@@ -213,8 +217,8 @@ export const TaoEconomicInvestmentPage = () => {
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1300px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Diversification</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-4">Secteurs d'investissement</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.sectors?.eyebrow || 'Diversification'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-4">{tT.sectors?.title || "Secteurs d'investissement"}</h2>
               <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Cinq secteurs stratégiques portés par TGI — chaque domaine dispose d'une page dédiée avec son contexte, son périmètre et ses opportunités.
               </p>
@@ -253,7 +257,7 @@ export const TaoEconomicInvestmentPage = () => {
                     </p>
                     <div className="mt-5 flex items-center justify-between border-t border-outline-variant/30 pt-4">
                       <span className="text-xs font-black uppercase tracking-wider text-on-surface-variant">
-                        Rendement {sector.range || '—'}
+                        {tT.sectors?.returnLabel || 'Rendement'} {sector.range || '—'}
                       </span>
                       <span className="inline-flex items-center gap-1.5 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
                         Découvrir <ArrowRight className="h-4 w-4" />
@@ -278,8 +282,8 @@ export const TaoEconomicInvestmentPage = () => {
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Pourquoi investir avec nous</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Nos engagements</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.benefits?.eyebrow || 'Pourquoi investir avec nous'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tT.benefits?.title || 'Nos engagements'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Une promesse simple : transparence, professionnalisme et accompagnement de bout en bout.
               </p>
@@ -331,22 +335,22 @@ export const TaoEconomicInvestmentPage = () => {
         {/* ============ CTA ============ */}
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary text-white">
           <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-black mb-5">Prêt à commencer ?</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-5">{tT.cta?.title || 'Prêt à commencer ?'}</h2>
             <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              {`Rejoignez les investisseurs qui construisent leur avenir financier avec ${BRAND_NAME}.`}
+              {tT.cta?.description || `Rejoignez les investisseurs qui construisent leur avenir financier avec ${BRAND_NAME}.`}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <button
                 onClick={() => navigate('/inscription')}
                 className="rounded-2xl bg-white text-primary px-10 py-4 font-bold shadow-xl hover:scale-105 transition"
               >
-                S'inscrire maintenant
+                {tCommon.registerFree || "S'inscrire maintenant"}
               </button>
               <button
                 onClick={() => navigate('/contact?topic=invest')}
                 className="rounded-2xl border-2 border-white text-white px-10 py-4 font-bold hover:bg-white hover:text-primary transition"
               >
-                Parler à un conseiller
+                {tT.cta?.button || 'Parler à un conseiller'}
               </button>
             </div>
           </div>

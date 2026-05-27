@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
+import { useLanguage } from '../context/LanguageContext';
 import { API_URL, ADMIN_URL } from "../config";
+import { getAuthMessages } from '../i18n/authMessages';
 
 // ============ LOGIN PAGE ============
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { translations: tc, language } = useLanguage();
+  const tA = tc?.auth?.login || {};
+  const tAuthMsg = getAuthMessages(language);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -37,12 +42,12 @@ export const LoginPage = () => {
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.message || 'Erreur de connexion');
+        throw new Error(data.message || tAuthMsg.login.errors.generic);
       }
       
       const role = String(data.user?.role || '').toLowerCase();
       if (role.includes('admin')) {
-        setError(`Les administrateurs doivent utiliser l'espace admin : ${ADMIN_URL}`);
+        setError(tAuthMsg.login.errors.adminRedirect.replace('{url}', ADMIN_URL));
         return;
       }
 
@@ -53,7 +58,7 @@ export const LoginPage = () => {
         navigate('/dashboard');
       }, 1000);
     } catch (err) {
-      setError(err.message || 'Erreur de connexion. Veuillez réessayer.');
+      setError(err.message || tAuthMsg.login.errors.retry);
     } finally {
       setLoading(false);
     }
@@ -64,8 +69,8 @@ export const LoginPage = () => {
       <main className="flex-grow px-6 py-16">
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
-            <h1 className="text-3xl font-bold text-on-surface text-center mb-2">Connexion</h1>
-            <p className="text-center text-on-surface-variant mb-8">Accédez à votre compte TAOMAN Group Investment</p>
+            <h1 className="text-3xl font-bold text-on-surface text-center mb-2">{tA.title || 'Connexion'}</h1>
+            <p className="text-center text-on-surface-variant mb-8">{tA.subtitle || 'Accédez à votre compte TAOMAN Group Investment'}</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -77,7 +82,7 @@ export const LoginPage = () => {
               {/* Email */}
               <div className="animate-fade-in-up">
                 <label htmlFor="email" className="block text-on-surface font-bold mb-2">
-                  Email
+                  {tA.email || 'Email'}
                 </label>
                 <input
                   type="email"
@@ -94,7 +99,7 @@ export const LoginPage = () => {
               {/* Password */}
               <div className="animate-fade-in-up" style={{ animationDelay: '50ms' }}>
                 <label htmlFor="password" className="block text-on-surface font-bold mb-2">
-                  Mot de passe
+                  {tA.password || 'Mot de passe'}
                 </label>
                 <input
                   type="password"
@@ -118,10 +123,10 @@ export const LoginPage = () => {
                     onChange={handleChange}
                     className="w-4 h-4 accent-primary rounded"
                   />
-                  <span className="text-sm text-on-surface-variant">Se souvenir de moi</span>
+                  <span className="text-sm text-on-surface-variant">{tAuthMsg.login.rememberMe}</span>
                 </label>
-                <Link to="#" className="text-primary font-bold text-sm hover:underline">
-                  Mot de passe oublié?
+                <Link to="/reset-password" className="text-primary font-bold text-sm hover:underline">
+                  {tA.forgotPassword || 'Mot de passe oublié ?'}
                 </Link>
               </div>
 
@@ -131,14 +136,14 @@ export const LoginPage = () => {
                 disabled={loading}
                 className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Connexion en cours...' : 'Se connecter'}
+                {loading ? (tc?.common?.loading || 'Chargement…') : (tA.submit || 'Se connecter')}
               </button>
 
               {/* Register Link */}
               <p className="text-center text-on-surface-variant">
-                Pas de compte?{' '}
+                {tA.noAccount || 'Pas encore de compte ?'}{' '}
                 <Link to="/inscription" className="text-primary font-bold hover:underline">
-                  S'inscrire
+                  {tA.signUpLink || "S'inscrire"}
                 </Link>
               </p>
             </form>
@@ -155,6 +160,9 @@ export const LoginPage = () => {
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
+  const { translations: tc, language } = useLanguage();
+  const tR = tc?.auth?.register || {};
+  const tAuthMsg = getAuthMessages(language);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -180,12 +188,12 @@ export const RegisterPage = () => {
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      setError(tAuthMsg.register.errors.passwordMismatch);
       return;
     }
 
     if (!formData.acceptTerms) {
-      setError('Vous devez accepter les conditions d\'utilisation');
+      setError(tAuthMsg.register.errors.termsRequired);
       return;
     }
 
@@ -206,14 +214,14 @@ export const RegisterPage = () => {
       
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || 'Erreur lors de l\'inscription');
+        throw new Error(data.message || tAuthMsg.register.errors.generic);
       }
       
       setTimeout(() => {
         navigate('/connexion');
       }, 1000);
     } catch (err) {
-      setError(err.message || 'Erreur lors de l\'inscription. Veuillez réessayer.');
+      setError(err.message || tAuthMsg.register.errors.retry);
     } finally {
       setLoading(false);
     }
@@ -224,8 +232,8 @@ export const RegisterPage = () => {
       <main className="flex-grow px-6 py-16">
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
-            <h1 className="text-3xl font-bold text-on-surface text-center mb-2">S'inscrire</h1>
-            <p className="text-center text-on-surface-variant mb-8">Créez votre compte TAOMAN Group Investment</p>
+            <h1 className="text-3xl font-bold text-on-surface text-center mb-2">{tR.title || "S'inscrire"}</h1>
+            <p className="text-center text-on-surface-variant mb-8">{tR.subtitle || 'Créez votre compte TAOMAN Group Investment'}</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
@@ -238,7 +246,7 @@ export const RegisterPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="animate-fade-in-up">
                   <label htmlFor="firstName" className="block text-on-surface font-bold mb-2 text-sm">
-                    Prénom
+                    {tR.firstName || 'Prénom'}
                   </label>
                   <input
                     type="text"
@@ -253,7 +261,7 @@ export const RegisterPage = () => {
                 </div>
                 <div className="animate-fade-in-up" style={{ animationDelay: '50ms' }}>
                   <label htmlFor="lastName" className="block text-on-surface font-bold mb-2 text-sm">
-                    Nom
+                    {tR.lastName || 'Nom'}
                   </label>
                   <input
                     type="text"
@@ -271,7 +279,7 @@ export const RegisterPage = () => {
               {/* Email */}
               <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
                 <label htmlFor="email" className="block text-on-surface font-bold mb-2 text-sm">
-                  Email
+                  {tR.email || 'Email'}
                 </label>
                 <input
                   type="email"
@@ -288,7 +296,7 @@ export const RegisterPage = () => {
               {/* Phone */}
               <div className="animate-fade-in-up" style={{ animationDelay: '150ms' }}>
                 <label htmlFor="phone" className="block text-on-surface font-bold mb-2 text-sm">
-                  Téléphone
+                  {tR.phone || 'Téléphone'}
                 </label>
                 <input
                   type="tel"
@@ -304,7 +312,7 @@ export const RegisterPage = () => {
               {/* Password */}
               <div className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
                 <label htmlFor="password" className="block text-on-surface font-bold mb-2 text-sm">
-                  Mot de passe
+                  {tR.password || 'Mot de passe'}
                 </label>
                 <input
                   type="password"
@@ -321,7 +329,7 @@ export const RegisterPage = () => {
               {/* Confirm Password */}
               <div className="animate-fade-in-up" style={{ animationDelay: '250ms' }}>
                 <label htmlFor="confirmPassword" className="block text-on-surface font-bold mb-2 text-sm">
-                  Confirmer mot de passe
+                  {tR.confirm || 'Confirmer mot de passe'}
                 </label>
                 <input
                   type="password"
@@ -346,7 +354,14 @@ export const RegisterPage = () => {
                     className="w-4 h-4 accent-primary rounded mt-1"
                   />
                   <span className="text-sm text-on-surface-variant">
-                    J'accepte les <Link to="/mentions-legales" className="text-primary font-bold hover:underline">conditions d'utilisation</Link> et la <Link to="/confidentialite" className="text-primary font-bold hover:underline">politique de confidentialité</Link>
+                    {tAuthMsg.register.terms.accept}{' '}
+                    <Link to="/mentions-legales" className="text-primary font-bold hover:underline">
+                      {tAuthMsg.register.terms.termsLink}
+                    </Link>{' '}
+                    {tAuthMsg.register.terms.and}{' '}
+                    <Link to="/confidentialite" className="text-primary font-bold hover:underline">
+                      {tAuthMsg.register.terms.privacyLink}
+                    </Link>
                   </span>
                 </label>
               </div>
@@ -357,14 +372,14 @@ export const RegisterPage = () => {
                 disabled={loading}
                 className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
               >
-                {loading ? 'Inscription en cours...' : 'S\'inscrire'}
+                {loading ? (tc?.common?.loading || 'Chargement…') : (tR.submit || "S'inscrire")}
               </button>
 
               {/* Login Link */}
               <p className="text-center text-on-surface-variant text-sm">
-                Déjà inscrit?{' '}
+                {tR.hasAccount || 'Vous avez déjà un compte ?'}{' '}
                 <Link to="/connexion" className="text-primary font-bold hover:underline">
-                  Se connecter
+                  {tR.signInLink || 'Se connecter'}
                 </Link>
               </p>
             </form>

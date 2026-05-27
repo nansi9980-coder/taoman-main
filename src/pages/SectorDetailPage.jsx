@@ -37,13 +37,32 @@ export const SectorDetailPage = () => {
   const { content: tc, nav: tNav } = useLanguage();
   const tSec = tc.sectors;
   const sectors = normalizeSectors(section('sectors'));
-  const sector = getSectorBySlug(slug, sectors) || getSectorBySlug(slug, DEFAULT_SECTORS);
+  const baseSector = getSectorBySlug(slug, sectors) || getSectorBySlug(slug, DEFAULT_SECTORS);
 
-  if (!sector) {
+  if (!baseSector) {
     return <Navigate to="/secteurs" replace />;
   }
 
-  const others = sectors.filter((item) => item.slug !== sector.slug).slice(0, 3);
+  const trItem = tSec?.items?.[baseSector.slug];
+  const sector = trItem
+    ? {
+        ...baseSector,
+        title: trItem.title || baseSector.title,
+        tag: trItem.tag || baseSector.tag,
+        short: trItem.short || baseSector.short,
+        highlights: trItem.highlights?.length ? trItem.highlights : baseSector.highlights,
+      }
+    : baseSector;
+
+  const others = sectors
+    .filter((item) => item.slug !== sector.slug)
+    .slice(0, 3)
+    .map((s) => {
+      const t = tSec?.items?.[s.slug];
+      return t
+        ? { ...s, title: t.title || s.title, tag: t.tag || s.tag, short: t.short || s.short }
+        : s;
+    });
 
   // Aspects opérationnels et indicateurs (par défaut, peuvent être enrichis par sector)
   const aspects = sector.aspects || [

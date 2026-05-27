@@ -1,14 +1,21 @@
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useLanguage } from '../context/LanguageContext';
 import { mergeCmsSection } from '../utils/cmsSectionDefaults';
 
 /**
  * Page légale / CGU / confidentialité avec blocs éditables depuis le CMS.
+ * @param {string} i18nNamespace - Optionnel ('legal' | 'privacy' | 'terms')
  */
-export function CmsBlocksPage({ sectionKey, activeLink, variant = 'gradient' }) {
+export function CmsBlocksPage({ sectionKey, activeLink, variant = 'gradient', i18nNamespace }) {
   const { section } = useSiteContent();
+  const { translations: tc } = useLanguage();
   const data = mergeCmsSection(sectionKey, section(sectionKey));
+  const i18nHero = (i18nNamespace && tc?.[i18nNamespace]?.hero) || {};
+  const heroEyebrow = i18nHero.eyebrow;
+  const heroTitle = i18nHero.title || data.title;
+  const heroSubtitle = i18nHero.description || data.subtitle;
 
   const heroClass =
     variant === 'terms'
@@ -22,8 +29,11 @@ export function CmsBlocksPage({ sectionKey, activeLink, variant = 'gradient' }) 
       <main className="flex-grow pt-24">
         <section className={heroClass}>
           <div className="max-w-[1400px] mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-4">{data.title}</h1>
-            {data.subtitle && <p className="text-xl opacity-90">{data.subtitle}</p>}
+            {heroEyebrow && (
+              <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] opacity-80">{heroEyebrow}</p>
+            )}
+            <h1 className="text-5xl font-bold mb-4">{heroTitle}</h1>
+            {heroSubtitle && <p className="text-xl opacity-90">{heroSubtitle}</p>}
           </div>
         </section>
 

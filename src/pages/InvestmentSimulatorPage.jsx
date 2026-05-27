@@ -3,9 +3,12 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { parseSiteContentMap } from '../utils/siteContent';
+import { useLanguage } from '../context/LanguageContext';
 
 export const InvestmentSimulatorPage = () => {
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
+  const { translations: tc } = useLanguage();
+  const tSim = tc?.simulator?.hero || {};
   const [mode, setMode] = useState('avance');
   const [investment, setInvestment] = useState('500000');
   const [duration, setDuration] = useState('10');
@@ -123,10 +126,10 @@ export const InvestmentSimulatorPage = () => {
           <div className="absolute -left-24 top-10 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl" />
           <div className="absolute right-0 top-16 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
           <div className="max-w-[1400px] mx-auto text-center animate-fade-in-up relative z-10">
-            <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">Outil d'estimation</p>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-[-0.05em]">Simulateur d'Investissement</h1>
+            <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">{tSim.eyebrow || "Outil d'estimation"}</p>
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-[-0.05em]">{tSim.title || "Simulateur d'Investissement"}</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Calculez vos projections sur 10 mois maximum avec intérêts composés, versements mensuels, inflation et fiscalité.
+              {tSim.description || 'Calculez vos projections sur 10 mois maximum avec intérêts composés, versements mensuels, inflation et fiscalité.'}
             </p>
           </div>
         </section>

@@ -16,11 +16,19 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const { colorMode, setColorMode } = useTheme();
   const { section } = useSiteContent();
-  const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t } = useLanguage();
+  const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t, content: tc } = useLanguage();
   const branding = section('branding');
   const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
 
   const brandName = getBrandName(language);
+  const tSectorItems = tc?.sectors?.items || {};
+  const sectorEntries = [
+    { slug: 'logistique-transports', href: '/secteurs/logistique-transports' },
+    { slug: 'agro-business', href: '/secteurs/agro-business' },
+    { slug: 'commerce-general', href: '/secteurs/commerce-general' },
+    { slug: 'btp-immobilier', href: '/secteurs/btp-immobilier' },
+    { slug: 'numerique-services', href: '/secteurs/numerique-services' },
+  ];
   const navigationItems = [
     { name: t.home, href: '/', key: 'accueil' },
     {
@@ -37,13 +45,14 @@ export const Header = ({ activeLink = 'accueil' }) => {
       name: t.projects,
       href: '/secteurs',
       key: 'projets',
-      children: [
-        { name: 'Logistique & Transports', desc: 'Flottes, déménagement et distribution urbaine', href: '/secteurs/logistique-transports' },
-        { name: 'Agro Business', desc: 'Production, transformation et filières agricoles', href: '/secteurs/agro-business' },
-        { name: 'Commerce général', desc: 'Import, négoce et distribution', href: '/secteurs/commerce-general' },
-        { name: 'BTP & Immobilier', desc: 'Construction, locatif et infrastructures', href: '/secteurs/btp-immobilier' },
-        { name: 'Numérique & Services', desc: 'Mobile Money, plateformes et SaaS', href: '/secteurs/numerique-services' },
-      ],
+      children: sectorEntries.map((entry) => {
+        const tr = tSectorItems[entry.slug] || {};
+        return {
+          name: tr.title || entry.slug,
+          desc: tr.short || '',
+          href: entry.href,
+        };
+      }),
     },
     {
       name: t.invest,
@@ -145,7 +154,6 @@ export const Header = ({ activeLink = 'accueil' }) => {
                 key={`${link.key}-${link.name}`}
                 link={link}
                 activeLink={activeLink}
-                language={language}
               />
             ) : (
               <Link

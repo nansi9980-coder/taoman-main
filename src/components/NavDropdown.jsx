@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export function NavChevron() {
   return (
@@ -17,10 +18,10 @@ export function NavChevron() {
   );
 }
 
-export function NavDropdownDesktop({ link, activeLink, language }) {
+export function NavDropdownDesktop({ link, activeLink }) {
+  const { nav: t } = useLanguage();
   const isActive = activeLink === link.key;
-  const showShortInvest =
-    language === 'FR' && link.key === 'investissement' && link.children;
+  const showShortInvest = link.key === 'investissement' && link.children && t?.investShort;
 
   return (
     <div className="group relative shrink-0">
@@ -34,7 +35,7 @@ export function NavDropdownDesktop({ link, activeLink, language }) {
       >
         {showShortInvest ? (
           <>
-            <span className="xl:hidden">Investir</span>
+            <span className="xl:hidden">{t.investShort}</span>
             <span className="hidden xl:inline">{link.name}</span>
           </>
         ) : (
@@ -74,6 +75,7 @@ export function NavDropdownDesktop({ link, activeLink, language }) {
 }
 
 export function NavDropdownMobile({ link, onNavigate, expanded, onToggle }) {
+  const { nav: t } = useLanguage();
   const hasChildren = Boolean(link.children?.length);
 
   if (!hasChildren) {
@@ -103,7 +105,7 @@ export function NavDropdownMobile({ link, onNavigate, expanded, onToggle }) {
           onClick={onToggle}
           className="interactive flex cursor-pointer items-center justify-center rounded-lg p-3 text-on-surface transition-all duration-200 hover:bg-surface-container hover:text-primary"
           aria-expanded={expanded}
-          aria-label={`Sous-menu ${link.name}`}
+          aria-label={`${t?.submenuPrefix || 'Submenu'} ${link.name}`}
         >
           <NavChevron />
         </button>

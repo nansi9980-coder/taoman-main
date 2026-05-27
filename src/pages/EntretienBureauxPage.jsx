@@ -29,10 +29,41 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { useLanguage } from '../context/LanguageContext';
+import { getOfficeTranslations } from '../i18n/office';
 import mecanique1 from '../assets/realisations/mecanique1.png';
 import mecanique2 from '../assets/realisations/mecanique2.jpg';
 
+const PRESTATION_ICONS = {
+  hebdomadaire: <CalendarDays className="h-6 w-6" strokeWidth={2.2} />,
+  quotidien: <Sun className="h-6 w-6" strokeWidth={2.2} />,
+  ponctuel: <Brush className="h-6 w-6" strokeWidth={2.2} />,
+  'bihebdo-mensuel': <Calendar className="h-6 w-6" strokeWidth={2.2} />,
+};
+
+const TARGET_ICONS = [
+  <Building2 className="h-6 w-6" strokeWidth={2} />,
+  <Scale className="h-6 w-6" strokeWidth={2} />,
+  <Landmark className="h-6 w-6" strokeWidth={2} />,
+  <Stethoscope className="h-6 w-6" strokeWidth={2} />,
+  <GraduationCap className="h-6 w-6" strokeWidth={2} />,
+  <Store className="h-6 w-6" strokeWidth={2} />,
+  <UtensilsCrossed className="h-6 w-6" strokeWidth={2} />,
+  <Hotel className="h-6 w-6" strokeWidth={2} />,
+];
+
+const EQUIPMENT_ICONS = [
+  <TestTubes className="h-5 w-5" strokeWidth={2.2} />,
+  <Wind className="h-5 w-5" strokeWidth={2.2} />,
+  <Sparkles className="h-5 w-5" strokeWidth={2.2} />,
+  <ClipboardList className="h-5 w-5" strokeWidth={2.2} />,
+  <Bot className="h-5 w-5" strokeWidth={2.2} />,
+  <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />,
+];
+
 export const EntretienBureauxPage = () => {
+  const { language } = useLanguage();
+  const t = getOfficeTranslations(language);
   const [formData, setFormData] = useState({
     serviceType: '',
     surfaceArea: '',
@@ -89,118 +120,52 @@ export const EntretienBureauxPage = () => {
         });
         setTimeout(() => setSubmitted(false), 4000);
       } else {
-        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
+        setSubmitError(await getApiErrorMessage(response, t.form.errorGeneric));
       }
     } catch (error) {
       console.error('Erreur:', error);
-      setSubmitError(error.message || 'Erreur réseau. Réessayez plus tard.');
+      setSubmitError(error.message || t.form.errorNetwork);
     } finally {
       setLoading(false);
     }
   };
 
-  const prestations = [
-    {
-      icon: <CalendarDays className="h-6 w-6" strokeWidth={2.2} />,
-      title: 'Entretien régulier hebdomadaire',
-      badge: 'Le plus demandé',
-      desc: "Idéal pour les PME et cabinets. Une à plusieurs interventions par semaine, planifiées en dehors des heures de travail ou tôt le matin. Une équipe attitrée assure la continuité du service et la connaissance précise de vos locaux.",
-      pts: [
-        'Nettoyage des sols, plinthes et tapis',
-        'Dépoussiérage des bureaux et mobiliers',
-        'Désinfection des sanitaires et points de contact',
-        'Vidage des poubelles et tri des recyclables',
-        'Aération et désodorisation des espaces',
-      ],
-    },
-    {
-      icon: <Sun className="h-6 w-6" strokeWidth={2.2} />,
-      title: 'Entretien quotidien',
-      badge: 'Sites à forte fréquentation',
-      desc: "Recommandé pour les commerces, restaurants, cliniques, écoles. Une équipe matinale ou nocturne prend en charge le nettoyage avant l'ouverture, garantissant un accueil irréprochable chaque jour.",
-      pts: [
-        "Nettoyage complet avant ouverture",
-        "Réapprovisionnement consommables (papier, savon)",
-        "Reporting d'incidents et casses",
-        "Tenue d'un cahier de présence et de tâches",
-        "Astreinte téléphonique pour besoins urgents",
-      ],
-    },
-    {
-      icon: <Brush className="h-6 w-6" strokeWidth={2.2} />,
-      title: 'Nettoyage ponctuel',
-      badge: 'Sans engagement',
-      desc: "Pour un grand nettoyage exceptionnel après travaux, avant une visite importante, en fin de location, ou pour rattraper une période de négligence. Intervention sur devis ferme, équipe dédiée.",
-      pts: [
-        'Nettoyage des sols, vitres et stores',
-        'Décapage et lustrage des sols durs',
-        'Détartrage des sanitaires',
-        'Nettoyage des moquettes au shampouinage',
-        'Évacuation des déchets encombrants',
-      ],
-    },
-    {
-      icon: <Calendar className="h-6 w-6" strokeWidth={2.2} />,
-      title: 'Entretien bihebdo / mensuel',
-      badge: 'Bureaux à faible passage',
-      desc: "Adapté aux bureaux occupés à temps partiel, aux résidences secondaires professionnelles ou aux locaux de stockage. Une intervention complète tous les 15 jours ou tous les mois.",
-      pts: [
-        'Audit qualité après chaque intervention',
-        'Rapport photo des zones traitées',
-        'Tarification adaptée à la périodicité',
-        'Coordination avec un référent unique',
-        "Possibilité d'extensions ponctuelles",
-      ],
-    },
-  ];
+  const prestations = t.prestations.items.map((it) => ({
+    ...it,
+    icon: PRESTATION_ICONS[it.id] || <Brush className="h-6 w-6" strokeWidth={2.2} />,
+  }));
 
-  const cibles = [
-    { icon: <Building2 className="h-6 w-6" strokeWidth={2} />, name: 'PME & startups' },
-    { icon: <Scale className="h-6 w-6" strokeWidth={2} />, name: 'Cabinets professionnels' },
-    { icon: <Landmark className="h-6 w-6" strokeWidth={2} />, name: 'Administrations' },
-    { icon: <Stethoscope className="h-6 w-6" strokeWidth={2} />, name: 'Cliniques médicales' },
-    { icon: <GraduationCap className="h-6 w-6" strokeWidth={2} />, name: 'Écoles & universités' },
-    { icon: <Store className="h-6 w-6" strokeWidth={2} />, name: 'Commerces & boutiques' },
-    { icon: <UtensilsCrossed className="h-6 w-6" strokeWidth={2} />, name: 'Restaurants & cuisines pro' },
-    { icon: <Hotel className="h-6 w-6" strokeWidth={2} />, name: 'Hôtels & résidences' },
-  ];
+  const cibles = t.targets.items.map((it, i) => ({
+    ...it,
+    icon: TARGET_ICONS[i % TARGET_ICONS.length],
+  }));
 
-  const equipements = [
-    { icon: <TestTubes className="h-5 w-5" strokeWidth={2.2} />, title: 'Produits éco-responsables', desc: 'Nettoyants biodégradables, faible toxicité, sans phosphates ni solvants agressifs.' },
-    { icon: <Wind className="h-5 w-5" strokeWidth={2.2} />, title: 'Aspirateurs HEPA', desc: 'Filtration fine qui retient même les particules les plus petites (essentiel pour environnements sensibles).' },
-    { icon: <Sparkles className="h-5 w-5" strokeWidth={2.2} />, title: 'Microfibres certifiées', desc: 'Chiffons codifiés par couleur (sanitaire, bureau, vitre, sol) pour éviter toute contamination croisée.' },
-    { icon: <ClipboardList className="h-5 w-5" strokeWidth={2.2} />, title: 'Chariots professionnels', desc: 'Organisation rigoureuse du matériel, accès rapide, ergonomie pour les opérateurs.' },
-    { icon: <Bot className="h-5 w-5" strokeWidth={2.2} />, title: 'Mono-brosses & auto-laveuses', desc: 'Pour les grandes surfaces de sols durs (open-spaces, hall, parking couvert).' },
-    { icon: <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />, title: 'Désinfectants EN 14476', desc: 'Efficacité prouvée contre bactéries et virus (utile pour cabinets médicaux et écoles).' },
-  ];
+  const equipements = t.equipment.items.map((it, i) => ({
+    ...it,
+    icon: EQUIPMENT_ICONS[i % EQUIPMENT_ICONS.length],
+  }));
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisBureaux" />
+        <DevisPageHero sectionKey="devisBureaux" i18nNamespace="office" />
 
         {/* INTRO */}
         <section className="py-20 px-6 bg-surface">
           <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div>
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                <Sparkles className="h-4 w-4" strokeWidth={2.4} /> Le service en quelques mots
+                <Sparkles className="h-4 w-4" strokeWidth={2.4} /> {t.intro.eyebrow}
               </p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-6 tracking-tight">
-                Des bureaux propres, en permanence : le quotidien de vos équipes commence par un environnement sain.
+                {t.intro.title}
               </h2>
               <div className="space-y-5 text-on-surface-variant text-lg leading-relaxed">
-                <p>
-                  Un bureau propre, c'est plus qu'une question d'esthétique. C'est un environnement de travail sain pour vos collaborateurs, une image professionnelle pour vos clients et fournisseurs, et un facteur reconnu de productivité, de bien-être et de fidélisation des équipes.
-                </p>
-                <p>
-                  TAOMAN Group Investment opère des contrats d'entretien professionnel pour <strong className="text-on-surface">PME</strong>, <strong className="text-on-surface">cabinets</strong>, <strong className="text-on-surface">administrations</strong>, <strong className="text-on-surface">commerces</strong>, <strong className="text-on-surface">centres médicaux</strong> et <strong className="text-on-surface">établissements scolaires</strong>. Nos équipes sont formées à la propreté professionnelle, équipées de matériel adapté et engagées par des contrats clairs.
-                </p>
-                <p>
-                  Que vous ayez besoin d'un nettoyage ponctuel après travaux, d'un entretien quotidien avant l'ouverture des bureaux, d'un grand nettoyage trimestriel ou d'un contrat sur mesure pour un site sensible (laboratoire, salle informatique, cuisine professionnelle), nous structurons une prestation à votre exigence.
-                </p>
+                {t.intro.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -220,11 +185,11 @@ export const EntretienBureauxPage = () => {
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-12">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary">
-                <ClipboardCheck className="h-4 w-4" strokeWidth={2.4} /> Nos prestations
+                <ClipboardCheck className="h-4 w-4" strokeWidth={2.4} /> {t.prestations.eyebrow}
               </p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Quatre formules d'entretien, une seule constance dans la qualité</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{t.prestations.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
-                Chaque entreprise a ses rythmes, ses contraintes et ses exigences. Nous proposons quatre formules complémentaires pour couvrir tous les besoins, du nettoyage de routine à l'intervention exceptionnelle.
+                {t.prestations.description}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -255,24 +220,15 @@ export const EntretienBureauxPage = () => {
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-12">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary">
-                <Wrench className="h-4 w-4" strokeWidth={2.4} /> Notre méthode
+                <Wrench className="h-4 w-4" strokeWidth={2.4} /> {t.method.eyebrow}
               </p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Une méthode rigoureuse, du diagnostic à la mesure de la satisfaction</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{t.method.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
-                Chaque contrat suit le même cycle d'amélioration continue. C'est cette régularité qui permet de garantir un niveau de qualité constant sur la durée.
+                {t.method.description}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                ['01', 'Diagnostic', "Visite des locaux, prise des surfaces, recensement des contraintes (horaires, équipements sensibles, badges d'accès), identification des zones critiques."],
-                ['02', 'Cahier des charges', "Rédaction d'un cahier des charges détaillé : fréquence, tâches précises par zone, produits utilisés, équipement fourni, horaires, points de contrôle."],
-                ['03', 'Mise en place', "Constitution de l'équipe dédiée, formation aux spécificités de votre site, mise à disposition du matériel, validation des accès et consignes de sécurité."],
-                ['04', 'Exécution', "Interventions selon le planning défini. Chaque intervention est tracée (heure, tâches, signature du responsable d'équipe, anomalies signalées)."],
-                ['05', 'Reporting', "Reporting mensuel synthétique : nombre d'interventions, taux de présence, anomalies signalées, photos avant/après."],
-                ['06', 'Contrôle qualité', "Audit mensuel par notre superviseur qualité : contrôle aléatoire des zones, satisfaction du référent interne, plan d'action en cas d'écart."],
-                ['07', 'Ajustements', "Ajustement du contrat selon vos retours : ajout de tâches, modification d'horaires, renfort ponctuel, formation continue des équipes."],
-                ['08', 'Renouvellement', "Bilan annuel, revue de contrat, ajustement tarifaire si nécessaire, renforcement de la relation de confiance dans la durée."],
-              ].map(([num, title, desc]) => (
+              {t.method.steps.map(({ num, title, desc }) => (
                 <div key={num} className="rounded-2xl bg-white border border-outline-variant/40 p-5 hover:shadow-md transition-all">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-black text-sm shadow">{num}</span>
                   <h3 className="mt-3 text-base font-black text-on-surface">{title}</h3>
@@ -288,11 +244,11 @@ export const EntretienBureauxPage = () => {
           <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
             <div>
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                <TestTubes className="h-4 w-4" strokeWidth={2.4} /> Produits & équipements
+                <TestTubes className="h-4 w-4" strokeWidth={2.4} /> {t.equipment.eyebrow}
               </p>
-              <h2 className="text-4xl font-black text-on-surface mb-5">Du matériel professionnel, des produits sans danger</h2>
+              <h2 className="text-4xl font-black text-on-surface mb-5">{t.equipment.title}</h2>
               <p className="text-on-surface-variant leading-relaxed mb-6">
-                Nous investissons dans du matériel professionnel parce qu'il fait la différence entre un nettoyage de surface et un nettoyage en profondeur. Et nous sélectionnons des produits qui nettoient efficacement sans agresser ni vos surfaces, ni vos collaborateurs.
+                {t.equipment.description}
               </p>
               <div className="space-y-3">
                 {equipements.map((eq) => (
@@ -319,11 +275,11 @@ export const EntretienBureauxPage = () => {
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-10">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary">
-                <Building2 className="h-4 w-4" strokeWidth={2.4} /> Pour qui ?
+                <Building2 className="h-4 w-4" strokeWidth={2.4} /> {t.targets.eyebrow}
               </p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">Tous les espaces professionnels peuvent bénéficier de notre méthode</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{t.targets.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">
-                Du cabinet d'avocat de 60 m² au plateau de bureaux de 1 200 m², en passant par les écoles, les cliniques et les administrations : nous adaptons l'équipe, la formation et le matériel.
+                {t.targets.description}
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

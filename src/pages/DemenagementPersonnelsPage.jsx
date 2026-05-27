@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useLanguage } from '../context/LanguageContext';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 import mecanique1 from '../assets/realisations/mecanique1.png';
@@ -111,6 +112,9 @@ const TYPES = [
 
 export const DemenagementPersonnelsPage = () => {
   const [search, setSearch] = useState('');
+  const { translations: tc } = useLanguage();
+  const tM = tc?.moving || {};
+  const tCommon = tc?.common || {};
 
   const filteredVehicles = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -136,28 +140,26 @@ export const DemenagementPersonnelsPage = () => {
           <div className="relative z-10 max-w-[1300px] mx-auto grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div className="animate-fade-in-up">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
-                <Truck className="h-4 w-4" /> Personnel & flotte TAOMAN
+                <Truck className="h-4 w-4" /> {tM.hero?.eyebrow || 'Personnel & flotte TAOMAN'}
               </span>
               <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
-                Une équipe professionnelle de déménagement
+                {tM.hero?.title || 'Une équipe professionnelle de déménagement'}
               </h1>
               <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-8 leading-relaxed">
-                TAOMAN Group Investment met à votre disposition une flotte de véhicules adaptés et une équipe de déménageurs formés
-                pour vos déménagements à Lomé, en province et dans la sous-région CEDEAO. Particuliers, entreprises ou commerces —
-                chaque chantier est piloté par un chef d'équipe identifié.
+                {tM.hero?.description || "TAOMAN Group Investment met à votre disposition une flotte de véhicules adaptés et une équipe de déménageurs formés pour vos déménagements à Lomé, en province et dans la sous-région CEDEAO."}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/demenagement/devis"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-[#07111f] px-7 py-4 font-bold shadow-xl hover:scale-105 transition"
                 >
-                  Demander un devis <ArrowRight className="h-4 w-4" />
+                  {tCommon.requestQuote || 'Demander un devis'} <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/contact?topic=info&service=demenagement"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 text-white px-7 py-4 font-bold backdrop-blur hover:bg-white hover:text-[#07111f] transition"
                 >
-                  <Phone className="h-4 w-4" /> Nous contacter
+                  <Phone className="h-4 w-4" /> {tCommon.contactUs || 'Nous contacter'}
                 </Link>
               </div>
             </div>
@@ -181,10 +183,10 @@ export const DemenagementPersonnelsPage = () => {
         <section className="py-10 px-6 bg-surface-container-low border-y border-outline-variant/30">
           <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: '+ 150', label: 'Déménagements réalisés' },
-              { value: '24 / 7', label: 'Service & support' },
-              { value: '6 – 20 m³', label: 'Capacités véhicules' },
-              { value: '15 villes', label: 'Couverture Togo + CEDEAO' },
+              { value: '+ 150', label: tM.kpi?.teams || 'Déménagements réalisés' },
+              { value: '24 / 7', label: tM.kpi?.sla || 'Service & support' },
+              { value: '6 – 20 m³', label: tM.kpi?.vehicles || 'Capacités véhicules' },
+              { value: '15', label: tM.kpi?.cities || 'Couverture Togo + CEDEAO' },
             ].map((kpi) => (
               <div key={kpi.label} className="flex flex-col">
                 <span className="text-3xl md:text-4xl font-black text-primary">{kpi.value}</span>
@@ -198,8 +200,8 @@ export const DemenagementPersonnelsPage = () => {
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Qui accompagnons-nous ?</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Trois profils, une même exigence</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.types?.eyebrow || 'Qui accompagnons-nous ?'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.types?.title || 'Trois profils, une même exigence'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Que vous soyez un particulier, une entreprise ou un commerçant, nos équipes adaptent leur méthode et leur matériel à votre besoin.
               </p>
@@ -230,8 +232,8 @@ export const DemenagementPersonnelsPage = () => {
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-12">
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Notre flotte</p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface">Véhicules disponibles</h2>
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.vehicles?.eyebrow || 'Notre flotte'}</p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.vehicles?.title || 'Véhicules disponibles'}</h2>
                 <p className="mt-4 text-lg text-on-surface-variant max-w-2xl">
                   Trois formats pour s'adapter à votre volume, votre distance et votre budget. Tous nos véhicules sont entretenus dans notre atelier TAOMAN.
                 </p>
@@ -325,8 +327,8 @@ export const DemenagementPersonnelsPage = () => {
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Nos engagements</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Ce que nous garantissons</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.commitments?.eyebrow || 'Nos engagements'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.commitments?.title || 'Ce que nous garantissons'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Quatre promesses simples qui font la différence sur le terrain.
               </p>
@@ -356,8 +358,8 @@ export const DemenagementPersonnelsPage = () => {
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-14">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">Méthode</p>
-              <h2 className="text-4xl md:text-5xl font-black text-on-surface">Du contact à l'installation</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.process?.eyebrow || 'Méthode'}</p>
+              <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.process?.title || "Du contact à l'installation"}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                 Une procédure claire en quatre étapes pour un déménagement sans stress.
               </p>

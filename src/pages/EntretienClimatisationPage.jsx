@@ -80,7 +80,7 @@ export const EntretienClimatisationPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisClimatisation" />
+        <DevisPageHero sectionKey="devisClimatisation" i18nNamespace="aircon" />
 
         {/* Main Content */}
         <section className="py-20 px-6">

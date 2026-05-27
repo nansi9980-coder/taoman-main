@@ -35,21 +35,38 @@ const CONTENT = {
     about: {
       seoDescription:
         "Découvrez TAOMAN Group Investment : mission, vision, valeurs, gouvernance et leaders. Partenaire stratégique pour l'investissement et les services au Togo.",
+      title: 'TAOMAN Group Investment : votre partenaire stratégique au Togo.',
+      description:
+        'Nous pilotons et finançons des projets structurants — infrastructures, énergie, agro, mines, logistique, numérique et tourisme — en mobilisant capitaux, partenariats public-privé et exécution terrain.',
       hero: {
         eyebrow: 'À propos',
         commitmentsLabel: 'Nos engagements',
+        highlights: [
+          'Services opérationnels',
+          'Investissement structuré',
+          'Reporting investisseur',
+          'Support humain',
+        ],
       },
       mission: {
         eyebrow: 'Notre Mission',
         title: 'Ce que nous faisons, chaque jour.',
+        body: "Attirer les investissements, structurer des partenariats public-privé et accompagner des projets à fort impact économique pour le Togo et la sous-région.",
       },
       vision: {
         eyebrow: 'Notre Vision',
         title: 'Où nous voulons aller.',
+        body: "Faire du Togo une plateforme économique et logistique majeure en Afrique de l'Ouest, avec transparence, gouvernance et reporting investisseur.",
       },
       values: {
         eyebrow: 'Nos piliers',
         title: 'Nos valeurs fondamentales',
+        items: [
+          { title: 'Excellence', description: 'Qualité irréprochable dans chaque service et investissement.' },
+          { title: 'Transparence', description: 'Communication claire et honnête avec tous nos partenaires.' },
+          { title: 'Innovation', description: 'Solutions modernes, mesurables et orientées données.' },
+          { title: 'Professionnalisme', description: 'Équipe expérimentée et certifiée.' },
+        ],
       },
       governance: {
         eyebrow: 'Gouvernance',
@@ -82,14 +99,31 @@ const CONTENT = {
       timeline: {
         eyebrow: 'Étapes clés',
         title: 'Notre parcours',
+        items: [
+          { year: '2018', event: 'Fondation de TAOMAN Group Investment' },
+          { year: '2020', event: "Lancement du programme d'investissement" },
+          { year: '2022', event: '500K+ FCFA investis' },
+          { year: '2024', event: 'Expansion régionale' },
+        ],
       },
       leaders: {
         eyebrow: 'Comité de direction',
         title: 'Notre équipe dirigeante',
+        items: [
+          { name: 'Kofi Mensah', role: 'Directeur Général', bio: "Expert avec plus de 15 ans d'expérience dans le secteur financier." },
+          { name: 'Ama Osei', role: 'Directrice Financière', bio: "Expert avec plus de 15 ans d'expérience dans le secteur financier." },
+          { name: 'Benjamin Tano', role: 'Chef Opérations', bio: "Expert avec plus de 15 ans d'expérience dans le secteur financier." },
+        ],
       },
       stats: {
         eyebrow: 'En chiffres',
         title: "TAOMAN Group Investment en un coup d'œil",
+        items: [
+          { number: '4', label: 'Pôles de services' },
+          { number: '10', label: 'Mois de projection' },
+          { number: '24h', label: 'Délai de réponse cible' },
+          { number: 'PDF', label: 'Reporting investisseur' },
+        ],
       },
       cta: {
         title: "Rejoignez l'écosystème TAOMAN",
@@ -144,10 +178,150 @@ const CONTENT = {
         description:
           "Une diversification équilibrée portée par des équipes terrain et des projets concrets : logistique, agro, commerce, BTP, numérique.",
       },
+      discover: 'Découvrir le secteur',
+      empty: "Aucun secteur publié pour l'instant.",
+      tagFallback: 'Secteur',
+      brief: {
+        eyebrow: 'Cahier des charges',
+        title: 'Un cadre clair, des projets traçables',
+        description:
+          "Pour chaque secteur, TAOMAN définit le profil de risque, le ticket minimum, la durée cible, les indicateurs suivis et les preuves d'exécution attendues sur le terrain.",
+        labels: [
+          { label: 'Ticket', value: '500K FCFA' },
+          { label: 'Durée', value: '10 mois' },
+          { label: 'Reporting', value: 'PDF + Web' },
+          { label: 'Suivi', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'Logistique & Transports',
+          tag: 'Mobilité',
+          short: "Flottes, déménagement, distribution urbaine et chaînes d'approvisionnement intégrées.",
+          highlights: [
+            'Flottes de camions, utilitaires et VTC',
+            "Déménagement de particuliers et d'entreprises",
+            'Distribution urbaine du dernier kilomètre',
+          ],
+        },
+        'agro-business': {
+          title: 'Agro Business',
+          tag: 'Production',
+          short: "Filières agricoles modernisées : production, transformation et mise en marché de produits togolais à forte valeur.",
+          highlights: [
+            'Production maraîchère, céréalière et avicole',
+            'Transformation : farine, huile, conserverie',
+            'Conditionnement, marque, export régional',
+          ],
+        },
+        'commerce-general': {
+          title: 'Commerce général',
+          tag: 'Distribution',
+          short: 'Import, distribution, négoce et points de vente : capter la consommation togolaise et sous-régionale.',
+          highlights: [
+            'Import et négoce de biens à forte rotation',
+            'Distribution B2B vers boutiques et restaurateurs',
+            'Points de vente urbains et e-commerce local',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'BTP & Immobilier',
+          tag: 'Infrastructure',
+          short: 'Construction durable, immobilier locatif et infrastructures à haute valeur ajoutée.',
+          highlights: [
+            'Programmes immobiliers résidentiels et commerciaux',
+            'Rénovation, équipement et mise en exploitation',
+            'Revenus locatifs récurrents et valorisation du foncier',
+          ],
+        },
+        'numerique-services': {
+          title: 'Numérique & Services',
+          tag: 'Innovation',
+          short: 'Solutions digitales, services financiers de proximité et plateformes locales à forte croissance.',
+          highlights: [
+            'Mobile Money et services financiers de proximité',
+            'Plateformes e-commerce et marketplaces locales',
+            'Logiciels métiers pour PME togolaises',
+          ],
+        },
+      },
       keyAdvantages: 'Avantages clés',
       whySector: 'Pourquoi ce secteur',
       vigilancePoints: 'Points de vigilance',
       risksAndMitigation: 'Risques & mitigation',
+    },
+    invest: {
+      seoDescription: 'Investir avec TAOMAN Group Investment : programmes structurés, sélection de projets, reporting investisseur et garanties opérationnelles au Togo.',
+      hero: { eyebrow: 'Investir au Togo', title: 'Investissez dans des projets concrets', description: "Programmes structurés par secteur avec reporting trimestriel, KYC, gouvernance et accompagnement personnalisé." },
+      programs: { eyebrow: 'Programmes TAOMAN', title: "Deux portes d'entrée simples", description: 'Choisissez la modalité qui correspond à votre profil et à votre horizon d’investissement.' },
+      submit: { eyebrow: 'Soumettre un projet', title: 'Présentez votre projet à TAOMAN', cta: 'Soumettre mon projet' },
+      opportunities: { eyebrow: "Opportunités d'investissement", title: 'Cinq secteurs porteurs, des projets concrets' },
+      criteria: { eyebrow: "Critères d'investissement", title: 'Comment TAOMAN sélectionne les projets' },
+      guarantee: { eyebrow: 'Engagement TAOMAN', title: 'Ce que nous garantissons aux investisseurs' },
+      help: { eyebrow: "Centre d'aide", title: 'Vos questions, nos réponses' },
+    },
+    tgi: {
+      seoDescription: 'Programme TGI de TAOMAN : investissement structuré au Togo avec ticket dès 500 000 FCFA, projection 10 mois, reporting investisseur.',
+      hero: { badge: "Programme d'investissement TGI", title: 'Faites travailler votre capital avec TAOMAN' },
+      stats: { eyebrow: 'En un coup d’œil', title: 'Les chiffres clés du programme' },
+      pillars: { eyebrow: 'Trois piliers', title: 'Une promesse simple et lisible' },
+      sectors: { eyebrow: 'Secteurs financés', title: 'Où vont vos investissements', returnLabel: 'Rendement' },
+      benefits: { eyebrow: 'Avantages investisseurs', title: 'Pourquoi rejoindre TGI' },
+      cta: { title: 'Prêt à investir avec TAOMAN ?', description: 'Un conseiller vous présente le programme et vos opportunités sous 48 h.', button: 'Parler à un conseiller' },
+    },
+    moving: {
+      seoDescription: 'Personnel et flotte de déménagement TAOMAN : véhicules adaptés, équipes formées, services pour particuliers, entreprises et commerces.',
+      hero: { eyebrow: 'Personnel & flotte', title: 'Notre équipe et notre flotte de déménagement', description: "Une flotte multi-utilitaires et des équipes certifiées pour particuliers, entreprises et commerces, partout au Togo et dans la sous-région." },
+      kpi: { teams: 'Équipes terrain', vehicles: 'Véhicules', cities: 'Villes desservies', sla: 'Délais respectés' },
+      types: { eyebrow: 'Qui nous accompagnons', title: 'Trois profils de clients' },
+      vehicles: { eyebrow: 'Notre flotte', title: 'Véhicules disponibles' },
+      commitments: { eyebrow: 'Nos engagements', title: 'Pourquoi TAOMAN pour votre déménagement' },
+      process: { eyebrow: 'Notre méthode', title: 'Comment nous travaillons' },
+    },
+    carwash: {
+      seoDescription: 'Devis lavage auto et moto TAOMAN : prestations en centre ou à domicile, formules intérieur, extérieur, complet, contrats flotte.',
+      hero: { eyebrow: 'Lavage auto & moto', title: 'Demandez votre devis lavage', description: 'Centre de lavage premium, équipes mobiles et contrats flottes : choisissez la formule qui correspond à vos besoins.' },
+    },
+    devisMoving: {
+      seoDescription: 'Devis déménagement TAOMAN : particuliers, entreprises et commerces, intra-ville, inter-villes et international.',
+      hero: { eyebrow: 'Déménagement', title: 'Demandez votre devis déménagement', description: "Devis personnalisé sous 24 h, équipes professionnelles, assurance incluse et démontage / remontage du mobilier compris." },
+    },
+    office: {
+      seoDescription: 'Entretien de bureaux par TAOMAN : contrats sur mesure, équipes dédiées, produits respectueux et reporting qualité.',
+      hero: { eyebrow: 'Entretien de bureaux', title: "Un environnement de travail impeccable", description: "Contrats d'entretien professionnels avec planning sur mesure, équipes dédiées et contrôle qualité hebdomadaire." },
+    },
+    aircon: {
+      seoDescription: 'Entretien et installation de climatisation par TAOMAN : techniciens certifiés, contrats annuels et dépannage rapide au Togo.',
+      hero: { eyebrow: 'Climatisation', title: 'Devis entretien et installation de climatisation', description: "Techniciens certifiés, contrats annuels, dépannage rapide et installation neuve, à Lomé et dans toute la sous-région." },
+    },
+    jobs: {
+      seoDescription: 'Carrières TAOMAN Group Investment : rejoignez nos équipes terrain, financières et opérationnelles au Togo.',
+      hero: { eyebrow: 'Carrières', title: 'Rejoignez les équipes TAOMAN', description: "Découvrez les opportunités pour contribuer à un projet à impact économique réel pour le Togo." },
+    },
+    simulator: {
+      seoDescription: 'Simulateur d’investissement TAOMAN : projetez votre rendement sur 10 mois avec intérêts composés.',
+      hero: { eyebrow: 'Simulateur professionnel', title: 'Simulez votre investissement TGI', description: 'Calculez votre rendement projeté en fonction de votre ticket et de votre horizon.' },
+    },
+    submitProject: {
+      seoDescription: 'Soumettez votre projet à TAOMAN Group Investment : analyse sous 5 jours ouvrés, décision motivée, accompagnement structuré.',
+      hero: { eyebrow: 'Soumettre un projet', title: 'Présentez votre projet à TAOMAN', description: 'Notre comité d’investissement étudie chaque dossier et revient vers vous sous 5 jours ouvrés.' },
+    },
+    auth: {
+      login: { title: 'Connexion à votre espace', subtitle: 'Accédez à votre tableau de bord investisseur.', email: 'Adresse email', password: 'Mot de passe', submit: 'Se connecter', noAccount: 'Pas encore de compte ?', signUpLink: 'Créer un compte', forgotPassword: 'Mot de passe oublié ?' },
+      register: { title: 'Créer un compte', subtitle: 'Rejoignez l’écosystème TAOMAN en quelques minutes.', firstName: 'Prénom', lastName: 'Nom', email: 'Adresse email', phone: 'Téléphone', password: 'Mot de passe', confirm: 'Confirmer le mot de passe', submit: 'Créer mon compte', hasAccount: 'Vous avez déjà un compte ?', signInLink: 'Se connecter' },
+      reset: { title: 'Réinitialiser le mot de passe', subtitle: 'Saisissez votre adresse email pour recevoir un lien de réinitialisation.', email: 'Adresse email', submit: 'Envoyer le lien', back: 'Retour à la connexion' },
+    },
+    legal: {
+      seoDescription: 'Mentions légales TAOMAN Group Investment : éditeur, hébergeur, propriété intellectuelle, données personnelles.',
+      hero: { eyebrow: 'Mentions légales', title: 'Informations légales', description: "Toutes les informations relatives à l'édition, l'hébergement et la propriété intellectuelle du site." },
+    },
+    privacy: {
+      seoDescription: 'Politique de confidentialité TAOMAN Group Investment : collecte, traitement et protection de vos données personnelles.',
+      hero: { eyebrow: 'Confidentialité', title: 'Politique de confidentialité', description: "Comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD et aux normes locales." },
+    },
+    terms: {
+      seoDescription: "Conditions générales d'utilisation du site TAOMAN Group Investment.",
+      hero: { eyebrow: 'Termes & conditions', title: "Conditions générales d'utilisation", description: "Les règles qui régissent l'utilisation de notre site et de nos services." },
     },
     home: {
       seoDescription:
@@ -249,10 +423,34 @@ const CONTENT = {
     about: {
       seoDescription:
         'Discover TAOMAN Group Investment: mission, vision, values, governance and leadership. Strategic partner for investment and services in Togo.',
-      hero: { eyebrow: 'About', commitmentsLabel: 'Our commitments' },
-      mission: { eyebrow: 'Our Mission', title: 'What we do, every day.' },
-      vision: { eyebrow: 'Our Vision', title: 'Where we want to go.' },
-      values: { eyebrow: 'Our pillars', title: 'Our core values' },
+      title: 'TAOMAN Group Investment: your strategic partner in Togo.',
+      description:
+        'We design and fund structuring projects — infrastructure, energy, agribusiness, mining, logistics, digital and tourism — mobilising capital, public-private partnerships and on-the-ground execution.',
+      hero: {
+        eyebrow: 'About',
+        commitmentsLabel: 'Our commitments',
+        highlights: ['Operational services', 'Structured investment', 'Investor reporting', 'Human support'],
+      },
+      mission: {
+        eyebrow: 'Our Mission',
+        title: 'What we do, every day.',
+        body: 'Attract investment, structure public-private partnerships and support projects with high economic impact for Togo and the sub-region.',
+      },
+      vision: {
+        eyebrow: 'Our Vision',
+        title: 'Where we want to go.',
+        body: 'Make Togo a major economic and logistics platform in West Africa, with transparency, governance and investor reporting.',
+      },
+      values: {
+        eyebrow: 'Our pillars',
+        title: 'Our core values',
+        items: [
+          { title: 'Excellence', description: 'Impeccable quality in every service and investment.' },
+          { title: 'Transparency', description: 'Clear and honest communication with all our partners.' },
+          { title: 'Innovation', description: 'Modern, measurable and data-driven solutions.' },
+          { title: 'Professionalism', description: 'Experienced and certified team.' },
+        ],
+      },
       governance: {
         eyebrow: 'Governance',
         title: 'A rigorous structure serving investors',
@@ -265,9 +463,35 @@ const CONTENT = {
           { title: 'Risk Policy', description: 'Risk mapping (market, operational, credit, reputation), documented mitigation plan, annual independent audits and provisions tailored to each sector.' },
         ],
       },
-      timeline: { eyebrow: 'Key milestones', title: 'Our journey' },
-      leaders: { eyebrow: 'Executive committee', title: 'Our leadership team' },
-      stats: { eyebrow: 'In numbers', title: 'TAOMAN Group Investment at a glance' },
+      timeline: {
+        eyebrow: 'Key milestones',
+        title: 'Our journey',
+        items: [
+          { year: '2018', event: 'Founding of TAOMAN Group Investment' },
+          { year: '2020', event: 'Launch of the investment program' },
+          { year: '2022', event: '500K+ CFA invested' },
+          { year: '2024', event: 'Regional expansion' },
+        ],
+      },
+      leaders: {
+        eyebrow: 'Executive committee',
+        title: 'Our leadership team',
+        items: [
+          { name: 'Kofi Mensah', role: 'CEO', bio: 'Expert with over 15 years of experience in the financial sector.' },
+          { name: 'Ama Osei', role: 'CFO', bio: 'Expert with over 15 years of experience in the financial sector.' },
+          { name: 'Benjamin Tano', role: 'Head of Operations', bio: 'Expert with over 15 years of experience in the financial sector.' },
+        ],
+      },
+      stats: {
+        eyebrow: 'In numbers',
+        title: 'TAOMAN Group Investment at a glance',
+        items: [
+          { number: '4', label: 'Service hubs' },
+          { number: '10', label: 'Months of projection' },
+          { number: '24h', label: 'Target response time' },
+          { number: 'PDF', label: 'Investor reporting' },
+        ],
+      },
       cta: { title: 'Join the TAOMAN ecosystem', description: 'Discover how we can contribute to your success.', button: 'Get started' },
     },
     contact: {
@@ -289,10 +513,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: 'Investment sectors', title: 'Our business sectors', description: 'A balanced diversification driven by field teams and concrete projects: logistics, agro, trade, construction, digital.' },
+      discover: 'Discover the sector',
+      empty: 'No sectors published yet.',
+      tagFallback: 'Sector',
+      brief: {
+        eyebrow: 'Specifications',
+        title: 'A clear framework, traceable projects',
+        description: 'For each sector, TAOMAN defines the risk profile, the minimum ticket, the target duration, the monitored indicators and the field execution evidence expected.',
+        labels: [
+          { label: 'Ticket', value: '500K CFA' },
+          { label: 'Duration', value: '10 months' },
+          { label: 'Reporting', value: 'PDF + Web' },
+          { label: 'Monitoring', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'Logistics & Transport',
+          tag: 'Mobility',
+          short: 'Fleets, moving, urban distribution and integrated supply chains.',
+          highlights: [
+            'Fleets of trucks, vans and chauffeured vehicles',
+            'Residential and corporate moving',
+            'Last-mile urban distribution',
+          ],
+        },
+        'agro-business': {
+          title: 'Agribusiness',
+          tag: 'Production',
+          short: 'Modernised agricultural value chains: production, processing and marketing of high-value Togolese products.',
+          highlights: [
+            'Market gardening, cereal and poultry production',
+            'Processing: flour, oil, canning',
+            'Packaging, brand, regional export',
+          ],
+        },
+        'commerce-general': {
+          title: 'General Trade',
+          tag: 'Distribution',
+          short: 'Import, distribution, trading and points of sale: capture Togolese and sub-regional consumption.',
+          highlights: [
+            'Import and trading of fast-moving goods',
+            'B2B distribution to shops and restaurants',
+            'Urban points of sale and local e-commerce',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'Construction & Real Estate',
+          tag: 'Infrastructure',
+          short: 'Sustainable construction, rental real estate and high value-added infrastructure.',
+          highlights: [
+            'Residential and commercial real estate programs',
+            'Renovation, equipping and operation',
+            'Recurring rental income and land valuation',
+          ],
+        },
+        'numerique-services': {
+          title: 'Digital & Services',
+          tag: 'Innovation',
+          short: 'Digital solutions, proximity financial services and high-growth local platforms.',
+          highlights: [
+            'Mobile Money and proximity financial services',
+            'E-commerce platforms and local marketplaces',
+            'Business software for Togolese SMEs',
+          ],
+        },
+      },
       keyAdvantages: 'Key advantages',
       whySector: 'Why this sector',
       vigilancePoints: 'Points of vigilance',
       risksAndMitigation: 'Risks & mitigation',
+    },
+    invest: {
+      seoDescription: 'Invest with TAOMAN Group Investment: structured programs, project selection, investor reporting and operational guarantees in Togo.',
+      hero: { eyebrow: 'Invest in Togo', title: 'Invest in concrete projects', description: 'Sector-structured programs with quarterly reporting, KYC, governance and personalized support.' },
+      programs: { eyebrow: 'TAOMAN Programs', title: 'Two simple entry points', description: 'Choose the option that matches your profile and your investment horizon.' },
+      submit: { eyebrow: 'Submit a project', title: 'Present your project to TAOMAN', cta: 'Submit my project' },
+      opportunities: { eyebrow: 'Investment opportunities', title: 'Five promising sectors, concrete projects' },
+      criteria: { eyebrow: 'Investment criteria', title: 'How TAOMAN selects projects' },
+      guarantee: { eyebrow: 'TAOMAN commitment', title: 'What we guarantee to investors' },
+      help: { eyebrow: 'Help center', title: 'Your questions, our answers' },
+    },
+    tgi: {
+      seoDescription: 'TAOMAN TGI program: structured investment in Togo from 500,000 CFA, 10-month projection, investor reporting.',
+      hero: { badge: 'TGI Investment Program', title: 'Put your capital to work with TAOMAN' },
+      stats: { eyebrow: 'At a glance', title: 'Key program figures' },
+      pillars: { eyebrow: 'Three pillars', title: 'A simple and readable promise' },
+      sectors: { eyebrow: 'Funded sectors', title: 'Where your investments go', returnLabel: 'Return' },
+      benefits: { eyebrow: 'Investor benefits', title: 'Why join TGI' },
+      cta: { title: 'Ready to invest with TAOMAN?', description: 'An advisor will introduce you to the program and your opportunities within 48 hours.', button: 'Talk to an advisor' },
+    },
+    moving: {
+      seoDescription: 'TAOMAN moving personnel and fleet: adapted vehicles, trained teams, services for individuals, businesses and shops.',
+      hero: { eyebrow: 'Personnel & fleet', title: 'Our team and our moving fleet', description: 'A multi-utility fleet and certified teams for individuals, businesses and shops, throughout Togo and the sub-region.' },
+      kpi: { teams: 'Field teams', vehicles: 'Vehicles', cities: 'Cities served', sla: 'Deadlines met' },
+      types: { eyebrow: 'Who we support', title: 'Three client profiles' },
+      vehicles: { eyebrow: 'Our fleet', title: 'Available vehicles' },
+      commitments: { eyebrow: 'Our commitments', title: 'Why TAOMAN for your move' },
+      process: { eyebrow: 'Our method', title: 'How we work' },
+    },
+    carwash: {
+      seoDescription: 'TAOMAN car and motorcycle wash quote: in-center or at-home services, interior, exterior, complete packages, fleet contracts.',
+      hero: { eyebrow: 'Car & motorcycle wash', title: 'Request your wash quote', description: 'Premium wash center, mobile teams and fleet contracts: choose the package that fits your needs.' },
+    },
+    devisMoving: {
+      seoDescription: 'TAOMAN moving quote: individuals, businesses and shops, intra-city, inter-city and international.',
+      hero: { eyebrow: 'Moving', title: 'Request your moving quote', description: 'Personalized quote within 24 hours, professional teams, insurance included and furniture dismantling / reassembly covered.' },
+    },
+    office: {
+      seoDescription: 'TAOMAN office maintenance: custom contracts, dedicated teams, eco-friendly products and quality reporting.',
+      hero: { eyebrow: 'Office maintenance', title: 'An impeccable working environment', description: 'Professional maintenance contracts with custom scheduling, dedicated teams and weekly quality control.' },
+    },
+    aircon: {
+      seoDescription: 'TAOMAN air conditioning maintenance and installation: certified technicians, annual contracts and fast repair in Togo.',
+      hero: { eyebrow: 'Air conditioning', title: 'Air conditioning maintenance and installation quote', description: 'Certified technicians, annual contracts, fast repair and new installations, in Lomé and across the sub-region.' },
+    },
+    jobs: {
+      seoDescription: 'TAOMAN Group Investment careers: join our field, finance and operations teams in Togo.',
+      hero: { eyebrow: 'Careers', title: 'Join the TAOMAN teams', description: 'Discover opportunities to contribute to a project with real economic impact for Togo.' },
+    },
+    simulator: {
+      seoDescription: 'TAOMAN investment simulator: project your return over 10 months with compound interest.',
+      hero: { eyebrow: 'Professional simulator', title: 'Simulate your TGI investment', description: 'Calculate your projected return based on your ticket and your horizon.' },
+    },
+    submitProject: {
+      seoDescription: 'Submit your project to TAOMAN Group Investment: analysis within 5 business days, motivated decision, structured support.',
+      hero: { eyebrow: 'Submit a project', title: 'Present your project to TAOMAN', description: 'Our investment committee studies each file and gets back to you within 5 business days.' },
+    },
+    auth: {
+      login: { title: 'Sign in to your space', subtitle: 'Access your investor dashboard.', email: 'Email address', password: 'Password', submit: 'Sign in', noAccount: 'No account yet?', signUpLink: 'Create an account', forgotPassword: 'Forgot password?' },
+      register: { title: 'Create an account', subtitle: 'Join the TAOMAN ecosystem in a few minutes.', firstName: 'First name', lastName: 'Last name', email: 'Email address', phone: 'Phone', password: 'Password', confirm: 'Confirm password', submit: 'Create my account', hasAccount: 'Already have an account?', signInLink: 'Sign in' },
+      reset: { title: 'Reset password', subtitle: 'Enter your email address to receive a reset link.', email: 'Email address', submit: 'Send link', back: 'Back to login' },
+    },
+    legal: {
+      seoDescription: 'TAOMAN Group Investment legal notice: publisher, host, intellectual property, personal data.',
+      hero: { eyebrow: 'Legal notice', title: 'Legal information', description: 'All information related to the publication, hosting and intellectual property of the site.' },
+    },
+    privacy: {
+      seoDescription: 'TAOMAN Group Investment privacy policy: collection, processing and protection of your personal data.',
+      hero: { eyebrow: 'Privacy', title: 'Privacy policy', description: 'How we collect, use and protect your personal data in accordance with GDPR and local standards.' },
+    },
+    terms: {
+      seoDescription: 'TAOMAN Group Investment website terms of use.',
+      hero: { eyebrow: 'Terms & conditions', title: 'Terms of use', description: 'The rules governing the use of our site and services.' },
     },
     home: {
       seoDescription:
@@ -393,10 +756,25 @@ const CONTENT = {
     },
     about: {
       seoDescription: 'Descubra TAOMAN Group Investment: misión, visión, valores, gobernanza y liderazgo. Socio estratégico para la inversión y los servicios en Togo.',
-      hero: { eyebrow: 'Acerca de', commitmentsLabel: 'Nuestros compromisos' },
-      mission: { eyebrow: 'Nuestra misión', title: 'Lo que hacemos, cada día.' },
-      vision: { eyebrow: 'Nuestra visión', title: 'A dónde queremos ir.' },
-      values: { eyebrow: 'Nuestros pilares', title: 'Nuestros valores fundamentales' },
+      title: 'TAOMAN Group Investment: su socio estratégico en Togo.',
+      description: 'Diseñamos y financiamos proyectos estructurantes — infraestructura, energía, agro, minería, logística, digital y turismo — movilizando capital, alianzas público-privadas y ejecución en el terreno.',
+      hero: {
+        eyebrow: 'Acerca de',
+        commitmentsLabel: 'Nuestros compromisos',
+        highlights: ['Servicios operativos', 'Inversión estructurada', 'Reporting al inversor', 'Soporte humano'],
+      },
+      mission: { eyebrow: 'Nuestra misión', title: 'Lo que hacemos, cada día.', body: 'Atraer inversiones, estructurar alianzas público-privadas y acompañar proyectos de alto impacto económico para Togo y la subregión.' },
+      vision: { eyebrow: 'Nuestra visión', title: 'A dónde queremos ir.', body: 'Hacer de Togo una plataforma económica y logística importante en África Occidental, con transparencia, gobernanza y reporting al inversor.' },
+      values: {
+        eyebrow: 'Nuestros pilares',
+        title: 'Nuestros valores fundamentales',
+        items: [
+          { title: 'Excelencia', description: 'Calidad impecable en cada servicio e inversión.' },
+          { title: 'Transparencia', description: 'Comunicación clara y honesta con todos nuestros socios.' },
+          { title: 'Innovación', description: 'Soluciones modernas, medibles y orientadas a datos.' },
+          { title: 'Profesionalismo', description: 'Equipo experimentado y certificado.' },
+        ],
+      },
       governance: {
         eyebrow: 'Gobernanza',
         title: 'Una estructura rigurosa al servicio de los inversores',
@@ -408,9 +786,35 @@ const CONTENT = {
           { title: 'Política de riesgos', description: 'Cartografía de riesgos (mercado, operacional, crédito, imagen), plan de mitigación documentado, auditorías independientes anuales y provisiones por sector.' },
         ],
       },
-      timeline: { eyebrow: 'Hitos clave', title: 'Nuestra trayectoria' },
-      leaders: { eyebrow: 'Comité ejecutivo', title: 'Nuestro equipo directivo' },
-      stats: { eyebrow: 'En cifras', title: 'TAOMAN Group Investment de un vistazo' },
+      timeline: {
+        eyebrow: 'Hitos clave',
+        title: 'Nuestra trayectoria',
+        items: [
+          { year: '2018', event: 'Fundación de TAOMAN Group Investment' },
+          { year: '2020', event: 'Lanzamiento del programa de inversión' },
+          { year: '2022', event: '500K+ FCFA invertidos' },
+          { year: '2024', event: 'Expansión regional' },
+        ],
+      },
+      leaders: {
+        eyebrow: 'Comité ejecutivo',
+        title: 'Nuestro equipo directivo',
+        items: [
+          { name: 'Kofi Mensah', role: 'Director General', bio: 'Experto con más de 15 años de experiencia en el sector financiero.' },
+          { name: 'Ama Osei', role: 'Directora Financiera', bio: 'Experta con más de 15 años de experiencia en el sector financiero.' },
+          { name: 'Benjamin Tano', role: 'Jefe de Operaciones', bio: 'Experto con más de 15 años de experiencia en el sector financiero.' },
+        ],
+      },
+      stats: {
+        eyebrow: 'En cifras',
+        title: 'TAOMAN Group Investment de un vistazo',
+        items: [
+          { number: '4', label: 'Polos de servicios' },
+          { number: '10', label: 'Meses de proyección' },
+          { number: '24h', label: 'Tiempo de respuesta objetivo' },
+          { number: 'PDF', label: 'Reporting al inversor' },
+        ],
+      },
       cta: { title: 'Únase al ecosistema TAOMAN', description: 'Descubra cómo podemos contribuir a su éxito.', button: 'Comenzar ahora' },
     },
     contact: {
@@ -432,10 +836,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: 'Sectores de inversión', title: 'Nuestros sectores de actividad', description: 'Una diversificación equilibrada impulsada por equipos sobre el terreno y proyectos concretos: logística, agro, comercio, construcción, digital.' },
+      discover: 'Descubrir el sector',
+      empty: 'Aún no hay sectores publicados.',
+      tagFallback: 'Sector',
+      brief: {
+        eyebrow: 'Pliego de condiciones',
+        title: 'Un marco claro, proyectos trazables',
+        description: 'Para cada sector, TAOMAN define el perfil de riesgo, el ticket mínimo, la duración objetivo, los indicadores seguidos y las evidencias de ejecución esperadas en el terreno.',
+        labels: [
+          { label: 'Ticket', value: '500K FCFA' },
+          { label: 'Duración', value: '10 meses' },
+          { label: 'Reporting', value: 'PDF + Web' },
+          { label: 'Seguimiento', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'Logística y Transporte',
+          tag: 'Movilidad',
+          short: 'Flotas, mudanzas, distribución urbana y cadenas de suministro integradas.',
+          highlights: [
+            'Flotas de camiones, furgones y VTC',
+            'Mudanzas de particulares y empresas',
+            'Distribución urbana de última milla',
+          ],
+        },
+        'agro-business': {
+          title: 'Agronegocio',
+          tag: 'Producción',
+          short: 'Cadenas agrícolas modernizadas: producción, transformación y comercialización de productos togoleses de alto valor.',
+          highlights: [
+            'Producción hortícola, cerealera y avícola',
+            'Transformación: harina, aceite, conservas',
+            'Embalaje, marca, exportación regional',
+          ],
+        },
+        'commerce-general': {
+          title: 'Comercio general',
+          tag: 'Distribución',
+          short: 'Importación, distribución, comercio y puntos de venta: captar el consumo togolés y subregional.',
+          highlights: [
+            'Importación y comercio de bienes de alta rotación',
+            'Distribución B2B a tiendas y restaurantes',
+            'Puntos de venta urbanos y e-commerce local',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'Construcción e Inmobiliario',
+          tag: 'Infraestructura',
+          short: 'Construcción sostenible, inmobiliario de alquiler e infraestructura de alto valor añadido.',
+          highlights: [
+            'Programas inmobiliarios residenciales y comerciales',
+            'Renovación, equipamiento y explotación',
+            'Ingresos por alquiler recurrentes y valorización del suelo',
+          ],
+        },
+        'numerique-services': {
+          title: 'Digital y Servicios',
+          tag: 'Innovación',
+          short: 'Soluciones digitales, servicios financieros de proximidad y plataformas locales de alto crecimiento.',
+          highlights: [
+            'Mobile Money y servicios financieros de proximidad',
+            'Plataformas de e-commerce y marketplaces locales',
+            'Software empresarial para PyMEs togolesas',
+          ],
+        },
+      },
       keyAdvantages: 'Ventajas clave',
       whySector: 'Por qué este sector',
       vigilancePoints: 'Puntos de vigilancia',
       risksAndMitigation: 'Riesgos y mitigación',
+    },
+    invest: {
+      seoDescription: 'Invierta con TAOMAN Group Investment: programas estructurados, selección de proyectos, informes para inversores y garantías operativas en Togo.',
+      hero: { eyebrow: 'Invertir en Togo', title: 'Invierta en proyectos concretos', description: 'Programas estructurados por sector con informes trimestrales, KYC, gobernanza y acompañamiento personalizado.' },
+      programs: { eyebrow: 'Programas TAOMAN', title: 'Dos puertas de entrada simples', description: 'Elija la modalidad que corresponde a su perfil y horizonte de inversión.' },
+      submit: { eyebrow: 'Enviar un proyecto', title: 'Presente su proyecto a TAOMAN', cta: 'Enviar mi proyecto' },
+      opportunities: { eyebrow: 'Oportunidades de inversión', title: 'Cinco sectores prometedores, proyectos concretos' },
+      criteria: { eyebrow: 'Criterios de inversión', title: 'Cómo TAOMAN selecciona los proyectos' },
+      guarantee: { eyebrow: 'Compromiso TAOMAN', title: 'Lo que garantizamos a los inversores' },
+      help: { eyebrow: 'Centro de ayuda', title: 'Sus preguntas, nuestras respuestas' },
+    },
+    tgi: {
+      seoDescription: 'Programa TGI de TAOMAN: inversión estructurada en Togo desde 500.000 FCFA, proyección a 10 meses, informes para inversores.',
+      hero: { badge: 'Programa de inversión TGI', title: 'Haga trabajar su capital con TAOMAN' },
+      stats: { eyebrow: 'De un vistazo', title: 'Cifras clave del programa' },
+      pillars: { eyebrow: 'Tres pilares', title: 'Una promesa simple y legible' },
+      sectors: { eyebrow: 'Sectores financiados', title: 'A dónde van sus inversiones', returnLabel: 'Rendimiento' },
+      benefits: { eyebrow: 'Ventajas para inversores', title: 'Por qué unirse a TGI' },
+      cta: { title: '¿Listo para invertir con TAOMAN?', description: 'Un asesor le presenta el programa y sus oportunidades en 48 h.', button: 'Hablar con un asesor' },
+    },
+    moving: {
+      seoDescription: 'Personal y flota de mudanzas TAOMAN: vehículos adaptados, equipos formados, servicios para particulares, empresas y comercios.',
+      hero: { eyebrow: 'Personal y flota', title: 'Nuestro equipo y nuestra flota de mudanzas', description: 'Una flota multiusos y equipos certificados para particulares, empresas y comercios, en todo Togo y la subregión.' },
+      kpi: { teams: 'Equipos de campo', vehicles: 'Vehículos', cities: 'Ciudades atendidas', sla: 'Plazos cumplidos' },
+      types: { eyebrow: 'A quién acompañamos', title: 'Tres perfiles de clientes' },
+      vehicles: { eyebrow: 'Nuestra flota', title: 'Vehículos disponibles' },
+      commitments: { eyebrow: 'Nuestros compromisos', title: 'Por qué TAOMAN para su mudanza' },
+      process: { eyebrow: 'Nuestro método', title: 'Cómo trabajamos' },
+    },
+    carwash: {
+      seoDescription: 'Presupuesto de lavado de autos y motos TAOMAN: servicios en centro o a domicilio, fórmulas interior, exterior, completo, contratos de flota.',
+      hero: { eyebrow: 'Lavado auto y moto', title: 'Solicite su presupuesto de lavado', description: 'Centro de lavado premium, equipos móviles y contratos para flotas: elija la fórmula que se adapte a sus necesidades.' },
+    },
+    devisMoving: {
+      seoDescription: 'Presupuesto de mudanza TAOMAN: particulares, empresas y comercios, intra-ciudad, inter-ciudades e internacional.',
+      hero: { eyebrow: 'Mudanza', title: 'Solicite su presupuesto de mudanza', description: 'Presupuesto personalizado en 24 h, equipos profesionales, seguro incluido y desmontaje / montaje de muebles incluido.' },
+    },
+    office: {
+      seoDescription: 'Mantenimiento de oficinas TAOMAN: contratos a medida, equipos dedicados, productos respetuosos e informes de calidad.',
+      hero: { eyebrow: 'Mantenimiento de oficinas', title: 'Un entorno de trabajo impecable', description: 'Contratos de mantenimiento profesionales con planificación a medida, equipos dedicados y control de calidad semanal.' },
+    },
+    aircon: {
+      seoDescription: 'Mantenimiento e instalación de climatización TAOMAN: técnicos certificados, contratos anuales y reparación rápida en Togo.',
+      hero: { eyebrow: 'Climatización', title: 'Presupuesto de mantenimiento e instalación de climatización', description: 'Técnicos certificados, contratos anuales, reparación rápida e instalación nueva, en Lomé y en toda la subregión.' },
+    },
+    jobs: {
+      seoDescription: 'Carreras TAOMAN Group Investment: únase a nuestros equipos de campo, financieros y operativos en Togo.',
+      hero: { eyebrow: 'Carreras', title: 'Únase a los equipos TAOMAN', description: 'Descubra oportunidades para contribuir a un proyecto con impacto económico real en Togo.' },
+    },
+    simulator: {
+      seoDescription: 'Simulador de inversión TAOMAN: proyecte su rendimiento a 10 meses con interés compuesto.',
+      hero: { eyebrow: 'Simulador profesional', title: 'Simule su inversión TGI', description: 'Calcule su rendimiento proyectado según su ticket y su horizonte.' },
+    },
+    submitProject: {
+      seoDescription: 'Envíe su proyecto a TAOMAN Group Investment: análisis en 5 días hábiles, decisión motivada, acompañamiento estructurado.',
+      hero: { eyebrow: 'Enviar un proyecto', title: 'Presente su proyecto a TAOMAN', description: 'Nuestro comité de inversión estudia cada expediente y le responde en 5 días hábiles.' },
+    },
+    auth: {
+      login: { title: 'Acceda a su espacio', subtitle: 'Acceda a su panel de inversor.', email: 'Correo electrónico', password: 'Contraseña', submit: 'Iniciar sesión', noAccount: '¿Aún no tiene cuenta?', signUpLink: 'Crear una cuenta', forgotPassword: '¿Olvidó su contraseña?' },
+      register: { title: 'Crear una cuenta', subtitle: 'Únase al ecosistema TAOMAN en pocos minutos.', firstName: 'Nombre', lastName: 'Apellido', email: 'Correo electrónico', phone: 'Teléfono', password: 'Contraseña', confirm: 'Confirmar contraseña', submit: 'Crear mi cuenta', hasAccount: '¿Ya tiene una cuenta?', signInLink: 'Iniciar sesión' },
+      reset: { title: 'Restablecer contraseña', subtitle: 'Introduzca su correo electrónico para recibir un enlace.', email: 'Correo electrónico', submit: 'Enviar enlace', back: 'Volver al inicio de sesión' },
+    },
+    legal: {
+      seoDescription: 'Aviso legal TAOMAN Group Investment: editor, anfitrión, propiedad intelectual, datos personales.',
+      hero: { eyebrow: 'Aviso legal', title: 'Información legal', description: 'Toda la información relativa a la edición, el alojamiento y la propiedad intelectual del sitio.' },
+    },
+    privacy: {
+      seoDescription: 'Política de privacidad TAOMAN Group Investment: recopilación, tratamiento y protección de sus datos personales.',
+      hero: { eyebrow: 'Privacidad', title: 'Política de privacidad', description: 'Cómo recopilamos, utilizamos y protegemos sus datos personales según el RGPD y las normas locales.' },
+    },
+    terms: {
+      seoDescription: 'Condiciones generales de uso del sitio TAOMAN Group Investment.',
+      hero: { eyebrow: 'Términos y condiciones', title: 'Condiciones generales de uso', description: 'Las reglas que rigen el uso de nuestro sitio y servicios.' },
     },
     home: {
       seoDescription:
@@ -536,10 +1079,25 @@ const CONTENT = {
     },
     about: {
       seoDescription: 'Descubra TAOMAN Group Investment: missão, visão, valores, governança e liderança. Parceiro estratégico para o investimento e serviços no Togo.',
-      hero: { eyebrow: 'Sobre', commitmentsLabel: 'Os nossos compromissos' },
-      mission: { eyebrow: 'A nossa missão', title: 'O que fazemos, todos os dias.' },
-      vision: { eyebrow: 'A nossa visão', title: 'Onde queremos ir.' },
-      values: { eyebrow: 'Os nossos pilares', title: 'Os nossos valores fundamentais' },
+      title: 'TAOMAN Group Investment: o seu parceiro estratégico no Togo.',
+      description: 'Concebemos e financiamos projetos estruturantes — infraestruturas, energia, agro, minas, logística, digital e turismo — mobilizando capital, parcerias público-privadas e execução no terreno.',
+      hero: {
+        eyebrow: 'Sobre',
+        commitmentsLabel: 'Os nossos compromissos',
+        highlights: ['Serviços operacionais', 'Investimento estruturado', 'Reporting ao investidor', 'Apoio humano'],
+      },
+      mission: { eyebrow: 'A nossa missão', title: 'O que fazemos, todos os dias.', body: 'Atrair investimentos, estruturar parcerias público-privadas e acompanhar projetos de forte impacto económico para o Togo e a sub-região.' },
+      vision: { eyebrow: 'A nossa visão', title: 'Onde queremos ir.', body: 'Fazer do Togo uma plataforma económica e logística importante na África Ocidental, com transparência, governança e reporting ao investidor.' },
+      values: {
+        eyebrow: 'Os nossos pilares',
+        title: 'Os nossos valores fundamentais',
+        items: [
+          { title: 'Excelência', description: 'Qualidade impecável em cada serviço e investimento.' },
+          { title: 'Transparência', description: 'Comunicação clara e honesta com todos os nossos parceiros.' },
+          { title: 'Inovação', description: 'Soluções modernas, mensuráveis e orientadas a dados.' },
+          { title: 'Profissionalismo', description: 'Equipa experiente e certificada.' },
+        ],
+      },
       governance: {
         eyebrow: 'Governança',
         title: 'Uma estrutura rigorosa ao serviço dos investidores',
@@ -551,9 +1109,35 @@ const CONTENT = {
           { title: 'Política de risco', description: 'Cartografia de riscos (mercado, operacional, crédito, imagem), plano de mitigação documentado, auditorias independentes anuais e provisões setoriais.' },
         ],
       },
-      timeline: { eyebrow: 'Marcos-chave', title: 'O nosso percurso' },
-      leaders: { eyebrow: 'Comité executivo', title: 'A nossa equipa de liderança' },
-      stats: { eyebrow: 'Em números', title: 'TAOMAN Group Investment num relance' },
+      timeline: {
+        eyebrow: 'Marcos-chave',
+        title: 'O nosso percurso',
+        items: [
+          { year: '2018', event: 'Fundação da TAOMAN Group Investment' },
+          { year: '2020', event: 'Lançamento do programa de investimento' },
+          { year: '2022', event: '500K+ FCFA investidos' },
+          { year: '2024', event: 'Expansão regional' },
+        ],
+      },
+      leaders: {
+        eyebrow: 'Comité executivo',
+        title: 'A nossa equipa de liderança',
+        items: [
+          { name: 'Kofi Mensah', role: 'Diretor-Geral', bio: 'Especialista com mais de 15 anos de experiência no setor financeiro.' },
+          { name: 'Ama Osei', role: 'Diretora Financeira', bio: 'Especialista com mais de 15 anos de experiência no setor financeiro.' },
+          { name: 'Benjamin Tano', role: 'Diretor de Operações', bio: 'Especialista com mais de 15 anos de experiência no setor financeiro.' },
+        ],
+      },
+      stats: {
+        eyebrow: 'Em números',
+        title: 'TAOMAN Group Investment num relance',
+        items: [
+          { number: '4', label: 'Pólos de serviços' },
+          { number: '10', label: 'Meses de projeção' },
+          { number: '24h', label: 'Tempo de resposta-alvo' },
+          { number: 'PDF', label: 'Reporting ao investidor' },
+        ],
+      },
       cta: { title: 'Junte-se ao ecossistema TAOMAN', description: 'Descubra como podemos contribuir para o seu sucesso.', button: 'Começar agora' },
     },
     contact: {
@@ -575,10 +1159,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: 'Setores de investimento', title: 'Os nossos setores de atividade', description: 'Uma diversificação equilibrada impulsionada por equipas no terreno e projetos concretos: logística, agro, comércio, construção, digital.' },
+      discover: 'Descobrir o setor',
+      empty: 'Ainda não há setores publicados.',
+      tagFallback: 'Setor',
+      brief: {
+        eyebrow: 'Caderno de encargos',
+        title: 'Um quadro claro, projetos rastreáveis',
+        description: 'Para cada setor, a TAOMAN define o perfil de risco, o ticket mínimo, a duração-alvo, os indicadores seguidos e as provas de execução esperadas no terreno.',
+        labels: [
+          { label: 'Ticket', value: '500K FCFA' },
+          { label: 'Duração', value: '10 meses' },
+          { label: 'Reporting', value: 'PDF + Web' },
+          { label: 'Acompanhamento', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'Logística e Transporte',
+          tag: 'Mobilidade',
+          short: 'Frotas, mudanças, distribuição urbana e cadeias de abastecimento integradas.',
+          highlights: [
+            'Frotas de camiões, comerciais e VTC',
+            'Mudanças de particulares e empresas',
+            'Distribuição urbana de última milha',
+          ],
+        },
+        'agro-business': {
+          title: 'Agronegócio',
+          tag: 'Produção',
+          short: 'Fileiras agrícolas modernizadas: produção, transformação e comercialização de produtos togoleses de alto valor.',
+          highlights: [
+            'Produção hortícola, cerealífera e avícola',
+            'Transformação: farinha, óleo, conservas',
+            'Embalagem, marca, exportação regional',
+          ],
+        },
+        'commerce-general': {
+          title: 'Comércio geral',
+          tag: 'Distribuição',
+          short: 'Importação, distribuição, comércio e pontos de venda: captar o consumo togolês e sub-regional.',
+          highlights: [
+            'Importação e comércio de bens de alta rotação',
+            'Distribuição B2B para lojas e restaurantes',
+            'Pontos de venda urbanos e e-commerce local',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'Construção e Imobiliário',
+          tag: 'Infraestrutura',
+          short: 'Construção sustentável, imobiliário de arrendamento e infraestrutura de elevado valor acrescentado.',
+          highlights: [
+            'Programas imobiliários residenciais e comerciais',
+            'Renovação, equipamento e exploração',
+            'Rendimentos de arrendamento recorrentes e valorização fundiária',
+          ],
+        },
+        'numerique-services': {
+          title: 'Digital e Serviços',
+          tag: 'Inovação',
+          short: 'Soluções digitais, serviços financeiros de proximidade e plataformas locais de alto crescimento.',
+          highlights: [
+            'Mobile Money e serviços financeiros de proximidade',
+            'Plataformas e-commerce e marketplaces locais',
+            'Software empresarial para PMEs togolesas',
+          ],
+        },
+      },
       keyAdvantages: 'Vantagens-chave',
       whySector: 'Porquê este setor',
       vigilancePoints: 'Pontos de vigilância',
       risksAndMitigation: 'Riscos e mitigação',
+    },
+    invest: {
+      seoDescription: 'Invista com a TAOMAN Group Investment: programas estruturados, seleção de projetos, relatórios para investidores e garantias operacionais no Togo.',
+      hero: { eyebrow: 'Investir no Togo', title: 'Invista em projetos concretos', description: 'Programas estruturados por setor com relatórios trimestrais, KYC, governança e acompanhamento personalizado.' },
+      programs: { eyebrow: 'Programas TAOMAN', title: 'Duas portas de entrada simples', description: 'Escolha a modalidade que corresponde ao seu perfil e ao seu horizonte de investimento.' },
+      submit: { eyebrow: 'Enviar um projeto', title: 'Apresente o seu projeto à TAOMAN', cta: 'Enviar meu projeto' },
+      opportunities: { eyebrow: 'Oportunidades de investimento', title: 'Cinco setores promissores, projetos concretos' },
+      criteria: { eyebrow: 'Critérios de investimento', title: 'Como a TAOMAN seleciona os projetos' },
+      guarantee: { eyebrow: 'Compromisso TAOMAN', title: 'O que garantimos aos investidores' },
+      help: { eyebrow: 'Centro de ajuda', title: 'Suas perguntas, nossas respostas' },
+    },
+    tgi: {
+      seoDescription: 'Programa TGI da TAOMAN: investimento estruturado no Togo a partir de 500.000 FCFA, projeção de 10 meses, relatórios para investidores.',
+      hero: { badge: 'Programa de investimento TGI', title: 'Faça o seu capital trabalhar com a TAOMAN' },
+      stats: { eyebrow: 'Em um relance', title: 'Números-chave do programa' },
+      pillars: { eyebrow: 'Três pilares', title: 'Uma promessa simples e legível' },
+      sectors: { eyebrow: 'Setores financiados', title: 'Para onde vão os seus investimentos', returnLabel: 'Rendimento' },
+      benefits: { eyebrow: 'Vantagens para investidores', title: 'Por que aderir ao TGI' },
+      cta: { title: 'Pronto para investir com a TAOMAN?', description: 'Um consultor apresenta-lhe o programa e as suas oportunidades em 48 h.', button: 'Falar com um consultor' },
+    },
+    moving: {
+      seoDescription: 'Pessoal e frota de mudanças TAOMAN: veículos adaptados, equipas treinadas, serviços para particulares, empresas e comércios.',
+      hero: { eyebrow: 'Pessoal e frota', title: 'A nossa equipa e a nossa frota de mudanças', description: 'Uma frota multiutilitários e equipas certificadas para particulares, empresas e comércios, em todo o Togo e na sub-região.' },
+      kpi: { teams: 'Equipas de campo', vehicles: 'Veículos', cities: 'Cidades atendidas', sla: 'Prazos cumpridos' },
+      types: { eyebrow: 'Quem acompanhamos', title: 'Três perfis de clientes' },
+      vehicles: { eyebrow: 'A nossa frota', title: 'Veículos disponíveis' },
+      commitments: { eyebrow: 'Os nossos compromissos', title: 'Por que escolher a TAOMAN para a sua mudança' },
+      process: { eyebrow: 'O nosso método', title: 'Como trabalhamos' },
+    },
+    carwash: {
+      seoDescription: 'Orçamento de lavagem de automóveis e motos TAOMAN: serviços em centro ou ao domicílio, fórmulas interior, exterior, completas, contratos de frota.',
+      hero: { eyebrow: 'Lavagem auto e moto', title: 'Solicite o seu orçamento de lavagem', description: 'Centro de lavagem premium, equipas móveis e contratos de frota: escolha a fórmula que corresponde às suas necessidades.' },
+    },
+    devisMoving: {
+      seoDescription: 'Orçamento de mudanças TAOMAN: particulares, empresas e comércios, intra-cidade, inter-cidades e internacional.',
+      hero: { eyebrow: 'Mudanças', title: 'Solicite o seu orçamento de mudança', description: 'Orçamento personalizado em 24 h, equipas profissionais, seguro incluído e desmontagem / remontagem do mobiliário incluídas.' },
+    },
+    office: {
+      seoDescription: 'Manutenção de escritórios TAOMAN: contratos à medida, equipas dedicadas, produtos respeitadores e relatórios de qualidade.',
+      hero: { eyebrow: 'Manutenção de escritórios', title: 'Um ambiente de trabalho impecável', description: 'Contratos de manutenção profissionais com planeamento à medida, equipas dedicadas e controlo de qualidade semanal.' },
+    },
+    aircon: {
+      seoDescription: 'Manutenção e instalação de ar condicionado TAOMAN: técnicos certificados, contratos anuais e reparação rápida no Togo.',
+      hero: { eyebrow: 'Ar condicionado', title: 'Orçamento de manutenção e instalação de ar condicionado', description: 'Técnicos certificados, contratos anuais, reparação rápida e instalação nova, em Lomé e em toda a sub-região.' },
+    },
+    jobs: {
+      seoDescription: 'Carreiras TAOMAN Group Investment: junte-se às nossas equipas de campo, financeiras e operacionais no Togo.',
+      hero: { eyebrow: 'Carreiras', title: 'Junte-se às equipas TAOMAN', description: 'Descubra oportunidades para contribuir para um projeto com impacto económico real no Togo.' },
+    },
+    simulator: {
+      seoDescription: 'Simulador de investimento TAOMAN: projete o seu rendimento em 10 meses com juros compostos.',
+      hero: { eyebrow: 'Simulador profissional', title: 'Simule o seu investimento TGI', description: 'Calcule o seu rendimento projetado em função do seu ticket e do seu horizonte.' },
+    },
+    submitProject: {
+      seoDescription: 'Envie o seu projeto à TAOMAN Group Investment: análise em 5 dias úteis, decisão fundamentada, acompanhamento estruturado.',
+      hero: { eyebrow: 'Enviar um projeto', title: 'Apresente o seu projeto à TAOMAN', description: 'O nosso comité de investimento estuda cada processo e responde-lhe em 5 dias úteis.' },
+    },
+    auth: {
+      login: { title: 'Aceda ao seu espaço', subtitle: 'Aceda ao seu painel de investidor.', email: 'Endereço de email', password: 'Palavra-passe', submit: 'Entrar', noAccount: 'Ainda não tem conta?', signUpLink: 'Criar uma conta', forgotPassword: 'Esqueceu a palavra-passe?' },
+      register: { title: 'Criar uma conta', subtitle: 'Junte-se ao ecossistema TAOMAN em alguns minutos.', firstName: 'Nome', lastName: 'Apelido', email: 'Endereço de email', phone: 'Telefone', password: 'Palavra-passe', confirm: 'Confirmar palavra-passe', submit: 'Criar a minha conta', hasAccount: 'Já tem uma conta?', signInLink: 'Entrar' },
+      reset: { title: 'Repor palavra-passe', subtitle: 'Introduza o seu email para receber um link de reposição.', email: 'Endereço de email', submit: 'Enviar link', back: 'Voltar à entrada' },
+    },
+    legal: {
+      seoDescription: 'Avisos legais TAOMAN Group Investment: editor, anfitrião, propriedade intelectual, dados pessoais.',
+      hero: { eyebrow: 'Avisos legais', title: 'Informações legais', description: 'Todas as informações relativas à edição, ao alojamento e à propriedade intelectual do site.' },
+    },
+    privacy: {
+      seoDescription: 'Política de privacidade TAOMAN Group Investment: recolha, tratamento e proteção dos seus dados pessoais.',
+      hero: { eyebrow: 'Privacidade', title: 'Política de privacidade', description: 'Como recolhemos, utilizamos e protegemos os seus dados pessoais em conformidade com o RGPD e as normas locais.' },
+    },
+    terms: {
+      seoDescription: 'Termos e condições de utilização do site TAOMAN Group Investment.',
+      hero: { eyebrow: 'Termos e condições', title: 'Termos de utilização', description: 'As regras que regem a utilização do nosso site e dos nossos serviços.' },
     },
     home: {
       seoDescription:
@@ -679,10 +1402,25 @@ const CONTENT = {
     },
     about: {
       seoDescription: 'Entdecken Sie TAOMAN Group Investment: Mission, Vision, Werte, Governance und Führung. Strategischer Partner für Investitionen und Dienstleistungen in Togo.',
-      hero: { eyebrow: 'Über uns', commitmentsLabel: 'Unsere Verpflichtungen' },
-      mission: { eyebrow: 'Unsere Mission', title: 'Was wir täglich tun.' },
-      vision: { eyebrow: 'Unsere Vision', title: 'Wohin wir gehen wollen.' },
-      values: { eyebrow: 'Unsere Säulen', title: 'Unsere Grundwerte' },
+      title: 'TAOMAN Group Investment: Ihr strategischer Partner in Togo.',
+      description: 'Wir konzipieren und finanzieren strukturierende Projekte — Infrastruktur, Energie, Agro, Bergbau, Logistik, Digital und Tourismus — durch Mobilisierung von Kapital, öffentlich-privaten Partnerschaften und operativer Umsetzung vor Ort.',
+      hero: {
+        eyebrow: 'Über uns',
+        commitmentsLabel: 'Unsere Verpflichtungen',
+        highlights: ['Operative Dienste', 'Strukturierte Investition', 'Investor Reporting', 'Persönliche Betreuung'],
+      },
+      mission: { eyebrow: 'Unsere Mission', title: 'Was wir täglich tun.', body: 'Investitionen anziehen, öffentlich-private Partnerschaften strukturieren und Projekte mit hoher wirtschaftlicher Wirkung für Togo und die Subregion begleiten.' },
+      vision: { eyebrow: 'Unsere Vision', title: 'Wohin wir gehen wollen.', body: 'Togo zu einer bedeutenden Wirtschafts- und Logistikplattform in Westafrika machen, mit Transparenz, Governance und Investor-Reporting.' },
+      values: {
+        eyebrow: 'Unsere Säulen',
+        title: 'Unsere Grundwerte',
+        items: [
+          { title: 'Exzellenz', description: 'Tadellose Qualität in jeder Dienstleistung und jeder Investition.' },
+          { title: 'Transparenz', description: 'Klare und ehrliche Kommunikation mit allen unseren Partnern.' },
+          { title: 'Innovation', description: 'Moderne, messbare und datengetriebene Lösungen.' },
+          { title: 'Professionalität', description: 'Erfahrenes und zertifiziertes Team.' },
+        ],
+      },
       governance: {
         eyebrow: 'Governance',
         title: 'Eine strenge Struktur im Dienst der Investoren',
@@ -694,9 +1432,35 @@ const CONTENT = {
           { title: 'Risikopolitik', description: 'Risikolandkarte (Markt, Betrieb, Kredit, Image), dokumentierter Mitigationsplan, jährliche unabhängige Audits und sektorspezifische Rückstellungen.' },
         ],
       },
-      timeline: { eyebrow: 'Meilensteine', title: 'Unser Werdegang' },
-      leaders: { eyebrow: 'Führungskomitee', title: 'Unser Führungsteam' },
-      stats: { eyebrow: 'In Zahlen', title: 'TAOMAN Group Investment auf einen Blick' },
+      timeline: {
+        eyebrow: 'Meilensteine',
+        title: 'Unser Werdegang',
+        items: [
+          { year: '2018', event: 'Gründung der TAOMAN Group Investment' },
+          { year: '2020', event: 'Start des Investitionsprogramms' },
+          { year: '2022', event: '500K+ FCFA investiert' },
+          { year: '2024', event: 'Regionale Expansion' },
+        ],
+      },
+      leaders: {
+        eyebrow: 'Führungskomitee',
+        title: 'Unser Führungsteam',
+        items: [
+          { name: 'Kofi Mensah', role: 'Generaldirektor', bio: 'Experte mit über 15 Jahren Erfahrung im Finanzsektor.' },
+          { name: 'Ama Osei', role: 'Finanzdirektorin', bio: 'Expertin mit über 15 Jahren Erfahrung im Finanzsektor.' },
+          { name: 'Benjamin Tano', role: 'Leiter Operations', bio: 'Experte mit über 15 Jahren Erfahrung im Finanzsektor.' },
+        ],
+      },
+      stats: {
+        eyebrow: 'In Zahlen',
+        title: 'TAOMAN Group Investment auf einen Blick',
+        items: [
+          { number: '4', label: 'Servicebereiche' },
+          { number: '10', label: 'Monate Projektion' },
+          { number: '24h', label: 'Ziel-Antwortzeit' },
+          { number: 'PDF', label: 'Investor-Reporting' },
+        ],
+      },
       cta: { title: 'Treten Sie dem TAOMAN-Ökosystem bei', description: 'Erfahren Sie, wie wir zu Ihrem Erfolg beitragen können.', button: 'Jetzt starten' },
     },
     contact: {
@@ -718,10 +1482,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: 'Investitionssektoren', title: 'Unsere Tätigkeitsbereiche', description: 'Eine ausgewogene Diversifizierung, getragen von Vor-Ort-Teams und konkreten Projekten: Logistik, Agro, Handel, Bau, Digital.' },
+      discover: 'Sektor entdecken',
+      empty: 'Noch keine Sektoren veröffentlicht.',
+      tagFallback: 'Sektor',
+      brief: {
+        eyebrow: 'Lastenheft',
+        title: 'Ein klarer Rahmen, nachvollziehbare Projekte',
+        description: 'Für jeden Sektor definiert TAOMAN das Risikoprofil, das Mindestticket, die Ziellaufzeit, die überwachten Indikatoren und die erwarteten Vor-Ort-Ausführungsnachweise.',
+        labels: [
+          { label: 'Ticket', value: '500K FCFA' },
+          { label: 'Dauer', value: '10 Monate' },
+          { label: 'Reporting', value: 'PDF + Web' },
+          { label: 'Überwachung', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'Logistik & Transport',
+          tag: 'Mobilität',
+          short: 'Flotten, Umzug, städtische Verteilung und integrierte Lieferketten.',
+          highlights: [
+            'Flotten von LKW, Transportern und Mietwagen mit Fahrer',
+            'Umzüge für Privat- und Geschäftskunden',
+            'Letzte-Meile-Verteilung in Städten',
+          ],
+        },
+        'agro-business': {
+          title: 'Agrarwirtschaft',
+          tag: 'Produktion',
+          short: 'Modernisierte landwirtschaftliche Wertschöpfungsketten: Produktion, Verarbeitung und Vermarktung wertvoller togolesischer Produkte.',
+          highlights: [
+            'Gemüse-, Getreide- und Geflügelproduktion',
+            'Verarbeitung: Mehl, Öl, Konserven',
+            'Verpackung, Marke, regionaler Export',
+          ],
+        },
+        'commerce-general': {
+          title: 'Allgemeiner Handel',
+          tag: 'Vertrieb',
+          short: 'Import, Vertrieb, Handel und Verkaufsstellen: den togolesischen und subregionalen Konsum erfassen.',
+          highlights: [
+            'Import und Handel mit schnell drehenden Waren',
+            'B2B-Vertrieb an Geschäfte und Restaurants',
+            'Städtische Verkaufsstellen und lokaler E-Commerce',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'Bau & Immobilien',
+          tag: 'Infrastruktur',
+          short: 'Nachhaltiges Bauen, Mietimmobilien und Infrastruktur mit hoher Wertschöpfung.',
+          highlights: [
+            'Wohn- und Gewerbeimmobilienprojekte',
+            'Renovierung, Ausstattung und Inbetriebnahme',
+            'Wiederkehrende Mieteinnahmen und Wertsteigerung',
+          ],
+        },
+        'numerique-services': {
+          title: 'Digital & Dienstleistungen',
+          tag: 'Innovation',
+          short: 'Digitale Lösungen, lokale Finanzdienstleistungen und stark wachsende lokale Plattformen.',
+          highlights: [
+            'Mobile Money und lokale Finanzdienstleistungen',
+            'E-Commerce-Plattformen und lokale Marktplätze',
+            'Business-Software für togolesische KMU',
+          ],
+        },
+      },
       keyAdvantages: 'Wesentliche Vorteile',
       whySector: 'Warum dieser Sektor',
       vigilancePoints: 'Aufmerksamkeitspunkte',
       risksAndMitigation: 'Risiken & Mitigation',
+    },
+    invest: {
+      seoDescription: 'Investieren mit TAOMAN Group Investment: strukturierte Programme, Projektauswahl, Investor-Reporting und operative Garantien in Togo.',
+      hero: { eyebrow: 'In Togo investieren', title: 'Investieren Sie in konkrete Projekte', description: 'Sektorenstrukturierte Programme mit Quartalsberichten, KYC, Governance und persönlicher Betreuung.' },
+      programs: { eyebrow: 'TAOMAN-Programme', title: 'Zwei einfache Einstiegsmöglichkeiten', description: 'Wählen Sie die Modalität, die Ihrem Profil und Ihrem Anlagehorizont entspricht.' },
+      submit: { eyebrow: 'Projekt einreichen', title: 'Stellen Sie Ihr Projekt TAOMAN vor', cta: 'Mein Projekt einreichen' },
+      opportunities: { eyebrow: 'Investitionsmöglichkeiten', title: 'Fünf vielversprechende Sektoren, konkrete Projekte' },
+      criteria: { eyebrow: 'Investitionskriterien', title: 'Wie TAOMAN Projekte auswählt' },
+      guarantee: { eyebrow: 'TAOMAN-Engagement', title: 'Was wir Investoren garantieren' },
+      help: { eyebrow: 'Hilfezentrum', title: 'Ihre Fragen, unsere Antworten' },
+    },
+    tgi: {
+      seoDescription: 'TGI-Programm von TAOMAN: strukturierte Investition in Togo ab 500.000 FCFA, 10-Monats-Projektion, Investor-Reporting.',
+      hero: { badge: 'TGI-Investitionsprogramm', title: 'Lassen Sie Ihr Kapital mit TAOMAN arbeiten' },
+      stats: { eyebrow: 'Auf einen Blick', title: 'Schlüsselzahlen des Programms' },
+      pillars: { eyebrow: 'Drei Säulen', title: 'Ein einfaches und klares Versprechen' },
+      sectors: { eyebrow: 'Finanzierte Sektoren', title: 'Wohin Ihre Investitionen fließen', returnLabel: 'Rendite' },
+      benefits: { eyebrow: 'Vorteile für Investoren', title: 'Warum TGI beitreten' },
+      cta: { title: 'Bereit, mit TAOMAN zu investieren?', description: 'Ein Berater stellt Ihnen das Programm und Ihre Möglichkeiten innerhalb von 48 Stunden vor.', button: 'Mit einem Berater sprechen' },
+    },
+    moving: {
+      seoDescription: 'TAOMAN-Umzugspersonal und -flotte: angepasste Fahrzeuge, geschulte Teams, Dienstleistungen für Privatpersonen, Unternehmen und Geschäfte.',
+      hero: { eyebrow: 'Personal & Flotte', title: 'Unser Team und unsere Umzugsflotte', description: 'Eine Mehrzweckflotte und zertifizierte Teams für Privatpersonen, Unternehmen und Geschäfte in ganz Togo und der Subregion.' },
+      kpi: { teams: 'Vor-Ort-Teams', vehicles: 'Fahrzeuge', cities: 'Bediente Städte', sla: 'Eingehaltene Fristen' },
+      types: { eyebrow: 'Wen wir betreuen', title: 'Drei Kundenprofile' },
+      vehicles: { eyebrow: 'Unsere Flotte', title: 'Verfügbare Fahrzeuge' },
+      commitments: { eyebrow: 'Unsere Verpflichtungen', title: 'Warum TAOMAN für Ihren Umzug' },
+      process: { eyebrow: 'Unsere Methode', title: 'Wie wir arbeiten' },
+    },
+    carwash: {
+      seoDescription: 'TAOMAN-Auto- und Motorradwäsche-Angebot: Leistungen im Zentrum oder zu Hause, Pakete Innen, Außen, Komplett, Flottenverträge.',
+      hero: { eyebrow: 'Auto- und Motorradwäsche', title: 'Fordern Sie Ihr Wäscheangebot an', description: 'Premium-Waschzentrum, mobile Teams und Flottenverträge: Wählen Sie das Paket, das Ihren Bedürfnissen entspricht.' },
+    },
+    devisMoving: {
+      seoDescription: 'TAOMAN-Umzugsangebot: Privatpersonen, Unternehmen und Geschäfte, innerstädtisch, zwischen Städten und international.',
+      hero: { eyebrow: 'Umzug', title: 'Fordern Sie Ihr Umzugsangebot an', description: 'Personalisiertes Angebot innerhalb von 24 Stunden, professionelle Teams, Versicherung inbegriffen und Demontage / Montage der Möbel inklusive.' },
+    },
+    office: {
+      seoDescription: 'TAOMAN-Büroreinigung: maßgeschneiderte Verträge, dedizierte Teams, umweltfreundliche Produkte und Qualitätsberichte.',
+      hero: { eyebrow: 'Büroreinigung', title: 'Eine makellose Arbeitsumgebung', description: 'Professionelle Reinigungsverträge mit individueller Planung, dedizierten Teams und wöchentlicher Qualitätskontrolle.' },
+    },
+    aircon: {
+      seoDescription: 'TAOMAN Klimaanlagen-Wartung und -Installation: zertifizierte Techniker, Jahresverträge und schnelle Reparatur in Togo.',
+      hero: { eyebrow: 'Klimaanlage', title: 'Angebot für Klimaanlagenwartung und -installation', description: 'Zertifizierte Techniker, Jahresverträge, schnelle Reparatur und Neuinstallation in Lomé und in der gesamten Subregion.' },
+    },
+    jobs: {
+      seoDescription: 'Karriere bei TAOMAN Group Investment: Treten Sie unseren Vor-Ort-, Finanz- und Operations-Teams in Togo bei.',
+      hero: { eyebrow: 'Karriere', title: 'Treten Sie den TAOMAN-Teams bei', description: 'Entdecken Sie Möglichkeiten, zu einem Projekt mit echter wirtschaftlicher Wirkung für Togo beizutragen.' },
+    },
+    simulator: {
+      seoDescription: 'TAOMAN-Investitionssimulator: Projizieren Sie Ihre Rendite über 10 Monate mit Zinseszins.',
+      hero: { eyebrow: 'Professioneller Simulator', title: 'Simulieren Sie Ihre TGI-Investition', description: 'Berechnen Sie Ihre projizierte Rendite basierend auf Ihrem Ticket und Ihrem Horizont.' },
+    },
+    submitProject: {
+      seoDescription: 'Reichen Sie Ihr Projekt bei TAOMAN Group Investment ein: Analyse innerhalb von 5 Werktagen, begründete Entscheidung, strukturierte Unterstützung.',
+      hero: { eyebrow: 'Projekt einreichen', title: 'Stellen Sie Ihr Projekt TAOMAN vor', description: 'Unser Investitionsausschuss prüft jede Akte und meldet sich innerhalb von 5 Werktagen bei Ihnen.' },
+    },
+    auth: {
+      login: { title: 'Anmelden bei Ihrem Bereich', subtitle: 'Greifen Sie auf Ihr Investor-Dashboard zu.', email: 'E-Mail-Adresse', password: 'Passwort', submit: 'Anmelden', noAccount: 'Noch kein Konto?', signUpLink: 'Konto erstellen', forgotPassword: 'Passwort vergessen?' },
+      register: { title: 'Konto erstellen', subtitle: 'Treten Sie dem TAOMAN-Ökosystem in wenigen Minuten bei.', firstName: 'Vorname', lastName: 'Nachname', email: 'E-Mail-Adresse', phone: 'Telefon', password: 'Passwort', confirm: 'Passwort bestätigen', submit: 'Mein Konto erstellen', hasAccount: 'Haben Sie bereits ein Konto?', signInLink: 'Anmelden' },
+      reset: { title: 'Passwort zurücksetzen', subtitle: 'Geben Sie Ihre E-Mail-Adresse ein, um einen Reset-Link zu erhalten.', email: 'E-Mail-Adresse', submit: 'Link senden', back: 'Zurück zur Anmeldung' },
+    },
+    legal: {
+      seoDescription: 'TAOMAN Group Investment Impressum: Herausgeber, Hoster, geistiges Eigentum, personenbezogene Daten.',
+      hero: { eyebrow: 'Impressum', title: 'Rechtliche Informationen', description: 'Alle Informationen zur Veröffentlichung, zum Hosting und zum geistigen Eigentum der Website.' },
+    },
+    privacy: {
+      seoDescription: 'TAOMAN Group Investment Datenschutzrichtlinie: Erhebung, Verarbeitung und Schutz Ihrer personenbezogenen Daten.',
+      hero: { eyebrow: 'Datenschutz', title: 'Datenschutzrichtlinie', description: 'Wie wir Ihre personenbezogenen Daten gemäß DSGVO und lokalen Standards erheben, verwenden und schützen.' },
+    },
+    terms: {
+      seoDescription: 'Nutzungsbedingungen der TAOMAN Group Investment Website.',
+      hero: { eyebrow: 'AGB', title: 'Allgemeine Nutzungsbedingungen', description: 'Die Regeln, die die Nutzung unserer Website und Dienste regeln.' },
     },
     home: {
       seoDescription:
@@ -822,10 +1725,25 @@ const CONTENT = {
     },
     about: {
       seoDescription: 'اكتشف تاومان للاستثمار: المهمة والرؤية والقيم والحوكمة والقيادة. شريك استراتيجي للاستثمار والخدمات في توغو.',
-      hero: { eyebrow: 'من نحن', commitmentsLabel: 'التزاماتنا' },
-      mission: { eyebrow: 'مهمتنا', title: 'ما نقوم به كل يوم.' },
-      vision: { eyebrow: 'رؤيتنا', title: 'إلى أين نريد أن نصل.' },
-      values: { eyebrow: 'ركائزنا', title: 'قيمنا الأساسية' },
+      title: 'تاومان للاستثمار: شريككم الاستراتيجي في توغو.',
+      description: 'نصمم ونمول مشاريع هيكلية — البنية التحتية والطاقة والزراعة والمناجم واللوجستيات والرقمنة والسياحة — من خلال تعبئة رؤوس الأموال والشراكات بين القطاعين العام والخاص والتنفيذ الميداني.',
+      hero: {
+        eyebrow: 'من نحن',
+        commitmentsLabel: 'التزاماتنا',
+        highlights: ['خدمات تشغيلية', 'استثمار منظم', 'تقارير المستثمرين', 'دعم بشري'],
+      },
+      mission: { eyebrow: 'مهمتنا', title: 'ما نقوم به كل يوم.', body: 'استقطاب الاستثمارات وهيكلة الشراكات بين القطاعين العام والخاص ومرافقة المشاريع ذات الأثر الاقتصادي الكبير لتوغو والمنطقة الفرعية.' },
+      vision: { eyebrow: 'رؤيتنا', title: 'إلى أين نريد أن نصل.', body: 'جعل توغو منصة اقتصادية ولوجستية رئيسية في غرب أفريقيا، بالشفافية والحوكمة وتقارير المستثمرين.' },
+      values: {
+        eyebrow: 'ركائزنا',
+        title: 'قيمنا الأساسية',
+        items: [
+          { title: 'التميّز', description: 'جودة لا تشوبها شائبة في كل خدمة واستثمار.' },
+          { title: 'الشفافية', description: 'تواصل واضح وصادق مع جميع شركائنا.' },
+          { title: 'الابتكار', description: 'حلول حديثة وقابلة للقياس ومُوجَّهة بالبيانات.' },
+          { title: 'الاحترافية', description: 'فريق متمرس وحاصل على شهادات.' },
+        ],
+      },
       governance: {
         eyebrow: 'الحوكمة',
         title: 'هيكل صارم يخدم المستثمرين',
@@ -837,9 +1755,35 @@ const CONTENT = {
           { title: 'سياسة المخاطر', description: 'خريطة المخاطر (سوقية، تشغيلية، ائتمانية، السمعة)، خطة تخفيف موثقة، مراجعات سنوية مستقلة ومخصصات حسب القطاع.' },
         ],
       },
-      timeline: { eyebrow: 'محطات رئيسية', title: 'مسيرتنا' },
-      leaders: { eyebrow: 'لجنة الإدارة', title: 'فريق القيادة' },
-      stats: { eyebrow: 'بالأرقام', title: 'تاومان للاستثمار في لمحة' },
+      timeline: {
+        eyebrow: 'محطات رئيسية',
+        title: 'مسيرتنا',
+        items: [
+          { year: '2018', event: 'تأسيس تاومان للاستثمار' },
+          { year: '2020', event: 'إطلاق برنامج الاستثمار' },
+          { year: '2022', event: 'استثمار 500 ألف فرنك+ سيفا' },
+          { year: '2024', event: 'توسع إقليمي' },
+        ],
+      },
+      leaders: {
+        eyebrow: 'لجنة الإدارة',
+        title: 'فريق القيادة',
+        items: [
+          { name: 'Kofi Mensah', role: 'المدير العام', bio: 'خبير بأكثر من 15 عامًا من الخبرة في القطاع المالي.' },
+          { name: 'Ama Osei', role: 'المديرة المالية', bio: 'خبيرة بأكثر من 15 عامًا من الخبرة في القطاع المالي.' },
+          { name: 'Benjamin Tano', role: 'مدير العمليات', bio: 'خبير بأكثر من 15 عامًا من الخبرة في القطاع المالي.' },
+        ],
+      },
+      stats: {
+        eyebrow: 'بالأرقام',
+        title: 'تاومان للاستثمار في لمحة',
+        items: [
+          { number: '4', label: 'مراكز الخدمات' },
+          { number: '10', label: 'أشهر التوقع' },
+          { number: '24h', label: 'مدة الرد المستهدفة' },
+          { number: 'PDF', label: 'تقارير المستثمرين' },
+        ],
+      },
       cta: { title: 'انضم إلى منظومة تاومان', description: 'اكتشف كيف يمكننا الإسهام في نجاحك.', button: 'ابدأ الآن' },
     },
     contact: {
@@ -861,10 +1805,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: 'قطاعات الاستثمار', title: 'قطاعات نشاطنا', description: 'تنويع متوازن تقوده فرق ميدانية ومشاريع ملموسة: الخدمات اللوجستية، الزراعة، التجارة، البناء، الرقمية.' },
+      discover: 'اكتشف القطاع',
+      empty: 'لا توجد قطاعات منشورة حتى الآن.',
+      tagFallback: 'قطاع',
+      brief: {
+        eyebrow: 'دفتر الشروط',
+        title: 'إطار واضح ومشاريع قابلة للتتبع',
+        description: 'تحدد تاومان لكل قطاع ملف المخاطر والمبلغ الأدنى والمدة المستهدفة والمؤشرات المتابَعة وأدلة التنفيذ الميدانية المطلوبة.',
+        labels: [
+          { label: 'الحد الأدنى', value: '500 ألف فرنك سيفا' },
+          { label: 'المدة', value: '10 أشهر' },
+          { label: 'التقارير', value: 'PDF + ويب' },
+          { label: 'المتابعة', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: 'اللوجستيات والنقل',
+          tag: 'التنقل',
+          short: 'الأساطيل والنقل والتوزيع الحضري وسلاسل التوريد المتكاملة.',
+          highlights: [
+            'أساطيل من الشاحنات والعربات والسيارات بسائق',
+            'نقل المنازل للأفراد والشركات',
+            'التوزيع الحضري للميل الأخير',
+          ],
+        },
+        'agro-business': {
+          title: 'الأعمال الزراعية',
+          tag: 'الإنتاج',
+          short: 'سلاسل زراعية محدّثة: الإنتاج والتحويل وتسويق منتجات توغو ذات القيمة العالية.',
+          highlights: [
+            'إنتاج الخضر والحبوب والدواجن',
+            'التحويل: الدقيق والزيت والمعلبات',
+            'التعبئة والعلامة التجارية والتصدير الإقليمي',
+          ],
+        },
+        'commerce-general': {
+          title: 'التجارة العامة',
+          tag: 'التوزيع',
+          short: 'الاستيراد والتوزيع والتجارة ونقاط البيع: استثمار الاستهلاك التوغوي والإقليمي.',
+          highlights: [
+            'استيراد وتجارة السلع سريعة الدوران',
+            'التوزيع B2B للمحلات والمطاعم',
+            'نقاط البيع الحضرية والتجارة الإلكترونية المحلية',
+          ],
+        },
+        'btp-immobilier': {
+          title: 'البناء والعقارات',
+          tag: 'البنية التحتية',
+          short: 'بناء مستدام وعقارات للإيجار وبنى تحتية ذات قيمة مضافة عالية.',
+          highlights: [
+            'برامج عقارية سكنية وتجارية',
+            'الترميم والتجهيز والاستغلال',
+            'دخل إيجاري متكرر وتثمين العقار',
+          ],
+        },
+        'numerique-services': {
+          title: 'الرقمية والخدمات',
+          tag: 'الابتكار',
+          short: 'حلول رقمية وخدمات مالية قريبة من المستخدم ومنصات محلية سريعة النمو.',
+          highlights: [
+            'Mobile Money والخدمات المالية القريبة',
+            'منصات التجارة الإلكترونية والأسواق المحلية',
+            'برامج إدارة الأعمال للشركات الصغيرة في توغو',
+          ],
+        },
+      },
       keyAdvantages: 'المزايا الرئيسية',
       whySector: 'لماذا هذا القطاع',
       vigilancePoints: 'نقاط اليقظة',
       risksAndMitigation: 'المخاطر والتخفيف',
+    },
+    invest: {
+      seoDescription: 'استثمر مع TAOMAN Group Investment: برامج منظمة، اختيار المشاريع، تقارير المستثمرين والضمانات التشغيلية في توغو.',
+      hero: { eyebrow: 'الاستثمار في توغو', title: 'استثمر في مشاريع ملموسة', description: 'برامج منظمة حسب القطاع مع تقارير ربع سنوية، KYC، حوكمة ودعم شخصي.' },
+      programs: { eyebrow: 'برامج TAOMAN', title: 'بابان بسيطان للدخول', description: 'اختر الطريقة التي تتوافق مع ملفك الشخصي وأفق استثمارك.' },
+      submit: { eyebrow: 'تقديم مشروع', title: 'قدم مشروعك إلى TAOMAN', cta: 'تقديم مشروعي' },
+      opportunities: { eyebrow: 'فرص الاستثمار', title: 'خمسة قطاعات واعدة، مشاريع ملموسة' },
+      criteria: { eyebrow: 'معايير الاستثمار', title: 'كيف تختار TAOMAN المشاريع' },
+      guarantee: { eyebrow: 'التزام TAOMAN', title: 'ما نضمنه للمستثمرين' },
+      help: { eyebrow: 'مركز المساعدة', title: 'أسئلتكم، إجاباتنا' },
+    },
+    tgi: {
+      seoDescription: 'برنامج TGI من TAOMAN: استثمار منظم في توغو ابتداءً من 500,000 فرنك أفريقي، توقع لمدة 10 أشهر، تقارير المستثمرين.',
+      hero: { badge: 'برنامج الاستثمار TGI', title: 'اجعل رأس مالك يعمل مع TAOMAN' },
+      stats: { eyebrow: 'لمحة سريعة', title: 'الأرقام الرئيسية للبرنامج' },
+      pillars: { eyebrow: 'ثلاث ركائز', title: 'وعد بسيط وواضح' },
+      sectors: { eyebrow: 'القطاعات الممولة', title: 'إلى أين تذهب استثماراتك', returnLabel: 'العائد' },
+      benefits: { eyebrow: 'مزايا المستثمرين', title: 'لماذا الانضمام إلى TGI' },
+      cta: { title: 'مستعد للاستثمار مع TAOMAN؟', description: 'يقدم لك مستشار البرنامج وفرصك خلال 48 ساعة.', button: 'تحدث مع مستشار' },
+    },
+    moving: {
+      seoDescription: 'فريق وأسطول النقل TAOMAN: مركبات مهيأة، فرق مدربة، خدمات للأفراد والشركات والمحلات.',
+      hero: { eyebrow: 'الفريق والأسطول', title: 'فريقنا وأسطولنا للنقل', description: 'أسطول متعدد الاستخدامات وفرق معتمدة للأفراد والشركات والمحلات في جميع أنحاء توغو والمنطقة الفرعية.' },
+      kpi: { teams: 'فرق ميدانية', vehicles: 'مركبات', cities: 'مدن مخدومة', sla: 'مواعيد محترمة' },
+      types: { eyebrow: 'من نرافق', title: 'ثلاث ملفات للعملاء' },
+      vehicles: { eyebrow: 'أسطولنا', title: 'المركبات المتاحة' },
+      commitments: { eyebrow: 'التزاماتنا', title: 'لماذا TAOMAN لنقل أمتعتك' },
+      process: { eyebrow: 'منهجيتنا', title: 'كيف نعمل' },
+    },
+    carwash: {
+      seoDescription: 'عرض غسيل السيارات والدراجات النارية TAOMAN: خدمات في المركز أو في المنزل، صيغ داخلية وخارجية وكاملة، عقود الأسطول.',
+      hero: { eyebrow: 'غسيل السيارات والدراجات', title: 'اطلب عرض غسيل خاص بك', description: 'مركز غسيل فاخر، فرق متنقلة وعقود للأساطيل: اختر الصيغة التي تناسب احتياجاتك.' },
+    },
+    devisMoving: {
+      seoDescription: 'عرض النقل TAOMAN: للأفراد والشركات والمحلات، داخل المدينة وبين المدن ودولي.',
+      hero: { eyebrow: 'النقل', title: 'اطلب عرض النقل الخاص بك', description: 'عرض مخصص خلال 24 ساعة، فرق محترفة، تأمين مشمول وتفكيك / إعادة تركيب الأثاث مشمولة.' },
+    },
+    office: {
+      seoDescription: 'صيانة المكاتب TAOMAN: عقود مخصصة، فرق متفانية، منتجات صديقة للبيئة وتقارير الجودة.',
+      hero: { eyebrow: 'صيانة المكاتب', title: 'بيئة عمل لا تشوبها شائبة', description: 'عقود صيانة احترافية مع جدولة مخصصة، فرق متفانية ومراقبة جودة أسبوعية.' },
+    },
+    aircon: {
+      seoDescription: 'صيانة وتركيب التكييف TAOMAN: فنيون معتمدون، عقود سنوية وإصلاح سريع في توغو.',
+      hero: { eyebrow: 'التكييف', title: 'عرض صيانة وتركيب التكييف', description: 'فنيون معتمدون، عقود سنوية، إصلاح سريع وتركيبات جديدة، في لومي وفي جميع أنحاء المنطقة الفرعية.' },
+    },
+    jobs: {
+      seoDescription: 'وظائف TAOMAN Group Investment: انضم إلى فرقنا الميدانية والمالية والتشغيلية في توغو.',
+      hero: { eyebrow: 'الوظائف', title: 'انضم إلى فرق TAOMAN', description: 'اكتشف الفرص للمساهمة في مشروع له تأثير اقتصادي حقيقي على توغو.' },
+    },
+    simulator: {
+      seoDescription: 'محاكي استثمار TAOMAN: توقع عائدك على مدى 10 أشهر مع الفائدة المركبة.',
+      hero: { eyebrow: 'محاكي احترافي', title: 'حاكي استثمارك في TGI', description: 'احسب عائدك المتوقع بناءً على بطاقتك وأفقك.' },
+    },
+    submitProject: {
+      seoDescription: 'قدم مشروعك إلى TAOMAN Group Investment: تحليل خلال 5 أيام عمل، قرار مبرر، دعم منظم.',
+      hero: { eyebrow: 'تقديم مشروع', title: 'قدم مشروعك إلى TAOMAN', description: 'لجنة الاستثمار لدينا تدرس كل ملف وترد عليك خلال 5 أيام عمل.' },
+    },
+    auth: {
+      login: { title: 'الدخول إلى مساحتك', subtitle: 'الوصول إلى لوحة معلومات المستثمر الخاصة بك.', email: 'البريد الإلكتروني', password: 'كلمة المرور', submit: 'تسجيل الدخول', noAccount: 'ليس لديك حساب بعد؟', signUpLink: 'إنشاء حساب', forgotPassword: 'نسيت كلمة المرور؟' },
+      register: { title: 'إنشاء حساب', subtitle: 'انضم إلى نظام TAOMAN البيئي في بضع دقائق.', firstName: 'الاسم', lastName: 'اللقب', email: 'البريد الإلكتروني', phone: 'الهاتف', password: 'كلمة المرور', confirm: 'تأكيد كلمة المرور', submit: 'إنشاء حسابي', hasAccount: 'لديك حساب بالفعل؟', signInLink: 'تسجيل الدخول' },
+      reset: { title: 'إعادة تعيين كلمة المرور', subtitle: 'أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين.', email: 'البريد الإلكتروني', submit: 'إرسال الرابط', back: 'العودة إلى تسجيل الدخول' },
+    },
+    legal: {
+      seoDescription: 'الإشعارات القانونية TAOMAN Group Investment: الناشر، المضيف، الملكية الفكرية، البيانات الشخصية.',
+      hero: { eyebrow: 'الإشعارات القانونية', title: 'المعلومات القانونية', description: 'جميع المعلومات المتعلقة بالنشر والاستضافة والملكية الفكرية للموقع.' },
+    },
+    privacy: {
+      seoDescription: 'سياسة الخصوصية TAOMAN Group Investment: جمع ومعالجة وحماية بياناتك الشخصية.',
+      hero: { eyebrow: 'الخصوصية', title: 'سياسة الخصوصية', description: 'كيف نجمع ونستخدم ونحمي بياناتك الشخصية وفقاً للائحة العامة لحماية البيانات والمعايير المحلية.' },
+    },
+    terms: {
+      seoDescription: 'الشروط العامة لاستخدام موقع TAOMAN Group Investment.',
+      hero: { eyebrow: 'الشروط والأحكام', title: 'الشروط العامة للاستخدام', description: 'القواعد التي تحكم استخدام موقعنا وخدماتنا.' },
     },
     home: {
       seoDescription:
@@ -965,10 +2048,25 @@ const CONTENT = {
     },
     about: {
       seoDescription: '了解 TAOMAN Group Investment：使命、愿景、价值观、治理与领导力。多哥投资与服务的战略合作伙伴。',
-      hero: { eyebrow: '关于我们', commitmentsLabel: '我们的承诺' },
-      mission: { eyebrow: '我们的使命', title: '我们每天所做的事。' },
-      vision: { eyebrow: '我们的愿景', title: '我们的目标。' },
-      values: { eyebrow: '我们的支柱', title: '我们的核心价值' },
+      title: 'TAOMAN Group Investment：您在多哥的战略合作伙伴。',
+      description: '我们设计并资助结构性项目——基础设施、能源、农业、矿业、物流、数字和旅游——通过调动资本、公私合作伙伴关系和实地执行。',
+      hero: {
+        eyebrow: '关于我们',
+        commitmentsLabel: '我们的承诺',
+        highlights: ['运营服务', '结构化投资', '投资者报告', '人性化支持'],
+      },
+      mission: { eyebrow: '我们的使命', title: '我们每天所做的事。', body: '吸引投资，构建公私合作伙伴关系，并支持对多哥及次区域具有重大经济影响的项目。' },
+      vision: { eyebrow: '我们的愿景', title: '我们的目标。', body: '通过透明度、治理和投资者报告，使多哥成为西非重要的经济和物流平台。' },
+      values: {
+        eyebrow: '我们的支柱',
+        title: '我们的核心价值',
+        items: [
+          { title: '卓越', description: '在每项服务和投资中追求无可挑剔的品质。' },
+          { title: '透明', description: '与所有合作伙伴清晰诚实地沟通。' },
+          { title: '创新', description: '现代化、可衡量、数据驱动的解决方案。' },
+          { title: '专业', description: '经验丰富且获得认证的团队。' },
+        ],
+      },
       governance: {
         eyebrow: '治理',
         title: '为投资者服务的严谨架构',
@@ -980,9 +2078,35 @@ const CONTENT = {
           { title: '风险政策', description: '风险图谱（市场、运营、信用、形象）、文档化的缓解计划、每年独立审计和按行业准备金。' },
         ],
       },
-      timeline: { eyebrow: '里程碑', title: '我们的历程' },
-      leaders: { eyebrow: '执行委员会', title: '我们的领导团队' },
-      stats: { eyebrow: '数据一览', title: 'TAOMAN Group Investment 概览' },
+      timeline: {
+        eyebrow: '里程碑',
+        title: '我们的历程',
+        items: [
+          { year: '2018', event: 'TAOMAN Group Investment 成立' },
+          { year: '2020', event: '推出投资计划' },
+          { year: '2022', event: '已投资 50 万+ FCFA' },
+          { year: '2024', event: '区域扩张' },
+        ],
+      },
+      leaders: {
+        eyebrow: '执行委员会',
+        title: '我们的领导团队',
+        items: [
+          { name: 'Kofi Mensah', role: '首席执行官', bio: '拥有 15 年以上金融行业经验的专家。' },
+          { name: 'Ama Osei', role: '首席财务官', bio: '拥有 15 年以上金融行业经验的专家。' },
+          { name: 'Benjamin Tano', role: '运营总监', bio: '拥有 15 年以上金融行业经验的专家。' },
+        ],
+      },
+      stats: {
+        eyebrow: '数据一览',
+        title: 'TAOMAN Group Investment 概览',
+        items: [
+          { number: '4', label: '服务板块' },
+          { number: '10', label: '预测月数' },
+          { number: '24h', label: '目标响应时间' },
+          { number: 'PDF', label: '投资者报告' },
+        ],
+      },
       cta: { title: '加入 TAOMAN 生态', description: '了解我们如何助力您的成功。', button: '立即开始' },
     },
     contact: {
@@ -1004,10 +2128,149 @@ const CONTENT = {
     },
     sectors: {
       hero: { eyebrow: '投资领域', title: '我们的业务领域', description: '由现场团队推动的多元化布局：物流、农业、贸易、建筑、数字。' },
+      discover: '了解该领域',
+      empty: '暂无发布的领域。',
+      tagFallback: '领域',
+      brief: {
+        eyebrow: '项目规范',
+        title: '清晰的框架，可追溯的项目',
+        description: '针对每个领域，TAOMAN 定义风险概况、最低门槛、目标期限、监控指标和现场执行证据要求。',
+        labels: [
+          { label: '门槛', value: '50 万 FCFA' },
+          { label: '期限', value: '10 个月' },
+          { label: '报告', value: 'PDF + 网页' },
+          { label: '监控', value: '24 / 7' },
+        ],
+      },
+      items: {
+        'logistique-transports': {
+          title: '物流与运输',
+          tag: '出行',
+          short: '车队、搬家、城市配送和综合供应链。',
+          highlights: [
+            '卡车、货车和带司机车辆车队',
+            '个人和企业搬家服务',
+            '最后一公里城市配送',
+          ],
+        },
+        'agro-business': {
+          title: '农业商业',
+          tag: '生产',
+          short: '现代化的农业产业链：多哥高价值产品的生产、加工和销售。',
+          highlights: [
+            '蔬菜、谷物和家禽生产',
+            '加工：面粉、油、罐头',
+            '包装、品牌、区域出口',
+          ],
+        },
+        'commerce-general': {
+          title: '一般贸易',
+          tag: '分销',
+          short: '进口、分销、贸易和销售点：捕获多哥及次区域消费。',
+          highlights: [
+            '高周转商品的进口和贸易',
+            '面向商店和餐厅的 B2B 分销',
+            '城市销售点和本地电商',
+          ],
+        },
+        'btp-immobilier': {
+          title: '建筑与房地产',
+          tag: '基础设施',
+          short: '可持续建筑、租赁房产和高附加值基础设施。',
+          highlights: [
+            '住宅和商业地产项目',
+            '翻新、装备和运营',
+            '经常性租金收入和土地增值',
+          ],
+        },
+        'numerique-services': {
+          title: '数字与服务',
+          tag: '创新',
+          short: '数字解决方案、便民金融服务和高增长本地平台。',
+          highlights: [
+            'Mobile Money 和便民金融服务',
+            '电子商务平台和本地市场',
+            '面向多哥中小企业的业务软件',
+          ],
+        },
+      },
       keyAdvantages: '主要优势',
       whySector: '为何选择此领域',
       vigilancePoints: '关注要点',
       risksAndMitigation: '风险与缓解',
+    },
+    invest: {
+      seoDescription: '与TAOMAN Group Investment一起投资：结构化项目、项目筛选、投资者报告和多哥的运营保障。',
+      hero: { eyebrow: '在多哥投资', title: '投资于具体项目', description: '按行业结构化的项目，包括季度报告、KYC、治理和个性化支持。' },
+      programs: { eyebrow: 'TAOMAN项目', title: '两个简单的入口', description: '选择符合您的个人资料和投资期限的方式。' },
+      submit: { eyebrow: '提交项目', title: '向TAOMAN介绍您的项目', cta: '提交我的项目' },
+      opportunities: { eyebrow: '投资机会', title: '五个有前景的行业，具体的项目' },
+      criteria: { eyebrow: '投资标准', title: 'TAOMAN如何筛选项目' },
+      guarantee: { eyebrow: 'TAOMAN承诺', title: '我们向投资者保证的内容' },
+      help: { eyebrow: '帮助中心', title: '您的问题，我们的答案' },
+    },
+    tgi: {
+      seoDescription: 'TAOMAN的TGI项目：在多哥进行结构化投资，起投金额50万非洲法郎，10个月预测，投资者报告。',
+      hero: { badge: 'TGI投资项目', title: '让您的资本与TAOMAN一起运作' },
+      stats: { eyebrow: '一目了然', title: '项目关键数字' },
+      pillars: { eyebrow: '三大支柱', title: '简单清晰的承诺' },
+      sectors: { eyebrow: '资助行业', title: '您的投资去向', returnLabel: '回报' },
+      benefits: { eyebrow: '投资者优势', title: '为什么加入TGI' },
+      cta: { title: '准备好与TAOMAN一起投资了吗？', description: '顾问将在48小时内向您介绍该项目和您的机会。', button: '与顾问交谈' },
+    },
+    moving: {
+      seoDescription: 'TAOMAN搬家人员和车队：适应的车辆、训练有素的团队、为个人、企业和商店提供的服务。',
+      hero: { eyebrow: '人员和车队', title: '我们的团队和搬家车队', description: '多用途车队和认证团队，为多哥及次区域的个人、企业和商店服务。' },
+      kpi: { teams: '现场团队', vehicles: '车辆', cities: '服务城市', sla: '按时完成' },
+      types: { eyebrow: '我们服务的对象', title: '三种客户类型' },
+      vehicles: { eyebrow: '我们的车队', title: '可用车辆' },
+      commitments: { eyebrow: '我们的承诺', title: '为什么选择TAOMAN搬家' },
+      process: { eyebrow: '我们的方法', title: '我们如何工作' },
+    },
+    carwash: {
+      seoDescription: 'TAOMAN汽车和摩托车清洗报价：中心或上门服务、内部、外部、完整套餐、车队合同。',
+      hero: { eyebrow: '汽车和摩托车清洗', title: '索取您的清洗报价', description: '高端清洗中心、移动团队和车队合同：选择符合您需求的套餐。' },
+    },
+    devisMoving: {
+      seoDescription: 'TAOMAN搬家报价：个人、企业和商店，城内、城际和国际。',
+      hero: { eyebrow: '搬家', title: '索取您的搬家报价', description: '24小时内提供个性化报价、专业团队、保险包含以及家具拆卸/重新组装。' },
+    },
+    office: {
+      seoDescription: 'TAOMAN办公室维护：定制合同、专门团队、环保产品和质量报告。',
+      hero: { eyebrow: '办公室维护', title: '无可挑剔的工作环境', description: '具有定制规划、专门团队和每周质量控制的专业维护合同。' },
+    },
+    aircon: {
+      seoDescription: 'TAOMAN空调维护和安装：认证技师、年度合同和多哥的快速维修。',
+      hero: { eyebrow: '空调', title: '空调维护和安装报价', description: '认证技师、年度合同、快速维修和新安装，在洛美及整个次区域。' },
+    },
+    jobs: {
+      seoDescription: 'TAOMAN Group Investment职业：加入我们在多哥的现场、财务和运营团队。',
+      hero: { eyebrow: '职业', title: '加入TAOMAN团队', description: '发现为多哥具有真正经济影响的项目做出贡献的机会。' },
+    },
+    simulator: {
+      seoDescription: 'TAOMAN投资模拟器：通过复利预测您10个月的回报。',
+      hero: { eyebrow: '专业模拟器', title: '模拟您的TGI投资', description: '根据您的投资额和期限计算预计回报。' },
+    },
+    submitProject: {
+      seoDescription: '向TAOMAN Group Investment提交您的项目：5个工作日内分析、明确决定、结构化支持。',
+      hero: { eyebrow: '提交项目', title: '向TAOMAN介绍您的项目', description: '我们的投资委员会研究每个档案，并在5个工作日内回复您。' },
+    },
+    auth: {
+      login: { title: '登录到您的空间', subtitle: '访问您的投资者仪表板。', email: '电子邮件地址', password: '密码', submit: '登录', noAccount: '还没有账户？', signUpLink: '创建账户', forgotPassword: '忘记密码？' },
+      register: { title: '创建账户', subtitle: '几分钟内加入TAOMAN生态系统。', firstName: '名字', lastName: '姓氏', email: '电子邮件地址', phone: '电话', password: '密码', confirm: '确认密码', submit: '创建我的账户', hasAccount: '已经有账户？', signInLink: '登录' },
+      reset: { title: '重置密码', subtitle: '输入您的电子邮件地址以接收重置链接。', email: '电子邮件地址', submit: '发送链接', back: '返回登录' },
+    },
+    legal: {
+      seoDescription: 'TAOMAN Group Investment法律声明：发行人、托管人、知识产权、个人数据。',
+      hero: { eyebrow: '法律声明', title: '法律信息', description: '与本网站的出版、托管和知识产权相关的所有信息。' },
+    },
+    privacy: {
+      seoDescription: 'TAOMAN Group Investment隐私政策：您的个人数据的收集、处理和保护。',
+      hero: { eyebrow: '隐私', title: '隐私政策', description: '我们如何根据GDPR和当地标准收集、使用和保护您的个人数据。' },
+    },
+    terms: {
+      seoDescription: 'TAOMAN Group Investment网站使用条款。',
+      hero: { eyebrow: '条款和条件', title: '使用条款', description: '管理我们网站和服务使用的规则。' },
     },
     home: {
       seoDescription:

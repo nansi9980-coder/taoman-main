@@ -85,15 +85,38 @@ export const AboutPage = () => {
   const raw = section('about') || {};
   const d = DEFAULT_ABOUT;
 
-  const title = pick(raw, 'title', d.title);
-  const description = raw.description || raw.subtitle || d.description;
-  const mission = pick(raw, 'mission', d.mission);
-  const vision = pick(raw, 'vision', d.vision);
-  const heroHighlights = raw.heroHighlights?.length ? raw.heroHighlights : d.heroHighlights;
-  const values = raw.values?.length ? raw.values : d.values;
-  const timeline = raw.timeline?.length ? raw.timeline : d.timeline;
-  const leaders = raw.leaders?.length ? raw.leaders : d.leaders;
-  const stats = raw.stats?.length ? raw.stats : d.stats;
+  const title = pick(raw, 'title', tAbout.title || d.title);
+  const description = raw.description || raw.subtitle || tAbout.description || d.description;
+  const mission = pick(raw, 'mission', tAbout.mission?.body || d.mission);
+  const vision = pick(raw, 'vision', tAbout.vision?.body || d.vision);
+  const heroHighlights = raw.heroHighlights?.length
+    ? raw.heroHighlights
+    : tAbout.hero?.highlights?.length
+      ? tAbout.hero.highlights
+      : d.heroHighlights;
+  const values = raw.values?.length
+    ? raw.values
+    : tAbout.values?.items?.length
+      ? tAbout.values.items
+      : d.values;
+  const timeline = raw.timeline?.length
+    ? raw.timeline
+    : tAbout.timeline?.items?.length
+      ? tAbout.timeline.items
+      : d.timeline;
+  const leaders = raw.leaders?.length
+    ? raw.leaders
+    : tAbout.leaders?.items?.length
+      ? tAbout.leaders.items.map((leader, idx) => ({
+          ...leader,
+          photoUrl: d.leaders[idx]?.photoUrl || '',
+        }))
+      : d.leaders;
+  const stats = raw.stats?.length
+    ? raw.stats
+    : tAbout.stats?.items?.length
+      ? tAbout.stats.items
+      : d.stats;
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">

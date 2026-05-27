@@ -26,147 +26,91 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
+import { getContactTranslations } from '../i18n/contact';
 
 /**
- * 4 sujets de contact, chacun avec son propre formulaire dédié.
- * Le sujet est sélectionné via l'URL `?topic=...` ou via les boutons.
+ * Définition statique des 4 topics (icônes + champs).
+ * Les libellés (badge, title, headline, desc, submitLabel, successText, serviceTag)
+ * sont injectés dynamiquement depuis getContactTranslations(language).
  */
-const TOPICS = {
+const TOPIC_DEFINITIONS = {
   info: {
     id: 'info',
     icon: Info,
-    badge: 'Information',
-    title: 'Demande d\'information générale',
-    headline: 'Une question sur TAOMAN Group Investment ?',
-    desc: "Vous voulez en savoir plus sur le groupe, ses activités, ses services opérationnels (lavage, déménagement, entretien, mécanique, transport) ou son programme d'investissement TGI ? Posez-nous votre question, notre équipe vous répond sous 24 heures.",
     fields: ['name', 'email', 'phone', 'question', 'message'],
-    submitLabel: 'Envoyer ma question',
-    successText: 'Votre demande a bien été reçue. Notre équipe vous répond sous 24 heures.',
-    serviceTag: 'Contact – Information',
   },
   invest: {
     id: 'invest',
     icon: TrendingUp,
-    badge: 'Investissement',
-    title: 'Investir avec TAOMAN',
-    headline: 'Manifester un intérêt d\'investissement',
-    desc: "Vous souhaitez allouer un capital à des projets opérés par TAOMAN Group Investment ? Indiquez votre profil, votre ticket envisagé et le ou les secteurs qui vous intéressent. Notre équipe vous rappelle pour une présentation détaillée des opportunités en cours.",
     fields: ['name', 'email', 'phone', 'profile', 'ticket', 'sector', 'horizon', 'message'],
-    submitLabel: 'Envoyer ma manifestation d\'intérêt',
-    successText: 'Votre manifestation d\'intérêt a bien été enregistrée. Un conseiller vous contacte sous 48 heures.',
-    serviceTag: 'Contact – Investissement',
   },
   partner: {
     id: 'partner',
     icon: Handshake,
-    badge: 'Partenariat',
-    title: 'Devenir partenaire opérationnel',
-    headline: 'Construire un partenariat avec TAOMAN',
-    desc: "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec TAOMAN Group Investment (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition et nous étudions ensemble les synergies possibles.",
     fields: ['organization', 'sectorOrg', 'name', 'role', 'email', 'phone', 'proposalType', 'message'],
-    submitLabel: 'Envoyer ma proposition',
-    successText: 'Votre proposition de partenariat a bien été reçue. Notre direction étudie chaque dossier et revient vers vous sous 5 jours ouvrés.',
-    serviceTag: 'Contact – Partenariat',
   },
   project: {
     id: 'project',
     icon: Lightbulb,
-    badge: 'Projet à financer',
-    title: 'Soumettre un projet à financer',
-    headline: 'Présentez votre projet à notre comité',
-    desc: "Vous portez un projet entrepreneurial à fort potentiel et vous cherchez un financement structuré ? Décrivez votre projet, son secteur, son ticket et son horizon. Notre comité d'investissement examine chaque dossier et revient vers vous avec une décision motivée sous 5 jours ouvrés.",
     fields: ['name', 'email', 'phone', 'projectName', 'sector', 'location', 'ticket', 'horizon', 'stage', 'message'],
-    submitLabel: 'Soumettre mon projet',
-    successText: 'Votre projet a bien été reçu. Le comité d\'investissement revient vers vous sous 5 jours ouvrés.',
-    serviceTag: 'Contact – Soumission projet',
   },
 };
 
-const FIELD_LABELS = {
-  name: { label: 'Votre nom complet', placeholder: 'Ex : Komla Mensah', type: 'text', required: true },
-  email: { label: 'Adresse email', placeholder: 'votre@email.com', type: 'email', required: true },
-  phone: { label: 'Téléphone', placeholder: '+228 90 00 00 00', type: 'tel', required: true },
-  organization: { label: 'Nom de votre organisation', placeholder: 'Ex : SARL Mensah & Fils', type: 'text', required: true },
-  role: { label: 'Votre fonction', placeholder: 'Ex : Directeur Général', type: 'text', required: true },
-  sectorOrg: {
-    label: "Secteur d'activité de votre organisation",
-    placeholder: 'Ex : Distribution, BTP, Logistique...',
-    type: 'text',
-    required: true,
-  },
-  proposalType: {
-    label: 'Type de partenariat envisagé',
-    type: 'select',
-    required: true,
-    options: [
-      'Fournisseur / Sous-traitant',
-      'Distribution / Revente',
-      'Co-investissement sur projet',
-      'Partenariat institutionnel',
-      'Échange de compétences',
-      'Autre',
-    ],
-  },
-  profile: {
-    label: 'Votre profil',
-    type: 'select',
-    required: true,
-    options: [
-      'Particulier',
-      'Diaspora togolaise',
-      'Entreprise / PME',
-      'Family Office',
-      'Institutionnel',
-    ],
-  },
-  ticket: {
-    label: 'Ticket envisagé',
-    type: 'select',
-    required: false,
-    options: [
-      'Moins de 500 000 FCFA',
-      '500 000 – 2 000 000 FCFA',
-      '2 000 000 – 10 000 000 FCFA',
-      '10 000 000 – 50 000 000 FCFA',
-      'Plus de 50 000 000 FCFA',
-    ],
-  },
-  sector: {
-    label: 'Secteur concerné',
-    type: 'select',
-    required: false,
-    options: DEFAULT_SECTORS.map((s) => s.title).concat(['Autre / Tous secteurs']),
-  },
-  horizon: {
-    label: 'Horizon envisagé',
-    type: 'select',
-    required: false,
-    options: ['3 mois', '6 mois', '10 mois', 'Au-delà de 10 mois', 'Pas encore décidé'],
-  },
-  projectName: { label: 'Nom du projet', placeholder: "Ex : Mini-usine d'huile de palme", type: 'text', required: true },
-  location: { label: 'Localisation du projet', placeholder: 'Ex : Lomé, Kara, Atakpamé', type: 'text', required: false },
-  stage: {
-    label: "État d'avancement",
-    type: 'select',
-    required: true,
-    options: [
-      'Idée / Concept',
-      'Étude de faisabilité réalisée',
-      'Prototype / MVP',
-      "Activité lancée, en croissance",
-      'Activité existante à développer',
-    ],
-  },
-  question: { label: 'Sujet de votre question', placeholder: 'Ex : Renseignement sur le service Lavage Auto', type: 'text', required: true },
-  message: {
-    label: 'Votre message',
-    placeholder: 'Décrivez votre demande, votre projet ou votre question avec autant de détails que possible.',
-    type: 'textarea',
-    required: true,
-  },
+const buildTopics = (tContact) => {
+  const t = tContact.topics || {};
+  return Object.entries(TOPIC_DEFINITIONS).reduce((acc, [key, def]) => {
+    const tr = t[key] || {};
+    acc[key] = {
+      ...def,
+      badge: tr.badge,
+      title: tr.title,
+      headline: tr.headline,
+      desc: tr.desc,
+      submitLabel: tr.submitLabel,
+      successText: tr.successText,
+      serviceTag: tr.serviceTag,
+    };
+    return acc;
+  }, {});
 };
 
-const ContactCard = ({ topic, onSelect, active }) => {
+const buildFieldLabels = (tContact, language) => {
+  const f = tContact.fields || {};
+  const tcSectors = tContact._sectors || null;
+  // Pour le champ "sector", on utilise les titres traduits des secteurs depuis content.js si disponibles
+  const sectorTitles = (() => {
+    if (tcSectors?.items) {
+      return DEFAULT_SECTORS.map((s) => tcSectors.items[s.slug]?.title || s.title);
+    }
+    return DEFAULT_SECTORS.map((s) => s.title);
+  })();
+
+  return {
+    name: { label: f.name?.label, placeholder: f.name?.placeholder, type: 'text', required: true },
+    email: { label: f.email?.label, placeholder: f.email?.placeholder, type: 'email', required: true },
+    phone: { label: f.phone?.label, placeholder: f.phone?.placeholder, type: 'tel', required: true },
+    organization: { label: f.organization?.label, placeholder: f.organization?.placeholder, type: 'text', required: true },
+    role: { label: f.role?.label, placeholder: f.role?.placeholder, type: 'text', required: true },
+    sectorOrg: { label: f.sectorOrg?.label, placeholder: f.sectorOrg?.placeholder, type: 'text', required: true },
+    proposalType: { label: f.proposalType?.label, type: 'select', required: true, options: f.proposalType?.options || [] },
+    profile: { label: f.profile?.label, type: 'select', required: true, options: f.profile?.options || [] },
+    ticket: { label: f.ticket?.label, type: 'select', required: false, options: f.ticket?.options || [] },
+    sector: {
+      label: f.sector?.label,
+      type: 'select',
+      required: false,
+      options: sectorTitles.concat([f.sector?.otherOption || 'Autre / Tous secteurs']),
+    },
+    horizon: { label: f.horizon?.label, type: 'select', required: false, options: f.horizon?.options || [] },
+    projectName: { label: f.projectName?.label, placeholder: f.projectName?.placeholder, type: 'text', required: true },
+    location: { label: f.location?.label, placeholder: f.location?.placeholder, type: 'text', required: false },
+    stage: { label: f.stage?.label, type: 'select', required: true, options: f.stage?.options || [] },
+    question: { label: f.question?.label, placeholder: f.question?.placeholder, type: 'text', required: true },
+    message: { label: f.message?.label, placeholder: f.message?.placeholder, type: 'textarea', required: true },
+  };
+};
+
+const ContactCard = ({ topic, onSelect, active, labels }) => {
   const Icon = topic.icon;
   return (
     <button
@@ -197,20 +141,20 @@ const ContactCard = ({ topic, onSelect, active }) => {
           active ? 'text-white' : 'text-primary'
         }`}
       >
-        {active ? 'Sélectionné' : 'Choisir ce formulaire'}{' '}
+        {active ? labels.cardSelected : labels.cardSelect}{' '}
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
       </span>
     </button>
   );
 };
 
-const ContactForm = ({ topic, contactInfo }) => {
+const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
   const [formData, setFormData] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Réinitialise quand on change de topic
+  // Réinitialise quand on change de topic ou de langue
   useEffect(() => {
     setFormData({});
     setSubmitted(false);
@@ -228,11 +172,10 @@ const ContactForm = ({ topic, contactInfo }) => {
     setError('');
 
     try {
-      // Construit un message lisible avec toutes les valeurs renseignées
       const lines = topic.fields
         .filter((f) => f !== 'message' && f !== 'name' && f !== 'email' && f !== 'phone')
-        .map((f) => `${FIELD_LABELS[f]?.label || f} : ${formData[f] || '—'}`);
-      const description = `Sujet : ${topic.title}\n${lines.join('\n')}\n\n${formData.message || ''}`.trim();
+        .map((f) => `${fieldLabels[f]?.label || f} : ${formData[f] || '—'}`);
+      const description = `${topic.title}\n${lines.join('\n')}\n\n${formData.message || ''}`.trim();
 
       const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
@@ -251,17 +194,19 @@ const ContactForm = ({ topic, contactInfo }) => {
         setFormData({});
         setTimeout(() => setSubmitted(false), 6000);
       } else {
-        setError(await getApiErrorMessage(response, "Impossible d'envoyer votre message."));
+        setError(await getApiErrorMessage(response, tContact.form?.errorGeneric));
       }
     } catch (err) {
       console.error('Erreur:', err);
-      setError(err.message || 'Erreur réseau. Réessayez plus tard.');
+      setError(err.message || tContact.form?.errorNetwork);
     } finally {
       setLoading(false);
     }
   };
 
   const Icon = topic.icon;
+  const sb = tContact.sidebar || {};
+  const fm = tContact.form || {};
 
   return (
     <div className="grid lg:grid-cols-[1.5fr_0.85fr] gap-8">
@@ -284,7 +229,7 @@ const ContactForm = ({ topic, contactInfo }) => {
             <div className="mt-5 p-4 bg-green-50 border border-green-500 rounded-2xl text-green-700 flex items-start gap-3">
               <Check className="h-5 w-5 mt-0.5 shrink-0" strokeWidth={2.5} />
               <div>
-                <p className="font-bold">Message envoyé.</p>
+                <p className="font-bold">{fm.sentTitle}</p>
                 <p className="text-sm mt-1">{topic.successText}</p>
               </div>
             </div>
@@ -295,7 +240,7 @@ const ContactForm = ({ topic, contactInfo }) => {
 
           <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
             {topic.fields.map((field) => {
-              const config = FIELD_LABELS[field];
+              const config = fieldLabels[field];
               if (!config) return null;
               const span = config.type === 'textarea' ? 'md:col-span-2' : '';
               return (
@@ -321,7 +266,7 @@ const ContactForm = ({ topic, contactInfo }) => {
                       required={config.required}
                       className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface"
                     >
-                      <option value="">Sélectionner</option>
+                      <option value="">{fm.selectPlaceholder}</option>
                       {config.options.map((o) => (
                         <option key={o} value={o}>
                           {o}
@@ -349,7 +294,7 @@ const ContactForm = ({ topic, contactInfo }) => {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white font-bold py-3.5 px-6 shadow-md hover:shadow-xl hover:scale-[1.01] transition-all disabled:opacity-50"
               >
                 {loading ? (
-                  'Envoi en cours...'
+                  fm.sending
                 ) : (
                   <>
                     <Send className="h-4 w-4" strokeWidth={2.5} />
@@ -357,9 +302,7 @@ const ContactForm = ({ topic, contactInfo }) => {
                   </>
                 )}
               </button>
-              <p className="mt-3 text-xs text-on-surface-variant text-center">
-                En envoyant ce formulaire, vous acceptez d'être recontacté par TAOMAN Group Investment.
-              </p>
+              <p className="mt-3 text-xs text-on-surface-variant text-center">{fm.disclaimer}</p>
             </div>
           </form>
         </div>
@@ -368,14 +311,14 @@ const ContactForm = ({ topic, contactInfo }) => {
       {/* SIDEBAR INFOS */}
       <aside className="space-y-5 lg:sticky lg:top-28 self-start">
         <div className="rounded-3xl bg-white border border-outline-variant/40 p-6">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">Nous joindre directement</p>
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">{sb.eyebrow}</p>
           <div className="mt-5 space-y-4">
             <div className="flex items-start gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
                 <Phone className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Téléphone</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{sb.phoneLabel}</p>
                 <p className="mt-0.5 font-bold text-on-surface">{contactInfo.phone || '+228 90 42 13 77'}</p>
               </div>
             </div>
@@ -384,7 +327,7 @@ const ContactForm = ({ topic, contactInfo }) => {
                 <Mail className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{sb.emailLabel}</p>
                 <p className="mt-0.5 font-bold text-on-surface break-all">{contactInfo.email || 'contact@taoman.group'}</p>
               </div>
             </div>
@@ -393,8 +336,8 @@ const ContactForm = ({ topic, contactInfo }) => {
                 <MapPin className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Adresse</p>
-                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.address || 'Vakpossito, Lomé – Togo'}</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{sb.addressLabel}</p>
+                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.address || sb.addressFallback}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -402,8 +345,8 @@ const ContactForm = ({ topic, contactInfo }) => {
                 <Clock className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Horaires</p>
-                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.hours || 'Lun – Dim : 08h – 20h'}</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{sb.hoursLabel}</p>
+                <p className="mt-0.5 font-bold text-on-surface">{contactInfo.hours || sb.hoursFallback}</p>
               </div>
             </div>
           </div>
@@ -413,11 +356,9 @@ const ContactForm = ({ topic, contactInfo }) => {
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/15 text-cyan-200">
             <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />
           </span>
-          <p className="mt-4 text-xs font-bold uppercase tracking-widest text-cyan-200">Notre engagement</p>
-          <h4 className="mt-2 text-lg font-black text-white">Confidentialité et suivi personnalisé</h4>
-          <p className="mt-3 text-sm text-white/75 leading-relaxed">
-            Chaque demande est traitée par un interlocuteur unique. Vos données ne sont jamais transmises à des tiers et sont utilisées uniquement pour répondre à votre demande.
-          </p>
+          <p className="mt-4 text-xs font-bold uppercase tracking-widest text-cyan-200">{sb.engagementEyebrow}</p>
+          <h4 className="mt-2 text-lg font-black text-white">{sb.engagementTitle}</h4>
+          <p className="mt-3 text-sm text-white/75 leading-relaxed">{sb.engagementDesc}</p>
         </div>
       </aside>
     </div>
@@ -426,23 +367,33 @@ const ContactForm = ({ topic, contactInfo }) => {
 
 export const ContactPage = () => {
   const { section } = useSiteContent();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, nav: tNav, language } = useLanguage();
   const tContact = tc.contact;
+  const tContactExt = useMemo(() => {
+    const ext = getContactTranslations(language);
+    ext._sectors = tc.sectors;
+    return ext;
+  }, [language, tc.sectors]);
   const contactInfo = section('contact') || {};
   const [searchParams, setSearchParams] = useSearchParams();
   const topicId = searchParams.get('topic') || 'info';
-  const topic = TOPICS[topicId] || TOPICS.info;
+
+  const topicsMap = useMemo(() => buildTopics(tContactExt), [tContactExt]);
+  const fieldLabels = useMemo(() => buildFieldLabels(tContactExt, language), [tContactExt, language]);
+  const topic = topicsMap[topicId] || topicsMap.info;
 
   const selectTopic = (id) => {
     setSearchParams({ topic: id });
-    // Scroll to form
     setTimeout(() => {
       const el = document.getElementById('contact-form');
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   };
 
-  const topicsList = useMemo(() => Object.values(TOPICS), []);
+  const topicsList = useMemo(() => Object.values(topicsMap), [topicsMap]);
+  const intro = tContactExt.intro || {};
+  const cta = tContactExt.cta || {};
+  const breadcrumb = tContactExt.breadcrumb || {};
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
@@ -475,18 +426,22 @@ export const ContactPage = () => {
           <div className="max-w-[1400px] mx-auto">
             <div className="text-center mb-10">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary">
-                <Building2 className="h-4 w-4" strokeWidth={2.4} /> 4 formulaires dédiés
+                <Building2 className="h-4 w-4" strokeWidth={2.4} /> {intro.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface tracking-tight">
-                Quel est l'objet de votre demande ?
+                {intro.title}
               </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-on-surface-variant text-lg">
-                Chaque formulaire est conçu pour aller à l'essentiel et orienter votre demande vers la bonne équipe TAOMAN.
-              </p>
+              <p className="mt-4 max-w-2xl mx-auto text-on-surface-variant text-lg">{intro.description}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
               {topicsList.map((t) => (
-                <ContactCard key={t.id} topic={t} onSelect={selectTopic} active={t.id === topicId} />
+                <ContactCard
+                  key={t.id}
+                  topic={t}
+                  onSelect={selectTopic}
+                  active={t.id === topicId}
+                  labels={{ cardSelected: tContactExt.cardSelected, cardSelect: tContactExt.cardSelect }}
+                />
               ))}
             </div>
           </div>
@@ -496,13 +451,18 @@ export const ContactPage = () => {
         <section id="contact-form" className="py-16 px-6 bg-gradient-to-b from-surface-container-low to-surface scroll-mt-24">
           <div className="max-w-[1400px] mx-auto">
             <div className="mb-8 flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
-              <span>Contact</span>
+              <span>{breadcrumb.home}</span>
               <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
               <span className="text-primary font-bold">{topic.badge}</span>
               <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
               <span className="text-on-surface font-bold">{topic.title}</span>
             </div>
-            <ContactForm topic={topic} contactInfo={contactInfo} />
+            <ContactForm
+              topic={topic}
+              contactInfo={contactInfo}
+              fieldLabels={fieldLabels}
+              tContact={tContactExt}
+            />
           </div>
         </section>
 
@@ -510,26 +470,22 @@ export const ContactPage = () => {
         <section className="py-16 px-6 bg-gradient-to-br from-primary to-primary-container">
           <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_0.8fr] gap-8 items-center text-white">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">TAOMAN Group Investment</p>
-              <h2 className="mt-3 text-3xl md:text-4xl font-black leading-tight">
-                Un groupe togolais multi-activités, des services concrets, des investissements suivis.
-              </h2>
-              <p className="mt-4 text-lg text-white/85 max-w-2xl leading-relaxed">
-                Services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) + Programme d'investissement TGI sur 5 secteurs (Logistique, Agro, Commerce, BTP, Numérique).
-              </p>
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">{cta.eyebrow}</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-black leading-tight">{cta.title}</h2>
+              <p className="mt-4 text-lg text-white/85 max-w-2xl leading-relaxed">{cta.description}</p>
             </div>
             <div className="flex flex-col gap-3">
               <Link
                 to="/services"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-primary px-6 py-3.5 font-bold shadow-md hover:scale-[1.02] transition"
               >
-                Voir nos services <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                {cta.btnServices} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
               <Link
                 to="/investissement"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-primary transition"
               >
-                Découvrir TGI <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                {cta.btnTgi} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Link>
             </div>
           </div>

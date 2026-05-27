@@ -5,8 +5,14 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
+import { useLanguage } from '../context/LanguageContext';
+import { getSubmitProjectTranslations } from '../i18n/submitProject';
 
 export const SubmitProjectPage = () => {
+  const { translations: tc, language } = useLanguage();
+  const tS = tc?.submitProject?.hero || {};
+  const t = getSubmitProjectTranslations(language);
+  const tSectorItems = tc?.sectors?.items || {};
   const [formData, setFormData] = useState({
     projectName: '',
     sector: '',
@@ -74,11 +80,11 @@ export const SubmitProjectPage = () => {
         });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
-        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre soumission."));
+        setSubmitError(await getApiErrorMessage(response, t.errorGeneric));
       }
     } catch (error) {
       console.error('Erreur:', error);
-      setSubmitError(error.message || 'Erreur réseau. Réessayez plus tard.');
+      setSubmitError(error.message || t.errorNetwork);
     } finally {
       setLoading(false);
     }
@@ -94,29 +100,27 @@ export const SubmitProjectPage = () => {
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
           <div className="relative z-10 mx-auto max-w-[1100px]">
             <Link to="/investissement" className="text-sm text-cyan-200 font-bold hover:underline">
-              ← Investir avec nous
+              {t.backLink}
             </Link>
-            <p className="mt-6 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">Soumettre un projet</p>
-            <h1 className="mt-3 text-4xl md:text-6xl font-black tracking-[-0.04em]">
-              Présentez votre projet à TAOMAN
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg text-white/75 leading-relaxed">
-              Décrivez votre projet, son secteur, son ticket et son horizon. Notre comité d'investissement examine chaque dossier et revient vers vous sous 5 jours ouvrés.
-            </p>
+            <p className="mt-6 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tS.eyebrow}</p>
+            <h1 className="mt-3 text-4xl md:text-6xl font-black tracking-[-0.04em]">{tS.title}</h1>
+            <p className="mt-5 max-w-2xl text-lg text-white/75 leading-relaxed">{tS.description}</p>
           </div>
         </section>
 
         <section className="py-16 px-6">
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-10">
             <div className="bg-white rounded-3xl shadow-lg p-8 border border-outline-variant/40">
-              <h2 className="text-2xl font-black text-on-surface mb-2">Formulaire de soumission</h2>
+              <h2 className="text-2xl font-black text-on-surface mb-2">{t.formTitle}</h2>
               <p className="text-sm text-on-surface-variant mb-6">
-                Les champs marqués <span className="text-red-500">*</span> sont obligatoires.
+                {t.requiredHint.split('*')[0]}
+                <span className="text-red-500">*</span>
+                {t.requiredHint.split('*')[1] || ''}
               </p>
 
               {submitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700">
-                  ✓ Votre projet a bien été reçu. Notre équipe revient vers vous sous 5 jours ouvrés.
+                  {t.successText}
                 </div>
               )}
               {submitError && (
@@ -127,7 +131,7 @@ export const SubmitProjectPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Nom du projet <span className="text-red-500">*</span>
+                      {t.fields.projectName.label} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -135,13 +139,13 @@ export const SubmitProjectPage = () => {
                       value={formData.projectName}
                       onChange={handleChange}
                       required
-                      placeholder="Ex: Mini-usine d'huile de palme"
+                      placeholder={t.fields.projectName.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Secteur <span className="text-red-500">*</span>
+                      {t.fields.sector.label} <span className="text-red-500">*</span>
                     </label>
                     <select
                       name="sector"
@@ -150,42 +154,44 @@ export const SubmitProjectPage = () => {
                       required
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="">Sélectionner</option>
+                      <option value="">{t.selectPlaceholder}</option>
                       {DEFAULT_SECTORS.map((s) => (
-                        <option key={s.slug} value={s.title}>{s.title}</option>
+                        <option key={s.slug} value={s.title}>
+                          {tSectorItems?.[s.slug]?.title || s.title}
+                        </option>
                       ))}
-                      <option value="Autre">Autre</option>
+                      <option value="Autre">{t.otherSector}</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Localisation
+                      {t.fields.location.label}
                     </label>
                     <input
                       type="text"
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
-                      placeholder="Ex: Lomé, Kara, Atakpamé"
+                      placeholder={t.fields.location.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Ticket recherché (FCFA)
+                      {t.fields.amount.label}
                     </label>
                     <input
                       type="text"
                       name="amount"
                       value={formData.amount}
                       onChange={handleChange}
-                      placeholder="Ex: 5 000 000"
+                      placeholder={t.fields.amount.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Horizon visé
+                      {t.fields.horizon.label}
                     </label>
                     <select
                       name="horizon"
@@ -193,23 +199,24 @@ export const SubmitProjectPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="">Sélectionner</option>
-                      <option value="3 mois">3 mois</option>
-                      <option value="6 mois">6 mois</option>
-                      <option value="10 mois">10 mois</option>
-                      <option value="Au-delà de 10 mois">Au-delà de 10 mois</option>
+                      <option value="">{t.selectPlaceholder}</option>
+                      {t.fields.horizon.options.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Site web / Lien (optionnel)
+                      {t.fields.website.label}
                     </label>
                     <input
                       type="text"
                       name="website"
                       value={formData.website}
                       onChange={handleChange}
-                      placeholder="https://..."
+                      placeholder={t.fields.website.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -217,7 +224,7 @@ export const SubmitProjectPage = () => {
 
                 <div>
                   <label className="block text-sm font-bold text-on-surface mb-2">
-                    Description du projet <span className="text-red-500">*</span>
+                    {t.fields.description.label} <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     name="description"
@@ -225,7 +232,7 @@ export const SubmitProjectPage = () => {
                     onChange={handleChange}
                     rows={6}
                     required
-                    placeholder="Présentez votre projet : produit/service, marché, modèle économique, équipe, état d'avancement."
+                    placeholder={t.fields.description.placeholder}
                     className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
@@ -233,7 +240,7 @@ export const SubmitProjectPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Nom du contact <span className="text-red-500">*</span>
+                      {t.fields.contactName.label} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -246,7 +253,7 @@ export const SubmitProjectPage = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Email <span className="text-red-500">*</span>
+                      {t.fields.contactEmail.label} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -259,7 +266,7 @@ export const SubmitProjectPage = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      Téléphone <span className="text-red-500">*</span>
+                      {t.fields.contactPhone.label} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -267,7 +274,7 @@ export const SubmitProjectPage = () => {
                       value={formData.contactPhone}
                       onChange={handleChange}
                       required
-                      placeholder="+228 ..."
+                      placeholder={t.fields.contactPhone.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -278,27 +285,24 @@ export const SubmitProjectPage = () => {
                   disabled={loading}
                   className="w-full bg-gradient-to-r from-primary to-primary-container text-white font-bold py-3.5 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.01] disabled:opacity-50"
                 >
-                  {loading ? 'Envoi en cours...' : 'Envoyer ma soumission'}
+                  {loading ? t.sending : t.submit}
                 </button>
               </form>
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
               <div className="rounded-3xl bg-[#07111f] text-white p-7">
-                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">Processus</p>
-                <h3 className="mt-3 text-xl font-black">Comment nous examinons votre dossier</h3>
+                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">{t.process.eyebrow}</p>
+                <h3 className="mt-3 text-xl font-black">{t.process.title}</h3>
                 <ol className="mt-5 space-y-4">
-                  {[
-                    ['1', 'Réception', 'Nous accusons réception sous 24h.'],
-                    ['2', 'Analyse', 'Étude par notre comité (5 jours ouvrés).'],
-                    ['3', 'Échange', 'Appel ou rendez-vous pour clarifier le projet.'],
-                    ['4', 'Décision', 'Termes d\'engagement et calendrier de mobilisation.'],
-                  ].map(([n, t, d]) => (
-                    <li key={n} className="flex gap-3">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-[#07111f] font-black">{n}</span>
+                  {t.process.steps.map((step, idx) => (
+                    <li key={idx} className="flex gap-3">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-[#07111f] font-black">
+                        {idx + 1}
+                      </span>
                       <div>
-                        <p className="font-black">{t}</p>
-                        <p className="text-sm text-white/70">{d}</p>
+                        <p className="font-black">{step.title}</p>
+                        <p className="text-sm text-white/70">{step.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -306,16 +310,14 @@ export const SubmitProjectPage = () => {
               </div>
 
               <div className="rounded-3xl bg-white border border-outline-variant/40 p-7">
-                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Besoin d'aide ?</p>
-                <h3 className="mt-3 text-xl font-black text-on-surface">Parlez-en à notre équipe</h3>
-                <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">
-                  Notre équipe vous aide à structurer votre dossier avant soumission.
-                </p>
+                <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{t.help.eyebrow}</p>
+                <h3 className="mt-3 text-xl font-black text-on-surface">{t.help.title}</h3>
+                <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">{t.help.description}</p>
                 <Link
                   to="/contact"
                   className="mt-5 inline-flex items-center justify-center w-full rounded-2xl border border-primary px-4 py-3 font-bold text-primary hover:bg-primary hover:text-white transition"
                 >
-                  Contacter TAOMAN
+                  {t.help.cta}
                 </Link>
               </div>
             </aside>
