@@ -31,7 +31,7 @@ const ALL_FILTER = '__all__';
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const { content: t, nav: tNav } = useLanguage();
+  const { content: t, nav: tNav, language } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeFilter, setActiveFilter] = useState(ALL_FILTER);
   const [activeProject, setActiveProject] = useState(0);
