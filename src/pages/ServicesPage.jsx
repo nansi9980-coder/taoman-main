@@ -506,6 +506,7 @@ export const ServicesPage = () => {
                 const Icon = stepIcons[idx] || ClipboardCheck;
                 const num = String(idx + 1).padStart(2, '0');
                 const { title, desc } = step;
+                return (
                   <div
                     key={num}
                     className="bg-white rounded-3xl border border-outline-variant/40 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
