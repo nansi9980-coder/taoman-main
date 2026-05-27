@@ -24,7 +24,7 @@ export const MagneticButton = ({ children, className = '', onClick, variant = 'p
   const variants = {
     primary: "bg-cyan-300 text-[#07111f] hover:bg-cyan-200",
     outline: "border border-white/25 bg-white/5 text-white backdrop-blur hover:bg-white hover:text-[#07111f]",
-    glow: "btn-glow bg-transparent text-white",
+    glow: "btn-glow font-bold",
   };
 
   return (
