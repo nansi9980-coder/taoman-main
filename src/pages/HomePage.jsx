@@ -8,6 +8,9 @@ import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { PremiumImageFrame } from '../components/PremiumImageFrame';
 import { StatsBand } from '../components/StatsBand';
 import { PartnersBand } from '../components/PartnersBand';
+import { MagneticButton } from '../components/MagneticButton';
+import { TextReveal } from '../components/TextReveal';
+import { TiltCard } from '../components/TiltCard';
 import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight } from 'lucide-react';
 import lavage1    from '../assets/realisations/lavage1.jpg';
@@ -242,11 +245,13 @@ export const HomePage = () => {
               </div>
 
               <h1 className="mb-6 leading-[0.95] tracking-[-0.045em]">
-                <span className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
-                  {heroData.title}
-                </span>
+                <TextReveal 
+                  elementType="span" 
+                  className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent" 
+                  text={heroData.title || ''} 
+                />
                 <span className="mt-5 block text-xl md:text-3xl font-bold text-white/90">
-                  {heroData.subtitle}
+                  <TextReveal elementType="span" text={heroData.subtitle || ''} delay={0.5} />
                 </span>
               </h1>
 
@@ -255,19 +260,21 @@ export const HomePage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <button
+                <MagneticButton
                   onClick={() => navigate('/contact?topic=invest')}
-                  className="btn-glow group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-2xl transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                  variant="glow"
+                  className="px-8 py-4 text-lg"
                 >
                   {heroData.btn1}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-                <button
+                </MagneticButton>
+                <MagneticButton
                   onClick={() => navigate(isAuthenticated ? '/dashboard' : '/connexion')}
-                  className="px-8 py-4 rounded-2xl border border-white/25 bg-white/5 text-white font-bold backdrop-blur transition-all duration-300 hover:bg-white hover:text-[#07111f] hover:scale-[1.03]"
+                  variant="outline"
+                  className="px-8 py-4 text-lg"
                 >
                   {heroData.btn2}
-                </button>
+                </MagneticButton>
               </div>
 
               <div className="flex flex-wrap gap-2 md:gap-3">
@@ -600,36 +607,37 @@ export const HomePage = () => {
             <Reveal preset="fadeUp" childSelector=".sector-card" stagger={0.12}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {sectors.map((sector, idx) => (
-                <Link
-                  key={`${sector.title}-${idx}`}
-                  to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
-                  className="sector-card block"
-                >
-                  <PremiumImageFrame
-                    src={sector.image}
-                    alt={sector.title}
-                    ratio="aspect-auto h-[420px]"
-                    rounded="rounded-[2rem]"
-                    tone={idx % 2 === 0 ? 'cool' : 'warm'}
-                    className="shadow-xl hover:shadow-2xl"
+                <TiltCard key={`${sector.title}-${idx}`}>
+                  <Link
+                    to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
+                    className="sector-card block rounded-[2rem] h-full"
                   >
-                    {sector.tag && (
-                      <span className="absolute top-5 left-5 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-widest text-primary backdrop-blur">
-                        {sector.tag}
-                      </span>
-                    )}
-                    <div className="absolute inset-x-0 bottom-0 p-7 text-white z-10">
-                      <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3 leading-tight">
-                        {sector.title}
-                      </h3>
-                      <p className="text-white/85 leading-relaxed mb-5 line-clamp-3">{sector.description}</p>
-                      <span className="inline-flex items-center gap-2 text-cyan-200 font-bold transition-transform duration-300 group-hover:translate-x-1">
-                        {t.common.learnMore}
-                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                      </span>
-                    </div>
-                  </PremiumImageFrame>
-                </Link>
+                    <PremiumImageFrame
+                      src={sector.image}
+                      alt={sector.title}
+                      ratio="aspect-auto h-[420px]"
+                      rounded="rounded-[2rem]"
+                      tone={idx % 2 === 0 ? 'cool' : 'warm'}
+                      className="shadow-xl"
+                    >
+                      {sector.tag && (
+                        <span className="absolute top-5 left-5 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-widest text-primary backdrop-blur">
+                          {sector.tag}
+                        </span>
+                      )}
+                      <div className="absolute inset-x-0 bottom-0 p-7 text-white z-10">
+                        <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3 leading-tight">
+                          {sector.title}
+                        </h3>
+                        <p className="text-white/85 leading-relaxed mb-5 line-clamp-3">{sector.description}</p>
+                        <span className="inline-flex items-center gap-2 text-cyan-200 font-bold transition-transform duration-300 group-hover:translate-x-1">
+                          {t.common.learnMore}
+                          <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                        </span>
+                      </div>
+                    </PremiumImageFrame>
+                  </Link>
+                </TiltCard>
               ))}
             </div>
             </Reveal>

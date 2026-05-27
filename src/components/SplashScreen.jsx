@@ -1,105 +1,141 @@
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 import { BRAND_NAME } from '../constants/branding';
 
-/**
- * Splash screen affiché au chargement initial du site.
- * - Logo TAOMAN animé (scale + glow)
- * - Barre de progression fluide
- * - Fade-out doux après la fin du chargement
- * - Respect de prefers-reduced-motion
- * - Bloque l'écran ~1.4 s puis disparaît (~ + 600 ms de fade)
- */
 const SESSION_KEY = 'taoman_splash_shown';
 
-export const SplashScreen = ({ minDuration = 1400, once = false }) => {
+export const SplashScreen = ({ minDuration = 2200, once = false }) => {
   const [visible, setVisible] = useState(() => {
     if (typeof window === 'undefined') return false;
     if (once && sessionStorage.getItem(SESSION_KEY) === '1') return false;
     return true;
   });
-  const [fadingOut, setFadingOut] = useState(false);
 
   useEffect(() => {
     if (!visible) return undefined;
-
-    const reduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const duration = reduced ? 350 : minDuration;
-    const fadeDuration = reduced ? 200 : 600;
-
+    
     document.body.style.overflow = 'hidden';
 
-    const startFade = window.setTimeout(() => {
-      setFadingOut(true);
-    }, duration);
-
-    const remove = window.setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setVisible(false);
       document.body.style.overflow = '';
-      try {
-        if (once) sessionStorage.setItem(SESSION_KEY, '1');
-      } catch {
-        /* ignore */
+      if (once) {
+        try { sessionStorage.setItem(SESSION_KEY, '1'); } catch {}
       }
-    }, duration + fadeDuration);
+    }, minDuration);
 
     return () => {
-      window.clearTimeout(startFade);
-      window.clearTimeout(remove);
+      window.clearTimeout(timer);
       document.body.style.overflow = '';
     };
   }, [visible, minDuration, once]);
 
-  if (!visible) return null;
+  // Si on réduit les animations
+  const isReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const letterContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.5 }
+    }
+  };
+
+  const letterAnim = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 10 } }
+  };
 
   return (
-    <div
-      role="status"
-      aria-live="polite"
-      aria-label={`${BRAND_NAME} — chargement`}
-      className={`splash-screen ${fadingOut ? 'is-leaving' : ''}`}
-    >
-      <div className="splash-backdrop" aria-hidden="true">
-        <div className="splash-grid" />
-        <div className="splash-glow splash-glow--1" />
-        <div className="splash-glow splash-glow--2" />
-        <div className="splash-glow splash-glow--3" />
-      </div>
-
-      <div className="splash-content">
-        <div className="splash-logo-wrap">
-          <span className="splash-halo" aria-hidden="true" />
-          <span className="splash-ring splash-ring--a" aria-hidden="true" />
-          <span className="splash-ring splash-ring--b" aria-hidden="true" />
-          <div className="splash-logo-card">
-            <img
-              src={logo}
-              alt={BRAND_NAME}
-              className="splash-logo-img"
-              width="120"
-              height="120"
-              decoding="async"
-              fetchpriority="high"
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          role="status"
+          aria-live="polite"
+          initial={{ opacity: 1 }}
+          exit={{ 
+            opacity: 0, 
+            scale: 1.1,
+            filter: "blur(10px)",
+            transition: { duration: 0.8, ease: "easeInOut" } 
+          }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#07111f] overflow-hidden"
+        >
+          {/* Background effects */}
+          <div className="absolute inset-0 z-0">
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.15 }}
+              transition={{ duration: 1.5 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-400 rounded-full blur-[120px]" 
             />
           </div>
-        </div>
 
-        <h1 className="splash-brand">
-          <span className="splash-brand-main">TAOMAN</span>
-          <span className="splash-brand-sub">Group Investment</span>
-        </h1>
+          <div className="relative z-10 flex flex-col items-center">
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0, rotateY: 90 }}
+              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+              className="relative w-32 h-32 mb-8"
+            >
+              {/* Rings around logo */}
+              <motion.div 
+                animate={{ rotate: 360 }} 
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-4 border border-cyan-400/30 rounded-full border-t-cyan-400"
+              />
+              <motion.div 
+                animate={{ rotate: -360 }} 
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-8 border border-white/10 rounded-full border-b-white/50"
+              />
+              
+              <img
+                src={logo}
+                alt={BRAND_NAME}
+                className="w-full h-full object-contain relative z-10"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </motion.div>
 
-        <div className="splash-progress" aria-hidden="true">
-          <span className="splash-progress-bar" />
-        </div>
+            {/* Animated Letters */}
+            <motion.h1 
+              variants={letterContainer}
+              initial="hidden"
+              animate="show"
+              className="text-4xl md:text-5xl font-black text-white tracking-[0.2em] mb-2 flex"
+            >
+              {"TAOMAN".split("").map((char, i) => (
+                <motion.span key={i} variants={letterAnim} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="text-cyan-200 text-sm md:text-base font-bold tracking-[0.3em] uppercase"
+            >
+              Group Investment
+            </motion.p>
 
-        <p className="splash-tagline">Investissement structuré · Services opérationnels · Togo</p>
-      </div>
-    </div>
+            {/* Progress line */}
+            <div className="mt-12 w-64 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+              <motion.div 
+                initial={{ x: "-100%" }}
+                animate={{ x: "0%" }}
+                transition={{ duration: minDuration / 1000 - 0.5, ease: "circOut" }}
+                className="absolute inset-0 bg-cyan-400 rounded-full"
+              />
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
