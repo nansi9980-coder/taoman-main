@@ -13,7 +13,7 @@ import { useSiteContent } from '../context/SiteContentContext';
  *   - kenBurns (bool, zoom doux)     — défaut true
  */
 export const DEFAULT_MEDIA_SETTINGS = {
-  autoplayInterval: 6000,
+  autoplayInterval: 4500,
   autoplayEnabled: true,
   pauseOnHover: true,
   transitionMs: 800,

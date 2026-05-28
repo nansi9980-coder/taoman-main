@@ -24,7 +24,7 @@ import agroIcon from '../assets/agro_sector.jpeg';
 import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';
 import { API_URL, mediaUrl } from "../config";
-import { normalizeItemsSection } from "../utils/siteContent";
+import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
 import { useSiteContent } from "../context/SiteContentContext";
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
@@ -194,6 +194,8 @@ export const HomePage = () => {
   const activeFallback = HOME_FALLBACKS[language] || HOME_FALLBACKS.FR;
 
   const services = apiServices.length > 0 ? apiServices : activeFallback.services;
+  const homeServices = services.slice(0, 6);
+  const impactFromCms = buildStatsFromSection(section('statistics'));
 
   const sectors = normalizeSectors(section('sectors')).map((s) => {
     const tSector = t.sectors?.items?.[s.slug];
@@ -209,6 +211,7 @@ export const HomePage = () => {
   const testimonials = testimonialItems.length ? testimonialItems : activeFallback.testimonials;
 
   const heroSection = section('hero') || section('heroBanner') || apiSiteContent.hero || apiSiteContent.heroBanner || {};
+  const realisationsSection = section('realisations') || {};
   const ctaSection = apiSiteContent.cta || {};
 
   // Traductions i18n du hero — PRIORITÉ sur les données API (fixes en FR)
@@ -268,7 +271,22 @@ export const HomePage = () => {
     { src: numeriqueImg, alt: 'Plateforme numérique et simulateur', category: 'Numérique', label: 'Solution Digitale', progress: 100 },
   ];
 
-  const realisations = apiRealisations.length > 0 ? apiRealisations : uploadedRealisations.concat(fallbackRealisations);
+  const dashboardRealisations = normalizeItemsSection(realisationsSection, [])
+    .map((item) => ({
+      src: item.imageUrl ? mediaUrl(item.imageUrl) : null,
+      alt: item.title || 'Réalisation TAOMAN',
+      category: item.category || 'Terrain',
+      label: item.title || 'Réalisation',
+      progress: item.progress ?? 70,
+    }))
+    .filter((item) => item.src);
+
+  const realisations = dashboardRealisations.length > 0
+    ? dashboardRealisations
+    : (apiRealisations.length > 0 ? apiRealisations : uploadedRealisations.concat(fallbackRealisations));
+  const realisationsFooterText =
+    realisationsSection.footerText ||
+    "TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel.";
 
   const filters = [ALL_FILTER, ...new Set(realisations.map(r => r.category))];
 
@@ -518,12 +536,22 @@ export const HomePage = () => {
           eyebrow={t.home.stats.eyebrow}
           title={t.home.stats.title}
           description={t.home.stats.description}
-          items={[
-            { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
-            { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
-            { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
-            { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
-          ]}
+          items={impactFromCms?.length
+            ? impactFromCms.slice(0, 4).map((s, idx) => {
+                const icons = [Briefcase, Layers, MapPin, SparklesIcon];
+                return {
+                  value: s.value,
+                  label: s.label,
+                  hint: '',
+                  icon: icons[idx] || Briefcase,
+                };
+              })
+            : [
+                { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
+                { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
+                { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
+                { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
+              ]}
           className="bg-[#07111f] text-white"
           backdrop={<PremiumBackdrop variant="dark" intensity="soft" particles={10} showGrid={false} />}
         />
@@ -600,12 +628,19 @@ export const HomePage = () => {
               </div>
             </Reveal>
             <Reveal preset="fadeUp" childSelector=".service-card" stagger={0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {services.map((service) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {homeServices.map((service) => (
                   <div key={service.title} className="service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30">
                     <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                       {service.imageUrl ? (
-                        <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                        <img
+                          src={service.imageUrl}
+                          alt={service.title}
+                          className="w-full h-full object-cover object-center"
+                          loading="lazy"
+                          decoding="async"
+                          sizes="56px"
+                        />
                       ) : (
                         service.icon
                       )}
@@ -769,6 +804,9 @@ export const HomePage = () => {
                 {isAuthenticated ? t.home.realisations.ctaAuth : t.home.realisations.ctaGuest}
               </button>
             </div>
+            <p className="mt-5 max-w-3xl mx-auto text-center text-sm md:text-base text-white/75">
+              {realisationsFooterText}
+            </p>
           </div>
         </section>
 

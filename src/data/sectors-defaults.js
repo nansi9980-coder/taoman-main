@@ -220,6 +220,49 @@ export const DEFAULT_SECTORS = [
     range: '15 % – 25 %',
     risk: 'Dynamique',
   },
+  {
+    slug: 'marketing-international',
+    title: 'Marketing International',
+    tag: 'Croissance',
+    image: commercePhoto,
+    short:
+      "Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.",
+    intro:
+      "TAOMAN développe des stratégies marketing internationales pour accélérer la visibilité des offres et la génération d'opportunités commerciales.",
+    context:
+      "Les entreprises africaines qui veulent exporter ou attirer des investisseurs doivent professionnaliser leur présence internationale : branding, contenus, campagnes multicanales, tunnels d'acquisition et partenariats média. TAOMAN accompagne cette montée en gamme avec une approche pilotée par les KPI et la performance.",
+    goal:
+      "Construire une machine de croissance internationale mesurable pour les activités du groupe et ses partenaires : notoriété, leads qualifiés, conversion commerciale et fidélisation.",
+    porteur: 'TAOMAN Group Investment',
+    perimetre:
+      "Afrique de l'Ouest, Europe et marchés ciblés selon secteur. Leviers : SEO/SEA, social media, branding, contenus multilingues, relations B2B et partenariats stratégiques.",
+    documents: [
+      "Audit de positionnement international",
+      "Plan marketing 12 mois avec KPI",
+      "Stratégie d'acquisition multi-canal",
+      "Reporting mensuel de performance",
+    ],
+    cout: '€ 150 K – 800 K',
+    financement: 'TGI + partenaires business',
+    partenaires: [
+      'TAOMAN Group Investment',
+      'Agences médias internationales',
+      'Partenaires digitaux et data',
+      'Réseau de distribution B2B',
+    ],
+    highlights: [
+      'Stratégie de marque internationale',
+      'Campagnes digitales de performance',
+      'Lead generation B2B/B2C',
+    ],
+    opportunities: [
+      'Expansion export et nouveaux marchés',
+      'Acquisition clients à forte valeur',
+      'Partenariats commerciaux structurés',
+    ],
+    range: '14 % – 24 %',
+    risk: 'Dynamique',
+  },
 ];
 
 // Conserver la référence aux icônes pour usage interne éventuel
