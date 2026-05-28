@@ -540,7 +540,7 @@ export const HomePage = () => {
                 if (!pillar) return null;
                 const Icon = style.icon;
                 return (
-                  <Reveal key={idx} preset="fadeUp" delay={idx * 100}>
+                  <Reveal key={idx} preset="fadeUp" delay={idx * 0.15}>
                     <div className="bg-white rounded-3xl p-8 border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
                       <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6`}>
                         <Icon className={`w-8 h-8 ${style.color}`} strokeWidth={1.5} />
@@ -555,7 +555,7 @@ export const HomePage = () => {
               })}
             </div>
             
-            <Reveal preset="fadeUp" delay={400}>
+            <Reveal preset="fadeUp" delay={0.6}>
                <div className="mt-12 flex justify-center">
                   <div className="inline-flex items-center gap-3 bg-white border border-outline-variant/50 rounded-full px-6 py-3 shadow-sm relative overflow-hidden group">
                     <div className="absolute inset-0 bg-emerald-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
