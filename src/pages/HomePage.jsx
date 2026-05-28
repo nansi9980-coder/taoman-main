@@ -29,6 +29,7 @@ import { useSiteContent } from "../context/SiteContentContext";
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
+import { mergeRealisationSlides } from '../data/realisations-defaults';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 
 const ALL_FILTER = '__all__';
@@ -258,37 +259,15 @@ export const HomePage = () => {
       : null,
   };
 
-  // ── Réalisations ──────────────────────────────────────────────────────────
-  const uploadedRealisations = Array.from({ length: 30 }, (_, index) => {
-    const number = String(index + 1).padStart(2, '0');
-    const categories = activeFallback.categories;
-    const labels = activeFallback.labels;
+  // ── Réalisations : 10 slides nommées (CMS imageUrl ou fichier vitrine) ───
+  const realisationItems = Array.isArray(realisationsSection?.items)
+    ? realisationsSection.items
+    : normalizeItemsSection(realisationsSection, []);
+  const mergedSlides = mergeRealisationSlides(realisationItems);
 
-    return {
-      src: `/realisations/taoman-realisation-${number}.png`,
-      alt: `Réalisation ${BRAND_NAME} ${number}`,
-      category: categories[index % categories.length],
-      label: `${labels[index % labels.length]} ${number}`,
-      progress: 60 + ((index * 7) % 38),
-    };
-  });
-
-  const fallbackRealisations = [
-    { src: lavage1,    alt: 'Centre de lavage auto - file de véhicules',       category: activeFallback.categories[2] || 'Services',  label: activeFallback.labels[2] || 'Centre opérationnel', progress: 88 },
-    { src: lavage2,    alt: `Parking du centre de lavage ${BRAND_NAME}`,              category: activeFallback.categories[2] || 'Services',  label: 'Parking client', progress: 76 },
-    { src: mecanique1, alt: `Équipe ${BRAND_NAME} devant le camion de transport`,     category: activeFallback.categories[0] || 'Logistique',    label: activeFallback.labels[1] || 'Équipe transport', progress: 64 },
-    { src: mecanique2, alt: `Techniciens ${BRAND_NAME} en intervention mécanique`,    category: 'Maintenance',    label: 'Atelier technique', progress: 81 },
-    { src: transport1, alt: `Camion Mazda ${BRAND_NAME} - service de déménagement`,   category: activeFallback.categories[0] || 'Logistique',    label: activeFallback.labels[4] || 'Flotte de transport', progress: 92 },
-    { src: transport2, alt: 'Camion déménagement national et international',    category: activeFallback.categories[0] || 'Logistique',    label: 'Déménagement national', progress: 70 },
-    { src: btpIcon,    alt: 'Chantier de construction TAOMAN', category: 'BTP & Infrastructure', label: 'Projet d\'Infrastructure', progress: 85 },
-    { src: agroIcon,   alt: 'Exploitation agricole partenaire', category: 'Agro Business', label: 'Ferme Intégrée', progress: 60 },
-    { src: transportSector, alt: 'Flotte logistique', category: 'Logistique', label: 'Réseau Transport', progress: 95 },
-    { src: numeriqueImg, alt: 'Plateforme numérique et simulateur', category: 'Numérique', label: 'Solution Digitale', progress: 100 },
-  ];
-
-  const dashboardRealisations = normalizeItemsSection(realisationsSection, [])
+  const cmsCarousel = mergedSlides
     .map((item) => ({
-      src: item.imageUrl ? mediaUrl(item.imageUrl) : null,
+      src: item.imageUrl ? mediaUrl(item.imageUrl) : item.staticPath || null,
       alt: item.title || 'Réalisation TAOMAN',
       category: item.category || 'Terrain',
       label: item.title || 'Réalisation',
@@ -296,9 +275,8 @@ export const HomePage = () => {
     }))
     .filter((item) => item.src);
 
-  const realisations = dashboardRealisations.length > 0
-    ? dashboardRealisations
-    : (apiRealisations.length > 0 ? apiRealisations : uploadedRealisations.concat(fallbackRealisations));
+  const realisations =
+    cmsCarousel.length > 0 ? cmsCarousel : apiRealisations.length > 0 ? apiRealisations : cmsCarousel;
   const realisationsFooterText =
     realisationsSection.footerText ||
     "TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel.";
