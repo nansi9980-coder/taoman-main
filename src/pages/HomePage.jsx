@@ -12,7 +12,7 @@ import { MagneticButton } from '../components/MagneticButton';
 import { TextReveal } from '../components/TextReveal';
 import { TiltCard } from '../components/TiltCard';
 import { useLanguage } from '../context/LanguageContext';
-import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight } from 'lucide-react';
+import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight, ShieldCheck, Scale, FileText, PieChart, Target, Globe } from 'lucide-react';
 import lavage1    from '../assets/realisations/lavage1.jpg';
 import lavage2    from '../assets/realisations/lavage2.jpg';
 import mecanique1 from '../assets/realisations/mecanique1.png';
@@ -441,6 +441,61 @@ export const HomePage = () => {
           </div>
         </section>
 
+        {/* ============ NOTRE ADN / VISION ============ */}
+        <section className="py-24 px-6 bg-surface">
+          <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <Reveal preset="fadeRight">
+              <div className="relative">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <PremiumImageFrame
+                  src={transport2}
+                  alt={t.about.vision.title}
+                  ratio="aspect-[4/3]"
+                  rounded="rounded-[2rem]"
+                  tone="neutral"
+                  className="shadow-2xl relative z-10"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-cyan-300/20 px-3 py-1 backdrop-blur border border-cyan-300/30 mb-3">
+                      <Globe className="w-4 h-4 text-cyan-300" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">Hub Afrique de l'Ouest</span>
+                    </div>
+                    <p className="text-xl font-bold">{t.about.title}</p>
+                  </div>
+                </PremiumImageFrame>
+              </div>
+            </Reveal>
+            <Reveal preset="fadeLeft">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
+                  {t.about.vision.eyebrow} & {t.about.mission.eyebrow}
+                </p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-6 leading-tight">
+                  {t.about.vision.title}
+                </h2>
+                <div className="space-y-6 text-lg text-on-surface-variant">
+                  <p className="leading-relaxed border-l-4 border-primary pl-6 py-2 bg-surface-container-low/50 italic">
+                    "{t.about.vision.body}"
+                  </p>
+                  <p className="leading-relaxed font-medium">
+                    {t.about.description}
+                  </p>
+                  <div className="flex items-start gap-4 mt-8">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <Target className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-on-surface text-xl mb-2">{t.about.mission.title}</h4>
+                      <p className="text-base text-on-surface-variant">{t.about.mission.body}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ============ STATS PREMIUM ============ */}
         <StatsBand
           eyebrow={t.home.stats.eyebrow}
@@ -455,6 +510,65 @@ export const HomePage = () => {
           className="bg-[#07111f] text-white"
           backdrop={<PremiumBackdrop variant="dark" intensity="soft" particles={10} showGrid={false} />}
         />
+
+        {/* ============ GOUVERNANCE & SECURITE ============ */}
+        <section className="py-24 px-6 bg-surface-container-low relative overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="max-w-[1400px] mx-auto">
+            <Reveal preset="fadeUp">
+              <div className="text-center mb-16 max-w-3xl mx-auto">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
+                  {t.about.governance.eyebrow}
+                </p>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5">
+                  {t.about.governance.title}
+                </h2>
+                <p className="text-lg text-on-surface-variant">
+                  {t.about.governance.description}
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { icon: ShieldCheck, color: "text-blue-600", bg: "bg-blue-600/10" },
+                { icon: Scale, color: "text-emerald-600", bg: "bg-emerald-600/10" },
+                { icon: FileText, color: "text-amber-600", bg: "bg-amber-600/10" },
+                { icon: PieChart, color: "text-purple-600", bg: "bg-purple-600/10" }
+              ].map((style, idx) => {
+                const pillar = t.about.governance.pillars[idx];
+                if (!pillar) return null;
+                const Icon = style.icon;
+                return (
+                  <Reveal key={idx} preset="fadeUp" delay={idx * 100}>
+                    <div className="bg-white rounded-3xl p-8 border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                      <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6`}>
+                        <Icon className={`w-8 h-8 ${style.color}`} strokeWidth={1.5} />
+                      </div>
+                      <h3 className="text-xl font-bold text-on-surface mb-4">{pillar.title}</h3>
+                      <p className="text-on-surface-variant text-sm leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+            
+            <Reveal preset="fadeUp" delay={400}>
+               <div className="mt-12 flex justify-center">
+                  <div className="inline-flex items-center gap-3 bg-white border border-outline-variant/50 rounded-full px-6 py-3 shadow-sm relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-emerald-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span className="flex h-3 w-3 relative z-10">
+                      <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-sm font-bold text-on-surface-variant relative z-10 group-hover:text-emerald-700 transition-colors">Conforme aux standards SYSCOA & CEDEAO</span>
+                  </div>
+               </div>
+            </Reveal>
+          </div>
+        </section>
 
         {/* ============ SERVICES ============ */}
         <section className="py-20 px-6">
