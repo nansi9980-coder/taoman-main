@@ -19,6 +19,10 @@ import mecanique1 from '../assets/realisations/mecanique1.png';
 import mecanique2 from '../assets/realisations/mecanique2.jpg';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
+import btpIcon from '../assets/btp_sector.jpeg';
+import agroIcon from '../assets/agro_sector.jpeg';
+import transportSector from '../assets/transport_sector.jpeg';
+import numeriqueImg from '../assets/simulateur.jpeg';
 import { API_URL, mediaUrl } from "../config";
 import { normalizeItemsSection } from "../utils/siteContent";
 import { useSiteContent } from "../context/SiteContentContext";
@@ -87,7 +91,8 @@ export const HomePage = () => {
         { icon: '01', title: 'Investissement structuré', description: 'Programmes suivis par secteur avec reporting, calendrier et projection de rendement.', price: 'À partir de 500 000 FCFA', features: ['KYC', 'Contrats', 'Suivi portefeuille'] },
         { icon: '02', title: 'Services terrain', description: 'Déploiement opérationnel sur la logistique, l’entretien, l’agro et les services aux entreprises.', price: 'Devis personnalisé', features: ['Équipe terrain', 'SLA', 'Qualité contrôlée'] },
         { icon: '03', title: 'Monitoring financier', description: 'Tableaux de bord, alertes, documents et visibilité sur les flux financiers.', price: 'Espace investisseur inclus', features: ['ROI', 'Wallet', 'Documents'] },
-        { icon: '04', title: 'Simulation intelligente', description: 'Calculs dynamiques avec intérêts composés, versements, inflation et fiscalité.', price: 'Gratuit', features: ['Simple', 'Avancé', 'Professionnel'] }
+        { icon: '04', title: 'Simulation intelligente', description: 'Calculs dynamiques avec intérêts composés, versements, inflation et fiscalité.', price: 'Gratuit', features: ['Simple', 'Avancé', 'Professionnel'] },
+        { icon: '05', title: 'Partenariat Stratégique & BTP', description: 'Accompagnement sur les grands projets d\'infrastructure et partenariats public-privé (PPP).', price: 'Sur étude', features: ['Infrastructure', 'Ingénierie', 'État'] }
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Investisseur Privé', comment: `${BRAND_NAME} offre une transparence exceptionnelle. J'ai augmenté mes revenus mensuels de manière constante.` },
@@ -101,7 +106,8 @@ export const HomePage = () => {
         { icon: '01', title: 'Structured Investment', description: 'Monitored programs per sector with reporting, schedule and yield projection.', price: 'From 500,000 FCFA', features: ['KYC', 'Contracts', 'Portfolio tracking'] },
         { icon: '02', title: 'Field Services', description: 'Operational deployment in logistics, cleaning, agro and business services.', price: 'Custom quote', features: ['Field team', 'SLA', 'Quality control'] },
         { icon: '03', title: 'Financial Monitoring', description: 'Dashboards, alerts, documents and visibility on financial flows.', price: 'Investor space included', features: ['ROI', 'Wallet', 'Documents'] },
-        { icon: '04', title: 'Smart Simulation', description: 'Dynamic calculations with compound interest, installments, inflation and tax.', price: 'Free', features: ['Simple', 'Advanced', 'Professional'] }
+        { icon: '04', title: 'Smart Simulation', description: 'Dynamic calculations with compound interest, installments, inflation and tax.', price: 'Free', features: ['Simple', 'Advanced', 'Professional'] },
+        { icon: '05', title: 'Strategic Partnership & Construction', description: 'Support on major infrastructure projects and public-private partnerships.', price: 'On study', features: ['Infrastructure', 'Engineering', 'State'] }
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Private Investor', comment: `${BRAND_NAME} offers exceptional transparency. I have steadily increased my monthly income.` },
@@ -115,7 +121,8 @@ export const HomePage = () => {
         { icon: '01', title: 'Inversión Estructurada', description: 'Programas monitoreados por sector con informes, calendario y proyección de rendimientos.', price: 'Desde 500.000 FCFA', features: ['KYC', 'Contratos', 'Seguimiento de cartera'] },
         { icon: '02', title: 'Servicios de Terreno', description: 'Despliegue operativo en logística, limpieza, agro y servicios empresariales.', price: 'Presupuesto personalizado', features: ['Equipo en terreno', 'SLA', 'Control de calidad'] },
         { icon: '03', title: 'Monitoreo Financiero', description: 'Paneles de control, alertas, documentos y visibilidad de los flujos financieros.', price: 'Espacio de inversor incluido', features: ['ROI', 'Billetera', 'Documentos'] },
-        { icon: '04', title: 'Simulación Inteligente', description: 'Cálculos dinámicos con interés compuesto, pagos, inflación y fiscalidad.', price: 'Gratis', features: ['Simple', 'Avanzado', 'Profesional'] }
+        { icon: '04', title: 'Simulación Inteligente', description: 'Cálculos dinámicos con interés compuesto, pagos, inflación y fiscalidad.', price: 'Gratis', features: ['Simple', 'Avanzado', 'Profesional'] },
+        { icon: '05', title: 'Asociación Estratégica', description: 'Apoyo en grandes proyectos de infraestructura y asociaciones público-privadas.', price: 'Bajo estudio', features: ['Infraestructura', 'Ingeniería', 'Estado'] }
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Inversor Privado', comment: `${BRAND_NAME} ofrece una transparencia excepcional. He aumentado constantemente mis ingresos mensuales.` },
@@ -129,7 +136,8 @@ export const HomePage = () => {
         { icon: '01', title: 'Investimento Estruturado', description: 'Programas monitorados por setor com relatórios, cronograma e projeção de rendimentos.', price: 'A partir de 500.000 FCFA', features: ['KYC', 'Contratos', 'Acompanhamento de portfólio'] },
         { icon: '02', title: 'Serviços de Campo', description: 'Implantação operacional em logística, limpeza, agronegócio e serviços corporativos.', price: 'Orçamento personalizado', features: ['Equipe de campo', 'SLA', 'Controle de qualidade'] },
         { icon: '03', title: 'Monitoramento Financeiro', description: 'Painéis, alertas, documentos e visibilidade dos fluxos financeiros.', price: 'Espaço do investidor incluído', features: ['ROI', 'Carteira', 'Documentos'] },
-        { icon: '04', title: 'Simulação Inteligente', description: 'Cálculos dinâmicos com juros compostos, parcelas, inflação e tributação.', price: 'Grátis', features: ['Simples', 'Avançado', 'Profissional'] }
+        { icon: '04', title: 'Simulação Inteligente', description: 'Cálculos dinâmicos com juros compostos, parcelas, inflação e tributação.', price: 'Grátis', features: ['Simples', 'Avançado', 'Profissional'] },
+        { icon: '05', title: 'Parceria Estratégica', description: 'Apoio em grandes projetos de infraestrutura e parcerias público-privadas.', price: 'Sob estudo', features: ['Infraestrutura', 'Engenharia', 'Estado'] }
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Investidor Privado', comment: `${BRAND_NAME} oferece uma transparência excepcional. Tenho aumentado constantemente minha renda mensal.` },
@@ -143,7 +151,8 @@ export const HomePage = () => {
         { icon: '01', title: 'Strukturierte Investition', description: 'Überwachte Programme pro Sektor mit Berichten, Zeitplan und Ertragsprognose.', price: 'Ab 500.000 FCFA', features: ['KYC', 'Verträge', 'Portfolio-Tracking'] },
         { icon: '02', title: 'Außendienst', description: 'Operativer Einsatz in Logistik, Reinigung, Agrar- und Unternehmensdiensten.', price: 'Individuelles Angebot', features: ['Außendienstteam', 'SLA', 'Qualitätskontrolle'] },
         { icon: '03', title: 'Finanzmonitoring', description: 'Dashboards, Warnungen, Dokumente und Sichtbarkeit der Finanzströme.', price: 'Investorenbereich inklusive', features: ['ROI', 'Wallet', 'Dokumente'] },
-        { icon: '04', title: 'Intelligente Simulation', description: 'Dynamische Berechnungen mit Zinseszins, Raten, Inflation und Steuern.', price: 'Kostenlos', features: ['Einfach', 'Erweitert', 'Professionell'] }
+        { icon: '04', title: 'Intelligente Simulation', description: 'Dynamische Berechnungen mit Zinseszins, Raten, Inflation und Steuern.', price: 'Kostenlos', features: ['Einfach', 'Erweitert', 'Professionell'] },
+        { icon: '05', title: 'Strategische Partnerschaft', description: 'Unterstützung bei großen Infrastrukturprojekten.', price: 'Auf Anfrage', features: ['Infrastruktur', 'Staat'] }
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Privatinvestor', comment: `${BRAND_NAME} bietet außergewöhnliche Transparenz. Ich habe mein monatliches Einkommen stetig gesteigert.` },
@@ -253,6 +262,10 @@ export const HomePage = () => {
     { src: mecanique2, alt: `Techniciens ${BRAND_NAME} en intervention mécanique`,    category: 'Maintenance',    label: 'Atelier technique', progress: 81 },
     { src: transport1, alt: `Camion Mazda ${BRAND_NAME} - service de déménagement`,   category: activeFallback.categories[0] || 'Logistique',    label: activeFallback.labels[4] || 'Flotte de transport', progress: 92 },
     { src: transport2, alt: 'Camion déménagement national et international',    category: activeFallback.categories[0] || 'Logistique',    label: 'Déménagement national', progress: 70 },
+    { src: btpIcon,    alt: 'Chantier de construction TAOMAN', category: 'BTP & Infrastructure', label: 'Projet d\'Infrastructure', progress: 85 },
+    { src: agroIcon,   alt: 'Exploitation agricole partenaire', category: 'Agro Business', label: 'Ferme Intégrée', progress: 60 },
+    { src: transportSector, alt: 'Flotte logistique', category: 'Logistique', label: 'Réseau Transport', progress: 95 },
+    { src: numeriqueImg, alt: 'Plateforme numérique et simulateur', category: 'Numérique', label: 'Solution Digitale', progress: 100 },
   ];
 
   const realisations = apiRealisations.length > 0 ? apiRealisations : uploadedRealisations.concat(fallbackRealisations);
@@ -317,7 +330,10 @@ export const HomePage = () => {
                 </span>
               </div>
 
-              <h1 className="mb-6 leading-[0.95] tracking-[-0.045em]">
+              <h1 className="mb-6 leading-[0.95] tracking-[-0.045em] relative">
+                <span className="block text-lg md:text-2xl font-black text-cyan-300 mb-3 uppercase tracking-[0.2em]">
+                  TAOMAN Group Investment
+                </span>
                 <TextReveal 
                   elementType="span" 
                   className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent" 
@@ -461,6 +477,7 @@ export const HomePage = () => {
                       <Globe className="w-4 h-4 text-cyan-300" />
                       <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">Hub Afrique de l'Ouest</span>
                     </div>
+                    <p className="text-3xl font-black mb-2 leading-tight bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">TAOMAN GROUP INVESTMENT</p>
                     <p className="text-xl font-bold">{t.about.title}</p>
                   </div>
                 </PremiumImageFrame>
