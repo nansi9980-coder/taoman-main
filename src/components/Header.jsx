@@ -80,6 +80,11 @@ export const Header = ({ activeLink = 'accueil' }) => {
         { name: t.mechanic, desc: t.mechanicDesc, href: '/contact?topic=info&service=mecanique' },
         { name: t.transport, desc: t.transportDesc, href: '/contact?topic=info&service=transport' },
         { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
+        {
+          name: t.marketingInternational,
+          desc: t.marketingInternationalDesc,
+          href: '/services/marketing-international',
+        },
       ],
     },
     { name: t.contact, href: '/contact', key: 'contact' },

@@ -31,8 +31,11 @@ import { useLanguage } from '../context/LanguageContext';
 import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 
-export const SectorDetailPage = () => {
-  const { slug } = useParams();
+export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => {
+  const { slug: paramSlug } = useParams();
+  const slug = slugOverride || paramSlug;
+  const isServicePage = pageContext === 'services';
+  const detailPath = isServicePage ? `/services/${slug}` : `/secteurs/${slug}`;
   const { section } = useSiteContent();
   const { content: tc, nav: tNav } = useLanguage();
   const tSec = tc.sectors;
@@ -143,19 +146,29 @@ export const SectorDetailPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead
-        title={`${sector.title} — Secteur d'investissement`}
-        description={sector.short || sector.intro || `Découvrez le secteur ${sector.title} chez TAOMAN Group Investment.`}
-        path={`/secteurs/${sector.slug}`}
+        title={
+          isServicePage
+            ? `${sector.title} — Service TAOMAN Group Investment`
+            : `${sector.title} — Secteur d'investissement`
+        }
+        description={
+          sector.short ||
+          sector.intro ||
+          (isServicePage
+            ? `Découvrez ${sector.title} chez TAOMAN Group Investment.`
+            : `Découvrez le secteur ${sector.title} chez TAOMAN Group Investment.`)
+        }
+        path={detailPath}
         image={sector.image}
         type="article"
         jsonLd={buildBreadcrumb([
           { name: 'Accueil', path: '/' },
-          { name: 'Secteurs', path: '/secteurs' },
-          { name: sector.title, path: `/secteurs/${sector.slug}` },
+          { name: isServicePage ? tNav.services : 'Secteurs', path: isServicePage ? '/services' : '/secteurs' },
+          { name: sector.title, path: detailPath },
         ])}
-        keywords={`${sector.title}, secteur Togo, investissement ${sector.title}, TAOMAN`}
+        keywords={`${sector.title}, ${isServicePage ? 'service' : 'secteur'} Togo, TAOMAN, ${sector.title}`}
       />
-      <Header activeLink="projets" />
+      <Header activeLink={isServicePage ? 'services' : 'projets'} />
 
       <main id="main-content" className="flex-grow pt-24">
         {/* BREADCRUMB */}
@@ -163,7 +176,12 @@ export const SectorDetailPage = () => {
           <div className="max-w-[1200px] mx-auto flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
             <Link to="/" className="hover:text-primary transition-colors">Accueil</Link>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
-            <Link to="/secteurs" className="hover:text-primary transition-colors">Projets</Link>
+            <Link
+              to={isServicePage ? '/services' : '/secteurs'}
+              className="hover:text-primary transition-colors"
+            >
+              {isServicePage ? tNav.services : 'Projets'}
+            </Link>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
             <span className="text-on-surface font-bold">{sector.title}</span>
           </div>
@@ -177,7 +195,8 @@ export const SectorDetailPage = () => {
           <div className="relative max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {sector.tag || 'Secteur'} · Opéré par TAOMAN Group Investment
+                <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
+                {sector.tag || (isServicePage ? 'Service' : 'Secteur')} · Opéré par TAOMAN Group Investment
               </span>
               <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]" style={{ color: '#ffffff' }}>
                 {sector.title}
@@ -186,20 +205,41 @@ export const SectorDetailPage = () => {
                 {sector.short || sector.intro}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/contact?topic=invest"
-                  className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
-                >
-                  <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-                  Nous contacter
-                </Link>
-                <Link
-                  to="/contact?topic=project"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
-                >
-                  <Send className="h-4 w-4" strokeWidth={2.5} />
-                  Soumettre un projet
-                </Link>
+                {isServicePage ? (
+                  <>
+                    <Link
+                      to="/contact?topic=info&service=marketing-international"
+                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
+                    >
+                      <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
+                      {tNav.quote}
+                    </Link>
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                    >
+                      <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                      {tNav.allServices}
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/contact?topic=invest"
+                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
+                    >
+                      <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
+                      Nous contacter
+                    </Link>
+                    <Link
+                      to="/contact?topic=project"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                    >
+                      <Send className="h-4 w-4" strokeWidth={2.5} />
+                      Soumettre un projet
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
             <div className="relative">
@@ -580,18 +620,30 @@ export const SectorDetailPage = () => {
             <div className="max-w-[1200px] mx-auto">
               <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-2">Autres secteurs du Groupe</p>
-                  <h2 className="text-2xl md:text-3xl font-black text-on-surface">Explorez la diversification</h2>
+                  <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-2">
+                    {isServicePage ? 'Autres offres du Groupe' : 'Autres secteurs du Groupe'}
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-black text-on-surface">
+                    {isServicePage ? 'Découvrir nos services et secteurs' : 'Explorez la diversification'}
+                  </h2>
                 </div>
-                <Link to="/secteurs" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
-                  Voir tous les secteurs <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                <Link
+                  to={isServicePage ? '/services' : '/secteurs'}
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline"
+                >
+                  {isServicePage ? tNav.allServices : 'Voir tous les secteurs'}{' '}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </Link>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
                 {others.map((other) => (
                   <Link
                     key={other.slug}
-                    to={`/secteurs/${other.slug}`}
+                    to={
+                      other.slug === 'marketing-international' && isServicePage
+                        ? '/services/marketing-international'
+                        : `/secteurs/${other.slug}`
+                    }
                     className="group block rounded-3xl bg-white p-6 border border-outline-variant/40 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30 transition-all"
                   >
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary">

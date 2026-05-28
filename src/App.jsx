@@ -68,6 +68,10 @@ function App() {
                 {/* Pages Principales */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/services" element={<ServicesPage />} />
+                <Route
+                  path="/services/marketing-international"
+                  element={<SectorDetailPage slugOverride="marketing-international" pageContext="services" />}
+                />
                 <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
                 <Route path="/investissement" element={<InvestmentPage />} />
                 <Route path="/investissement/tgi" element={<TaoEconomicInvestmentPage />} />

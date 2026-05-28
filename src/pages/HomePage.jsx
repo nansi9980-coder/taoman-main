@@ -30,6 +30,7 @@ import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { mergeRealisationSlides } from '../data/realisations-defaults';
+import { mergeHeroMosaicBlock } from '../data/hero-mosaic-defaults';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 
 const ALL_FILTER = '__all__';
@@ -53,17 +54,31 @@ export const HomePage = () => {
         .sort((a, b) =>
           String(a.icon || '99').localeCompare(String(b.icon || '99'), undefined, { numeric: true }),
         )
-        .map((s) => ({
-        icon: s.icon || 'star',
-        imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
-        title: s.title,
-        description: s.description,
-        price: s.actionText || 'En savoir plus',
-        features: s.actionLink
-          ? String(s.actionLink).split(',').map((f) => f.trim()).filter(Boolean)
-          : [],
-        href: s.actionLink || null,
-      }))
+        .map((s) => {
+          const linkRaw = s.actionLink || '';
+          const linkIsRoute = String(linkRaw).startsWith('/');
+          const isMarketing = /marketing/i.test(s.title || '');
+          return {
+            icon: s.icon || 'star',
+            imageUrl: s.imageUrl ? mediaUrl(s.imageUrl) : null,
+            title: s.title,
+            description: s.description,
+            price: s.actionText || 'En savoir plus',
+            features: linkIsRoute
+              ? isMarketing
+                ? ['Branding', 'Export', 'Croissance']
+                : []
+              : String(linkRaw)
+                  .split(',')
+                  .map((f) => f.trim())
+                  .filter(Boolean),
+            href: linkIsRoute
+              ? linkRaw
+              : isMarketing
+                ? '/services/marketing-international'
+                : null,
+          };
+        })
     : [];
 
   useEffect(() => {
@@ -100,7 +115,7 @@ export const HomePage = () => {
         { icon: '03', title: 'Monitoring financier', description: 'Tableaux de bord, alertes, documents et visibilité sur les flux financiers.', price: 'Espace investisseur inclus', features: ['ROI', 'Wallet', 'Documents'] },
         { icon: '04', title: 'Simulation intelligente', description: 'Calculs dynamiques avec intérêts composés, versements, inflation et fiscalité.', price: 'Gratuit', features: ['Simple', 'Avancé', 'Professionnel'] },
         { icon: '05', title: 'Partenariat Stratégique & BTP', description: 'Accompagnement sur les grands projets d\'infrastructure et partenariats public-privé (PPP).', price: 'Sur étude', features: ['Infrastructure', 'Ingénierie', 'État'] },
-        { icon: '06', title: 'Marketing International', description: 'Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.', price: 'Sur devis', features: ['Branding', 'Export', 'Croissance'] },
+        { icon: '06', title: 'Marketing International', description: 'Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.', price: 'Sur devis', features: ['Branding', 'Export', 'Croissance'], href: '/services/marketing-international' },
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Investisseur Privé', comment: `${BRAND_NAME} offre une transparence exceptionnelle. J'ai augmenté mes revenus mensuels de manière constante.` },
@@ -116,7 +131,7 @@ export const HomePage = () => {
         { icon: '03', title: 'Financial Monitoring', description: 'Dashboards, alerts, documents and visibility on financial flows.', price: 'Investor space included', features: ['ROI', 'Wallet', 'Documents'] },
         { icon: '04', title: 'Smart Simulation', description: 'Dynamic calculations with compound interest, installments, inflation and tax.', price: 'Free', features: ['Simple', 'Advanced', 'Professional'] },
         { icon: '05', title: 'Strategic Partnership & Construction', description: 'Support on major infrastructure projects and public-private partnerships.', price: 'On study', features: ['Infrastructure', 'Engineering', 'State'] },
-        { icon: '06', title: 'International Marketing', description: 'International positioning, client acquisition and brand deployment across regional and global markets.', price: 'On quote', features: ['Branding', 'Export', 'Growth'] },
+        { icon: '06', title: 'International Marketing', description: 'International positioning, client acquisition and brand deployment across regional and global markets.', price: 'On quote', features: ['Branding', 'Export', 'Growth'], href: '/services/marketing-international' },
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Private Investor', comment: `${BRAND_NAME} offers exceptional transparency. I have steadily increased my monthly income.` },
@@ -241,22 +256,41 @@ export const HomePage = () => {
       ? heroSection.badges
       : DEFAULT_HERO.badges;
 
+  const heroMosaic = mergeHeroMosaicBlock(heroSection.mosaic || {});
+  const mosaicFallbackSrc = {
+    logistics: transport1,
+    services: lavage1,
+    teams: mecanique1,
+  };
+  const mosaicTile = (id) => heroMosaic.tiles.find((t) => t.id === id) || {};
+  const mosaicSrc = (id) => {
+    const url = mosaicTile(id).imageUrl;
+    return url ? mediaUrl(url) : mosaicFallbackSrc[id];
+  };
+  const mosaicLabel = (id, field) => {
+    const tile = mosaicTile(id);
+    const i18n = tHero.mosaic?.[id] || {};
+    return field === 'tag' ? (tile.tag || i18n.tag) : (tile.title || i18n.title);
+  };
+
   const heroData = {
-    // badge principal : i18n > API > défaut
-    badgeMain: tHero.badgeMain || heroSection.badgeMain || heroSection.badge || DEFAULT_HERO.badgeMain,
+    badgeMain: heroSection.badgeMain || tHero.badgeMain || heroSection.badge || DEFAULT_HERO.badgeMain,
     badges: heroBadges,
-    // titre & sous-titre : i18n > API > défaut
-    title: tHero.title || heroSection.title || heroSection.titleFr || DEFAULT_HERO.title,
-    subtitle: tHero.subtitle || heroSection.subtitle || heroSection.titleEn || DEFAULT_HERO.subtitle,
-    // description : i18n > API > défaut
-    description: tHero.description || heroSection.description || DEFAULT_HERO.description,
-    // boutons : i18n > API > common > défaut
-    btn1: tHero.btn1 || heroSection.btn1 || heroSection.primaryButton || tCommon.contactInvest || DEFAULT_HERO.btn1,
-    btn2: tHero.btn2 || heroSection.btn2 || heroSection.secondaryButton || (isAuthenticated ? (tCommon.mySpace || 'Mon espace') : (tCommon.registerFree || DEFAULT_HERO.btn2)),
+    title: heroSection.title || tHero.title || heroSection.titleFr || DEFAULT_HERO.title,
+    subtitle: heroSection.subtitle || tHero.subtitle || heroSection.titleEn || DEFAULT_HERO.subtitle,
+    description: heroSection.description || tHero.description || DEFAULT_HERO.description,
+    btn1: heroSection.btn1 || tHero.btn1 || heroSection.primaryButton || tCommon.contactInvest || DEFAULT_HERO.btn1,
+    btn2: heroSection.btn2 || tHero.btn2 || heroSection.secondaryButton || (isAuthenticated ? (tCommon.mySpace || 'Mon espace') : (tCommon.registerFree || DEFAULT_HERO.btn2)),
     imageCaption: heroSection.imageCaption || tHero.livePill || DEFAULT_HERO.imageCaption,
     heroImage: (heroSection.heroImage || heroSection.backgroundImage)
       ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
       : null,
+    mosaic: {
+      liveLabel: heroMosaic.liveLabel || tHero.liveLabel || 'Live',
+      livePill: heroMosaic.livePill || tHero.livePill || 'Suivi temps réel',
+      kpiPercent: heroMosaic.kpiPercent ?? 96,
+      kpiLabel: heroMosaic.kpiLabel || tHero.kpiLabel || 'satisfaction client',
+    },
   };
 
   // ── Réalisations : 10 slides nommées (CMS imageUrl ou fichier vitrine) ───
@@ -393,8 +427,8 @@ export const HomePage = () => {
             <div className="lg:col-span-5 relative h-[460px] md:h-[560px] hidden lg:block">
               <div className="absolute top-0 right-0 w-[68%] h-[58%] animate-fade-in" style={{ animationDelay: '180ms' }}>
                 <PremiumImageFrame
-                  src={transport1}
-                  alt={t.home.hero.mosaic.logistics.title}
+                  src={mosaicSrc('logistics')}
+                  alt={mosaicLabel('logistics', 'title')}
                   ratio="aspect-auto h-full"
                   rounded="rounded-[2rem]"
                   tone="cool"
@@ -415,47 +449,47 @@ export const HomePage = () => {
 
               <div className="absolute top-[18%] left-0 w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '380ms' }}>
                 <PremiumImageFrame
-                  src={lavage1}
-                  alt={t.home.hero.mosaic.services.title}
+                  src={mosaicSrc('services')}
+                  alt={mosaicLabel('services', 'title')}
                   ratio="aspect-auto h-full"
                   rounded="rounded-[1.5rem]"
                   tone="warm"
                 >
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.services.tag}</p>
-                    <p className="text-base font-black tracking-tight">{t.home.hero.mosaic.services.title}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{mosaicLabel('services', 'tag')}</p>
+                    <p className="text-base font-black tracking-tight">{mosaicLabel('services', 'title')}</p>
                   </div>
                 </PremiumImageFrame>
               </div>
 
               <div className="absolute bottom-0 right-[8%] w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '580ms' }}>
                 <PremiumImageFrame
-                  src={mecanique1}
-                  alt={t.home.hero.mosaic.teams.title}
+                  src={mosaicSrc('teams')}
+                  alt={mosaicLabel('teams', 'title')}
                   ratio="aspect-auto h-full"
                   rounded="rounded-[1.5rem]"
                   tone="neutral"
                 >
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.teams.tag}</p>
-                    <p className="text-base font-black tracking-tight">{t.home.hero.mosaic.teams.title}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{mosaicLabel('teams', 'tag')}</p>
+                    <p className="text-base font-black tracking-tight">{mosaicLabel('teams', 'title')}</p>
                   </div>
                 </PremiumImageFrame>
               </div>
 
               <div className="absolute -bottom-2 left-[5%] z-20 rounded-2xl glass-premium p-4 animate-fade-in-up" style={{ animationDelay: '780ms' }}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/90 mb-1">{t.home.hero.livePill}</p>
-                <p className="text-2xl font-black text-white stat-number">96<span className="text-cyan-300">%</span></p>
-                <p className="text-xs text-white/65">{t.home.hero.kpiLabel}</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/90 mb-1">{heroData.mosaic.livePill}</p>
+                <p className="text-2xl font-black text-white stat-number">{heroData.mosaic.kpiPercent}<span className="text-cyan-300">%</span></p>
+                <p className="text-xs text-white/65">{heroData.mosaic.kpiLabel}</p>
               </div>
             </div>
 
             {/* Mobile : mini-mosaïque horizontale */}
             <div className="lg:hidden grid grid-cols-3 gap-2 mt-4">
-              {[transport1, lavage1, mecanique1].map((src, i) => (
+              {['logistics', 'services', 'teams'].map((id, i) => (
                 <PremiumImageFrame
-                  key={i}
-                  src={src}
+                  key={id}
+                  src={mosaicSrc(id)}
                   alt=""
                   ratio="aspect-square"
                   rounded="rounded-2xl"
@@ -622,32 +656,52 @@ export const HomePage = () => {
             </Reveal>
             <Reveal preset="fadeUp" childSelector=".service-card" stagger={0.1}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {homeServices.map((service) => (
-                  <div key={service.title} className="service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30">
-                    <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                      {service.imageUrl ? (
-                        <img
-                          src={service.imageUrl}
-                          alt={service.title}
-                          className="w-full h-full object-cover object-center"
-                          loading="lazy"
-                          decoding="async"
-                          sizes="56px"
-                        />
-                      ) : (
-                        service.icon
+                {homeServices.map((service) => {
+                  const cardClass =
+                    'service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30';
+                  const body = (
+                    <>
+                      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        {service.imageUrl ? (
+                          <img
+                            src={service.imageUrl}
+                            alt={service.title}
+                            className="w-full h-full object-cover object-center"
+                            loading="lazy"
+                            decoding="async"
+                            sizes="56px"
+                          />
+                        ) : (
+                          service.icon
+                        )}
+                      </div>
+                      <h3 className="text-2xl font-bold text-on-surface">{service.title}</h3>
+                      <p className="mt-3 text-on-surface-variant leading-relaxed">{service.description}</p>
+                      <p className="mt-5 font-bold text-primary">{service.price}</p>
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {service.features.map((feature) => (
+                          <span key={feature} className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                      {service.href && (
+                        <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-2.5 transition-all">
+                          En savoir plus <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                        </p>
                       )}
+                    </>
+                  );
+                  return service.href ? (
+                    <Link key={service.title} to={service.href} className={`${cardClass} block`}>
+                      {body}
+                    </Link>
+                  ) : (
+                    <div key={service.title} className={cardClass}>
+                      {body}
                     </div>
-                    <h3 className="text-2xl font-bold text-on-surface">{service.title}</h3>
-                    <p className="mt-3 text-on-surface-variant leading-relaxed">{service.description}</p>
-                    <p className="mt-5 font-bold text-primary">{service.price}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span key={feature} className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">{feature}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Reveal>
           </div>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ import {
   Award,
   BarChart3,
 } from 'lucide-react';
-import { API_URL, mediaUrl } from '../config';
+import { mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { PhotoSlider } from '../components/PhotoSlider';
 import { SeoHead, buildServiceLd } from '../components/SeoHead';
@@ -32,6 +32,8 @@ import demenagementCard from '../assets/realisations/transport2.jpg';
 import bureauxCard from '../assets/realisations/mecanique1.png';
 import mecaniqueCard from '../assets/realisations/mecanique2.jpg';
 import transportCard from '../assets/realisations/transport1.jpg';
+import { mergeServicesPageHeroSlides } from '../data/services-page-hero-defaults';
+import { mergeOperationalServices } from '../data/operational-services-defaults';
 
 const Icons = {
   car: <Sparkles className="w-6 h-6" strokeWidth={2.2} />,
@@ -54,16 +56,6 @@ const SERVICE_ID_TO_ICON = {
   conciergerie: Icons.shield,
   audits: Icons.audit,
 };
-const DETAILED_ICONS = {
-  lavage: Sparkles,
-  demenagement: Truck,
-  'entretien-bureaux': Brush,
-  mecanique: Wrench,
-  transport: Bus,
-  climatisation: Snowflake,
-  conciergerie: ShieldCheck,
-  audits: BarChart3,
-};
 const SERVICE_ID_TO_HREF = {
   lavage: '/lavage-auto/devis',
   demenagement: '/demenagement/devis',
@@ -85,152 +77,14 @@ SERVICE_ID_TO_IMAGE.climatisation = lavageCard2;
 SERVICE_ID_TO_IMAGE.conciergerie = mecaniqueCard;
 SERVICE_ID_TO_IMAGE.audits = bureauxCard;
 
-// eslint-disable-next-line no-unused-vars
-const defaultServices = [
-  {
-    icon: Icons.car,
-    image: lavageCard,
-    title: 'Lavage automobile & moto',
-    description:
-      "Nettoyage complet intérieur/extérieur en centre ou à domicile.",
-    href: '/lavage-auto/devis',
-    sla: '45 – 90 min',
-    badge: 'Populaire',
-    bullets: [
-      'Lavage + lustrage carrosserie',
-      'Contrats flotte disponibles',
-    ],
-    priceFrom: 'Dès 3 500 FCFA',
-  },
-  {
-    icon: Icons.truck,
-    image: demenagementCard,
-    title: 'Déménagement & aménagement',
-    description:
-      "Déménagement sécurisé avec emballage et équipe dédiée.",
-    href: '/demenagement/devis',
-    sla: 'Sur rendez-vous',
-    badge: 'Équipe dédiée',
-    bullets: [
-      'Visite technique gratuite',
-      'Transport Togo & CEDEAO',
-    ],
-    priceFrom: 'Dès 45 000 FCFA',
-  },
-  {
-    icon: Icons.building,
-    image: bureauxCard,
-    title: 'Entretien des bureaux',
-    description:
-      "Nettoyage professionnel régulier avec équipe formée.",
-    href: '/entretien/bureaux',
-    sla: 'Journalier / hebdo',
-    badge: 'Contrat pro',
-    bullets: [
-      'Équipe TAOMAN en uniforme',
-      'Contrôle qualité mensuel',
-    ],
-    priceFrom: 'Sur devis',
-  },
-  {
-    icon: Icons.wrench,
-    image: mecaniqueCard,
-    title: 'Mécanique automobile',
-    description:
-      "Atelier multimarques pour entretien et réparation.",
-    href: '/contact?topic=info&service=mecanique',
-    sla: 'Devis 24h',
-    badge: 'Atelier pro',
-    bullets: [
-      'Diagnostic électronique multimarques',
-      'Suivi flotte disponible',
-    ],
-    priceFrom: 'Devis transparent',
-  },
-  {
-    icon: Icons.bus,
-    image: transportCard,
-    title: 'Transport & livraison',
-    description:
-      "Transport et livraison avec suivi GPS.",
-    href: '/contact?topic=info&service=transport',
-    sla: 'Lomé & sous-région',
-    badge: 'Flotte propre',
-    bullets: [
-      'Livraison du dernier kilomètre',
-      'Suivi GPS et confirmation',
-    ],
-    priceFrom: 'Tarifs km',
-  },
-  {
-    icon: Icons.snow,
-    image: lavageCard2,
-    title: 'Climatisation & froid',
-    description:
-      "Installation, entretien et dépannage climatiseurs.",
-    href: '/contact?topic=info&service=climatisation',
-    sla: 'Intervention 48h',
-    badge: 'Maintenance',
-    bullets: [
-      'Installation split et VRV',
-      'Maintenance préventive',
-    ],
-    priceFrom: 'Dès 15 000 FCFA',
-  },
-  {
-    icon: Icons.shield,
-    image: mecaniqueCard,
-    title: 'Conciergerie & gardiennage',
-    description:
-      "Services de gardiennage et conciergerie 24/7.",
-    href: '/contact?topic=info&service=conciergerie',
-    sla: '24/7 disponible',
-    badge: 'Nouveau',
-    bullets: [
-      'Gardiennage jour / nuit',
-      "Accueil et gestion d'accès",
-    ],
-    priceFrom: 'Sur devis',
-  },
-  {
-    icon: Icons.audit,
-    image: bureauxCard,
-    title: 'Audits & Reporting',
-    description:
-      "Audits financiers et reporting conforme aux standards.",
-    href: '/contact?topic=info&service=audit',
-    sla: '7 – 21 jours',
-    badge: 'Conformité',
-    bullets: [
-      'Audit financier et opérationnel',
-      'Conformité KYC et standards SYSCOA',
-    ],
-    priceFrom: 'Sur devis',
-  },
-];
-
-const HERO_SLIDES = [
-  { src: lavageCard, alt: 'Centre de lavage TAOMAN', label: 'Centre de lavage auto & moto', category: 'Lavage' },
-  { src: lavageCard2, alt: 'Parking client TAOMAN', label: 'Parking client – activité commerciale', category: 'Lavage' },
-  { src: demenagementCard, alt: 'Camion de déménagement TAOMAN', label: 'Camion de déménagement TAOMAN', category: 'Déménagement' },
-  { src: transportCard, alt: 'Conducteur TAOMAN', label: 'Conducteur TAOMAN sur le terrain', category: 'Transport' },
-  { src: mecaniqueCard, alt: 'Atelier mécanique TAOMAN', label: 'Atelier mécanique multimarques', category: 'Mécanique' },
-  { src: bureauxCard, alt: 'Équipe terrain TAOMAN', label: 'Équipe terrain TAOMAN', category: 'Équipe' },
-];
-
-const hrefByTitle = {
-  lavage: '/lavage-auto/devis',
-  déménagement: '/demenagement/devis',
-  bureaux: '/entretien/bureaux',
-  mécanique: '/contact?topic=info&service=mecanique',
-  transport: '/contact?topic=info&service=transport',
+const HERO_SLIDES_FALLBACK = {
+  'lavage-1': { src: lavageCard, alt: 'Centre de lavage TAOMAN' },
+  'lavage-2': { src: lavageCard2, alt: 'Parking client TAOMAN' },
+  demenagement: { src: demenagementCard, alt: 'Camion de déménagement TAOMAN' },
+  transport: { src: transportCard, alt: 'Conducteur TAOMAN' },
+  mecanique: { src: mecaniqueCard, alt: 'Atelier mécanique TAOMAN' },
+  equipe: { src: bureauxCard, alt: 'Équipe terrain TAOMAN' },
 };
-
-function resolveHref(title = '') {
-  const lower = title.toLowerCase();
-  const key = Object.keys(hrefByTitle).find((k) => lower.includes(k));
-  return key ? hrefByTitle[key] : `/services/${encodeURIComponent(title)}`;
-}
 
 const DEFAULT_SERVICES_PAGE = {
   badge: 'Services opérationnels',
@@ -254,53 +108,44 @@ export const ServicesPage = () => {
   const btn1 = sp.btn1 || tServExt.finalCta.btnQuote;
   const btn2 = sp.btn2 || tServExt.finalCta.btnInvest;
 
-  const translatedDefaults = useMemo(
-    () =>
-      tServExt.items.map((it) => ({
-        id: it.id,
-        icon: SERVICE_ID_TO_ICON[it.id] || Icons.car,
-        image: SERVICE_ID_TO_IMAGE[it.id] || lavageCard,
-        title: it.title,
-        description: it.description,
-        href: SERVICE_ID_TO_HREF[it.id] || `/services/${it.id}`,
-        sla: it.sla,
-        badge: it.badge,
-        bullets: it.bullets,
-        priceFrom: it.priceFrom,
-      })),
-    [tServExt]
-  );
+  const heroSlides = useMemo(() => {
+    const merged = mergeServicesPageHeroSlides(sp.heroSlides || []);
+    return merged.map((slide) => {
+      const fb = HERO_SLIDES_FALLBACK[slide.id] || HERO_SLIDES_FALLBACK['lavage-1'];
+      const src = slide.imageUrl ? mediaUrl(slide.imageUrl) : fb.src;
+      return {
+        src,
+        alt: slide.title || fb.alt,
+        label: slide.title || fb.alt,
+        category: slide.category || 'Services',
+      };
+    });
+  }, [sp.heroSlides]);
 
-  const [services, setServices] = useState(translatedDefaults);
-
-  useEffect(() => {
-    setServices(translatedDefaults);
-  }, [translatedDefaults]);
-
-  useEffect(() => {
-    fetch(`${API_URL}/content/services`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!Array.isArray(data) || data.length === 0) return;
-        const icons = [Icons.car, Icons.truck, Icons.building, Icons.wrench, Icons.bus, Icons.snow, Icons.shield, Icons.audit];
-        const fallbackImages = [lavageCard, demenagementCard, bureauxCard, mecaniqueCard, transportCard, lavageCard2, mecaniqueCard, bureauxCard];
-        setServices(
-          data
-            .filter((s) => s.published !== false)
-            .map((s, i) => ({
-              id: s.id,
-              icon: icons[i % icons.length],
-              image: s.imageUrl ? mediaUrl(s.imageUrl) : fallbackImages[i % fallbackImages.length],
-              title: s.title,
-              description: s.description,
-              href: s.actionLink || (s.id ? `/services/${s.id}` : resolveHref(s.title)),
-              sla: s.actionText || tServExt.labels.priceFromFallback,
-              badge: s.published ? tServExt.labels.badgeAvailable : tServExt.labels.badgeSoon,
-            }))
-        );
-      })
-      .catch(() => {});
-  }, [tServExt]);
+  const opSection = section('operationalServices');
+  const services = useMemo(() => {
+    const merged = mergeOperationalServices(opSection?.items || []);
+    const useI18n = language !== 'fr';
+    return merged
+      .filter((item) => item.published !== false)
+      .map((item) => {
+        const tr = tServExt.items.find((i) => i.id === item.id);
+        return {
+          id: item.id,
+          icon: SERVICE_ID_TO_ICON[item.id] || Icons.car,
+          image: item.imageUrl
+            ? mediaUrl(item.imageUrl)
+            : SERVICE_ID_TO_IMAGE[item.id] || lavageCard,
+          title: useI18n && tr?.title ? tr.title : item.title,
+          description: useI18n && tr?.description ? tr.description : item.description,
+          href: item.href || SERVICE_ID_TO_HREF[item.id] || `/services/${item.id}`,
+          sla: useI18n && tr?.sla ? tr.sla : item.sla,
+          badge: useI18n && tr?.badge ? tr.badge : item.badge,
+          bullets: useI18n && tr?.bullets?.length ? tr.bullets : item.bullets,
+          priceFrom: useI18n && tr?.priceFrom ? tr.priceFrom : item.priceFrom,
+        };
+      });
+  }, [opSection?.items, tServExt, language]);
 
   const servicesJsonLd = {
     '@context': 'https://schema.org',
@@ -351,7 +196,7 @@ export const ServicesPage = () => {
             <div className="relative">
               <div className="absolute -inset-4 rounded-[2.5rem] bg-cyan-300/20 blur-2xl" aria-hidden="true"></div>
               <PhotoSlider
-                slides={HERO_SLIDES}
+                slides={heroSlides}
                 aspectRatio="photo"
                 height=""
                 rounded="rounded-[2rem]"
@@ -376,7 +221,7 @@ export const ServicesPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {services.map((service) => (
               <div
-                key={service.title}
+                key={service.id || service.title}
                 className="service-grid-card interactive interactive-lift bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col border border-outline-variant/30 motion-reduce:hover:translate-y-0"
               >
                 {service.image && (

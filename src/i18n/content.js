@@ -244,6 +244,17 @@ const CONTENT = {
             'Logiciels métiers pour PME togolaises',
           ],
         },
+        'marketing-international': {
+          title: 'Marketing International',
+          tag: 'Croissance',
+          short:
+            'Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.',
+          highlights: [
+            'Stratégie de marque internationale',
+            'Campagnes digitales de performance',
+            'Lead generation B2B/B2C',
+          ],
+        },
       },
       keyAdvantages: 'Avantages clés',
       whySector: 'Pourquoi ce secteur',
