@@ -22,6 +22,37 @@ function titlesMatch(a, b) {
   return na === nb || na.includes(nb) || nb.includes(na);
 }
 
+const SLUG_RULES = [
+  { slug: 'marketing-international', match: (k) => k.includes('marketing') },
+  { slug: 'btp-immobilier', match: (k) => k.includes('btp') || k.includes('immobilier') },
+  { slug: 'agro-business', match: (k) => k.includes('agro') || k.includes('energie') },
+  { slug: 'commerce-general', match: (k) => k.includes('commerce') || k.includes('negoce') },
+  {
+    slug: 'numerique-services',
+    match: (k) => k.includes('numerique') || k.includes('digital') || k.includes('innovation'),
+  },
+  {
+    slug: 'logistique-transports',
+    match: (k) => k.includes('logistique') || k.includes('transport') || k.includes('mobilite'),
+  },
+];
+
+function inferSectorSlug(item) {
+  if (!item) return null;
+  const raw = item.slug?.trim();
+  if (raw && DEFAULT_SECTORS.some((s) => s.slug === raw)) return raw;
+  const key = normalizeTitleKey(item.title);
+  if (!key) return null;
+  for (const rule of SLUG_RULES) {
+    if (rule.match(key)) return rule.slug;
+  }
+  if (item.title) {
+    const byTitle = DEFAULT_SECTORS.find((s) => titlesMatch(item.title, s.title));
+    if (byTitle) return byTitle.slug;
+  }
+  return null;
+}
+
 /** Image affichable pour une carte secteur (CMS imageUrl ou fichier par défaut). */
 export function resolveSectorImage(sector) {
   if (!sector) return null;
@@ -306,35 +337,17 @@ export function normalizeSectors(input) {
   // Si l'API ne retourne rien → tous les secteurs par défaut
   if (!list.length) return DEFAULT_SECTORS;
 
-  const used = new Set();
-
-  const pickApiItem = (defaultSector, index) => {
-    const bySlug = list.findIndex(
-      (item, i) => !used.has(i) && item.slug && item.slug === defaultSector.slug,
-    );
-    if (bySlug >= 0) {
-      used.add(bySlug);
-      return list[bySlug];
-    }
-    const byTitle = list.findIndex(
-      (item, i) => !used.has(i) && item.title && titlesMatch(item.title, defaultSector.title),
-    );
-    if (byTitle >= 0) {
-      used.add(byTitle);
-      return list[byTitle];
-    }
-    if (!used.has(index) && list[index]) {
-      used.add(index);
-      return list[index];
-    }
-    return null;
-  };
-
-  const merged = DEFAULT_SECTORS.map((defaultSector, index) => {
-    const apiItem = pickApiItem(defaultSector, index);
-    if (!apiItem) return defaultSector;
-    return { ...defaultSector, ...apiItem };
+  const bySlug = new Map();
+  list.forEach((item) => {
+    const slug = inferSectorSlug(item);
+    if (!slug) return;
+    const prev = bySlug.get(slug);
+    bySlug.set(slug, prev ? { ...prev, ...item, slug } : { ...item, slug });
   });
 
-  return merged;
+  return DEFAULT_SECTORS.map((defaultSector) => {
+    const apiItem = bySlug.get(defaultSector.slug);
+    if (!apiItem) return defaultSector;
+    return { ...defaultSector, ...apiItem, slug: defaultSector.slug };
+  });
 }
