@@ -848,6 +848,49 @@ export const HomePage = () => {
           </div>
         </section>
 
+        {/* ============ COMITÉ DE DIRECTION ============ */}
+        {(apiSiteContent.about?.leaders || t.about?.leaders) && (
+          <section className="py-24 px-6 bg-surface">
+            <div className="max-w-[1400px] mx-auto">
+              <Reveal preset="fadeUp">
+                <div className="text-center mb-16">
+                  <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
+                    {(apiSiteContent.about?.leaders || t.about?.leaders).eyebrow}
+                  </p>
+                  <h2 className="text-4xl md:text-5xl font-black text-on-surface">
+                    {(apiSiteContent.about?.leaders || t.about?.leaders).title}
+                  </h2>
+                </div>
+              </Reveal>
+              <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {(apiSiteContent.about?.leaders || t.about?.leaders).items?.map((leader, idx) => {
+                  const imageSrc = leader.imageUrl || leader.image || leader.photo;
+                  return (
+                    <Reveal key={idx} preset="fadeUp" delay={idx * 0.15}>
+                      <div className="group bg-white rounded-[2rem] p-8 border border-outline-variant/30 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center">
+                        <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-3xl font-black text-white mb-6 shadow-inner ring-4 ring-primary/10 group-hover:scale-110 transition-transform duration-500 overflow-hidden relative">
+                          {imageSrc ? (
+                            <img src={imageSrc.startsWith('http') ? imageSrc : mediaUrl(imageSrc)} alt={leader.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-primary to-cyan-500 flex items-center justify-center">
+                              {leader.name.charAt(0)}
+                            </div>
+                          )}
+                        </div>
+                        <h3 className="text-2xl font-bold text-on-surface mb-2">{leader.name}</h3>
+                        <p className="text-primary font-bold uppercase text-xs tracking-widest mb-4">{leader.role}</p>
+                        <p className="text-on-surface-variant text-sm leading-relaxed">
+                          {leader.bio}
+                        </p>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ============ TÉMOIGNAGES ============ */}
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1400px] mx-auto">
