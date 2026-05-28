@@ -8,6 +8,7 @@ import { mediaUrl } from '../config';
 import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
 import { getBrandName } from '../constants/branding';
 import { Flag } from './Flag';
+import { DEFAULT_SECTORS, getSectorBySlug } from '../data/sectors-defaults';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,6 +29,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
     { slug: 'commerce-general', href: '/secteurs/commerce-general' },
     { slug: 'btp-immobilier', href: '/secteurs/btp-immobilier' },
     { slug: 'numerique-services', href: '/secteurs/numerique-services' },
+    { slug: 'marketing-international', href: '/secteurs/marketing-international' },
   ];
   const navigationItems = [
     { name: t.home, href: '/', key: 'accueil' },
@@ -47,9 +49,10 @@ export const Header = ({ activeLink = 'accueil' }) => {
       key: 'projets',
       children: sectorEntries.map((entry) => {
         const tr = tSectorItems[entry.slug] || {};
+        const fallback = getSectorBySlug(entry.slug, DEFAULT_SECTORS);
         return {
-          name: tr.title || entry.slug,
-          desc: tr.short || '',
+          name: tr.title || fallback?.title || entry.slug,
+          desc: tr.short || fallback?.short || '',
           href: entry.href,
         };
       }),
@@ -80,11 +83,6 @@ export const Header = ({ activeLink = 'accueil' }) => {
         { name: t.mechanic, desc: t.mechanicDesc, href: '/contact?topic=info&service=mecanique' },
         { name: t.transport, desc: t.transportDesc, href: '/contact?topic=info&service=transport' },
         { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
-        {
-          name: t.marketingInternational,
-          desc: t.marketingInternationalDesc,
-          href: '/services/marketing-international',
-        },
       ],
     },
     { name: t.contact, href: '/contact', key: 'contact' },

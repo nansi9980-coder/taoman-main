@@ -639,11 +639,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 {others.map((other) => (
                   <Link
                     key={other.slug}
-                    to={
-                      other.slug === 'marketing-international' && isServicePage
-                        ? '/services/marketing-international'
-                        : `/secteurs/${other.slug}`
-                    }
+                    to={`/secteurs/${other.slug}`}
                     className="group block rounded-3xl bg-white p-6 border border-outline-variant/40 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30 transition-all"
                   >
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary">

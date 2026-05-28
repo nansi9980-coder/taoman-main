@@ -70,7 +70,7 @@ function App() {
                 <Route path="/services" element={<ServicesPage />} />
                 <Route
                   path="/services/marketing-international"
-                  element={<SectorDetailPage slugOverride="marketing-international" pageContext="services" />}
+                  element={<Navigate to="/secteurs/marketing-international" replace />}
                 />
                 <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
                 <Route path="/investissement" element={<InvestmentPage />} />

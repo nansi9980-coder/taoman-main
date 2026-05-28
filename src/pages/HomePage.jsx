@@ -75,7 +75,7 @@ export const HomePage = () => {
             href: linkIsRoute
               ? linkRaw
               : isMarketing
-                ? '/services/marketing-international'
+                ? '/secteurs/marketing-international'
                 : null,
           };
         })
@@ -115,7 +115,7 @@ export const HomePage = () => {
         { icon: '03', title: 'Monitoring financier', description: 'Tableaux de bord, alertes, documents et visibilité sur les flux financiers.', price: 'Espace investisseur inclus', features: ['ROI', 'Wallet', 'Documents'] },
         { icon: '04', title: 'Simulation intelligente', description: 'Calculs dynamiques avec intérêts composés, versements, inflation et fiscalité.', price: 'Gratuit', features: ['Simple', 'Avancé', 'Professionnel'] },
         { icon: '05', title: 'Partenariat Stratégique & BTP', description: 'Accompagnement sur les grands projets d\'infrastructure et partenariats public-privé (PPP).', price: 'Sur étude', features: ['Infrastructure', 'Ingénierie', 'État'] },
-        { icon: '06', title: 'Marketing International', description: 'Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.', price: 'Sur devis', features: ['Branding', 'Export', 'Croissance'], href: '/services/marketing-international' },
+        { icon: '06', title: 'Marketing International', description: 'Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.', price: 'Sur devis', features: ['Branding', 'Export', 'Croissance'], href: '/secteurs/marketing-international' },
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Investisseur Privé', comment: `${BRAND_NAME} offre une transparence exceptionnelle. J'ai augmenté mes revenus mensuels de manière constante.` },
@@ -131,7 +131,7 @@ export const HomePage = () => {
         { icon: '03', title: 'Financial Monitoring', description: 'Dashboards, alerts, documents and visibility on financial flows.', price: 'Investor space included', features: ['ROI', 'Wallet', 'Documents'] },
         { icon: '04', title: 'Smart Simulation', description: 'Dynamic calculations with compound interest, installments, inflation and tax.', price: 'Free', features: ['Simple', 'Advanced', 'Professional'] },
         { icon: '05', title: 'Strategic Partnership & Construction', description: 'Support on major infrastructure projects and public-private partnerships.', price: 'On study', features: ['Infrastructure', 'Engineering', 'State'] },
-        { icon: '06', title: 'International Marketing', description: 'International positioning, client acquisition and brand deployment across regional and global markets.', price: 'On quote', features: ['Branding', 'Export', 'Growth'], href: '/services/marketing-international' },
+        { icon: '06', title: 'International Marketing', description: 'International positioning, client acquisition and brand deployment across regional and global markets.', price: 'On quote', features: ['Branding', 'Export', 'Growth'], href: '/secteurs/marketing-international' },
       ],
       testimonials: [
         { name: 'Jean Tchakondo', role: 'Private Investor', comment: `${BRAND_NAME} offers exceptional transparency. I have steadily increased my monthly income.` },
