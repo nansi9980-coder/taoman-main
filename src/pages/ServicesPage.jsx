@@ -34,6 +34,7 @@ import mecaniqueCard from '../assets/realisations/mecanique2.jpg';
 import transportCard from '../assets/realisations/transport1.jpg';
 import { mergeServicesPageHeroSlides } from '../data/services-page-hero-defaults';
 import { mergeOperationalServices } from '../data/operational-services-defaults';
+import { pickLocale, pickLocaleList } from '../utils/pickLocale';
 
 const Icons = {
   car: <Sparkles className="w-6 h-6" strokeWidth={2.2} />,
@@ -102,11 +103,12 @@ export const ServicesPage = () => {
   const tServ = tc.services;
   const tServExt = useMemo(() => getServicesTranslations(language), [language]);
   const sp = section('servicesPage');
-  const heroBadge = sp.badge || DEFAULT_SERVICES_PAGE.badge;
-  const heroTitle = sp.title || DEFAULT_SERVICES_PAGE.title;
-  const heroDesc = sp.description || DEFAULT_SERVICES_PAGE.description;
-  const btn1 = sp.btn1 || tServExt.finalCta.btnQuote;
-  const btn2 = sp.btn2 || tServExt.finalCta.btnInvest;
+  const tPage = tc.services?.page || {};
+  const heroBadge = pickLocale(language, sp.badge, tPage.badge || DEFAULT_SERVICES_PAGE.badge);
+  const heroTitle = pickLocale(language, sp.title, tPage.title || DEFAULT_SERVICES_PAGE.title);
+  const heroDesc = pickLocale(language, sp.description, tPage.description || DEFAULT_SERVICES_PAGE.description);
+  const btn1 = pickLocale(language, sp.btn1, tPage.btn1 || tServExt.finalCta.btnQuote);
+  const btn2 = pickLocale(language, sp.btn2, tPage.btn2 || tServExt.finalCta.btnInvest);
 
   const heroSlides = useMemo(() => {
     const merged = mergeServicesPageHeroSlides(sp.heroSlides || []);
@@ -125,7 +127,6 @@ export const ServicesPage = () => {
   const opSection = section('operationalServices');
   const services = useMemo(() => {
     const merged = mergeOperationalServices(opSection?.items || []);
-    const useI18n = language !== 'fr';
     return merged
       .filter((item) => item.published !== false)
       .map((item) => {
@@ -136,13 +137,13 @@ export const ServicesPage = () => {
           image: item.imageUrl
             ? mediaUrl(item.imageUrl)
             : SERVICE_ID_TO_IMAGE[item.id] || lavageCard,
-          title: useI18n && tr?.title ? tr.title : item.title,
-          description: useI18n && tr?.description ? tr.description : item.description,
+          title: pickLocale(language, item.title, tr?.title),
+          description: pickLocale(language, item.description, tr?.description),
           href: item.href || SERVICE_ID_TO_HREF[item.id] || `/services/${item.id}`,
-          sla: useI18n && tr?.sla ? tr.sla : item.sla,
-          badge: useI18n && tr?.badge ? tr.badge : item.badge,
-          bullets: useI18n && tr?.bullets?.length ? tr.bullets : item.bullets,
-          priceFrom: useI18n && tr?.priceFrom ? tr.priceFrom : item.priceFrom,
+          sla: pickLocale(language, item.sla, tr?.sla),
+          badge: pickLocale(language, item.badge, tr?.badge),
+          bullets: pickLocaleList(language, item.bullets, tr?.bullets),
+          priceFrom: pickLocale(language, item.priceFrom, tr?.priceFrom),
         };
       });
   }, [opSection?.items, tServExt, language]);

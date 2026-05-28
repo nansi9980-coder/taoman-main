@@ -29,6 +29,7 @@ import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
+import { pickLocale, pickLocaleList } from '../utils/pickLocale';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 
 export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => {
@@ -37,8 +38,9 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
   const isServicePage = pageContext === 'services';
   const detailPath = isServicePage ? `/services/${slug}` : `/secteurs/${slug}`;
   const { section } = useSiteContent();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, nav: tNav, language } = useLanguage();
   const tSec = tc.sectors;
+  const td = tSec.detail || {};
   const sectors = normalizeSectors(section('sectors'));
   const baseSector = getSectorBySlug(slug, sectors) || getSectorBySlug(slug, DEFAULT_SECTORS);
 
@@ -47,15 +49,14 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
   }
 
   const trItem = tSec?.items?.[baseSector.slug];
-  const sectorBase = trItem
-    ? {
-        ...baseSector,
-        title: trItem.title || baseSector.title,
-        tag: trItem.tag || baseSector.tag,
-        short: trItem.short || baseSector.short,
-        highlights: trItem.highlights?.length ? trItem.highlights : baseSector.highlights,
-      }
-    : baseSector;
+  const sectorBase = {
+    ...baseSector,
+    title: pickLocale(language, baseSector.title, trItem?.title),
+    tag: pickLocale(language, baseSector.tag, trItem?.tag),
+    short: pickLocale(language, baseSector.short, trItem?.short),
+    intro: pickLocale(language, baseSector.intro, trItem?.intro),
+    highlights: pickLocaleList(language, baseSector.highlights, trItem?.highlights),
+  };
   const sector = { ...sectorBase, image: resolveSectorImage(sectorBase) };
 
   const others = sectors
@@ -63,9 +64,12 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
     .slice(0, 3)
     .map((s) => {
       const t = tSec?.items?.[s.slug];
-      return t
-        ? { ...s, title: t.title || s.title, tag: t.tag || s.tag, short: t.short || s.short }
-        : s;
+      return {
+        ...s,
+        title: pickLocale(language, s.title, t?.title),
+        tag: pickLocale(language, s.tag, t?.tag),
+        short: pickLocale(language, s.short, t?.short),
+      };
     });
 
   // Aspects opérationnels et indicateurs (par défaut, peuvent être enrichis par sector)
@@ -122,23 +126,23 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
   const indicators = [
     {
       icon: TrendingUp,
-      label: 'Rendement cible',
+      label: td.targetReturn || 'Rendement cible',
       value: sector.range || '—',
       color: 'text-primary',
     },
     {
       icon: Compass,
-      label: 'Profil de risque',
+      label: td.riskProfile || 'Profil de risque',
       value: sector.risk || '—',
     },
     {
       icon: Wallet,
-      label: 'Ticket d\'entrée',
+      label: td.entryTicket || "Ticket d'entrée",
       value: '500K FCFA',
     },
     {
       icon: CalendarClock,
-      label: 'Horizon',
+      label: td.horizon || 'Horizon',
       value: '10 mois',
     },
   ];
@@ -149,7 +153,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         title={
           isServicePage
             ? `${sector.title} — Service TAOMAN Group Investment`
-            : `${sector.title} — Secteur d'investissement`
+            : `${sector.title} — ${td.seoSector || "Secteur d'investissement"}`
         }
         description={
           sector.short ||
@@ -163,7 +167,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         type="article"
         jsonLd={buildBreadcrumb([
           { name: 'Accueil', path: '/' },
-          { name: isServicePage ? tNav.services : 'Secteurs', path: isServicePage ? '/services' : '/secteurs' },
+          { name: isServicePage ? tNav.services : tNav.projects, path: isServicePage ? '/services' : '/secteurs' },
           { name: sector.title, path: detailPath },
         ])}
         keywords={`${sector.title}, ${isServicePage ? 'service' : 'secteur'} Togo, TAOMAN, ${sector.title}`}
@@ -174,13 +178,13 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         {/* BREADCRUMB */}
         <nav className="bg-surface-container-low border-b border-outline-variant/30 px-6 py-3">
           <div className="max-w-[1200px] mx-auto flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
-            <Link to="/" className="hover:text-primary transition-colors">Accueil</Link>
+            <Link to="/" className="hover:text-primary transition-colors">{tNav.home}</Link>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
             <Link
               to={isServicePage ? '/services' : '/secteurs'}
               className="hover:text-primary transition-colors"
             >
-              {isServicePage ? tNav.services : 'Projets'}
+              {isServicePage ? tNav.services : tNav.projects}
             </Link>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
             <span className="text-on-surface font-bold">{sector.title}</span>
@@ -196,7 +200,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
-                {sector.tag || (isServicePage ? 'Service' : 'Secteur')} · Opéré par TAOMAN Group Investment
+                {sector.tag || (isServicePage ? 'Service' : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par TAOMAN Group Investment'}
               </span>
               <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]" style={{ color: '#ffffff' }}>
                 {sector.title}
@@ -229,14 +233,14 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                       className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
                     >
                       <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-                      Nous contacter
+                      {td.contactUs || 'Nous contacter'}
                     </Link>
                     <Link
                       to="/contact?topic=project"
                       className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
                     >
                       <Send className="h-4 w-4" strokeWidth={2.5} />
-                      Soumettre un projet
+                      {td.submitProject || 'Soumettre un projet'}
                     </Link>
                   </>
                 )}
@@ -304,7 +308,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   <Compass className="h-4 w-4" strokeWidth={2.4} /> Contexte et objectifs
                 </p>
                 <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-5 tracking-tight">
-                  Pourquoi TAOMAN investit dans ce secteur
+                  {td.whyInvest || 'Pourquoi TAOMAN investit dans ce secteur'}
                 </h2>
                 <p className="text-lg leading-relaxed text-on-surface-variant whitespace-pre-line">
                   {sector.context || sector.intro}
@@ -546,14 +550,14 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white px-5 py-3 font-bold shadow-md hover:shadow-xl hover:scale-[1.01] transition-all"
                   >
                     <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-                    Nous contacter pour investir
+                    {td.contactInvest || 'Nous contacter pour investir'}
                   </Link>
                   <Link
                     to="/contact?topic=project"
                     className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-outline bg-white text-on-surface px-5 py-3 font-bold hover:border-primary hover:text-primary transition-all"
                   >
                     <Send className="h-4 w-4" strokeWidth={2.5} />
-                    Soumettre un projet
+                    {td.submitProject || 'Soumettre un projet'}
                   </Link>
                   <Link
                     to="/contact?topic=partner"
@@ -600,7 +604,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 font-bold text-primary shadow-lg hover:scale-[1.02] transition"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-                Discuter avec un conseiller
+                {td.talkAdvisor || 'Discuter avec un conseiller'}
               </Link>
               <Link
                 to="/contact?topic=project"
@@ -608,7 +612,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 style={{ color: '#ffffff' }}
               >
                 <Send className="h-4 w-4" strokeWidth={2.5} />
-                Soumettre votre projet
+                {td.submitYourProject || 'Soumettre votre projet'}
               </Link>
             </div>
           </div>
@@ -621,17 +625,19 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-2">
-                    {isServicePage ? 'Autres offres du Groupe' : 'Autres secteurs du Groupe'}
+                    {isServicePage ? 'Autres offres du Groupe' : td.otherSectors || 'Autres secteurs du Groupe'}
                   </p>
                   <h2 className="text-2xl md:text-3xl font-black text-on-surface">
-                    {isServicePage ? 'Découvrir nos services et secteurs' : 'Explorez la diversification'}
+                    {isServicePage
+                      ? 'Découvrir nos services et secteurs'
+                      : td.exploreDiversification || 'Explorez la diversification'}
                   </h2>
                 </div>
                 <Link
                   to={isServicePage ? '/services' : '/secteurs'}
                   className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline"
                 >
-                  {isServicePage ? tNav.allServices : 'Voir tous les secteurs'}{' '}
+                  {isServicePage ? tNav.allServices : td.seeAllSectors || 'Voir tous les secteurs'}{' '}
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </Link>
               </div>
@@ -650,7 +656,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     </h3>
                     <p className="mt-2 text-sm text-on-surface-variant line-clamp-3 leading-relaxed">{other.short || ''}</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-2.5 transition-all">
-                      Découvrir <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                      {td.discover || 'Découvrir'} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                     </span>
                   </Link>
                 ))}

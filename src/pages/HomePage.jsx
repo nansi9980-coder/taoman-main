@@ -25,6 +25,7 @@ import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';
 import { API_URL, mediaUrl } from "../config";
 import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
+import { pickLocale, pickLocaleList, isFrenchLocale } from "../utils/pickLocale";
 import { useSiteContent } from "../context/SiteContentContext";
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
@@ -224,7 +225,22 @@ export const HomePage = () => {
 
   const activeFallback = HOME_FALLBACKS[language] || HOME_FALLBACKS.FR;
 
-  const services = apiServices.length > 0 ? apiServices : activeFallback.services;
+  const mapServiceForLocale = (s, index) => {
+    if (isFrenchLocale(language)) return s;
+    const fb =
+      activeFallback.services.find((x) => x.icon === s.icon) || activeFallback.services[index];
+    if (!fb) return s;
+    return {
+      ...s,
+      title: fb.title,
+      description: fb.description,
+      price: fb.price,
+      features: fb.features,
+      href: s.href || fb.href,
+    };
+  };
+  const services =
+    apiServices.length > 0 ? apiServices.map(mapServiceForLocale) : activeFallback.services;
   const homeServices = services.slice(0, 6);
   const impactFromCms = buildStatsFromSection(section('statistics'));
 
@@ -232,8 +248,8 @@ export const HomePage = () => {
     const tSector = t.sectors?.items?.[s.slug];
     return {
       ...s,
-      title: tSector?.title || s.title,
-      description: tSector?.short || s.short || s.description || '',
+      title: pickLocale(language, s.title, tSector?.title),
+      description: pickLocale(language, s.short || s.description, tSector?.short),
       image: resolveSectorImage(s),
     };
   });
@@ -270,26 +286,49 @@ export const HomePage = () => {
   const mosaicLabel = (id, field) => {
     const tile = mosaicTile(id);
     const i18n = tHero.mosaic?.[id] || {};
-    return field === 'tag' ? (tile.tag || i18n.tag) : (tile.title || i18n.title);
+    return field === 'tag'
+      ? pickLocale(language, tile.tag, i18n.tag)
+      : pickLocale(language, tile.title, i18n.title);
   };
 
   const heroData = {
-    badgeMain: heroSection.badgeMain || tHero.badgeMain || heroSection.badge || DEFAULT_HERO.badgeMain,
+    badgeMain: pickLocale(
+      language,
+      heroSection.badgeMain || heroSection.badge,
+      tHero.badgeMain || DEFAULT_HERO.badgeMain
+    ),
     badges: heroBadges,
-    title: heroSection.title || tHero.title || heroSection.titleFr || DEFAULT_HERO.title,
-    subtitle: heroSection.subtitle || tHero.subtitle || heroSection.titleEn || DEFAULT_HERO.subtitle,
-    description: heroSection.description || tHero.description || DEFAULT_HERO.description,
-    btn1: heroSection.btn1 || tHero.btn1 || heroSection.primaryButton || tCommon.contactInvest || DEFAULT_HERO.btn1,
-    btn2: heroSection.btn2 || tHero.btn2 || heroSection.secondaryButton || (isAuthenticated ? (tCommon.mySpace || 'Mon espace') : (tCommon.registerFree || DEFAULT_HERO.btn2)),
-    imageCaption: heroSection.imageCaption || tHero.livePill || DEFAULT_HERO.imageCaption,
+    title: pickLocale(
+      language,
+      heroSection.title || heroSection.titleFr,
+      tHero.title || DEFAULT_HERO.title
+    ),
+    subtitle: pickLocale(
+      language,
+      heroSection.subtitle || heroSection.titleEn,
+      tHero.subtitle || DEFAULT_HERO.subtitle
+    ),
+    description: pickLocale(language, heroSection.description, tHero.description || DEFAULT_HERO.description),
+    btn1: pickLocale(
+      language,
+      heroSection.btn1 || heroSection.primaryButton,
+      tHero.btn1 || tCommon.contactInvest || DEFAULT_HERO.btn1
+    ),
+    btn2: pickLocale(
+      language,
+      heroSection.btn2 || heroSection.secondaryButton,
+      tHero.btn2 ||
+        (isAuthenticated ? tCommon.mySpace || 'Mon espace' : tCommon.registerFree || DEFAULT_HERO.btn2)
+    ),
+    imageCaption: pickLocale(language, heroSection.imageCaption, tHero.livePill || DEFAULT_HERO.imageCaption),
     heroImage: (heroSection.heroImage || heroSection.backgroundImage)
       ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
       : null,
     mosaic: {
-      liveLabel: heroMosaic.liveLabel || tHero.liveLabel || 'Live',
-      livePill: heroMosaic.livePill || tHero.livePill || 'Suivi temps réel',
+      liveLabel: pickLocale(language, heroMosaic.liveLabel, tHero.liveLabel || 'Live'),
+      livePill: pickLocale(language, heroMosaic.livePill, tHero.livePill || 'Suivi temps réel'),
       kpiPercent: heroMosaic.kpiPercent ?? 96,
-      kpiLabel: heroMosaic.kpiLabel || tHero.kpiLabel || 'satisfaction client',
+      kpiLabel: pickLocale(language, heroMosaic.kpiLabel, tHero.kpiLabel || 'satisfaction client'),
     },
   };
 
@@ -311,9 +350,12 @@ export const HomePage = () => {
 
   const realisations =
     cmsCarousel.length > 0 ? cmsCarousel : apiRealisations.length > 0 ? apiRealisations : cmsCarousel;
-  const realisationsFooterText =
-    realisationsSection.footerText ||
-    "TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel.";
+  const realisationsFooterText = pickLocale(
+    language,
+    realisationsSection.footerText,
+    t.home?.realisations?.footerText ||
+      "TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel."
+  );
 
   const filters = [ALL_FILTER, ...new Set(realisations.map(r => r.category))];
 
@@ -564,15 +606,25 @@ export const HomePage = () => {
           title={t.home.stats.title}
           description={t.home.stats.description}
           items={impactFromCms?.length
-            ? impactFromCms.slice(0, 4).map((s, idx) => {
+            ? (() => {
                 const icons = [Briefcase, Layers, MapPin, SparklesIcon];
-                return {
-                  value: s.value,
-                  label: s.label,
-                  hint: '',
-                  icon: icons[idx] || Briefcase,
-                };
-              })
+                const i18nDefaults = [
+                  { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
+                  { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
+                  { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
+                  { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
+                ];
+                return impactFromCms.slice(0, 4).map((s, idx) => {
+                  const fb = i18nDefaults[idx] || i18nDefaults[0];
+                  return {
+                    value: s.value ?? fb.value,
+                    suffix: fb.suffix,
+                    label: isFrenchLocale(language) ? s.label || fb.label : fb.label,
+                    hint: isFrenchLocale(language) ? '' : fb.hint,
+                    icon: icons[idx] || Briefcase,
+                  };
+                });
+              })()
             : [
                 { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
                 { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },

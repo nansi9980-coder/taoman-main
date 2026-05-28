@@ -166,6 +166,14 @@ const CONTENT = {
         description:
           "Une offre complète de prestations terrain encadrées par des équipes dédiées, des SLA clairs et un reporting structuré.",
       },
+      page: {
+        badge: 'Services opérationnels',
+        title: 'Des services terrain clairs, rapides et suivis.',
+        description:
+          'TAOMAN Group Investment combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.',
+        btn1: 'Demander un devis',
+        btn2: "Voir l'investissement",
+      },
       sectionTitle: 'Huit services, une seule promesse',
       detailedTitle: 'Comprendre nos métiers',
       detailedDescription:
@@ -260,6 +268,27 @@ const CONTENT = {
       whySector: 'Pourquoi ce secteur',
       vigilancePoints: 'Points de vigilance',
       risksAndMitigation: 'Risques & mitigation',
+      detail: {
+        sectorLabel: 'Secteur',
+        operatedBy: 'Opéré par TAOMAN Group Investment',
+        contactUs: 'Nous contacter',
+        submitProject: 'Soumettre un projet',
+        contactInvest: 'Nous contacter pour investir',
+        talkAdvisor: 'Discuter avec un conseiller',
+        submitYourProject: 'Soumettre votre projet',
+        whyInvest: 'Pourquoi TAOMAN investit dans ce secteur',
+        otherSectors: 'Autres secteurs du Groupe',
+        exploreDiversification: 'Explorez la diversification',
+        seeAllSectors: 'Voir tous les secteurs',
+        discover: 'Découvrir',
+        targetReturn: 'Rendement cible',
+        riskProfile: 'Profil de risque',
+        entryTicket: "Ticket d'entrée",
+        horizon: 'Horizon',
+        seoSector: "Secteur d'investissement",
+        groupOperated:
+          'Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN et financé via son programme TGI.',
+      },
     },
     invest: {
       seoDescription: 'Investir avec TAOMAN Group Investment : programmes structurés, sélection de projets, reporting investisseur et garanties opérationnelles au Togo.',
@@ -376,6 +405,8 @@ const CONTENT = {
         eyebrow: 'Réalisations terrain',
         title: 'Nos projets en images',
         description: 'Une galerie vivante, alimentée par les équipes sur le terrain.',
+        footerText:
+          'TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel.',
         ctaAuth: 'Voir le suivi complet des projets',
         ctaGuest: "Se connecter à mon espace investisseur",
       },
@@ -525,6 +556,14 @@ const CONTENT = {
     },
     services: {
       hero: { eyebrow: 'Operational services', title: 'Our services', description: 'A complete range of field services led by dedicated teams, clear SLAs and structured reporting.' },
+      page: {
+        badge: 'Operational services',
+        title: 'Clear, fast and tracked field services.',
+        description:
+          'TAOMAN Group Investment combines field teams, structured quotes, controlled quality and client follow-up for individuals, businesses and investors.',
+        btn1: 'Request a quote',
+        btn2: 'View investment',
+      },
       sectionTitle: 'Eight services, one promise',
       detailedTitle: 'Understand our trades',
       detailedDescription: 'Explore each service in depth: scope, steps, team, deadlines and quality commitment.',
@@ -596,11 +635,42 @@ const CONTENT = {
             'Business software for Togolese SMEs',
           ],
         },
+        'marketing-international': {
+          title: 'International Marketing',
+          tag: 'Growth',
+          short: 'International positioning, client acquisition and brand deployment across regional and global markets.',
+          highlights: [
+            'International brand strategy',
+            'Performance digital campaigns',
+            'B2B/B2C lead generation',
+          ],
+        },
       },
       keyAdvantages: 'Key advantages',
       whySector: 'Why this sector',
       vigilancePoints: 'Points of vigilance',
       risksAndMitigation: 'Risks & mitigation',
+      detail: {
+        sectorLabel: 'Sector',
+        operatedBy: 'Operated by TAOMAN Group Investment',
+        contactUs: 'Contact us',
+        submitProject: 'Submit a project',
+        contactInvest: 'Contact us to invest',
+        talkAdvisor: 'Talk to an advisor',
+        submitYourProject: 'Submit your project',
+        whyInvest: 'Why TAOMAN invests in this sector',
+        otherSectors: 'Other group sectors',
+        exploreDiversification: 'Explore diversification',
+        seeAllSectors: 'See all sectors',
+        discover: 'Discover',
+        targetReturn: 'Target return',
+        riskProfile: 'Risk profile',
+        entryTicket: 'Entry ticket',
+        horizon: 'Horizon',
+        seoSector: 'Investment sector',
+        groupOperated:
+          'This sector is operated within the TAOMAN multi-activity group and funded through its TGI program.',
+      },
     },
     invest: {
       seoDescription: 'Invest with TAOMAN Group Investment: structured programs, project selection, investor reporting and operational guarantees in Togo.',
@@ -724,6 +794,8 @@ const CONTENT = {
         eyebrow: 'Field deliveries',
         title: 'Our projects in pictures',
         description: 'A living gallery, fed by the teams on the ground.',
+        footerText:
+          'TAOMAN Group Investment turns every field achievement into lasting value: management, execution and professional reporting.',
         ctaAuth: 'See full project tracking',
         ctaGuest: 'Sign in to my investor space',
       },
@@ -931,6 +1003,16 @@ const CONTENT = {
             'Mobile Money y servicios financieros de proximidad',
             'Plataformas de e-commerce y marketplaces locales',
             'Software empresarial para PyMEs togolesas',
+          ],
+        },
+        'marketing-international': {
+          title: 'Marketing Internacional',
+          tag: 'Crecimiento',
+          short: 'Posicionamiento internacional, adquisición de clientes y despliegue de marca en mercados regionales y globales.',
+          highlights: [
+            'Estrategia de marca internacional',
+            'Campañas digitales de rendimiento',
+            'Generación de leads B2B/B2C',
           ],
         },
       },
@@ -1263,6 +1345,16 @@ const CONTENT = {
             'Software empresarial para PMEs togolesas',
           ],
         },
+        'marketing-international': {
+          title: 'Marketing Internacional',
+          tag: 'Crescimento',
+          short: 'Posicionamento internacional, aquisição de clientes e expansão de marca em mercados regionais e globais.',
+          highlights: [
+            'Estratégia de marca internacional',
+            'Campanhas digitais de performance',
+            'Geração de leads B2B/B2C',
+          ],
+        },
       },
       keyAdvantages: 'Vantagens-chave',
       whySector: 'Porquê este setor',
@@ -1591,6 +1683,16 @@ const CONTENT = {
             'Mobile Money und lokale Finanzdienstleistungen',
             'E-Commerce-Plattformen und lokale Marktplätze',
             'Business-Software für togolesische KMU',
+          ],
+        },
+        'marketing-international': {
+          title: 'Internationales Marketing',
+          tag: 'Wachstum',
+          short: 'Internationale Positionierung, Kundengewinnung und Markenaufbau auf regionalen und globalen Märkten.',
+          highlights: [
+            'Internationale Markenstrategie',
+            'Performance-Digitalkampagnen',
+            'B2B/B2C-Lead-Generierung',
           ],
         },
       },
@@ -1923,6 +2025,16 @@ const CONTENT = {
             'برامج إدارة الأعمال للشركات الصغيرة في توغو',
           ],
         },
+        'marketing-international': {
+          title: 'التسويق الدولي',
+          tag: 'النمو',
+          short: 'التموضع الدولي واكتساب العملاء ونشر العلامة في الأسواق الإقليمية والعالمية.',
+          highlights: [
+            'استراتيجية العلامة الدولية',
+            'حملات رقمية للأداء',
+            'توليد عملاء محتملين B2B/B2C',
+          ],
+        },
       },
       keyAdvantages: 'المزايا الرئيسية',
       whySector: 'لماذا هذا القطاع',
@@ -2253,6 +2365,16 @@ const CONTENT = {
             '面向多哥中小企业的业务软件',
           ],
         },
+        'marketing-international': {
+          title: '国际营销',
+          tag: '增长',
+          short: '国际市场定位、客户获取及品牌在区域与全球市场的推广。',
+          highlights: [
+            '国际品牌战略',
+            '效果型数字营销',
+            'B2B/B2C 潜客开发',
+          ],
+        },
       },
       keyAdvantages: '主要优势',
       whySector: '为何选择此领域',
@@ -2407,5 +2529,17 @@ const CONTENT = {
 };
 
 export function getContentTranslations(languageCode = 'FR') {
-  return CONTENT[languageCode] || CONTENT.FR;
+  const picked = CONTENT[languageCode] || CONTENT.FR;
+  let out = { ...picked };
+  const sectors = out.sectors || {};
+  if (!sectors.detail && CONTENT.EN?.sectors?.detail) {
+    out = { ...out, sectors: { ...sectors, detail: CONTENT.EN.sectors.detail } };
+  }
+  if (!out.services?.page && CONTENT.EN?.services?.page) {
+    out = {
+      ...out,
+      services: { ...(out.services || {}), page: CONTENT.EN.services.page },
+    };
+  }
+  return out;
 }

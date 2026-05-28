@@ -5,25 +5,24 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
+import { pickLocale, pickLocaleList } from '../utils/pickLocale';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 
 export const SectorsListPage = () => {
   const { section } = useSiteContent();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, nav: tNav, language } = useLanguage();
   const tSec = tc.sectors;
   const rawSectors = normalizeSectors(section('sectors'));
   const sectors = rawSectors.map((s) => {
     const tr = tSec.items?.[s.slug];
-    const base = !tr
-      ? s
-      : {
-          ...s,
-          title: tr.title || s.title,
-          tag: tr.tag || s.tag,
-          short: tr.short || s.short,
-          highlights: tr.highlights?.length ? tr.highlights : s.highlights,
-        };
+    const base = {
+      ...s,
+      title: pickLocale(language, s.title, tr?.title),
+      tag: pickLocale(language, s.tag, tr?.tag),
+      short: pickLocale(language, s.short, tr?.short),
+      highlights: pickLocaleList(language, s.highlights, tr?.highlights),
+    };
     return { ...base, image: resolveSectorImage(base) };
   });
   return (
