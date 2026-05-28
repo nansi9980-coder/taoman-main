@@ -28,7 +28,7 @@ import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteConte
 import { useSiteContent } from "../context/SiteContentContext";
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
-import { normalizeSectors } from '../data/sectors-defaults';
+import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 
 const ALL_FILTER = '__all__';
@@ -69,8 +69,8 @@ export const HomePage = () => {
         if (Array.isArray(data) && data.length > 0) {
           const allImages = data.filter(m => m.type && m.type.startsWith('image/'));
           const realisationImages = allImages.filter(m => m.category === 'realisation');
-          const source = realisationImages.length > 0 ? realisationImages : allImages;
-          const images = source.map(m => ({
+          if (realisationImages.length === 0) return;
+          const images = realisationImages.map(m => ({
             src: mediaUrl(m.url || m.path || m.src),
             alt: m.name,
             category: m.category === 'realisation' ? 'Réalisation' : (m.category || 'Terrain'),
@@ -203,7 +203,7 @@ export const HomePage = () => {
       ...s,
       title: tSector?.title || s.title,
       description: tSector?.short || s.short || s.description || '',
-      image: s.imageUrl ? mediaUrl(s.imageUrl) : s.image,
+      image: resolveSectorImage(s),
     };
   });
 

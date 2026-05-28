@@ -4,6 +4,30 @@ import transportIcon from '../assets/transport_sector.jpeg';
 import transportPhoto from '../assets/realisations/transport2.jpg';
 import commercePhoto from '../assets/realisations/lavage1.jpg';
 import numeriqueImg from '../assets/simulateur.jpeg';
+import { mediaUrl } from '../config';
+
+function normalizeTitleKey(title = '') {
+  return title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function titlesMatch(a, b) {
+  const na = normalizeTitleKey(a);
+  const nb = normalizeTitleKey(b);
+  if (!na || !nb) return false;
+  return na === nb || na.includes(nb) || nb.includes(na);
+}
+
+/** Image affichable pour une carte secteur (CMS imageUrl ou fichier par défaut). */
+export function resolveSectorImage(sector) {
+  if (!sector) return null;
+  if (sector.imageUrl) return mediaUrl(sector.imageUrl);
+  return sector.image || null;
+}
 
 export const DEFAULT_SECTORS = [
   {
@@ -282,11 +306,34 @@ export function normalizeSectors(input) {
   // Si l'API ne retourne rien → tous les secteurs par défaut
   if (!list.length) return DEFAULT_SECTORS;
 
-  // Fusionner les items API avec les defaults, puis compléter les manquants
+  const used = new Set();
+
+  const pickApiItem = (defaultSector, index) => {
+    const bySlug = list.findIndex(
+      (item, i) => !used.has(i) && item.slug && item.slug === defaultSector.slug,
+    );
+    if (bySlug >= 0) {
+      used.add(bySlug);
+      return list[bySlug];
+    }
+    const byTitle = list.findIndex(
+      (item, i) => !used.has(i) && item.title && titlesMatch(item.title, defaultSector.title),
+    );
+    if (byTitle >= 0) {
+      used.add(byTitle);
+      return list[byTitle];
+    }
+    if (!used.has(index) && list[index]) {
+      used.add(index);
+      return list[index];
+    }
+    return null;
+  };
+
   const merged = DEFAULT_SECTORS.map((defaultSector, index) => {
-    const apiItem = list[index];
-    if (!apiItem) return defaultSector;             // secteur absent de l'API → on garde le default
-    return { ...defaultSector, ...apiItem };        // secteur présent → API prime sur le default
+    const apiItem = pickApiItem(defaultSector, index);
+    if (!apiItem) return defaultSector;
+    return { ...defaultSector, ...apiItem };
   });
 
   return merged;

@@ -18,7 +18,7 @@ import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
-import { normalizeSectors } from '../data/sectors-defaults';
+import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import programmeImg from '../assets/programme.jpeg';
 
@@ -373,7 +373,10 @@ export const InvestmentPage = () => {
     }
   }, [location.hash]);
 
-  const sectors = normalizeSectors(section('sectors'));
+  const sectors = normalizeSectors(section('sectors')).map((s) => ({
+    ...s,
+    image: resolveSectorImage(s),
+  }));
 
   return (
     <div className="flex flex-col min-h-screen bg-surface pt-[80px]">

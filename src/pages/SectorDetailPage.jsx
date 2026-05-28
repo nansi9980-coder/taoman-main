@@ -28,7 +28,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
-import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors } from '../data/sectors-defaults';
+import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 
 export const SectorDetailPage = () => {
@@ -44,7 +44,7 @@ export const SectorDetailPage = () => {
   }
 
   const trItem = tSec?.items?.[baseSector.slug];
-  const sector = trItem
+  const sectorBase = trItem
     ? {
         ...baseSector,
         title: trItem.title || baseSector.title,
@@ -53,6 +53,7 @@ export const SectorDetailPage = () => {
         highlights: trItem.highlights?.length ? trItem.highlights : baseSector.highlights,
       }
     : baseSector;
+  const sector = { ...sectorBase, image: resolveSectorImage(sectorBase) };
 
   const others = sectors
     .filter((item) => item.slug !== sector.slug)

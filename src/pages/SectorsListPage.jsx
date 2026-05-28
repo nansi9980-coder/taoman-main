@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
-import { normalizeSectors } from '../data/sectors-defaults';
+import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 
@@ -15,14 +15,16 @@ export const SectorsListPage = () => {
   const rawSectors = normalizeSectors(section('sectors'));
   const sectors = rawSectors.map((s) => {
     const tr = tSec.items?.[s.slug];
-    if (!tr) return s;
-    return {
-      ...s,
-      title: tr.title || s.title,
-      tag: tr.tag || s.tag,
-      short: tr.short || s.short,
-      highlights: tr.highlights?.length ? tr.highlights : s.highlights,
-    };
+    const base = !tr
+      ? s
+      : {
+          ...s,
+          title: tr.title || s.title,
+          tag: tr.tag || s.tag,
+          short: tr.short || s.short,
+          highlights: tr.highlights?.length ? tr.highlights : s.highlights,
+        };
+    return { ...base, image: resolveSectorImage(base) };
   });
   return (
     <div className="flex flex-col min-h-screen bg-surface">

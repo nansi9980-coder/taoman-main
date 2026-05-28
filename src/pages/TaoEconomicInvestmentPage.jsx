@@ -22,7 +22,7 @@ import {
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
-import { normalizeSectors } from '../data/sectors-defaults';
+import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 
@@ -87,7 +87,10 @@ export const TaoEconomicInvestmentPage = () => {
   const heroSubtitle = tgi.subtitle || DEFAULT_TGI.subtitle;
   const heroDescription = tgi.description || DEFAULT_TGI.description;
 
-  const sectors = normalizeSectors(section('sectors'));
+  const sectors = normalizeSectors(section('sectors')).map((s) => ({
+    ...s,
+    image: resolveSectorImage(s),
+  }));
 
   const breadcrumbLd = buildBreadcrumb([
     { name: 'Accueil', path: '/' },
