@@ -235,9 +235,16 @@ export function normalizeSectors(input) {
     : Array.isArray(input)
       ? input
       : [];
+
+  // Si l'API ne retourne rien → tous les secteurs par défaut
   if (!list.length) return DEFAULT_SECTORS;
-  return list.map((item, index) => {
-    const fallback = DEFAULT_SECTORS[index] || DEFAULT_SECTORS[0];
-    return { ...fallback, ...item };
+
+  // Fusionner les items API avec les defaults, puis compléter les manquants
+  const merged = DEFAULT_SECTORS.map((defaultSector, index) => {
+    const apiItem = list[index];
+    if (!apiItem) return defaultSector;             // secteur absent de l'API → on garde le default
+    return { ...defaultSector, ...apiItem };        // secteur présent → API prime sur le default
   });
+
+  return merged;
 }
