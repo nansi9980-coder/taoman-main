@@ -17,150 +17,37 @@ import {
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
-import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
+import { getInvestmentFaq } from '../i18n/investment-faq';
 import programmeImg from '../assets/programme.jpeg';
 
-/* ============================================================
-   FAQ Investissement & Groupe — composant local
-   ============================================================ */
-
-const FAQ_CATEGORIES = [
-  { id: 'all', label: 'Toutes', icon: HelpCircle },
-  { id: 'groupe', label: 'Le Groupe', icon: Building2 },
-  { id: 'investissement', label: 'Investissement TGI', icon: TrendingUp },
-  { id: 'rendement', label: 'Rendement & risque', icon: Wallet },
-  { id: 'securite', label: 'Sécurité & juridique', icon: Shield },
-  { id: 'process', label: 'Process & projet', icon: ScrollText },
-];
-
-const FAQ_ITEMS = [
-  // GROUPE
-  {
-    category: 'groupe',
-    question: "Qu'est-ce que TAOMAN Group Investment ?",
-    answer:
-      "TAOMAN Group Investment est un groupe togolais multi-activités. Il combine 5 services opérationnels (Lavage automobile, Déménagement, Entretien de bureaux, Mécanique, Transport) et un programme d'investissement participatif baptisé TGI ouvert sur 5 secteurs stratégiques (Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services).",
-  },
-  {
-    category: 'groupe',
-    question: "Pourquoi un groupe qui fait à la fois des services et de l'investissement ?",
-    answer:
-      "Cette double identité crée un cercle vertueux : les services opérationnels (terrain, flotte, équipes encadrées) servent de laboratoire d'apprentissage et de preuve de modèle économique. Ce que nous opérons et maîtrisons, nous savons aussi le financer. Vous investissez donc dans des modèles déjà éprouvés sur le terrain togolais, pas dans des promesses.",
-  },
-  {
-    category: 'groupe',
-    question: 'Où le groupe est-il implanté ?',
-    answer:
-      "Le siège social du groupe est à Lomé, Togo. Nos équipes opérationnelles interviennent sur l'ensemble du territoire togolais (Lomé, Kpalimé, Atakpamé, Sokodé, Kara, Dapaong) et sur les couloirs CEDEAO (Bénin, Ghana, Burkina Faso, Côte d'Ivoire, Niger, Mali).",
-  },
-  // INVESTISSEMENT TGI
-  {
-    category: 'investissement',
-    question: 'Quel est le montant minimum pour investir avec TAOMAN ?',
-    answer:
-      "Le ticket de départ recommandé est de 500 000 FCFA. Ce montant permet une diversification efficace sur plusieurs projets et donne accès à l'espace investisseur avec reporting complet.",
-  },
-  {
-    category: 'investissement',
-    question: 'Quels secteurs sont accessibles via TGI ?',
-    answer:
-      "Cinq secteurs sont actuellement ouverts à l'investissement : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, et Numérique & Services. Vous pouvez répartir votre engagement sur un ou plusieurs secteurs pour diversifier votre exposition.",
-  },
-  {
-    category: 'investissement',
-    question: "Quelle est la durée d'un investissement TAOMAN ?",
-    answer:
-      "L'horizon de référence est de 10 mois maximum pour un cycle TGI. Certains projets peuvent proposer des horizons plus courts (3, 6 mois) selon le secteur et la nature du projet. La durée est toujours indiquée au moment de l'engagement.",
-  },
-  {
-    category: 'investissement',
-    question: 'Puis-je investir depuis la diaspora ou hors du Togo ?',
-    answer:
-      "Oui. Le programme TGI accepte les investisseurs de la diaspora togolaise et internationale. Les flux financiers transitent par des canaux conformes (virement bancaire, Mobile Money, partenaires de transfert) et la signature des contrats peut se faire à distance.",
-  },
-  // RENDEMENT & RISQUE
-  {
-    category: 'rendement',
-    question: 'Quels rendements puis-je attendre ?',
-    answer:
-      "Les fourchettes indicatives par secteur sont publiées sur chaque fiche projet (de l'ordre de 10 % à 22 % selon le secteur et le profil de risque). Les rendements affichés sont des projections fondées sur la performance opérationnelle attendue. Le rendement réel dépend du projet, du contexte et de l'exécution.",
-  },
-  {
-    category: 'rendement',
-    question: 'Les rendements affichés sont-ils garantis ?',
-    answer:
-      "Non. Aucun rendement n'est garanti. Tout investissement comporte un risque, y compris de perte partielle ou totale du capital. Nous publions des fourchettes réalistes, calibrées sur la performance terrain, et nous communiquons sur les risques avant chaque engagement.",
-  },
-  {
-    category: 'rendement',
-    question: 'Comment réduire mon risque global ?',
-    answer:
-      "Trois leviers : (1) diversifier votre engagement sur plusieurs secteurs et plusieurs projets, (2) ne pas allouer plus que ce que votre situation patrimoniale supporte, (3) lire attentivement chaque fiche projet (cout, financement, partenaires) avant de vous engager.",
-  },
-  {
-    category: 'rendement',
-    question: 'Comment et quand suis-je rémunéré ?',
-    answer:
-      "Selon le projet, les revenus peuvent être versés mensuellement, trimestriellement ou en clôture de cycle. Le calendrier est précisé dans le contrat de chaque projet. Vous suivez l'ensemble des flux (capital, intérêts, retraits) depuis votre espace investisseur en temps réel.",
-  },
-  // SÉCURITÉ
-  {
-    category: 'securite',
-    question: 'Êtes-vous une entreprise déclarée et formelle ?',
-    answer:
-      "Oui. TAOMAN Group Investment est une société togolaise régulièrement enregistrée, fiscalement à jour, employeur déclaré, couverte en responsabilité civile professionnelle. Toutes nos opérations sont contractualisées et toutes nos prestations donnent lieu à une facture conforme.",
-  },
-  {
-    category: 'securite',
-    question: 'Mes données personnelles sont-elles protégées ?',
-    answer:
-      "Oui. Vos données KYC (identité, téléphone, justificatifs) sont stockées de manière sécurisée et ne sont jamais transmises à des tiers. Elles servent uniquement à valider votre profil investisseur et à respecter nos obligations légales (lutte contre le blanchiment, traçabilité des flux).",
-  },
-  {
-    category: 'securite',
-    question: 'Que se passe-t-il si un projet sous-performe ?',
-    answer:
-      "Vous êtes informé en temps réel via votre espace investisseur. Notre équipe terrain documente les écarts (photos, indicateurs, commentaires) et propose un plan de correction. Selon le contrat, nous pouvons aussi proposer une réallocation vers d'autres projets ou un retrait anticipé.",
-  },
-  // PROCESS
-  {
-    category: 'process',
-    question: 'Comment soumettre un projet à financer ?',
-    answer:
-      "Utilisez le formulaire dédié dans la page Contact (option « Soumettre un projet à financer »). Présentez votre projet, son secteur, le ticket recherché, l'horizon et l'état d'avancement. Notre comité d'investissement examine chaque dossier et revient vers vous sous 5 jours ouvrés avec une décision motivée.",
-  },
-  {
-    category: 'process',
-    question: 'Comment se déroule mon premier investissement ?',
-    answer:
-      "(1) Création du compte et validation KYC sous 24h. (2) Choix du ou des projets dans l'espace investisseur. (3) Signature électronique du contrat. (4) Versement du capital par virement ou Mobile Money. (5) Suivi en temps réel via votre dashboard, avec rapports périodiques.",
-  },
-  {
-    category: 'process',
-    question: 'Où voir mes chiffres après connexion ?',
-    answer:
-      "Votre espace investisseur centralise : portefeuille consolidé en temps réel, wallet (dépôts, retraits, commissions), reporting projet (photos, KPI, commentaires terrain), documents PDF (contrats, justificatifs), notifications. Accessible 24/7 après connexion.",
-  },
-  {
-    category: 'process',
-    question: 'Comment retirer mes fonds ?',
-    answer:
-      "Les retraits se demandent directement depuis votre wallet. Selon le projet, les fonds sont disponibles soit à l'échéance contractuelle, soit lors de fenêtres de retrait définies. Les versements se font par virement bancaire ou par Mobile Money, en FCFA ou en devise selon votre demande.",
-  },
-];
+const FAQ_CATEGORY_ICONS = {
+  all: HelpCircle,
+  groupe: Building2,
+  investissement: TrendingUp,
+  rendement: Wallet,
+  securite: Shield,
+  process: ScrollText,
+};
 
 const FaqInvestissement = () => {
-  const { translations: tc } = useLanguage();
+  const { translations: tc, language } = useLanguage();
   const tInv = tc?.invest || {};
+  const faqPack = getInvestmentFaq(language);
+  const faqUi = faqPack.ui || getInvestmentFaq('FR').ui;
+  const faqCategories = (faqPack.categories || []).map((cat) => ({
+    ...cat,
+    icon: FAQ_CATEGORY_ICONS[cat.id] || HelpCircle,
+  }));
+  const faqItems = faqPack.items || [];
   const [active, setActive] = useState('all');
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return FAQ_ITEMS.filter((item) => {
+    return faqItems.filter((item) => {
       const inCat = active === 'all' || item.category === active;
       if (!inCat) return false;
       if (!q) return true;
@@ -169,7 +56,7 @@ const FaqInvestissement = () => {
         (item.answer || '').toLowerCase().includes(q)
       );
     });
-  }, [active, query]);
+  }, [active, query, faqItems]);
 
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-surface to-surface-container-low">
@@ -180,10 +67,10 @@ const FaqInvestissement = () => {
             <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tInv.help?.eyebrow || "Centre d'aide"}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-black tracking-tight text-on-surface">
-            Questions fréquentes
+            {faqUi.title}
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-on-surface-variant leading-relaxed">
-            Tout ce qu'il faut savoir sur le <strong className="text-on-surface">Groupe TAOMAN</strong> et sur notre programme d'investissement <strong className="text-on-surface">TGI</strong> : rendement, risque, sécurité, processus.
+            {faqUi.intro}
           </p>
 
           {/* Barre de recherche */}
@@ -195,7 +82,7 @@ const FaqInvestissement = () => {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Rechercher dans la FAQ (ex : ticket, rendement, retrait...)"
+              placeholder={faqUi.searchPlaceholder}
               className="w-full rounded-2xl bg-white pl-12 pr-4 py-3.5 text-on-surface placeholder:text-on-surface-variant/70 shadow-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
@@ -203,7 +90,7 @@ const FaqInvestissement = () => {
 
         {/* Catégories */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {FAQ_CATEGORIES.map((cat) => {
+          {faqCategories.map((cat) => {
             const Icon = cat.icon;
             const isActive = active === cat.id;
             return (
@@ -230,13 +117,13 @@ const FaqInvestissement = () => {
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mx-auto">
               <Search className="h-6 w-6" strokeWidth={2.2} />
             </span>
-            <h3 className="mt-4 text-xl font-black text-on-surface">Aucune réponse pour cette recherche</h3>
-            <p className="mt-2 text-on-surface-variant">Essayez un autre mot-clé ou changez de catégorie.</p>
+            <h3 className="mt-4 text-xl font-black text-on-surface">{faqUi.emptyTitle}</h3>
+            <p className="mt-2 text-on-surface-variant">{faqUi.emptyHint}</p>
           </div>
         ) : (
           <div className="space-y-3">
             {filtered.map((item, idx) => {
-              const cat = FAQ_CATEGORIES.find((c) => c.id === item.category) || FAQ_CATEGORIES[0];
+              const cat = faqCategories.find((c) => c.id === item.category) || faqCategories[0];
               const Icon = cat.icon;
               const isOpen = open === idx;
               return (

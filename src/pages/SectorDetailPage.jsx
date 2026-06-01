@@ -29,7 +29,9 @@ import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
-import { pickLocale, pickLocaleList } from '../utils/pickLocale';
+import { pickLocale } from '../utils/pickLocale';
+import { localizeSector } from '../utils/localizedSector';
+import { getSectorUi, formatSectorSeo } from '../i18n/sector-ui';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 
 export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => {
@@ -48,15 +50,8 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
     return <Navigate to="/secteurs" replace />;
   }
 
-  const trItem = tSec?.items?.[baseSector.slug];
-  const sectorBase = {
-    ...baseSector,
-    title: pickLocale(language, baseSector.title, trItem?.title),
-    tag: pickLocale(language, baseSector.tag, trItem?.tag),
-    short: pickLocale(language, baseSector.short, trItem?.short),
-    intro: pickLocale(language, baseSector.intro, trItem?.intro),
-    highlights: pickLocaleList(language, baseSector.highlights, trItem?.highlights),
-  };
+  const sectorUi = getSectorUi(language);
+  const sectorBase = localizeSector(baseSector, language);
   const sector = { ...sectorBase, image: resolveSectorImage(sectorBase) };
 
   const others = sectors
@@ -72,56 +67,13 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
       };
     });
 
-  // Aspects opérationnels et indicateurs (par défaut, peuvent être enrichis par sector)
-  const aspects = sector.aspects || [
-    {
-      icon: TrendingUp,
-      title: 'Modèle économique éprouvé',
-      desc: "TAOMAN Group Investment ne finance que des modèles dont l'unit economics a déjà été validée sur le terrain togolais. Chaque projet est précédé d'une étude de rentabilité unitaire détaillée.",
-    },
-    {
-      icon: BarChart3,
-      title: 'Pilotage par les chiffres',
-      desc: "Chaque projet dispose de KPI mensuels suivis par notre direction opérationnelle : chiffre d'affaires, marges, taux d'occupation, satisfaction client, et tableau de trésorerie consolidé.",
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Cadre juridique sécurisé',
-      desc: "Chaque investissement est contractualisé. Les flux financiers sont tracés, les distributions formalisées, et les rapports périodiques certifiés par notre cabinet comptable partenaire.",
-    },
-    {
-      icon: Users,
-      title: 'Équipes opérationnelles dédiées',
-      desc: "Les projets sont opérés par les équipes propres du Groupe ou par des partenaires sélectionnés sous contrat de performance. Pas de sous-traitance non encadrée.",
-    },
-  ];
+  const aspectIcons = [TrendingUp, BarChart3, ShieldCheck, Users];
+  const aspects = (sector.aspects || sectorUi.aspects).map((a, i) => ({
+    ...a,
+    icon: aspectIcons[i % aspectIcons.length],
+  }));
 
-  const phases = sector.phases || [
-    {
-      num: '01',
-      title: 'Étude & cadrage',
-      duration: 'Semaines 1 – 4',
-      desc: "Notre équipe valide l'opportunité avec une étude terrain, des entretiens partenaires et un business plan financier pluri-scénario.",
-    },
-    {
-      num: '02',
-      title: 'Mobilisation du capital',
-      duration: 'Semaines 4 – 8',
-      desc: 'Ouverture de l\'investissement sur la plateforme TGI. Signature des contrats. Déblocage des fonds en tranches.',
-    },
-    {
-      num: '03',
-      title: 'Déploiement opérationnel',
-      duration: 'Mois 2 – 5',
-      desc: 'Acquisition des actifs, mise en place de l\'équipe, lancement commercial et premier reporting mensuel.',
-    },
-    {
-      num: '04',
-      title: 'Exploitation & distribution',
-      duration: 'Mois 5 – 10',
-      desc: 'Pilotage par notre direction opérationnelle, reporting trimestriel détaillé, distribution des revenus selon l\'échéancier.',
-    },
-  ];
+  const phases = sector.phases || sectorUi.phases;
 
   const indicators = [
     {
@@ -159,14 +111,14 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
           sector.short ||
           sector.intro ||
           (isServicePage
-            ? `Découvrez ${sector.title} chez TAOMAN Group Investment.`
-            : `Découvrez le secteur ${sector.title} chez TAOMAN Group Investment.`)
+            ? formatSectorSeo(sectorUi.seoDiscoverService, sector.title)
+            : formatSectorSeo(sectorUi.seoDiscoverSector, sector.title))
         }
         path={detailPath}
         image={sector.image}
         type="article"
         jsonLd={buildBreadcrumb([
-          { name: 'Accueil', path: '/' },
+          { name: tNav.home, path: '/' },
           { name: isServicePage ? tNav.services : tNav.projects, path: isServicePage ? '/services' : '/secteurs' },
           { name: sector.title, path: detailPath },
         ])}
@@ -200,7 +152,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
-                {sector.tag || (isServicePage ? 'Service' : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par TAOMAN Group Investment'}
+                {sector.tag || (isServicePage ? sectorUi.serviceTag : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par TAOMAN Group Investment'}
               </span>
               <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]" style={{ color: '#ffffff' }}>
                 {sector.title}
@@ -625,11 +577,11 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-2">
-                    {isServicePage ? 'Autres offres du Groupe' : td.otherSectors || 'Autres secteurs du Groupe'}
+                    {isServicePage ? sectorUi.otherServicesTitle : td.otherSectors || 'Autres secteurs du Groupe'}
                   </p>
                   <h2 className="text-2xl md:text-3xl font-black text-on-surface">
                     {isServicePage
-                      ? 'Découvrir nos services et secteurs'
+                      ? sectorUi.otherServicesSubtitle
                       : td.exploreDiversification || 'Explorez la diversification'}
                   </h2>
                 </div>

@@ -28,6 +28,7 @@ import { BRAND_NAME } from '../constants/branding';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { pickLocale } from '../utils/pickLocale';
 
 const DEFAULT_ABOUT = {
   title: `${BRAND_NAME} : votre partenaire stratégique au Togo.`,
@@ -85,38 +86,20 @@ export const AboutPage = () => {
   const raw = section('about') || {};
   const d = DEFAULT_ABOUT;
 
-  const title = pick(raw, 'title', tAbout.title || d.title);
-  const description = raw.description || raw.subtitle || tAbout.description || d.description;
-  const mission = pick(raw, 'mission', tAbout.mission?.body || d.mission);
-  const vision = pick(raw, 'vision', tAbout.vision?.body || d.vision);
-  const heroHighlights = raw.heroHighlights?.length
-    ? raw.heroHighlights
-    : tAbout.hero?.highlights?.length
-      ? tAbout.hero.highlights
-      : d.heroHighlights;
-  const values = raw.values?.length
-    ? raw.values
-    : tAbout.values?.items?.length
-      ? tAbout.values.items
-      : d.values;
-  const timeline = raw.timeline?.length
-    ? raw.timeline
-    : tAbout.timeline?.items?.length
-      ? tAbout.timeline.items
-      : d.timeline;
-  const leaders = raw.leaders?.length
-    ? raw.leaders
-    : tAbout.leaders?.items?.length
-      ? tAbout.leaders.items.map((leader, idx) => ({
-          ...leader,
-          photoUrl: d.leaders[idx]?.photoUrl || '',
-        }))
-      : d.leaders;
-  const stats = raw.stats?.length
-    ? raw.stats
-    : tAbout.stats?.items?.length
-      ? tAbout.stats.items
-      : d.stats;
+  const title = pickLocale(language, raw.title, tAbout.title || d.title);
+  const description = pickLocale(language, raw.description || raw.subtitle, tAbout.description || d.description);
+  const mission = pickLocale(language, raw.mission, tAbout.mission?.body || d.mission);
+  const vision = pickLocale(language, raw.vision, tAbout.vision?.body || d.vision);
+  const heroHighlights = pickLocale(language, raw.heroHighlights, tAbout.hero?.highlights) || d.heroHighlights;
+  const values =
+    pickLocale(language, raw.values, tAbout.values?.items) || d.values;
+  const timeline = pickLocale(language, raw.timeline, tAbout.timeline?.items) || d.timeline;
+  const leaders =
+    (pickLocale(language, raw.leaders, tAbout.leaders?.items) || d.leaders).map((leader, idx) => ({
+      ...leader,
+      photoUrl: leader.photoUrl || d.leaders[idx]?.photoUrl || '',
+    }));
+  const stats = pickLocale(language, raw.stats, tAbout.stats?.items) || d.stats;
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">

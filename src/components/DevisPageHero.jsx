@@ -1,6 +1,7 @@
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { mergeCmsSection } from '../utils/cmsSectionDefaults';
+import { pickLocale } from '../utils/pickLocale';
 
 /**
  * Hero de page devis avec support i18n.
@@ -9,12 +10,12 @@ import { mergeCmsSection } from '../utils/cmsSectionDefaults';
  */
 export function DevisPageHero({ sectionKey, i18nNamespace }) {
   const { section } = useSiteContent();
-  const { translations: tc } = useLanguage();
-  const hero = mergeCmsSection(sectionKey, section(sectionKey));
+  const { translations: tc, language } = useLanguage();
+  const hero = mergeCmsSection(sectionKey, section(sectionKey), language);
   const i18nHero = (i18nNamespace && tc?.[i18nNamespace]?.hero) || {};
 
-  const title = i18nHero.title || hero.title;
-  const subtitle = i18nHero.description || hero.subtitle;
+  const title = pickLocale(language, hero.title, i18nHero.title);
+  const subtitle = pickLocale(language, hero.subtitle, i18nHero.description);
   const eyebrow = i18nHero.eyebrow;
 
   return (

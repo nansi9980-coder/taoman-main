@@ -232,7 +232,7 @@ export const FaqPage = () => {
   const tFaqExt = getFaqTranslations(language);
   const faq = section('faq');
   const overridden = normalizeItemsSection(faq, []);
-  const items = overridden.length > 0 ? overridden : tFaqExt.items;
+  const items = overridden.length > 0 ? overridden : tFaqExt.items || [];
   const categories = tFaqExt.categories.map((c) => ({
     ...c,
     icon: CATEGORY_ICONS[c.id] || HelpCircle,

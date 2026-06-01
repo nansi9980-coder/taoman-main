@@ -1,4 +1,6 @@
 import v2Defaults from '../data/cms-v2-defaults.json';
+import { getLocalizedCmsV2Default } from '../i18n/cms-legal-blocks';
+import { isFrenchLocale } from './pickLocale';
 
 export const CMS_V2_KEYS = [
   'legal',
@@ -25,8 +27,10 @@ function mergeBlocks(defaultBlocks = [], apiBlocks = []) {
   }));
 }
 
-export function mergeCmsSection(key, api = {}) {
-  const defaults = getCmsV2Default(key);
+export function mergeCmsSection(key, api = {}, language = 'FR') {
+  const defaults = isFrenchLocale(language)
+    ? getCmsV2Default(key)
+    : getLocalizedCmsV2Default(key, language);
   if (!api || Object.keys(api).length === 0) return defaults;
 
   const out = { ...defaults, ...api };

@@ -12,7 +12,7 @@ export const JobsPage = () => {
   const { translations: tc, language } = useLanguage();
   const tJ = tc?.jobs?.hero || {};
   const tJobs = getJobsTranslations(language);
-  const jobsContent = mergeCmsSection('jobs', section('jobs'));
+  const jobsContent = mergeCmsSection('jobs', section('jobs'), language);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [jobListings, setJobListings] = useState([]);
   const [loading, setLoading] = useState(true);

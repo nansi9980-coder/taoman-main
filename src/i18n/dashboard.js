@@ -2,11 +2,37 @@
  * Traductions pour DashboardPage (espace client investisseur).
  */
 
+const QUOTE_STATUS = {
+  FR: {
+    'En attente': 'En attente',
+    'En révision': 'En révision',
+    Envoyé: 'Envoyé',
+    Refusé: 'Refusé',
+    Accepté: 'Accepté',
+    active: 'Actif',
+    completed: 'Terminé',
+    failed: 'Clôturé',
+  },
+  EN: {
+    'En attente': 'Pending',
+    'En révision': 'In review',
+    Envoyé: 'Sent',
+    Refusé: 'Declined',
+    Accepté: 'Accepted',
+    active: 'Active',
+    completed: 'Completed',
+    failed: 'Closed',
+  },
+};
+
 const DASHBOARD = {
   FR: {
     eyebrow: 'Espace client',
     greeting: 'Bonjour {name}',
     loading: 'Chargement...',
+    refreshing: 'Actualisation…',
+    refresh: 'Actualiser',
+    errorLoad: 'Impossible de charger vos données.',
     stats: {
       quotesTotalLabel: 'Devis soumis',
       quotesPendingDetail: '{n} en attente',
@@ -21,19 +47,24 @@ const DASHBOARD = {
       title: 'Mes devis',
       emptyLine: 'Aucun devis.',
       emptyLinkLabel: 'Demander un devis',
+      amountPending: 'Montant en cours d’estimation',
     },
     investments: {
       title: 'Investissements',
       emptyLinkLabel: 'Découvrir nos opportunités',
       roiSuffix: 'ROI',
+      ctaExplore: 'Voir les opportunités',
     },
-    simulatorCta: 'Simulateur',
+    simulatorCta: 'Ouvrir le simulateur',
     locale: 'fr-FR',
   },
   EN: {
     eyebrow: 'Client area',
     greeting: 'Hello {name}',
     loading: 'Loading...',
+    refreshing: 'Refreshing…',
+    refresh: 'Refresh',
+    errorLoad: 'Unable to load your data.',
     stats: {
       quotesTotalLabel: 'Submitted quotes',
       quotesPendingDetail: '{n} pending',
@@ -48,19 +79,24 @@ const DASHBOARD = {
       title: 'My quotes',
       emptyLine: 'No quotes yet.',
       emptyLinkLabel: 'Request a quote',
+      amountPending: 'Amount being estimated',
     },
     investments: {
       title: 'Investments',
       emptyLinkLabel: 'Discover our opportunities',
       roiSuffix: 'ROI',
+      ctaExplore: 'View opportunities',
     },
-    simulatorCta: 'Simulator',
+    simulatorCta: 'Open simulator',
     locale: 'en-US',
   },
   ES: {
     eyebrow: 'Espacio cliente',
     greeting: 'Hola {name}',
     loading: 'Cargando...',
+    refreshing: 'Actualizando…',
+    refresh: 'Actualizar',
+    errorLoad: 'No se pudieron cargar sus datos.',
     stats: {
       quotesTotalLabel: 'Presupuestos enviados',
       quotesPendingDetail: '{n} pendientes',
@@ -75,19 +111,24 @@ const DASHBOARD = {
       title: 'Mis presupuestos',
       emptyLine: 'Sin presupuestos.',
       emptyLinkLabel: 'Solicitar un presupuesto',
+      amountPending: 'Importe en estimación',
     },
     investments: {
       title: 'Inversiones',
       emptyLinkLabel: 'Descubrir nuestras oportunidades',
       roiSuffix: 'ROI',
+      ctaExplore: 'Ver oportunidades',
     },
-    simulatorCta: 'Simulador',
+    simulatorCta: 'Abrir simulador',
     locale: 'es-ES',
   },
   PT: {
     eyebrow: 'Espaço cliente',
     greeting: 'Olá {name}',
     loading: 'A carregar...',
+    refreshing: 'A atualizar…',
+    refresh: 'Atualizar',
+    errorLoad: 'Não foi possível carregar os seus dados.',
     stats: {
       quotesTotalLabel: 'Orçamentos enviados',
       quotesPendingDetail: '{n} pendentes',
@@ -102,19 +143,24 @@ const DASHBOARD = {
       title: 'Os meus orçamentos',
       emptyLine: 'Sem orçamentos.',
       emptyLinkLabel: 'Pedir um orçamento',
+      amountPending: 'Valor em estimativa',
     },
     investments: {
       title: 'Investimentos',
       emptyLinkLabel: 'Descobrir as nossas oportunidades',
       roiSuffix: 'ROI',
+      ctaExplore: 'Ver oportunidades',
     },
-    simulatorCta: 'Simulador',
+    simulatorCta: 'Abrir simulador',
     locale: 'pt-PT',
   },
   DE: {
     eyebrow: 'Kundenbereich',
     greeting: 'Hallo {name}',
     loading: 'Wird geladen...',
+    refreshing: 'Aktualisierung…',
+    refresh: 'Aktualisieren',
+    errorLoad: 'Daten konnten nicht geladen werden.',
     stats: {
       quotesTotalLabel: 'Eingereichte Angebote',
       quotesPendingDetail: '{n} ausstehend',
@@ -129,19 +175,24 @@ const DASHBOARD = {
       title: 'Meine Angebote',
       emptyLine: 'Keine Angebote.',
       emptyLinkLabel: 'Angebot anfordern',
+      amountPending: 'Betrag wird geschätzt',
     },
     investments: {
       title: 'Investments',
       emptyLinkLabel: 'Unsere Möglichkeiten entdecken',
       roiSuffix: 'ROI',
+      ctaExplore: 'Chancen ansehen',
     },
-    simulatorCta: 'Simulator',
+    simulatorCta: 'Simulator öffnen',
     locale: 'de-DE',
   },
   AR: {
     eyebrow: 'مساحة العميل',
     greeting: 'مرحباً {name}',
     loading: 'جارٍ التحميل...',
+    refreshing: 'جارٍ التحديث…',
+    refresh: 'تحديث',
+    errorLoad: 'تعذّر تحميل بياناتك.',
     stats: {
       quotesTotalLabel: 'العروض المقدّمة',
       quotesPendingDetail: '{n} قيد الانتظار',
@@ -156,19 +207,24 @@ const DASHBOARD = {
       title: 'عروضي',
       emptyLine: 'لا توجد عروض.',
       emptyLinkLabel: 'طلب عرض',
+      amountPending: 'المبلغ قيد التقدير',
     },
     investments: {
       title: 'الاستثمارات',
       emptyLinkLabel: 'اكتشف فرصنا',
       roiSuffix: 'العائد',
+      ctaExplore: 'عرض الفرص',
     },
-    simulatorCta: 'محاكي',
+    simulatorCta: 'فتح المحاكي',
     locale: 'ar-SA',
   },
   ZH: {
     eyebrow: '客户专区',
     greeting: '您好 {name}',
     loading: '加载中…',
+    refreshing: '刷新中…',
+    refresh: '刷新',
+    errorLoad: '无法加载您的数据。',
     stats: {
       quotesTotalLabel: '已提交的报价',
       quotesPendingDetail: '{n} 待处理',
@@ -183,17 +239,25 @@ const DASHBOARD = {
       title: '我的报价',
       emptyLine: '暂无报价。',
       emptyLinkLabel: '申请报价',
+      amountPending: '金额估算中',
     },
     investments: {
       title: '投资',
       emptyLinkLabel: '发现我们的机会',
       roiSuffix: '回报率',
+      ctaExplore: '查看机会',
     },
-    simulatorCta: '模拟器',
+    simulatorCta: '打开模拟器',
     locale: 'zh-CN',
   },
 };
 
 export const getDashboardTranslations = (language) => DASHBOARD[language] || DASHBOARD.FR;
+
+export function translateQuoteStatus(status, language) {
+  if (!status) return '';
+  const map = QUOTE_STATUS[language] || QUOTE_STATUS.EN;
+  return map[status] || status;
+}
 
 export default DASHBOARD;

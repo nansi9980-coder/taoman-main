@@ -2,10 +2,14 @@ import { createContext, useContext, useEffect, useState, useCallback, useMemo } 
 import { API_URL } from '../config';
 import { parseSiteContentMap } from '../utils/siteContent';
 import { loadContentOverrides } from '../utils/siteContentOverrides';
+import { resolveCmsForLanguage } from '../utils/cmsLocale';
+import { localizeServiceCards, getHomeServiceFallbacks } from '../utils/localizeServiceCards';
+import { useLanguage } from './LanguageContext';
 
 const SiteContentContext = createContext(null);
 
 export function SiteContentProvider({ children }) {
+  const { language } = useLanguage();
   const [content, setContent] = useState({});
   const [overrides, setOverrides] = useState(() => loadContentOverrides());
   const [services, setServices] = useState([]);
@@ -35,7 +39,10 @@ export function SiteContentProvider({ children }) {
   }, [load]);
 
   useEffect(() => {
-    const sync = () => setOverrides(loadContentOverrides());
+    const sync = () => {
+      setOverrides(loadContentOverrides());
+      load();
+    };
     window.addEventListener('taoman-cms-updated', sync);
     window.addEventListener('storage', sync);
     return () => {
@@ -48,15 +55,21 @@ export function SiteContentProvider({ children }) {
     (key) => {
       const base = content[key] || {};
       const patch = overrides[key];
-      if (!patch || typeof patch !== 'object') return base;
-      return { ...base, ...patch };
+      const merged = patch && typeof patch === 'object' ? { ...base, ...patch } : base;
+      return resolveCmsForLanguage(merged, language, key);
     },
-    [content, overrides],
+    [content, overrides, language],
   );
 
+  const localizedServices = useMemo(() => {
+    const localized = localizeServiceCards(services, language);
+    if (localized.length > 0) return localized;
+    return getHomeServiceFallbacks(language).services;
+  }, [services, language]);
+
   const value = useMemo(
-    () => ({ content, services, loading, section, reload: load }),
-    [content, services, loading, section, load],
+    () => ({ content, services: localizedServices, loading, section, reload: load, language }),
+    [content, localizedServices, loading, section, load, language],
   );
 
   return <SiteContentContext.Provider value={value}>{children}</SiteContentContext.Provider>;

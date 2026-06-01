@@ -3,6 +3,7 @@ import { Footer } from './Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { mergeCmsSection } from '../utils/cmsSectionDefaults';
+import { pickLocale } from '../utils/pickLocale';
 
 /**
  * Page légale / CGU / confidentialité avec blocs éditables depuis le CMS.
@@ -10,12 +11,12 @@ import { mergeCmsSection } from '../utils/cmsSectionDefaults';
  */
 export function CmsBlocksPage({ sectionKey, activeLink, variant = 'gradient', i18nNamespace }) {
   const { section } = useSiteContent();
-  const { translations: tc } = useLanguage();
-  const data = mergeCmsSection(sectionKey, section(sectionKey));
+  const { translations: tc, language } = useLanguage();
+  const data = mergeCmsSection(sectionKey, section(sectionKey), language);
   const i18nHero = (i18nNamespace && tc?.[i18nNamespace]?.hero) || {};
   const heroEyebrow = i18nHero.eyebrow;
-  const heroTitle = i18nHero.title || data.title;
-  const heroSubtitle = i18nHero.description || data.subtitle;
+  const heroTitle = pickLocale(language, data.title, i18nHero.title);
+  const heroSubtitle = pickLocale(language, data.subtitle, i18nHero.description);
 
   const heroClass =
     variant === 'terms'

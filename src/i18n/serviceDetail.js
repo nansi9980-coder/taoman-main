@@ -98,4 +98,62 @@ const SERVICE_DETAIL = {
 
 export const getServiceDetailTranslations = (language) => SERVICE_DETAIL[language] || SERVICE_DETAIL.FR;
 
+const STATIC_SERVICES = {
+  FR: {
+    'taoman-groupe-3240165193': {
+      title: 'Aménagement & déménagement',
+      location: 'Adewi Lomé',
+      description: 'Service complet de déménagement et aménagement pour particuliers et professionnels.',
+      features: ['Équipe professionnelle', 'Manutention sécurisée', 'Transport national et international', 'Assurance incluse'],
+      details: [
+        'Des camions modernes et bien équipés pour tous types de déménagements.',
+        'Service personnalisé selon vos besoins logistiques.',
+        'Personnel formé pour emballage, chargement et déchargement.',
+      ],
+    },
+    'taoman-groupe-8918912275': {
+      title: 'Aménagement & déménagement',
+      location: 'Agoè Zongo',
+      description: 'Service de déménagement professionnel avec véhicules adaptés et personnel dédié.',
+      features: ['Disponibilité rapide', 'Équipe de manutention qualifiée', 'Véhicules sécurisés', 'Suivi client régulier'],
+      details: [
+        'Planification de déménagement sur mesure.',
+        'Emballage et protection des biens.',
+        'Livraison en toute sécurité jusqu’à destination.',
+      ],
+    },
+  },
+  EN: {
+    'taoman-groupe-3240165193': {
+      title: 'Moving & fit-out',
+      location: 'Adewi, Lomé',
+      description: 'Full moving and fit-out service for individuals and businesses.',
+      features: ['Professional team', 'Secure handling', 'National and international transport', 'Insurance included'],
+      details: [
+        'Modern well-equipped trucks for all move types.',
+        'Personalized service for your logistics needs.',
+        'Trained staff for packing, loading and unloading.',
+      ],
+    },
+    'taoman-groupe-8918912275': {
+      title: 'Moving & fit-out',
+      location: 'Agoè Zongo',
+      description: 'Professional moving with adapted vehicles and dedicated staff.',
+      features: ['Fast availability', 'Qualified handling team', 'Secure vehicles', 'Regular client follow-up'],
+      details: [
+        'Tailored move planning.',
+        'Packing and goods protection.',
+        'Safe delivery to destination.',
+      ],
+    },
+  },
+};
+
+const STATIC_PACKS = { FR: STATIC_SERVICES.FR, EN: STATIC_SERVICES.EN, ES: STATIC_SERVICES.EN, PT: STATIC_SERVICES.EN, DE: STATIC_SERVICES.EN, AR: STATIC_SERVICES.EN, ZH: STATIC_SERVICES.EN };
+
+export function getStaticServiceDetail(serviceId, language) {
+  const pack = STATIC_PACKS[language] || STATIC_SERVICES.EN;
+  return pack[serviceId] || null;
+}
+
 export default SERVICE_DETAIL;

@@ -19,110 +19,48 @@ import {
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
+import { getMovingPersonnelContent } from '../i18n/moving-personnel';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 import mecanique1 from '../assets/realisations/mecanique1.png';
 
-const VEHICLES = [
-  {
-    title: 'Camion de déménagement 10 m³',
-    location: 'Adewi, Lomé',
-    details: "Idéal pour studios, F2, F3 ou bureaux compacts. Hauteur sous bâche suffisante pour armoires et électroménager.",
-    capacity: '10 m³',
-    crew: '2 déménageurs',
-    availability: 'Disponible',
-    price: 'À partir de 75 000 FCFA',
-    image: transport2,
-    badge: 'Populaire',
-    features: ['Sangles & couvertures', 'Hayon élévateur', 'Bâche imperméable'],
-  },
-  {
-    title: 'Fourgon utilitaire 6 m³',
-    location: 'Agoè Zongo, Lomé',
-    details: "Pour petits volumes, déménagement étudiant, transfert de mobilier ou livraison de gros électroménager.",
-    capacity: '6 m³',
-    crew: '1 conducteur + 1 manutentionnaire',
-    availability: 'Disponible',
-    price: 'À partir de 45 000 FCFA',
-    image: mecanique1,
-    badge: 'Économique',
-    features: ['Chargement rapide', 'Carburant inclus', 'Sangles fournies'],
-  },
-  {
-    title: 'Camion 20 m³ longue distance',
-    location: 'Lomé Centre',
-    details: "Pour déménagements villas, bureaux entiers ou trajets inter-villes (Kara, Atakpamé, Sokodé, Cotonou, Accra).",
-    capacity: '20 m³',
-    crew: '3 déménageurs',
-    availability: 'Sur réservation',
-    price: 'À partir de 150 000 FCFA',
-    image: transport1,
-    badge: 'Longue distance',
-    features: ['Itinéraire CEDEAO', 'Démontage / remontage', 'Assurance marchandise'],
-  },
-];
-
-const PROCESS_STEPS = [
-  {
-    icon: Phone,
-    title: '1. Premier contact',
-    desc: "Appelez-nous ou remplissez le formulaire. Nous évaluons votre besoin en 5 minutes.",
-  },
-  {
-    icon: Search,
-    title: '2. Visite technique',
-    desc: "Un chef d'équipe se déplace gratuitement pour mesurer le volume et identifier les contraintes.",
-  },
-  {
-    icon: CheckCircle2,
-    title: '3. Devis détaillé',
-    desc: "Vous recevez sous 24h un devis clair : prix, équipe, matériel, planning et conditions.",
-  },
-  {
-    icon: Truck,
-    title: '4. Jour J',
-    desc: "Notre équipe arrive avec le matériel adapté, emballe, transporte et réinstalle chez vous.",
-  },
-];
-
-const COMMITMENTS = [
-  { icon: ShieldCheck, title: 'Marchandise assurée', desc: "Vos biens sont couverts pendant tout le transport." },
-  { icon: Users, title: 'Équipe identifiée', desc: 'Tous nos déménageurs sont en uniforme TAOMAN et identifiables.' },
-  { icon: Boxes, title: 'Matériel fourni', desc: 'Cartons, papier bulle, sangles, couvertures, diables — tout est inclus.' },
-  { icon: Clock, title: 'Délais respectés', desc: 'Engagement de ponctualité avec pénalité automatique en cas de retard.' },
-];
-
-const TYPES = [
-  {
-    icon: HomeIcon,
-    title: 'Particuliers',
-    desc: "Studios, F2, F3, villas — nous emballons, transportons, déballons et réinstallons. Visite technique gratuite à domicile.",
-  },
-  {
-    icon: Building2,
-    title: 'Entreprises',
-    desc: "Bureaux, archives, serveurs, mobilier — planification hors heures ouvrées pour limiter l'interruption d'activité.",
-  },
-  {
-    icon: Package,
-    title: 'Commerces & ateliers',
-    desc: "Stock, présentoirs, équipements lourds — transfert sécurisé avec équipe spécialisée et matériel adapté.",
-  },
-];
+const VEHICLE_IMAGES = [transport2, mecanique1, transport1];
+const TYPE_ICONS = [HomeIcon, Building2, Package];
+const COMMITMENT_ICONS = [ShieldCheck, Users, Boxes, Clock];
+const PROCESS_ICONS = [Phone, Search, CheckCircle2, Truck];
 
 export const DemenagementPersonnelsPage = () => {
   const [search, setSearch] = useState('');
-  const { translations: tc } = useLanguage();
+  const { translations: tc, language } = useLanguage();
   const tM = tc?.moving || {};
   const tCommon = tc?.common || {};
+  const mp = getMovingPersonnelContent(language);
+  const labels = mp.labels;
+
+  const vehicles = useMemo(
+    () => mp.vehicles.map((v, i) => ({ ...v, image: VEHICLE_IMAGES[i] })),
+    [mp.vehicles],
+  );
+  const types = useMemo(
+    () => mp.types.map((t, i) => ({ ...t, icon: TYPE_ICONS[i] })),
+    [mp.types],
+  );
+  const commitments = useMemo(
+    () => mp.commitments.map((c, i) => ({ ...c, icon: COMMITMENT_ICONS[i] })),
+    [mp.commitments],
+  );
+  const processSteps = useMemo(
+    () => mp.processSteps.map((s, i) => ({ ...s, icon: PROCESS_ICONS[i] })),
+    [mp.processSteps],
+  );
 
   const filteredVehicles = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return VEHICLES;
-    return VEHICLES.filter((v) =>
+    if (!q) return vehicles;
+    return vehicles.filter((v) =>
       [v.title, v.location, v.details, v.capacity].some((field) => field.toLowerCase().includes(q))
     );
-  }, [search]);
+  }, [search, vehicles]);
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
@@ -170,9 +108,9 @@ export const DemenagementPersonnelsPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
                   <span className="rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f]">
-                    Flotte propre
+                    {labels.fleetBadge}
                   </span>
-                  <span className="text-xs font-bold text-white/85">Lomé • Togo • CEDEAO</span>
+                  <span className="text-xs font-bold text-white/85">{labels.coverage}</span>
                 </div>
               </div>
             </div>
@@ -203,11 +141,11 @@ export const DemenagementPersonnelsPage = () => {
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.types?.eyebrow || 'Qui accompagnons-nous ?'}</p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.types?.title || 'Trois profils, une même exigence'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Que vous soyez un particulier, une entreprise ou un commerçant, nos équipes adaptent leur méthode et leur matériel à votre besoin.
+                {labels.typesIntro}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-              {TYPES.map((t, idx) => {
+              {types.map((t, idx) => {
                 const { icon: Icon, title, desc } = t;
                 return (
                   <div
@@ -235,7 +173,7 @@ export const DemenagementPersonnelsPage = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.vehicles?.eyebrow || 'Notre flotte'}</p>
                 <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.vehicles?.title || 'Véhicules disponibles'}</h2>
                 <p className="mt-4 text-lg text-on-surface-variant max-w-2xl">
-                  Trois formats pour s'adapter à votre volume, votre distance et votre budget. Tous nos véhicules sont entretenus dans notre atelier TAOMAN.
+                  {labels.vehiclesIntro}
                 </p>
               </div>
               <div className="w-full lg:w-96 relative">
@@ -243,7 +181,7 @@ export const DemenagementPersonnelsPage = () => {
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Rechercher par type, lieu ou volume..."
+                  placeholder={labels.vehicleSearch}
                   className="w-full pl-12 pr-4 py-3 border border-outline-variant/60 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
                 />
               </div>
@@ -281,11 +219,11 @@ export const DemenagementPersonnelsPage = () => {
                     <p className="text-sm text-on-surface-variant leading-relaxed mb-4">{vehicle.details}</p>
                     <div className="grid grid-cols-2 gap-3 mb-5">
                       <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Capacité</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">{labels.capacity}</p>
                         <p className="text-base font-black text-on-surface mt-1">{vehicle.capacity}</p>
                       </div>
                       <div className="rounded-2xl bg-surface-container-low p-3 border border-outline-variant/30">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Équipe</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">{labels.crew}</p>
                         <p className="text-sm font-bold text-on-surface mt-1">{vehicle.crew}</p>
                       </div>
                     </div>
@@ -298,14 +236,14 @@ export const DemenagementPersonnelsPage = () => {
                     </div>
                     <div className="mt-auto border-t border-outline-variant/30 pt-4 flex items-end justify-between gap-3">
                       <div>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">À partir de</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">{labels.from}</p>
                         <p className="text-lg font-black text-primary">{vehicle.price}</p>
                       </div>
                       <Link
                         to="/demenagement/devis"
                         className="inline-flex items-center gap-1.5 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white px-4 py-2.5 text-sm font-bold shadow-md hover:shadow-xl hover:scale-105 transition"
                       >
-                        Réserver <ArrowRight className="h-4 w-4" />
+                        {labels.book} <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
                   </div>
@@ -316,8 +254,8 @@ export const DemenagementPersonnelsPage = () => {
             {filteredVehicles.length === 0 && (
               <div className="rounded-3xl border border-dashed border-outline-variant/60 bg-white p-12 text-center mt-8">
                 <Sparkles className="h-10 w-10 text-primary mx-auto mb-3" />
-                <p className="text-lg font-bold text-on-surface mb-2">Aucun véhicule trouvé</p>
-                <p className="text-on-surface-variant">Contactez-nous directement, nous adaptons notre flotte à votre besoin spécifique.</p>
+                <p className="text-lg font-bold text-on-surface mb-2">{labels.noVehicleTitle}</p>
+                <p className="text-on-surface-variant">{labels.noVehicleHint}</p>
               </div>
             )}
           </div>
@@ -330,11 +268,11 @@ export const DemenagementPersonnelsPage = () => {
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.commitments?.eyebrow || 'Nos engagements'}</p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.commitments?.title || 'Ce que nous garantissons'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Quatre promesses simples qui font la différence sur le terrain.
+                {labels.commitmentsIntro}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {COMMITMENTS.map((c, idx) => {
+              {commitments.map((c, idx) => {
                 const { icon: Icon, title, desc } = c;
                 return (
                   <div
@@ -361,11 +299,11 @@ export const DemenagementPersonnelsPage = () => {
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tM.process?.eyebrow || 'Méthode'}</p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tM.process?.title || "Du contact à l'installation"}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Une procédure claire en quatre étapes pour un déménagement sans stress.
+                {labels.processIntro}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {PROCESS_STEPS.map((step, idx) => {
+              {processSteps.map((step, idx) => {
                 const { icon: Icon, title, desc } = step;
                 return (
                   <div

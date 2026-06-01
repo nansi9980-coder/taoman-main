@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { SiteContentProvider } from './context/SiteContentContext';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -37,11 +37,13 @@ const AdminDashboardPage = lazy(() => import('./pages/AdminDashboardPage').then(
 const FaqPage = lazy(() => import('./pages/FaqPage').then((m) => ({ default: m.FaqPage })));
 
 function RouteFallback() {
+  const { translations } = useLanguage();
+  const loadingLabel = translations?.common?.loading || 'Chargement…';
   return (
     <div className="flex items-center justify-center min-h-screen bg-surface" role="status" aria-live="polite" aria-busy="true">
       <div className="flex flex-col items-center gap-4">
         <div className="h-12 w-12 rounded-full border-4 border-primary/20 border-t-primary animate-spin" aria-hidden="true" />
-        <p className="text-sm font-semibold text-on-surface-variant">Chargement…</p>
+        <p className="text-sm font-semibold text-on-surface-variant">{loadingLabel}</p>
       </div>
     </div>
   );

@@ -25,67 +25,36 @@ import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
+import { getTgiPageContent } from '../i18n/tgi-page';
 
 const STAT_ICONS = [Wallet, TrendingUp, Clock, Target];
-
-const DEFAULT_TGI = {
-  title: BRAND_NAME,
-  subtitle: 'Bâtissez votre indépendance financière',
-  description:
-    "Une opportunité transformative pour les investisseurs qui recherchent des rendements durables et un impact communautaire significatif à Lomé et au-delà.",
-  stats: [
-    { label: 'Investissement Minimum', value: '500K FCFA' },
-    { label: 'Rendement Moyen', value: '150K FCFA/mois' },
-    { label: 'Délai Retour', value: '10 mois' },
-    { label: 'Retour Total Moyen', value: '2M FCFA' },
-  ],
-};
-
-const PILLARS = [
-  {
-    icon: LineChart,
-    title: 'Rentabilité économique',
-    desc: "Des rendements attractifs basés sur des projets économiques viables, testés sur le marché togolais et suivis trimestriellement.",
-    tone: 'from-blue-500/15 to-cyan-400/10',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Impact social',
-    desc: "Création d'emplois locaux durables, soutien aux PME togolaises et développement de l'économie réelle dans nos régions.",
-    tone: 'from-amber-500/15 to-orange-400/10',
-  },
-  {
-    icon: Target,
-    title: 'Indépendance financière',
-    desc: "Atteignez votre liberté financière grâce à des revenus passifs réguliers, croissants et adossés à des actifs tangibles.",
-    tone: 'from-emerald-500/15 to-teal-400/10',
-  },
-];
-
-const BENEFITS = [
-  { icon: ShieldCheck, title: 'Transparence totale', desc: "Accès complet aux rapports d'activité, documents contractuels et données d'investissement." },
-  { icon: RefreshCw, title: 'Rendements réguliers', desc: 'Paiements mensuels structurés selon le contrat de votre programme.' },
-  { icon: Users, title: 'Équipe expérimentée', desc: "Gestion professionnelle par des experts opérationnels du secteur." },
-  { icon: HeadphonesIcon, title: 'Support dédié', desc: "Conseiller dédié, disponible pour répondre à vos questions et vous accompagner." },
-  { icon: Handshake, title: 'Flexibilité', desc: "Options de retrait et de réinvestissement selon votre stratégie patrimoniale." },
-  { icon: Sparkles, title: 'Impact social', desc: "Contribution au développement économique local et à la création d'emplois." },
-];
+const PILLAR_ICONS = [LineChart, HeartHandshake, Target];
+const BENEFIT_ICONS = [ShieldCheck, RefreshCw, Users, HeadphonesIcon, Handshake, Sparkles];
 
 export const TaoEconomicInvestmentPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
-  const { translations: tc } = useLanguage();
+  const { translations: tc, language } = useLanguage();
   const tT = tc?.tgi || {};
   const tCommon = tc?.common || {};
+  const tgiPage = getTgiPageContent(language);
   const tgi = section('investmentTgi') || section('investmentTie');
 
-  const investmentStats = (tgi.stats?.length ? tgi.stats : DEFAULT_TGI.stats).map((s, i) => ({
+  const investmentStats = (tgi.stats?.length ? tgi.stats : tgiPage.stats).map((s, i) => ({
     ...s,
     Icon: STAT_ICONS[i % STAT_ICONS.length],
   }));
-  const heroTitle = tgi.title || tT.hero?.title || DEFAULT_TGI.title;
-  const heroSubtitle = tgi.subtitle || DEFAULT_TGI.subtitle;
-  const heroDescription = tgi.description || DEFAULT_TGI.description;
+  const pillars = tgiPage.pillars.map((p, i) => ({
+    ...p,
+    icon: PILLAR_ICONS[i % PILLAR_ICONS.length],
+  }));
+  const benefits = tgiPage.benefits.map((b, i) => ({
+    ...b,
+    icon: BENEFIT_ICONS[i % BENEFIT_ICONS.length],
+  }));
+  const heroTitle = tgi.title || tT.hero?.title || BRAND_NAME;
+  const heroSubtitle = tgi.subtitle || tgiPage.defaultHero.subtitle;
+  const heroDescription = tgi.description || tgiPage.defaultHero.description;
 
   const sectors = normalizeSectors(section('sectors')).map((s) => ({
     ...s,
@@ -155,7 +124,7 @@ export const TaoEconomicInvestmentPage = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.stats?.eyebrow || 'Performance'}</p>
                 <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tT.stats?.title || 'Nos chiffres clés'}</h2>
                 <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                  Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.
+                  {tgiPage.statsIntro}
                 </p>
               </div>
             </Reveal>
@@ -191,12 +160,12 @@ export const TaoEconomicInvestmentPage = () => {
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.pillars?.eyebrow || 'Notre philosophie'}</p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface">{tT.pillars?.title || 'Les trois piliers de TGI'}</h2>
               <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Rentabilité, impact et autonomie : nos décisions d'investissement reposent sur cet équilibre.
+                {tgiPage.pillarsIntro}
               </p>
             </div>
             <Reveal preset="fadeUp" childSelector=".pillar-card" stagger={0.15}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PILLARS.map((pillar) => {
+              {pillars.map((pillar) => {
                 const { icon: Icon, title, desc, tone } = pillar;
                 return (
                   <div
@@ -292,7 +261,7 @@ export const TaoEconomicInvestmentPage = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {BENEFITS.map((benefit, idx) => {
+              {benefits.map((benefit, idx) => {
                 const { icon: Icon, title, desc } = benefit;
                 return (
                   <div

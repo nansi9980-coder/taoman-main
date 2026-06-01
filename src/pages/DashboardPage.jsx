@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
+import { RefreshCw } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { apiAuthFetch } from '../config';
 import { useLanguage } from '../context/LanguageContext';
-import { getDashboardTranslations } from '../i18n/dashboard';
+import { getDashboardTranslations, translateQuoteStatus } from '../i18n/dashboard';
 
 export const DashboardPage = () => {
   const token = localStorage.getItem('token');
@@ -12,23 +13,49 @@ export const DashboardPage = () => {
   const [data, setData] = useState(null);
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
   const { language } = useLanguage();
   const t = getDashboardTranslations(language);
 
-  useEffect(() => {
-    if (!token) return;
-    Promise.all([
-      apiAuthFetch('/me/dashboard'),
-      apiAuthFetch('/me/quotes'),
-    ])
-      .then(([dashboard, quotesList]) => {
+  const loadDashboard = useCallback(
+    async (silent = false) => {
+      if (!token) return;
+      if (!silent) setLoading(true);
+      else setRefreshing(true);
+      setError('');
+      try {
+        const [dashboard, quotesList] = await Promise.all([
+          apiAuthFetch('/me/dashboard'),
+          apiAuthFetch('/me/quotes'),
+        ]);
         setData(dashboard);
         setQuotes(Array.isArray(quotesList) ? quotesList : []);
-      })
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [token]);
+      } catch (err) {
+        setError(err.message || t.errorLoad);
+      } finally {
+        setLoading(false);
+        setRefreshing(false);
+      }
+    },
+    [token, t.errorLoad],
+  );
+
+  useEffect(() => {
+    loadDashboard();
+  }, [loadDashboard]);
+
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') loadDashboard(true);
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    const interval = setInterval(() => loadDashboard(true), 45000);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible);
+      clearInterval(interval);
+    };
+  }, [loadDashboard]);
 
   if (!token || !user) {
     return <Navigate to="/connexion" replace />;
@@ -39,10 +66,29 @@ export const DashboardPage = () => {
 
   const formatAmount = (n) => {
     try {
-      return new Intl.NumberFormat(t.locale).format(n);
+      return new Intl.NumberFormat(t.locale).format(n ?? 0);
     } catch {
-      return String(n);
+      return String(n ?? 0);
     }
+  };
+
+  const formatDate = (iso) => {
+    if (!iso) return '';
+    try {
+      return new Intl.DateTimeFormat(t.locale, { dateStyle: 'medium' }).format(new Date(iso));
+    } catch {
+      return '';
+    }
+  };
+
+  const statusClass = (status) => {
+    const key = (status || '').toLowerCase();
+    if (key.includes('attente') || key.includes('pending')) return 'bg-amber-500/15 text-amber-800';
+    if (key.includes('révision') || key.includes('review')) return 'bg-blue-500/15 text-blue-800';
+    if (key.includes('envoy') || key.includes('sent')) return 'bg-emerald-500/15 text-emerald-800';
+    if (key.includes('refus') || key.includes('reject')) return 'bg-red-500/15 text-red-800';
+    if (key.includes('accept')) return 'bg-primary/15 text-primary';
+    return 'bg-surface-container-high text-on-surface-variant';
   };
 
   const investorStats = [
@@ -75,16 +121,31 @@ export const DashboardPage = () => {
         <section className="relative overflow-hidden bg-[#07111f] px-6 py-20 text-white">
           <div className="relative z-10 mx-auto max-w-[1400px]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{t.eyebrow}</p>
-            <h1 className="mb-6 text-5xl font-black">
-              {t.greeting.replace('{name}', user.firstName || user.email)}
-            </h1>
-            {loading && <p className="text-white/70">{t.loading}</p>}
-            {error && <p className="text-red-300">{error}</p>}
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h1 className="text-5xl font-black">
+                {t.greeting.replace('{name}', user.firstName || user.email)}
+              </h1>
+              <button
+                type="button"
+                onClick={() => loadDashboard(true)}
+                disabled={refreshing}
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur hover:bg-white/20 disabled:opacity-60"
+              >
+                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                {refreshing ? t.refreshing : t.refresh}
+              </button>
+            </div>
+            {loading && <p className="mt-4 text-white/70">{t.loading}</p>}
+            {error && <p className="mt-4 text-red-300">{error}</p>}
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {investorStats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
                   <p className="text-sm text-white/60">{stat.label}</p>
-                  <p className="mt-2 text-3xl font-black">{stat.value}</p>
+                  {loading ? (
+                    <div className="mt-3 h-9 w-20 animate-pulse rounded-lg bg-white/20" />
+                  ) : (
+                    <p className="mt-2 text-3xl font-black">{stat.value}</p>
+                  )}
                   <p className="text-sm text-cyan-200">{stat.detail}</p>
                 </div>
               ))}
@@ -96,7 +157,13 @@ export const DashboardPage = () => {
           <div className="mx-auto max-w-[1400px] grid gap-8 lg:grid-cols-2">
             <div className="rounded-3xl bg-white p-8 shadow-lg">
               <h2 className="text-2xl font-black text-on-surface mb-6">{t.quotes.title}</h2>
-              {quotes.length === 0 ? (
+              {loading ? (
+                <div className="space-y-3">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-20 animate-pulse rounded-xl bg-surface-container-low" />
+                  ))}
+                </div>
+              ) : quotes.length === 0 ? (
                 <p className="text-on-surface-variant">
                   {t.quotes.emptyLine}{' '}
                   <Link to="/contact" className="text-primary font-bold">
@@ -108,11 +175,23 @@ export const DashboardPage = () => {
                   {quotes.map((q) => (
                     <li key={q.id} className="rounded-xl border border-outline-variant/40 p-4">
                       <div className="flex justify-between gap-4">
-                        <div>
+                        <div className="min-w-0">
                           <p className="font-bold text-on-surface">{q.title}</p>
                           <p className="text-sm text-on-surface-variant">{q.service || q.description}</p>
+                          <p className="mt-1 text-xs text-on-surface-variant">
+                            {q.amount != null && q.amount > 0
+                              ? `${formatAmount(q.amount)} FCFA`
+                              : t.quotes.amountPending}
+                            {q.updatedAt || q.createdAt
+                              ? ` · ${formatDate(q.updatedAt || q.createdAt)}`
+                              : ''}
+                          </p>
                         </div>
-                        <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">{q.status}</span>
+                        <span
+                          className={`shrink-0 self-start rounded-full px-3 py-1 text-xs font-bold ${statusClass(q.status)}`}
+                        >
+                          {translateQuoteStatus(q.status, language)}
+                        </span>
                       </div>
                     </li>
                   ))}
@@ -122,7 +201,13 @@ export const DashboardPage = () => {
 
             <div className="rounded-3xl bg-white p-8 shadow-lg">
               <h2 className="text-2xl font-black text-on-surface mb-6">{t.investments.title}</h2>
-              {investments.length === 0 ? (
+              {loading ? (
+                <div className="space-y-3">
+                  {[1, 2].map((i) => (
+                    <div key={i} className="h-16 animate-pulse rounded-xl bg-surface-container-low" />
+                  ))}
+                </div>
+              ) : investments.length === 0 ? (
                 <p className="text-on-surface-variant">
                   <Link to="/investissement" className="text-primary font-bold">
                     {t.investments.emptyLinkLabel}
@@ -132,17 +217,33 @@ export const DashboardPage = () => {
                 <ul className="space-y-4">
                   {investments.map((inv) => (
                     <li key={inv.id} className="rounded-xl border border-outline-variant/40 p-4">
-                      <p className="font-bold">{inv.name}</p>
-                      <p className="text-sm text-on-surface-variant">
+                      <p className="font-bold text-on-surface">{inv.name}</p>
+                      {inv.description && (
+                        <p className="mt-1 text-sm text-on-surface-variant line-clamp-2">{inv.description}</p>
+                      )}
+                      <p className="mt-2 text-sm text-on-surface-variant">
                         {t.investments.roiSuffix} {inv.roi ?? '—'}% · {formatAmount(inv.amount ?? 0)} FCFA
                       </p>
+                      {inv.status && (
+                        <span className={`mt-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold ${statusClass(inv.status)}`}>
+                          {translateQuoteStatus(inv.status, language)}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
               )}
-              <Link to="/investissement/simulateur" className="mt-6 inline-block rounded-2xl bg-primary px-6 py-3 font-bold text-white">
-                {t.simulatorCta}
-              </Link>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link to="/investissement" className="inline-block rounded-2xl bg-primary px-6 py-3 font-bold text-white">
+                  {t.investments.ctaExplore}
+                </Link>
+                <Link
+                  to="/investissement/simulateur"
+                  className="inline-block rounded-2xl border border-outline-variant px-6 py-3 font-bold text-on-surface hover:border-primary"
+                >
+                  {t.simulatorCta}
+                </Link>
+              </div>
             </div>
           </div>
         </section>

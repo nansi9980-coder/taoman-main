@@ -4,42 +4,8 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { useLanguage } from '../context/LanguageContext';
-import { getServiceDetailTranslations } from '../i18n/serviceDetail';
-
-const staticServices = {
-  'taoman-groupe-3240165193': {
-    title: 'Aménagement & déménagement',
-    location: 'Adewi Lomé',
-    description: 'Service complet de déménagement et aménagement pour particuliers et professionnels.',
-    features: [
-      'Équipe professionnelle',
-      'Manutention sécurisée',
-      'Transport national et international',
-      'Assurance incluse',
-    ],
-    details: [
-      'Des camions modernes et bien équipés pour tous types de déménagements.',
-      'Service personnalisé selon vos besoins logistiques.',
-      'Personnel formé pour emballage, chargement et déchargement.'
-    ]
-  },
-  'taoman-groupe-8918912275': {
-    title: 'Aménagement & déménagement',
-    location: 'Agoè Zongo',
-    description: 'Service de déménagement professionnel avec véhicules adaptés et personnel dédié.',
-    features: [
-      'Disponibilité rapide',
-      'Équipe de manutention qualifiée',
-      'Véhicules sécurisés',
-      'Suivi client régulier'
-    ],
-    details: [
-      'Planification de déménagement sur mesure.',
-      'Emballage et protection des biens.',
-      'Livraison en toute sécurité jusqu’à destination.'
-    ]
-  }
-};
+import { getServiceDetailTranslations, getStaticServiceDetail } from '../i18n/serviceDetail';
+import { localizeServiceCards } from '../utils/localizeServiceCards';
 
 export const ServiceDetailPage = () => {
   const { serviceId } = useParams();
@@ -49,7 +15,7 @@ export const ServiceDetailPage = () => {
   const [service, setService] = useState(null);
 
   useEffect(() => {
-    const localService = staticServices[serviceId];
+    const localService = getStaticServiceDetail(serviceId, language);
     if (localService) {
       setService(localService);
       return;
@@ -59,17 +25,18 @@ export const ServiceDetailPage = () => {
       .then(res => res.json())
       .then(data => {
         if (data && data.title) {
+          const [mapped] = localizeServiceCards([data], language);
           setService({
-            title: data.title,
+            title: mapped?.title || data.title,
             location: data.location || 'Lomé',
-            description: data.description || data.summary || 'Service détaillé disponible.',
-            features: data.features || [],
-            details: data.details || []
+            description: mapped?.description || data.description || data.summary || t.loading,
+            features: mapped?.features || data.features || [],
+            details: data.details || [],
           });
         }
       })
       .catch(err => console.error('Erreur fetch service:', err));
-  }, [serviceId]);
+  }, [serviceId, language, t.loading]);
 
   if (!service) {
     return (
