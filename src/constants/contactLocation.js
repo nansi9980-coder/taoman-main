@@ -21,8 +21,8 @@ export function googleMapsUrl(lat, lng) {
   return `https://www.google.com/maps?q=${lat},${lng}`;
 }
 
-export function osmEmbedUrl(lat, lng) {
-  const pad = 0.012;
-  const bbox = `${lng - pad},${lat - pad},${lng + pad},${lat + pad}`;
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${lat}%2C${lng}`;
+/** Intégration Google Maps (sans clé API — output=embed). */
+export function googleMapsEmbedUrl(lat, lng, zoom = 16) {
+  const q = `${lat},${lng}`;
+  return `https://www.google.com/maps?q=${encodeURIComponent(q)}&hl=fr&z=${zoom}&output=embed`;
 }
