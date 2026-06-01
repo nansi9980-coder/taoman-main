@@ -279,6 +279,11 @@ const FAQ_ES = {
     searchPlaceholder: 'Buscar en la FAQ…',
     emptyTitle: 'Sin resultados',
     emptyHint: 'Pruebe otra palabra clave o categoría.',
+    ctaTitle: '¿No encontró su respuesta?',
+    ctaDesc: 'Nuestro equipo responde por correo, teléfono o formularios dedicados.',
+    ctaDiscuss: 'Hablar de inversión',
+    ctaAsk: 'Hacer una pregunta',
+    ctaFullFaq: 'FAQ completa',
   },
   categories: [
     { id: 'all', label: 'Todas' },
@@ -314,7 +319,83 @@ const FAQ_ES = {
   })),
 };
 
-const PACKS = { FR: FAQ_FR, EN: FAQ_EN, ES: FAQ_ES, PT: FAQ_EN, DE: FAQ_EN, AR: FAQ_EN, ZH: FAQ_EN };
+const FAQ_PT = {
+  ...FAQ_EN,
+  ui: {
+    ...FAQ_EN.ui,
+    title: 'Perguntas frequentes',
+    intro: 'Tudo sobre o Grupo TAOMAN e o programa TGI: rendimento, risco, segurança e processo.',
+    searchPlaceholder: 'Pesquisar na FAQ…',
+    emptyTitle: 'Sem resultados',
+    emptyHint: 'Tente outra palavra-chave ou categoria.',
+    ctaTitle: 'Não encontrou a resposta?',
+    ctaDesc: 'A nossa equipa responde por e-mail, telefone ou formulários dedicados.',
+    ctaDiscuss: 'Falar sobre investimento',
+    ctaAsk: 'Fazer uma pergunta',
+    ctaFullFaq: 'FAQ completa',
+  },
+};
+
+const FAQ_DE = {
+  ...FAQ_EN,
+  ui: {
+    ...FAQ_EN.ui,
+    title: 'Häufig gestellte Fragen',
+    intro: 'Alles über TAOMAN Group und das TGI-Programm: Rendite, Risiko, Sicherheit und Ablauf.',
+    searchPlaceholder: 'FAQ durchsuchen…',
+    emptyTitle: 'Keine Ergebnisse',
+    emptyHint: 'Anderes Stichwort oder Kategorie wählen.',
+    ctaTitle: 'Keine Antwort gefunden?',
+    ctaDesc: 'Unser Team antwortet per E-Mail, Telefon oder über die Formulare.',
+    ctaDiscuss: 'Über Investition sprechen',
+    ctaAsk: 'Frage stellen',
+    ctaFullFaq: 'Vollständige FAQ',
+  },
+};
+
+const FAQ_AR = {
+  ...FAQ_EN,
+  ui: {
+    ...FAQ_EN.ui,
+    title: 'الأسئلة الشائعة',
+    intro: 'كل ما يجب معرفته عن مجموعة TAOMAN وبرنامج TGI: العائد والمخاطر والأمان والعملية.',
+    searchPlaceholder: 'البحث في الأسئلة الشائعة…',
+    emptyTitle: 'لا توجد نتائج',
+    emptyHint: 'جرّب كلمة أخرى أو فئة مختلفة.',
+    ctaTitle: 'لم تجد إجابتك؟',
+    ctaDesc: 'فريقنا يرد عبر البريد أو الهاتف أو النماذج المخصصة.',
+    ctaDiscuss: 'مناقشة الاستثمار',
+    ctaAsk: 'طرح سؤال',
+    ctaFullFaq: 'الأسئلة الشائعة كاملة',
+  },
+};
+
+const FAQ_ZH = {
+  ...FAQ_EN,
+  ui: {
+    ...FAQ_EN.ui,
+    title: '常见问题',
+    intro: '关于 TAOMAN 集团与 TGI 投资计划：收益、风险、安全与流程。',
+    searchPlaceholder: '搜索常见问题…',
+    emptyTitle: '无匹配结果',
+    emptyHint: '请尝试其他关键词或分类。',
+    ctaTitle: '没有找到答案？',
+    ctaDesc: '我们的团队通过电子邮件、电话或专用表单回复。',
+    ctaDiscuss: '讨论投资',
+    ctaAsk: '提问',
+    ctaFullFaq: '查看完整常见问题',
+  },
+};
+
+const PACKS = {
+  FR: FAQ_FR,
+  EN: FAQ_EN,
+  ES: FAQ_ES,
+  PT: FAQ_PT,
+  DE: FAQ_DE,
+  AR: FAQ_AR,
+  ZH: FAQ_ZH,
+};
 
 export function getInvestmentFaq(language) {
   return PACKS[language] || FAQ_EN;

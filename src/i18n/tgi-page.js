@@ -1,6 +1,8 @@
 /**
  * Contenu page TGI (TaoEconomicInvestmentPage) — hors CMS hero/stats.
  */
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/tgi-extra';
 
 const FR = {
   defaultHero: {
@@ -74,8 +76,8 @@ const EN = {
   ],
 };
 
-const PACKS = { FR, EN, ES: EN, PT: EN, DE: EN, AR: EN, ZH: EN };
+const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });
 
 export function getTgiPageContent(language) {
-  return PACKS[language] || EN;
+  return pickLangPack(PACKS, language);
 }

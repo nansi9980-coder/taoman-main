@@ -1,6 +1,8 @@
 /**
  * Page Personnel & flotte déménagement — contenus par langue.
  */
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/moving-extra';
 
 const FR = {
   searchPlaceholder: 'Rechercher un véhicule, une ville…',
@@ -160,8 +162,8 @@ const EN = {
   },
 };
 
-const PACKS = { FR, EN, ES: EN, PT: EN, DE: EN, AR: EN, ZH: EN };
+const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });
 
 export function getMovingPersonnelContent(language) {
-  return PACKS[language] || EN;
+  return pickLangPack(PACKS, language);
 }

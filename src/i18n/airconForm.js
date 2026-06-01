@@ -1,6 +1,9 @@
 /**
  * Formulaire devis climatisation (EntretienClimatisationPage).
  */
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/aircon-extra';
+
 const FR = {
   formTitle: 'Remplissez votre demande',
   success: '✓ Votre devis a été envoyé avec succès ! Nous vous recontacterons sous peu.',
@@ -123,8 +126,8 @@ const EN = {
   },
 };
 
-const PACKS = { FR, EN, ES: EN, PT: EN, DE: EN, AR: EN, ZH: EN };
+const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });
 
 export function getAirconFormTranslations(language) {
-  return PACKS[language] || EN;
+  return pickLangPack(PACKS, language);
 }

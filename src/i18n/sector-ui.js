@@ -1,6 +1,8 @@
 /**
  * Textes UI communs des pages détail secteur (aspects, phases, SEO).
  */
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/sector-extra';
 
 const FR = {
   aspects: [
@@ -54,10 +56,10 @@ const EN = {
   otherServicesSubtitle: 'Explore our services and sectors',
 };
 
-const PACKS = { FR, EN, ES: EN, PT: EN, DE: EN, AR: EN, ZH: EN };
+const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });
 
 export function getSectorUi(language) {
-  return PACKS[language] || EN;
+  return pickLangPack(PACKS, language);
 }
 
 export function formatSectorSeo(template, title) {

@@ -1,6 +1,8 @@
 /**
  * Libellés UI du simulateur (formulaire + résultats).
  */
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/simulator-extra';
 
 const SIM = {
   FR: {
@@ -107,8 +109,8 @@ const SIM = {
   },
 };
 
-const PACKS = { FR: SIM.FR, EN: SIM.EN, ES: SIM.EN, PT: SIM.EN, DE: SIM.EN, AR: SIM.EN, ZH: SIM.EN };
+const PACKS = buildLangPacks({ FR: SIM.FR, EN: SIM.EN, ES, PT, DE, AR, ZH });
 
 export function getSimulatorPageLabels(language) {
-  return PACKS[language] || SIM.EN;
+  return pickLangPack(PACKS, language);
 }

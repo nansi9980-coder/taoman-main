@@ -2,6 +2,8 @@
  * Textes complets page Investissement (hors FAQ déjà dans investment-faq.js).
  */
 import { BRAND_NAME } from '../constants/branding';
+import { buildLangPacks, pickLangPack } from './localePack';
+import { ES, PT, DE, AR, ZH } from './locales/investPage-extra';
 
 const FR = {
   default: {
@@ -207,8 +209,8 @@ const EN = {
   seoTitle: 'Invest with us in Togo',
 };
 
-const PACKS = { FR, EN, ES: EN, PT: EN, DE: EN, AR: EN, ZH: EN };
+const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });
 
 export function getInvestPageCopy(language) {
-  return PACKS[language] || EN;
+  return pickLangPack(PACKS, language);
 }
