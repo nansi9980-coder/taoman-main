@@ -80,7 +80,7 @@ function pick(api, key, fallback) {
 
 export const AboutPage = () => {
   const navigate = useNavigate();
-  const { content: tc, nav: tNav } = useLanguage();
+  const { content: tc, nav: tNav, language } = useLanguage();
   const tAbout = tc.about;
   const { section } = useSiteContent();
   const raw = section('about') || {};

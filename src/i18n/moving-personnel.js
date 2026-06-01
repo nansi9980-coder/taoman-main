@@ -73,6 +73,12 @@ const FR = {
     noVehicleTitle: 'Aucun véhicule trouvé',
     noVehicleHint: 'Contactez-nous : nous adaptons notre flotte à votre besoin.',
   },
+  finalCta: {
+    title: 'Un déménagement à organiser ?',
+    desc: 'Demandez votre devis gratuit en ligne ou appelez-nous directement. Notre équipe vous rappelle dans la journée.',
+    quote: 'Demander un devis gratuit',
+    call: 'Nous appeler',
+  },
 };
 
 const EN = {
@@ -145,6 +151,12 @@ const EN = {
     noResults: 'No vehicle matches your search.',
     noVehicleTitle: 'No vehicle found',
     noVehicleHint: 'Contact us — we will adapt our fleet to your needs.',
+  },
+  finalCta: {
+    title: 'Planning a move?',
+    desc: 'Request your free quote online or call us directly. Our team will call you back the same day.',
+    quote: 'Request a free quote',
+    call: 'Call us',
   },
 };
 

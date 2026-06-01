@@ -34,7 +34,7 @@ const BENEFIT_ICONS = [ShieldCheck, RefreshCw, Users, HeadphonesIcon, Handshake,
 export const TaoEconomicInvestmentPage = () => {
   const navigate = useNavigate();
   const { section } = useSiteContent();
-  const { translations: tc, language } = useLanguage();
+  const { translations: tc, language, nav: tNav } = useLanguage();
   const tT = tc?.tgi || {};
   const tCommon = tc?.common || {};
   const tgiPage = getTgiPageContent(language);
@@ -62,8 +62,8 @@ export const TaoEconomicInvestmentPage = () => {
   }));
 
   const breadcrumbLd = buildBreadcrumb([
-    { name: 'Accueil', path: '/' },
-    { name: 'Investissement', path: '/investissement' },
+    { name: tNav.home || 'Accueil', path: '/' },
+    { name: tNav.investment || 'Investissement', path: '/investissement' },
     { name: 'TGI', path: '/investissement/tgi' },
   ]);
 

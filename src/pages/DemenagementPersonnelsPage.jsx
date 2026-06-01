@@ -326,23 +326,20 @@ export const DemenagementPersonnelsPage = () => {
         {/* ============ CTA ============ */}
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary text-white">
           <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-black mb-5">Un déménagement à organiser ?</h2>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Demandez votre devis gratuit en ligne ou appelez-nous directement.
-              Notre équipe vous rappelle dans la journée.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-black mb-5">{mp.finalCta.title}</h2>
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">{mp.finalCta.desc}</p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <Link
                 to="/demenagement/devis"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-primary px-10 py-4 font-bold shadow-xl hover:scale-105 transition"
               >
-                Demander un devis gratuit <ArrowRight className="h-4 w-4" />
+                {mp.finalCta.quote} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact?topic=info&service=demenagement"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white text-white px-10 py-4 font-bold hover:bg-white hover:text-primary transition"
               >
-                <Phone className="h-4 w-4" /> Nous appeler
+                <Phone className="h-4 w-4" /> {mp.finalCta.call}
               </Link>
             </div>
           </div>

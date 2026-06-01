@@ -81,6 +81,9 @@ export const InvestmentSimulatorPage = () => {
     [results],
   );
 
+  /** Hauteur utile des barres (px) — pourcentages CSS ne fonctionnaient pas sans parent dimensionné. */
+  const CHART_BAR_MAX_PX = 176;
+
   const activeFields = {
     simple: ['investment', 'duration', 'annualRate'],
     avance: ['investment', 'duration', 'annualRate', 'monthlyContribution', 'compoundFrequency', 'placementType'],
@@ -308,18 +311,36 @@ export const InvestmentSimulatorPage = () => {
                     {results.months} {labels.months}
                   </p>
                 </div>
-                <div className="flex h-56 items-end gap-2 rounded-2xl bg-surface-container-low p-4">
-                  {results.rows.map((row) => (
-                    <div key={row.month} className="flex flex-1 flex-col items-center gap-2">
+                <div
+                  className="flex h-[220px] items-end gap-1 sm:gap-2 rounded-2xl bg-surface-container-low px-3 pb-3 pt-6"
+                  role="img"
+                  aria-label={labels.chartSubtitle}
+                >
+                  {results.rows.map((row) => {
+                    const barPx = Math.max(
+                      Math.round((row.balance / maxChartValue) * CHART_BAR_MAX_PX),
+                      6,
+                    );
+                    return (
                       <div
-                        className="w-full rounded-t-xl bg-gradient-to-t from-primary to-cyan-300 transition-all duration-300"
-                        style={{ height: `${Math.max((row.balance / maxChartValue) * 100, 6)}%` }}
-                        title={formatSimulatorMoney(row.balance, locale)}
-                      />
-                      <span className="text-xs font-bold text-on-surface-variant">{row.month}</span>
-                    </div>
-                  ))}
+                        key={`${row.month}-${barPx}-${maxChartValue}`}
+                        className="group flex h-full min-w-0 flex-1 flex-col items-center justify-end"
+                      >
+                        <div
+                          className="w-full max-w-[40px] rounded-t-xl bg-gradient-to-t from-primary to-cyan-400 shadow-sm transition-[height] duration-300 ease-out group-hover:brightness-110"
+                          style={{ height: `${barPx}px` }}
+                          title={`${labels.cols.month} ${row.month}: ${formatSimulatorMoney(row.balance, locale)}`}
+                        />
+                        <span className="mt-2 text-[10px] font-bold text-on-surface-variant tabular-nums sm:text-xs">
+                          {row.month}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
+                <p className="mt-3 text-center text-xs text-on-surface-variant">
+                  {formatSimulatorMoney(results.capital, locale)} → {formatSimulatorMoney(results.finalCapital, locale)}
+                </p>
               </div>
 
               <div className="bg-white rounded-[2rem] shadow-xl p-8 border border-outline-variant/20 overflow-hidden">

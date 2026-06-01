@@ -4,8 +4,13 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { useLanguage } from '../context/LanguageContext';
+import { getAirconFormTranslations } from '../i18n/airconForm';
 
 export const EntretienClimatisationPage = () => {
+  const { language } = useLanguage();
+  const t = getAirconFormTranslations(language);
+
   const [formData, setFormData] = useState({
     serviceType: '',
     acType: '',
@@ -15,7 +20,7 @@ export const EntretienClimatisationPage = () => {
     name: '',
     phone: '',
     address: '',
-    problemDescription: ''
+    problemDescription: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -24,7 +29,7 @@ export const EntretienClimatisationPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -40,14 +45,14 @@ export const EntretienClimatisationPage = () => {
           name: formData.name,
           phone: formData.phone,
           address: formData.address,
-          title: `Devis Climatisation - ${formData.serviceType}`,
+          title: `${t.quoteTitlePrefix} - ${formData.serviceType}`,
           description: `Type: ${formData.serviceType} | AC: ${formData.acType} | Unités: ${formData.unitCount} | Puissance: ${formData.power} | Date: ${formData.desiredDate} | Problème: ${formData.problemDescription}`,
           service: 'Climatisation',
           service_type: formData.serviceType,
           ac_type: formData.acType,
           unit_count: formData.unitCount,
-          power: formData.power
-        })
+          power: formData.power,
+        }),
       });
 
       if (response.ok) {
@@ -61,15 +66,15 @@ export const EntretienClimatisationPage = () => {
           name: '',
           phone: '',
           address: '',
-          problemDescription: ''
+          problemDescription: '',
         });
         setTimeout(() => setSubmitted(false), 3000);
       } else {
-        setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
+        setSubmitError(await getApiErrorMessage(response, t.submitError));
       }
     } catch (error) {
       console.error('Erreur:', error);
-      setSubmitError(error.message || "Erreur réseau. Réessayez plus tard.");
+      setSubmitError(error.message || t.networkError);
     } finally {
       setLoading(false);
     }
@@ -82,18 +87,16 @@ export const EntretienClimatisationPage = () => {
       <main className="flex-grow pt-24">
         <DevisPageHero sectionKey="devisClimatisation" i18nNamespace="aircon" />
 
-        {/* Main Content */}
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Form */}
               <div className="lg:col-span-2 animate-fade-in-up">
                 <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <h2 className="text-3xl font-bold text-on-surface mb-8">Remplissez votre demande</h2>
+                  <h2 className="text-3xl font-bold text-on-surface mb-8">{t.formTitle}</h2>
 
                   {submitted && (
                     <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 animate-fade-in-up">
-                      ✓ Votre devis a été envoyé avec succès ! Nous vous recontacterons sous peu.
+                      {t.success}
                     </div>
                   )}
                   {submitError && (
@@ -106,7 +109,7 @@ export const EntretienClimatisationPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Type d'entretien souhaité <span className="text-red-500">*</span>
+                          {t.serviceType} <span className="text-red-500">*</span>
                         </label>
                         <select
                           name="serviceType"
@@ -115,18 +118,18 @@ export const EntretienClimatisationPage = () => {
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         >
-                          <option value="">Sélectionner</option>
-                          <option value="Entretien annuel">Entretien annuel</option>
-                          <option value="Entretien semestriel">Entretien semestriel</option>
-                          <option value="Réparation">Réparation</option>
-                          <option value="Installation neuve">Installation neuve</option>
-                          <option value="Dépannage urgent">Dépannage urgent</option>
+                          <option value="">{t.select}</option>
+                          {t.serviceOptions.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
                         </select>
                       </div>
 
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Type de climatiseur <span className="text-red-500">*</span>
+                          {t.acType} <span className="text-red-500">*</span>
                         </label>
                         <select
                           name="acType"
@@ -135,49 +138,45 @@ export const EntretienClimatisationPage = () => {
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         >
-                          <option value="">Sélectionner</option>
-                          <option value="Monosplit mural">Monosplit mural</option>
-                          <option value="Multisplit">Multisplit</option>
-                          <option value="Cassette">Cassette</option>
-                          <option value="Console">Console</option>
-                          <option value="Gainable">Gainable</option>
-                          <option value="Système centralisé">Système centralisé</option>
-                          <option value="Autre">Autre (préciser)</option>
+                          <option value="">{t.select}</option>
+                          {t.acOptions.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
                         </select>
                       </div>
 
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Nombre d'unités <span className="text-red-500">*</span>
+                          {t.unitCount} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="number"
                           name="unitCount"
                           value={formData.unitCount}
                           onChange={handleChange}
-                          placeholder="Ex: 2"
+                          placeholder={t.placeholderUnits}
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-bold text-on-surface mb-2">
-                          Puissance totale (BTU ou kW)
-                        </label>
+                        <label className="block text-sm font-bold text-on-surface mb-2">{t.power}</label>
                         <input
                           type="text"
                           name="power"
                           value={formData.power}
                           onChange={handleChange}
-                          placeholder="Ex: 12000 BTU ou 3.5 kW"
+                          placeholder={t.placeholderPower}
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
 
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Date souhaitée <span className="text-red-500">*</span>
+                          {t.desiredDate} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="date"
@@ -191,14 +190,14 @@ export const EntretienClimatisationPage = () => {
 
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Votre nom <span className="text-red-500">*</span>
+                          {t.name} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="Votre nom complet"
+                          placeholder={t.placeholderName}
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
@@ -206,14 +205,14 @@ export const EntretienClimatisationPage = () => {
 
                       <div>
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Téléphone <span className="text-red-500">*</span>
+                          {t.phone} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+228 ..."
+                          placeholder={t.placeholderPhone}
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
@@ -221,28 +220,26 @@ export const EntretienClimatisationPage = () => {
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-bold text-on-surface mb-2">
-                          Votre adresse <span className="text-red-500">*</span>
+                          {t.address} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="text"
                           name="address"
                           value={formData.address}
                           onChange={handleChange}
-                          placeholder="Votre adresse complète"
+                          placeholder={t.placeholderAddress}
                           required
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
 
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-bold text-on-surface mb-2">
-                          Description du problème ou besoins spécifiques
-                        </label>
+                        <label className="block text-sm font-bold text-on-surface mb-2">{t.problem}</label>
                         <textarea
                           name="problemDescription"
                           value={formData.problemDescription}
                           onChange={handleChange}
-                          placeholder="Ex: bruit, manque de froid, odeur, etc."
+                          placeholder={t.placeholderProblem}
                           rows="4"
                           className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         />
@@ -254,42 +251,26 @@ export const EntretienClimatisationPage = () => {
                       disabled={loading}
                       className="w-full bg-gradient-to-r from-primary to-primary-container text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50"
                     >
-                      {loading ? 'Envoi en cours...' : 'VALIDER'}
+                      {loading ? t.submitting : t.submit}
                     </button>
                   </form>
                 </div>
               </div>
 
-              {/* Sidebar Info */}
               <div className="animate-fade-in-down">
                 <div className="bg-gradient-to-br from-primary/10 to-primary-container/10 rounded-2xl p-8 border border-primary/20">
-                  <h3 className="text-2xl font-bold text-on-surface mb-6">Pourquoi TAOMAN Group Investment ?</h3>
-                  
-                  <p className="text-on-surface-variant mb-8 leading-relaxed">
-                    Nous vous proposons une expérience client nouvelle basée sur des services techniques professionnels et de qualité.
-                  </p>
-
+                  <h3 className="text-2xl font-bold text-on-surface mb-6">{t.sidebar.title}</h3>
+                  <p className="text-on-surface-variant mb-8 leading-relaxed">{t.sidebar.intro}</p>
                   <div className="space-y-6">
-                    <div className="bg-white p-4 rounded-xl border border-outline/20 hover:shadow-md transition-all">
-                      <h4 className="font-bold text-primary mb-2">🔧 Entretien préventif</h4>
-                      <p className="text-sm text-on-surface-variant">
-                        L'entretien régulier de votre climatisation évite les pannes coûteuses et maintient les performances.
-                      </p>
-                    </div>
-
-                    <div className="bg-white p-4 rounded-xl border border-outline/20 hover:shadow-md transition-all">
-                      <h4 className="font-bold text-primary mb-2">✅ Techniciens certifiés</h4>
-                      <p className="text-sm text-on-surface-variant">
-                        Nos techniciens certifiés et expérimentés interviennent sur tous les types d'équipements.
-                      </p>
-                    </div>
-
-                    <div className="bg-white p-4 rounded-xl border border-outline/20 hover:shadow-md transition-all">
-                      <h4 className="font-bold text-primary mb-2">⚡ Économie d'énergie</h4>
-                      <p className="text-sm text-on-surface-variant">
-                        Un entretien régulier peut réduire votre consommation énergétique jusqu'à 30%.
-                      </p>
-                    </div>
+                    {t.sidebar.items.map((item) => (
+                      <div
+                        key={item.title}
+                        className="bg-white p-4 rounded-xl border border-outline/20 hover:shadow-md transition-all"
+                      >
+                        <h4 className="font-bold text-primary mb-2">{item.title}</h4>
+                        <p className="text-sm text-on-surface-variant">{item.desc}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

@@ -49,6 +49,18 @@ function RouteFallback() {
   );
 }
 
+function SkipToMainContent() {
+  const { translations } = useLanguage();
+  return (
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-2xl focus:shadow-2xl focus:font-bold"
+    >
+      {translations?.common?.skipToContent || 'Aller au contenu principal'}
+    </a>
+  );
+}
+
 function App() {
   return (
     <ThemeProvider>
@@ -58,12 +70,7 @@ function App() {
           <SplashScreen minDuration={1800} />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-2xl focus:shadow-2xl focus:font-bold"
-            >
-              Aller au contenu principal
-            </a>
+            <SkipToMainContent />
             <ScrollToTop />
             <Suspense fallback={<RouteFallback />}>
               <Routes>

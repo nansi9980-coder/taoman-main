@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ServiceCard = ({ 
   image, 
@@ -10,6 +11,8 @@ export const ServiceCard = ({
   onRequestQuote,
   delay = 0
 }) => {
+  const { translations } = useLanguage();
+  const tCommon = translations?.common || {};
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -47,7 +50,7 @@ export const ServiceCard = ({
                 onClick={onRequestQuote}
                 className="px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary-container transition-all duration-300 transform hover:scale-110 shadow-lg"
               >
-                Devis Gratuit
+                {tCommon.freeQuote || 'Devis gratuit'}
               </button>
             </div>
           )}
@@ -67,7 +70,9 @@ export const ServiceCard = ({
                 {title}
               </h3>
               {price && (
-                <p className="text-primary font-bold text-lg">À partir de {price}</p>
+                <p className="text-primary font-bold text-lg">
+                  {tCommon.startingFrom || 'À partir de'} {price}
+                </p>
               )}
             </div>
           </div>
@@ -94,7 +99,7 @@ export const ServiceCard = ({
             onClick={onRequestQuote}
             className="w-full py-3 px-4 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
-            Demander un Devis
+            {tCommon.requestQuote || 'Demander un devis'}
           </button>
         </div>
 

@@ -10,6 +10,12 @@ const FAQ_FR = {
     searchPlaceholder: 'Rechercher dans la FAQ (ex : ticket, rendement, retrait...)',
     emptyTitle: 'Aucune réponse pour cette recherche',
     emptyHint: 'Essayez un autre mot-clé ou changez de catégorie.',
+    ctaTitle: "Vous n'avez pas trouvé votre réponse ?",
+    ctaDesc:
+      'Notre équipe vous répond par e-mail, téléphone ou via les formulaires dédiés (information, investissement, partenariat, projet).',
+    ctaDiscuss: "Discuter d'investissement",
+    ctaAsk: 'Poser une question',
+    ctaFullFaq: 'FAQ complète',
   },
   categories: [
     { id: 'all', label: 'Toutes' },
@@ -139,6 +145,12 @@ const FAQ_EN = {
     searchPlaceholder: 'Search the FAQ (e.g. ticket, return, withdrawal…)',
     emptyTitle: 'No results for this search',
     emptyHint: 'Try another keyword or change category.',
+    ctaTitle: "Didn't find your answer?",
+    ctaDesc:
+      'Our team responds by email, phone or via dedicated forms (information, investment, partnership, project).',
+    ctaDiscuss: 'Discuss investment',
+    ctaAsk: 'Ask a question',
+    ctaFullFaq: 'Full FAQ',
   },
   categories: [
     { id: 'all', label: 'All' },

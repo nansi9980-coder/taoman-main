@@ -630,7 +630,7 @@ export const HomePage = () => {
                       </div>
                       {service.href && (
                         <p className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-2.5 transition-all">
-                          En savoir plus <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                          {tCommon.learnMore || 'En savoir plus'} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                         </p>
                       )}
                     </>

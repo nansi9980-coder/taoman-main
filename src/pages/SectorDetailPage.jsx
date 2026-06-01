@@ -244,7 +244,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               to="/contact?topic=info"
               className="inline-flex items-center gap-2 rounded-2xl bg-white border border-primary/30 text-primary px-5 py-3 font-bold hover:bg-primary hover:text-white transition shrink-0"
             >
-              En savoir plus <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              {tc.common?.learnMore || 'En savoir plus'} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Link>
           </div>
         </section>
