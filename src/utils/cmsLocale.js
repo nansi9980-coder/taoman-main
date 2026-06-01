@@ -152,7 +152,7 @@ function operationalServicesFromI18n(language) {
 }
 
 function contactFromI18n() {
-  return {};
+  return null;
 }
 
 function footerFromI18n(t) {
@@ -299,7 +299,7 @@ export function resolveCmsForLanguage(rawContent, language, sectionKey) {
   }
 
   const i18n = getSectionI18nFallback(sectionKey, lang);
-  if (i18n) return i18n;
+  if (i18n && hasMeaningfulContent(i18n)) return i18n;
 
-  return applySectionPostProcess(sectionKey, locales.FR || {}, lang);
+  return applySectionPostProcess(sectionKey, locales.FR || rawContent || {}, lang);
 }

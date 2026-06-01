@@ -27,6 +27,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
 import { getContactTranslations } from '../i18n/contact';
+import { ContactLocationMap } from '../components/ContactLocationMap';
 
 /**
  * Définition statique des 4 topics (icônes + champs).
@@ -446,6 +447,8 @@ export const ContactPage = () => {
             </div>
           </div>
         </section>
+
+        <ContactLocationMap contactInfo={contactInfo} labels={tContactExt.location} />
 
         {/* FORMULAIRE SELECTIONNE */}
         <section id="contact-form" className="py-16 px-6 bg-gradient-to-b from-surface-container-low to-surface scroll-mt-24">

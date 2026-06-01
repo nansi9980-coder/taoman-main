@@ -152,6 +152,13 @@ const CONTACT = {
       btnServices: 'Voir nos services',
       btnTgi: 'Découvrir TGI',
     },
+    location: {
+      eyebrow: 'Localisation',
+      title: 'Où nous trouver',
+      hint: 'Vakpossito — Lomé, Togo',
+      openMaps: 'Ouvrir dans Google Maps',
+      mapTitle: 'Carte — TAOMAN Group Investment',
+    },
   },
 
   EN: {
@@ -299,6 +306,13 @@ const CONTACT = {
         'Operational services (Car wash, Moving, Cleaning, Mechanics, Transport) + TGI investment program covering 5 sectors (Logistics, Agribusiness, Trade, Construction, Digital).',
       btnServices: 'See our services',
       btnTgi: 'Discover TGI',
+    },
+    location: {
+      eyebrow: 'Location',
+      title: 'Find us',
+      hint: 'Vakpossito — Lomé, Togo',
+      openMaps: 'Open in Google Maps',
+      mapTitle: 'Map — TAOMAN Group Investment',
     },
   },
 
@@ -1022,6 +1036,12 @@ const CONTACT = {
   },
 };
 
-export const getContactTranslations = (language) => CONTACT[language] || CONTACT.FR;
+export const getContactTranslations = (language) => {
+  const pack = CONTACT[language] || CONTACT.FR;
+  return {
+    ...pack,
+    location: pack.location || CONTACT.EN?.location || CONTACT.FR.location,
+  };
+};
 
 export default CONTACT;
