@@ -1,9 +1,9 @@
-/** Siège TAOMAN — Vakpossito, Lomé (6°13'07.1"N 1°12'19.0"E) */
+/** Siège TAOMAN — Agoè Cacaveli, Lomé (en face de Toganim) */
 export const DEFAULT_CONTACT_LOCATION = {
-  lat: 6.2186389,
-  lng: 1.2052778,
-  coordinatesLabel: '6°13\'07.1"N 1°12\'19.0"E',
-  address: 'Vakpossito, Lomé — Togo',
+  lat: 6.2388696,
+  lng: 1.2097291,
+  coordinatesLabel: '6°14\'20"N 1°12\'35"E',
+  address: 'Agoè Cacaveli, en face de Toganim — Lomé, Togo',
 };
 
 export function resolveContactCoordinates(contact = {}) {

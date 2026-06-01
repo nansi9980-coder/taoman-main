@@ -35,7 +35,7 @@ export const ContactLocationMap = ({ contactInfo = {}, labels = {} }) => {
           />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-3 bg-surface-container-low border-t border-outline-variant/30">
             <p className="text-sm text-on-surface-variant text-center sm:text-left">
-              {labels.hint || 'Vakpossito — zone industrielle et commerciale de Lomé'}
+              {labels.hint || 'Agoè Cacaveli, en face de Toganim'}
             </p>
             <a
               href={mapsUrl}

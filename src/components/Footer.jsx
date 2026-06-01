@@ -101,7 +101,7 @@ export const Footer = () => {
             <div className="flex items-start gap-3">
               <span className="text-2xl">📍</span>
               <div>
-                <p className="text-sm text-outline-variant">{contact.address || 'Vakpossito, Lomé — Togo'}</p>
+                <p className="text-sm text-outline-variant">{contact.address || 'Agoè Cacaveli, en face de Toganim — Lomé, Togo'}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">

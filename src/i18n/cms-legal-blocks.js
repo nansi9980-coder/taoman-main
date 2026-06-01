@@ -16,11 +16,11 @@ const LEGAL_EN = {
     blocks: [
       {
         title: '1. Site publisher',
-        body: 'This website is published by TAOMAN Group Investment, a services company based in Vakpossito, Lomé, Togo.',
+        body: 'This website is published by TAOMAN Group Investment, a services company based in Agoè Cacaveli, Lomé, Togo (opposite Toganim).',
         listItems: [
           'Email: taomancontact@gmail.com',
           'Phone: +228 90 42 13 77',
-          'Address: Vakpossito, Lomé – Togo',
+          'Address: Agoè Cacaveli, opposite Toganim — Lomé, Togo',
         ],
       },
       {
