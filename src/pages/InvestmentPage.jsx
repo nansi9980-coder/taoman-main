@@ -20,6 +20,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { getInvestmentFaq } from '../i18n/investment-faq';
+import { BRAND_NAME } from '../constants/branding';
 import programmeImg from '../assets/programme.jpeg';
 
 const FAQ_CATEGORY_ICONS = {
