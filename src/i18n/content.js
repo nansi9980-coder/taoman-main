@@ -237,7 +237,7 @@ const CONTENT = {
         },
         'btp-immobilier': {
           title: 'BTP & Immobilier',
-          tag: 'Infrastructure',
+          tag: 'Infrastructures',
           short: 'Construction durable, immobilier locatif et infrastructures à haute valeur ajoutée.',
           highlights: [
             'Programmes immobiliers résidentiels et commerciaux',
@@ -305,7 +305,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'Programme TGI de TAOMAN : investissement structuré au Togo avec ticket dès 500 000 FCFA, projection 10 mois, reporting investisseur.',
-      hero: { badge: "Programme d'investissement TGI", title: 'Faites travailler votre capital avec TAOMAN' },
+      hero: { badge: "Programme d'investissement TGI", title: 'Faites fructifier votre capital avec TAOMAN' },
       stats: { eyebrow: 'En un coup d’œil', title: 'Les chiffres clés du programme' },
       pillars: { eyebrow: 'Trois piliers', title: 'Une promesse simple et lisible' },
       sectors: { eyebrow: 'Secteurs financés', title: 'Où vont vos investissements', returnLabel: 'Rendement' },
@@ -379,7 +379,7 @@ const CONTENT = {
         description: "Taoman Group Investments offre des services professionnels de qualité supérieure et des opportunités d'investissement transparentes pour votre réussite financière.",
         btn1: 'Commencer à investir',
         btn2: 'Voir nos services',
-        badges: ['KYC & conformité', 'Note de synthèse', 'Mobile Money', 'Alertes WhatsApp'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'Logistique', title: 'Flotte multi-utilitaires' },
           services: { tag: 'Services', title: 'Lavage premium' },
@@ -623,7 +623,7 @@ const CONTENT = {
         },
         'btp-immobilier': {
           title: 'Construction & Real Estate',
-          tag: 'Infrastructure',
+          tag: 'Infrastructures',
           short: 'Sustainable construction, rental real estate and high value-added infrastructure.',
           highlights: [
             'Residential and commercial real estate programs',
@@ -690,7 +690,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'TAOMAN TGI program: structured investment in Togo from 500,000 CFA, 10-month projection, investor reporting.',
-      hero: { badge: 'TGI Investment Program', title: 'Put your capital to work with TAOMAN' },
+      hero: { badge: 'TGI Investment Program', title: 'Grow your capital with TAOMAN' },
       stats: { eyebrow: 'At a glance', title: 'Key program figures' },
       pillars: { eyebrow: 'Three pillars', title: 'A simple and readable promise' },
       sectors: { eyebrow: 'Funded sectors', title: 'Where your investments go', returnLabel: 'Return' },
@@ -764,14 +764,14 @@ const CONTENT = {
         description: 'Taoman Group Investments offers superior professional services and transparent investment opportunities for your financial success.',
         btn1: 'Start investing',
         btn2: 'View our services',
-        badges: ['KYC & compliance', 'Summary report', 'Mobile Money', 'WhatsApp alerts'],
+        badges: [],
         badgeMain: 'Strategic partner — TAOMAN',
         title: 'Excellence',
         subtitle: 'in every service',
         description: 'Taoman Group Investments offers superior professional services and transparent investment opportunities for your financial success.',
         btn1: 'Start investing',
         btn2: 'View our services',
-        badges: ['KYC & compliance', 'Summary report', 'Mobile Money', 'WhatsApp alerts'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'Logistics', title: 'Multi-utility fleet' },
           services: { tag: 'Services', title: 'Premium car wash' },
@@ -1042,7 +1042,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'Programa TGI de TAOMAN: inversión estructurada en Togo desde 500.000 FCFA, proyección a 10 meses, informes para inversores.',
-      hero: { badge: 'Programa de inversión TGI', title: 'Haga trabajar su capital con TAOMAN' },
+      hero: { badge: 'Programa de inversión TGI', title: 'Haga fructificar su capital con TAOMAN' },
       stats: { eyebrow: 'De un vistazo', title: 'Cifras clave del programa' },
       pillars: { eyebrow: 'Tres pilares', title: 'Una promesa simple y legible' },
       sectors: { eyebrow: 'Sectores financiados', title: 'A dónde van sus inversiones', returnLabel: 'Rendimiento' },
@@ -1116,7 +1116,7 @@ const CONTENT = {
         description: 'Taoman Group Investments ofrece servicios profesionales de calidad superior y oportunidades de inversión transparentes para su éxito financiero.',
         btn1: 'Empezar a invertir',
         btn2: 'Ver nuestros servicios',
-        badges: ['KYC & conformidad', 'Informe de síntesis', 'Mobile Money', 'Alertas WhatsApp'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'Logística', title: 'Flota multiuso' },
           services: { tag: 'Servicios', title: 'Lavado premium' },
@@ -1385,7 +1385,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'Programa TGI da TAOMAN: investimento estruturado no Togo a partir de 500.000 FCFA, projeção de 10 meses, relatórios para investidores.',
-      hero: { badge: 'Programa de investimento TGI', title: 'Faça o seu capital trabalhar com a TAOMAN' },
+      hero: { badge: 'Programa de investimento TGI', title: 'Faça fructificar o seu capital com a TAOMAN' },
       stats: { eyebrow: 'Em um relance', title: 'Números-chave do programa' },
       pillars: { eyebrow: 'Três pilares', title: 'Uma promessa simples e legível' },
       sectors: { eyebrow: 'Setores financiados', title: 'Para onde vão os seus investimentos', returnLabel: 'Rendimento' },
@@ -1459,7 +1459,7 @@ const CONTENT = {
         description: 'A Taoman Group Investments oferece serviços profissionais de qualidade superior e oportunidades de investimento transparentes para o seu sucesso financeiro.',
         btn1: 'Começar a investir',
         btn2: 'Ver os nossos serviços',
-        badges: ['KYC & conformidade', 'Nota de síntese', 'Mobile Money', 'Alertas WhatsApp'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'Logística', title: 'Frota multifuncional' },
           services: { tag: 'Serviços', title: 'Lavagem premium' },
@@ -1728,7 +1728,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'TGI-Programm von TAOMAN: strukturierte Investition in Togo ab 500.000 FCFA, 10-Monats-Projektion, Investor-Reporting.',
-      hero: { badge: 'TGI-Investitionsprogramm', title: 'Lassen Sie Ihr Kapital mit TAOMAN arbeiten' },
+      hero: { badge: 'TGI-Investitionsprogramm', title: 'Lassen Sie Ihr Kapital mit TAOMAN fruchten' },
       stats: { eyebrow: 'Auf einen Blick', title: 'Schlüsselzahlen des Programms' },
       pillars: { eyebrow: 'Drei Säulen', title: 'Ein einfaches und klares Versprechen' },
       sectors: { eyebrow: 'Finanzierte Sektoren', title: 'Wohin Ihre Investitionen fließen', returnLabel: 'Rendite' },
@@ -1802,7 +1802,7 @@ const CONTENT = {
         description: 'Taoman Group Investments bietet professionelle Dienstleistungen höchster Qualität und transparente Investitionsmöglichkeiten für Ihren finanziellen Erfolg.',
         btn1: 'Jetzt investieren',
         btn2: 'Unsere Dienste ansehen',
-        badges: ['KYC & Compliance', 'Zusammenfassungsbericht', 'Mobile Money', 'WhatsApp-Alerts'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'Logistik', title: 'Multifunktions-Flotte' },
           services: { tag: 'Services', title: 'Premium-Autowäsche' },
@@ -2071,7 +2071,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'برنامج TGI من TAOMAN: استثمار منظم في توغو ابتداءً من 500,000 فرنك أفريقي، توقع لمدة 10 أشهر، تقارير المستثمرين.',
-      hero: { badge: 'برنامج الاستثمار TGI', title: 'اجعل رأس مالك يعمل مع TAOMAN' },
+      hero: { badge: 'برنامج الاستثمار TGI', title: 'اجعل رأس مالك يثمر مع TAOMAN' },
       stats: { eyebrow: 'لمحة سريعة', title: 'الأرقام الرئيسية للبرنامج' },
       pillars: { eyebrow: 'ثلاث ركائز', title: 'وعد بسيط وواضح' },
       sectors: { eyebrow: 'القطاعات الممولة', title: 'إلى أين تذهب استثماراتك', returnLabel: 'العائد' },
@@ -2145,7 +2145,7 @@ const CONTENT = {
         description: 'تقدم Taoman Group Investments خدمات مهنية عالية الجودة وفرصاً استثمارية شفافة لنجاحكم المالي.',
         btn1: 'ابدأ الاستثمار',
         btn2: 'عرض خدماتنا',
-        badges: ['اعرف عميلك والامتثال', 'تقرير ملخص', 'Mobile Money', 'تنبيهات واتساب'],
+        badges: [],
         mosaic: {
           logistics: { tag: 'الخدمات اللوجستية', title: 'أسطول متعدد الاستخدامات' },
           services: { tag: 'الخدمات', title: 'غسيل سيارات فاخر' },
@@ -2414,7 +2414,7 @@ const CONTENT = {
     },
     tgi: {
       seoDescription: 'TAOMAN的TGI项目：在多哥进行结构化投资，起投金额50万非洲法郎，10个月预测，投资者报告。',
-      hero: { badge: 'TGI投资项目', title: '让您的资本与TAOMAN一起运作' },
+      hero: { badge: 'TGI投资项目', title: '让您的资本与TAOMAN一起增值' },
       stats: { eyebrow: '一目了然', title: '项目关键数字' },
       pillars: { eyebrow: '三大支柱', title: '简单清晰的承诺' },
       sectors: { eyebrow: '资助行业', title: '您的投资去向', returnLabel: '回报' },
@@ -2488,7 +2488,7 @@ const CONTENT = {
         description: 'Taoman Group Investments 提供卓越的专业服务和透明的投资机会，助您实现财务成功。',
         btn1: '开始投资',
         btn2: '查看我们的服务',
-        badges: ['KYC & 合规', '摘要报告', '移动支付', 'WhatsApp 提醒'],
+        badges: [],
         mosaic: {
           logistics: { tag: '物流', title: '多功能车队' },
           services: { tag: '服务', title: '高端洗车' },

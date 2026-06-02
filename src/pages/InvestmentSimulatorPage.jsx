@@ -11,9 +11,21 @@ import {
 } from '../utils/investmentSimulator';
 import { getSimulatorPageLabels } from '../i18n/simulatorPage';
 import { SeoHead } from '../components/SeoHead';
+import { useSiteFeatures } from '../hooks/useSiteFeatures';
+
+const CONFIDENTIALITY_NOTE = {
+  FR: 'Outil réservé aux comptes connectés — projections indicatives, non contractuelles.',
+  EN: 'Tool for logged-in accounts only — indicative projections, not contractual.',
+  ES: 'Herramienta reservada a cuentas conectadas — proyecciones indicativas, no contractuales.',
+  PT: 'Ferramenta reservada a contas ligadas — projeções indicativas, não contratuais.',
+  DE: 'Nur für angemeldete Konten — indikative Prognosen, nicht vertraglich.',
+  AR: 'أداة مخصصة للحسابات المتصلة — توقعات استرشادية غير تعاقدية.',
+  ZH: '仅限已登录账户使用 — 预测仅供参考，不构成合同承诺。',
+};
 
 export const InvestmentSimulatorPage = () => {
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
+  const { simulatorPublicVisible } = useSiteFeatures();
   const { translations: tc, language } = useLanguage();
   const tSim = tc?.simulator || {};
   const tHero = tSim.hero || {};
@@ -140,6 +152,11 @@ export const InvestmentSimulatorPage = () => {
               {tHero.description ||
                 'Calculez vos projections avec intérêts composés, versements mensuels, inflation et fiscalité.'}
             </p>
+            {!simulatorPublicVisible && isAuthenticated && (
+              <p className="mt-6 mx-auto max-w-2xl rounded-2xl border border-cyan-200/30 bg-cyan-200/10 px-5 py-3 text-sm text-cyan-100">
+                {CONFIDENTIALITY_NOTE[language] || CONFIDENTIALITY_NOTE.FR}
+              </p>
+            )}
           </div>
         </section>
 

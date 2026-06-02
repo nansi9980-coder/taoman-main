@@ -11,13 +11,12 @@ export const DEFAULT_QUICK_ACCESS = {
     { label: 'Entretien bureaux', href: '/entretien/bureaux' },
     { label: 'Personnel déménagement', href: '/demenagement/personnels' },
     { label: 'Investissement TGI', href: '/investissement/tgi' },
-    { label: 'Simulateur', href: '/investissement/simulateur' },
   ],
 };
 
 export const DEFAULT_HERO = {
   badgeMain: `Partenaire stratégique — ${BRAND_NAME}`,
-  badges: ['KYC & conformité', 'Reporting PDF', 'Mobile Money', 'Alertes WhatsApp'],
+  badges: [],
   title: BRAND_NAME,
   subtitle: 'Investir avec nous au Togo — infrastructures, énergie, agro, logistique et numérique',
   description: `${BRAND_NAME} attire les capitaux, structure des partenariats public-privé et accompagne des projets stratégiques avec reporting transparent et suivi investisseur.`,

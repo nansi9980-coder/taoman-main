@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
@@ -9,6 +9,7 @@ import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
 import { getBrandName } from '../constants/branding';
 import { Flag } from './Flag';
 import { DEFAULT_SECTORS, getSectorBySlug } from '../data/sectors-defaults';
+import { useSiteFeatures } from '../hooks/useSiteFeatures';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,6 +21,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t, content: tc } = useLanguage();
   const branding = section('branding');
   const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
+  const { simulatorPublicVisible } = useSiteFeatures();
 
   const brandName = getBrandName(language);
   const tSectorItems = tc?.sectors?.items || {};
@@ -31,62 +33,68 @@ export const Header = ({ activeLink = 'accueil' }) => {
     { slug: 'numerique-services', href: '/secteurs/numerique-services' },
     { slug: 'marketing-international', href: '/secteurs/marketing-international' },
   ];
-  const navigationItems = [
-    { name: t.home, href: '/', key: 'accueil' },
-    {
-      name: t.about,
-      href: '/about',
-      key: 'about',
-      children: [
-        { name: t.profile, desc: t.profileDesc, href: '/about#profile' },
-        { name: t.governance, desc: t.governanceDesc, href: '/about#governance' },
-        { name: t.institutionalContact, desc: t.institutionalContactDesc, href: '/contact' },
-      ],
-    },
-    {
-      name: t.projects,
-      href: '/secteurs',
-      key: 'projets',
-      children: sectorEntries.map((entry) => {
-        const tr = tSectorItems[entry.slug] || {};
-        const fallback = getSectorBySlug(entry.slug, DEFAULT_SECTORS);
-        return {
-          name: tr.title || fallback?.title || entry.slug,
-          desc: tr.short || fallback?.short || '',
-          href: entry.href,
-        };
-      }),
-    },
-    {
-      name: t.invest,
-      href: '/investissement',
-      key: 'investissement',
-      children: [
-        { name: t.tgi, desc: t.tgiDesc, href: '/investissement/tgi' },
-        { name: t.simulator, desc: t.simulatorDesc, href: '/investissement/simulateur' },
-        { name: t.submitProject, desc: t.submitProjectDesc, href: '/investissement/soumettre' },
-        { name: t.investOpportunities, desc: t.investOpportunitiesDesc, href: '/investissement#opportunites' },
-        { name: t.investCriteria, desc: t.investCriteriaDesc, href: '/investissement#criteres' },
-      ],
-    },
-    {
-      name: t.services,
-      href: '/services',
-      key: 'services',
-      children: [
-        { name: t.allServices, desc: t.allServicesDesc, href: '/services' },
-        { name: t.quote, desc: t.quoteDesc, href: '/contact' },
-        { name: t.carWash, desc: t.carWashDesc, href: '/lavage-auto/devis' },
-        { name: t.moving, desc: t.movingDesc, href: '/demenagement/devis' },
-        { name: t.movingPersonnel, desc: t.movingPersonnelDesc, href: '/demenagement/personnels' },
-        { name: t.officeCare, desc: t.officeCareDesc, href: '/entretien/bureaux' },
-        { name: t.mechanic, desc: t.mechanicDesc, href: '/contact?topic=info&service=mecanique' },
-        { name: t.transport, desc: t.transportDesc, href: '/contact?topic=info&service=transport' },
-        { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
-      ],
-    },
-    { name: t.contact, href: '/contact', key: 'contact' },
-  ];
+  const navigationItems = useMemo(() => {
+    const investChildren = [
+      { name: t.tgi, desc: t.tgiDesc, href: '/investissement/tgi' },
+      ...(simulatorPublicVisible
+        ? [{ name: t.simulator, desc: t.simulatorDesc, href: '/investissement/simulateur' }]
+        : []),
+      { name: t.submitProject, desc: t.submitProjectDesc, href: '/investissement/soumettre' },
+      { name: t.investOpportunities, desc: t.investOpportunitiesDesc, href: '/investissement#opportunites' },
+      { name: t.investCriteria, desc: t.investCriteriaDesc, href: '/investissement#criteres' },
+    ];
+
+    return [
+      { name: t.home, href: '/', key: 'accueil' },
+      {
+        name: t.about,
+        href: '/about',
+        key: 'about',
+        children: [
+          { name: t.profile, desc: t.profileDesc, href: '/about#profile' },
+          { name: t.governance, desc: t.governanceDesc, href: '/about#governance' },
+          { name: t.institutionalContact, desc: t.institutionalContactDesc, href: '/contact' },
+        ],
+      },
+      {
+        name: t.projects,
+        href: '/secteurs',
+        key: 'projets',
+        children: sectorEntries.map((entry) => {
+          const tr = tSectorItems[entry.slug] || {};
+          const fallback = getSectorBySlug(entry.slug, DEFAULT_SECTORS);
+          return {
+            name: tr.title || fallback?.title || entry.slug,
+            desc: tr.short || fallback?.short || '',
+            href: entry.href,
+          };
+        }),
+      },
+      {
+        name: t.invest,
+        href: '/investissement',
+        key: 'investissement',
+        children: investChildren,
+      },
+      {
+        name: t.services,
+        href: '/services',
+        key: 'services',
+        children: [
+          { name: t.allServices, desc: t.allServicesDesc, href: '/services' },
+          { name: t.quote, desc: t.quoteDesc, href: '/contact' },
+          { name: t.carWash, desc: t.carWashDesc, href: '/lavage-auto/devis' },
+          { name: t.moving, desc: t.movingDesc, href: '/demenagement/devis' },
+          { name: t.movingPersonnel, desc: t.movingPersonnelDesc, href: '/demenagement/personnels' },
+          { name: t.officeCare, desc: t.officeCareDesc, href: '/entretien/bureaux' },
+          { name: t.mechanic, desc: t.mechanicDesc, href: '/contact?topic=info&service=mecanique' },
+          { name: t.transport, desc: t.transportDesc, href: '/contact?topic=info&service=transport' },
+          { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
+        ],
+      },
+      { name: t.contact, href: '/contact', key: 'contact' },
+    ];
+  }, [t, tSectorItems, sectorEntries, simulatorPublicVisible]);
 
   useEffect(() => {
     const userData = localStorage.getItem('user');

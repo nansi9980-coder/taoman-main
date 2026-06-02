@@ -393,53 +393,6 @@ export const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* Soumettre un projet */}
-        <section id="soumettre" className="scroll-mt-32 py-20 px-6">
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
-                <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présentez votre projet à TAOMAN'}</h2>
-                <p className="mt-4 text-on-surface-variant leading-relaxed text-lg">{ip.submit.intro}</p>
-                <ul className="mt-6 space-y-3">
-                  {ip.submit.bullets.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-1 text-primary font-black">✓</span>
-                      <span className="text-on-surface">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <Link
-                    to="/investissement/soumettre"
-                    className="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3 font-bold text-white hover:opacity-90"
-                  >
-                    {ip.submit.formCta}
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center justify-center rounded-2xl border border-primary px-6 py-3 font-bold text-primary hover:bg-primary hover:text-white transition"
-                  >
-                    {ip.submit.advisorCta}
-                  </Link>
-                </div>
-              </div>
-              <div className="rounded-3xl bg-[#07111f] text-white p-7 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">{ip.submit.processTitle}</p>
-                {ip.submit.steps.map((step) => (
-                  <div key={step.n} className="flex gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-[#07111f] font-black">{step.n}</span>
-                    <div>
-                      <p className="font-black">{step.title}</p>
-                      <p className="text-sm text-white/70">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Opportunités d'investissement */}
         <section id="opportunites" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1400px]">
@@ -552,6 +505,53 @@ export const InvestmentPage = () => {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Soumettre un projet */}
+        <section id="soumettre" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
+                <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présentez votre projet à TAOMAN'}</h2>
+                <p className="mt-4 text-on-surface-variant leading-relaxed text-lg">{ip.submit.intro}</p>
+                <ul className="mt-6 space-y-3">
+                  {ip.submit.bullets.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-1 text-primary font-black">✓</span>
+                      <span className="text-on-surface">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link
+                    to="/investissement/soumettre"
+                    className="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3 font-bold text-white hover:opacity-90"
+                  >
+                    {ip.submit.formCta}
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center rounded-2xl border border-primary px-6 py-3 font-bold text-primary hover:bg-primary hover:text-white transition"
+                  >
+                    {ip.submit.advisorCta}
+                  </Link>
+                </div>
+              </div>
+              <div className="rounded-3xl bg-[#07111f] text-white p-7 space-y-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">{ip.submit.processTitle}</p>
+                {ip.submit.steps.map((step) => (
+                  <div key={step.n} className="flex gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-[#07111f] font-black">{step.n}</span>
+                    <div>
+                      <p className="font-black">{step.title}</p>
+                      <p className="text-sm text-white/70">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

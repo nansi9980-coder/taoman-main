@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
+import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
 import './App.css';
 
@@ -88,7 +89,14 @@ function App() {
                 <Route path="/secteurs" element={<SectorsListPage />} />
                 <Route path="/secteurs/:slug" element={<SectorDetailPage />} />
                 <Route path="/projets" element={<Navigate to="/secteurs" replace />} />
-                <Route path="/investissement/simulateur" element={<InvestmentSimulatorPage />} />
+                <Route
+                  path="/investissement/simulateur"
+                  element={
+                    <SimulatorRouteGuard>
+                      <InvestmentSimulatorPage />
+                    </SimulatorRouteGuard>
+                  }
+                />
                 <Route path="/investissement/soumettre" element={<SubmitProjectPage />} />
                 <Route path="/secteurs/energie-mines" element={<Navigate to="/secteurs" replace />} />
                 <Route path="/dashboard" element={<DashboardPage />} />

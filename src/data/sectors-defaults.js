@@ -193,7 +193,7 @@ export const DEFAULT_SECTORS = [
   {
     slug: 'btp-immobilier',
     title: 'BTP & Immobilier',
-    tag: 'Infrastructure',
+    tag: 'Infrastructures',
     image: btpIcon,
     short: 'Construction durable, immobilier locatif et infrastructures à haute valeur ajoutée.',
     intro:

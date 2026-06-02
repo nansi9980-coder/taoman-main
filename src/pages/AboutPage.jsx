@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
+import { useSiteFeatures } from '../hooks/useSiteFeatures';
 import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
@@ -83,6 +84,7 @@ export const AboutPage = () => {
   const { content: tc, nav: tNav, language } = useLanguage();
   const tAbout = tc.about;
   const { section } = useSiteContent();
+  const { leadersSectionVisible } = useSiteFeatures();
   const raw = section('about') || {};
   const d = DEFAULT_ABOUT;
 
@@ -280,6 +282,7 @@ export const AboutPage = () => {
         </section>
 
         {/* ============ DIRIGEANTS ============ */}
+        {leadersSectionVisible && (
         <section id="leaders" className="py-20 px-6 bg-gradient-to-b from-surface-container-low to-surface">
           <div className="max-w-[1400px] mx-auto">
             <Reveal preset="fadeUp">
@@ -330,6 +333,7 @@ export const AboutPage = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* ============ STATS PREMIUM ============ */}
         <section className="relative overflow-hidden py-20 px-6 text-white">

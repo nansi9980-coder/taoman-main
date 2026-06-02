@@ -4,6 +4,7 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getBrandName } from '../constants/branding';
 import { getFooterTranslations } from '../i18n/navigation';
+import { useSiteFeatures } from '../hooks/useSiteFeatures';
 
 export const Footer = () => {
   const { section } = useSiteContent();
@@ -32,7 +33,7 @@ export const Footer = () => {
     { name: t.officeCare, href: '/entretien/bureaux' },
     { name: t.movingStaff, href: '/demenagement/personnels' },
     { name: 'TAOMAN TGI', href: '/investissement/tgi' },
-    { name: t.simulator, href: '/investissement/simulateur' },
+    ...(simulatorPublicVisible ? [{ name: t.simulator, href: '/investissement/simulateur' }] : []),
   ];
 
   return (

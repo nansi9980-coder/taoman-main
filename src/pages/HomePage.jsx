@@ -27,6 +27,7 @@ import { API_URL, mediaUrl } from "../config";
 import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
 import { pickLocale, pickLocaleList, isFrenchLocale } from "../utils/pickLocale";
 import { useSiteContent } from "../context/SiteContentContext";
+import { useSiteFeatures } from '../hooks/useSiteFeatures';
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
@@ -48,6 +49,7 @@ export const HomePage = () => {
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
   const { content: apiSiteContent, services: apiServicesRaw, section } = useSiteContent();
+  const { leadersSectionVisible } = useSiteFeatures();
   const mediaSettings = useMediaSettings();
   const [apiRealisations, setApiRealisations] = useState([]);
 
@@ -877,7 +879,7 @@ export const HomePage = () => {
         </section>
 
         {/* ============ COMITÉ DE DIRECTION ============ */}
-        {(apiSiteContent.about?.leaders || t.about?.leaders) && (
+        {leadersSectionVisible && (apiSiteContent.about?.leaders || t.about?.leaders) && (
           <section className="py-24 px-6 bg-surface">
             <div className="max-w-[1400px] mx-auto">
               <Reveal preset="fadeUp">
@@ -957,10 +959,10 @@ export const HomePage = () => {
 
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary">
           <div className="max-w-[1400px] mx-auto text-center animate-fade-in">
-            <h2 className="text-5xl font-bold text-on-primary mb-6">
+            <h2 className="text-5xl font-bold text-white mb-6">
               {ctaSection.title || t.home.cta.title}
             </h2>
-            <p className="text-xl text-on-primary/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
               {ctaSection.subtitle || t.home.cta.subtitle}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">

@@ -19,10 +19,10 @@ const FR = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN TGI & Simulateur' },
-    { id: 'soumettre', label: 'Soumettre un projet' },
+    { id: 'programmes', label: 'TAOMAN TGI' },
     { id: 'opportunites', label: "Opportunités d'investissement" },
     { id: 'criteres', label: "Critères d'investissement" },
+    { id: 'soumettre', label: 'Soumettre un projet' },
   ],
   tgiLink: 'TAOMAN TGI →',
   navAria: 'Investir avec TAOMAN - sections',

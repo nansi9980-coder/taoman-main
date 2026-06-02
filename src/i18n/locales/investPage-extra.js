@@ -26,11 +26,7 @@ const EN_BASE = {
   "quickNav": [
     {
       "id": "programmes",
-      "label": "TAOMAN TGI & Simulator"
-    },
-    {
-      "id": "soumettre",
-      "label": "Submit a project"
+      "label": "TAOMAN TGI"
     },
     {
       "id": "opportunites",
@@ -39,6 +35,10 @@ const EN_BASE = {
     {
       "id": "criteres",
       "label": "Investment criteria"
+    },
+    {
+      "id": "soumettre",
+      "label": "Submit a project"
     }
   ],
   "tgiLink": "TAOMAN TGI →",
