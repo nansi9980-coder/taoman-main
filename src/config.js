@@ -4,7 +4,10 @@ export const ADMIN_URL = import.meta.env.VITE_ADMIN_URL || "http://localhost:517
 export function mediaUrl(url) {
   if (!url) return "";
   if (url.startsWith("http") || url.startsWith("data:")) return url;
-  return `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+  const baseUrl = `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+  // Add cache-busting parameter to prevent image caching (bust cache every minute)
+  const cacheKey = Math.floor(Date.now() / 60000);
+  return `${baseUrl}${baseUrl.includes('?') ? '&' : '?'}_cb=${cacheKey}`;
 }
 
 export async function apiAuthFetch(path, options = {}) {
