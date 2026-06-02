@@ -231,7 +231,14 @@ export const InvestmentPage = () => {
   const [apiInvestments, setApiInvestments] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/investments/public`)
+    fetch(`${API_URL}/investments/public`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setApiInvestments(data);

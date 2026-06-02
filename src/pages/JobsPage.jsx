@@ -21,7 +21,14 @@ export const JobsPage = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch(`${API_URL}/jobs/public`);
+        const response = await fetch(`${API_URL}/jobs/public`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        });
         if (!response.ok) {
           throw new Error('Erreur lors du chargement des emplois');
         }

@@ -43,7 +43,14 @@ export function ThemeProvider({ children }) {
   }, [colorMode]);
 
   useEffect(() => {
-    fetch(`${API_URL}/theme/active`)
+    fetch(`${API_URL}/theme/active`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    })
       .then(res => res.json())
       .then((theme) => {
         if (colorMode === 'light' && theme) {

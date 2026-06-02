@@ -21,7 +21,14 @@ export const ServiceDetailPage = () => {
       return;
     }
 
-    fetch(`${API_URL}/content/services/${serviceId}`)
+    fetch(`${API_URL}/content/services/${serviceId}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    })
       .then(res => res.json())
       .then(data => {
         if (data && data.title) {

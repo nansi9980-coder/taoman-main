@@ -88,8 +88,15 @@ export const HomePage = () => {
   useEffect(() => {
     setIsLoaded(true);
 
-    // Fetch Realisations
-    fetch(`${API_URL}/media`)
+    // Fetch Realisations with proper cache-busting headers
+    fetch(`${API_URL}/media`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    })
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {

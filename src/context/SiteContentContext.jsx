@@ -18,9 +18,20 @@ export function SiteContentProvider({ children }) {
   const load = useCallback(async () => {
     setLoading(true);
     try {
+      const cacheHeaders = {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      };
       const [textsRes, servicesRes] = await Promise.all([
-        fetch(`${API_URL}/content/texts`, { cache: 'no-store' }),
-        fetch(`${API_URL}/content/services`, { cache: 'no-store' }),
+        fetch(`${API_URL}/content/texts`, { 
+          cache: 'no-store',
+          headers: cacheHeaders,
+        }),
+        fetch(`${API_URL}/content/services`, { 
+          cache: 'no-store',
+          headers: cacheHeaders,
+        }),
       ]);
       const texts = textsRes.ok ? await textsRes.json() : [];
       const svc = servicesRes.ok ? await servicesRes.json() : [];
