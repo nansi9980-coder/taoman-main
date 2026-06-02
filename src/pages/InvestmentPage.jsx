@@ -398,7 +398,7 @@ export const InvestmentPage = () => {
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.opportunities?.eyebrow || "Opportunités d'investissement"}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title || 'Cinq secteurs porteurs, des projets concrets'}</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title || 'Projets disponibles et secteurs prioritaires'}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.opportunities.intro}</p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -483,7 +483,7 @@ export const InvestmentPage = () => {
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.criteria?.eyebrow || "Critères d'investissement"}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title || 'Comment TAOMAN sélectionne les projets'}</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title || 'Profil cible, ticket, gouvernance et reporting'}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.criteria.intro}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -512,12 +512,14 @@ export const InvestmentPage = () => {
         {/* Soumettre un projet */}
         <section id="soumettre" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1200px]">
+            <div className="text-center mb-12">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présenter votre porteur de projet à TAOMAN'}</h2>
+              <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.submit.intro}</p>
+            </div>
             <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
-                <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présentez votre projet à TAOMAN'}</h2>
-                <p className="mt-4 text-on-surface-variant leading-relaxed text-lg">{ip.submit.intro}</p>
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-6 space-y-3 text-left">
                   {ip.submit.bullets.map((item) => (
                     <li key={item} className="flex gap-3">
                       <span className="mt-1 text-primary font-black">✓</span>
@@ -525,7 +527,7 @@ export const InvestmentPage = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                   <Link
                     to="/investissement/soumettre"
                     className="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3 font-bold text-white hover:opacity-90"
