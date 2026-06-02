@@ -12,6 +12,7 @@ export const Footer = () => {
   const contact = section('contact');
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
   const { language } = useLanguage();
+  const { simulatorPublicVisible } = useSiteFeatures();
 
   const t = getFooterTranslations(language);
   const brandName = getBrandName(language);
