@@ -204,7 +204,7 @@ const NAV = {
     investCriteria: 'Criterios de inversión',
     investCriteriaDesc: 'Perfil, ticket, gobernanza y reporting',
     submitProject: 'Presentar un proyecto',
-    submitProjectDesc: 'Presente su proyecto a TAOMAN',
+    submitProjectDesc: 'Presente su portador de proyecto a TAOMAN',
     quote: 'Solicitar presupuesto',
     quoteDesc: 'Contacto rápido para una necesidad concreta',
     carWash: 'Lavado de auto y moto',

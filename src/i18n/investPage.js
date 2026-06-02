@@ -121,10 +121,10 @@ const EN = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN TGI & Simulator' },
-    { id: 'soumettre', label: 'Submit a project' },
+    { id: 'programmes', label: 'TAOMAN TGI' },
     { id: 'opportunites', label: 'Investment opportunities' },
     { id: 'criteres', label: 'Investment criteria' },
+    { id: 'soumettre', label: 'Submit a project' },
   ],
   tgiLink: 'TAOMAN TGI →',
   navAria: 'Invest with TAOMAN - sections',

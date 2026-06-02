@@ -36,12 +36,12 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const navigationItems = useMemo(() => {
     const investChildren = [
       { name: t.tgi, desc: t.tgiDesc, href: '/investissement/tgi' },
+      { name: t.investOpportunities, desc: t.investOpportunitiesDesc, href: '/investissement#opportunites' },
+      { name: t.investCriteria, desc: t.investCriteriaDesc, href: '/investissement#criteres' },
+      { name: t.submitProject, desc: t.submitProjectDesc, href: '/investissement/soumettre' },
       ...(simulatorPublicVisible
         ? [{ name: t.simulator, desc: t.simulatorDesc, href: '/investissement/simulateur' }]
         : []),
-      { name: t.submitProject, desc: t.submitProjectDesc, href: '/investissement/soumettre' },
-      { name: t.investOpportunities, desc: t.investOpportunitiesDesc, href: '/investissement#opportunites' },
-      { name: t.investCriteria, desc: t.investCriteriaDesc, href: '/investissement#criteres' },
     ];
 
     return [
