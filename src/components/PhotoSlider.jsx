@@ -69,7 +69,14 @@ export const PhotoSlider = ({
     return () => clearInterval(timer);
   }, [autoplayEnabled, autoplayInterval, paused, userPaused, pauseOnHover, total]);
 
-  // Réinitialise l'index si la liste change
+  // Réinitialise l'index si la liste change (par langue ou mise à jour)
+  useEffect(() => {
+    setActive(0);
+    setPaused(false);
+    setUserPaused(false);
+  }, [slides.length, JSON.stringify(slides)]);
+
+  // Fallback : réinitialise l'index si hors limites
   useEffect(() => {
     if (active >= total) setActive(0);
   }, [total, active]);
@@ -100,7 +107,7 @@ export const PhotoSlider = ({
         const isActive = idx === active;
         return (
           <div
-            key={`${slide.src}-${idx}`}
+            key={idx}
             className={`absolute inset-0 transition-opacity ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             style={{ transitionDuration: `${transitionMs}ms` }}
             aria-hidden={!isActive}
