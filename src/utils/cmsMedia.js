@@ -58,6 +58,30 @@ function mergeStatsByIndex(frStats, locStats) {
   });
 }
 
+function mergeRealisationItemsById(frItems, locItems) {
+  const frArr = Array.isArray(frItems) ? frItems : [];
+  const locArr = Array.isArray(locItems) ? locItems : [];
+  if (!frArr.length) return locArr;
+  if (!locArr.length) return frArr.map((item) => ({ ...item }));
+
+  const frByKey = new Map();
+  frArr.forEach((item, idx) => {
+    const key = itemKey(item) ?? `__idx_${idx}`;
+    frByKey.set(key, item);
+  });
+
+  return locArr.map((item, idx) => {
+    const key = itemKey(item) ?? `__idx_${idx}`;
+    const frItem = frByKey.get(key) ?? frArr[idx];
+    if (!frItem) return item;
+    return {
+      ...frItem,
+      ...item,
+      imageUrl: hasMediaValue(frItem.imageUrl) ? frItem.imageUrl : item.imageUrl || '',
+    };
+  });
+}
+
 function mergeMosaicTiles(frMosaic, localizedMosaic) {
   if (!frMosaic?.tiles?.length) return localizedMosaic;
   const loc = localizedMosaic || {};
@@ -104,7 +128,7 @@ export function inheritFrenchMedia(frContent, localizedContent, sectionKey) {
     case 'realisations':
       result = {
         ...result,
-        items: mergeItemListsByKey(frContent.items, result.items),
+        items: mergeRealisationItemsById(frContent.items, result.items),
       };
       break;
 

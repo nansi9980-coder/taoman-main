@@ -54,3 +54,9 @@ export function mergeRealisationSlides(cmsList = []) {
     };
   });
 }
+
+/** Priorité imageUrl FR héritée, puis locale — pas de staticPath mort. */
+export function resolveRealisationImage(item, frItem) {
+  const url = frItem?.imageUrl || item?.imageUrl;
+  return url != null && String(url).trim() !== '' ? String(url).trim() : '';
+}

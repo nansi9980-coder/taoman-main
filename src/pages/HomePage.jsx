@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -31,8 +31,10 @@ import { useSiteFeatures } from '../hooks/useSiteFeatures';
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
-import { mergeRealisationSlides } from '../data/realisations-defaults';
+import { mergeRealisationSlides, resolveRealisationImage } from '../data/realisations-defaults';
 import { mergeHeroMosaicBlock } from '../data/hero-mosaic-defaults';
+import { getRealisationSlideCopy } from '../i18n/realisations-slides';
+import { resolveCmsForLanguage } from '../utils/cmsLocale';
 import { useMediaSettings } from '../hooks/useMediaSettings';
 import { HOME_SERVICE_FALLBACKS } from '../data/home-service-fallbacks';
 
@@ -237,20 +239,34 @@ export const HomePage = () => {
     },
   };
 
-  // ── Réalisations : 10 slides nommées (CMS imageUrl ou fichier vitrine) ───
+  // ── Réalisations : 10 slides (images FR héritées, textes i18n) ───
+  const frSlidesById = useMemo(() => {
+    const frSection = resolveCmsForLanguage(apiSiteContent.realisations || {}, 'FR', 'realisations');
+    const frItems = Array.isArray(frSection?.items) ? frSection.items : normalizeItemsSection(frSection, []);
+    return Object.fromEntries(mergeRealisationSlides(frItems).map((slide) => [slide.id, slide]));
+  }, [apiSiteContent.realisations]);
+
   const realisationItems = Array.isArray(realisationsSection?.items)
     ? realisationsSection.items
     : normalizeItemsSection(realisationsSection, []);
   const mergedSlides = mergeRealisationSlides(realisationItems);
 
   const cmsCarousel = mergedSlides
-    .map((item) => ({
-      src: item.imageUrl ? mediaUrl(item.imageUrl) : item.staticPath || null,
-      alt: item.title || 'Réalisation TAOMAN',
-      category: item.category || 'Terrain',
-      label: item.title || 'Réalisation',
-      progress: item.progress ?? 70,
-    }))
+    .map((item) => {
+      const slideCopy = getRealisationSlideCopy(language, item.id);
+      const frSlide = frSlidesById[item.id];
+      const imageUrl = resolveRealisationImage(item, frSlide);
+      const label = pickLocale(language, item.title, slideCopy.title);
+      const category = pickLocale(language, item.category, slideCopy.category);
+      return {
+        id: item.id,
+        src: imageUrl ? mediaUrl(imageUrl) : null,
+        alt: label || 'Réalisation TAOMAN',
+        category: category || 'Terrain',
+        label: label || 'Réalisation',
+        progress: item.progress ?? 70,
+      };
+    })
     .filter((item) => item.src);
 
   const realisations =
