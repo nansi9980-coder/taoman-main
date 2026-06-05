@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer';
 import { SeoHead } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { PremiumImageFrame } from '../components/PremiumImageFrame';
 import { StatsBand } from '../components/StatsBand';
 import { PartnersBand } from '../components/PartnersBand';
@@ -332,13 +333,17 @@ export const HomePage = () => {
 
         {/* ============ HERO PREMIUM — split cinématique ============ */}
         <section className="relative overflow-hidden pt-20 pb-24 text-white md:pt-28 md:pb-32">
-          <PremiumBackdrop variant="dark" intensity="strong" particles={18} />
+          <PhotoHeroBackground
+            src={heroData.heroImage || '/images/hero-logistics-bg.png'}
+            objectPosition="55% center"
+            overlayIntensity="strong"
+          />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
             {/* Colonne texte */}
-            <div className="lg:col-span-7 animate-fade-in-up">
+            <div className="lg:col-span-7 animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
               <div className="mb-6 flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur-md shadow-lg">
                   <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(125,211,252,0.9)]" />
                   {heroData.badgeMain}
                 </span>
@@ -353,12 +358,12 @@ export const HomePage = () => {
                   className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent" 
                   text={heroData.title || ''} 
                 />
-                <span className="mt-5 block text-xl md:text-3xl font-bold text-white/90">
+                <span className="mt-5 block text-xl md:text-3xl font-bold text-white drop-shadow-md">
                   <TextReveal elementType="span" text={heroData.subtitle || ''} delay={0.5} />
                 </span>
               </h1>
 
-              <p className="max-w-xl text-lg md:text-xl text-white/70 mb-10 leading-relaxed">
+              <p className="max-w-xl text-lg md:text-xl text-white/90 mb-10 leading-relaxed drop-shadow-sm">
                 {heroData.description}
               </p>
 
@@ -384,7 +389,7 @@ export const HomePage = () => {
                 {trustBadges.map((badge) => (
                   <span
                     key={badge}
-                    className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs md:text-sm font-semibold text-white/80 backdrop-blur"
+                    className="rounded-full border border-white/20 bg-[#020d1a]/45 px-4 py-2 text-xs md:text-sm font-semibold text-white/90 backdrop-blur-md shadow-md"
                   >
                     {badge}
                   </span>
