@@ -4,6 +4,20 @@ import { useEffect, useRef, useState } from 'react';
  * Bandeau de statistiques premium avec compteurs animés.
  * Props : items = [{ value: number, suffix?: string, prefix?: string, label, icon? }]
  */
+function parseStatValue(raw) {
+  if (typeof raw === 'number' && !Number.isNaN(raw)) {
+    return { numeric: true, value: raw };
+  }
+  if (typeof raw === 'string') {
+    const trimmed = raw.trim();
+    if (trimmed !== '' && !Number.isNaN(Number(trimmed))) {
+      return { numeric: true, value: Number(trimmed) };
+    }
+    return { numeric: false, text: raw };
+  }
+  return { numeric: false, text: raw == null ? '' : String(raw) };
+}
+
 const useCountUp = (target, { duration = 1600, decimals = 0, start = false } = {}) => {
   const [value, setValue] = useState(0);
 
@@ -27,10 +41,11 @@ const useCountUp = (target, { duration = 1600, decimals = 0, start = false } = {
 };
 
 const StatItem = ({ item, inView }) => {
-  const display = useCountUp(item.value, {
+  const parsed = parseStatValue(item.value);
+  const display = useCountUp(parsed.numeric ? parsed.value : 0, {
     duration: 1800,
     decimals: item.decimals || 0,
-    start: inView,
+    start: inView && parsed.numeric,
   });
   const Icon = item.icon;
   return (
@@ -43,9 +58,9 @@ const StatItem = ({ item, inView }) => {
       <div className="flex items-baseline gap-1">
         {item.prefix && <span className="text-2xl md:text-3xl font-black text-white/70">{item.prefix}</span>}
         <span className="stat-number text-5xl md:text-6xl font-black tracking-tight text-white">
-          {display}
+          {parsed.numeric ? display : parsed.text}
         </span>
-        {item.suffix && (
+        {parsed.numeric && item.suffix && (
           <span className="text-2xl md:text-3xl font-black text-cyan-200">{item.suffix}</span>
         )}
       </div>

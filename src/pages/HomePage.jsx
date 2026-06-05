@@ -24,7 +24,7 @@ import agroIcon from '../assets/agro_sector.jpeg';
 import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';
 import { API_URL, mediaUrl } from "../config";
-import { buildStatsFromSection, normalizeItemsSection } from "../utils/siteContent";
+import { normalizeItemsSection } from "../utils/siteContent";
 import { pickLocale, pickLocaleList, isFrenchLocale } from "../utils/pickLocale";
 import { useSiteContent } from "../context/SiteContentContext";
 import { useSiteFeatures } from '../hooks/useSiteFeatures';
@@ -48,7 +48,7 @@ export const HomePage = () => {
   const [carouselPaused, setCarouselPaused] = useState(false);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
-  const { content: apiSiteContent, services: apiServicesRaw, section, cmsReady } = useSiteContent();
+  const { content: apiSiteContent, services: apiServicesRaw, section } = useSiteContent();
   const { leadersSectionVisible } = useSiteFeatures();
   const mediaSettings = useMediaSettings();
   const [apiRealisations, setApiRealisations] = useState([]);
@@ -137,7 +137,12 @@ export const HomePage = () => {
   const services =
     apiServices.length > 0 ? apiServices.map(mapServiceForLocale) : activeFallback.services;
   const homeServices = services.slice(0, 6);
-  const impactFromCms = buildStatsFromSection(section('statistics'));
+  const homeStatsItems = [
+    { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
+    { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
+    { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
+    { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
+  ];
 
   const sectors = normalizeSectors(section('sectors')).map((s) => {
     const tSector = t.sectors?.items?.[s.slug];
@@ -505,32 +510,7 @@ export const HomePage = () => {
           eyebrow={t.home.stats.eyebrow}
           title={t.home.stats.title}
           description={t.home.stats.description}
-          items={!cmsReady ? [] : impactFromCms?.length
-            ? (() => {
-                const icons = [Briefcase, Layers, MapPin, SparklesIcon];
-                const i18nDefaults = [
-                  { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
-                  { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
-                  { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
-                  { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
-                ];
-                return impactFromCms.slice(0, 4).map((s, idx) => {
-                  const fb = i18nDefaults[idx] || i18nDefaults[0];
-                  return {
-                    value: s.value ?? fb.value,
-                    suffix: fb.suffix,
-                    label: isFrenchLocale(language) ? s.label || fb.label : fb.label,
-                    hint: isFrenchLocale(language) ? '' : fb.hint,
-                    icon: icons[idx] || Briefcase,
-                  };
-                });
-              })()
-            : [
-                { value: 30, suffix: '+', label: t.home.stats.items.projects.label, hint: t.home.stats.items.projects.hint, icon: Briefcase },
-                { value: 8, label: t.home.stats.items.sectors.label, hint: t.home.stats.items.sectors.hint, icon: Layers },
-                { value: 8, suffix: t.home.stats.items.cities.suffix, label: t.home.stats.items.cities.label, hint: t.home.stats.items.cities.hint, icon: MapPin },
-                { value: 96, suffix: '%', label: t.home.stats.items.satisfaction.label, hint: t.home.stats.items.satisfaction.hint, icon: SparklesIcon },
-              ]}
+          items={homeStatsItems}
           className="bg-[#07111f] text-white"
           backdrop={<PremiumBackdrop variant="dark" intensity="soft" particles={10} showGrid={false} />}
         />

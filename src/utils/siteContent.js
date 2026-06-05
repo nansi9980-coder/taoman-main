@@ -12,29 +12,47 @@ export function parseSiteContentMap(data) {
   }, {});
 }
 
+function toStatItem(s, i) {
+  return {
+    label: s.label || '',
+    value: s.value ?? '',
+    suffix: s.suffix,
+    icon: s.icon || String(i + 1).padStart(2, '0'),
+  };
+}
+
 /** Admin statistics section → home page stat cards */
 export function buildStatsFromSection(section) {
   if (Array.isArray(section) && section.length > 0) {
-    return section.map((s, i) => ({
-      label: s.label || '',
-      value: s.value || '',
-      icon: s.icon || String(i + 1).padStart(2, '0'),
-    }));
+    return section.map(toStatItem);
   }
   if (!section || typeof section !== 'object') return null;
+  if (Array.isArray(section.items) && section.items.length > 0) {
+    return section.items.map(toStatItem);
+  }
   const items = [];
   for (let i = 0; i < 4; i++) {
     const value = section[`value${i}`];
     const label = section[`label${i}`];
     if (value || label) {
-      items.push({
-        label: label || '',
-        value: value || '',
-        icon: String(i + 1).padStart(2, '0'),
-      });
+      items.push(toStatItem({ label, value, icon: section[`icon${i}`] }, i));
     }
   }
   return items.length ? items : null;
+}
+
+/** Clés legacy en base (seed) → clés vitrine */
+export const LEGACY_SECTION_KEYS = {
+  hero: ['heroBanner'],
+};
+
+export function resolveSectionRaw(content, key) {
+  if (!content || typeof content !== 'object') return {};
+  if (Object.prototype.hasOwnProperty.call(content, key)) return content[key] ?? {};
+  for (const legacy of LEGACY_SECTION_KEYS[key] || []) {
+    if (Object.prototype.hasOwnProperty.call(content, legacy)) return content[legacy] ?? {};
+  }
+  return {};
 }
 
 /** Admin sectors / testimonials { items: [...] } */

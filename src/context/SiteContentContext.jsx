@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { API_URL } from '../config';
-import { parseSiteContentMap } from '../utils/siteContent';
+import { parseSiteContentMap, resolveSectionRaw, LEGACY_SECTION_KEYS } from '../utils/siteContent';
 import { loadContentOverrides } from '../utils/siteContentOverrides';
 import { resolveCmsForLanguage } from '../utils/cmsLocale';
 import { localizeServiceCards, getHomeServiceFallbacks } from '../utils/localizeServiceCards';
@@ -64,8 +64,12 @@ export function SiteContentProvider({ children }) {
 
   const section = useCallback(
     (key) => {
-      const base = content[key] || {};
-      const hasApiSection = Object.prototype.hasOwnProperty.call(content, key);
+      const base = resolveSectionRaw(content, key);
+      const hasApiSection =
+        Object.prototype.hasOwnProperty.call(content, key)
+        || (LEGACY_SECTION_KEYS[key] || []).some((legacy) =>
+          Object.prototype.hasOwnProperty.call(content, legacy),
+        );
       const patch = overrides[key];
       const merged =
         hasApiSection || !patch || typeof patch !== 'object'
