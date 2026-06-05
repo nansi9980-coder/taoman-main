@@ -1,18 +1,23 @@
+import { useLanguage } from '../context/LanguageContext';
+
 /**
- * Bande de "partenaires" en marquee infini.
- * Comme on n'a pas les logos officiels, on rend des plaques textuelles
- * stylées (typographie premium) — c'est l'usage standard chez Vercel / Stripe
- * en attendant les vrais SVG.
- *
+ * Bande de "partenaires" en marquee infini — i18n-ready.
+ * Les textes eyebrow/title passent maintenant par le contexte langue.
  * Props : items = [{ name, eyebrow? }]
  */
 export const PartnersBand = ({
   items,
-  eyebrow = 'Ils nous font confiance',
-  title = 'Un écosystème institutionnel et privé',
+  eyebrow,
+  title,
   className = '',
 }) => {
+  const { translations: t } = useLanguage();
+
+  const defaultEyebrow = t?.partners?.eyebrow || 'Ils nous font confiance';
+  const defaultTitle   = t?.partners?.title   || 'Un écosystème institutionnel et privé';
+
   const looped = [...items, ...items];
+
   return (
     <section className={`relative overflow-hidden bg-[#07111f] py-16 md:py-20 ${className}`}>
       <div className="absolute inset-0 opacity-50">
@@ -23,9 +28,11 @@ export const PartnersBand = ({
       <div className="relative max-w-[1400px] mx-auto px-6">
         <div className="text-center mb-10">
           <p className="text-xs md:text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-3">
-            {eyebrow}
+            {eyebrow || defaultEyebrow}
           </p>
-          <h2 className="text-2xl md:text-4xl font-black text-white">{title}</h2>
+          <h2 className="text-2xl md:text-4xl font-black text-white">
+            {title || defaultTitle}
+          </h2>
         </div>
 
         <div className="marquee-mask">
