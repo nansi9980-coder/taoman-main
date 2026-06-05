@@ -40,6 +40,24 @@ function mergeItemListsByKey(frList, localizedList) {
   });
 }
 
+function mergeStatsByIndex(frStats, locStats) {
+  const frArr = Array.isArray(frStats) ? frStats : [];
+  const locArr = Array.isArray(locStats) ? locStats : [];
+  if (!frArr.length) return locArr;
+  if (!locArr.length) return frArr.map((item) => ({ ...item }));
+  return locArr.map((item, idx) => {
+    const frItem = frArr[idx];
+    if (!frItem) return item;
+    return {
+      ...frItem,
+      ...item,
+      value: hasMediaValue(item?.value) ? item.value : frItem.value,
+      label: hasMediaValue(item?.label) ? item.label : frItem.label,
+      icon: hasMediaValue(item?.icon) ? item.icon : frItem.icon,
+    };
+  });
+}
+
 function mergeMosaicTiles(frMosaic, localizedMosaic) {
   if (!frMosaic?.tiles?.length) return localizedMosaic;
   const loc = localizedMosaic || {};
@@ -108,6 +126,14 @@ export function inheritFrenchMedia(frContent, localizedContent, sectionKey) {
       result = {
         ...result,
         items: mergeItemListsByKey(frContent.items, result.items),
+      };
+      break;
+
+    case 'investmentTgi':
+    case 'investmentTie':
+      result = {
+        ...result,
+        stats: mergeStatsByIndex(frContent.stats, result.stats),
       };
       break;
 

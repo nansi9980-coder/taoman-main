@@ -23,6 +23,7 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
+import { resolveInvestmentTgiSection } from '../utils/siteContent';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { getTgiPageContent } from '../i18n/tgi-page';
@@ -38,7 +39,7 @@ export const TaoEconomicInvestmentPage = () => {
   const tT = tc?.tgi || {};
   const tCommon = tc?.common || {};
   const tgiPage = getTgiPageContent(language);
-  const tgi = section('investmentTgi') || section('investmentTie');
+  const tgi = resolveInvestmentTgiSection(section);
 
   const statsSource = !cmsReady
     ? []
@@ -76,7 +77,7 @@ export const TaoEconomicInvestmentPage = () => {
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead
         title={tT.hero?.title || 'Programme TGI — Investir au Togo'}
-        description={tT.seoDescription || "TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 2M FCFA sur 10 mois."}
+        description={tT.seoDescription || "TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 1,5M FCFA sur 10 mois."}
         path="/investissement/tgi"
         jsonLd={breadcrumbLd}
         keywords="TGI Togo, investissement Togo, rendement, TAOMAN, 500K FCFA, programme investissement"

@@ -44,6 +44,7 @@ export function buildStatsFromSection(section) {
 /** Clés legacy en base (seed) → clés vitrine */
 export const LEGACY_SECTION_KEYS = {
   hero: ['heroBanner'],
+  investmentTgi: ['investmentTie'],
 };
 
 export function resolveSectionRaw(content, key) {
@@ -53,6 +54,15 @@ export function resolveSectionRaw(content, key) {
     if (Object.prototype.hasOwnProperty.call(content, legacy)) return content[legacy] ?? {};
   }
   return {};
+}
+
+/** Page TGI : priorise la section avec des stats CMS (admin enregistre sous investmentTie). */
+export function resolveInvestmentTgiSection(sectionFn) {
+  const primary = sectionFn('investmentTgi');
+  const alternate = sectionFn('investmentTie');
+  if (primary?.stats?.length) return primary;
+  if (alternate?.stats?.length) return alternate;
+  return { ...alternate, ...primary };
 }
 
 /** Admin sectors / testimonials { items: [...] } */

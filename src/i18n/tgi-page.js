@@ -14,7 +14,7 @@ const FR = {
     { label: 'Investissement Minimum', value: '500K FCFA' },
     { label: 'Rendement Moyen', value: '150K FCFA/mois' },
     { label: 'Délai Retour', value: '10 mois' },
-    { label: 'Retour Total Moyen', value: '2M FCFA' },
+    { label: 'Retour Total Moyen', value: '1,5M FCFA' },
   ],
   statsIntro:
     "Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.",
@@ -57,7 +57,7 @@ const EN = {
     { label: 'Minimum investment', value: '500K CFA' },
     { label: 'Average return', value: '150K CFA/month' },
     { label: 'Payback period', value: '10 months' },
-    { label: 'Average total return', value: '2M CFA' },
+    { label: 'Average total return', value: '1.5M CFA' },
   ],
   statsIntro: 'Simple, transparent indicators to understand our offer at a glance.',
   pillarsIntro: 'Profitability, impact and autonomy: our investment decisions balance these three pillars.',

@@ -19,7 +19,7 @@ const EN_BASE = {
     },
     {
       "label": "Average total return",
-      "value": "2M CFA"
+      "value": "1.5M CFA"
     }
   ],
   "statsIntro": "Simple, transparent indicators to understand our offer at a glance.",
