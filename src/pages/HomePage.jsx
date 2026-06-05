@@ -50,7 +50,7 @@ export const HomePage = () => {
   const [carouselPaused, setCarouselPaused] = useState(false);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
-  const { content: apiSiteContent, services: apiServicesRaw, section } = useSiteContent();
+  const { content: apiSiteContent, services: apiServicesRaw, section, cmsReady } = useSiteContent();
   const { leadersSectionVisible } = useSiteFeatures();
   const mediaSettings = useMediaSettings();
   const [apiRealisations, setApiRealisations] = useState([]);
@@ -253,7 +253,7 @@ export const HomePage = () => {
 
   const cmsCarousel = mergedSlides
     .map((item) => {
-      const slideCopy = getRealisationSlideCopy(language, item.id);
+      const slideCopy = getRealisationSlideCopy(language, item.id) ?? { title: '', category: '' };
       const frSlide = frSlidesById[item.id];
       const imageUrl = resolveRealisationImage(item, frSlide);
       const label = pickLocale(language, item.title, slideCopy.title);
@@ -285,7 +285,11 @@ export const HomePage = () => {
     : realisations.filter(r => r.category === activeFilter);
 
   const carouselItems = filtered.length > 0 ? filtered : realisations;
-  const featuredProject = carouselItems[activeProject % carouselItems.length] || carouselItems[0];
+  const carouselCount = carouselItems.length;
+  const featuredProject = carouselCount
+    ? carouselItems[activeProject % carouselCount] || carouselItems[0]
+    : null;
+  const activeCarouselIndex = carouselCount ? activeProject % carouselCount : 0;
 
   useEffect(() => {
     setActiveProject(0);
@@ -293,21 +297,23 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (!mediaSettings.autoplayEnabled) return undefined;
-    if (carouselItems.length <= 1 || carouselPaused) return undefined;
+    if (carouselCount <= 1 || carouselPaused) return undefined;
 
     const timer = setInterval(() => {
-      setActiveProject((current) => (current + 1) % carouselItems.length);
+      setActiveProject((current) => (current + 1) % carouselCount);
     }, mediaSettings.autoplayInterval);
 
     return () => clearInterval(timer);
-  }, [carouselItems.length, carouselPaused, mediaSettings.autoplayEnabled, mediaSettings.autoplayInterval]);
+  }, [carouselCount, carouselPaused, mediaSettings.autoplayEnabled, mediaSettings.autoplayInterval]);
 
   const showPreviousProject = () => {
-    setActiveProject((current) => (current - 1 + carouselItems.length) % carouselItems.length);
+    if (!carouselCount) return;
+    setActiveProject((current) => (current - 1 + carouselCount) % carouselCount);
   };
 
   const showNextProject = () => {
-    setActiveProject((current) => (current + 1) % carouselItems.length);
+    if (!carouselCount) return;
+    setActiveProject((current) => (current + 1) % carouselCount);
   };
 
   const trustBadges = heroData.badges;
@@ -672,7 +678,7 @@ export const HomePage = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
-              {filters.map((f) => (
+              {carouselCount > 0 && filters.map((f) => (
                 <button
                   key={f}
                   onClick={() => setActiveFilter(f)}
@@ -687,6 +693,20 @@ export const HomePage = () => {
               ))}
             </div>
 
+            {!cmsReady && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {Array.from({ length: 4 }).map((_, idx) => (
+                  <div key={`realisation-skeleton-${idx}`} className="aspect-square rounded-2xl bg-white/5 animate-pulse" />
+                ))}
+              </div>
+            )}
+
+            {cmsReady && !featuredProject && (
+              <p className="text-center text-white/60 mb-8">{t.common?.loading || 'Chargement…'}</p>
+            )}
+
+            {featuredProject && (
+            <>
             {/* Image vedette plein cadre */}
             <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl mb-8">
               <button
@@ -707,7 +727,7 @@ export const HomePage = () => {
                     {featuredProject.category}
                   </span>
                   <span className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs md:text-sm font-bold text-white backdrop-blur">
-                    {((activeProject % carouselItems.length) + 1).toString().padStart(2, '0')} / {carouselItems.length.toString().padStart(2, '0')}
+                    {(activeCarouselIndex + 1).toString().padStart(2, '0')} / {carouselCount.toString().padStart(2, '0')}
                   </span>
                 </div>
 
@@ -761,10 +781,10 @@ export const HomePage = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {carouselItems.slice(0, 8).map((item, idx) => {
                 const realIdx = idx;
-                const isActive = realIdx === activeProject % carouselItems.length;
+                const isActive = realIdx === activeCarouselIndex;
                 return (
                   <button
-                    key={`${item.label}-${idx}`}
+                    key={`${item.id || item.label}-${idx}`}
                     type="button"
                     onClick={() => setActiveProject(realIdx)}
                     onDoubleClick={() => setLightbox(item)}
@@ -790,6 +810,8 @@ export const HomePage = () => {
                 );
               })}
             </div>
+            </>
+            )}
 
             <div className="mt-8 flex justify-center">
               <button
