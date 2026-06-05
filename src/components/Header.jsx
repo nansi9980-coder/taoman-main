@@ -10,6 +10,7 @@ import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
 import { getBrandName } from '../constants/branding';
 import { Flag } from './Flag';
 import { DEFAULT_SECTORS, getSectorBySlug } from '../data/sectors-defaults';
+import { localizeSector } from '../utils/localizedSector';
 import { useSiteFeatures } from '../hooks/useSiteFeatures';
 
 export const Header = ({ activeLink = 'accueil' }) => {
@@ -19,13 +20,12 @@ export const Header = ({ activeLink = 'accueil' }) => {
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const { colorMode, setColorMode } = useTheme();
   const { section } = useSiteContent();
-  const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t, content: tc } = useLanguage();
+  const { language, setLanguage, languages: languageOptions, languageMeta: currentLanguage, nav: t } = useLanguage();
   const branding = section('branding');
   const logoSrc = branding?.logoUrl ? mediaUrl(branding.logoUrl) : logo;
   const { simulatorPublicVisible } = useSiteFeatures();
 
   const brandName = getBrandName(language);
-  const tSectorItems = tc?.sectors?.items || {};
   const sectorEntries = [
     { slug: 'logistique-transports', href: '/secteurs/logistique-transports' },
     { slug: 'agro-business', href: '/secteurs/agro-business' },
@@ -62,11 +62,11 @@ export const Header = ({ activeLink = 'accueil' }) => {
         href: '/secteurs',
         key: 'projets',
         children: sectorEntries.map((entry) => {
-          const tr = tSectorItems[entry.slug] || {};
-          const fallback = getSectorBySlug(entry.slug, DEFAULT_SECTORS);
+          const base = getSectorBySlug(entry.slug, DEFAULT_SECTORS);
+          const localized = localizeSector(base, language);
           return {
-            name: tr.title || fallback?.title || entry.slug,
-            desc: tr.short || fallback?.short || '',
+            name: localized?.title || entry.slug,
+            desc: localized?.short || '',
             href: entry.href,
           };
         }),
@@ -95,7 +95,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
       },
       { name: t.contact, href: '/contact', key: 'contact' },
     ];
-  }, [t, tSectorItems, sectorEntries, simulatorPublicVisible]);
+  }, [t, language, sectorEntries, simulatorPublicVisible]);
 
   useEffect(() => {
     const userData = localStorage.getItem('user');

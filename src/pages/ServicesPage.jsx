@@ -79,21 +79,12 @@ SERVICE_ID_TO_IMAGE.conciergerie = mecaniqueCard;
 SERVICE_ID_TO_IMAGE.audits = bureauxCard;
 
 const HERO_SLIDES_FALLBACK = {
-  'lavage-1': { src: lavageCard, alt: 'Centre de lavage TAOMAN' },
-  'lavage-2': { src: lavageCard2, alt: 'Parking client TAOMAN' },
-  demenagement: { src: demenagementCard, alt: 'Camion de déménagement TAOMAN' },
-  transport: { src: transportCard, alt: 'Conducteur TAOMAN' },
-  mecanique: { src: mecaniqueCard, alt: 'Atelier mécanique TAOMAN' },
-  equipe: { src: bureauxCard, alt: 'Équipe terrain TAOMAN' },
-};
-
-const DEFAULT_SERVICES_PAGE = {
-  badge: 'Services opérationnels',
-  title: 'Des services terrain clairs, rapides et suivis.',
-  description:
-    'TAOMAN Group Investment combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.',
-  btn1: 'Demander un devis',
-  btn2: "Voir l'investissement",
+  'lavage-1': { src: lavageCard, alt: '' },
+  'lavage-2': { src: lavageCard2, alt: '' },
+  demenagement: { src: demenagementCard, alt: '' },
+  transport: { src: transportCard, alt: '' },
+  mecanique: { src: mecaniqueCard, alt: '' },
+  equipe: { src: bureauxCard, alt: '' },
 };
 
 export const ServicesPage = () => {
@@ -104,11 +95,11 @@ export const ServicesPage = () => {
   const tServExt = useMemo(() => getServicesTranslations(language), [language]);
   const sp = section('servicesPage');
   const tPage = tc.services?.page || {};
-  const heroBadge = pickLocale(language, sp.badge, tPage.badge || DEFAULT_SERVICES_PAGE.badge);
-  const heroTitle = pickLocale(language, sp.title, tPage.title || DEFAULT_SERVICES_PAGE.title);
-  const heroDesc = pickLocale(language, sp.description, tPage.description || DEFAULT_SERVICES_PAGE.description);
-  const btn1 = pickLocale(language, sp.btn1, tPage.btn1 || tServExt.finalCta.btnQuote);
-  const btn2 = pickLocale(language, sp.btn2, tPage.btn2 || tServExt.finalCta.btnInvest);
+  const heroBadge = pickLocale(language, sp.badge, tPage.badge);
+  const heroTitle = pickLocale(language, sp.title, tPage.title);
+  const heroDesc = pickLocale(language, sp.description, tPage.description);
+  const btn1 = pickLocale(language, sp.btn1, tPage.btn1 || tServExt.finalCta?.btnQuote);
+  const btn2 = pickLocale(language, sp.btn2, tPage.btn2 || tServExt.finalCta?.btnInvest);
 
   const heroSlides = useMemo(() => {
     const merged = mergeServicesPageHeroSlides(sp.heroSlides || []);
@@ -117,12 +108,12 @@ export const ServicesPage = () => {
       const src = slide.imageUrl ? mediaUrl(slide.imageUrl) : fb.src;
       return {
         src,
-        alt: slide.title || fb.alt,
-        label: slide.title || fb.alt,
-        category: slide.category || 'Services',
+        alt: slide.title || fb.alt || heroTitle,
+        label: slide.title || fb.alt || heroTitle,
+        category: slide.category || heroBadge,
       };
     });
-  }, [sp.heroSlides]);
+  }, [sp.heroSlides, heroBadge, heroTitle]);
 
   const opSection = section('operationalServices');
   const services = useMemo(() => {
@@ -162,8 +153,8 @@ export const ServicesPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background pt-[80px]">
       <SeoHead
-        title={tServ.hero.title}
-        description="Lavage auto, déménagement, entretien de bureaux, mécanique automobile, transport, climatisation, conciergerie — 7 services TAOMAN Group Investment au Togo et CEDEAO."
+        title={heroTitle || tServ.hero.title}
+        description={heroDesc || tServ.hero.description}
         path="/services"
         jsonLd={servicesJsonLd}
         keywords="services Togo, lavage auto Lomé, déménagement Lomé, entretien bureaux, mécanique auto, transport Togo, climatisation, conciergerie"

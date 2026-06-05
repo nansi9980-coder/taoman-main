@@ -159,6 +159,17 @@ const CONTACT = {
       openMaps: 'Ouvrir dans Google Maps',
       mapTitle: 'Carte — TAOMAN Group Investment',
     },
+    quotePage: {
+      title: 'Demander un devis',
+      subtitle: 'Service gratuit et sans engagement',
+      successTitle: 'Demande envoyée !',
+      successText:
+        'Votre demande de devis a bien été soumise. Vous recevrez une réponse par email dans les plus brefs délais.',
+      anotherRequest: 'Faire une autre demande',
+      submitLabel: 'Demander un devis',
+      errorQuote: "Impossible d'envoyer votre demande de devis.",
+      services: ['Lavage Auto', 'Déménagement', 'Entretien Bureau', 'Autre'],
+    },
   },
 
   EN: {
@@ -313,6 +324,17 @@ const CONTACT = {
       hint: 'Agoè Cacaveli, en face de Toganim',
       openMaps: 'Open in Google Maps',
       mapTitle: 'Map — TAOMAN Group Investment',
+    },
+    quotePage: {
+      title: 'Request a quote',
+      subtitle: 'Free service with no obligation',
+      successTitle: 'Request sent!',
+      successText:
+        'Your quote request has been submitted. You will receive a reply by email as soon as possible.',
+      anotherRequest: 'Submit another request',
+      submitLabel: 'Request a quote',
+      errorQuote: 'Unable to send your quote request.',
+      services: ['Car wash', 'Moving', 'Office cleaning', 'Other'],
     },
   },
 
@@ -1038,9 +1060,12 @@ const CONTACT = {
 
 export const getContactTranslations = (language) => {
   const pack = CONTACT[language] || CONTACT.FR;
+  const en = CONTACT.EN || {};
   return {
     ...pack,
-    location: pack.location || CONTACT.EN?.location || CONTACT.FR.location,
+    location: pack.location || en.location || CONTACT.FR.location,
+    form: pack.form || en.form || CONTACT.FR.form,
+    quotePage: pack.quotePage || en.quotePage || CONTACT.FR.quotePage,
   };
 };
 

@@ -292,6 +292,51 @@ const CONTENT = {
         seoSector: "Secteur d'investissement",
         groupOperated:
           'Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN et financé via son programme TGI.',
+        operatedByEyebrow: 'Opéré et financé par',
+        groupOperatedBody:
+          "Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN et financé via son programme d'investissement participatif TGI. Le groupe combine services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) et financement structuré de projets pour particuliers, entreprises et investisseurs.",
+        contextEyebrow: 'Contexte et objectifs',
+        goalEyebrow: 'But du programme',
+        scopeEyebrow: 'Périmètre opérationnel',
+        scopeTitle: 'Où et comment TAOMAN opère',
+        documentsTitle: 'Documents disponibles sur demande',
+        aspectsEyebrow: 'Aspects opérationnels',
+        aspectsTitle: 'Comment TAOMAN sécurise chaque projet',
+        highlightsEyebrow: "Axes d'intervention",
+        highlightsTitle: 'Ce que nous finançons concrètement',
+        opportunitiesEyebrow: 'Opportunités identifiées',
+        opportunitiesTitle: 'Les projets que TAOMAN vise',
+        phasesEyebrow: 'Calendrier projet',
+        phasesTitle: 'Les 4 phases de chaque projet TAOMAN',
+        advantageBullets: [
+          'Marché local concret et identifié',
+          'Opérations pilotées par les équipes TAOMAN',
+          'Reporting transparent et rendez-vous trimestriels',
+          'Cadre juridique formel et contractualisé',
+        ],
+        riskBullets: [
+          'Risque de marché local (saison, demande)',
+          'Risque opérationnel (équipe, exécution)',
+          'Diversification entre plusieurs projets recommandée',
+          'Rendements projetés non garantis',
+        ],
+        sidebarProjectSheet: 'Fiche projet',
+        sidebarOperationalSummary: 'Synthèse opérationnelle',
+        projectLeadLabel: 'Porteur du projet',
+        indicativeCostLabel: 'Coût indicatif du programme',
+        financingModeLabel: 'Mode de financement',
+        stakeholdersLabel: 'Parties prenantes',
+        becomePartner: 'Devenir partenaire',
+        contactDetails: 'Coordonnées',
+        headquarters: 'Siège social : Lomé, Togo',
+        writeUs: 'Nous écrire',
+        ctaGroupTitle: 'Un groupe, plusieurs métiers, une seule exigence.',
+        ctaGroupDesc:
+          "TAOMAN combine services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) et programme d'investissement TGI. Cette double identité crée un cercle vertueux : les services terrain financent et valident les modèles que nous proposons ensuite aux investisseurs.",
+        horizonValue: '10 mois',
+        ticketValue: '500K FCFA',
+        tagFallback: 'Secteur',
+        seoServiceSuffix: 'Service TAOMAN Group Investment',
       },
     },
     invest: {
@@ -681,6 +726,51 @@ const CONTENT = {
         seoSector: 'Investment sector',
         groupOperated:
           'This sector is operated within the TAOMAN multi-activity group and funded through its TGI program.',
+        operatedByEyebrow: 'Operated and funded by',
+        groupOperatedBody:
+          'This sector is operated within the TAOMAN multi-activity group and funded through its TGI participatory investment program. The group combines operational services (car wash, moving, office care, mechanics, transport) and structured project financing for individuals, businesses and investors.',
+        contextEyebrow: 'Context and objectives',
+        goalEyebrow: 'Program goal',
+        scopeEyebrow: 'Operational scope',
+        scopeTitle: 'Where and how TAOMAN operates',
+        documentsTitle: 'Documents available on request',
+        aspectsEyebrow: 'Operational aspects',
+        aspectsTitle: 'How TAOMAN secures each project',
+        highlightsEyebrow: 'Focus areas',
+        highlightsTitle: 'What we concretely fund',
+        opportunitiesEyebrow: 'Identified opportunities',
+        opportunitiesTitle: 'Projects TAOMAN targets',
+        phasesEyebrow: 'Project timeline',
+        phasesTitle: 'The 4 phases of every TAOMAN project',
+        advantageBullets: [
+          'Concrete, identified local market',
+          'Operations run by TAOMAN teams',
+          'Transparent reporting and quarterly reviews',
+          'Formal, contractual legal framework',
+        ],
+        riskBullets: [
+          'Local market risk (seasonality, demand)',
+          'Operational risk (team, execution)',
+          'Diversification across several projects recommended',
+          'Projected returns not guaranteed',
+        ],
+        sidebarProjectSheet: 'Project sheet',
+        sidebarOperationalSummary: 'Operational summary',
+        projectLeadLabel: 'Project sponsor',
+        indicativeCostLabel: 'Indicative program cost',
+        financingModeLabel: 'Financing model',
+        stakeholdersLabel: 'Stakeholders',
+        becomePartner: 'Become a partner',
+        contactDetails: 'Contact details',
+        headquarters: 'Head office: Lomé, Togo',
+        writeUs: 'Write to us',
+        ctaGroupTitle: 'One group, many trades, one standard of excellence.',
+        ctaGroupDesc:
+          'TAOMAN combines operational services (car wash, moving, office care, mechanics, transport) and the TGI investment program. This dual identity creates a virtuous circle: field services fund and validate the models we then offer to investors.',
+        horizonValue: '10 months',
+        ticketValue: '500K FCFA',
+        tagFallback: 'Sector',
+        seoServiceSuffix: 'TAOMAN Group Investment Service',
       },
     },
     invest: {
@@ -2581,8 +2671,10 @@ export function getContentTranslations(languageCode = 'FR') {
   const picked = CONTENT[languageCode] || CONTENT.FR;
   let out = { ...picked };
   const sectors = out.sectors || {};
-  if (!sectors.detail && CONTENT.EN?.sectors?.detail) {
-    out = { ...out, sectors: { ...sectors, detail: CONTENT.EN.sectors.detail } };
+  const enDetail = CONTENT.EN?.sectors?.detail || {};
+  const mergedDetail = { ...enDetail, ...(sectors.detail || {}) };
+  if (Object.keys(mergedDetail).length > 0) {
+    out = { ...out, sectors: { ...sectors, detail: mergedDetail } };
   }
   if (!out.services?.page && CONTENT.EN?.services?.page) {
     out = {

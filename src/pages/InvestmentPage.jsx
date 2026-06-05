@@ -23,7 +23,6 @@ import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
-import { BRAND_NAME } from '../constants/branding';
 import programmeImg from '../assets/programme.jpeg';
 
 const FAQ_CATEGORY_ICONS = {
@@ -68,7 +67,7 @@ const FaqInvestissement = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-primary">
-            <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tInv.help?.eyebrow || "Centre d'aide"}
+            <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tInv.help?.eyebrow}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-black tracking-tight text-on-surface">
             {faqUi.title}
@@ -268,11 +267,11 @@ export const InvestmentPage = () => {
     <div className="flex flex-col min-h-screen bg-surface pt-[80px]">
       <SeoHead
         title={pickLocale(language, inv.seoTitle, tInv.seoTitle || ip.seoTitle)}
-        description={tInv.seoDescription || `Pourquoi investir avec ${BRAND_NAME} : secteurs, programmes, opportunités et reporting transparent au Togo et CEDEAO.`}
+        description={pickLocale(language, inv.seoDescription, tInv.seoDescription || ip.seoDescription)}
         path="/investissement"
         jsonLd={buildBreadcrumb([
-          { name: tNav.home || 'Accueil', path: '/' },
-          { name: tNav.investment || 'Investissement', path: '/investissement' },
+          { name: tNav.home, path: '/' },
+          { name: tNav.invest, path: '/investissement' },
         ])}
         keywords="investir Togo, opportunités investissement Lomé, TGI, secteurs porteurs Togo, partenariat investisseur"
       />
@@ -288,10 +287,10 @@ export const InvestmentPage = () => {
             <p className="mb-10 mx-auto max-w-2xl text-xl text-white/75">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
-                {tCommon.contactInvest || 'Nous contacter pour investir'}
+                {tCommon.contactInvest}
               </Link>
               <Link to="/contact?topic=project" className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition">
-                {tInv.submit?.cta || 'Soumettre un projet'}
+                {tInv.submit?.cta}
               </Link>
             </div>
           </div>
@@ -340,8 +339,8 @@ export const InvestmentPage = () => {
         <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
           <div className="mx-auto max-w-[1400px]">
             <div className="mb-12 text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow || 'Programmes TAOMAN'}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.programs?.title || "Deux portes d'entrée simples"}</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.programs?.title}</h2>
               <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant">{ip.programs.intro}</p>
             </div>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
@@ -404,8 +403,8 @@ export const InvestmentPage = () => {
         <section id="opportunites" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.opportunities?.eyebrow || "Opportunités d'investissement"}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title || 'Projets disponibles et secteurs prioritaires'}</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.opportunities?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.opportunities.intro}</p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -489,8 +488,8 @@ export const InvestmentPage = () => {
         <section id="criteres" className="scroll-mt-32 py-20 px-6">
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.criteria?.eyebrow || "Critères d'investissement"}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title || 'Profil cible, ticket, gouvernance et reporting'}</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.criteria?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.criteria.intro}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -520,8 +519,8 @@ export const InvestmentPage = () => {
         <section id="soumettre" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow || 'Soumettre un projet'}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title || 'Présenter votre porteur de projet à TAOMAN'}</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.submit?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.submit?.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.submit.intro}</p>
             </div>
             <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
@@ -569,8 +568,8 @@ export const InvestmentPage = () => {
         <section className="bg-[#07111f] py-20 px-6 text-white">
           <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tInv.guarantee?.eyebrow || 'Engagement TAOMAN'}</p>
-              <h2 className="mt-3 text-4xl font-black">{tInv.guarantee?.title || 'Ce que nous garantissons aux investisseurs'}</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tInv.guarantee?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black">{tInv.guarantee?.title}</h2>
               <p className="mt-4 text-white/70">{ip.guarantee.intro}</p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">

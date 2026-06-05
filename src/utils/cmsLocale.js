@@ -5,6 +5,7 @@
 import { getContentTranslations } from '../i18n/content';
 import { getServicesTranslations } from '../i18n/services';
 import { getFaqTranslations } from '../i18n/faq';
+import { getContactTranslations } from '../i18n/contact';
 import { getLocalizedCmsV2Default } from '../i18n/cms-legal-blocks';
 import { getCmsV2Default } from './cmsSectionDefaults';
 import { mergeOperationalServices } from '../data/operational-services-defaults';
@@ -152,8 +153,15 @@ function operationalServicesFromI18n(language) {
   };
 }
 
-function contactFromI18n() {
-  return null;
+function contactFromI18n(language) {
+  const ct = getContactTranslations(language);
+  const sb = ct.sidebar || {};
+  return {
+    address: sb.addressFallback,
+    hours: sb.hoursFallback,
+    phone: '+228 90 42 13 77',
+    email: 'contact@taoman.group',
+  };
 }
 
 function footerFromI18n(t) {
@@ -246,7 +254,7 @@ export function getSectionI18nFallback(sectionKey, language) {
       raw = operationalServicesFromI18n(lang);
       break;
     case 'contact':
-      raw = contactFromI18n();
+      raw = contactFromI18n(lang);
       break;
     case 'footer':
       raw = footerFromI18n(t);

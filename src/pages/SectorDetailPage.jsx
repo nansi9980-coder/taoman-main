@@ -90,12 +90,12 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
     {
       icon: Wallet,
       label: td.entryTicket || "Ticket d'entrée",
-      value: '500K FCFA',
+      value: td.ticketValue || '500K FCFA',
     },
     {
       icon: CalendarClock,
       label: td.horizon || 'Horizon',
-      value: '10 mois',
+      value: td.horizonValue || '10 mois',
     },
   ];
 
@@ -104,7 +104,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
       <SeoHead
         title={
           isServicePage
-            ? `${sector.title} — Service TAOMAN Group Investment`
+            ? `${sector.title} — ${td.seoServiceSuffix || 'Service TAOMAN Group Investment'}`
             : `${sector.title} — ${td.seoSector || "Secteur d'investissement"}`
         }
         description={
@@ -234,10 +234,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               <Building2 className="h-8 w-8" strokeWidth={2.2} />
             </span>
             <div className="flex-1">
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">Opéré et financé par</p>
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">{td.operatedByEyebrow || 'Opéré et financé par'}</p>
               <h2 className="mt-2 text-2xl md:text-3xl font-black text-on-surface">TAOMAN Group Investment</h2>
               <p className="mt-3 text-on-surface-variant leading-relaxed">
-                Ce secteur est opéré dans le cadre du <strong className="text-on-surface">groupe multi-activités TAOMAN</strong> et financé via son programme d'investissement participatif <strong className="text-on-surface">TGI</strong>. Le groupe combine services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) et financement structuré de projets pour particuliers, entreprises et investisseurs.
+                {td.groupOperatedBody || td.groupOperated}
               </p>
             </div>
             <Link
@@ -257,7 +257,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {/* CONTEXTE ET OBJECTIFS */}
               <div>
                 <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                  <Compass className="h-4 w-4" strokeWidth={2.4} /> Contexte et objectifs
+                  <Compass className="h-4 w-4" strokeWidth={2.4} /> {td.contextEyebrow || 'Contexte et objectifs'}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-5 tracking-tight">
                   {td.whyInvest || 'Pourquoi TAOMAN investit dans ce secteur'}
@@ -271,7 +271,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {sector.goal && (
                 <div className="rounded-3xl bg-gradient-to-br from-primary/8 to-cyan-50/40 border border-primary/15 p-7">
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                    <Target className="h-4 w-4" strokeWidth={2.4} /> But du programme
+                    <Target className="h-4 w-4" strokeWidth={2.4} /> {td.goalEyebrow || 'But du programme'}
                   </p>
                   <p className="text-xl md:text-2xl font-bold text-on-surface leading-snug">
                     {sector.goal}
@@ -283,10 +283,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {sector.perimetre && (
                 <div>
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                    <MapPin className="h-4 w-4" strokeWidth={2.4} /> Périmètre opérationnel
+                    <MapPin className="h-4 w-4" strokeWidth={2.4} /> {td.scopeEyebrow || 'Périmètre opérationnel'}
                   </p>
                   <h2 className="text-3xl font-black text-on-surface mb-5 tracking-tight">
-                    Où et comment TAOMAN opère
+                    {td.scopeTitle || 'Où et comment TAOMAN opère'}
                   </h2>
                   <p className="text-lg leading-relaxed text-on-surface-variant mb-6">
                     {sector.perimetre}
@@ -294,7 +294,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   {Array.isArray(sector.documents) && sector.documents.length > 0 && (
                     <div className="rounded-2xl bg-surface-container-low border border-outline-variant/30 p-6">
                       <p className="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2">
-                        <FileText className="h-4 w-4 text-primary" strokeWidth={2.4} /> Documents disponibles sur demande
+                        <FileText className="h-4 w-4 text-primary" strokeWidth={2.4} /> {td.documentsTitle || 'Documents disponibles sur demande'}
                       </p>
                       <ul className="space-y-2.5">
                         {sector.documents.map((doc) => (
@@ -312,10 +312,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {/* ASPECTS OPÉRATIONNELS – nouveau */}
               <div>
                 <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                  <Layers3 className="h-4 w-4" strokeWidth={2.4} /> Aspects opérationnels
+                  <Layers3 className="h-4 w-4" strokeWidth={2.4} /> {td.aspectsEyebrow || 'Aspects opérationnels'}
                 </p>
                 <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                  Comment TAOMAN sécurise chaque projet
+                  {td.aspectsTitle || 'Comment TAOMAN sécurise chaque projet'}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {aspects.map((a) => {
@@ -337,10 +337,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {Array.isArray(sector.highlights) && sector.highlights.length > 0 && (
                 <div>
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                    <ClipboardCheck className="h-4 w-4" strokeWidth={2.4} /> Axes d'intervention
+                    <ClipboardCheck className="h-4 w-4" strokeWidth={2.4} /> {td.highlightsEyebrow || "Axes d'intervention"}
                   </p>
                   <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                    Ce que nous finançons concrètement
+                    {td.highlightsTitle || 'Ce que nous finançons concrètement'}
                   </h2>
                   <ul className="space-y-3">
                     {sector.highlights.map((item, idx) => (
@@ -359,10 +359,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {Array.isArray(sector.opportunities) && sector.opportunities.length > 0 && (
                 <div>
                   <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                    <Briefcase className="h-4 w-4" strokeWidth={2.4} /> Opportunités identifiées
+                    <Briefcase className="h-4 w-4" strokeWidth={2.4} /> {td.opportunitiesEyebrow || 'Opportunités identifiées'}
                   </p>
                   <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                    Les projets que TAOMAN vise
+                    {td.opportunitiesTitle || 'Les projets que TAOMAN vise'}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {sector.opportunities.map((opportunity) => {
@@ -382,10 +382,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               {/* PHASES DE DEPLOIEMENT */}
               <div>
                 <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
-                  <CalendarClock className="h-4 w-4" strokeWidth={2.4} /> Calendrier projet
+                  <CalendarClock className="h-4 w-4" strokeWidth={2.4} /> {td.phasesEyebrow || 'Calendrier projet'}
                 </p>
                 <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                  Les 4 phases de chaque projet TAOMAN
+                  {td.phasesTitle || 'Les 4 phases de chaque projet TAOMAN'}
                 </h2>
                 <ol className="space-y-4">
                   {phases.map((phase) => (
@@ -413,10 +413,11 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   </p>
                   <h3 className="mt-3 text-xl font-black text-on-surface">{tSec.whySector}</h3>
                   <ul className="mt-4 space-y-2 text-sm text-on-surface">
-                    <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Marché local concret et identifié</li>
-                    <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Opérations pilotées par les équipes TAOMAN</li>
-                    <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Reporting transparent et rendez-vous trimestriels</li>
-                    <li className="flex gap-2 items-start"><CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> Cadre juridique formel et contractualisé</li>
+                    {(td.advantageBullets || []).map((item) => (
+                      <li key={item} className="flex gap-2 items-start">
+                        <CheckCircle2 className="h-4 w-4 mt-0.5 text-green-600 shrink-0" strokeWidth={2.4} /> {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="rounded-3xl border border-amber-500/20 bg-amber-50/40 p-6">
@@ -425,10 +426,11 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   </p>
                   <h3 className="mt-3 text-xl font-black text-on-surface">{tSec.risksAndMitigation}</h3>
                   <ul className="mt-4 space-y-2 text-sm text-on-surface">
-                    <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Risque de marché local (saison, demande)</li>
-                    <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Risque opérationnel (équipe, exécution)</li>
-                    <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Diversification entre plusieurs projets recommandée</li>
-                    <li className="flex gap-2 items-start"><AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> Rendements projetés non garantis</li>
+                    {(td.riskBullets || []).map((item) => (
+                      <li key={item} className="flex gap-2 items-start">
+                        <AlertTriangle className="h-4 w-4 mt-0.5 text-amber-600 shrink-0" strokeWidth={2.4} /> {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -438,8 +440,8 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             <aside className="space-y-5 lg:sticky lg:top-28 self-start">
               <div className="rounded-3xl bg-white border border-outline-variant/40 shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-br from-primary to-primary-container px-6 py-4">
-                  <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">Fiche projet</p>
-                  <h3 className="mt-1 text-xl font-black text-white">Synthèse opérationnelle</h3>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">{td.sidebarProjectSheet || 'Fiche projet'}</p>
+                  <h3 className="mt-1 text-xl font-black text-white">{td.sidebarOperationalSummary || 'Synthèse opérationnelle'}</h3>
                 </div>
                 <div className="p-6 space-y-5">
                   <div className="flex gap-3">
@@ -447,7 +449,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                       <Briefcase className="h-5 w-5" strokeWidth={2.2} />
                     </span>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Porteur du projet</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{td.projectLeadLabel || 'Porteur du projet'}</p>
                       <p className="mt-0.5 font-black text-on-surface">{sector.porteur || 'TAOMAN Group Investment'}</p>
                     </div>
                   </div>
@@ -458,7 +460,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                         <Coins className="h-5 w-5" strokeWidth={2.2} />
                       </span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Coût indicatif du programme</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{td.indicativeCostLabel || 'Coût indicatif du programme'}</p>
                         <p className="mt-0.5 font-black text-on-surface text-lg">{sector.cout}</p>
                       </div>
                     </div>
@@ -470,7 +472,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                         <Handshake className="h-5 w-5" strokeWidth={2.2} />
                       </span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Mode de financement</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{td.financingModeLabel || 'Mode de financement'}</p>
                         <p className="mt-0.5 font-black text-on-surface">{sector.financement}</p>
                       </div>
                     </div>
@@ -482,7 +484,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                         <Users className="h-5 w-5" strokeWidth={2.2} />
                       </span>
                       <div className="flex-1">
-                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Parties prenantes</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">{td.stakeholdersLabel || 'Parties prenantes'}</p>
                         <ul className="space-y-1">
                           {sector.partenaires.map((p) => (
                             <li key={p} className="text-sm text-on-surface font-medium flex items-start gap-2">
@@ -516,22 +518,22 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-outline bg-white text-on-surface px-5 py-3 font-bold hover:border-primary hover:text-primary transition-all"
                   >
                     <Handshake className="h-4 w-4" strokeWidth={2.5} />
-                    Devenir partenaire
+                    {td.becomePartner || 'Devenir partenaire'}
                   </Link>
                 </div>
               </div>
 
               <div className="rounded-3xl bg-gradient-to-br from-[#08111d] via-[#0d1a30] to-[#08111d] text-white p-6">
-                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">Coordonnées</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">{td.contactDetails || 'Coordonnées'}</p>
                 <p className="mt-3 text-base leading-relaxed text-white/85">
-                  Siège social : <strong className="text-white">Lomé, Togo</strong>
+                  {td.headquarters || 'Siège social : Lomé, Togo'}
                 </p>
                 <p className="mt-1 text-sm text-white/65">contact@taoman.group</p>
                 <Link
                   to="/contact?topic=info"
                   className="mt-4 inline-flex items-center gap-1.5 text-cyan-200 font-bold text-sm hover:underline"
                 >
-                  Nous écrire <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                  {td.writeUs || 'Nous écrire'} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
                 </Link>
               </div>
             </aside>
@@ -544,10 +546,10 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             <div>
               <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">TAOMAN Group Investment</p>
               <h2 className="mt-3 text-3xl md:text-4xl font-black leading-tight" style={{ color: '#ffffff' }}>
-                Un groupe, plusieurs métiers, une seule exigence.
+                {td.ctaGroupTitle || 'Un groupe, plusieurs métiers, une seule exigence.'}
               </h2>
               <p className="mt-4 text-lg max-w-2xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
-                TAOMAN combine <strong style={{ color: '#ffffff' }}>services opérationnels</strong> (Lavage, Déménagement, Entretien, Mécanique, Transport) et <strong style={{ color: '#ffffff' }}>programme d'investissement TGI</strong>. Cette double identité crée un cercle vertueux : les services terrain financent et valident les modèles que nous proposons ensuite aux investisseurs.
+                {td.ctaGroupDesc}
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -601,7 +603,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     className="group block rounded-3xl bg-white p-6 border border-outline-variant/40 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30 transition-all"
                   >
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary">
-                      {other.tag || 'Secteur'}
+                      {other.tag || td.tagFallback || tSec.tagFallback || 'Secteur'}
                     </span>
                     <h3 className="mt-4 text-xl font-black text-on-surface group-hover:text-primary transition-colors">
                       {other.title}

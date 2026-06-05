@@ -105,6 +105,8 @@ const FR = {
     faqPage: 'Voir toute la FAQ',
   },
   seoTitle: 'Investir avec nous au Togo',
+  seoDescription:
+    'Investir avec TAOMAN Group Investment : secteurs, programmes TGI, opportunités et reporting transparent au Togo et CEDEAO.',
 };
 
 const EN = {
@@ -207,6 +209,8 @@ const EN = {
     faqPage: 'View full FAQ',
   },
   seoTitle: 'Invest with us in Togo',
+  seoDescription:
+    'Invest with TAOMAN Group Investment: sectors, TGI programs, opportunities and transparent reporting in Togo and ECOWAS.',
 };
 
 const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });

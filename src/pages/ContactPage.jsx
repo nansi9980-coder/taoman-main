@@ -27,6 +27,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
 import { getContactTranslations } from '../i18n/contact';
+import { pickLocale } from '../utils/pickLocale';
 import { ContactLocationMap } from '../components/ContactLocationMap';
 
 /**
@@ -81,7 +82,9 @@ const buildFieldLabels = (tContact, language) => {
   // Pour le champ "sector", on utilise les titres traduits des secteurs depuis content.js si disponibles
   const sectorTitles = (() => {
     if (tcSectors?.items) {
-      return DEFAULT_SECTORS.map((s) => tcSectors.items[s.slug]?.title || s.title);
+      return DEFAULT_SECTORS.map((s) =>
+        pickLocale(language, s.title, tcSectors.items[s.slug]?.title),
+      );
     }
     return DEFAULT_SECTORS.map((s) => s.title);
   })();
@@ -100,7 +103,7 @@ const buildFieldLabels = (tContact, language) => {
       label: f.sector?.label,
       type: 'select',
       required: false,
-      options: sectorTitles.concat([f.sector?.otherOption || 'Autre / Tous secteurs']),
+      options: sectorTitles.concat([f.sector?.otherOption || '']),
     },
     horizon: { label: f.horizon?.label, type: 'select', required: false, options: f.horizon?.options || [] },
     projectName: { label: f.projectName?.label, placeholder: f.projectName?.placeholder, type: 'text', required: true },
@@ -504,6 +507,9 @@ export const ContactPage = () => {
  * QuotePage – formulaire de devis générique (conservé pour compatibilité).
  */
 export const QuotePage = () => {
+  const { language } = useLanguage();
+  const tQuote = getContactTranslations(language).quotePage || getContactTranslations('EN').quotePage;
+  const tForm = getContactTranslations(language).form || getContactTranslations('EN').form;
   const [formData, setFormData] = useState({
     service: '',
     name: '',
@@ -554,14 +560,14 @@ export const QuotePage = () => {
         }),
       });
       if (response.ok) setSubmitted(true);
-      else setSubmitError(await getApiErrorMessage(response, "Impossible d'envoyer votre demande de devis."));
+      else setSubmitError(await getApiErrorMessage(response, tQuote.errorQuote));
     } catch (error) {
       console.error('Erreur réseau:', error);
-      setSubmitError(error.message || 'Erreur réseau. Réessayez plus tard.');
+      setSubmitError(error.message || tForm.errorNetwork);
     }
   };
 
-  const services = ['Lavage Auto', 'Déménagement', 'Entretien Bureau', 'Autre'];
+  const services = tQuote.services || [];
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
@@ -569,8 +575,8 @@ export const QuotePage = () => {
       <main className="flex-grow pt-24">
         <section className="bg-gradient-to-r from-primary to-primary-container py-16 px-6 text-white">
           <div className="max-w-[1400px] mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-4" style={{ color: '#ffffff' }}>Demander un devis</h1>
-            <p className="text-xl" style={{ color: 'rgba(255,255,255,0.9)' }}>Service gratuit et sans engagement</p>
+            <h1 className="text-5xl font-bold mb-4" style={{ color: '#ffffff' }}>{tQuote.title}</h1>
+            <p className="text-xl" style={{ color: 'rgba(255,255,255,0.9)' }}>{tQuote.subtitle}</p>
           </div>
         </section>
         <section className="py-16 px-6">
@@ -581,9 +587,9 @@ export const QuotePage = () => {
                   <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-green-700 mb-6">
                     <Check className="h-8 w-8" strokeWidth={2.5} />
                   </div>
-                  <h2 className="text-3xl font-bold text-on-surface mb-4">Demande envoyée !</h2>
+                  <h2 className="text-3xl font-bold text-on-surface mb-4">{tQuote.successTitle}</h2>
                   <p className="text-lg text-on-surface-variant mb-8">
-                    Votre demande de devis a bien été soumise. Vous recevrez une réponse par email dans les plus brefs délais.
+                    {tQuote.successText}
                   </p>
                   <button
                     type="button"
@@ -593,7 +599,7 @@ export const QuotePage = () => {
                     }}
                     className="px-8 py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                   >
-                    Faire une autre demande
+                    {tQuote.anotherRequest}
                   </button>
                 </div>
               ) : (
@@ -631,7 +637,7 @@ export const QuotePage = () => {
                       <textarea name="description" value={formData.description} onChange={handleChange} rows="5" className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="Décrivez votre projet en détail..." />
                     </div>
                     <button type="submit" className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                      Demander un devis
+                      {tQuote.submitLabel}
                     </button>
                   </div>
                 </>
