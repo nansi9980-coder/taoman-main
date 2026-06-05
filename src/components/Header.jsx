@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -190,7 +191,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
               aria-label={t.chooseLanguage}
             >
               <Flag code={currentLanguage.code} className="h-4 w-5 lg:h-4 lg:w-6" />
-              <span className="hidden xl:inline">{language}</span>
+              <span className="font-mono text-xs font-bold tracking-wide">{language}</span>
             </button>
             <div className="pointer-events-none absolute right-0 top-full z-40 h-3 w-full" aria-hidden="true" />
             <div className="invisible absolute right-0 top-full z-50 mt-2 w-52 origin-top-right scale-95 rounded-2xl border border-outline-variant/40 bg-surface p-2 opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none">
@@ -216,10 +217,16 @@ export const Header = ({ activeLink = 'accueil' }) => {
           <button
             type="button"
             onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-            className="interactive hidden h-9 w-9 cursor-pointer items-center justify-center rounded-xl border border-outline-variant bg-surface text-lg shadow-sm transition-all duration-300 hover:border-primary md:flex xl:h-10 xl:w-10"
+            className="interactive inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-outline-variant bg-surface px-2 text-on-surface shadow-sm transition-all duration-300 hover:border-primary sm:px-2.5 xl:h-10 xl:w-10 xl:px-0"
             aria-label={colorMode === 'dark' ? t.lightModeAria : t.darkModeAria}
+            title={colorMode === 'dark' ? t.light : t.dark}
           >
-            {colorMode === 'dark' ? '☀️' : '🌙'}
+            {colorMode === 'dark' ? (
+              <Sun className="h-4 w-4 xl:h-5 xl:w-5" aria-hidden="true" />
+            ) : (
+              <Moon className="h-4 w-4 xl:h-5 xl:w-5" aria-hidden="true" />
+            )}
+            <span className="text-xs font-bold xl:hidden">{colorMode === 'dark' ? t.light : t.dark}</span>
           </button>
 
           {user ? (
@@ -310,9 +317,15 @@ export const Header = ({ activeLink = 'accueil' }) => {
               <button
                 type="button"
                 onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-                className="interactive cursor-pointer rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface transition-colors hover:border-primary"
+                className="interactive inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-outline-variant bg-surface px-3 py-2 text-sm font-bold text-on-surface transition-colors hover:border-primary"
+                aria-label={colorMode === 'dark' ? t.lightModeAria : t.darkModeAria}
               >
-                {colorMode === 'dark' ? `☀️ ${t.light}` : `🌙 ${t.dark}`}
+                {colorMode === 'dark' ? (
+                  <Sun className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Moon className="h-4 w-4" aria-hidden="true" />
+                )}
+                {colorMode === 'dark' ? t.light : t.dark}
               </button>
             </div>
             <div className="border-t border-outline-variant mt-4 pt-4 space-y-2">

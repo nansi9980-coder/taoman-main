@@ -489,7 +489,7 @@ export const HomePage = () => {
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <div className="inline-flex items-center gap-2 rounded-full bg-cyan-300/20 px-3 py-1 backdrop-blur border border-cyan-300/30 mb-3">
                       <Globe className="w-4 h-4 text-cyan-300" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">Hub Afrique de l'Ouest</span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">{t.home.aboutTeaser.hubBadge}</span>
                     </div>
                     <p className="text-3xl font-black mb-2 leading-tight bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">TAOMAN GROUP INVESTMENT</p>
                     <p className="text-xl font-bold">{t.about.title}</p>
@@ -589,7 +589,7 @@ export const HomePage = () => {
                       <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
-                    <span className="text-sm font-bold text-on-surface-variant relative z-10 group-hover:text-emerald-700 transition-colors">Conforme aux standards SYSCOA & CEDEAO</span>
+                    <span className="text-sm font-bold text-on-surface-variant relative z-10 group-hover:text-emerald-700 transition-colors">{t.about.governance.complianceBadge}</span>
                   </div>
                </div>
             </Reveal>

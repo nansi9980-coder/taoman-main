@@ -76,6 +76,7 @@ const CONTENT = {
         title: 'Une structure rigoureuse au service des investisseurs',
         description:
           "TAOMAN Group Investment opère sous une gouvernance institutionnelle stricte alignée sur les standards SYSCOA et CEDEAO : organes décisionnels indépendants, contrôles internes et reporting structuré.",
+        complianceBadge: 'Conforme aux standards SYSCOA & CEDEAO',
         pillars: [
           {
             title: "Conseil d'administration",
@@ -386,6 +387,9 @@ const CONTENT = {
           teams: { tag: 'Équipes', title: 'Conducteurs certifiés' },
         },
       },
+      aboutTeaser: {
+        hubBadge: "Hub Afrique de l'Ouest",
+      },
       stats: {
         eyebrow: 'Notre impact',
         title: 'Des chiffres concrets, mesurés sur le terrain',
@@ -511,6 +515,7 @@ const CONTENT = {
         title: 'A rigorous structure serving investors',
         description:
           'TAOMAN Group Investment operates under strict institutional governance aligned with SYSCOA and ECOWAS standards: independent decision-making bodies, internal controls and structured reporting.',
+        complianceBadge: 'Compliant with SYSCOA & ECOWAS standards',
         pillars: [
           { title: 'Board of Directors', description: 'Strategic body validating investments, annual accounts and long-term direction. Mixed composition (founders, independents, sector expertise).' },
           { title: 'Audit & Compliance Committee', description: 'KYC, anti-money laundering (AML), SYSCOA compliance, operational and financial risk monitoring. Quarterly meetings with Board reporting.' },
@@ -778,6 +783,9 @@ const CONTENT = {
           teams: { tag: 'Teams', title: 'Certified drivers' },
         },
       },
+      aboutTeaser: {
+        hubBadge: 'West Africa Hub',
+      },
       stats: {
         eyebrow: 'Our impact',
         title: 'Real numbers, measured on the ground',
@@ -892,6 +900,7 @@ const CONTENT = {
         eyebrow: 'Gobernanza',
         title: 'Una estructura rigurosa al servicio de los inversores',
         description: 'TAOMAN Group Investment opera bajo una gobernanza institucional estricta alineada con los estándares UEMOA/CEDEAO: órganos independientes, controles internos y reporting estructurado.',
+        complianceBadge: 'Conforme a los estándares UEMOA y CEDEAO',
         pillars: [
           { title: 'Consejo de Administración', description: 'Órgano estratégico que valida las inversiones, las cuentas anuales y la dirección a largo plazo. Composición mixta (fundadores, independientes, expertos sectoriales).' },
           { title: 'Comité de Auditoría y Cumplimiento', description: 'KYC, lucha contra el blanqueo (AML), cumplimiento UEMOA, seguimiento de riesgos operativos y financieros. Reuniones trimestrales con reporte al Consejo.' },
@@ -1123,6 +1132,9 @@ const CONTENT = {
           teams: { tag: 'Equipos', title: 'Conductores certificados' },
         },
       },
+      aboutTeaser: {
+        hubBadge: 'Hub de África Occidental',
+      },
       stats: {
         eyebrow: 'Nuestro impacto',
         title: 'Cifras concretas, medidas sobre el terreno',
@@ -1235,6 +1247,7 @@ const CONTENT = {
         eyebrow: 'Governança',
         title: 'Uma estrutura rigorosa ao serviço dos investidores',
         description: 'A TAOMAN opera sob governança institucional rigorosa alinhada com os padrões UEMOA/CEDEAO: órgãos independentes, controlos internos e reporting estruturado.',
+        complianceBadge: 'Conforme aos padrões UEMOA e CEDEAO',
         pillars: [
           { title: 'Conselho de Administração', description: 'Órgão estratégico que valida investimentos, contas anuais e a direção a longo prazo. Composição mista (fundadores, independentes, expertise setorial).' },
           { title: 'Comité de Auditoria e Conformidade', description: 'KYC, anti-branqueamento (AML), conformidade UEMOA, monitorização de riscos operacionais e financeiros. Reuniões trimestrais com reporte ao Conselho.' },
@@ -1466,6 +1479,9 @@ const CONTENT = {
           teams: { tag: 'Equipas', title: 'Condutores certificados' },
         },
       },
+      aboutTeaser: {
+        hubBadge: 'Hub da África Ocidental',
+      },
       stats: {
         eyebrow: 'O nosso impacto',
         title: 'Números concretos, medidos no terreno',
@@ -1578,6 +1594,7 @@ const CONTENT = {
         eyebrow: 'Governance',
         title: 'Eine strenge Struktur im Dienst der Investoren',
         description: 'TAOMAN Group Investment arbeitet nach strengen institutionellen Governance-Grundsätzen, ausgerichtet an UEMOA- und ECOWAS-Standards: unabhängige Entscheidungsgremien, interne Kontrollen und strukturiertes Reporting.',
+        complianceBadge: 'Konform mit UEMOA- und ECOWAS-Standards',
         pillars: [
           { title: 'Verwaltungsrat', description: 'Strategisches Gremium, das Investitionen, Jahresabschlüsse und langfristige Ausrichtung validiert. Gemischte Zusammensetzung (Gründer, Unabhängige, Branchenexpertise).' },
           { title: 'Audit- und Compliance-Komitee', description: 'KYC, Anti-Geldwäsche (AML), UEMOA-Compliance, Überwachung operativer und finanzieller Risiken. Quartalsweise Sitzungen mit Berichterstattung an den Rat.' },
@@ -1809,6 +1826,9 @@ const CONTENT = {
           teams: { tag: 'Teams', title: 'Zertifizierte Fahrer' },
         },
       },
+      aboutTeaser: {
+        hubBadge: 'Westafrika-Hub',
+      },
       stats: {
         eyebrow: 'Unsere Wirkung',
         title: 'Konkrete Zahlen, vor Ort gemessen',
@@ -1921,6 +1941,7 @@ const CONTENT = {
         eyebrow: 'الحوكمة',
         title: 'هيكل صارم يخدم المستثمرين',
         description: 'تعمل تاومان وفق حوكمة مؤسسية صارمة متوافقة مع معايير UEMOA والإيكواس: هيئات قرار مستقلة، رقابة داخلية وتقارير منظمة.',
+        complianceBadge: 'متوافق مع معايير UEMOA والإيكواس',
         pillars: [
           { title: 'مجلس الإدارة', description: 'هيئة استراتيجية تصادق على الاستثمارات والحسابات السنوية والتوجهات بعيدة المدى. تركيبة مختلطة (مؤسسون، مستقلون، خبرة قطاعية).' },
           { title: 'لجنة التدقيق والامتثال', description: 'KYC ومكافحة غسل الأموال (AML) والامتثال لـ UEMOA ومتابعة المخاطر التشغيلية والمالية. اجتماعات ربع سنوية مع رفع تقرير للمجلس.' },
@@ -2152,6 +2173,9 @@ const CONTENT = {
           teams: { tag: 'الفِرق', title: 'سائقون معتمدون' },
         },
       },
+      aboutTeaser: {
+        hubBadge: 'مركز غرب أفريقيا',
+      },
       stats: {
         eyebrow: 'أثرنا',
         title: 'أرقام ملموسة من الميدان',
@@ -2264,6 +2288,7 @@ const CONTENT = {
         eyebrow: '治理',
         title: '为投资者服务的严谨架构',
         description: 'TAOMAN 在 UEMOA/西非经共体标准下严格的机构治理下运作：独立决策机构、内部控制和结构化报告。',
+        complianceBadge: '符合 UEMOA / 西非经共体标准',
         pillars: [
           { title: '董事会', description: '负责审批投资、年报与长期方向的战略机构。由创始人、独立董事和行业专家共同组成。' },
           { title: '审计与合规委员会', description: 'KYC、反洗钱（AML）、UEMOA 合规、运营与财务风险跟踪。季度会议并向董事会汇报。' },
@@ -2494,6 +2519,9 @@ const CONTENT = {
           services: { tag: '服务', title: '高端洗车' },
           teams: { tag: '团队', title: '认证司机' },
         },
+      },
+      aboutTeaser: {
+        hubBadge: '西非枢纽',
       },
       stats: {
         eyebrow: '我们的影响',
