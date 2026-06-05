@@ -55,15 +55,16 @@ export function SiteContentEditor() {
   const persist = async (sectionKey, data) => {
     setSaving(true);
     setStatus('');
-    saveContentOverride(sectionKey, data);
     try {
       await apiAuthFetch('/content/texts', {
         method: 'POST',
         body: JSON.stringify({ section: sectionKey, content: JSON.stringify(data) }),
       });
+      clearContentOverride(sectionKey);
       setStatus('Enregistré sur le serveur et appliqué au site.');
       reload();
     } catch {
+      saveContentOverride(sectionKey, data);
       setStatus('Enregistré localement (visible sur ce navigateur). Synchronisation serveur indisponible.');
     } finally {
       setSaving(false);

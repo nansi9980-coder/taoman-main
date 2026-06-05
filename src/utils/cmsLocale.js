@@ -13,6 +13,7 @@ import { mergeRealisationSlides } from '../data/realisations-defaults';
 import { mergeHeroMosaicBlock } from '../data/hero-mosaic-defaults';
 import { mergeServicesPageHeroSlides } from '../data/services-page-hero-defaults';
 import { isFrenchLocale } from './pickLocale';
+import { inheritFrenchMedia } from './cmsMedia';
 
 export const CMS_LOCALE_VERSION = 2;
 
@@ -287,19 +288,25 @@ export function getSectionI18nFallback(sectionKey, language) {
 export function resolveCmsForLanguage(rawContent, language, sectionKey) {
   const lang = language || 'FR';
   const locales = unwrapLocales(rawContent);
+  const frSource = locales.FR ?? rawContent ?? {};
+  const frResolved = applySectionPostProcess(sectionKey, frSource, 'FR');
 
   if (isFrenchLocale(lang)) {
-    const cms = locales.FR ?? rawContent ?? {};
-    return applySectionPostProcess(sectionKey, cms, lang);
+    return frResolved;
   }
 
+  let textResolved;
   const localized = locales[lang];
   if (hasMeaningfulContent(localized)) {
-    return applySectionPostProcess(sectionKey, localized, lang);
+    textResolved = applySectionPostProcess(sectionKey, localized, lang);
+  } else {
+    const i18n = getSectionI18nFallback(sectionKey, lang);
+    if (i18n && hasMeaningfulContent(i18n)) {
+      textResolved = applySectionPostProcess(sectionKey, i18n, lang);
+    } else {
+      textResolved = applySectionPostProcess(sectionKey, frSource, lang);
+    }
   }
 
-  const i18n = getSectionI18nFallback(sectionKey, lang);
-  if (i18n && hasMeaningfulContent(i18n)) return i18n;
-
-  return applySectionPostProcess(sectionKey, locales.FR || rawContent || {}, lang);
+  return inheritFrenchMedia(frResolved, textResolved, sectionKey);
 }

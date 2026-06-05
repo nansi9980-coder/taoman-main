@@ -33,14 +33,19 @@ const BENEFIT_ICONS = [ShieldCheck, RefreshCw, Users, HeadphonesIcon, Handshake,
 
 export const TaoEconomicInvestmentPage = () => {
   const navigate = useNavigate();
-  const { section } = useSiteContent();
+  const { section, cmsReady } = useSiteContent();
   const { translations: tc, language, nav: tNav } = useLanguage();
   const tT = tc?.tgi || {};
   const tCommon = tc?.common || {};
   const tgiPage = getTgiPageContent(language);
   const tgi = section('investmentTgi') || section('investmentTie');
 
-  const investmentStats = (tgi.stats?.length ? tgi.stats : tgiPage.stats).map((s, i) => ({
+  const statsSource = !cmsReady
+    ? []
+    : tgi.stats?.length
+      ? tgi.stats
+      : tgiPage.stats;
+  const investmentStats = statsSource.map((s, i) => ({
     ...s,
     Icon: STAT_ICONS[i % STAT_ICONS.length],
   }));
@@ -130,7 +135,15 @@ export const TaoEconomicInvestmentPage = () => {
             </Reveal>
             <Reveal preset="scale" childSelector=".stat-card" stagger={0.12}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {investmentStats.map((stat, idx) => {
+              {!cmsReady && (
+                Array.from({ length: 4 }).map((_, idx) => (
+                  <div
+                    key={`skeleton-${idx}`}
+                    className="h-48 rounded-3xl border border-outline-variant/40 bg-white animate-pulse"
+                  />
+                ))
+              )}
+              {cmsReady && investmentStats.map((stat, idx) => {
                 const { Icon } = stat;
                 return (
                   <div

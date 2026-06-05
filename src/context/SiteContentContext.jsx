@@ -65,12 +65,18 @@ export function SiteContentProvider({ children }) {
   const section = useCallback(
     (key) => {
       const base = content[key] || {};
+      const hasApiSection = Object.prototype.hasOwnProperty.call(content, key);
       const patch = overrides[key];
-      const merged = patch && typeof patch === 'object' ? { ...base, ...patch } : base;
+      const merged =
+        hasApiSection || !patch || typeof patch !== 'object'
+          ? base
+          : { ...base, ...patch };
       return resolveCmsForLanguage(merged, language, key);
     },
     [content, overrides, language],
   );
+
+  const cmsReady = !loading;
 
   const localizedServices = useMemo(() => {
     const localized = localizeServiceCards(services, language);
@@ -79,8 +85,8 @@ export function SiteContentProvider({ children }) {
   }, [services, language]);
 
   const value = useMemo(
-    () => ({ content, services: localizedServices, loading, section, reload: load, language }),
-    [content, localizedServices, loading, section, load, language],
+    () => ({ content, services: localizedServices, loading, cmsReady, section, reload: load, language }),
+    [content, localizedServices, loading, cmsReady, section, load, language],
   );
 
   return <SiteContentContext.Provider value={value}>{children}</SiteContentContext.Provider>;

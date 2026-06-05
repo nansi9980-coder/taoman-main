@@ -48,7 +48,7 @@ export const HomePage = () => {
   const [carouselPaused, setCarouselPaused] = useState(false);
   const isAuthenticated = Boolean(localStorage.getItem('token') && localStorage.getItem('user'));
 
-  const { content: apiSiteContent, services: apiServicesRaw, section } = useSiteContent();
+  const { content: apiSiteContent, services: apiServicesRaw, section, cmsReady } = useSiteContent();
   const { leadersSectionVisible } = useSiteFeatures();
   const mediaSettings = useMediaSettings();
   const [apiRealisations, setApiRealisations] = useState([]);
@@ -505,7 +505,7 @@ export const HomePage = () => {
           eyebrow={t.home.stats.eyebrow}
           title={t.home.stats.title}
           description={t.home.stats.description}
-          items={impactFromCms?.length
+          items={!cmsReady ? [] : impactFromCms?.length
             ? (() => {
                 const icons = [Briefcase, Layers, MapPin, SparklesIcon];
                 const i18nDefaults = [
