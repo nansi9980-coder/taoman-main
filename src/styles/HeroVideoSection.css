@@ -1,0 +1,226 @@
+/* ============================================
+   HERO VIDEO SECTION - 4K BACKGROUND WITH VIDEO
+   ============================================ */
+
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vidéo 4K en arrière-plan */
+.hero-video__bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Overlay semi-transparent avec gradient */
+.hero-video__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: -1;
+  transition: background 0.6s ease;
+}
+
+/* Contenu superposé */
+.hero-video__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  animation: fadeInUp 1s ease-out;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.hero-video__title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
+
+.hero-video__title .accent {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: gradientShift 3s ease infinite;
+}
+
+.hero-video__subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Bouton CTA avec animation */
+.hero-video__cta {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 25px rgba(0, 180, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-video__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 180, 255, 0.5);
+}
+
+.hero-video__cta:active {
+  transform: translateY(-1px);
+}
+
+.hero-video__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-video__cta:hover::before {
+  left: 100%;
+}
+
+/* Carousel Indicators */
+.hero-video__indicators {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 12px;
+  z-index: 2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid transparent;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+  background: #00d4ff;
+  width: 30px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-video {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .hero-video__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-video__subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-video__cta {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+
+  .hero-video__indicators {
+    bottom: 20px;
+    right: 20px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot.active {
+    width: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-video {
+    height: 50vh;
+  }
+
+  .hero-video__title {
+    font-size: 1.5rem;
+  }
+
+  .hero-video__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-video__indicators {
+    flex-direction: column;
+    right: 15px;
+    gap: 6px;
+  }
+}
