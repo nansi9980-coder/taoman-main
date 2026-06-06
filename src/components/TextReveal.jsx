@@ -1,15 +1,24 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-export const TextReveal = ({ text, className = '', elementType = 'span', delay = 0 }) => {
+export const TextReveal = ({
+  text = '',
+  className = '',
+  elementType = 'span',
+  delay = 0,
+  immediate = false,
+}) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  const isInView = useInView(ref, { once: true, margin: '-5%' });
+  const shouldShow = immediate || isInView;
+  const words = String(text).trim().split(/\s+/).filter(Boolean);
 
-  // Split text into words
-  const words = text.split(" ");
+  if (words.length === 0) {
+    return null;
+  }
 
   const container = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: immediate ? 1 : 0 },
     visible: (i = 1) => ({
       opacity: 1,
       transition: { staggerChildren: 0.08, delayChildren: delay * i },
@@ -21,14 +30,14 @@ export const TextReveal = ({ text, className = '', elementType = 'span', delay =
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       },
     },
     hidden: {
-      opacity: 0,
-      y: 40,
+      opacity: immediate ? 1 : 0,
+      y: immediate ? 0 : 40,
     },
   };
 
@@ -38,12 +47,12 @@ export const TextReveal = ({ text, className = '', elementType = 'span', delay =
     <Tag
       ref={ref}
       variants={container}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={immediate ? 'visible' : 'hidden'}
+      animate={shouldShow ? 'visible' : 'hidden'}
       className={`inline-flex flex-wrap ${className}`}
     >
       {words.map((word, index) => (
-        <span key={index} className="overflow-hidden inline-flex mr-[0.25em] last:mr-0">
+        <span key={`${word}-${index}`} className="overflow-hidden inline-flex mr-[0.25em] last:mr-0">
           <motion.span variants={child} className="inline-block">
             {word}
           </motion.span>
@@ -52,3 +61,5 @@ export const TextReveal = ({ text, className = '', elementType = 'span', delay =
     </Tag>
   );
 };
+
+export default TextReveal;

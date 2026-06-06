@@ -1,13 +1,20 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const pageVariants = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 1, y: 16 },
   in: { opacity: 1, y: 0 },
-  out: { opacity: 0, y: -12 },
+  out: { opacity: 1, y: -8 },
 };
 
 export const PageTransition = ({ children }) => {
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => ScrollTrigger.refresh(), 450);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
     <motion.div
@@ -18,8 +25,9 @@ export const PageTransition = ({ children }) => {
       transition={{
         type: 'tween',
         ease: 'easeInOut',
-        duration: reduceMotion ? 0 : 0.35,
+        duration: reduceMotion ? 0 : 0.3,
       }}
+      onAnimationComplete={() => ScrollTrigger.refresh()}
       className="flex flex-col min-h-screen w-full"
     >
       {children}

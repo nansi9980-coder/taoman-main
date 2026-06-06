@@ -71,7 +71,12 @@ export function Reveal({
       },
     });
 
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    const refreshTimer = window.setTimeout(refresh, 400);
+
     return () => {
+      window.clearTimeout(refreshTimer);
       tween.scrollTrigger?.kill();
       tween.kill();
     };

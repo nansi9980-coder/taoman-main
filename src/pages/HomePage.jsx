@@ -299,7 +299,7 @@ export const HomePage = () => {
       <main id="main-content" className="flex-grow pt-24">
 
         {/* ============ HERO PREMIUM — vidéo cinématique ============ */}
-        <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32 animate-hero-video-reveal">
+        <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
           <VideoHeroBackground
             src={HERO_MEDIA_SPECS.homeVideo.src}
             poster={HERO_MEDIA_SPECS.homeVideo.poster}
@@ -309,7 +309,7 @@ export const HomePage = () => {
           />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full">
-            <div className="max-w-3xl animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+            <div className="max-w-3xl [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
               <div className="mb-6 flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur-md shadow-lg">
                   <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(125,211,252,0.9)] animate-glow-pulse" />
@@ -323,11 +323,12 @@ export const HomePage = () => {
                 </span>
                 <TextReveal 
                   elementType="span" 
+                  immediate
                   className="block text-5xl md:text-7xl xl:text-[5.5rem] font-black bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent" 
                   text={heroData.title || ''} 
                 />
                 <span className="mt-5 block text-xl md:text-3xl font-bold text-white drop-shadow-md">
-                  <TextReveal elementType="span" text={heroData.subtitle || ''} delay={0.5} />
+                  <TextReveal elementType="span" immediate text={heroData.subtitle || ''} delay={0.5} />
                 </span>
               </h1>
 
@@ -379,7 +380,7 @@ export const HomePage = () => {
                   ratio="aspect-[4/3]"
                   rounded="rounded-[2rem]"
                   tone="neutral"
-                  className="shadow-2xl relative z-10 animate-hero-img"
+                  className="shadow-2xl relative z-10"
                   imageClassName="animate-ken-burns"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 to-transparent"></div>
@@ -388,7 +389,7 @@ export const HomePage = () => {
                       <Globe className="w-4 h-4 text-cyan-300" />
                       <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">{t.home.aboutTeaser.hubBadge}</span>
                     </div>
-                    <p className="text-3xl font-black mb-2 leading-tight bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">TAOMAN GROUP INVESTMENT</p>
+                    <p className="text-3xl font-black mb-2 leading-tight text-white drop-shadow-md">TAOMAN GROUP INVESTMENT</p>
                     <p className="text-xl font-bold">{t.about.title}</p>
                   </div>
                 </PremiumImageFrame>
@@ -399,7 +400,7 @@ export const HomePage = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
                   {t.about.vision.eyebrow} & {t.about.mission.eyebrow}
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-6 leading-tight section-underline">
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-6 leading-tight">
                   {t.about.vision.title}
                 </h2>
                 <div className="space-y-6 text-lg text-on-surface-variant">
