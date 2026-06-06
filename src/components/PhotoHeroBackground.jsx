@@ -28,7 +28,7 @@ export const PhotoHeroBackground = ({
   const isCenter = overlayVariant === 'center';
 
   return (
-    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 overflow-hidden z-0" aria-hidden="true">
       <img
         src={src}
         alt=""

@@ -22,6 +22,7 @@ import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
 import programmeImg from '../assets/programme.jpeg';
@@ -279,8 +280,13 @@ export const InvestmentPage = () => {
       <Header activeLink="investissement" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden py-24 px-6 text-white">
-          <PhotoHeroBackground src="/images/investissements.jpg" overlayVariant="center" overlayIntensity="strong" />
+        <section className="relative overflow-hidden min-h-[50vh] md:min-h-[55vh] flex items-center py-24 px-6 text-white">
+          <PhotoHeroBackground
+            src={HERO_MEDIA_SPECS.investment.src}
+            objectPosition={HERO_MEDIA_SPECS.investment.objectPosition}
+            overlayVariant={HERO_MEDIA_SPECS.investment.overlayVariant}
+            overlayIntensity="strong"
+          />
           <div className="relative z-10 mx-auto max-w-[1100px] text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{badge}</p>
             <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] md:text-7xl">{title}</h1>

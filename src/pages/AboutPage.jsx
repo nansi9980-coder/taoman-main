@@ -30,6 +30,7 @@ import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { pickLocale } from '../utils/pickLocale';
 
 const DEFAULT_ABOUT = {
@@ -119,8 +120,13 @@ export const AboutPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO PREMIUM ============ */}
-        <section id="profile" className="relative overflow-hidden py-24 px-6 text-white">
-          <PhotoHeroBackground src="/images/Apropos.jpg" objectPosition="center center" overlayIntensity="strong" />
+        <section id="profile" className="relative overflow-hidden min-h-[55vh] md:min-h-[60vh] flex items-center py-24 px-6 text-white">
+          <PhotoHeroBackground
+            src={HERO_MEDIA_SPECS.about.src}
+            objectPosition={HERO_MEDIA_SPECS.about.objectPosition}
+            overlayVariant={HERO_MEDIA_SPECS.about.overlayVariant}
+            overlayIntensity="strong"
+          />
 
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>

@@ -21,6 +21,7 @@ import { Header } from '../components/Header';
 import { SeoHead } from '../components/SeoHead';
 import { Footer } from '../components/Footer';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -410,8 +411,13 @@ export const ContactPage = () => {
       <Header activeLink="contact" />
 
       <main id="main-content" className="flex-grow pt-24">
-        <section className="relative overflow-hidden py-20 px-6 text-white">
-          <PhotoHeroBackground src="/images/Contact.jpg" overlayVariant="center" overlayIntensity="strong" />
+        <section className="relative overflow-hidden min-h-[50vh] md:min-h-[55vh] flex items-center py-20 px-6 text-white">
+          <PhotoHeroBackground
+            src={HERO_MEDIA_SPECS.contact.src}
+            objectPosition={HERO_MEDIA_SPECS.contact.objectPosition}
+            overlayVariant={HERO_MEDIA_SPECS.contact.overlayVariant}
+            overlayIntensity="strong"
+          />
           <div className="relative z-10 max-w-[1200px] mx-auto text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}

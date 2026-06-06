@@ -6,6 +6,7 @@ import { SeoHead } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { VideoHeroBackground } from '../components/VideoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { PremiumImageFrame } from '../components/PremiumImageFrame';
 import { StatsBand } from '../components/StatsBand';
 import { PartnersBand } from '../components/PartnersBand';
@@ -300,10 +301,11 @@ export const HomePage = () => {
       <main id="main-content" className="flex-grow pt-24">
 
         {/* ============ HERO PREMIUM — vidéo cinématique ============ */}
-        <section className="relative overflow-hidden min-h-[75vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
+        <section className="relative overflow-hidden min-h-[70vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
           <VideoHeroBackground
-            src="/video/Hero.mp4"
-            poster="/images/hero-logistics-bg.png"
+            src={HERO_MEDIA_SPECS.homeVideo.src}
+            poster={HERO_MEDIA_SPECS.homeVideo.poster}
+            objectPosition={HERO_MEDIA_SPECS.homeVideo.objectPosition}
             overlayIntensity="strong"
             overlayVariant="left"
           />

@@ -23,6 +23,7 @@ import { mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { PhotoSlider } from '../components/PhotoSlider';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { SeoHead, buildServiceLd } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { useLanguage } from '../context/LanguageContext';
@@ -163,8 +164,13 @@ export const ServicesPage = () => {
       <Header activeLink="services" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden py-20 px-6 text-white">
-          <PhotoHeroBackground src="/images/services.jpg" objectPosition="center center" overlayIntensity="strong" />
+        <section className="relative overflow-hidden min-h-[55vh] md:min-h-[60vh] flex items-center py-20 px-6 text-white">
+          <PhotoHeroBackground
+            src={HERO_MEDIA_SPECS.services.src}
+            objectPosition={HERO_MEDIA_SPECS.services.objectPosition}
+            overlayVariant={HERO_MEDIA_SPECS.services.overlayVariant}
+            overlayIntensity="strong"
+          />
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{heroBadge}</p>
