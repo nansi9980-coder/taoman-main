@@ -50,6 +50,7 @@ export const VideoHeroBackground = ({
 
   return (
     <div className="absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+      <div className="scan-line-effect" />
       {poster && showPoster && (
         <img
           src={poster}

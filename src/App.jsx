@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
+import { PageTransitionLayout } from './components/PageTransitionLayout';
 import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
 import './App.css';
@@ -75,6 +76,7 @@ function App() {
             <ScrollToTop />
             <Suspense fallback={<RouteFallback />}>
               <Routes>
+                <Route element={<PageTransitionLayout />}>
                 {/* Pages Principales */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/services" element={<ServicesPage />} />
@@ -124,6 +126,7 @@ function App() {
                 <Route path="/mentions-legales" element={<LegalPage />} />
                 <Route path="/confidentialite" element={<PrivacyPage />} />
                 <Route path="/termes-conditions" element={<TermsConditionsPage />} />
+                </Route>
               </Routes>
             </Suspense>
           </Router>

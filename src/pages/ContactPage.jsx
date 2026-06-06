@@ -21,6 +21,7 @@ import { Header } from '../components/Header';
 import { SeoHead } from '../components/SeoHead';
 import { Footer } from '../components/Footer';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { Reveal } from '../components/Reveal';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -121,7 +122,7 @@ const ContactCard = ({ topic, onSelect, active, labels }) => {
     <button
       type="button"
       onClick={() => onSelect(topic.id)}
-      className={`group text-left rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+      className={`group text-left rounded-3xl border p-7 transition-all duration-300 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0 ${
         active
           ? 'bg-gradient-to-br from-primary to-primary-container text-white border-primary shadow-2xl'
           : 'bg-white border-outline-variant/40 hover:border-primary/40'
@@ -434,32 +435,38 @@ export const ContactPage = () => {
         {/* 4 OPTIONS */}
         <section className="py-16 px-6 bg-surface">
           <div className="max-w-[1400px] mx-auto">
+            <Reveal preset="fadeUp">
             <div className="text-center mb-10">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary">
                 <Building2 className="h-4 w-4" strokeWidth={2.4} /> {intro.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface tracking-tight">
+              <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface tracking-tight section-underline">
                 {intro.title}
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-on-surface-variant text-lg">{intro.description}</p>
             </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".contact-topic-card" stagger={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
               {topicsList.map((t) => (
+                <div key={t.id} className="contact-topic-card">
                 <ContactCard
-                  key={t.id}
                   topic={t}
                   onSelect={selectTopic}
                   active={t.id === topicId}
                   labels={{ cardSelected: tContactExt.cardSelected, cardSelect: tContactExt.cardSelect }}
                 />
+                </div>
               ))}
             </div>
+            </Reveal>
           </div>
         </section>
 
         <ContactLocationMap contactInfo={contactInfo} labels={tContactExt.location} />
 
         {/* FORMULAIRE SELECTIONNE */}
+        <Reveal preset="fadeUp">
         <section id="contact-form" className="py-16 px-6 bg-gradient-to-b from-surface-container-low to-surface scroll-mt-24">
           <div className="max-w-[1400px] mx-auto">
             <div className="mb-8 flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">
@@ -477,8 +484,10 @@ export const ContactPage = () => {
             />
           </div>
         </section>
+        </Reveal>
 
         {/* BANDEAU GROUPE TAOMAN */}
+        <Reveal preset="fadeUp">
         <section className="py-16 px-6 bg-gradient-to-br from-primary to-primary-container">
           <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_0.8fr] gap-8 items-center text-white">
             <div>
@@ -502,6 +511,7 @@ export const ContactPage = () => {
             </div>
           </div>
         </section>
+        </Reveal>
       </main>
 
       <Footer />

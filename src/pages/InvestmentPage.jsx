@@ -22,6 +22,7 @@ import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { Reveal } from '../components/Reveal';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
@@ -328,11 +329,12 @@ export const InvestmentPage = () => {
           </div>
         </nav>
 
+        <Reveal preset="fadeUp">
         <section className="bg-white py-12 px-6">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
               {statRows.map(([value, label]) => (
-                <div key={label} className="rounded-3xl border border-outline-variant/40 bg-surface-container-low p-6 text-center shadow-sm">
+                <div key={label} className="rounded-3xl border border-outline-variant/40 bg-surface-container-low p-6 text-center shadow-sm interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
                   <p className="text-3xl md:text-4xl font-black text-primary">{value}</p>
                   <p className="mt-2 text-xs md:text-sm font-semibold text-on-surface-variant">{label}</p>
                 </div>
@@ -340,17 +342,21 @@ export const InvestmentPage = () => {
             </div>
           </div>
         </section>
+        </Reveal>
 
         {/* TAOMAN Programmes : TGI + Simulateur */}
         <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
           <div className="mx-auto max-w-[1400px]">
+            <Reveal preset="fadeUp">
             <div className="mb-12 text-center">
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.programs?.title}</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface section-underline">{tInv.programs?.title}</h2>
               <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant">{ip.programs.intro}</p>
             </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".program-card" stagger={0.15}>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-              <div className="group relative overflow-hidden bg-gradient-to-br from-[#0047AB] to-[#002366] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,71,171,0.3)] transition-all duration-500 transform hover:-translate-y-3 animate-fade-in-up">
+              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#0047AB] to-[#002366] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,71,171,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
 
                 <div className="flex items-start justify-between mb-8">
@@ -376,7 +382,7 @@ export const InvestmentPage = () => {
                 </button>
               </div>
 
-              <div className="group relative overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#333333] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-3 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#333333] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-16 -mb-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
 
                 <div className="flex items-start justify-between mb-8">
@@ -402,24 +408,27 @@ export const InvestmentPage = () => {
                 </Link>
               </div>
             </div>
+            </Reveal>
           </div>
         </section>
 
         {/* Opportunités d'investissement */}
         <section id="opportunites" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1400px]">
+            <Reveal preset="fadeUp">
             <div className="text-center mb-12">
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.opportunities?.eyebrow}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.opportunities?.title}</h2>
+              <h2 className="mt-3 text-4xl font-black text-on-surface section-underline">{tInv.opportunities?.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.opportunities.intro}</p>
             </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".invest-sector-card" stagger={0.08}>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sectors.map((sector, idx) => (
                 <Link
                   key={sector.slug || idx}
                   to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
-                  className="group flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm border border-outline-variant/40 transition-all hover:-translate-y-1 hover:shadow-2xl animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 80}ms` }}
+                  className="invest-sector-card group flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm border border-outline-variant/40 transition-all interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0"
                 >
                   {sector.image && (
                     <div className="relative h-44 overflow-hidden bg-surface-container-low">
@@ -467,6 +476,7 @@ export const InvestmentPage = () => {
                 </Link>
               ))}
             </div>
+            </Reveal>
 
             {apiInvestments.length > 0 && (
               <div className="mt-16">

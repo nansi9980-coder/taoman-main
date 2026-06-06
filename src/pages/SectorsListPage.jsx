@@ -61,13 +61,19 @@ export const SectorsListPage = () => {
 
         <section className="py-20 px-6 bg-surface">
           <div className="max-w-[1200px] mx-auto">
+            <Reveal preset="fadeUp">
+            <div className="text-center mb-12">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-4">{tSec.hero.eyebrow}</p>
+              <h2 className="text-3xl md:text-4xl font-black text-on-surface section-underline">{tSec.hero.title}</h2>
+            </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".sector-list-card" stagger={0.08}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {sectors.map((sector, idx) => (
                 <Link
                   key={sector.slug || idx}
                   to={`/secteurs/${sector.slug || idx}`}
-                  className="group relative flex flex-col overflow-hidden rounded-3xl border border-outline-variant/40 bg-white shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 80}ms` }}
+                  className="sector-list-card group relative flex flex-col overflow-hidden rounded-3xl border border-outline-variant/40 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0"
                 >
                   {/* Photo */}
                   {sector.image && (
@@ -138,6 +144,7 @@ export const SectorsListPage = () => {
                 </Link>
               ))}
             </div>
+            </Reveal>
 
             {sectors.length === 0 && (
               <p className="text-center text-on-surface-variant">{tSec.empty}</p>

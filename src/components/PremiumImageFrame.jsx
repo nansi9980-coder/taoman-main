@@ -36,7 +36,7 @@ export const PremiumImageFrame = ({
   return (
     <Wrapper
       {...wrapperProps}
-      className={`group relative isolate block overflow-hidden ${ratio} ${rounded} premium-halo premium-shine cine-vignette ${className}`}
+      className={`group relative isolate block overflow-hidden ${ratio} ${rounded} premium-halo premium-shine cine-vignette interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0 ${className}`}
     >
       <img
         src={src}

@@ -191,7 +191,7 @@ export const ServicesPage = () => {
                 </button>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative animate-float-slow">
               <div className="absolute -inset-4 rounded-[2.5rem] bg-cyan-300/20 blur-2xl" aria-hidden="true"></div>
               <PhotoSlider
                 slides={heroSlides}
