@@ -309,7 +309,7 @@ export const HomePage = () => {
             overlayIntensity="strong"
             overlayVariant="left"
           />
-          <AmbientEffects variant="hero" className="z-[2]" />
+          <AmbientEffects variant="hero" className="absolute inset-0 z-[5] pointer-events-none" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full">
             <div className="max-w-3xl [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">

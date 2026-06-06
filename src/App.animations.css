@@ -257,6 +257,12 @@
   animation: heroKenBurns 18s ease-in-out infinite alternate;
 }
 
+.hero-video-layer {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block;
+}
+
 .hero-video-playing {
   animation: heroKenBurns 22s ease-in-out infinite alternate;
 }
