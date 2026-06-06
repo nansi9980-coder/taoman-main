@@ -416,16 +416,16 @@ export const ContactPage = () => {
             src={HERO_MEDIA_SPECS.contact.src}
             objectPosition={HERO_MEDIA_SPECS.contact.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.contact.overlayVariant}
-            overlayIntensity="strong"
+            overlayIntensity="max"
           />
-          <div className="relative z-10 max-w-[1200px] mx-auto text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur-md">
+          <div className="relative z-10 max-w-[1200px] mx-auto text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/50 bg-[#020d1a]/70 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
               {tContact.hero.title}
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
+            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               {tContact.hero.description}
             </p>
           </div>

@@ -17,8 +17,6 @@ import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight, ShieldCheck, Scale, FileText, PieChart, Target, Globe } from 'lucide-react';
 import lavage2    from '../assets/realisations/lavage2.jpg';
 import mecanique2 from '../assets/realisations/mecanique2.jpg';
-import transport2 from '../assets/realisations/transport2.jpg';
-import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';
@@ -376,7 +374,7 @@ export const HomePage = () => {
               <div className="relative">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
                 <PremiumImageFrame
-                  src={transport2}
+                  src={HERO_MEDIA_SPECS.about.src}
                   alt={t.about.vision.title}
                   ratio="aspect-[4/3]"
                   rounded="rounded-[2rem]"

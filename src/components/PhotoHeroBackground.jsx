@@ -12,16 +12,25 @@ export const PhotoHeroBackground = ({
       horizontal: 'from-[#020d1a]/75 via-[#020d1a]/50 to-[#020d1a]/30',
       vertical: 'from-[#020d1a]/60 via-transparent to-[#020d1a]/25',
       center: 'from-[#020d1a]/70 via-[#020d1a]/55 to-[#020d1a]/70',
+      scrim: 'bg-[#020d1a]/25',
     },
     medium: {
       horizontal: 'from-[#020d1a]/88 via-[#020d1a]/68 to-[#020d1a]/40',
       vertical: 'from-[#020d1a]/75 via-transparent to-[#020d1a]/35',
       center: 'from-[#020d1a]/82 via-[#020d1a]/68 to-[#020d1a]/82',
+      scrim: 'bg-[#020d1a]/35',
     },
     strong: {
       horizontal: 'from-[#020d1a]/96 via-[#020d1a]/82 to-[#020d1a]/52',
       vertical: 'from-[#020d1a]/88 via-transparent to-[#020d1a]/40',
       center: 'from-[#020d1a]/88 via-[#020d1a]/72 to-[#020d1a]/88',
+      scrim: 'bg-[#020d1a]/40',
+    },
+    max: {
+      horizontal: 'from-[#020d1a]/98 via-[#020d1a]/90 to-[#020d1a]/60',
+      vertical: 'from-[#020d1a]/92 via-[#020d1a]/75 to-[#020d1a]/55',
+      center: 'from-[#020d1a]/94 via-[#020d1a]/88 to-[#020d1a]/94',
+      scrim: 'bg-[#020d1a]/55',
     },
   };
   const overlay = overlayMap[overlayIntensity] || overlayMap.strong;
@@ -38,6 +47,7 @@ export const PhotoHeroBackground = ({
         fetchPriority="high"
         decoding="async"
       />
+      <div className={`absolute inset-0 ${overlay.scrim}`} />
       {isCenter ? (
         <>
           <div className={`absolute inset-0 bg-gradient-to-b ${overlay.center}`} />

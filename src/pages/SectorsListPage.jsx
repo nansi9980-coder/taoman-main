@@ -46,14 +46,14 @@ export const SectorsListPage = () => {
             src={HERO_MEDIA_SPECS.projects.src}
             objectPosition={HERO_MEDIA_SPECS.projects.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.projects.overlayVariant}
-            overlayIntensity="strong"
+            overlayIntensity="max"
           />
-          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">{tSec.hero.eyebrow}</p>
-            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6 bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
+          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
+            <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{tSec.hero.eyebrow}</p>
+            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6 text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
               {tSec.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               {tSec.hero.description}
             </p>
           </div>

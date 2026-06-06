@@ -285,12 +285,12 @@ export const InvestmentPage = () => {
             src={HERO_MEDIA_SPECS.investment.src}
             objectPosition={HERO_MEDIA_SPECS.investment.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.investment.overlayVariant}
-            overlayIntensity="strong"
+            overlayIntensity="max"
           />
-          <div className="relative z-10 mx-auto max-w-[1100px] text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{badge}</p>
-            <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] md:text-7xl">{title}</h1>
-            <p className="mb-10 mx-auto max-w-2xl text-xl text-white/90">{description}</p>
+          <div className="relative z-10 mx-auto max-w-[1100px] text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{badge}</p>
+            <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] md:text-7xl">{title}</h1>
+            <p className="mb-10 mx-auto max-w-2xl text-xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
                 {tCommon.contactInvest}
