@@ -104,7 +104,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
       <SeoHead
         title={
           isServicePage
-            ? `${sector.title} — ${td.seoServiceSuffix || 'Service TAOMAN Group Investment'}`
+            ? `${sector.title} — ${td.seoServiceSuffix || 'Service Taoman Group Investissement'}`
             : `${sector.title} — ${td.seoSector || "Secteur d'investissement"}`
         }
         description={
@@ -122,7 +122,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
           { name: isServicePage ? tNav.services : tNav.projects, path: isServicePage ? '/services' : '/secteurs' },
           { name: sector.title, path: detailPath },
         ])}
-        keywords={`${sector.title}, ${isServicePage ? 'service' : 'secteur'} Togo, TAOMAN, ${sector.title}`}
+        keywords={`${sector.title}, ${isServicePage ? 'service' : 'secteur'} Togo, Taoman Group Investissement, ${sector.title}`}
       />
       <Header activeLink={isServicePage ? 'services' : 'projets'} />
 
@@ -152,7 +152,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
-                {sector.tag || (isServicePage ? sectorUi.serviceTag : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par TAOMAN Group Investment'}
+                {sector.tag || (isServicePage ? sectorUi.serviceTag : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par Taoman Group Investissement'}
               </span>
               <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]" style={{ color: '#ffffff' }}>
                 {sector.title}
@@ -227,7 +227,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
           </div>
         </section>
 
-        {/* OPÉRÉ PAR TAOMAN */}
+        {/* OPÉRÉ PAR Taoman Group Investissement */}
         <section className="py-12 px-6 bg-surface">
           <div className="max-w-[1200px] mx-auto rounded-3xl bg-gradient-to-br from-primary/8 to-cyan-50/40 border border-primary/15 p-7 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center">
             <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow-lg shrink-0">
@@ -235,7 +235,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
             </span>
             <div className="flex-1">
               <p className="text-xs font-black uppercase tracking-[0.3em] text-primary">{td.operatedByEyebrow || 'Opéré et financé par'}</p>
-              <h2 className="mt-2 text-2xl md:text-3xl font-black text-on-surface">TAOMAN Group Investment</h2>
+              <h2 className="mt-2 text-2xl md:text-3xl font-black text-on-surface">Taoman Group Investissement</h2>
               <p className="mt-3 text-on-surface-variant leading-relaxed">
                 {td.groupOperatedBody || td.groupOperated}
               </p>
@@ -260,7 +260,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   <Compass className="h-4 w-4" strokeWidth={2.4} /> {td.contextEyebrow || 'Contexte et objectifs'}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-5 tracking-tight">
-                  {td.whyInvest || 'Pourquoi TAOMAN investit dans ce secteur'}
+                  {td.whyInvest || 'Pourquoi Taoman Group Investissement investit dans ce secteur'}
                 </h2>
                 <p className="text-lg leading-relaxed text-on-surface-variant whitespace-pre-line">
                   {sector.context || sector.intro}
@@ -286,7 +286,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     <MapPin className="h-4 w-4" strokeWidth={2.4} /> {td.scopeEyebrow || 'Périmètre opérationnel'}
                   </p>
                   <h2 className="text-3xl font-black text-on-surface mb-5 tracking-tight">
-                    {td.scopeTitle || 'Où et comment TAOMAN opère'}
+                    {td.scopeTitle || 'Où et comment Taoman Group Investissement opère'}
                   </h2>
                   <p className="text-lg leading-relaxed text-on-surface-variant mb-6">
                     {sector.perimetre}
@@ -315,7 +315,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   <Layers3 className="h-4 w-4" strokeWidth={2.4} /> {td.aspectsEyebrow || 'Aspects opérationnels'}
                 </p>
                 <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                  {td.aspectsTitle || 'Comment TAOMAN sécurise chaque projet'}
+                  {td.aspectsTitle || 'Comment Taoman Group Investissement sécurise chaque projet'}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {aspects.map((a) => {
@@ -362,7 +362,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     <Briefcase className="h-4 w-4" strokeWidth={2.4} /> {td.opportunitiesEyebrow || 'Opportunités identifiées'}
                   </p>
                   <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                    {td.opportunitiesTitle || 'Les projets que TAOMAN vise'}
+                    {td.opportunitiesTitle || 'Les projets que Taoman Group Investissement vise'}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {sector.opportunities.map((opportunity) => {
@@ -385,7 +385,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   <CalendarClock className="h-4 w-4" strokeWidth={2.4} /> {td.phasesEyebrow || 'Calendrier projet'}
                 </p>
                 <h2 className="text-3xl font-black text-on-surface mb-6 tracking-tight">
-                  {td.phasesTitle || 'Les 4 phases de chaque projet TAOMAN'}
+                  {td.phasesTitle || 'Les 4 phases de chaque projet Taoman Group Investissement'}
                 </h2>
                 <ol className="space-y-4">
                   {phases.map((phase) => (
@@ -450,7 +450,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     </span>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{td.projectLeadLabel || 'Porteur du projet'}</p>
-                      <p className="mt-0.5 font-black text-on-surface">{sector.porteur || 'TAOMAN Group Investment'}</p>
+                      <p className="mt-0.5 font-black text-on-surface">{sector.porteur || 'Taoman Group Investissement'}</p>
                     </div>
                   </div>
 
@@ -540,11 +540,11 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
           </div>
         </section>
 
-        {/* CTA BANDEAU – emphase Groupe TAOMAN */}
+        {/* CTA BANDEAU – emphase Groupe Taoman Group Investissement */}
         <section className="py-20 px-6 bg-gradient-to-br from-primary to-primary-container">
           <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_1fr] gap-8 items-center text-white">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">TAOMAN Group Investment</p>
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-white/85">Taoman Group Investissement</p>
               <h2 className="mt-3 text-3xl md:text-4xl font-black leading-tight" style={{ color: '#ffffff' }}>
                 {td.ctaGroupTitle || 'Un groupe, plusieurs métiers, une seule exigence.'}
               </h2>

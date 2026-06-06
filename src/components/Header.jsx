@@ -7,7 +7,7 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { mediaUrl } from '../config';
 import { NavDropdownDesktop, NavDropdownMobile } from './NavDropdown';
-import { getBrandName } from '../constants/branding';
+import { getBrandName, BRAND_LINE_1, BRAND_LINE_2 } from '../constants/branding';
 import { Flag } from './Flag';
 import { DEFAULT_SECTORS, getSectorBySlug } from '../data/sectors-defaults';
 import { localizeSector } from '../utils/localizedSector';
@@ -148,10 +148,10 @@ export const Header = ({ activeLink = 'accueil' }) => {
           />
           <div className="hidden md:block leading-tight min-w-0">
             <p className="text-sm xl:text-base font-black tracking-[0.15em] xl:tracking-[0.2em] text-primary truncate">
-              TAOMAN
+              {BRAND_LINE_1}
             </p>
             <p className="text-xs xl:text-sm font-bold text-on-surface-variant truncate hidden xl:block">
-              Group Investment
+              {BRAND_LINE_2}
             </p>
           </div>
         </Link>

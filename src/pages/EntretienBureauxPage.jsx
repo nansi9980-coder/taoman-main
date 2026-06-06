@@ -172,7 +172,7 @@ export const EntretienBureauxPage = () => {
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
               <img
                 src={mecanique1}
-                alt="Équipe d'entretien TAOMAN"
+                alt="Équipe d'entretien Taoman Group Investissement"
                 className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
                 loading="lazy"
               />
@@ -376,7 +376,7 @@ export const EntretienBureauxPage = () => {
               {[
                 { q: "Quelle est la durée d'engagement minimum pour un contrat régulier ?", a: "Nos contrats réguliers sont signés pour 3 mois minimum, renouvelables. Cela nous permet d'amortir la formation des équipes à votre site et de stabiliser la qualité. Pour un essai, nous proposons d'abord une intervention ponctuelle." },
                 { q: "Quels sont les horaires possibles d'intervention ?", a: "Nous intervenons à toute heure : matin tôt avant l'ouverture (5h-8h), soir après la fermeture (18h-22h), nuit (22h-5h), week-ends. Le choix dépend de vos contraintes d'accès et de l'occupation de vos locaux." },
-                { q: "Qui fournit les produits et le matériel ?", a: "Par défaut, TAOMAN fournit tous les produits et tout le matériel professionnel. Le coût est inclus dans le forfait. Si vous préférez fournir vos propres produits, nous pouvons l'organiser et déduire la part correspondante." },
+                { q: "Qui fournit les produits et le matériel ?", a: "Par défaut, Taoman Group Investissement fournit tous les produits et tout le matériel professionnel. Le coût est inclus dans le forfait. Si vous préférez fournir vos propres produits, nous pouvons l'organiser et déduire la part correspondante." },
                 { q: "Que se passe-t-il en cas d'absence d'un agent ?", a: "Notre équipe inclut un système de remplacement. En cas d'absence d'un agent, un binôme connaît le site et prend le relais. Vous ne voyez pas la rupture, c'est notre responsabilité." },
                 { q: "Mes équipements sensibles (ordinateurs, serveurs) sont-ils en sécurité ?", a: "Nos agents sont formés à respecter le mobilier et les équipements informatiques. Nous n'ouvrons pas les tiroirs, nous ne touchons pas aux papiers personnels et nous évitons les claviers et écrans lors du nettoyage des bureaux occupés." },
                 { q: "Effectuez-vous le nettoyage des sanitaires et des cuisines pro ?", a: "Oui. Ce sont des zones spécifiques avec leur propre protocole (désinfectants norme EN 14476, microfibres dédiées, fréquence renforcée). Si vous avez une cuisine professionnelle, nous adaptons le protocole HACCP." },

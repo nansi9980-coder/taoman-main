@@ -25,7 +25,7 @@ export const ES = {
   serviceOptions: ['Mantenimiento anual', 'Mantenimiento semestral', 'Reparación', 'Instalación nueva', 'Urgencia'],
   acOptions: ['Split mural', 'Multi-split', 'Cassette', 'Consola', 'Conductos', 'Sistema central', 'Otro'],
   sidebar: {
-    title: '¿Por qué TAOMAN Group Investment?',
+    title: '¿Por qué Taoman Group Investissement?',
     intro: 'Experiencia cliente basada en servicios técnicos profesionales y de calidad.',
     items: [
       { title: '🔧 Mantenimiento preventivo', desc: 'Evita averías costosas y mantiene el rendimiento.' },
@@ -62,7 +62,7 @@ export const PT = {
   serviceOptions: ['Manutenção anual', 'Manutenção semestral', 'Reparação', 'Instalação nova', 'Urgência'],
   acOptions: ['Split mural', 'Multi-split', 'Cassette', 'Consola', 'Condutas', 'Sistema central', 'Outro'],
   sidebar: {
-    title: 'Porquê TAOMAN Group Investment?',
+    title: 'Porquê Taoman Group Investissement?',
     intro: 'Experiência de cliente baseada em serviços técnicos profissionais e de qualidade.',
     items: [
       { title: '🔧 Manutenção preventiva', desc: 'Evita avarias dispendiosas e mantém o desempenho.' },
@@ -99,7 +99,7 @@ export const DE = {
   serviceOptions: ['Jährliche Wartung', 'Halbjährliche Wartung', 'Reparatur', 'Neuinstallation', 'Notfall'],
   acOptions: ['Wand-Split', 'Multi-Split', 'Kassette', 'Konsole', 'Kanal', 'Zentralanlage', 'Sonstiges'],
   sidebar: {
-    title: 'Warum TAOMAN Group Investment?',
+    title: 'Warum Taoman Group Investissement?',
     intro: 'Neue Kundenerfahrung mit professionellen technischen Dienstleistungen.',
     items: [
       { title: '🔧 Vorbeugende Wartung', desc: 'Vermeidet teure Ausfälle und erhält die Leistung.' },
@@ -136,7 +136,7 @@ export const AR = {
   serviceOptions: ['صيانة سنوية', 'صيانة نصف سنوية', 'إصلاح', 'تركيب جديد', 'طوارئ'],
   acOptions: ['سبليت حائط', 'متعدد', 'كاسيت', 'كونسول', 'مجاري', 'مركزي', 'أخرى'],
   sidebar: {
-    title: 'لماذا TAOMAN Group Investment؟',
+    title: 'لماذا Taoman Group Investissement؟',
     intro: 'تجربة عميل مبنية على خدمات تقنية احترافية.',
     items: [
       { title: '🔧 صيانة وقائية', desc: 'تجنب الأعطال المكلفة وتحافظ على الأداء.' },
@@ -173,7 +173,7 @@ export const ZH = {
   serviceOptions: ['年度保养', '半年保养', '维修', '新装', '紧急抢修'],
   acOptions: ['壁挂分体', '多联机', '天花机', '柜机', '风管机', '中央空调', '其他'],
   sidebar: {
-    title: '为什么选择 TAOMAN Group Investment？',
+    title: '为什么选择 Taoman Group Investissement？',
     intro: '以专业优质的技术服务打造全新客户体验。',
     items: [
       { title: '🔧 预防性保养', desc: '定期保养可避免昂贵故障并保持性能。' },

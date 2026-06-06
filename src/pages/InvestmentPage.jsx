@@ -334,7 +334,7 @@ export const InvestmentPage = () => {
           <div className="mx-auto max-w-[1400px]">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
               {statRows.map(([value, label]) => (
-                <div key={label} className="rounded-3xl border border-outline-variant/40 bg-surface-container-low p-6 text-center shadow-sm interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
+                <div key={label} className="rounded-3xl border border-outline-variant/40 bg-surface-container-low p-6 text-center shadow-sm hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                   <p className="text-3xl md:text-4xl font-black text-primary">{value}</p>
                   <p className="mt-2 text-xs md:text-sm font-semibold text-on-surface-variant">{label}</p>
                 </div>
@@ -344,7 +344,7 @@ export const InvestmentPage = () => {
         </section>
         </Reveal>
 
-        {/* TAOMAN Programmes : TGI + Simulateur */}
+        {/* Taoman Group Investissement Programmes : TGI + Simulateur */}
         <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
           <div className="mx-auto max-w-[1400px]">
             <Reveal preset="fadeUp">
@@ -428,7 +428,7 @@ export const InvestmentPage = () => {
                 <Link
                   key={sector.slug || idx}
                   to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
-                  className="invest-sector-card group flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm border border-outline-variant/40 transition-all interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0"
+                  className="invest-sector-card group flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-sm border border-outline-variant/40 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
                 >
                   {sector.image && (
                     <div className="relative h-44 overflow-hidden bg-surface-container-low">
@@ -500,7 +500,7 @@ export const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* Critères d'investissement TAOMAN */}
+        {/* Critères d'investissement Taoman Group Investissement */}
         <section id="criteres" className="scroll-mt-32 py-20 px-6">
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
@@ -580,7 +580,7 @@ export const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* Engagement TAOMAN */}
+        {/* Engagement Taoman Group Investissement */}
         <section className="bg-[#07111f] py-20 px-6 text-white">
           <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>

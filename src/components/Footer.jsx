@@ -33,7 +33,7 @@ export const Footer = () => {
     { name: t.moving, href: '/demenagement/devis' },
     { name: t.officeCare, href: '/entretien/bureaux' },
     { name: t.movingStaff, href: '/demenagement/personnels' },
-    { name: 'TAOMAN TGI', href: '/investissement/tgi' },
+    { name: 'Taoman Group Investissement TGI', href: '/investissement/tgi' },
     ...(simulatorPublicVisible ? [{ name: t.simulator, href: '/investissement/simulateur' }] : []),
   ];
 

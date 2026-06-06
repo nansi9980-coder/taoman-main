@@ -9,7 +9,7 @@ const CONTACT = {
       eyebrow: '4 formulaires dédiés',
       title: "Quel est l'objet de votre demande ?",
       description:
-        "Chaque formulaire est conçu pour aller à l'essentiel et orienter votre demande vers la bonne équipe TAOMAN.",
+        "Chaque formulaire est conçu pour aller à l'essentiel et orienter votre demande vers la bonne équipe Taoman Group Investissement.",
     },
     breadcrumb: { home: 'Contact' },
     cardSelected: 'Sélectionné',
@@ -18,7 +18,7 @@ const CONTACT = {
       info: {
         badge: 'Information',
         title: "Demande d'information générale",
-        headline: 'Une question sur TAOMAN Group Investment ?',
+        headline: 'Une question sur Taoman Group Investissement ?',
         desc:
           "Vous voulez en savoir plus sur le groupe, ses activités, ses services opérationnels (lavage, déménagement, entretien, mécanique, transport) ou son programme d'investissement TGI ? Posez-nous votre question, notre équipe vous répond sous 24 heures.",
         submitLabel: 'Envoyer ma question',
@@ -27,10 +27,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'Investissement',
-        title: 'Investir avec TAOMAN',
+        title: 'Investir avec Taoman Group Investissement',
         headline: "Manifester un intérêt d'investissement",
         desc:
-          "Vous souhaitez allouer un capital à des projets opérés par TAOMAN Group Investment ? Indiquez votre profil, votre ticket envisagé et le ou les secteurs qui vous intéressent. Notre équipe vous rappelle pour une présentation détaillée des opportunités en cours.",
+          "Vous souhaitez allouer un capital à des projets opérés par Taoman Group Investissement ? Indiquez votre profil, votre ticket envisagé et le ou les secteurs qui vous intéressent. Notre équipe vous rappelle pour une présentation détaillée des opportunités en cours.",
         submitLabel: "Envoyer ma manifestation d'intérêt",
         successText:
           "Votre manifestation d'intérêt a bien été enregistrée. Un conseiller vous contacte sous 48 heures.",
@@ -39,9 +39,9 @@ const CONTACT = {
       partner: {
         badge: 'Partenariat',
         title: 'Devenir partenaire opérationnel',
-        headline: 'Construire un partenariat avec TAOMAN',
+        headline: 'Construire un partenariat avec Taoman Group Investissement',
         desc:
-          "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec TAOMAN Group Investment (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition et nous étudions ensemble les synergies possibles.",
+          "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec Taoman Group Investissement (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition et nous étudions ensemble les synergies possibles.",
         submitLabel: 'Envoyer ma proposition',
         successText:
           'Votre proposition de partenariat a bien été reçue. Notre direction étudie chaque dossier et revient vers vous sous 5 jours ouvrés.',
@@ -127,7 +127,7 @@ const CONTACT = {
       sentTitle: 'Message envoyé.',
       errorGeneric: "Impossible d'envoyer votre message.",
       errorNetwork: 'Erreur réseau. Réessayez plus tard.',
-      disclaimer: "En envoyant ce formulaire, vous acceptez d'être recontacté par TAOMAN Group Investment.",
+      disclaimer: "En envoyant ce formulaire, vous acceptez d'être recontacté par Taoman Group Investissement.",
       requiredHint: 'Les champs marqués * sont obligatoires.',
     },
     sidebar: {
@@ -144,7 +144,7 @@ const CONTACT = {
         "Chaque demande est traitée par un interlocuteur unique. Vos données ne sont jamais transmises à des tiers et sont utilisées uniquement pour répondre à votre demande.",
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title:
         'Un groupe togolais multi-activités, des services concrets, des investissements suivis.',
       description:
@@ -157,7 +157,7 @@ const CONTACT = {
       title: 'Où nous trouver',
       hint: 'Agoè Cacaveli, en face de Toganim',
       openMaps: 'Ouvrir dans Google Maps',
-      mapTitle: 'Carte — TAOMAN Group Investment',
+      mapTitle: 'Carte — Taoman Group Investissement',
     },
     quotePage: {
       title: 'Demander un devis',
@@ -177,7 +177,7 @@ const CONTACT = {
       eyebrow: '4 dedicated forms',
       title: 'What is your request about?',
       description:
-        'Each form is designed to be straightforward and route your request to the right TAOMAN team.',
+        'Each form is designed to be straightforward and route your request to the right Taoman Group Investissement team.',
     },
     breadcrumb: { home: 'Contact' },
     cardSelected: 'Selected',
@@ -186,7 +186,7 @@ const CONTACT = {
       info: {
         badge: 'Information',
         title: 'General information request',
-        headline: 'A question about TAOMAN Group Investment?',
+        headline: 'A question about Taoman Group Investissement?',
         desc:
           "Want to learn more about the group, its activities, its operational services (car wash, moving, cleaning, mechanics, transport) or its TGI investment program? Ask us your question and our team will reply within 24 hours.",
         submitLabel: 'Send my question',
@@ -195,10 +195,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'Investment',
-        title: 'Invest with TAOMAN',
+        title: 'Invest with Taoman Group Investissement',
         headline: 'Express an investment interest',
         desc:
-          'Looking to allocate capital to projects operated by TAOMAN Group Investment? Tell us your investor profile, target ticket and the sectors you are interested in. Our team will call you back for a detailed presentation of current opportunities.',
+          'Looking to allocate capital to projects operated by Taoman Group Investissement? Tell us your investor profile, target ticket and the sectors you are interested in. Our team will call you back for a detailed presentation of current opportunities.',
         submitLabel: 'Send my interest',
         successText:
           'Your interest has been recorded. An advisor will contact you within 48 hours.',
@@ -207,9 +207,9 @@ const CONTACT = {
       partner: {
         badge: 'Partnership',
         title: 'Become an operational partner',
-        headline: 'Build a partnership with TAOMAN',
+        headline: 'Build a partnership with Taoman Group Investissement',
         desc:
-          'Are you a company, cooperative or institution that wants to work with TAOMAN Group Investment (subcontracting, distribution, supply, support services, joint project)? Send us your proposal and we will explore the possible synergies together.',
+          'Are you a company, cooperative or institution that wants to work with Taoman Group Investissement (subcontracting, distribution, supply, support services, joint project)? Send us your proposal and we will explore the possible synergies together.',
         submitLabel: 'Send my proposal',
         successText:
           'Your partnership proposal has been received. Our management studies each file and gets back to you within 5 business days.',
@@ -294,7 +294,7 @@ const CONTACT = {
       sentTitle: 'Message sent.',
       errorGeneric: 'Unable to send your message.',
       errorNetwork: 'Network error. Please try again later.',
-      disclaimer: 'By sending this form, you agree to be contacted by TAOMAN Group Investment.',
+      disclaimer: 'By sending this form, you agree to be contacted by Taoman Group Investissement.',
       requiredHint: 'Fields marked * are required.',
     },
     sidebar: {
@@ -311,7 +311,7 @@ const CONTACT = {
         'Each request is handled by a single contact person. Your data is never shared with third parties and is used only to answer your request.',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title: 'A Togolese multi-business group: real services, monitored investments.',
       description:
         'Operational services (Car wash, Moving, Cleaning, Mechanics, Transport) + TGI investment program covering 5 sectors (Logistics, Agribusiness, Trade, Construction, Digital).',
@@ -323,7 +323,7 @@ const CONTACT = {
       title: 'Find us',
       hint: 'Agoè Cacaveli, en face de Toganim',
       openMaps: 'Open in Google Maps',
-      mapTitle: 'Map — TAOMAN Group Investment',
+      mapTitle: 'Map — Taoman Group Investissement',
     },
     quotePage: {
       title: 'Request a quote',
@@ -343,7 +343,7 @@ const CONTACT = {
       eyebrow: '4 formularios dedicados',
       title: '¿Cuál es el objeto de su consulta?',
       description:
-        'Cada formulario está diseñado para ir al grano y dirigir su solicitud al equipo TAOMAN adecuado.',
+        'Cada formulario está diseñado para ir al grano y dirigir su solicitud al equipo Taoman Group Investissement adecuado.',
     },
     breadcrumb: { home: 'Contacto' },
     cardSelected: 'Seleccionado',
@@ -352,7 +352,7 @@ const CONTACT = {
       info: {
         badge: 'Información',
         title: 'Solicitud de información general',
-        headline: '¿Una pregunta sobre TAOMAN Group Investment?',
+        headline: '¿Una pregunta sobre Taoman Group Investissement?',
         desc:
           '¿Desea saber más sobre el grupo, sus actividades, sus servicios operativos (lavado, mudanza, mantenimiento, mecánica, transporte) o su programa de inversión TGI? Háganos su pregunta, nuestro equipo responde en menos de 24 horas.',
         submitLabel: 'Enviar mi pregunta',
@@ -361,10 +361,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'Inversión',
-        title: 'Invertir con TAOMAN',
+        title: 'Invertir con Taoman Group Investissement',
         headline: 'Manifestar un interés de inversión',
         desc:
-          '¿Desea destinar capital a proyectos operados por TAOMAN Group Investment? Indique su perfil, el ticket previsto y los sectores que le interesan. Nuestro equipo le llama para una presentación detallada de las oportunidades en curso.',
+          '¿Desea destinar capital a proyectos operados por Taoman Group Investissement? Indique su perfil, el ticket previsto y los sectores que le interesan. Nuestro equipo le llama para una presentación detallada de las oportunidades en curso.',
         submitLabel: 'Enviar mi manifestación',
         successText: 'Su interés ha sido registrado. Un asesor le contactará en menos de 48 horas.',
         serviceTag: 'Contacto – Inversión',
@@ -372,9 +372,9 @@ const CONTACT = {
       partner: {
         badge: 'Asociación',
         title: 'Convertirse en socio operativo',
-        headline: 'Construir una asociación con TAOMAN',
+        headline: 'Construir una asociación con Taoman Group Investissement',
         desc:
-          '¿Representa a una empresa, cooperativa o institución que desea colaborar con TAOMAN Group Investment (subcontratación, distribución, suministro, servicios de apoyo, proyecto conjunto)? Preséntenos su propuesta y estudiaremos juntos las sinergias posibles.',
+          '¿Representa a una empresa, cooperativa o institución que desea colaborar con Taoman Group Investissement (subcontratación, distribución, suministro, servicios de apoyo, proyecto conjunto)? Preséntenos su propuesta y estudiaremos juntos las sinergias posibles.',
         submitLabel: 'Enviar mi propuesta',
         successText:
           'Su propuesta de asociación ha sido recibida. Nuestra dirección estudia cada expediente y responde en 5 días hábiles.',
@@ -459,7 +459,7 @@ const CONTACT = {
       sentTitle: 'Mensaje enviado.',
       errorGeneric: 'No se pudo enviar su mensaje.',
       errorNetwork: 'Error de red. Inténtelo de nuevo más tarde.',
-      disclaimer: 'Al enviar este formulario, acepta ser contactado por TAOMAN Group Investment.',
+      disclaimer: 'Al enviar este formulario, acepta ser contactado por Taoman Group Investissement.',
       requiredHint: 'Los campos marcados con * son obligatorios.',
     },
     sidebar: {
@@ -476,7 +476,7 @@ const CONTACT = {
         'Cada solicitud es tratada por un interlocutor único. Sus datos nunca se transmiten a terceros y se utilizan exclusivamente para responder a su solicitud.',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title:
         'Un grupo togolés multiactividad: servicios concretos, inversiones supervisadas.',
       description:
@@ -491,7 +491,7 @@ const CONTACT = {
       eyebrow: '4 formulários dedicados',
       title: 'Qual é o objeto do seu pedido?',
       description:
-        'Cada formulário foi pensado para ser direto e encaminhar o seu pedido para a equipa TAOMAN adequada.',
+        'Cada formulário foi pensado para ser direto e encaminhar o seu pedido para a equipa Taoman Group Investissement adequada.',
     },
     breadcrumb: { home: 'Contacto' },
     cardSelected: 'Selecionado',
@@ -500,7 +500,7 @@ const CONTACT = {
       info: {
         badge: 'Informação',
         title: 'Pedido de informação geral',
-        headline: 'Uma pergunta sobre o TAOMAN Group Investment?',
+        headline: 'Uma pergunta sobre o Taoman Group Investissement?',
         desc:
           'Quer saber mais sobre o grupo, as suas atividades, os seus serviços operacionais (lavagem, mudanças, manutenção, mecânica, transporte) ou o programa de investimento TGI? Coloque-nos a sua pergunta, a nossa equipa responde em 24 horas.',
         submitLabel: 'Enviar a minha pergunta',
@@ -509,10 +509,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'Investimento',
-        title: 'Investir com a TAOMAN',
+        title: 'Investir com a Taoman Group Investissement',
         headline: 'Manifestar interesse de investimento',
         desc:
-          'Deseja alocar capital a projetos operados pela TAOMAN Group Investment? Indique o seu perfil, o ticket previsto e o(s) setor(es) que o interessam. A nossa equipa entrará em contacto para uma apresentação detalhada das oportunidades em curso.',
+          'Deseja alocar capital a projetos operados pela Taoman Group Investissement? Indique o seu perfil, o ticket previsto e o(s) setor(es) que o interessam. A nossa equipa entrará em contacto para uma apresentação detalhada das oportunidades em curso.',
         submitLabel: 'Enviar a minha manifestação',
         successText: 'O seu interesse foi registado. Um consultor irá contactá-lo em 48 horas.',
         serviceTag: 'Contacto – Investimento',
@@ -520,9 +520,9 @@ const CONTACT = {
       partner: {
         badge: 'Parceria',
         title: 'Tornar-se parceiro operacional',
-        headline: 'Construir uma parceria com a TAOMAN',
+        headline: 'Construir uma parceria com a Taoman Group Investissement',
         desc:
-          'Representa uma empresa, cooperativa ou instituição que pretende colaborar com a TAOMAN Group Investment (subcontratação, distribuição, fornecimento, serviços de apoio, projeto conjunto)? Apresente-nos a sua proposta e analisaremos juntos as sinergias possíveis.',
+          'Representa uma empresa, cooperativa ou instituição que pretende colaborar com a Taoman Group Investissement (subcontratação, distribuição, fornecimento, serviços de apoio, projeto conjunto)? Apresente-nos a sua proposta e analisaremos juntos as sinergias possíveis.',
         submitLabel: 'Enviar a minha proposta',
         successText:
           'A sua proposta de parceria foi recebida. A nossa direção estuda cada dossier e responde em 5 dias úteis.',
@@ -607,7 +607,7 @@ const CONTACT = {
       sentTitle: 'Mensagem enviada.',
       errorGeneric: 'Não foi possível enviar a sua mensagem.',
       errorNetwork: 'Erro de rede. Tente novamente mais tarde.',
-      disclaimer: 'Ao enviar este formulário, aceita ser contactado pela TAOMAN Group Investment.',
+      disclaimer: 'Ao enviar este formulário, aceita ser contactado pela Taoman Group Investissement.',
       requiredHint: 'Os campos marcados com * são obrigatórios.',
     },
     sidebar: {
@@ -624,7 +624,7 @@ const CONTACT = {
         'Cada pedido é tratado por um único interlocutor. Os seus dados nunca são transmitidos a terceiros e são utilizados exclusivamente para responder ao seu pedido.',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title:
         'Um grupo togolês multiatividades: serviços concretos, investimentos acompanhados.',
       description:
@@ -639,7 +639,7 @@ const CONTACT = {
       eyebrow: '4 dedizierte Formulare',
       title: 'Worum geht es bei Ihrer Anfrage?',
       description:
-        'Jedes Formular leitet Ihre Anfrage gezielt an das richtige TAOMAN-Team weiter.',
+        'Jedes Formular leitet Ihre Anfrage gezielt an das richtige Taoman Group Investissement-Team weiter.',
     },
     breadcrumb: { home: 'Kontakt' },
     cardSelected: 'Ausgewählt',
@@ -648,7 +648,7 @@ const CONTACT = {
       info: {
         badge: 'Information',
         title: 'Allgemeine Informationsanfrage',
-        headline: 'Eine Frage zu TAOMAN Group Investment?',
+        headline: 'Eine Frage zu Taoman Group Investissement?',
         desc:
           'Sie möchten mehr über die Gruppe, ihre Aktivitäten, ihre operativen Dienstleistungen (Autowäsche, Umzüge, Reinigung, Mechanik, Transport) oder ihr TGI-Investitionsprogramm erfahren? Stellen Sie uns Ihre Frage – unser Team antwortet innerhalb von 24 Stunden.',
         submitLabel: 'Frage senden',
@@ -657,10 +657,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'Investition',
-        title: 'Mit TAOMAN investieren',
+        title: 'Mit Taoman Group Investissement investieren',
         headline: 'Investitionsinteresse bekunden',
         desc:
-          'Möchten Sie Kapital in Projekte von TAOMAN Group Investment investieren? Teilen Sie uns Ihr Profil, das vorgesehene Ticket und die Sektoren mit, die Sie interessieren. Unser Team meldet sich für eine detaillierte Vorstellung der aktuellen Chancen.',
+          'Möchten Sie Kapital in Projekte von Taoman Group Investissement investieren? Teilen Sie uns Ihr Profil, das vorgesehene Ticket und die Sektoren mit, die Sie interessieren. Unser Team meldet sich für eine detaillierte Vorstellung der aktuellen Chancen.',
         submitLabel: 'Interesse senden',
         successText: 'Ihr Interesse wurde registriert. Ein Berater kontaktiert Sie innerhalb von 48 Stunden.',
         serviceTag: 'Kontakt – Investition',
@@ -668,9 +668,9 @@ const CONTACT = {
       partner: {
         badge: 'Partnerschaft',
         title: 'Operativer Partner werden',
-        headline: 'Partnerschaft mit TAOMAN aufbauen',
+        headline: 'Partnerschaft mit Taoman Group Investissement aufbauen',
         desc:
-          'Sie vertreten ein Unternehmen, eine Genossenschaft oder eine Institution, die mit TAOMAN Group Investment zusammenarbeiten möchte (Unterauftrag, Vertrieb, Lieferung, Support-Services, gemeinsames Projekt)? Stellen Sie uns Ihren Vorschlag vor – wir prüfen gemeinsam mögliche Synergien.',
+          'Sie vertreten ein Unternehmen, eine Genossenschaft oder eine Institution, die mit Taoman Group Investissement zusammenarbeiten möchte (Unterauftrag, Vertrieb, Lieferung, Support-Services, gemeinsames Projekt)? Stellen Sie uns Ihren Vorschlag vor – wir prüfen gemeinsam mögliche Synergien.',
         submitLabel: 'Vorschlag senden',
         successText:
           'Ihr Partnerschaftsvorschlag wurde empfangen. Unsere Geschäftsleitung prüft jede Akte und antwortet innerhalb von 5 Werktagen.',
@@ -755,7 +755,7 @@ const CONTACT = {
       sentTitle: 'Nachricht gesendet.',
       errorGeneric: 'Ihre Nachricht konnte nicht gesendet werden.',
       errorNetwork: 'Netzwerkfehler. Bitte später erneut versuchen.',
-      disclaimer: 'Mit dem Absenden dieses Formulars erklären Sie sich damit einverstanden, von TAOMAN Group Investment kontaktiert zu werden.',
+      disclaimer: 'Mit dem Absenden dieses Formulars erklären Sie sich damit einverstanden, von Taoman Group Investissement kontaktiert zu werden.',
       requiredHint: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
     },
     sidebar: {
@@ -772,7 +772,7 @@ const CONTACT = {
         'Jede Anfrage wird von einem festen Ansprechpartner bearbeitet. Ihre Daten werden niemals an Dritte weitergegeben und ausschließlich zur Beantwortung Ihrer Anfrage verwendet.',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title:
         'Eine togoische Multi-Business-Gruppe: konkrete Dienstleistungen, überwachte Investitionen.',
       description:
@@ -786,7 +786,7 @@ const CONTACT = {
     intro: {
       eyebrow: '٤ نماذج مخصصة',
       title: 'ما هو موضوع طلبك؟',
-      description: 'كل نموذج مصمم ليكون مباشراً وموجهاً طلبك إلى الفريق المختص في TAOMAN.',
+      description: 'كل نموذج مصمم ليكون مباشراً وموجهاً طلبك إلى الفريق المختص في Taoman Group Investissement.',
     },
     breadcrumb: { home: 'اتصال' },
     cardSelected: 'تم الاختيار',
@@ -795,7 +795,7 @@ const CONTACT = {
       info: {
         badge: 'معلومات',
         title: 'طلب معلومات عامة',
-        headline: 'سؤال حول TAOMAN Group Investment؟',
+        headline: 'سؤال حول Taoman Group Investissement؟',
         desc:
           'هل ترغب في معرفة المزيد عن المجموعة وأنشطتها وخدماتها التشغيلية (غسيل السيارات، النقل، الصيانة، الميكانيكا، النقل) أو برنامج الاستثمار TGI؟ اطرح سؤالك وسيرد فريقنا خلال 24 ساعة.',
         submitLabel: 'إرسال سؤالي',
@@ -804,10 +804,10 @@ const CONTACT = {
       },
       invest: {
         badge: 'استثمار',
-        title: 'استثمر مع TAOMAN',
+        title: 'استثمر مع Taoman Group Investissement',
         headline: 'الإعراب عن اهتمام بالاستثمار',
         desc:
-          'هل ترغب في تخصيص رأس مال لمشاريع تديرها TAOMAN Group Investment؟ أخبرنا بملفك الشخصي والمبلغ المتوقع والقطاعات التي تهمك. سيتصل بك فريقنا لتقديم مفصل للفرص الجارية.',
+          'هل ترغب في تخصيص رأس مال لمشاريع تديرها Taoman Group Investissement؟ أخبرنا بملفك الشخصي والمبلغ المتوقع والقطاعات التي تهمك. سيتصل بك فريقنا لتقديم مفصل للفرص الجارية.',
         submitLabel: 'إرسال اهتمامي',
         successText: 'تم تسجيل اهتمامك. سيتواصل معك مستشار خلال 48 ساعة.',
         serviceTag: 'اتصال – استثمار',
@@ -815,9 +815,9 @@ const CONTACT = {
       partner: {
         badge: 'شراكة',
         title: 'أصبح شريكاً تشغيلياً',
-        headline: 'بناء شراكة مع TAOMAN',
+        headline: 'بناء شراكة مع Taoman Group Investissement',
         desc:
-          'هل تمثل شركة أو تعاونية أو مؤسسة ترغب في التعاون مع TAOMAN Group Investment (التعاقد من الباطن، التوزيع، التوريد، خدمات الدعم، مشروع مشترك)؟ قدّم لنا اقتراحك وسندرس معاً التآزرات الممكنة.',
+          'هل تمثل شركة أو تعاونية أو مؤسسة ترغب في التعاون مع Taoman Group Investissement (التعاقد من الباطن، التوزيع، التوريد، خدمات الدعم، مشروع مشترك)؟ قدّم لنا اقتراحك وسندرس معاً التآزرات الممكنة.',
         submitLabel: 'إرسال اقتراحي',
         successText: 'تم استلام اقتراح الشراكة. تدرس إدارتنا كل ملف وترد خلال 5 أيام عمل.',
         serviceTag: 'اتصال – شراكة',
@@ -900,7 +900,7 @@ const CONTACT = {
       sentTitle: 'تم إرسال الرسالة.',
       errorGeneric: 'تعذّر إرسال رسالتك.',
       errorNetwork: 'خطأ في الشبكة. حاول مرة أخرى لاحقاً.',
-      disclaimer: 'بإرسال هذا النموذج، فإنك توافق على أن تتصل بك TAOMAN Group Investment.',
+      disclaimer: 'بإرسال هذا النموذج، فإنك توافق على أن تتصل بك Taoman Group Investissement.',
       requiredHint: 'الحقول المعلّمة بـ * إلزامية.',
     },
     sidebar: {
@@ -917,7 +917,7 @@ const CONTACT = {
         'يعالَج كل طلب من قبل محاور وحيد. لا تُنقل بياناتك إلى أطراف ثالثة وتُستخدم فقط للرد على طلبك.',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title: 'مجموعة توغولية متعددة الأنشطة: خدمات ملموسة، استثمارات متابعة.',
       description:
         'خدمات تشغيلية (غسيل السيارات، النقل، الصيانة، الميكانيكا، النقل) + برنامج استثمار TGI في 5 قطاعات (لوجستيات، أعمال زراعية، تجارة، بناء، رقمي).',
@@ -930,7 +930,7 @@ const CONTACT = {
     intro: {
       eyebrow: '4 个专属表单',
       title: '您的咨询主题是什么？',
-      description: '每个表单都旨在直击要点，将您的请求转发至 TAOMAN 相应的团队。',
+      description: '每个表单都旨在直击要点，将您的请求转发至 Taoman Group Investissement 相应的团队。',
     },
     breadcrumb: { home: '联系' },
     cardSelected: '已选择',
@@ -939,7 +939,7 @@ const CONTACT = {
       info: {
         badge: '信息',
         title: '一般信息咨询',
-        headline: '关于 TAOMAN Group Investment 的问题？',
+        headline: '关于 Taoman Group Investissement 的问题？',
         desc:
           '您想了解集团及其业务、运营服务（洗车、搬家、维护、机械、运输）或 TGI 投资计划吗？提出您的问题，我们的团队将在 24 小时内回复。',
         submitLabel: '发送我的问题',
@@ -948,10 +948,10 @@ const CONTACT = {
       },
       invest: {
         badge: '投资',
-        title: '与 TAOMAN 一起投资',
+        title: '与 Taoman Group Investissement 一起投资',
         headline: '表达投资意向',
         desc:
-          '您希望将资金配置到 TAOMAN Group Investment 运营的项目吗？请告诉我们您的投资者类型、计划金额和感兴趣的行业。我们的团队将与您联系，详细介绍当前的机会。',
+          '您希望将资金配置到 Taoman Group Investissement 运营的项目吗？请告诉我们您的投资者类型、计划金额和感兴趣的行业。我们的团队将与您联系，详细介绍当前的机会。',
         submitLabel: '发送我的意向',
         successText: '您的意向已登记。顾问将在 48 小时内与您联系。',
         serviceTag: '联系 – 投资',
@@ -959,9 +959,9 @@ const CONTACT = {
       partner: {
         badge: '合作',
         title: '成为运营合作伙伴',
-        headline: '与 TAOMAN 建立合作关系',
+        headline: '与 Taoman Group Investissement 建立合作关系',
         desc:
-          '您代表的公司、合作社或机构希望与 TAOMAN Group Investment 合作（分包、分销、供应、支持服务、联合项目）吗？请向我们提交您的方案，我们将共同探索可能的协同效应。',
+          '您代表的公司、合作社或机构希望与 Taoman Group Investissement 合作（分包、分销、供应、支持服务、联合项目）吗？请向我们提交您的方案，我们将共同探索可能的协同效应。',
         submitLabel: '发送我的提案',
         successText: '您的合作提案已收到。我们的管理层将逐一研究每份文件并在 5 个工作日内回复。',
         serviceTag: '联系 – 合作',
@@ -1031,7 +1031,7 @@ const CONTACT = {
       sentTitle: '消息已发送。',
       errorGeneric: '无法发送您的消息。',
       errorNetwork: '网络错误。请稍后再试。',
-      disclaimer: '提交此表单即表示您同意 TAOMAN Group Investment 与您联系。',
+      disclaimer: '提交此表单即表示您同意 Taoman Group Investissement 与您联系。',
       requiredHint: '标有 * 的字段为必填项。',
     },
     sidebar: {
@@ -1048,7 +1048,7 @@ const CONTACT = {
         '每个请求都由专属联系人处理。您的数据绝不会传递给第三方，仅用于回应您的请求。',
     },
     cta: {
-      eyebrow: 'TAOMAN Group Investment',
+      eyebrow: 'Taoman Group Investissement',
       title: '一家多业务的多哥集团：实在的服务、可追踪的投资。',
       description:
         '运营服务（洗车、搬家、维护、机械、运输）+ 覆盖 5 个行业的 TGI 投资计划（物流、农业、商业、建筑、数字化）。',

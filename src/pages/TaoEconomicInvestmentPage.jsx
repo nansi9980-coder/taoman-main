@@ -77,10 +77,10 @@ export const TaoEconomicInvestmentPage = () => {
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead
         title={tT.hero?.title || 'Programme TGI — Investir au Togo'}
-        description={tT.seoDescription || "TAOMAN TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 1,5M FCFA sur 10 mois."}
+        description={tT.seoDescription || "Taoman Group Investissement TGI : programme d'investissement structuré au Togo. Rendement moyen 150K FCFA/mois, ticket dès 500K FCFA, retour total moyen 1,5M FCFA sur 10 mois."}
         path="/investissement/tgi"
         jsonLd={breadcrumbLd}
-        keywords="TGI Togo, investissement Togo, rendement, TAOMAN, 500K FCFA, programme investissement"
+        keywords="TGI Togo, investissement Togo, rendement, Taoman Group Investissement, 500K FCFA, programme investissement"
       />
       <Header activeLink="investissement" />
 

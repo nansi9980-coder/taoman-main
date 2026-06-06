@@ -6,7 +6,7 @@ const FAQ_FR = {
   ui: {
     title: 'Questions fréquentes',
     intro:
-      "Tout ce qu'il faut savoir sur le Groupe TAOMAN et sur notre programme d'investissement TGI : rendement, risque, sécurité, processus.",
+      "Tout ce qu'il faut savoir sur le Groupe Taoman Group Investissement et sur notre programme d'investissement TGI : rendement, risque, sécurité, processus.",
     searchPlaceholder: 'Rechercher dans la FAQ (ex : ticket, rendement, retrait...)',
     emptyTitle: 'Aucune réponse pour cette recherche',
     emptyHint: 'Essayez un autre mot-clé ou changez de catégorie.',
@@ -28,9 +28,9 @@ const FAQ_FR = {
   items: [
     {
       category: 'groupe',
-      question: "Qu'est-ce que TAOMAN Group Investment ?",
+      question: "Qu'est-ce que Taoman Group Investissement ?",
       answer:
-        "TAOMAN Group Investment est un groupe togolais multi-activités. Il combine 5 services opérationnels (Lavage automobile, Déménagement, Entretien de bureaux, Mécanique, Transport) et un programme d'investissement participatif baptisé TGI ouvert sur 5 secteurs stratégiques (Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services).",
+        "Taoman Group Investissement est un groupe togolais multi-activités. Il combine 5 services opérationnels (Lavage automobile, Déménagement, Entretien de bureaux, Mécanique, Transport) et un programme d'investissement participatif baptisé TGI ouvert sur 5 secteurs stratégiques (Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services).",
     },
     {
       category: 'groupe',
@@ -46,7 +46,7 @@ const FAQ_FR = {
     },
     {
       category: 'investissement',
-      question: 'Quel est le montant minimum pour investir avec TAOMAN ?',
+      question: 'Quel est le montant minimum pour investir avec Taoman Group Investissement ?',
       answer:
         "Le ticket de départ recommandé est de 500 000 FCFA. Ce montant permet une diversification efficace et donne accès à l'espace investisseur avec reporting complet.",
     },
@@ -58,7 +58,7 @@ const FAQ_FR = {
     },
     {
       category: 'investissement',
-      question: "Quelle est la durée d'un investissement TAOMAN ?",
+      question: "Quelle est la durée d'un investissement Taoman Group Investissement ?",
       answer:
         "L'horizon de référence est de 10 mois maximum pour un cycle TGI. Certains projets peuvent proposer des horizons plus courts (3, 6 mois) selon le secteur.",
     },
@@ -96,7 +96,7 @@ const FAQ_FR = {
       category: 'securite',
       question: 'Êtes-vous une entreprise déclarée et formelle ?',
       answer:
-        "Oui. TAOMAN Group Investment est une société togolaise régulièrement enregistrée, fiscalement à jour, avec opérations contractualisées et facturation conforme.",
+        "Oui. Taoman Group Investissement est une société togolaise régulièrement enregistrée, fiscalement à jour, avec opérations contractualisées et facturation conforme.",
     },
     {
       category: 'securite',
@@ -141,7 +141,7 @@ const FAQ_EN = {
   ui: {
     title: 'Frequently asked questions',
     intro:
-      'Everything you need to know about TAOMAN Group and our TGI investment program: returns, risk, security and process.',
+      'Everything you need to know about Taoman Group Investissement and our TGI investment program: returns, risk, security and process.',
     searchPlaceholder: 'Search the FAQ (e.g. ticket, return, withdrawal…)',
     emptyTitle: 'No results for this search',
     emptyHint: 'Try another keyword or change category.',
@@ -163,9 +163,9 @@ const FAQ_EN = {
   items: [
     {
       category: 'groupe',
-      question: 'What is TAOMAN Group Investment?',
+      question: 'What is Taoman Group Investissement?',
       answer:
-        'TAOMAN Group Investment is a multi-activity Togolese group combining five operational services (car wash, moving, office cleaning, mechanics, transport) and a participatory investment program called TGI across five strategic sectors.',
+        'Taoman Group Investissement is a multi-activity Togolese group combining five operational services (car wash, moving, office cleaning, mechanics, transport) and a participatory investment program called TGI across five strategic sectors.',
     },
     {
       category: 'groupe',
@@ -193,7 +193,7 @@ const FAQ_EN = {
     },
     {
       category: 'investissement',
-      question: 'How long is a TAOMAN investment?',
+      question: 'How long is a Taoman Group Investissement investment?',
       answer:
         'Reference horizon is up to 10 months per TGI cycle. Some projects may offer shorter horizons (3 or 6 months) depending on the sector.',
     },
@@ -231,7 +231,7 @@ const FAQ_EN = {
       category: 'securite',
       question: 'Are you a registered formal company?',
       answer:
-        'Yes. TAOMAN Group Investment is duly registered in Togo, tax compliant, with contracted operations and proper invoicing.',
+        'Yes. Taoman Group Investissement is duly registered in Togo, tax compliant, with contracted operations and proper invoicing.',
     },
     {
       category: 'securite',
@@ -275,7 +275,7 @@ const FAQ_EN = {
 const FAQ_ES = {
   ui: {
     title: 'Preguntas frecuentes',
-    intro: 'Todo sobre el Grupo TAOMAN y el programa TGI: rendimiento, riesgo, seguridad y proceso.',
+    intro: 'Todo sobre el Grupo Taoman Group Investissement y el programa TGI: rendimiento, riesgo, seguridad y proceso.',
     searchPlaceholder: 'Buscar en la FAQ…',
     emptyTitle: 'Sin resultados',
     emptyHint: 'Pruebe otra palabra clave o categoría.',
@@ -296,7 +296,7 @@ const FAQ_ES = {
   items: FAQ_EN.items.map((item, i) => ({
     ...item,
     question: [
-      '¿Qué es TAOMAN Group Investment?',
+      '¿Qué es Taoman Group Investissement?',
       '¿Por qué servicios e inversión?',
       '¿Dónde está implantado el grupo?',
       '¿Cuál es el importe mínimo de inversión?',
@@ -324,7 +324,7 @@ const FAQ_PT = {
   ui: {
     ...FAQ_EN.ui,
     title: 'Perguntas frequentes',
-    intro: 'Tudo sobre o Grupo TAOMAN e o programa TGI: rendimento, risco, segurança e processo.',
+    intro: 'Tudo sobre o Grupo Taoman Group Investissement e o programa TGI: rendimento, risco, segurança e processo.',
     searchPlaceholder: 'Pesquisar na FAQ…',
     emptyTitle: 'Sem resultados',
     emptyHint: 'Tente outra palavra-chave ou categoria.',
@@ -341,7 +341,7 @@ const FAQ_DE = {
   ui: {
     ...FAQ_EN.ui,
     title: 'Häufig gestellte Fragen',
-    intro: 'Alles über TAOMAN Group und das TGI-Programm: Rendite, Risiko, Sicherheit und Ablauf.',
+    intro: 'Alles über Taoman Group Investissement und das TGI-Programm: Rendite, Risiko, Sicherheit und Ablauf.',
     searchPlaceholder: 'FAQ durchsuchen…',
     emptyTitle: 'Keine Ergebnisse',
     emptyHint: 'Anderes Stichwort oder Kategorie wählen.',
@@ -358,7 +358,7 @@ const FAQ_AR = {
   ui: {
     ...FAQ_EN.ui,
     title: 'الأسئلة الشائعة',
-    intro: 'كل ما يجب معرفته عن مجموعة TAOMAN وبرنامج TGI: العائد والمخاطر والأمان والعملية.',
+    intro: 'كل ما يجب معرفته عن مجموعة Taoman Group Investissement وبرنامج TGI: العائد والمخاطر والأمان والعملية.',
     searchPlaceholder: 'البحث في الأسئلة الشائعة…',
     emptyTitle: 'لا توجد نتائج',
     emptyHint: 'جرّب كلمة أخرى أو فئة مختلفة.',
@@ -375,7 +375,7 @@ const FAQ_ZH = {
   ui: {
     ...FAQ_EN.ui,
     title: '常见问题',
-    intro: '关于 TAOMAN 集团与 TGI 投资计划：收益、风险、安全与流程。',
+    intro: '关于 Taoman Group Investissement 集团与 TGI 投资计划：收益、风险、安全与流程。',
     searchPlaceholder: '搜索常见问题…',
     emptyTitle: '无匹配结果',
     emptyHint: '请尝试其他关键词或分类。',

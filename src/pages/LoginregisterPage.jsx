@@ -70,7 +70,7 @@ export const LoginPage = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
             <h1 className="text-3xl font-bold text-on-surface text-center mb-2">{tA.title || 'Connexion'}</h1>
-            <p className="text-center text-on-surface-variant mb-8">{tA.subtitle || 'Accédez à votre compte TAOMAN Group Investment'}</p>
+            <p className="text-center text-on-surface-variant mb-8">{tA.subtitle || 'Accédez à votre compte Taoman Group Investissement'}</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -233,7 +233,7 @@ export const RegisterPage = () => {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-10 rounded-2xl shadow-lg border border-outline-variant/20 animate-fade-in">
             <h1 className="text-3xl font-bold text-on-surface text-center mb-2">{tR.title || "S'inscrire"}</h1>
-            <p className="text-center text-on-surface-variant mb-8">{tR.subtitle || 'Créez votre compte TAOMAN Group Investment'}</p>
+            <p className="text-center text-on-surface-variant mb-8">{tR.subtitle || 'Créez votre compte Taoman Group Investissement'}</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (

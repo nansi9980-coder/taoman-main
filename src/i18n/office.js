@@ -10,7 +10,7 @@ const OFFICE = {
       title: 'Des bureaux propres, en permanence : le quotidien de vos équipes commence par un environnement sain.',
       paragraphs: [
         "Un bureau propre, c'est plus qu'une question d'esthétique. C'est un environnement de travail sain pour vos collaborateurs, une image professionnelle pour vos clients et fournisseurs, et un facteur reconnu de productivité, de bien-être et de fidélisation des équipes.",
-        "TAOMAN Group Investment opère des contrats d'entretien professionnel pour PME, cabinets, administrations, commerces, centres médicaux et établissements scolaires. Nos équipes sont formées à la propreté professionnelle, équipées de matériel adapté et engagées par des contrats clairs.",
+        "Taoman Group Investissement opère des contrats d'entretien professionnel pour PME, cabinets, administrations, commerces, centres médicaux et établissements scolaires. Nos équipes sont formées à la propreté professionnelle, équipées de matériel adapté et engagées par des contrats clairs.",
         "Que vous ayez besoin d'un nettoyage ponctuel après travaux, d'un entretien quotidien avant l'ouverture des bureaux, d'un grand nettoyage trimestriel ou d'un contrat sur mesure pour un site sensible (laboratoire, salle informatique, cuisine professionnelle), nous structurons une prestation à votre exigence.",
       ],
     },
@@ -157,7 +157,7 @@ const OFFICE = {
       items: [
         { question: "Quelle est la durée d'engagement minimum pour un contrat régulier ?", answer: "Nos contrats réguliers sont signés pour 3 mois minimum, renouvelables. Cela nous permet d'amortir la formation des équipes à votre site et de stabiliser la qualité. Pour un essai, nous proposons d'abord une intervention ponctuelle." },
         { question: "Quels sont les horaires possibles d'intervention ?", answer: "Nous intervenons à toute heure : matin tôt avant l'ouverture (5h-8h), soir après la fermeture (18h-22h), nuit (22h-5h), week-ends. Le choix dépend de vos contraintes d'accès et de l'occupation de vos locaux." },
-        { question: 'Qui fournit les produits et le matériel ?', answer: 'Par défaut, TAOMAN fournit tous les produits et tout le matériel professionnel. Le coût est inclus dans le forfait. Si vous préférez fournir vos propres produits, nous pouvons l\'organiser et déduire la part correspondante.' },
+        { question: 'Qui fournit les produits et le matériel ?', answer: 'Par défaut, Taoman Group Investissement fournit tous les produits et tout le matériel professionnel. Le coût est inclus dans le forfait. Si vous préférez fournir vos propres produits, nous pouvons l\'organiser et déduire la part correspondante.' },
         { question: "Que se passe-t-il en cas d'absence d'un agent ?", answer: "Notre équipe inclut un système de remplacement. En cas d'absence d'un agent, un binôme connaît le site et prend le relais. Vous ne voyez pas la rupture, c'est notre responsabilité." },
         { question: 'Mes équipements sensibles (ordinateurs, serveurs) sont-ils en sécurité ?', answer: "Nos agents sont formés à respecter le mobilier et les équipements informatiques. Nous n'ouvrons pas les tiroirs, nous ne touchons pas aux papiers personnels et nous évitons les claviers et écrans lors du nettoyage des bureaux occupés." },
         { question: 'Effectuez-vous le nettoyage des sanitaires et des cuisines pro ?', answer: 'Oui. Ce sont des zones spécifiques avec leur propre protocole (désinfectants norme EN 14476, microfibres dédiées, fréquence renforcée). Si vous avez une cuisine professionnelle, nous adaptons le protocole HACCP.' },
@@ -179,7 +179,7 @@ const OFFICE = {
       title: 'Clean offices, always: your teams\' daily work starts with a healthy environment.',
       paragraphs: [
         'A clean office is more than aesthetics. It is a healthy workplace for your staff, a professional image for clients and suppliers, and a recognised driver of productivity, wellbeing and staff retention.',
-        'TAOMAN Group Investment delivers professional cleaning contracts for SMEs, professional firms, public administrations, retail, medical centres and educational institutions. Our teams are trained in professional cleaning standards, equipped with appropriate tools and bound by clear contracts.',
+        'Taoman Group Investissement delivers professional cleaning contracts for SMEs, professional firms, public administrations, retail, medical centres and educational institutions. Our teams are trained in professional cleaning standards, equipped with appropriate tools and bound by clear contracts.',
         'Whether you need one-off cleaning after works, daily pre-opening maintenance, quarterly deep cleaning or a bespoke contract for a sensitive site (laboratory, server room, commercial kitchen), we structure a service to your requirements.',
       ],
     },
@@ -302,7 +302,7 @@ const OFFICE = {
       items: [
         { question: 'What is the minimum commitment for a regular contract?', answer: 'Our regular contracts are signed for a minimum of 3 months, renewable. This allows us to amortise team training on your site and stabilise quality. For a trial, we first offer a one-off intervention.' },
         { question: 'What intervention hours are available?', answer: 'We work at any time: early morning before opening (5am–8am), evening after closing (6pm–10pm), night (10pm–5am), weekends. The choice depends on your access constraints and occupancy.' },
-        { question: 'Who supplies products and equipment?', answer: 'By default, TAOMAN supplies all products and professional equipment. The cost is included in the package. If you prefer to supply your own products, we can arrange this and deduct the corresponding amount.' },
+        { question: 'Who supplies products and equipment?', answer: 'By default, Taoman Group Investissement supplies all products and professional equipment. The cost is included in the package. If you prefer to supply your own products, we can arrange this and deduct the corresponding amount.' },
         { question: 'What happens if a cleaner is absent?', answer: 'Our team includes a replacement system. If a cleaner is absent, a backup who knows the site takes over. You do not see the disruption — that is our responsibility.' },
         { question: 'Are sensitive equipment (computers, servers) safe?', answer: 'Our staff are trained to respect furniture and IT equipment. We do not open drawers, touch personal papers or clean keyboards and screens at occupied desks.' },
         { question: 'Do you clean sanitary areas and commercial kitchens?', answer: 'Yes. These are specific zones with their own protocol (EN 14476 disinfectants, dedicated microfibre, increased frequency). For commercial kitchens, we adapt the HACCP protocol.' },
@@ -324,7 +324,7 @@ const OFFICE = {
       title: 'Oficinas limpias, siempre: el día a día de sus equipos empieza por un entorno saludable.',
       paragraphs: [
         'Una oficina limpia es más que estética. Es un entorno de trabajo saludable para sus colaboradores, una imagen profesional para clientes y proveedores, y un factor reconocido de productividad, bienestar y retención del talento.',
-        'TAOMAN Group Investment gestiona contratos de limpieza profesional para PYMES, despachos, administraciones, comercios, centros médicos y centros educativos. Nuestros equipos están formados en limpieza profesional, equipados con material adecuado y vinculados por contratos claros.',
+        'Taoman Group Investissement gestiona contratos de limpieza profesional para PYMES, despachos, administraciones, comercios, centros médicos y centros educativos. Nuestros equipos están formados en limpieza profesional, equipados con material adecuado y vinculados por contratos claros.',
         'Ya sea una limpieza puntual tras obras, mantenimiento diario antes de la apertura, una limpieza profunda trimestral o un contrato a medida para un sitio sensible (laboratorio, sala informática, cocina profesional), estructuramos un servicio según sus exigencias.',
       ],
     },
@@ -400,7 +400,7 @@ const OFFICE = {
       items: [
         { question: '¿Cuál es el compromiso mínimo para un contrato regular?', answer: 'Nuestros contratos regulares se firman por un mínimo de 3 meses, renovables. Esto nos permite amortizar la formación de los equipos en su sitio y estabilizar la calidad. Para una prueba, proponemos primero una intervención puntual.' },
         { question: '¿Qué horarios de intervención son posibles?', answer: 'Intervenimos a cualquier hora: madrugada antes de la apertura (5h-8h), tarde tras el cierre (18h-22h), noche (22h-5h), fines de semana. La elección depende de sus restricciones de acceso y ocupación.' },
-        { question: '¿Quién proporciona productos y material?', answer: 'Por defecto, TAOMAN proporciona todos los productos y el material profesional. El coste está incluido en el paquete. Si prefiere aportar sus propios productos, podemos organizarlo y deducir la parte correspondiente.' },
+        { question: '¿Quién proporciona productos y material?', answer: 'Por defecto, Taoman Group Investissement proporciona todos los productos y el material profesional. El coste está incluido en el paquete. Si prefiere aportar sus propios productos, podemos organizarlo y deducir la parte correspondiente.' },
         { question: '¿Qué ocurre si falta un agente?', answer: 'Nuestro equipo incluye un sistema de sustitución. Si un agente falta, un compañero que conoce el sitio toma el relevo. Usted no percibe la ruptura: es nuestra responsabilidad.' },
         { question: '¿Están seguros los equipos sensibles (ordenadores, servidores)?', answer: 'Nuestros agentes están formados para respetar el mobiliario y el equipamiento informático. No abrimos cajones, no tocamos papeles personales y evitamos teclados y pantallas en despachos ocupados.' },
         { question: '¿Limpian aseos y cocinas profesionales?', answer: 'Sí. Son zonas específicas con protocolo propio (desinfectantes EN 14476, microfibras dedicadas, frecuencia reforzada). Para cocina profesional, adaptamos el protocolo HACCP.' },
@@ -416,7 +416,7 @@ const OFFICE = {
       title: 'Escritórios limpos, sempre: o dia a dia das suas equipas começa por um ambiente saudável.',
       paragraphs: [
         'Um escritório limpo é mais do que estética. É um ambiente de trabalho saudável para os seus colaboradores, uma imagem profissional para clientes e fornecedores, e um fator reconhecido de produtividade, bem-estar e retenção de talentos.',
-        'A TAOMAN Group Investment gere contratos de limpeza profissional para PME, gabinetes, administrações, comércio, centros médicos e estabelecimentos de ensino. As nossas equipas são formadas em limpeza profissional, equipadas com material adequado e vinculadas por contratos claros.',
+        'A Taoman Group Investissement gere contratos de limpeza profissional para PME, gabinetes, administrações, comércio, centros médicos e estabelecimentos de ensino. As nossas equipas são formadas em limpeza profissional, equipadas com material adequado e vinculadas por contratos claros.',
         'Seja uma limpeza pontual após obras, manutenção diária antes da abertura, uma grande limpeza trimestral ou um contrato à medida para um local sensível (laboratório, sala informática, cozinha profissional), estruturamos um serviço à sua exigência.',
       ],
     },
@@ -491,7 +491,7 @@ const OFFICE = {
       items: [
         { question: 'Qual é o compromisso mínimo para um contrato regular?', answer: 'Os nossos contratos regulares são assinados por um mínimo de 3 meses, renováveis. Isto permite-nos amortizar a formação das equipas no seu local e estabilizar a qualidade. Para um teste, propomos primeiro uma intervenção pontual.' },
         { question: 'Quais são os horários de intervenção possíveis?', answer: 'Intervimos a qualquer hora: manhã cedo antes da abertura (5h-8h), noite após o encerramento (18h-22h), madrugada (22h-5h), fins de semana. A escolha depende das suas restrições de acesso e ocupação.' },
-        { question: 'Quem fornece os produtos e o material?', answer: 'Por defeito, a TAOMAN fornece todos os produtos e o material profissional. O custo está incluído no pacote. Se preferir fornecer os seus próprios produtos, podemos organizar e deduzir a parte correspondente.' },
+        { question: 'Quem fornece os produtos e o material?', answer: 'Por defeito, a Taoman Group Investissement fornece todos os produtos e o material profissional. O custo está incluído no pacote. Se preferir fornecer os seus próprios produtos, podemos organizar e deduzir a parte correspondente.' },
         { question: 'O que acontece em caso de ausência de um agente?', answer: 'A nossa equipa inclui um sistema de substituição. Em caso de ausência, um colega que conhece o local assume o serviço. Não verá a rutura — é a nossa responsabilidade.' },
         { question: 'Os equipamentos sensíveis (computadores, servidores) estão seguros?', answer: 'Os nossos agentes são formados para respeitar o mobiliário e o equipamento informático. Não abrimos gavetas, não tocamos em papéis pessoais e evitamos teclados e ecrãs em secretárias ocupadas.' },
         { question: 'Fazem a limpeza de sanitários e cozinhas profissionais?', answer: 'Sim. São zonas específicas com protocolo próprio (desinfetantes EN 14476, microfibras dedicadas, frequência reforçada). Para cozinha profissional, adaptamos o protocolo HACCP.' },
@@ -507,7 +507,7 @@ const OFFICE = {
       title: 'Saubere Büros, dauerhaft: Der Alltag Ihrer Teams beginnt mit einer gesunden Umgebung.',
       paragraphs: [
         'Ein sauberes Büro ist mehr als Ästhetik. Es ist ein gesundes Arbeitsumfeld für Ihre Mitarbeitenden, ein professionelles Bild für Kunden und Lieferanten sowie ein anerkannter Faktor für Produktivität, Wohlbefinden und Mitarbeiterbindung.',
-        'TAOMAN Group Investment betreibt professionelle Reinigungsverträge für KMU, Kanzleien, Behörden, Handel, medizinische Zentren und Bildungseinrichtungen. Unsere Teams sind in professioneller Reinigung geschult, mit geeigneter Ausrüstung ausgestattet und durch klare Verträge gebunden.',
+        'Taoman Group Investissement betreibt professionelle Reinigungsverträge für KMU, Kanzleien, Behörden, Handel, medizinische Zentren und Bildungseinrichtungen. Unsere Teams sind in professioneller Reinigung geschult, mit geeigneter Ausrüstung ausgestattet und durch klare Verträge gebunden.',
         'Ob punktuelle Reinigung nach Bauarbeiten, tägliche Wartung vor Büroöffnung, vierteljährliche Grundreinigung oder ein Maßvertrag für sensible Standorte (Labor, Serverraum, Gewerbeküche) — wir strukturieren eine Leistung nach Ihren Anforderungen.',
       ],
     },
@@ -582,7 +582,7 @@ const OFFICE = {
       items: [
         { question: 'Wie lang ist die Mindestlaufzeit eines regulären Vertrags?', answer: 'Unsere regulären Verträge werden mindestens für 3 Monate geschlossen, verlängerbar. So können wir die Teamschulung auf Ihrem Standort amortisieren und die Qualität stabilisieren. Zum Testen bieten wir zuerst einen punktuellen Einsatz an.' },
         { question: 'Welche Einsatzzeiten sind möglich?', answer: 'Wir arbeiten zu jeder Zeit: früh morgens vor Öffnung (5–8 Uhr), abends nach Schließung (18–22 Uhr), nachts (22–5 Uhr), am Wochenende. Die Wahl hängt von Zugangsbeschränkungen und Belegung ab.' },
-        { question: 'Wer stellt Produkte und Material?', answer: 'Standardmäßig stellt TAOMAN alle Produkte und das professionelle Material. Die Kosten sind im Paket enthalten. Wenn Sie eigene Produkte bevorzugen, organisieren wir das und ziehen den entsprechenden Betrag ab.' },
+        { question: 'Wer stellt Produkte und Material?', answer: 'Standardmäßig stellt Taoman Group Investissement alle Produkte und das professionelle Material. Die Kosten sind im Paket enthalten. Wenn Sie eigene Produkte bevorzugen, organisieren wir das und ziehen den entsprechenden Betrag ab.' },
         { question: 'Was passiert bei Ausfall eines Mitarbeiters?', answer: 'Unser Team umfasst ein Ersatzsystem. Bei Ausfall übernimmt ein Kollege, der den Standort kennt. Sie bemerken die Unterbrechung nicht — das ist unsere Verantwortung.' },
         { question: 'Sind sensible Geräte (Computer, Server) sicher?', answer: 'Unsere Mitarbeitenden sind geschult, Möbel und IT-Geräte zu respektieren. Wir öffnen keine Schubladen, berühren keine persönlichen Papiere und vermeiden Tastaturen und Bildschirme an besetzten Schreibtischen.' },
         { question: 'Reinigen Sie Sanitäranlagen und Gewerbeküchen?', answer: 'Ja. Das sind spezifische Zonen mit eigenem Protokoll (EN-14476-Desinfektionsmittel, dedizierte Mikrofaser, erhöhte Frequenz). Für Gewerbeküchen passen wir das HACCP-Protokoll an.' },
@@ -598,7 +598,7 @@ const OFFICE = {
       title: 'مكاتب نظيفة دائمًا: يوم عمل فرقكم يبدأ ببيئة صحية.',
       paragraphs: [
         'المكتب النظيف ليس مسألة جمال فحسب. إنه بيئة عمل صحية لموظفيكم، وصورة مهنية لعملائكم ومورديكم، وعامل معترف به في الإنتاجية والرفاهية والاحتفاظ بالمواهب.',
-        'تدير TAOMAN Group Investment عقود صيانة احترافية للشركات الصغيرة والمتوسطة والمكاتب المهنية والإدارات والتجارة والمراكز الطبية والمؤسسات التعليمية. فرقنا مدربة على النظافة المهنية، ومجهزة بمعدات مناسبة، وملتزمة بعقود واضحة.',
+        'تدير Taoman Group Investissement عقود صيانة احترافية للشركات الصغيرة والمتوسطة والمكاتب المهنية والإدارات والتجارة والمراكز الطبية والمؤسسات التعليمية. فرقنا مدربة على النظافة المهنية، ومجهزة بمعدات مناسبة، وملتزمة بعقود واضحة.',
         'سواء احتجتم تنظيفًا لمرة واحدة بعد الأشغال، أو صيانة يومية قبل فتح المكاتب، أو تنظيفًا عميقًا ربع سنوي، أو عقدًا مخصصًا لموقع حساس (مختبر، غرفة خوادم، مطبخ مهني)، نُهيكل خدمة وفق متطلباتكم.',
       ],
     },
@@ -673,7 +673,7 @@ const OFFICE = {
       items: [
         { question: 'ما مدة الالتزام الأدنى للعقد المنتظم؟', answer: 'عقودنا المنتظمة تُوقَّع لمدة 3 أشهر كحد أدنى، قابلة للتجديد. ذلك يتيح لنا استرداد تدريب الفرق على موقعكم واستقرار الجودة. للتجربة، نبدأ بتدخل لمرة واحدة.' },
         { question: 'ما مواعيد التدخل الممكنة؟', answer: 'نتدخل في أي وقت: صباحًا مبكرًا قبل الافتتاح (5–8)، مساءً بعد الإغلاق (18–22)، ليلًا (22–5)، وعطلات نهاية الأسبوع. الاختيار يعتمد على قيود الدخول والإشغال.' },
-        { question: 'من يوفر المنتجات والمعدات؟', answer: 'افتراضيًا، TAOMAN توفر كل المنتجات والمعدات المهنية. التكلفة مشمولة في الباقة. إن فضّلتم توفير منتجاتكم، ننظم ذلك ونخصم الجزء المقابل.' },
+        { question: 'من يوفر المنتجات والمعدات؟', answer: 'افتراضيًا، Taoman Group Investissement توفر كل المنتجات والمعدات المهنية. التكلفة مشمولة في الباقة. إن فضّلتم توفير منتجاتكم، ننظم ذلك ونخصم الجزء المقابل.' },
         { question: 'ماذا يحدث عند غياب عامل؟', answer: 'فريقنا يتضمن نظام استبدال. عند غياب عامل، يتولى زميل يعرف الموقع المهمة. لن تلاحظوا الانقطاع — هذه مسؤوليتنا.' },
         { question: 'هل المعدات الحساسة (حواسيب، خوادم) آمنة؟', answer: 'عمالنا مدربون على احترام الأثاث ومعدات تكنولوجيا المعلومات. لا نفتح الأدراج، ولا نلمس الأوراق الشخصية، ونتجنب لوحات المفاتيح والشاشات عند المكاتب المشغولة.' },
         { question: 'هل تنظفون دورات المياه والمطابخ المهنية؟', answer: 'نعم. مناطق محددة ببروتوكول خاص (مطهرات EN 14476، أقمشة مخصصة، تكرار معزز). للمطبخ المهني، نكيّف بروتوكول HACCP.' },
@@ -689,7 +689,7 @@ const OFFICE = {
       title: '办公室始终洁净：团队每一天的工作都始于健康的环境。',
       paragraphs: [
         '洁净的办公室不仅是美观问题，更是员工的健康工作环境、面向客户与供应商的专业形象，也是公认的生产力、福祉与留才因素。',
-        'TAOMAN Group Investment 为中小企业、事务所、行政机关、商业场所、医疗中心和教育机构提供专业保洁合同。我们的团队经过专业培训，配备合适设备，并受清晰合同约束。',
+        'Taoman Group Investissement 为中小企业、事务所、行政机关、商业场所、医疗中心和教育机构提供专业保洁合同。我们的团队经过专业培训，配备合适设备，并受清晰合同约束。',
         '无论您需要施工后的一次性清洁、开业前的日常维护、季度深度清洁，还是针对敏感场所（实验室、机房、专业厨房）的定制合同，我们都能按您的标准设计服务方案。',
       ],
     },
@@ -764,7 +764,7 @@ const OFFICE = {
       items: [
         { question: '定期合同的最低承诺期是多久？', answer: '我们的定期合同最短签署 3 个月，可续签。这使我们能够摊销在您现场的团队培训成本并稳定质量。如需试用，我们先提供一次性干预。' },
         { question: '可安排哪些干预时间？', answer: '我们可在任何时间作业：开业前清晨（5–8 点）、关门后晚间（18–22 点）、夜间（22–5 点）、周末。选择取决于出入限制和场所占用情况。' },
-        { question: '由谁提供产品和设备？', answer: '默认由 TAOMAN 提供所有产品和专业设备，费用包含在套餐中。若您希望自备产品，我们可以安排并扣除相应部分。' },
+        { question: '由谁提供产品和设备？', answer: '默认由 Taoman Group Investissement 提供所有产品和专业设备，费用包含在套餐中。若您希望自备产品，我们可以安排并扣除相应部分。' },
         { question: '清洁人员缺勤怎么办？', answer: '我们的团队有替补机制。若有人缺勤，熟悉现场的同事接手。您不会感受到中断——这是我们的责任。' },
         { question: '敏感设备（电脑、服务器）是否安全？', answer: '我们的员工受过培训，尊重家具和 IT 设备。不打开抽屉、不触碰个人文件，清洁有人使用的办公桌时避开键盘和屏幕。' },
         { question: '是否清洁卫生间和专业厨房？', answer: '是的。这些区域有专门协议（EN 14476 消毒剂、专用超细纤维、加强频率）。专业厨房我们适配 HACCP 协议。' },

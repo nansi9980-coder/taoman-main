@@ -144,7 +144,7 @@ export const ServicesPage = () => {
   const servicesJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Services TAOMAN Group Investment',
+    name: 'Services Taoman Group Investissement',
     itemListElement: services.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -220,7 +220,7 @@ export const ServicesPage = () => {
             {services.map((service) => (
               <div
                 key={service.id || service.title}
-                className="service-grid-card interactive interactive-lift bg-white rounded-[2rem] shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col border border-outline-variant/30 motion-reduce:hover:translate-y-0"
+                className="service-grid-card hover-card-premium interactive bg-white rounded-[2rem] shadow-md overflow-hidden group h-full flex flex-col border border-outline-variant/30 motion-reduce:hover:translate-y-0"
               >
                 {service.image && (
                   <div className="relative h-56 overflow-hidden">

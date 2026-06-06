@@ -229,7 +229,7 @@ export const HomePage = () => {
       return {
         id: item.id,
         src: imageUrl ? mediaUrl(imageUrl) : null,
-        alt: label || 'Réalisation TAOMAN',
+        alt: label || 'Réalisation Taoman Group Investissement',
         category: category || 'Terrain',
         label: label || 'Réalisation',
         progress: item.progress ?? 70,
@@ -243,7 +243,7 @@ export const HomePage = () => {
     language,
     realisationsSection.footerText,
     t.home?.realisations?.footerText ||
-      "TAOMAN Group Investment transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel."
+      "Taoman Group Investissement transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel."
   );
 
   const filters = [ALL_FILTER, ...new Set(realisations.map(r => r.category))];
@@ -292,7 +292,7 @@ export const HomePage = () => {
         title={tNav.home}
         description={t.home.seoDescription}
         path="/"
-        keywords="TAOMAN Group Investment, investissement Togo, déménagement Lomé, lavage auto Togo, services opérationnels, partenariats public-privé"
+        keywords="Taoman Group Investissement, investissement Togo, déménagement Lomé, lavage auto Togo, services opérationnels, partenariats public-privé"
       />
       <Header activeLink="accueil" />
 
@@ -319,7 +319,7 @@ export const HomePage = () => {
 
               <h1 className="mb-6 leading-[0.95] tracking-[-0.045em] relative">
                 <span className="block text-lg md:text-2xl font-black text-cyan-300 mb-3 uppercase tracking-[0.2em]">
-                  TAOMAN Group Investment
+                  {BRAND_NAME}
                 </span>
                 <TextReveal 
                   elementType="span" 
@@ -389,7 +389,7 @@ export const HomePage = () => {
                       <Globe className="w-4 h-4 text-cyan-300" />
                       <span className="text-xs font-bold uppercase tracking-wider text-cyan-100">{t.home.aboutTeaser.hubBadge}</span>
                     </div>
-                    <p className="text-3xl font-black mb-2 leading-tight text-white drop-shadow-md">TAOMAN GROUP INVESTMENT</p>
+                    <p className="text-3xl font-black mb-2 leading-tight text-white drop-shadow-md uppercase tracking-wide">{BRAND_NAME}</p>
                     <p className="text-xl font-bold">{t.about.title}</p>
                   </div>
                 </PremiumImageFrame>
@@ -465,8 +465,8 @@ export const HomePage = () => {
                 const Icon = style.icon;
                 return (
                   <Reveal key={idx} preset="fadeUp" delay={idx * 0.15}>
-                    <div className="bg-white rounded-3xl p-8 border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
-                      <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6`}>
+                    <div className="bg-white rounded-3xl p-8 border border-outline-variant/30 shadow-sm h-full hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
+                      <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6 hover-icon-pop`}>
                         <Icon className={`w-8 h-8 ${style.color}`} strokeWidth={1.5} />
                       </div>
                       <h3 className="text-xl font-bold text-on-surface mb-4">{pillar.title}</h3>
@@ -510,10 +510,10 @@ export const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {homeServices.map((service) => {
                   const cardClass =
-                    'service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30';
+                    'service-card group rounded-3xl border border-outline-variant/40 bg-white p-8 shadow-md hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0';
                   const body = (
                     <>
-                      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                      <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-black overflow-hidden hover-icon-pop group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                         {service.imageUrl ? (
                           <img
                             src={service.imageUrl}
@@ -820,7 +820,7 @@ export const HomePage = () => {
                   const imageSrc = leader.imageUrl || leader.image || leader.photo;
                   return (
                     <Reveal key={idx} preset="fadeUp" delay={idx * 0.15}>
-                      <div className="group bg-white rounded-[2rem] p-8 border border-outline-variant/30 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center">
+                      <div className="group bg-white rounded-[2rem] p-8 border border-outline-variant/30 shadow-lg text-center hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                         <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-3xl font-black text-white mb-6 shadow-inner ring-4 ring-primary/10 group-hover:scale-110 transition-transform duration-500 overflow-hidden relative">
                           {imageSrc ? (
                             <img src={imageSrc.startsWith('http') ? imageSrc : mediaUrl(imageSrc)} alt={leader.name} className="w-full h-full object-cover" />
@@ -854,7 +854,7 @@ export const HomePage = () => {
               {testimonials.map((t, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-outline-variant/20 animate-fade-in-up"
+                  className="bg-white p-8 rounded-2xl shadow-md border border-outline-variant/20 animate-fade-in-up hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
                   style={{ animationDelay: `${idx * 150}ms` }}
                 >
                   <div className="flex items-center gap-4 mb-4">

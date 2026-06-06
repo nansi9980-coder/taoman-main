@@ -4,7 +4,7 @@
 export const SECTORS_FULL_EN = {
   'logistique-transports': {
     intro:
-      'Logistics is the backbone of an industrializing economy. TAOMAN invests in fleets, business services and urban distribution to generate steady operational income.',
+      'Logistics is the backbone of an industrializing economy. Taoman Group Investissement invests in fleets, business services and urban distribution to generate steady operational income.',
     context:
       "Togo's coastal position and the Port of Lomé make it a natural hub for ECOWAS trade. Demand for last-mile logistics, inter-city transport and urban distribution remains largely unmet.",
     goal:
@@ -19,14 +19,14 @@ export const SECTORS_FULL_EN = {
     ],
     cout: '€ 1 – 5 million',
     financement: 'TGI – Participatory investment',
-    partenaires: ['TAOMAN Group Investment', 'Regional logistics partners', 'Mobile Money operators', 'Affiliated Togolese SMEs'],
+    partenaires: ['Taoman Group Investissement', 'Regional logistics partners', 'Mobile Money operators', 'Affiliated Togolese SMEs'],
     opportunities: ['Vehicle acquisition and operation', 'Recurring B2B logistics contracts', 'Urban hubs and proximity warehouses'],
   },
   'agro-business': {
     intro:
-      'Agribusiness is key to food sovereignty and exports. TAOMAN funds productive farms, processing units and distribution chains.',
+      'Agribusiness is key to food sovereignty and exports. Taoman Group Investissement funds productive farms, processing units and distribution chains.',
     context:
-      'Agriculture represents nearly 30% of Togo’s GDP but value added remains concentrated on raw production. TAOMAN intervenes across the chain.',
+      'Agriculture represents nearly 30% of Togo’s GDP but value added remains concentrated on raw production. Taoman Group Investissement intervenes across the chain.',
     goal:
       'Structure integrated agricultural value chains generating stable income and rural jobs while reducing food import dependency.',
     perimetre:
@@ -39,12 +39,12 @@ export const SECTORS_FULL_EN = {
     ],
     cout: '€ 500 K – 3 M',
     financement: 'TGI + Agricultural partnership',
-    partenaires: ['TAOMAN Group Investment', 'Local cooperatives', 'Ministry of Agriculture programs', 'Regional buyers'],
+    partenaires: ['Taoman Group Investissement', 'Local cooperatives', 'Ministry of Agriculture programs', 'Regional buyers'],
     opportunities: ['Integrated farms and cooperatives', 'Agro-food mini-plants', 'Collection and sorting logistics platforms'],
   },
   'commerce-general': {
     intro:
-      'General trade channels consumer and B2B demand. TAOMAN structures distribution networks and retail platforms.',
+      'General trade channels consumer and B2B demand. Taoman Group Investissement structures distribution networks and retail platforms.',
     context:
       'Urban consumption and modern retail are growing in Lomé and secondary cities with strong demand for organized distribution.',
     goal:
@@ -53,12 +53,12 @@ export const SECTORS_FULL_EN = {
     documents: ['Market and competition study', 'Supply chain plan', 'Unit economics per outlet', 'Brand and digital plan'],
     cout: '€ 300 K – 2 M',
     financement: 'TGI',
-    partenaires: ['TAOMAN Group Investment', 'Suppliers', 'Retail partners'],
+    partenaires: ['Taoman Group Investissement', 'Suppliers', 'Retail partners'],
     opportunities: ['Wholesale hubs', 'Franchise retail', 'E-commerce fulfillment'],
   },
   'btp-immobilier': {
     intro:
-      'Construction and real estate anchor urban development. TAOMAN funds housing, commercial assets and PPP projects.',
+      'Construction and real estate anchor urban development. Taoman Group Investissement funds housing, commercial assets and PPP projects.',
     context:
       'Housing deficit and infrastructure needs in Lomé and regional cities create opportunities for structured private investment.',
     goal:
@@ -67,12 +67,12 @@ export const SECTORS_FULL_EN = {
     documents: ['Feasibility and land study', 'Construction schedule', 'Sales or rental plan', 'Risk and compliance file'],
     cout: '€ 1 – 8 M',
     financement: 'TGI + PPP',
-    partenaires: ['TAOMAN Group Investment', 'Construction firms', 'Public partners'],
+    partenaires: ['Taoman Group Investissement', 'Construction firms', 'Public partners'],
     opportunities: ['Residential programs', 'Commercial premises', 'Renovation and fit-out'],
   },
   'numerique-services': {
     intro:
-      'Digital and proximity financial services are high-growth levers. TAOMAN backs local platforms and SME software.',
+      'Digital and proximity financial services are high-growth levers. Taoman Group Investissement backs local platforms and SME software.',
     context:
       'Mobile penetration and SME digitization in Togo enable scalable fintech, e-commerce and B2B software models.',
     goal:
@@ -81,7 +81,7 @@ export const SECTORS_FULL_EN = {
     documents: ['Product and market study', 'Tech and security plan', 'Unit economics', 'Growth roadmap'],
     cout: '€ 200 K – 1.5 M',
     financement: 'TGI',
-    partenaires: ['TAOMAN Group Investment', 'Tech partners', 'Telcos and Mobile Money'],
+    partenaires: ['Taoman Group Investissement', 'Tech partners', 'Telcos and Mobile Money'],
     opportunities: ['Fintech and payments', 'Marketplaces', 'SME SaaS'],
   },
   'marketing-international': {
@@ -95,7 +95,7 @@ export const SECTORS_FULL_EN = {
     documents: ['Brand audit', 'Media plan', 'Performance KPIs', 'Export playbook'],
     cout: 'On quote',
     financement: 'Services + TGI where applicable',
-    partenaires: ['TAOMAN Group Investment', 'Media agencies', 'Trade partners'],
+    partenaires: ['Taoman Group Investissement', 'Media agencies', 'Trade partners'],
     opportunities: ['International branding', 'Performance digital', 'B2B lead generation'],
   },
 };

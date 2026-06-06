@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
-import { BRAND_NAME } from '../constants/branding';
+import { BRAND_NAME, BRAND_LINE_1, BRAND_LINE_2 } from '../constants/branding';
 
 const SESSION_KEY = 'taoman_splash_shown';
 
@@ -107,7 +107,7 @@ export const SplashScreen = ({ minDuration = 2200, once = false }) => {
               animate="show"
               className="text-4xl md:text-5xl font-black text-white tracking-[0.2em] mb-2 flex"
             >
-              {"TAOMAN".split("").map((char, i) => (
+              {"Taoman".split("").map((char, i) => (
                 <motion.span key={i} variants={letterAnim} className="inline-block">
                   {char}
                 </motion.span>
@@ -120,7 +120,7 @@ export const SplashScreen = ({ minDuration = 2200, once = false }) => {
               transition={{ delay: 1.2, duration: 0.5 }}
               className="text-cyan-200 text-sm md:text-base font-bold tracking-[0.3em] uppercase"
             >
-              Group Investment
+              {BRAND_LINE_2}
             </motion.p>
 
             {/* Progress line */}

@@ -47,7 +47,7 @@ const SUBMIT_PROJECT = {
       eyebrow: "Besoin d'aide ?",
       title: 'Parlez-en à notre équipe',
       description: 'Notre équipe vous aide à structurer votre dossier avant soumission.',
-      cta: 'Contacter TAOMAN',
+      cta: 'Contacter Taoman Group Investissement',
     },
   },
   EN: {
@@ -94,7 +94,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Need help?',
       title: 'Talk to our team',
       description: 'Our team helps you structure your file before submission.',
-      cta: 'Contact TAOMAN',
+      cta: 'Contact Taoman Group Investissement',
     },
   },
   ES: {
@@ -141,7 +141,7 @@ const SUBMIT_PROJECT = {
       eyebrow: '¿Necesita ayuda?',
       title: 'Hable con nuestro equipo',
       description: 'Nuestro equipo le ayuda a estructurar su expediente antes de presentarlo.',
-      cta: 'Contactar TAOMAN',
+      cta: 'Contactar Taoman Group Investissement',
     },
   },
   PT: {
@@ -188,7 +188,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Precisa de ajuda?',
       title: 'Fale com a nossa equipa',
       description: 'A nossa equipa ajuda-o a estruturar o dossier antes da submissão.',
-      cta: 'Contactar a TAOMAN',
+      cta: 'Contactar a Taoman Group Investissement',
     },
   },
   DE: {
@@ -235,7 +235,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Brauchen Sie Hilfe?',
       title: 'Sprechen Sie mit unserem Team',
       description: 'Unser Team hilft Ihnen, Ihre Akte vor der Einreichung zu strukturieren.',
-      cta: 'TAOMAN kontaktieren',
+      cta: 'Taoman Group Investissement kontaktieren',
     },
   },
   AR: {
@@ -281,7 +281,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'بحاجة إلى مساعدة؟',
       title: 'تحدث مع فريقنا',
       description: 'يساعدك فريقنا على هيكلة ملفك قبل التقديم.',
-      cta: 'تواصل مع TAOMAN',
+      cta: 'تواصل مع Taoman Group Investissement',
     },
   },
   ZH: {
@@ -327,7 +327,7 @@ const SUBMIT_PROJECT = {
       eyebrow: '需要帮助？',
       title: '与我们的团队交流',
       description: '我们的团队可以帮助您在提交前梳理您的项目。',
-      cta: '联系 TAOMAN',
+      cta: '联系 Taoman Group Investissement',
     },
   },
 };

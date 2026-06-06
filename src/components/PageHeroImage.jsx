@@ -46,7 +46,7 @@ export const PageHeroImage = ({ page = 'home', className = '', style = {} }) => 
         <circle cx="100" cy="200" r="4" fill="#22d3ee" opacity="0.7" />
         <circle cx="100" cy="350" r="4" fill="#22d3ee" opacity="0.7" />
         {/* Texte décoratif */}
-        <text x="80" y="420" fontFamily="monospace" fontSize="10" fill="#22d3ee" opacity="0.25">TAOMAN · INVEST · GROW · TOGO</text>
+        <text x="80" y="420" fontFamily="monospace" fontSize="10" fill="#22d3ee" opacity="0.25">Taoman Group Investissement · INVEST · GROW · TOGO</text>
       </svg>
     ),
 

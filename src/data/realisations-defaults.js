@@ -1,6 +1,6 @@
 /** Slides par défaut du carrousel — synchronisé avec l’admin (realisationsDefaults.js). */
 export const REALISATION_SLIDE_TEMPLATES = [
-  { id: 'conducteur-01', title: 'Conducteur TAOMAN 01', category: 'Logistique', progress: 80, imageUrl: '', staticPath: '/realisations/taoman-realisation-01.png' },
+  { id: 'conducteur-01', title: 'Conducteur Taoman Group Investissement 01', category: 'Logistique', progress: 80, imageUrl: '', staticPath: '/realisations/taoman-realisation-01.png' },
   { id: 'transport-02', title: 'Équipe de transport 02', category: 'Transport', progress: 72, imageUrl: '', staticPath: '/realisations/taoman-realisation-02.png' },
   { id: 'lavage-03', title: 'Centre de lavage 03', category: 'Lavage Auto', progress: 88, imageUrl: '', staticPath: '/realisations/taoman-realisation-03.png' },
   { id: 'terrain-04', title: 'Intervention terrain 04', category: 'Équipe terrain', progress: 76, imageUrl: '', staticPath: '/realisations/taoman-realisation-04.png' },

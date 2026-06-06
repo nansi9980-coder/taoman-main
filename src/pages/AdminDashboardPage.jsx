@@ -29,7 +29,7 @@ export const AdminDashboardPage = () => {
     ['Documents', 'Contrats, reçus, rapports PDF, attestations et archivage sécurisé.'],
     ['Reporting', 'Chiffres clés, performance, ventes, conversions et rapports mensuels.'],
     ['Notifications', 'Emails, SMS, WhatsApp, rappels automatiques et alertes internes.'],
-    ['Services TAOMAN', 'Lavage, déménagement, entretien bureaux et demandes terrain.'],
+    ['Services Taoman Group Investissement', 'Lavage, déménagement, entretien bureaux et demandes terrain.'],
     ['Sécurité & audit', 'Logs, sessions, actions sensibles, sauvegardes et contrôle d’accès.'],
   ];
 

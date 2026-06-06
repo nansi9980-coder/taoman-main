@@ -15,7 +15,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: 'PDG - Groupe Import', comment: `Service d'entretien impeccable et équipe professionnelle. Je recommande vivement ${BRAND_NAME} !` }
       ],
       categories: ['Logistique', 'Transport', 'Lavage Auto', 'Équipe terrain', 'Agro & Commerce'],
-      labels: ['Conducteur TAOMAN', 'Équipe de transport', 'Centre de lavage', 'Intervention terrain', 'Flotte opérationnelle', 'Commerce agro']
+      labels: ['Conducteur Taoman Group Investissement', 'Équipe de transport', 'Centre de lavage', 'Intervention terrain', 'Flotte opérationnelle', 'Commerce agro']
     },
     EN: {
       services: [
@@ -31,7 +31,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: 'CEO - Import Group', comment: `Impeccable cleaning service and professional team. I highly recommend ${BRAND_NAME}!` }
       ],
       categories: ['Logistics', 'Transport', 'Car Wash', 'Field Team', 'Agro & Trade'],
-      labels: ['TAOMAN Driver', 'Transport Team', 'Wash Center', 'Field Intervention', 'Operational Fleet', 'Agro Trade']
+      labels: ['Taoman Group Investissement Driver', 'Transport Team', 'Wash Center', 'Field Intervention', 'Operational Fleet', 'Agro Trade']
     },
     ES: {
       services: [
@@ -47,7 +47,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: 'CEO - Grupo Importación', comment: `Servicio de limpieza impecable y equipo profesional. ¡Recomiendo encarecidamente ${BRAND_NAME}!` }
       ],
       categories: ['Logística', 'Transporte', 'Lavado de Autos', 'Equipo de Terreno', 'Agro y Comercio'],
-      labels: ['Conductor TAOMAN', 'Equipo de Transporte', 'Centro de Lavado', 'Intervención en Terreno', 'Flota Operativa', 'Comercio Agro']
+      labels: ['Conductor Taoman Group Investissement', 'Equipo de Transporte', 'Centro de Lavado', 'Intervención en Terreno', 'Flota Operativa', 'Comercio Agro']
     },
     PT: {
       services: [
@@ -63,7 +63,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: 'CEO - Grupo de Importação', comment: `Serviço de limpeza impecável e equipe profissional. Recomendo fortemente a ${BRAND_NAME}!` }
       ],
       categories: ['Logística', 'Transporte', 'Lava Rápido', 'Equipe de Campo', 'Agronegócio'],
-      labels: ['Motorista TAOMAN', 'Equipe de Transporte', 'Centro de Lavagem', 'Intervenção em Campo', 'Frota Operacional', 'Comércio Agro']
+      labels: ['Motorista Taoman Group Investissement', 'Equipe de Transporte', 'Centro de Lavagem', 'Intervenção em Campo', 'Frota Operacional', 'Comércio Agro']
     },
     DE: {
       services: [
@@ -79,7 +79,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: 'CEO - Import Group', comment: `Tadelloser Reinigungsservice und professionelles Team. Ich kann ${BRAND_NAME} wärmstens empfehlen!` }
       ],
       categories: ['Logistik', 'Transport', 'Autowäsche', 'Außendienst', 'Agrar & Handel'],
-      labels: ['TAOMAN Fahrer', 'Transportteam', 'Waschzentrum', 'Außendienst', 'Flotte', 'Agrarhandel']
+      labels: ['Taoman Group Investissement Fahrer', 'Transportteam', 'Waschzentrum', 'Außendienst', 'Flotte', 'Agrarhandel']
     },
     AR: {
       services: [
@@ -95,7 +95,7 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'ماري سيفاكو', role: 'مديرة تنفيذية - مجموعة استيراد', comment: `خدمة تنظيف لا تشوبها شائبة وفريق محترف. أوصي بشدة بـ ${BRAND_NAME}!` }
       ],
       categories: ['اللوجستيات', 'النقل', 'غسيل السيارات', 'الفريق الميداني', 'الزراعة والتجارة'],
-      labels: ['سائق TAOMAN', 'فريق النقل', 'مركز غسيل', 'التدخل الميداني', 'أسطول العمليات', 'التجارة الزراعية']
+      labels: ['سائق Taoman Group Investissement', 'فريق النقل', 'مركز غسيل', 'التدخل الميداني', 'أسطول العمليات', 'التجارة الزراعية']
     },
     ZH: {
       services: [
@@ -111,6 +111,6 @@ import { BRAND_NAME } from '../constants/branding';
         { name: 'Marie Sefako', role: '首席执行官 - 进口集团', comment: `无可挑剔的清洁服务和专业的团队。我强烈推荐 ${BRAND_NAME}！` }
       ],
       categories: ['物流', '运输', '洗车', '现场团队', '农业与贸易'],
-      labels: ['TAOMAN 司机', '运输团队', '洗车中心', '现场干预', '运营车队', '农业贸易']
+      labels: ['Taoman Group Investissement 司机', '运输团队', '洗车中心', '现场干预', '运营车队', '农业贸易']
     }
   };

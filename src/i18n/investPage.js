@@ -7,10 +7,10 @@ import { ES, PT, DE, AR, ZH } from './locales/investPage-extra';
 
 const FR = {
   default: {
-    badge: 'Investir avec TAOMAN',
+    badge: 'Investir avec Taoman Group Investissement',
     title: BRAND_NAME,
     description:
-      "Investir avec TAOMAN Group Investment, c'est rejoindre un acteur structuré qui combine sélection sectorielle rigoureuse, accompagnement terrain et reporting transparent.",
+      "Investir avec Taoman Group Investissement, c'est rejoindre un acteur structuré qui combine sélection sectorielle rigoureuse, accompagnement terrain et reporting transparent.",
     stats: [
       { value: '500K FCFA', label: 'Ticket minimum' },
       { value: '10 mois', label: 'Horizon maximum demandé' },
@@ -19,21 +19,21 @@ const FR = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN TGI' },
+    { id: 'programmes', label: 'Taoman Group Investissement TGI' },
     { id: 'opportunites', label: "Opportunités d'investissement" },
     { id: 'criteres', label: "Critères d'investissement" },
     { id: 'soumettre', label: 'Soumettre un projet' },
   ],
-  tgiLink: 'TAOMAN TGI →',
-  navAria: 'Investir avec TAOMAN - sections',
+  tgiLink: 'Taoman Group Investissement TGI →',
+  navAria: 'Investir avec Taoman Group Investissement - sections',
   programs: {
-    intro: 'Choisissez le programme TAOMAN qui vous correspond, ou commencez par simuler votre rendement.',
+    intro: 'Choisissez le programme Taoman Group Investissement qui vous correspond, ou commencez par simuler votre rendement.',
     premium: 'Premium',
-    tgiTitle: 'TAOMAN TGI',
+    tgiTitle: 'Taoman Group Investissement TGI',
     tgiDesc: "Programme d'investissement structuré avec diversification sectorielle, suivi projet et reporting.",
     tgiCta: 'Découvrir le TGI',
     contactBadge: 'Contact',
-    advisorTitle: 'Conseiller TAOMAN',
+    advisorTitle: 'Conseiller Taoman Group Investissement',
     advisorDesc:
       'Parlez directement à un conseiller du Groupe pour valider votre profil investisseur, choisir le bon secteur et formaliser votre engagement.',
     advisorCta: 'Demander un rendez-vous',
@@ -59,7 +59,7 @@ const FR = {
   },
   opportunities: {
     intro:
-      'TAOMAN structure ses investissements autour de cinq filières prioritaires. Chacune dispose d\'une page dédiée.',
+      'Taoman Group Investissement structure ses investissements autour de cinq filières prioritaires. Chacune dispose d\'une page dédiée.',
     targetReturn: 'Rendement cible',
     profile: 'Profil',
     discoverSector: 'Découvrir le secteur',
@@ -93,7 +93,7 @@ const FR = {
   },
   finalCta: {
     title: 'Prêt à investir ou à présenter un projet ?',
-    desc: 'Échangez avec un conseiller TAOMAN — réponse sous 48 heures.',
+    desc: 'Échangez avec un conseiller Taoman Group Investissement — réponse sous 48 heures.',
     contact: 'Nous contacter pour investir',
     submit: 'Soumettre un projet',
   },
@@ -106,15 +106,15 @@ const FR = {
   },
   seoTitle: 'Investir avec nous au Togo',
   seoDescription:
-    'Investir avec TAOMAN Group Investment : secteurs, programmes TGI, opportunités et reporting transparent au Togo et CEDEAO.',
+    'Investir avec Taoman Group Investissement : secteurs, programmes TGI, opportunités et reporting transparent au Togo et CEDEAO.',
 };
 
 const EN = {
   default: {
-    badge: 'Invest with TAOMAN',
+    badge: 'Invest with Taoman Group Investissement',
     title: BRAND_NAME,
     description:
-      'Investing with TAOMAN Group Investment means joining a structured player with rigorous sector selection, field support and transparent reporting.',
+      'Investing with Taoman Group Investissement means joining a structured player with rigorous sector selection, field support and transparent reporting.',
     stats: [
       { value: '500K CFA', label: 'Minimum ticket' },
       { value: '10 months', label: 'Maximum horizon' },
@@ -123,21 +123,21 @@ const EN = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN TGI' },
+    { id: 'programmes', label: 'Taoman Group Investissement TGI' },
     { id: 'opportunites', label: 'Investment opportunities' },
     { id: 'criteres', label: 'Investment criteria' },
     { id: 'soumettre', label: 'Submit a project' },
   ],
-  tgiLink: 'TAOMAN TGI →',
-  navAria: 'Invest with TAOMAN - sections',
+  tgiLink: 'Taoman Group Investissement TGI →',
+  navAria: 'Invest with Taoman Group Investissement - sections',
   programs: {
-    intro: 'Choose the TAOMAN program that fits you, or start by simulating your return.',
+    intro: 'Choose the Taoman Group Investissement program that fits you, or start by simulating your return.',
     premium: 'Premium',
-    tgiTitle: 'TAOMAN TGI',
+    tgiTitle: 'Taoman Group Investissement TGI',
     tgiDesc: 'Structured investment program with sector diversification, project monitoring and reporting.',
     tgiCta: 'Discover TGI',
     contactBadge: 'Contact',
-    advisorTitle: 'TAOMAN advisor',
+    advisorTitle: 'Taoman Group Investissement advisor',
     advisorDesc:
       'Speak directly with a Group advisor to validate your investor profile, choose the right sector and formalize your commitment.',
     advisorCta: 'Request a meeting',
@@ -163,7 +163,7 @@ const EN = {
   },
   opportunities: {
     intro:
-      'TAOMAN structures investments around five priority sectors, each with a dedicated page.',
+      'Taoman Group Investissement structures investments around five priority sectors, each with a dedicated page.',
     targetReturn: 'Target return',
     profile: 'Profile',
     discoverSector: 'Discover sector',
@@ -197,7 +197,7 @@ const EN = {
   },
   finalCta: {
     title: 'Ready to invest or submit a project?',
-    desc: 'Talk to a TAOMAN advisor — response within 48 hours.',
+    desc: 'Talk to a Taoman Group Investissement advisor — response within 48 hours.',
     contact: 'Contact us to invest',
     submit: 'Submit a project',
   },
@@ -210,7 +210,7 @@ const EN = {
   },
   seoTitle: 'Invest with us in Togo',
   seoDescription:
-    'Invest with TAOMAN Group Investment: sectors, TGI programs, opportunities and transparent reporting in Togo and ECOWAS.',
+    'Invest with Taoman Group Investissement: sectors, TGI programs, opportunities and transparent reporting in Togo and ECOWAS.',
 };
 
 const PACKS = buildLangPacks({ FR, EN, ES, PT, DE, AR, ZH });

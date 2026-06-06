@@ -161,7 +161,7 @@ export const AboutPage = () => {
         <section className="py-20 px-6 bg-surface">
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <Reveal preset="fadeUp">
-              <div className="rounded-[2rem] border border-outline-variant/40 bg-white p-8 hover:shadow-xl transition-all duration-500 h-full interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
+              <div className="rounded-[2rem] border border-outline-variant/40 bg-white p-8 h-full hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                 <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow-md">
                   <Target className="h-7 w-7" strokeWidth={2.2} />
                 </span>
@@ -171,7 +171,7 @@ export const AboutPage = () => {
               </div>
             </Reveal>
             <Reveal preset="fadeUp">
-              <div className="rounded-[2rem] border border-outline-variant/40 bg-white p-8 hover:shadow-xl transition-all duration-500 h-full interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
+              <div className="rounded-[2rem] border border-outline-variant/40 bg-white p-8 h-full hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                 <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white shadow-md">
                   <Eye className="h-7 w-7" strokeWidth={2.2} />
                 </span>
@@ -203,7 +203,7 @@ export const AboutPage = () => {
                   return (
                     <div
                       key={idx}
-                      className="value-card group bg-white p-7 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/40 hover:border-primary/30 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0"
+                      className="value-card group bg-white p-7 rounded-3xl shadow-sm border border-outline-variant/40 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
                     >
                       <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary-container group-hover:text-white transition-all">
                         <Icon className="h-6 w-6" strokeWidth={2.2} />

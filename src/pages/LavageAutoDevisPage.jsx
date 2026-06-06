@@ -136,7 +136,7 @@ export const LavageAutoDevisPage = () => {
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
               <img
                 src={lavage1}
-                alt="Prestation de lavage TAOMAN"
+                alt="Prestation de lavage Taoman Group Investissement"
                 className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
                 loading="lazy"
               />
@@ -425,7 +425,7 @@ export const LavageAutoDevisPage = () => {
                   </p>
                 </div>
                 <div className="rounded-3xl bg-white text-on-surface p-6 shadow-xl">
-                  <img src={lavage2} alt="Travail TAOMAN" className="rounded-2xl w-full aspect-[4/3] object-cover mb-4" loading="lazy" />
+                  <img src={lavage2} alt="Travail Taoman Group Investissement" className="rounded-2xl w-full aspect-[4/3] object-cover mb-4" loading="lazy" />
                   <h4 className="font-black text-on-surface">{t.sidebar.equipmentTitle}</h4>
                   <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
                     {t.sidebar.equipmentDesc}

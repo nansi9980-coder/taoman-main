@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
+import { CustomCursor } from './components/CustomCursor';
 import { PageTransitionLayout } from './components/PageTransitionLayout';
 import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
@@ -70,6 +71,7 @@ function App() {
       <HelmetProvider>
         <SiteContentProvider>
           <SplashScreen minDuration={1800} />
+          <CustomCursor />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <SkipToMainContent />

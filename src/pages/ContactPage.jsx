@@ -122,7 +122,7 @@ const ContactCard = ({ topic, onSelect, active, labels }) => {
     <button
       type="button"
       onClick={() => onSelect(topic.id)}
-      className={`group text-left rounded-3xl border p-7 transition-all duration-300 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0 ${
+      className={`group text-left rounded-3xl border p-7 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0 ${
         active
           ? 'bg-gradient-to-br from-primary to-primary-container text-white border-primary shadow-2xl'
           : 'bg-white border-outline-variant/40 hover:border-primary/40'
@@ -187,7 +187,7 @@ const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name || formData.organization || 'Contact TAOMAN',
+          name: formData.name || formData.organization || 'Contact Taoman Group Investissement',
           email: formData.email,
           phone: formData.phone,
           subject: `${topic.serviceTag} – ${formData.projectName || formData.question || topic.title}`,
@@ -407,7 +407,7 @@ export const ContactPage = () => {
         title={tNav.contact}
         description={tContact.seoDescription}
         path="/contact"
-        keywords="contact TAOMAN, devis Togo, partenariat investissement, soumettre projet Lomé"
+        keywords="contact Taoman Group Investissement, devis Togo, partenariat investissement, soumettre projet Lomé"
       />
       <Header activeLink="contact" />
 
@@ -486,7 +486,7 @@ export const ContactPage = () => {
         </section>
         </Reveal>
 
-        {/* BANDEAU GROUPE TAOMAN */}
+        {/* BANDEAU GROUPE Taoman Group Investissement */}
         <Reveal preset="fadeUp">
         <section className="py-16 px-6 bg-gradient-to-br from-primary to-primary-container">
           <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_0.8fr] gap-8 items-center text-white">

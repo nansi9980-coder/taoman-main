@@ -73,7 +73,7 @@ export const SectorsListPage = () => {
                 <Link
                   key={sector.slug || idx}
                   to={`/secteurs/${sector.slug || idx}`}
-                  className="sector-list-card group relative flex flex-col overflow-hidden rounded-3xl border border-outline-variant/40 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0"
+                  className="sector-list-card group relative flex flex-col overflow-hidden rounded-3xl border border-outline-variant/40 bg-white shadow-sm hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
                 >
                   {/* Photo */}
                   {sector.image && (

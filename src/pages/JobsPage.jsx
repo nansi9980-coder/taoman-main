@@ -124,7 +124,7 @@ export const JobsPage = () => {
                       {job.title}
                     </h3>
                     <p className="text-body-sm text-on-surface-variant mb-md">
-                      TAOMAN Group Investment • {job.location || tJobs.defaultLocation}
+                      Taoman Group Investissement • {job.location || tJobs.defaultLocation}
                     </p>
                     <span className="inline-block px-md py-xs bg-primary-container/10 text-primary-container rounded-lg text-label-sm font-bold">
                       {job.type}

@@ -3,7 +3,7 @@ const EN_BASE = {
   "aspects": [
     {
       "title": "Proven economic model",
-      "desc": "TAOMAN only funds models validated in Togo, each preceded by a detailed profitability study."
+      "desc": "Taoman Group Investissement only funds models validated in Togo, each preceded by a detailed profitability study."
     },
     {
       "title": "Data-driven management",
@@ -44,8 +44,8 @@ const EN_BASE = {
       "desc": "Operational steering, quarterly reporting and scheduled distributions."
     }
   ],
-  "seoDiscoverService": "Discover {title} at TAOMAN Group Investment.",
-  "seoDiscoverSector": "Discover the {title} sector at TAOMAN Group Investment.",
+  "seoDiscoverService": "Discover {title} at Taoman Group Investissement.",
+  "seoDiscoverSector": "Discover the {title} sector at Taoman Group Investissement.",
   "serviceTag": "Service",
   "otherServicesTitle": "Other group offerings",
   "otherServicesSubtitle": "Explore our services and sectors"

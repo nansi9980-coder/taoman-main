@@ -4,7 +4,7 @@ export const OPERATIONAL_SERVICE_TEMPLATES = [
     id: 'lavage',
     title: 'Lavage automobile & moto',
     description:
-      'Nettoyage intérieur et extérieur premium, vitres, jantes, pneus, polissage carrosserie. En centre TAOMAN ou en mobile à domicile.',
+      'Nettoyage intérieur et extérieur premium, vitres, jantes, pneus, polissage carrosserie. En centre Taoman Group Investissement ou en mobile à domicile.',
     badge: 'Populaire',
     sla: '45 – 90 min',
     priceFrom: 'Dès 3 500 FCFA',
@@ -34,7 +34,7 @@ export const OPERATIONAL_SERVICE_TEMPLATES = [
     badge: 'Contrat pro',
     sla: 'Journalier / hebdo',
     priceFrom: 'Sur devis',
-    bullets: ['Équipe identifiée en uniforme TAOMAN', 'Produits écologiques et matériel professionnel', 'Reporting mensuel et contrôle qualité'],
+    bullets: ['Équipe identifiée en uniforme Taoman Group Investissement', 'Produits écologiques et matériel professionnel', 'Reporting mensuel et contrôle qualité'],
     href: '/entretien/bureaux',
     imageUrl: '',
     published: true,
