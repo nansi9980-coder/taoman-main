@@ -20,7 +20,7 @@ import {
 import { Header } from '../components/Header';
 import { SeoHead } from '../components/SeoHead';
 import { Footer } from '../components/Footer';
-import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -411,15 +411,15 @@ export const ContactPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         <section className="relative overflow-hidden py-20 px-6 text-white">
-          <PremiumBackdrop variant="dark" intensity="normal" particles={12} />
-          <div className="relative z-10 max-w-[1200px] mx-auto text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
+          <PhotoHeroBackground src="/images/Contact.jpg" overlayVariant="center" overlayIntensity="strong" />
+          <div className="relative z-10 max-w-[1200px] mx-auto text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-200 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}
             </span>
             <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
               {tContact.hero.title}
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 leading-relaxed">
+            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
               {tContact.hero.description}
             </p>
           </div>

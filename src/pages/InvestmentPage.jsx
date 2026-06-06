@@ -21,6 +21,7 @@ import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
 import programmeImg from '../assets/programme.jpeg';
@@ -278,13 +279,12 @@ export const InvestmentPage = () => {
       <Header activeLink="investissement" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden bg-[#07111f] py-24 px-6 text-white">
-          <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
-          <div className="relative z-10 mx-auto max-w-[1100px] text-center">
+        <section className="relative overflow-hidden py-24 px-6 text-white">
+          <PhotoHeroBackground src="/images/investissements.jpg" overlayVariant="center" overlayIntensity="strong" />
+          <div className="relative z-10 mx-auto max-w-[1100px] text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{badge}</p>
             <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] md:text-7xl">{title}</h1>
-            <p className="mb-10 mx-auto max-w-2xl text-xl text-white/75">{description}</p>
+            <p className="mb-10 mx-auto max-w-2xl text-xl text-white/90">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
                 {tCommon.contactInvest}

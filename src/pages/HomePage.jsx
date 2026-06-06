@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer';
 import { SeoHead } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
-import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { VideoHeroBackground } from '../components/VideoHeroBackground';
 import { PremiumImageFrame } from '../components/PremiumImageFrame';
 import { StatsBand } from '../components/StatsBand';
 import { PartnersBand } from '../components/PartnersBand';
@@ -14,11 +14,8 @@ import { TextReveal } from '../components/TextReveal';
 import { TiltCard } from '../components/TiltCard';
 import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight, ShieldCheck, Scale, FileText, PieChart, Target, Globe } from 'lucide-react';
-import lavage1    from '../assets/realisations/lavage1.jpg';
 import lavage2    from '../assets/realisations/lavage2.jpg';
-import mecanique1 from '../assets/realisations/mecanique1.png';
 import mecanique2 from '../assets/realisations/mecanique2.jpg';
-import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
@@ -33,7 +30,6 @@ import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { mergeRealisationSlides, resolveRealisationImage } from '../data/realisations-defaults';
-import { mergeHeroMosaicBlock } from '../data/hero-mosaic-defaults';
 import { getRealisationSlideCopy } from '../i18n/realisations-slides';
 import { resolveCmsForLanguage } from '../utils/cmsLocale';
 import { useMediaSettings } from '../hooks/useMediaSettings';
@@ -180,25 +176,6 @@ export const HomePage = () => {
       ? heroSection.badges
       : DEFAULT_HERO.badges;
 
-  const heroMosaic = mergeHeroMosaicBlock(heroSection.mosaic || {});
-  const mosaicFallbackSrc = {
-    logistics: transport1,
-    services: lavage1,
-    teams: mecanique1,
-  };
-  const mosaicTile = (id) => heroMosaic.tiles.find((t) => t.id === id) || {};
-  const mosaicSrc = (id) => {
-    const url = mosaicTile(id).imageUrl;
-    return url ? mediaUrl(url) : mosaicFallbackSrc[id];
-  };
-  const mosaicLabel = (id, field) => {
-    const tile = mosaicTile(id);
-    const i18n = tHero.mosaic?.[id] || {};
-    return field === 'tag'
-      ? pickLocale(language, tile.tag, i18n.tag)
-      : pickLocale(language, tile.title, i18n.title);
-  };
-
   const heroData = {
     badgeMain: pickLocale(
       language,
@@ -229,15 +206,6 @@ export const HomePage = () => {
         (isAuthenticated ? tCommon.mySpace || 'Mon espace' : tCommon.registerFree || DEFAULT_HERO.btn2)
     ),
     imageCaption: pickLocale(language, heroSection.imageCaption, tHero.livePill || DEFAULT_HERO.imageCaption),
-    heroImage: (heroSection.heroImage || heroSection.backgroundImage)
-      ? mediaUrl(heroSection.heroImage || heroSection.backgroundImage)
-      : null,
-    mosaic: {
-      liveLabel: pickLocale(language, heroMosaic.liveLabel, tHero.liveLabel || 'Live'),
-      livePill: pickLocale(language, heroMosaic.livePill, tHero.livePill || 'Suivi temps réel'),
-      kpiPercent: heroMosaic.kpiPercent ?? 96,
-      kpiLabel: pickLocale(language, heroMosaic.kpiLabel, tHero.kpiLabel || 'satisfaction client'),
-    },
   };
 
   // ── Réalisations : 10 slides (images FR héritées, textes i18n) ───
@@ -331,17 +299,17 @@ export const HomePage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
 
-        {/* ============ HERO PREMIUM — split cinématique ============ */}
-        <section className="relative overflow-hidden pt-20 pb-24 text-white md:pt-28 md:pb-32">
-          <PhotoHeroBackground
-            src={heroData.heroImage || '/images/hero-logistics-bg.png'}
-            objectPosition="55% center"
+        {/* ============ HERO PREMIUM — vidéo cinématique ============ */}
+        <section className="relative overflow-hidden min-h-[75vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
+          <VideoHeroBackground
+            src="/video/Hero.mp4"
+            poster="/images/hero-logistics-bg.png"
             overlayIntensity="strong"
+            overlayVariant="left"
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-            {/* Colonne texte */}
-            <div className="lg:col-span-7 animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full">
+            <div className="max-w-3xl animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
               <div className="mb-6 flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur-md shadow-lg">
                   <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(125,211,252,0.9)]" />
@@ -395,83 +363,6 @@ export const HomePage = () => {
                   </span>
                 ))}
               </div>
-            </div>
-
-            {/* Colonne mosaïque cinématique */}
-            <div className="lg:col-span-5 relative h-[460px] md:h-[560px] hidden lg:block">
-              <div className="absolute top-0 right-0 w-[68%] h-[58%] animate-fade-in" style={{ animationDelay: '180ms' }}>
-                <PremiumImageFrame
-                  src={mosaicSrc('logistics')}
-                  alt={mosaicLabel('logistics', 'title')}
-                  ratio="aspect-auto h-full"
-                  rounded="rounded-[2rem]"
-                  tone="cool"
-                  eager
-                  priority
-                  imageClassName="animate-ken-burns"
-                >
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/40 backdrop-blur px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-cyan-200 border border-cyan-200/30">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 animate-pulse" />
-                    {t.home.hero.liveLabel}
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{t.home.hero.mosaic.logistics.tag}</p>
-                    <p className="text-lg font-black tracking-tight">{t.home.hero.mosaic.logistics.title}</p>
-                  </div>
-                </PremiumImageFrame>
-              </div>
-
-              <div className="absolute top-[18%] left-0 w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '380ms' }}>
-                <PremiumImageFrame
-                  src={mosaicSrc('services')}
-                  alt={mosaicLabel('services', 'title')}
-                  ratio="aspect-auto h-full"
-                  rounded="rounded-[1.5rem]"
-                  tone="warm"
-                >
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{mosaicLabel('services', 'tag')}</p>
-                    <p className="text-base font-black tracking-tight">{mosaicLabel('services', 'title')}</p>
-                  </div>
-                </PremiumImageFrame>
-              </div>
-
-              <div className="absolute bottom-0 right-[8%] w-[55%] h-[42%] animate-fade-in" style={{ animationDelay: '580ms' }}>
-                <PremiumImageFrame
-                  src={mosaicSrc('teams')}
-                  alt={mosaicLabel('teams', 'title')}
-                  ratio="aspect-auto h-full"
-                  rounded="rounded-[1.5rem]"
-                  tone="neutral"
-                >
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200">{mosaicLabel('teams', 'tag')}</p>
-                    <p className="text-base font-black tracking-tight">{mosaicLabel('teams', 'title')}</p>
-                  </div>
-                </PremiumImageFrame>
-              </div>
-
-              <div className="absolute -bottom-2 left-[5%] z-20 rounded-2xl glass-premium p-4 animate-fade-in-up" style={{ animationDelay: '780ms' }}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/90 mb-1">{heroData.mosaic.livePill}</p>
-                <p className="text-2xl font-black text-white stat-number">{heroData.mosaic.kpiPercent}<span className="text-cyan-300">%</span></p>
-                <p className="text-xs text-white/65">{heroData.mosaic.kpiLabel}</p>
-              </div>
-            </div>
-
-            {/* Mobile : mini-mosaïque horizontale */}
-            <div className="lg:hidden grid grid-cols-3 gap-2 mt-4">
-              {['logistics', 'services', 'teams'].map((id, i) => (
-                <PremiumImageFrame
-                  key={id}
-                  src={mosaicSrc(id)}
-                  alt=""
-                  ratio="aspect-square"
-                  rounded="rounded-2xl"
-                  tone={i === 1 ? 'warm' : 'cool'}
-                  eager={i === 0}
-                  priority={i === 0}
-                />
-              ))}
             </div>
           </div>
         </section>

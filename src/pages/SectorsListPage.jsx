@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
-import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { pickLocale, pickLocaleList } from '../utils/pickLocale';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
@@ -41,13 +41,13 @@ export const SectorsListPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         <section className="relative overflow-hidden py-24 px-6 text-white">
-          <PremiumBackdrop variant="dark" intensity="normal" particles={14} />
-          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up">
+          <PhotoHeroBackground src="/images/projet.jpg" overlayVariant="center" overlayIntensity="strong" />
+          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">{tSec.hero.eyebrow}</p>
             <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6 bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
               {tSec.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               {tSec.hero.description}
             </p>
           </div>

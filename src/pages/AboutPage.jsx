@@ -29,6 +29,7 @@ import { BRAND_NAME } from '../constants/branding';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { pickLocale } from '../utils/pickLocale';
 
 const DEFAULT_ABOUT = {
@@ -119,17 +120,17 @@ export const AboutPage = () => {
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO PREMIUM ============ */}
         <section id="profile" className="relative overflow-hidden py-24 px-6 text-white">
-          <PremiumBackdrop variant="dark" intensity="normal" particles={14} />
+          <PhotoHeroBackground src="/images/Apropos.jpg" objectPosition="center center" overlayIntensity="strong" />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+          <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur">
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur-md">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tAbout.hero.eyebrow}
               </span>
               <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
                 {title}
               </h1>
-              <p className="mt-6 text-xl text-white/80 max-w-3xl leading-relaxed">{description}</p>
+              <p className="mt-6 text-xl text-white/90 max-w-3xl leading-relaxed">{description}</p>
               {raw.imageUrl && (
                 <img src={mediaUrl(raw.imageUrl)} alt="" className="mt-6 max-h-48 rounded-2xl object-cover" loading="lazy" decoding="async" />
               )}

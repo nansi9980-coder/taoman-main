@@ -22,6 +22,7 @@ import {
 import { mediaUrl } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
 import { PhotoSlider } from '../components/PhotoSlider';
+import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { SeoHead, buildServiceLd } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { useLanguage } from '../context/LanguageContext';
@@ -162,14 +163,13 @@ export const ServicesPage = () => {
       <Header activeLink="services" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden bg-[#07111f] py-20 px-6 text-white">
-          <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
-          <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <section className="relative overflow-hidden py-20 px-6 text-white">
+          <PhotoHeroBackground src="/images/services.jpg" objectPosition="center center" overlayIntensity="strong" />
+          <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{heroBadge}</p>
               <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] text-white mb-6">{heroTitle}</h1>
-              <p className="text-lg text-white/75 mb-8 max-w-2xl">{heroDesc}</p>
+              <p className="text-lg text-white/90 mb-8 max-w-2xl">{heroDesc}</p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   onClick={() => navigate('/contact')}
