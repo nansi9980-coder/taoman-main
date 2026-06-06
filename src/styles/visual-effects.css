@@ -1,0 +1,187 @@
+/* =========================================================
+   Effets visuels globaux — TAOMAN
+   ========================================================= */
+
+/* Barre de progression scroll */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9998;
+  pointer-events: none;
+  background: rgba(125, 211, 252, 0.08);
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #003d9b, #22d3ee, #7dd3fc);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  transition: width 0.12s ease-out;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Titre dégradé animé */
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--shimmer-base, #003d9b) 0%,
+    #22d3ee 25%,
+    #7dd3fc 50%,
+    #22d3ee 75%,
+    var(--shimmer-base, #003d9b) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShimmer 7s linear infinite;
+}
+
+.text-shimmer-light {
+  --shimmer-base: #ffffff;
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #a5f3fc 30%,
+    #ffffff 50%,
+    #67e8f9 70%,
+    #ffffff 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShimmer 6s linear infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 220% center; }
+}
+
+/* Vague de séparation entre sections */
+.section-wave {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  color: var(--wave-color, #f4f6fb);
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+.section-wave--flip {
+  transform: rotate(180deg);
+}
+
+.section-wave__svg {
+  display: block;
+  width: 100%;
+  height: 64px;
+}
+
+.section-wave path {
+  transform-origin: center bottom;
+  animation: waveBob 6s ease-in-out infinite alternate;
+}
+
+@keyframes waveBob {
+  0% { transform: scaleY(1) translateY(0); }
+  100% { transform: scaleY(1.08) translateY(-4px); }
+}
+
+/* Mesh léger pour sections claires */
+.section-mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: meshDrift 20s ease-in-out infinite;
+}
+
+.section-mesh-orb--1 {
+  top: -15%;
+  right: -8%;
+  width: 420px;
+  height: 420px;
+  background: rgba(0, 61, 155, 0.08);
+}
+
+.section-mesh-orb--2 {
+  bottom: -20%;
+  left: -10%;
+  width: 380px;
+  height: 380px;
+  background: rgba(34, 211, 238, 0.1);
+  animation-delay: -8s;
+}
+
+.section-mesh-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(0, 61, 155, 0.03) 40px,
+    rgba(0, 61, 155, 0.03) 41px
+  );
+  pointer-events: none;
+}
+
+/* Badges flottants décoratifs */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatY 7s ease-in-out infinite;
+}
+
+.floating-shape--ring {
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  background: rgba(125, 211, 252, 0.04);
+}
+
+.floating-shape--dot {
+  background: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* Filtres pills animés */
+.filter-pill {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filter-pill:hover:not(.filter-pill--active) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 211, 238, 0.15);
+}
+
+.filter-pill--active {
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-shimmer,
+  .text-shimmer-light,
+  .section-wave path,
+  .section-mesh-orb,
+  .floating-shape {
+    animation: none !important;
+  }
+
+  .text-shimmer,
+  .text-shimmer-light {
+    color: inherit;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+
+  .scroll-progress__bar {
+    transition: none;
+  }
+}

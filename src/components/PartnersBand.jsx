@@ -40,7 +40,7 @@ export const PartnersBand = ({
             {looped.map((item, idx) => (
               <div
                 key={`${item.name}-${idx}`}
-                className="flex h-20 min-w-[220px] md:min-w-[260px] items-center justify-center rounded-2xl glass-premium px-6"
+                className="flex h-20 min-w-[220px] md:min-w-[260px] items-center justify-center rounded-2xl glass-premium px-6 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
               >
                 <div className="text-center">
                   {item.eyebrow && (

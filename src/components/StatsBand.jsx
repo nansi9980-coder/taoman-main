@@ -49,7 +49,7 @@ const StatItem = ({ item, inView }) => {
   });
   const Icon = item.icon;
   return (
-    <div className="relative flex flex-col items-start gap-3 rounded-3xl glass-premium p-7 md:p-8 premium-halo">
+    <div className="relative flex flex-col items-start gap-3 rounded-3xl glass-premium p-7 md:p-8 premium-halo hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
       {Icon && (
         <div className="mb-2 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300/15 text-cyan-200 ring-1 ring-cyan-200/30">
           <Icon className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />

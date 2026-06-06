@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import './styles/animations.css'
 import './styles/hover-effects.css'
+import './styles/visual-effects.css'
 import './App.animations.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

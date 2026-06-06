@@ -6,6 +6,9 @@ import { SeoHead } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { VideoHeroBackground } from '../components/VideoHeroBackground';
+import { SectionWave } from '../components/SectionWave';
+import { SectionMesh } from '../components/SectionMesh';
+import { FloatingDecor } from '../components/FloatingDecor';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { PremiumImageFrame } from '../components/PremiumImageFrame';
 import { StatsBand } from '../components/StatsBand';
@@ -310,6 +313,7 @@ export const HomePage = () => {
             overlayVariant="left"
           />
           <AmbientEffects variant="hero" className="absolute inset-0 z-[5] pointer-events-none" />
+          <FloatingDecor className="z-[6]" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full">
             <div className="max-w-3xl [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
@@ -438,8 +442,11 @@ export const HomePage = () => {
           backdrop={<PremiumBackdrop variant="dark" intensity="soft" particles={10} showGrid={false} />}
         />
 
+        <SectionWave color="#eef2f7" />
+
         {/* ============ GOUVERNANCE & SECURITE ============ */}
         <section className="py-24 px-6 bg-surface-container-low relative overflow-hidden">
+          <SectionMesh />
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
           <div className="max-w-[1400px] mx-auto">
             <Reveal preset="fadeUp">
@@ -447,7 +454,7 @@ export const HomePage = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
                   {t.about.governance.eyebrow}
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5">
+                <h2 className="text-4xl md:text-5xl font-black mb-5 section-underline text-shimmer">
                   {t.about.governance.title}
                 </h2>
                 <p className="text-lg text-on-surface-variant">
@@ -468,6 +475,7 @@ export const HomePage = () => {
                 const Icon = style.icon;
                 return (
                   <Reveal key={idx} preset="fadeUp" delay={idx * 0.15}>
+                    <HoverSpotlight className="h-full rounded-3xl">
                     <div className="bg-white rounded-3xl p-8 border border-outline-variant/30 shadow-sm h-full hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                       <div className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center mb-6 hover-icon-pop`}>
                         <Icon className={`w-8 h-8 ${style.color}`} strokeWidth={1.5} />
@@ -477,6 +485,7 @@ export const HomePage = () => {
                         {pillar.description}
                       </p>
                     </div>
+                    </HoverSpotlight>
                   </Reveal>
                 );
               })}
@@ -498,12 +507,13 @@ export const HomePage = () => {
         </section>
 
         {/* ============ SERVICES ============ */}
-        <section className="py-20 px-6">
-          <div className="max-w-[1400px] mx-auto">
+        <section className="py-20 px-6 relative overflow-hidden">
+          <SectionMesh />
+          <div className="max-w-[1400px] mx-auto relative z-[1]">
             <Reveal preset="fadeUp">
               <div className="text-center mb-16">
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{t.home.services.eyebrow}</p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5 section-underline">{t.home.services.title}</h2>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5 section-underline text-shimmer">{t.home.services.title}</h2>
                 <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
                   {t.home.services.description}
                 </p>
@@ -563,14 +573,17 @@ export const HomePage = () => {
         </section>
 
         {/* ============ RÉALISATIONS — galerie dynamique ============ */}
+        <SectionWave color="#07111f" flip />
         <section className="py-24 px-6 bg-[#07111f] text-white relative overflow-hidden">
+          <PremiumBackdrop variant="dark" intensity="soft" particles={12} showGrid />
+          <FloatingDecor />
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[600px] rounded-full bg-primary/20 blur-3xl pointer-events-none"></div>
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl pointer-events-none"></div>
 
-          <div className="max-w-[1400px] mx-auto relative">
+          <div className="max-w-[1400px] mx-auto relative z-[1]">
             <div className="text-center mb-14 animate-fade-in">
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-200 mb-4">{t.home.realisations.eyebrow}</p>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              <h2 className="text-4xl md:text-5xl font-black mb-4 text-shimmer-light">
                 {t.home.realisations.title}
               </h2>
               <p className="text-lg text-white/65 max-w-2xl mx-auto">
@@ -583,10 +596,10 @@ export const HomePage = () => {
                 <button
                   key={f}
                   onClick={() => setActiveFilter(f)}
-                  className={`px-5 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+                  className={`filter-pill px-5 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
                     activeFilter === f
-                      ? 'bg-cyan-300 text-[#07111f] shadow-lg scale-105'
-                      : 'bg-white/5 text-white/80 border border-white/15 hover:border-cyan-300 hover:text-white'
+                      ? 'filter-pill--active bg-cyan-300 text-[#07111f] shadow-lg scale-105'
+                      : 'bg-white/5 text-white/80 border border-white/15 hover:border-cyan-300 hover:text-white hover-ripple'
                   }`}
                 >
                   {f === ALL_FILTER ? t.common.filterAll : f}
@@ -752,12 +765,14 @@ export const HomePage = () => {
         )}
 
         {/* ============ SECTEURS D'INVESTISSEMENT ============ */}
-        <section className="py-24 px-6 bg-surface">
-          <div className="max-w-[1400px] mx-auto">
+        <SectionWave color="var(--color-surface, #ffffff)" />
+        <section className="py-24 px-6 bg-surface relative overflow-hidden">
+          <SectionMesh />
+          <div className="max-w-[1400px] mx-auto relative z-[1]">
             <Reveal preset="fadeUp">
               <div className="text-center mb-14">
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{t.home.sectors.eyebrow}</p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface">{t.home.sectors.title}</h2>
+                <h2 className="text-4xl md:text-5xl font-black section-underline text-shimmer">{t.home.sectors.title}</h2>
                 <p className="mt-4 text-lg text-on-surface-variant max-w-2xl mx-auto">
                   {t.home.sectors.description}
                 </p>
@@ -850,7 +865,7 @@ export const HomePage = () => {
         {/* ============ TÉMOIGNAGES ============ */}
         <section className="py-20 px-6 bg-surface-container-low">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-5xl font-bold text-center text-on-surface mb-16 animate-fade-in">
+            <h2 className="text-5xl font-bold text-center text-on-surface mb-16 animate-fade-in section-underline text-shimmer mx-auto max-w-fit">
               {t.home.testimonials.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -886,7 +901,7 @@ export const HomePage = () => {
         <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary relative overflow-hidden">
           <AmbientEffects variant="hero" className="opacity-60" />
           <div className="max-w-[1400px] mx-auto text-center animate-fade-in relative z-10">
-            <h2 className="text-5xl font-bold text-white mb-6">
+            <h2 className="text-5xl font-bold text-white mb-6 text-shimmer-light">
               {ctaSection.title || t.home.cta.title}
             </h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
