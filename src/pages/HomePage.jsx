@@ -13,6 +13,8 @@ import { PartnersBand } from '../components/PartnersBand';
 import { MagneticButton } from '../components/MagneticButton';
 import { TextReveal } from '../components/TextReveal';
 import { TiltCard } from '../components/TiltCard';
+import { AmbientEffects } from '../components/AmbientEffects';
+import { HoverSpotlight } from '../components/HoverSpotlight';
 import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight, ShieldCheck, Scale, FileText, PieChart, Target, Globe } from 'lucide-react';
 import lavage2    from '../assets/realisations/lavage2.jpg';
@@ -307,6 +309,7 @@ export const HomePage = () => {
             overlayIntensity="strong"
             overlayVariant="left"
           />
+          <AmbientEffects variant="hero" className="z-[2]" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full">
             <div className="max-w-3xl [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
@@ -500,7 +503,7 @@ export const HomePage = () => {
             <Reveal preset="fadeUp">
               <div className="text-center mb-16">
                 <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{t.home.services.eyebrow}</p>
-                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5">{t.home.services.title}</h2>
+                <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-5 section-underline">{t.home.services.title}</h2>
                 <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
                   {t.home.services.description}
                 </p>
@@ -880,8 +883,9 @@ export const HomePage = () => {
           items={t.home.partners.items}
         />
 
-        <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary">
-          <div className="max-w-[1400px] mx-auto text-center animate-fade-in">
+        <section className="py-20 px-6 bg-gradient-to-r from-primary via-primary-container to-primary relative overflow-hidden">
+          <AmbientEffects variant="hero" className="opacity-60" />
+          <div className="max-w-[1400px] mx-auto text-center animate-fade-in relative z-10">
             <h2 className="text-5xl font-bold text-white mb-6">
               {ctaSection.title || t.home.cta.title}
             </h2>
@@ -892,14 +896,14 @@ export const HomePage = () => {
               {!localStorage.getItem('user') && (
                 <button
                   onClick={() => navigate('/inscription')}
-                  className="px-10 py-4 bg-white text-primary font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="px-10 py-4 bg-white text-primary font-bold rounded-lg shadow-lg hover-card-premium hover-ripple hover-btn-glow interactive"
                 >
                   {t.common.registerFree}
                 </button>
               )}
               <button
                 onClick={() => navigate('/contact')}
-                className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
+                className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover-border-flow hover-ripple hover-btn-glow interactive"
               >
                 {ctaSection.buttonText || t.home.cta.button}
               </button>

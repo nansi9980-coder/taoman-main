@@ -171,7 +171,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
               <Link
                 key={`${link.key}-${link.name}`}
                 to={link.href}
-                className={`nav-link-hover interactive relative shrink-0 cursor-pointer rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
+                className={`nav-link-hover hover-link-shine interactive relative shrink-0 cursor-pointer rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
                   activeLink === link.key
                     ? 'bg-primary/10 text-primary'
                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'

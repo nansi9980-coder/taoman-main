@@ -198,3 +198,109 @@
 .marquee-item-reveal {
   animation: marqueeReveal 0.5s ease forwards;
 }
+
+/* ── Hero vidéo : grain, vignette, orbes, ken burns ─────────── */
+.hero-video-shell {
+  isolation: isolate;
+}
+
+.hero-video-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.07;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.hero-video-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(2, 13, 26, 0.55) 100%);
+}
+
+.hero-video-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatY 12s ease-in-out infinite;
+}
+
+.hero-video-orb-a {
+  top: -10%;
+  right: -5%;
+  width: 45%;
+  height: 45%;
+  background: rgba(34, 211, 238, 0.12);
+}
+
+.hero-video-orb-b {
+  bottom: -15%;
+  left: -10%;
+  width: 50%;
+  height: 40%;
+  background: rgba(0, 61, 155, 0.18);
+  animation-delay: 2s;
+}
+
+@keyframes heroKenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.hero-ken-burns {
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+
+.hero-video-playing {
+  animation: heroKenBurns 22s ease-in-out infinite alternate;
+}
+
+/* ── Ambient particules ─────────────────────────────────────── */
+.ambient-effects {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(125, 211, 252, 0.85);
+  box-shadow: 0 0 10px rgba(125, 211, 252, 0.5);
+  animation: ambientFloat linear infinite;
+}
+
+@keyframes ambientFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(-120px) translateX(20px); opacity: 0; }
+}
+
+.ambient-cursor-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.12), transparent 65%);
+  transition: transform 0.08s linear;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ken-burns,
+  .hero-video-playing,
+  .hero-video-orb,
+  .ambient-particle {
+    animation: none !important;
+  }
+}

@@ -8,6 +8,7 @@ import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
 import { CustomCursor } from './components/CustomCursor';
+import { AmbientEffects } from './components/AmbientEffects';
 import { PageTransitionLayout } from './components/PageTransitionLayout';
 import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
@@ -72,6 +73,7 @@ function App() {
         <SiteContentProvider>
           <SplashScreen minDuration={1800} />
           <CustomCursor />
+          <AmbientEffects variant="default" className="fixed inset-0 z-[1]" />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <SkipToMainContent />

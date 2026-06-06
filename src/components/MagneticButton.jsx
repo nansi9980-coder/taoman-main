@@ -19,7 +19,7 @@ export const MagneticButton = ({ children, className = '', onClick, variant = 'p
 
   const { x, y } = position;
 
-  const baseClasses = "relative inline-flex items-center justify-center font-bold transition-colors duration-300 rounded-2xl overflow-hidden group";
+  const baseClasses = "relative inline-flex items-center justify-center font-bold transition-colors duration-300 rounded-2xl overflow-hidden group hover-ripple hover-btn-glow";
   
   const variants = {
     primary: "bg-cyan-300 text-[#07111f] hover:bg-cyan-200",
