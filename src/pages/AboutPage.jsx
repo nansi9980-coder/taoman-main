@@ -120,7 +120,7 @@ export const AboutPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO PREMIUM ============ */}
-        <section id="profile" className="relative overflow-hidden min-h-[55vh] md:min-h-[60vh] flex items-center py-24 px-6 text-white">
+        <section id="profile" className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-20 px-6 text-white">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.about.src}
             objectPosition={HERO_MEDIA_SPECS.about.objectPosition}

@@ -301,7 +301,7 @@ export const HomePage = () => {
       <main id="main-content" className="flex-grow pt-24">
 
         {/* ============ HERO PREMIUM — vidéo cinématique ============ */}
-        <section className="relative overflow-hidden min-h-[70vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
+        <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-20 pb-24 text-white md:pt-28 md:pb-32">
           <VideoHeroBackground
             src={HERO_MEDIA_SPECS.homeVideo.src}
             poster={HERO_MEDIA_SPECS.homeVideo.poster}

@@ -12,10 +12,10 @@ export const HERO_MEDIA_SPECS = {
     src: '/video/Hero.mp4',
     poster: '/images/hero-logistics-bg.png',
     objectPosition: 'center center',
-    export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8 },
+    export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 5, durationSec: '15-30' },
   },
   about: {
-    src: '/images/Apropos.jpg',
+    src: '/images/Apropos.png',
     objectPosition: '70% center',
     overlayVariant: 'left',
     export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 350, note: 'Sujet à droite, zone libre à gauche pour le texte' },

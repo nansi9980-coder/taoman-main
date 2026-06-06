@@ -164,7 +164,7 @@ export const ServicesPage = () => {
       <Header activeLink="services" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden min-h-[55vh] md:min-h-[60vh] flex items-center py-20 px-6 text-white">
+        <section className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-16 px-6 text-white">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.services.src}
             objectPosition={HERO_MEDIA_SPECS.services.objectPosition}

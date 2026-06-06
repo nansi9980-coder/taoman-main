@@ -41,7 +41,7 @@ export const SectorsListPage = () => {
       <Header activeLink="projets" />
 
       <main id="main-content" className="flex-grow pt-24">
-        <section className="relative overflow-hidden min-h-[50vh] md:min-h-[55vh] flex items-center py-24 px-6 text-white">
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.projects.src}
             objectPosition={HERO_MEDIA_SPECS.projects.objectPosition}
