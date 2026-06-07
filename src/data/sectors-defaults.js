@@ -1,7 +1,7 @@
 import btpIcon from '../assets/btp_sector.jpeg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportIcon from '../assets/transport_sector.jpeg';
-import transportPhoto from '../assets/realisations/transport2.jpg';
+import logistiqueHero from '../assets/sectors/logistique-transports-hero.jpg';
 import commercePhoto from '../assets/realisations/lavage1.jpg';
 import numeriqueImg from '../assets/simulateur.jpeg';
 import { mediaUrl } from '../config';
@@ -65,7 +65,7 @@ export const DEFAULT_SECTORS = [
     slug: 'logistique-transports',
     title: 'Logistique & Transports',
     tag: 'Mobilité',
-    image: transportPhoto,
+    image: logistiqueHero,
     short:
       "Flottes, déménagement, distribution urbaine et chaînes d'approvisionnement intégrées.",
     intro:
