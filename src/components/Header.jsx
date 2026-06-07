@@ -131,12 +131,10 @@ export const Header = ({ activeLink = 'accueil' }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300 ${
-        scrolled
-          ? 'bg-surface shadow-lg backdrop-blur-md bg-opacity-95'
-          : 'bg-transparent'
+        scrolled ? 'header-glass shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-[1680px] min-w-0 items-center gap-1 overflow-visible px-3 sm:gap-2 sm:px-5 xl:px-8">
+      <div className="header-inner mx-auto flex h-20 max-w-[1680px] min-w-0 items-center gap-1 overflow-visible px-3 sm:gap-2 sm:px-5 xl:px-8 transition-all duration-300">
         <Link
           to="/"
           className="interactive group flex shrink-0 items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-[1.02] max-w-[38%] sm:max-w-none motion-reduce:hover:scale-100"

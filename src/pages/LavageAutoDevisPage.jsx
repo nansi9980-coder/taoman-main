@@ -18,6 +18,7 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 import { useLanguage } from '../context/LanguageContext';
 import { getCarwashTranslations } from '../i18n/carwash';
 import lavage1 from '../assets/realisations/lavage1.jpg';
@@ -32,6 +33,7 @@ const FORMULA_ICONS = {
 export const LavageAutoDevisPage = () => {
   const { language } = useLanguage();
   const t = getCarwashTranslations(language);
+  const isFr = String(language || 'FR').toUpperCase() === 'FR';
   const [formData, setFormData] = useState({
     typeService: '',
     location: '',
@@ -134,11 +136,12 @@ export const LavageAutoDevisPage = () => {
             </div>
             <div className="relative">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
-              <img
-                src={lavage1}
-                alt="Prestation de lavage Taoman Group Investissement"
-                className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
-                loading="lazy"
+              <BeforeAfterSlider
+                beforeSrc={lavage1}
+                afterSrc={lavage2}
+                beforeLabel={isFr ? 'Avant' : 'Before'}
+                afterLabel={isFr ? 'Après' : 'After'}
+                className="relative shadow-xl ring-1 ring-black/5"
               />
             </div>
           </div>

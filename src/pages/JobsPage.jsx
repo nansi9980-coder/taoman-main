@@ -6,6 +6,13 @@ import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { mergeCmsSection } from '../utils/cmsSectionDefaults';
 import { getJobsTranslations } from '../i18n/jobs';
+import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { TextReveal } from '../components/TextReveal';
+import { Reveal } from '../components/Reveal';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { MagneticButton } from '../components/MagneticButton';
+import { BRAND_NAME } from '../constants/branding';
 
 export const JobsPage = () => {
   const { section } = useSiteContent();
@@ -79,15 +86,29 @@ export const JobsPage = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-primary py-xxl text-on-primary">
-          <div className="max-w-[1200px] mx-auto px-lg text-center">
+        <section className="relative overflow-hidden py-20 px-6 text-white hero-scan-line">
+          <PremiumBackdrop variant="dark" intensity="soft" particles={14} />
+          <FloatingDecor className="z-[1]" />
+          <div className="max-w-[1200px] mx-auto px-lg text-center relative z-10">
             {tJ.eyebrow && (
-              <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] text-on-primary/80">{tJ.eyebrow}</p>
+              <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tJ.eyebrow}</p>
             )}
-            <h1 className="font-display text-display text-on-primary mb-md">{tJ.title || jobsContent.title}</h1>
-            <p className="text-body-lg text-on-primary/90 mb-xl max-w-3xl mx-auto">{tJ.description || jobsContent.subtitle}</p>
+            <h1 className="font-display text-4xl md:text-6xl font-black mb-md">
+              <TextReveal
+                elementType="span"
+                immediate
+                className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent"
+                text={tJ.title || jobsContent.title}
+              />
+            </h1>
+            <p className="text-body-lg text-white/90 mb-xl max-w-3xl mx-auto">{tJ.description || jobsContent.subtitle}</p>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, tJobs.filterTitle || 'Carrières', 'Lomé · Togo', 'Rejoignez Taoman']}
+          speed={30}
+        />
 
         {/* Job Listings */}
         <section className="py-xxl max-w-[1200px] mx-auto px-lg w-full">
@@ -112,11 +133,12 @@ export const JobsPage = () => {
           </div>
 
           {/* Job Cards */}
+          <Reveal preset="fadeUp" childSelector=".job-card-premium" stagger={0.08}>
           <div className="space-y-md">
             {filteredJobs.map((job) => (
               <div
                 key={job.id}
-                className="bg-white p-xl rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all"
+                className="job-card-premium bg-white p-xl rounded-xl border border-outline-variant shadow-sm hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
               >
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-lg items-start md:items-center">
                   <div className="md:col-span-2">
@@ -138,9 +160,9 @@ export const JobsPage = () => {
                   </div>
 
                   <div className="md:col-span-1 text-right">
-                    <button className="w-full md:w-auto bg-primary text-on-primary px-lg py-md rounded-lg font-label-md font-bold hover:opacity-90 transition-all">
+                    <MagneticButton className="w-full md:w-auto px-lg py-md rounded-lg">
                       {tJobs.apply}
-                    </button>
+                    </MagneticButton>
                   </div>
                 </div>
 
@@ -168,6 +190,7 @@ export const JobsPage = () => {
               </div>
             ))}
           </div>
+          </Reveal>
 
           {filteredJobs.length === 0 && (
             <div className="text-center py-xxl">

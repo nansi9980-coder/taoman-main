@@ -21,12 +21,19 @@ import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
-import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { PhotoSlider } from '../components/PhotoSlider';
+import { AnimatedProgressBars } from '../components/AnimatedProgressBars';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { TextReveal } from '../components/TextReveal';
+import { BRAND_NAME } from '../constants/branding';
 import { Reveal } from '../components/Reveal';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
 import programmeImg from '../assets/programme.jpeg';
+
+const CRITERIA_PERCENTS = [92, 88, 85, 90, 87, 93];
 
 const FAQ_CATEGORY_ICONS = {
   all: HelpCircle,
@@ -223,6 +230,31 @@ export const InvestmentPage = () => {
   const badge = pickLocale(language, inv.badge, tInv.hero?.eyebrow || ip.default.badge);
   const title = pickLocale(language, inv.title, tInv.hero?.title || ip.default.title);
   const description = pickLocale(language, inv.description, tInv.hero?.description || ip.default.description);
+
+  const investHeroSlides = useMemo(
+    () => [
+      {
+        src: HERO_MEDIA_SPECS.investment.src,
+        alt: title,
+        label: title,
+      },
+      {
+        src: programmeImg,
+        alt: 'Programme Taoman Group Investissement',
+        label: 'Programme TGI',
+      },
+    ],
+    [title]
+  );
+
+  const criteriaWithProgress = useMemo(
+    () =>
+      (ip.criteria.items || []).map((item, idx) => ({
+        ...item,
+        percent: CRITERIA_PERCENTS[idx % CRITERIA_PERCENTS.length],
+      })),
+    [ip.criteria.items]
+  );
   const statSource =
     !language || language === 'FR'
       ? inv.stats?.length
@@ -281,16 +313,25 @@ export const InvestmentPage = () => {
       <Header activeLink="investissement" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
-          <PhotoHeroBackground
-            src={HERO_MEDIA_SPECS.investment.src}
-            objectPosition={HERO_MEDIA_SPECS.investment.objectPosition}
-            overlayVariant={HERO_MEDIA_SPECS.investment.overlayVariant}
-            overlayIntensity="max"
-          />
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white hero-scan-line">
+          <div className="absolute inset-0 z-0">
+            <PhotoSlider
+              slides={investHeroSlides}
+              aspectRatio=""
+              height="h-full min-h-[42vh] md:min-h-[48vh]"
+              rounded="rounded-none"
+              showLabel={false}
+              showCategory={false}
+              className="h-full shadow-none ring-0 !rounded-none"
+            />
+          </div>
+          <FloatingDecor className="z-[2]" />
+          <div className="absolute inset-0 z-[1] bg-[#020d1a]/55 backdrop-blur-[2px]" aria-hidden="true" />
           <div className="relative z-10 mx-auto max-w-[1100px] text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{badge}</p>
-            <h1 className="mb-6 text-5xl font-black tracking-[-0.05em] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] md:text-7xl">{title}</h1>
+            <h1 className="mb-6 text-4xl md:text-7xl font-black tracking-[-0.05em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <TextReveal elementType="span" immediate className="block text-white" text={title} />
+            </h1>
             <p className="mb-10 mx-auto max-w-2xl text-xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
@@ -302,6 +343,11 @@ export const InvestmentPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, 'TGI · Investissement', badge, 'Lomé · Togo'].filter(Boolean)}
+          speed={28}
+        />
 
         {/* Quick nav anchors */}
         <nav aria-label={ip.navAria} className="sticky top-20 z-30 bg-white/90 backdrop-blur border-b border-outline-variant/40">
@@ -508,15 +554,7 @@ export const InvestmentPage = () => {
               <h2 className="mt-3 text-4xl font-black text-on-surface">{tInv.criteria?.title}</h2>
               <p className="mt-4 max-w-3xl mx-auto text-on-surface-variant text-lg">{ip.criteria.intro}</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {ip.criteria.items.map((item) => (
-                <div key={item.title} className="rounded-3xl bg-white p-7 border border-outline-variant/40 hover:shadow-lg transition-all">
-                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary font-black">✓</div>
-                  <h3 className="text-lg font-black text-on-surface">{item.title}</h3>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+            <AnimatedProgressBars items={criteriaWithProgress} className="lg:grid-cols-3" />
             <div className="mt-12 text-center">
               <Link
                 to="/investissement/soumettre"

@@ -3,7 +3,8 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
-import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
+import { PageHeroEnhanced } from '../components/PageHeroEnhanced';
+import { ClipReveal } from '../components/ClipReveal';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
 import { pickLocale, pickLocaleList } from '../utils/pickLocale';
@@ -41,23 +42,19 @@ export const SectorsListPage = () => {
       <Header activeLink="projets" />
 
       <main id="main-content" className="flex-grow pt-24">
-        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
-          <PhotoHeroBackground
-            src={HERO_MEDIA_SPECS.projects.src}
-            objectPosition={HERO_MEDIA_SPECS.projects.objectPosition}
-            overlayVariant={HERO_MEDIA_SPECS.projects.overlayVariant}
-            overlayIntensity="max"
-          />
-          <div className="relative z-10 max-w-[1100px] mx-auto text-center animate-fade-in-up px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{tSec.hero.eyebrow}</p>
-            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-6 text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-              {tSec.hero.title}
-            </h1>
-            <p className="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-              {tSec.hero.description}
-            </p>
-          </div>
-        </section>
+        <PageHeroEnhanced
+          photoProps={{
+            src: HERO_MEDIA_SPECS.projects.src,
+            objectPosition: HERO_MEDIA_SPECS.projects.objectPosition,
+            overlayVariant: HERO_MEDIA_SPECS.projects.overlayVariant,
+            overlayIntensity: 'max',
+          }}
+          eyebrow={tSec.hero.eyebrow}
+          title={tSec.hero.title}
+          description={tSec.hero.description}
+          align="center"
+          contentClassName="px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl max-w-[1100px]"
+        />
 
         <section className="py-20 px-6 bg-surface">
           <div className="max-w-[1200px] mx-auto">
@@ -77,6 +74,7 @@ export const SectorsListPage = () => {
                 >
                   {/* Photo */}
                   {sector.image && (
+                    <ClipReveal variant="up" className="h-52">
                     <div className="relative h-52 overflow-hidden bg-surface-container-low">
                       <img
                         src={sector.image}
@@ -99,6 +97,7 @@ export const SectorsListPage = () => {
                         </h2>
                       </div>
                     </div>
+                    </ClipReveal>
                   )}
 
                   {/* Contenu */}

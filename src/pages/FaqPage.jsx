@@ -19,6 +19,11 @@ import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
+import { Reveal } from '../components/Reveal';
+import { TextReveal } from '../components/TextReveal';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { BRAND_NAME } from '../constants/branding';
 import { normalizeItemsSection } from '../utils/siteContent';
 import { SeoHead, buildFaqLd } from '../components/SeoHead';
 import { getFaqTranslations } from '../i18n/faq';
@@ -271,14 +276,20 @@ export const FaqPage = () => {
       <Header activeLink="faq" />
 
       <main id="main-content" className="flex-grow pt-24">
-        <section className="relative overflow-hidden py-20 px-6 text-white">
+        <section className="relative overflow-hidden py-20 px-6 text-white hero-scan-line">
           <PremiumBackdrop variant="dark" intensity="normal" particles={12} />
+          <FloatingDecor className="z-[1]" />
           <div className="relative z-10 max-w-[1100px] mx-auto text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] text-cyan-200 backdrop-blur">
               <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.4} /> {tFaq.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
-              {tFaq.hero.title}
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-tight">
+              <TextReveal
+                elementType="span"
+                immediate
+                className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent text-shimmer-light"
+                text={tFaq.hero.title}
+              />
             </h1>
             <p className="mt-5 max-w-2xl mx-auto text-lg text-white/75 leading-relaxed">
               {tFaq.hero.description}
@@ -298,6 +309,11 @@ export const FaqPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, 'FAQ', 'Services · Investissement', 'Lomé · Togo']}
+          speed={32}
+        />
 
         {/* CATEGORIES */}
         <section className="sticky top-20 z-30 bg-surface/95 backdrop-blur border-b border-outline-variant/30 px-6 py-4">
@@ -338,6 +354,7 @@ export const FaqPage = () => {
                 <p className="mt-2 text-on-surface-variant">{tFaqExt.noResultsHelp}</p>
               </div>
             ) : (
+              <Reveal preset="fadeUp" childSelector=".faq-item-premium" stagger={0.05}>
               <div className="space-y-3">
                 {filtered.map((item, index) => {
                   const cat = categories.find((c) => c.id === item.category) || categories[0];
@@ -345,7 +362,7 @@ export const FaqPage = () => {
                   return (
                     <details
                       key={`${item.question}-${index}`}
-                      className="group rounded-2xl border border-outline-variant/40 bg-white p-5 shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+                      className="faq-item-premium group rounded-2xl border border-outline-variant/40 bg-white p-5 shadow-sm hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
                     >
                       <summary className="cursor-pointer flex items-start justify-between gap-4 list-none">
                         <div className="flex items-start gap-3 flex-1">
@@ -373,6 +390,7 @@ export const FaqPage = () => {
                   );
                 })}
               </div>
+              </Reveal>
             )}
           </div>
         </section>

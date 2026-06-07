@@ -184,4 +184,257 @@
   .scroll-progress__bar {
     transition: none;
   }
+
+  .clip-reveal {
+    clip-path: none !important;
+  }
+
+  .progress-bar-fill {
+    width: var(--progress-target, 85%) !important;
+    transition: none !important;
+  }
+}
+
+/* ── Header glass dynamique ─────────────────────────────────── */
+.header-glass {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(125, 211, 252, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 61, 155, 0.08);
+}
+
+[data-theme='dark'] .header-glass {
+  background: rgba(7, 17, 31, 0.82) !important;
+  border-bottom-color: rgba(125, 211, 252, 0.15);
+}
+
+.header-glass .header-inner {
+  min-height: 4.5rem;
+}
+
+/* ── Clip reveal initial state ──────────────────────────────── */
+.clip-reveal {
+  will-change: clip-path;
+}
+
+/* ── Carte stylisée Lomé ────────────────────────────────────── */
+.stylized-map {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(34, 211, 238, 0.15), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(0, 61, 155, 0.2), transparent 55%),
+    linear-gradient(135deg, #0a1830 0%, #07111f 50%, #0d2847 100%);
+}
+
+.stylized-map__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(125, 211, 252, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.3) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.stylized-map__pin {
+  position: absolute;
+  left: 52%;
+  top: 48%;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+}
+
+.stylized-map__pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.35), 0 0 24px rgba(34, 211, 238, 0.6);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.stylized-map__pin-pulse {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  border: 2px solid rgba(34, 211, 238, 0.5);
+  animation: pinPulse 2s ease-out infinite;
+}
+
+@keyframes pinPulse {
+  0% { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* ── Témoignages carousel ───────────────────────────────────── */
+.testimonials-carousel__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 61, 155, 0.2);
+  background: #fff;
+  color: var(--color-primary, #003d9b);
+  box-shadow: 0 4px 12px rgba(0, 61, 155, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.testimonials-carousel__btn:hover {
+  transform: scale(1.1);
+  border-color: var(--color-primary, #003d9b);
+}
+
+.testimonials-carousel__card {
+  backface-visibility: hidden;
+}
+
+/* ── Before / after ─────────────────────────────────────────── */
+.before-after {
+  aspect-ratio: 16 / 10;
+  max-height: 420px;
+}
+
+.before-after__handle {
+  cursor: ew-resize;
+}
+
+/* ── Barres de progression ──────────────────────────────────── */
+.progress-bar-fill {
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Dark mode — effets premium renforcés ───────────────────── */
+[data-theme='dark'] .hover-card-premium:hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(125, 211, 252, 0.15);
+}
+
+[data-theme='dark'] .glass-premium {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(125, 211, 252, 0.12);
+}
+
+[data-theme='dark'] .premium-orb {
+  opacity: 0.7;
+}
+
+/* ── Icônes animées au survol (cartes services) ─────────────── */
+.hover-icon-spin:hover svg {
+  animation: iconPop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes iconPop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.15) rotate(-8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ── Transition page blur ───────────────────────────────────── */
+.page-transition-blur {
+  will-change: transform, opacity, filter;
+}
+
+/* ── Marquee ticker ─────────────────────────────────────────── */
+.marquee-ticker__track {
+  animation: marqueeScroll 35s linear infinite;
+  width: max-content;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-ticker__track {
+    animation: none;
+  }
+}
+
+/* ── Carte bordure dégradée animée ──────────────────────────── */
+.premium-glow-card {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 61, 155, 0.35), rgba(34, 211, 238, 0.45), rgba(0, 61, 155, 0.35));
+  background-size: 200% 200%;
+  animation: borderGlowShift 6s ease infinite;
+}
+
+.premium-glow-card__inner {
+  border-radius: calc(1.5rem - 1px);
+  background: #fff;
+  height: 100%;
+}
+
+@keyframes borderGlowShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ── FAQ accordéon premium ──────────────────────────────────── */
+.faq-item-premium {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+.faq-item-premium[open] {
+  border-color: rgba(0, 61, 155, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 61, 155, 0.1);
+}
+
+.faq-item-premium summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── Hero scan line subtil ──────────────────────────────────── */
+.hero-scan-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(34, 211, 238, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: heroScan 8s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes heroScan {
+  0% { background-position: 0 -100%; }
+  100% { background-position: 0 200%; }
+}
+
+/* ── Job card pulse badge ───────────────────────────────────── */
+.job-card-premium {
+  position: relative;
+  overflow: hidden;
+}
+
+.job-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.06), transparent);
+  transition: left 0.6s ease;
+}
+
+.job-card-premium:hover::before {
+  left: 120%;
 }

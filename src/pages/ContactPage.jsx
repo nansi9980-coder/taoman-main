@@ -22,6 +22,10 @@ import { SeoHead } from '../components/SeoHead';
 import { Footer } from '../components/Footer';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { Reveal } from '../components/Reveal';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { TextReveal } from '../components/TextReveal';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { BRAND_NAME } from '../constants/branding';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { API_URL } from '../config';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -412,25 +416,36 @@ export const ContactPage = () => {
       <Header activeLink="contact" />
 
       <main id="main-content" className="flex-grow pt-24">
-        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-16 px-6 text-white">
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-16 px-6 text-white hero-scan-line">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.contact.src}
             objectPosition={HERO_MEDIA_SPECS.contact.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.contact.overlayVariant}
             overlayIntensity="max"
           />
+          <FloatingDecor className="z-[2]" />
           <div className="relative z-10 max-w-[1200px] mx-auto text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/50 bg-[#020d1a]/70 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-              {tContact.hero.title}
+            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <TextReveal
+                elementType="span"
+                immediate
+                className="block text-white"
+                text={tContact.hero.title}
+              />
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               {tContact.hero.description}
             </p>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, tContact.hero.eyebrow, 'Lomé · Togo', 'Partenariat · Investissement']}
+          speed={30}
+        />
 
         {/* 4 OPTIONS */}
         <section className="py-16 px-6 bg-surface">

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { MagneticLink } from './MagneticLink';
 import logo from '../assets/logo.png';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -70,12 +71,12 @@ export const Footer = () => {
           <ul className="space-y-2">
             {navigationLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <MagneticLink
                   to={link.href}
-                  className="interactive text-outline-variant hover:text-primary-fixed transition-all duration-300 hover:translate-x-1 inline-block"
+                  className="interactive text-outline-variant hover:text-primary-fixed transition-colors duration-300"
                 >
                   {link.name} →
-                </Link>
+                </MagneticLink>
               </li>
             ))}
           </ul>
@@ -86,12 +87,12 @@ export const Footer = () => {
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <MagneticLink
                   to={link.href}
-                  className="interactive text-outline-variant hover:text-primary-fixed transition-all duration-300 hover:translate-x-1 inline-block text-sm"
+                  className="interactive text-outline-variant hover:text-primary-fixed transition-colors duration-300 text-sm"
                 >
                   {link.name} →
-                </Link>
+                </MagneticLink>
               </li>
             ))}
           </ul>

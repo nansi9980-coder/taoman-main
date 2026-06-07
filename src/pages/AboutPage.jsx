@@ -28,6 +28,10 @@ import { useLanguage } from '../context/LanguageContext';
 import { BRAND_NAME } from '../constants/branding';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
+import { AnimatedTimeline } from '../components/AnimatedTimeline';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { TextReveal } from '../components/TextReveal';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
@@ -120,21 +124,27 @@ export const AboutPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO PREMIUM ============ */}
-        <section id="profile" className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-20 px-6 text-white">
+        <section id="profile" className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-20 px-6 text-white hero-scan-line">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.about.src}
             objectPosition={HERO_MEDIA_SPECS.about.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.about.overlayVariant}
             overlayIntensity="strong"
           />
+          <FloatingDecor className="z-[2]" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/40 bg-[#020d1a]/55 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur-md">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tAbout.hero.eyebrow}
               </span>
-              <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent">
-                {title}
+              <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05]">
+                <TextReveal
+                  elementType="span"
+                  immediate
+                  className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent"
+                  text={title}
+                />
               </h1>
               <p className="mt-6 text-xl text-white/90 max-w-3xl leading-relaxed">{description}</p>
               {raw.imageUrl && (
@@ -156,6 +166,11 @@ export const AboutPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, tAbout.hero.eyebrow, 'Gouvernance · Transparence', 'Lomé · Togo']}
+          speed={30}
+        />
 
         {/* ============ MISSION & VISION ============ */}
         <section className="py-20 px-6 bg-surface">
@@ -272,19 +287,7 @@ export const AboutPage = () => {
                 </h2>
               </div>
             </Reveal>
-            <ol className="relative border-l-2 border-primary/30 pl-8 space-y-8">
-              {timeline.map((item, idx) => (
-                <li key={idx} className="relative">
-                  <span className="absolute -left-[42px] flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-container text-white text-xs font-black shadow-md ring-4 ring-surface">
-                    {idx + 1}
-                  </span>
-                  <div className="rounded-2xl border border-outline-variant/40 bg-white p-5 hover:shadow-md transition-all">
-                    <p className="text-sm font-black text-primary">{item.year}</p>
-                    <p className="mt-1 text-lg text-on-surface font-semibold leading-snug">{item.event}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <AnimatedTimeline items={timeline} />
           </div>
         </section>
 

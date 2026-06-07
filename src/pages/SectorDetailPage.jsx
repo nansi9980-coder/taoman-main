@@ -33,6 +33,14 @@ import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
 import { getSectorUi, formatSectorSeo } from '../i18n/sector-ui';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
+import { Reveal } from '../components/Reveal';
+import { ClipReveal } from '../components/ClipReveal';
+import { TextReveal } from '../components/TextReveal';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { AmbientEffects } from '../components/AmbientEffects';
+import { MagneticButton } from '../components/MagneticButton';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { BRAND_NAME } from '../constants/branding';
 
 export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => {
   const { slug: paramSlug } = useParams();
@@ -144,18 +152,25 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         </nav>
 
         {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#08111d] via-[#0c1830] to-[#08111d] py-20 px-6 text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#08111d] via-[#0c1830] to-[#08111d] py-20 px-6 text-white hero-scan-line">
+          <FloatingDecor className="z-[1]" />
+          <AmbientEffects variant="hero" className="z-[1] opacity-50" />
           <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl pointer-events-none" />
 
-          <div className="relative max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+          <div className="relative z-10 max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
                 {sector.tag || (isServicePage ? sectorUi.serviceTag : td.sectorLabel || 'Secteur')} · {td.operatedBy || 'Opéré par Taoman Group Investissement'}
               </span>
-              <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]" style={{ color: '#ffffff' }}>
-                {sector.title}
+              <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.03em] leading-[1.05]">
+                <TextReveal
+                  elementType="span"
+                  immediate
+                  className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent"
+                  text={sector.title}
+                />
               </h1>
               <p className="mt-5 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
                 {sector.short || sector.intro}
@@ -163,16 +178,16 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               <div className="mt-8 flex flex-wrap gap-3">
                 {isServicePage ? (
                   <>
-                    <Link
-                      to="/contact?topic=info&service=marketing-international"
-                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
+                    <MagneticButton
+                      onClick={() => window.location.assign('/contact?topic=info&service=marketing-international')}
+                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg"
                     >
                       <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
                       {tNav.quote}
-                    </Link>
+                    </MagneticButton>
                     <Link
                       to="/services"
-                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium"
                     >
                       <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                       {tNav.allServices}
@@ -180,16 +195,16 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   </>
                 ) : (
                   <>
-                    <Link
-                      to="/contact?topic=invest"
-                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg hover:scale-105 transition"
+                    <MagneticButton
+                      onClick={() => window.location.assign('/contact?topic=invest')}
+                      className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-bold text-[#07111f] shadow-lg"
                     >
                       <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
                       {td.contactUs || 'Nous contacter'}
-                    </Link>
+                    </MagneticButton>
                     <Link
                       to="/contact?topic=project"
-                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium"
                     >
                       <Send className="h-4 w-4" strokeWidth={2.5} />
                       {td.submitProject || 'Soumettre un projet'}
@@ -198,25 +213,31 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 )}
               </div>
             </div>
-            <div className="relative">
+            <ClipReveal variant="circle" className="relative rounded-[2rem]">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-cyan-400/20 rounded-[2rem] blur-2xl" aria-hidden="true" />
               <img
                 src={sector.image}
                 alt={sector.title}
-                className="relative rounded-[2rem] shadow-2xl w-full aspect-[4/3] object-cover ring-1 ring-white/15"
+                className="relative rounded-[2rem] shadow-2xl w-full aspect-[4/3] object-cover ring-1 ring-white/15 animate-ken-burns"
                 loading="lazy"
               />
-            </div>
+            </ClipReveal>
           </div>
         </section>
 
+        <MarqueeTicker
+          items={[BRAND_NAME, sector.title, sector.tag || 'Investissement', 'Lomé · Togo'].filter(Boolean)}
+          speed={30}
+        />
+
         {/* BANDEAU METRIQUES */}
         <section className="relative -mt-12 px-6 pb-4">
+          <Reveal preset="fadeUp" childSelector=".sector-metric" stagger={0.08}>
           <div className="max-w-[1200px] mx-auto rounded-3xl bg-white shadow-2xl border border-outline-variant/40 p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
             {indicators.map((ind) => {
               const Icon = ind.icon;
               return (
-                <div key={ind.label}>
+                <div key={ind.label} className="sector-metric rounded-2xl p-3 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                   <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
                     <Icon className="h-3.5 w-3.5 text-primary" strokeWidth={2.4} /> {ind.label}
                   </p>
@@ -225,6 +246,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
               );
             })}
           </div>
+          </Reveal>
         </section>
 
         {/* OPÉRÉ PAR Taoman Group Investissement */}
@@ -321,7 +343,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   {aspects.map((a) => {
                     const Icon = a.icon || ShieldCheck;
                     return (
-                      <div key={a.title} className="rounded-2xl border border-outline-variant/40 p-5 bg-white hover:shadow-md transition-all">
+                      <div key={a.title} className="rounded-2xl border border-outline-variant/40 p-5 bg-white hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                         <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                           <Icon className="h-5 w-5" strokeWidth={2.2} />
                         </span>
@@ -344,7 +366,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                   </h2>
                   <ul className="space-y-3">
                     {sector.highlights.map((item, idx) => (
-                      <li key={item} className="flex gap-4 rounded-2xl bg-white border border-outline-variant/40 p-5 hover:shadow-sm transition-all">
+                      <li key={item} className="flex gap-4 rounded-2xl bg-white border border-outline-variant/40 p-5 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-black text-sm shadow">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
@@ -369,7 +391,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                       const label = typeof opportunity === 'string' ? opportunity : opportunity.title;
                       const desc = typeof opportunity === 'string' ? null : opportunity.description;
                       return (
-                        <div key={label} className="rounded-2xl border border-outline-variant/40 p-5 bg-white hover:shadow-md hover:border-primary/30 transition-all">
+                        <div key={label} className="rounded-2xl border border-outline-variant/40 p-5 bg-white hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                           <p className="font-bold text-on-surface">{label}</p>
                           {desc && <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{desc}</p>}
                         </div>
@@ -389,7 +411,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 </h2>
                 <ol className="space-y-4">
                   {phases.map((phase) => (
-                    <li key={phase.num} className="flex gap-5 rounded-2xl border border-outline-variant/40 p-5 bg-white hover:shadow-sm transition-all">
+                    <li key={phase.num} className="flex gap-5 rounded-2xl border border-outline-variant/40 p-5 bg-white hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-black shadow">
                         {phase.num}
                       </span>

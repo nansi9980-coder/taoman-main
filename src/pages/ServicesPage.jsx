@@ -26,6 +26,12 @@ import { PhotoHeroBackground } from '../components/PhotoHeroBackground';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { SeoHead, buildServiceLd } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
+import { FloatingDecor } from '../components/FloatingDecor';
+import { TextReveal } from '../components/TextReveal';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { SectionWave } from '../components/SectionWave';
+import { MagneticButton } from '../components/MagneticButton';
+import { BRAND_NAME } from '../constants/branding';
 import { useLanguage } from '../context/LanguageContext';
 import { getServicesTranslations } from '../i18n/services';
 import lavageCard from '../assets/realisations/lavage1.jpg';
@@ -164,28 +170,36 @@ export const ServicesPage = () => {
       <Header activeLink="services" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-16 px-6 text-white">
+        <section className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-16 px-6 text-white hero-scan-line">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.services.src}
             objectPosition={HERO_MEDIA_SPECS.services.objectPosition}
             overlayVariant={HERO_MEDIA_SPECS.services.overlayVariant}
             overlayIntensity="strong"
           />
+          <FloatingDecor className="z-[2]" />
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{heroBadge}</p>
-              <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] text-white mb-6">{heroTitle}</h1>
+              <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] text-white mb-6">
+                <TextReveal
+                  elementType="span"
+                  immediate
+                  className="block"
+                  text={heroTitle}
+                />
+              </h1>
               <p className="text-lg text-white/90 mb-8 max-w-2xl">{heroDesc}</p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <button
+                <MagneticButton
                   onClick={() => navigate('/contact')}
-                  className="rounded-2xl bg-white px-7 py-3.5 font-bold text-[#07111f] shadow-xl hover:scale-105 transition"
+                  className="rounded-2xl bg-white px-7 py-3.5 text-[#07111f] shadow-xl"
                 >
                   {btn1}
-                </button>
+                </MagneticButton>
                 <button
                   onClick={() => navigate('/investissement')}
-                  className="rounded-2xl border border-white/20 bg-white/10 px-7 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition"
+                  className="rounded-2xl border border-white/20 bg-white/10 px-7 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium"
                 >
                   {btn2}
                 </button>
@@ -203,6 +217,13 @@ export const ServicesPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, heroBadge, 'Lavage · Déménagement · Entretien', 'Lomé · Togo'].filter(Boolean)}
+          speed={28}
+        />
+
+        <SectionWave color="var(--color-surface, #ffffff)" />
 
         {/* Services Grid */}
         <section className="py-20 max-w-[1400px] mx-auto px-6 w-full">

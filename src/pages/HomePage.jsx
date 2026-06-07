@@ -3,7 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { SeoHead } from '../components/SeoHead';
-import { Reveal } from '../components/Reveal';
+import { Reveal, Parallax } from '../components/Reveal';
+import { ClipReveal } from '../components/ClipReveal';
+import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { PremiumBackdrop } from '../components/PremiumBackdrop';
 import { VideoHeroBackground } from '../components/VideoHeroBackground';
 import { SectionWave } from '../components/SectionWave';
@@ -30,6 +32,7 @@ import { normalizeItemsSection } from "../utils/siteContent";
 import { pickLocale, pickLocaleList, isFrenchLocale } from "../utils/pickLocale";
 import { useSiteContent } from "../context/SiteContentContext";
 import { useSiteFeatures } from '../hooks/useSiteFeatures';
+import { MarqueeTicker } from '../components/MarqueeTicker';
 import { BRAND_NAME } from '../constants/branding';
 import { DEFAULT_HERO } from '../data/home-defaults';
 import { normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
@@ -375,12 +378,23 @@ export const HomePage = () => {
           </div>
         </section>
 
+        <MarqueeTicker
+          items={[
+            BRAND_NAME,
+            ...(trustBadges || []),
+            t.home?.stats?.title || 'Excellence opérationnelle',
+            'TGI · Investissement structuré',
+            'Lomé · Togo · Afrique de l\'Ouest',
+          ].filter(Boolean)}
+        />
+
         {/* ============ NOTRE ADN / VISION ============ */}
         <section className="py-24 px-6 bg-surface">
           <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
             <Reveal preset="fadeRight">
-              <div className="relative">
+              <Parallax speed={0.12} className="relative">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <ClipReveal variant="circle" className="rounded-[2rem]">
                 <PremiumImageFrame
                   src={HERO_MEDIA_SPECS.about.src}
                   alt={t.about.vision.title}
@@ -400,7 +414,8 @@ export const HomePage = () => {
                     <p className="text-xl font-bold">{t.about.title}</p>
                   </div>
                 </PremiumImageFrame>
-              </div>
+                </ClipReveal>
+              </Parallax>
             </Reveal>
             <Reveal preset="fadeLeft">
               <div>
@@ -622,7 +637,8 @@ export const HomePage = () => {
             {featuredProject && (
             <>
             {/* Image vedette plein cadre */}
-            <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl mb-8">
+            <ClipReveal variant="wipe" className="rounded-[2.5rem] mb-8">
+            <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl">
               <button
                 type="button"
                 onClick={() => setLightbox(featuredProject)}
@@ -690,6 +706,7 @@ export const HomePage = () => {
                 {carouselPaused ? `▶ ${t.common.resume}` : `⏸ ${t.common.pause}`}
               </button>
             </div>
+            </ClipReveal>
 
             {/* Grille miniatures uniformisées */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -787,6 +804,7 @@ export const HomePage = () => {
                     to={sector.slug ? `/secteurs/${sector.slug}` : '/secteurs'}
                     className="sector-card block rounded-[2rem] h-full"
                   >
+                    <ClipReveal variant={idx % 2 === 0 ? 'wipe' : 'up'} className="rounded-[2rem] h-full">
                     <PremiumImageFrame
                       src={sector.image}
                       alt={sector.title}
@@ -811,6 +829,7 @@ export const HomePage = () => {
                         </span>
                       </div>
                     </PremiumImageFrame>
+                    </ClipReveal>
                   </Link>
                 </TiltCard>
               ))}
@@ -868,27 +887,7 @@ export const HomePage = () => {
             <h2 className="text-5xl font-bold text-center text-on-surface mb-16 animate-fade-in section-underline text-shimmer mx-auto max-w-fit">
               {t.home.testimonials.title}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {testimonials.map((t, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-8 rounded-2xl shadow-md border border-outline-variant/20 animate-fade-in-up hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0"
-                  style={{ animationDelay: `${idx * 150}ms` }}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-bold text-on-surface">{t.name}</p>
-                      <p className="text-sm text-on-surface-variant">{t.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-on-surface-variant italic text-lg">"{t.comment}"</p>
-                  <div className="text-yellow-400 mt-4">★★★★★</div>
-                </div>
-              ))}
-            </div>
+            <TestimonialsCarousel items={testimonials} />
           </div>
         </section>
 

@@ -3,9 +3,15 @@ import { useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const pageVariants = {
-  initial: { opacity: 1, y: 16 },
-  in: { opacity: 1, y: 0 },
-  out: { opacity: 1, y: -8 },
+  initial: { opacity: 0, y: 20, scale: 0.98, filter: 'blur(8px)' },
+  in: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+  out: { opacity: 0, y: -12, scale: 0.99, filter: 'blur(6px)' },
+};
+
+const pageVariantsReduced = {
+  initial: { opacity: 1 },
+  in: { opacity: 1 },
+  out: { opacity: 1 },
 };
 
 export const PageTransition = ({ children }) => {
@@ -21,14 +27,14 @@ export const PageTransition = ({ children }) => {
       initial="initial"
       animate="in"
       exit="out"
-      variants={pageVariants}
+      variants={reduceMotion ? pageVariantsReduced : pageVariants}
       transition={{
         type: 'tween',
-        ease: 'easeInOut',
-        duration: reduceMotion ? 0 : 0.3,
+        ease: [0.22, 1, 0.36, 1],
+        duration: reduceMotion ? 0 : 0.45,
       }}
       onAnimationComplete={() => ScrollTrigger.refresh()}
-      className="flex flex-col min-h-screen w-full"
+      className="page-transition-blur flex flex-col min-h-screen w-full"
     >
       {children}
     </motion.div>

@@ -9,6 +9,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { LiveBadge } from './components/LiveBadge';
 import { PageTransitionLayout } from './components/PageTransitionLayout';
 import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
@@ -74,6 +75,7 @@ function App() {
           <SplashScreen minDuration={1800} />
           <CustomCursor />
           <ScrollProgressBar />
+          <LiveBadge />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <SkipToMainContent />
