@@ -38,6 +38,41 @@ export const HERO_MEDIA_SPECS = {
     overlayVariant: 'left',
     export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 350, note: 'Sujet à droite (slider à droite)' },
   },
+  /** Heroes vidéo des pages devis / services (sectionKey CMS). */
+  serviceHeroes: {
+    devisLavage: {
+      video: '/video/lavage-auto.mp4',
+      poster: '/realisations/lavage1.jpg',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      fallbackSources: ['/video/lavage-auto.mp4', '/video/Hero.mp4'],
+      export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '10-20', note: 'Lavage auto, cadrage centré' },
+    },
+    devisDemenagement: {
+      video: '/video/Hero.mp4',
+      poster: '/realisations/transport2.jpg',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      fallbackSources: ['/video/Hero.mp4', '/video/Hero2.mp4'],
+      export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '15-30', note: 'Logistique / camions' },
+    },
+    devisBureaux: {
+      video: '/video/bureaux.mp4',
+      poster: '/images/hero-office-bg.png',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      fallbackSources: ['/video/bureaux.mp4', '/video/Hero2.mp4', '/video/Hero.mp4'],
+      export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '10-20', note: 'Bureaux / entretien pro' },
+    },
+    devisClimatisation: {
+      video: '/video/Hero2.mp4',
+      poster: '/realisations/mecanique2.jpg',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      fallbackSources: ['/video/Hero2.mp4', '/video/Hero.mp4'],
+      export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '10-20', note: 'Climatisation / technique' },
+    },
+  },
   projects: {
     src: '/images/projet.jpg',
     objectPosition: 'center 35%',

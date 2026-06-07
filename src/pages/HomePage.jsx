@@ -314,6 +314,7 @@ export const HomePage = () => {
             objectPosition={HERO_MEDIA_SPECS.homeVideo.objectPosition}
             overlayIntensity="strong"
             overlayVariant="left"
+            playLabel={tCommon.playVideo || 'Lancer la vidéo'}
           />
           <AmbientEffects variant="hero" className="absolute inset-0 z-[5] pointer-events-none" />
           <FloatingDecor className="z-[6]" />

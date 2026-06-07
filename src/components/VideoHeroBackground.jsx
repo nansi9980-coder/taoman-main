@@ -3,6 +3,7 @@
  */
 
 import { useRef, useEffect, useCallback, useState } from 'react';
+import { Play } from 'lucide-react';
 
 const DEFAULT_SOURCES = ['/video/Hero.mp4', '/video/Hero2.mp4'];
 
@@ -14,12 +15,14 @@ export const VideoHeroBackground = ({
   overlayIntensity = 'strong',
   overlayVariant = 'left',
   fallbackSources = DEFAULT_SOURCES,
+  playLabel = 'Lancer la vidéo',
 }) => {
   const videoRef = useRef(null);
   const sources = fallbackSources?.length ? fallbackSources : [src];
   const [sourceIdx, setSourceIdx] = useState(() => Math.max(0, sources.indexOf(src)));
   const [failed, setFailed] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [needsPlay, setNeedsPlay] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -43,9 +46,20 @@ export const VideoHeroBackground = ({
     el.setAttribute('webkit-playsinline', '');
     const attempt = el.play();
     if (attempt && typeof attempt.catch === 'function') {
-      attempt.catch(() => {});
+      attempt
+        .then(() => setNeedsPlay(false))
+        .catch(() => setNeedsPlay(true));
     }
   }, [failed]);
+
+  const handleManualPlay = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = true;
+    el.play()
+      .then(() => setNeedsPlay(false))
+      .catch(() => setNeedsPlay(true));
+  };
 
   useEffect(() => {
     if (!showVideo) return undefined;
@@ -54,11 +68,18 @@ export const VideoHeroBackground = ({
 
     el.src = currentSrc;
     el.load();
+    setNeedsPlay(false);
     playVideo();
 
     const onReady = () => playVideo();
+    const onPause = () => {
+      if (!el.ended && el.currentTime > 0) setNeedsPlay(true);
+    };
+    const onPlaying = () => setNeedsPlay(false);
     el.addEventListener('loadeddata', onReady);
     el.addEventListener('canplay', onReady);
+    el.addEventListener('pause', onPause);
+    el.addEventListener('playing', onPlaying);
 
     const onVisibility = () => {
       if (document.visibilityState === 'visible') playVideo();
@@ -70,6 +91,8 @@ export const VideoHeroBackground = ({
     return () => {
       el.removeEventListener('loadeddata', onReady);
       el.removeEventListener('canplay', onReady);
+      el.removeEventListener('pause', onPause);
+      el.removeEventListener('playing', onPlaying);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pointerdown', playVideo);
       window.removeEventListener('touchstart', playVideo);
@@ -140,6 +163,18 @@ export const VideoHeroBackground = ({
           <div className={`absolute inset-0 z-[3] bg-gradient-to-br ${overlayClass} pointer-events-none`} />
           <div className={`absolute inset-0 z-[3] bg-gradient-to-r ${horizontalOverlay} pointer-events-none`} />
         </>
+      )}
+
+      {showVideo && needsPlay && !failed && (
+        <button
+          type="button"
+          onClick={handleManualPlay}
+          className="absolute bottom-6 right-6 z-[8] inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#020d1a]/70 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-[#020d1a]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60"
+          aria-label={playLabel}
+        >
+          <Play className="h-4 w-4 fill-current" />
+          {playLabel}
+        </button>
       )}
     </div>
   );

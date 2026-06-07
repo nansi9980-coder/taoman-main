@@ -8,29 +8,45 @@ import { TextReveal } from './TextReveal';
 import { PremiumBackdrop } from './PremiumBackdrop';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { PhotoHeroBackground } from './PhotoHeroBackground';
+import { VideoHeroBackground } from './VideoHeroBackground';
 
 /**
- * Hero premium pour pages devis — photo, particules, titre animé.
+ * Hero premium pour pages devis — vidéo (ou photo en repli), particules, titre animé.
  */
-export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc }) {
+export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = true }) {
   const { section } = useSiteContent();
   const { translations: tc, language } = useLanguage();
   const hero = mergeCmsSection(sectionKey, section(sectionKey), language);
   const i18nHero = (i18nNamespace && tc?.[i18nNamespace]?.hero) || {};
+  const media = HERO_MEDIA_SPECS.serviceHeroes?.[sectionKey];
 
   const title = pickLocale(language, hero.title, i18nHero.title);
   const subtitle = pickLocale(language, hero.subtitle, i18nHero.description);
   const eyebrow = i18nHero.eyebrow;
-  const bgSrc = photoSrc || HERO_MEDIA_SPECS.services.src;
+  const playLabel = tc?.common?.playVideo || 'Lancer la vidéo';
+  const bgSrc = photoSrc || media?.poster || HERO_MEDIA_SPECS.services.src;
+  const showVideo = useVideo && media?.video;
 
   return (
-    <section className="relative overflow-hidden min-h-[38vh] md:min-h-[44vh] flex items-center py-20 px-6 text-white">
-      <PhotoHeroBackground
-        src={bgSrc}
-        objectPosition="75% center"
-        overlayVariant="left"
-        overlayIntensity="strong"
-      />
+    <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
+      {showVideo ? (
+        <VideoHeroBackground
+          src={media.video}
+          poster={media.poster || bgSrc}
+          objectPosition={media.objectPosition || 'center center'}
+          overlayIntensity="strong"
+          overlayVariant={media.overlayVariant || 'center'}
+          fallbackSources={media.fallbackSources}
+          playLabel={playLabel}
+        />
+      ) : (
+        <PhotoHeroBackground
+          src={bgSrc}
+          objectPosition={media?.objectPosition || '75% center'}
+          overlayVariant={media?.overlayVariant || 'left'}
+          overlayIntensity="strong"
+        />
+      )}
       <PremiumBackdrop variant="dark" intensity="soft" particles={16} showGrid={false} />
       <FloatingDecor className="z-[2]" />
       <AmbientEffects variant="hero" className="z-[2] opacity-60" />
