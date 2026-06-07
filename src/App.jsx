@@ -75,11 +75,11 @@ function App() {
           <SplashScreen minDuration={1800} />
           <CustomCursor />
           <ScrollProgressBar />
-          <LiveBadge />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <SkipToMainContent />
             <ScrollToTop />
+            <LiveBadge />
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route element={<PageTransitionLayout />}>
