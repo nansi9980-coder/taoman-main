@@ -29,6 +29,7 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getOfficeTranslations } from '../i18n/office';
 import mecanique1 from '../assets/realisations/mecanique1.png';
@@ -62,7 +63,8 @@ const EQUIPMENT_ICONS = [
 ];
 
 export const EntretienBureauxPage = () => {
-  const { language } = useLanguage();
+  const { language, translations: tc } = useLanguage();
+  const tSeo = tc?.office || {};
   const t = getOfficeTranslations(language);
   const [formData, setFormData] = useState({
     serviceType: '',
@@ -147,6 +149,12 @@ export const EntretienBureauxPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tSeo.hero?.title || 'Entretien de bureaux'}
+        description={tSeo.seoDescription}
+        path="/entretien/bureaux"
+        keywords="entretien bureaux Lomé, nettoyage professionnel Togo, contrat entretien, Taoman Group Investissement"
+      />
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">

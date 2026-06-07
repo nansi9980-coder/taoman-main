@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getMovingPersonnelContent } from '../i18n/moving-personnel';
 import transport1 from '../assets/realisations/transport1.jpg';
@@ -64,6 +65,12 @@ export const DemenagementPersonnelsPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tM.hero?.title || 'Personnel et flotte déménagement'}
+        description={tM.seoDescription}
+        path="/demenagement/personnels"
+        keywords="flotte déménagement Lomé, camion déménagement Togo, équipe déménageurs, Taoman Group Investissement"
+      />
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">

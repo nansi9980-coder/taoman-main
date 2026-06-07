@@ -4,11 +4,13 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getAirconFormTranslations } from '../i18n/airconForm';
 
 export const EntretienClimatisationPage = () => {
-  const { language } = useLanguage();
+  const { language, translations: tc } = useLanguage();
+  const tSeo = tc?.aircon || {};
   const t = getAirconFormTranslations(language);
 
   const [formData, setFormData] = useState({
@@ -82,6 +84,12 @@ export const EntretienClimatisationPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tSeo.hero?.title || 'Devis climatisation'}
+        description={tSeo.seoDescription}
+        path="/entretien/climatisation"
+        keywords="climatisation Lomé, entretien climatiseur Togo, installation split, Taoman Group Investissement"
+      />
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">

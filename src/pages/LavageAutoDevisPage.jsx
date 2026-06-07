@@ -19,6 +19,7 @@ import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getCarwashTranslations } from '../i18n/carwash';
 import lavage1 from '../assets/realisations/lavage1.jpg';
@@ -31,7 +32,8 @@ const FORMULA_ICONS = {
 };
 
 export const LavageAutoDevisPage = () => {
-  const { language } = useLanguage();
+  const { language, translations: tc } = useLanguage();
+  const tSeo = tc?.carwash || {};
   const t = getCarwashTranslations(language);
   const isFr = String(language || 'FR').toUpperCase() === 'FR';
   const [formData, setFormData] = useState({
@@ -113,6 +115,12 @@ export const LavageAutoDevisPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tSeo.hero?.title || 'Devis lavage auto'}
+        description={tSeo.seoDescription}
+        path="/lavage-auto/devis"
+        keywords="devis lavage auto Lomé, lavage moto Togo, lavage à domicile, Taoman Group Investissement"
+      />
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">

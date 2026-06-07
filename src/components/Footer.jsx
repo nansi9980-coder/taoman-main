@@ -33,6 +33,7 @@ export const Footer = () => {
     { name: t.carWash, href: '/lavage-auto/devis' },
     { name: t.moving, href: '/demenagement/devis' },
     { name: t.officeCare, href: '/entretien/bureaux' },
+    { name: t.airConditioning || 'Climatisation', href: '/entretien/climatisation' },
     { name: t.movingStaff, href: '/demenagement/personnels' },
     { name: 'Taoman Group Investissement TGI', href: '/investissement/tgi' },
     ...(simulatorPublicVisible ? [{ name: t.simulator, href: '/investissement/simulateur' }] : []),

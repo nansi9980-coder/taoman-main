@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { PageHeroEnhanced } from '../components/PageHeroEnhanced';
+import { Reveal } from '../components/Reveal';
+import { PremiumGlowCard } from '../components/PremiumGlowCard';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
+import { BRAND_NAME } from '../constants/branding';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DEFAULT_SECTORS } from '../data/sectors-defaults';
@@ -9,7 +16,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getSubmitProjectTranslations } from '../i18n/submitProject';
 
 export const SubmitProjectPage = () => {
-  const { translations: tc, language } = useLanguage();
+  const { translations: tc, language, nav: tNav } = useLanguage();
   const tS = tc?.submitProject?.hero || {};
   const t = getSubmitProjectTranslations(language);
   const tSectorItems = tc?.sectors?.items || {};
@@ -92,25 +99,48 @@ export const SubmitProjectPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tS.title || 'Soumettre un projet'}
+        description={tS.description || t.metaDescription}
+        path="/investissement/soumettre"
+        jsonLd={buildBreadcrumb([
+          { name: tNav.home, path: '/' },
+          { name: tNav.invest, path: '/investissement' },
+          { name: tS.title || t.pageTitle, path: '/investissement/soumettre' },
+        ])}
+        keywords="soumettre projet Togo, investissement Taoman Group Investissement, financement projet Lomé"
+      />
       <Header activeLink="investissement" />
 
-      <main className="flex-grow pt-24">
-        <section className="relative overflow-hidden bg-[#07111f] py-20 px-6 text-white">
-          <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>
-          <div className="relative z-10 mx-auto max-w-[1100px]">
-            <Link to="/investissement" className="text-sm text-cyan-200 font-bold hover:underline">
-              {t.backLink}
-            </Link>
-            <p className="mt-6 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{tS.eyebrow}</p>
-            <h1 className="mt-3 text-4xl md:text-6xl font-black tracking-[-0.04em]">{tS.title}</h1>
-            <p className="mt-5 max-w-2xl text-lg text-white/75 leading-relaxed">{tS.description}</p>
-          </div>
-        </section>
+      <main id="main-content" className="flex-grow pt-24">
+        <PageHeroEnhanced
+          photoProps={{
+            src: HERO_MEDIA_SPECS.investment.src,
+            objectPosition: HERO_MEDIA_SPECS.investment.objectPosition,
+            overlayVariant: HERO_MEDIA_SPECS.investment.overlayVariant,
+            overlayIntensity: 'strong',
+          }}
+          eyebrow={tS.eyebrow}
+          title={tS.title}
+          description={tS.description}
+          align="center"
+          contentClassName="max-w-[900px] px-4 py-8 md:px-10 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl"
+        >
+          <Link to="/investissement" className="inline-flex text-sm text-cyan-200 font-bold hover:underline hover:text-white transition-colors">
+            {t.backLink}
+          </Link>
+        </PageHeroEnhanced>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, tS.eyebrow || 'Projet', 'Investissement structuré', 'Lomé · Togo'].filter(Boolean)}
+          speed={28}
+        />
 
         <section className="py-16 px-6">
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-10">
-            <div className="bg-white rounded-3xl shadow-lg p-8 border border-outline-variant/40">
+            <Reveal preset="fadeUp">
+            <PremiumGlowCard className="rounded-3xl">
+            <div className="p-8">
               <h2 className="text-2xl font-black text-on-surface mb-2">{t.formTitle}</h2>
               <p className="text-sm text-on-surface-variant mb-6">
                 {t.requiredHint.split('*')[0]}
@@ -289,9 +319,12 @@ export const SubmitProjectPage = () => {
                 </button>
               </form>
             </div>
+            </PremiumGlowCard>
+            </Reveal>
 
+            <Reveal preset="fadeLeft">
             <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
-              <div className="rounded-3xl bg-[#07111f] text-white p-7">
+              <div className="rounded-3xl bg-[#07111f] text-white p-7 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                 <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">{t.process.eyebrow}</p>
                 <h3 className="mt-3 text-xl font-black">{t.process.title}</h3>
                 <ol className="mt-5 space-y-4">
@@ -309,7 +342,7 @@ export const SubmitProjectPage = () => {
                 </ol>
               </div>
 
-              <div className="rounded-3xl bg-white border border-outline-variant/40 p-7">
+              <div className="rounded-3xl bg-white border border-outline-variant/40 p-7 hover-card-premium interactive hover-glow motion-reduce:hover:translate-y-0">
                 <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{t.help.eyebrow}</p>
                 <h3 className="mt-3 text-xl font-black text-on-surface">{t.help.title}</h3>
                 <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">{t.help.description}</p>
@@ -321,6 +354,7 @@ export const SubmitProjectPage = () => {
                 </Link>
               </div>
             </aside>
+            </Reveal>
           </div>
         </section>
       </main>

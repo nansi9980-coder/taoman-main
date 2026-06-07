@@ -1,5 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { API_URL } from "../config";
 import { useSiteContent } from '../context/SiteContentContext';
@@ -13,8 +14,10 @@ import { Reveal } from '../components/Reveal';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { MagneticButton } from '../components/MagneticButton';
 import { BRAND_NAME } from '../constants/branding';
+import { SeoHead } from '../components/SeoHead';
 
 export const JobsPage = () => {
+  const navigate = useNavigate();
   const { section } = useSiteContent();
   const { translations: tc, language } = useLanguage();
   const tJ = tc?.jobs?.hero || {};
@@ -80,8 +83,22 @@ export const JobsPage = () => {
     : [{ value: 'all', label: tJobs.filterAll }];
 
 
+  const applyForJob = (jobTitle) => {
+    const params = new URLSearchParams({
+      topic: 'info',
+      subject: jobTitle ? `Candidature — ${jobTitle}` : 'Candidature spontanée',
+    });
+    navigate(`/contact?${params.toString()}`);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background pt-[80px]">
+      <SeoHead
+        title={tJ.title || jobsContent.title || tJobs.filterTitle}
+        description={tJ.description || jobsContent.subtitle}
+        path="/jobs"
+        keywords="emploi Taoman Group Investissement, carrières Lomé, recrutement Togo"
+      />
       <Header activeLink="jobs" />
 
       <main className="flex-grow">
@@ -160,7 +177,10 @@ export const JobsPage = () => {
                   </div>
 
                   <div className="md:col-span-1 text-right">
-                    <MagneticButton className="w-full md:w-auto px-lg py-md rounded-lg">
+                    <MagneticButton
+                      className="w-full md:w-auto px-lg py-md rounded-lg"
+                      onClick={() => applyForJob(job.title)}
+                    >
                       {tJobs.apply}
                     </MagneticButton>
                   </div>
@@ -231,9 +251,12 @@ export const JobsPage = () => {
             <p className="text-body-lg text-on-primary/90 mb-xl">
               {tJobs.cta.description}
             </p>
-            <button className="bg-on-primary text-primary px-xl py-md rounded-lg font-label-md font-bold hover:opacity-90 transition-all">
+            <MagneticButton
+              className="bg-on-primary text-primary px-xl py-md rounded-lg font-label-md"
+              onClick={() => applyForJob('')}
+            >
               {tJobs.cta.button}
-            </button>
+            </MagneticButton>
           </div>
         </section>
       </main>

@@ -169,6 +169,15 @@ const CONTACT = {
       submitLabel: 'Demander un devis',
       errorQuote: "Impossible d'envoyer votre demande de devis.",
       services: ['Lavage Auto', 'Déménagement', 'Entretien Bureau', 'Autre'],
+      form: {
+        title: 'Remplissez le formulaire',
+        service: { label: 'Service demandé *', placeholder: 'Sélectionnez un service...' },
+        name: { label: 'Nom complet *', placeholder: 'Votre nom' },
+        email: { label: 'Email *', placeholder: 'votre@email.com' },
+        phone: { label: 'Téléphone *', placeholder: '+228 XX XX XX XX' },
+        date: { label: 'Date souhaitée' },
+        description: { label: 'Description du projet', placeholder: 'Décrivez votre projet en détail...' },
+      },
     },
   },
 
@@ -335,6 +344,15 @@ const CONTACT = {
       submitLabel: 'Request a quote',
       errorQuote: 'Unable to send your quote request.',
       services: ['Car wash', 'Moving', 'Office cleaning', 'Other'],
+      form: {
+        title: 'Fill in the form',
+        service: { label: 'Requested service *', placeholder: 'Select a service...' },
+        name: { label: 'Full name *', placeholder: 'Your name' },
+        email: { label: 'Email *', placeholder: 'you@email.com' },
+        phone: { label: 'Phone *', placeholder: '+228 XX XX XX XX' },
+        date: { label: 'Preferred date' },
+        description: { label: 'Project description', placeholder: 'Describe your project in detail...' },
+      },
     },
   },
 

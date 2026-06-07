@@ -19,6 +19,17 @@ export const VideoHeroBackground = ({
   const sources = fallbackSources?.length ? fallbackSources : [src];
   const [sourceIdx, setSourceIdx] = useState(() => Math.max(0, sources.indexOf(src)));
   const [failed, setFailed] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduceMotion(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const showVideo = !reduceMotion && !failed;
 
   const currentSrc = sources[sourceIdx] ?? src;
 
@@ -37,6 +48,7 @@ export const VideoHeroBackground = ({
   }, [failed]);
 
   useEffect(() => {
+    if (!showVideo) return undefined;
     const el = videoRef.current;
     if (!el) return undefined;
 
@@ -62,7 +74,7 @@ export const VideoHeroBackground = ({
       window.removeEventListener('pointerdown', playVideo);
       window.removeEventListener('touchstart', playVideo);
     };
-  }, [currentSrc, playVideo]);
+  }, [currentSrc, playVideo, showVideo]);
 
   const onVideoError = () => {
     if (sourceIdx < sources.length - 1) {
@@ -88,7 +100,7 @@ export const VideoHeroBackground = ({
   return (
     <div className="absolute inset-0 overflow-hidden z-0 hero-video-shell" aria-hidden="true">
       {/* Poster de secours si toutes les sources échouent */}
-      {failed && poster && (
+      {(failed || reduceMotion) && poster && (
         <img
           src={poster}
           alt=""
@@ -99,7 +111,7 @@ export const VideoHeroBackground = ({
         />
       )}
 
-      {!failed && (
+      {showVideo && (
         <video
           ref={videoRef}
           src={currentSrc}
@@ -110,7 +122,7 @@ export const VideoHeroBackground = ({
           playsInline
           autoPlay
           loop
-          preload="auto"
+          preload="metadata"
           onLoadedData={playVideo}
           onCanPlayThrough={playVideo}
           onError={onVideoError}

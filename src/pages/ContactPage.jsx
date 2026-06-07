@@ -540,7 +540,7 @@ export const ContactPage = () => {
 export const QuotePage = () => {
   const { language } = useLanguage();
   const tQuote = getContactTranslations(language).quotePage || getContactTranslations('EN').quotePage;
-  const tForm = getContactTranslations(language).form || getContactTranslations('EN').form;
+  const tFormErrors = getContactTranslations(language).form || getContactTranslations('EN').form;
   const [formData, setFormData] = useState({
     service: '',
     name: '',
@@ -594,11 +594,12 @@ export const QuotePage = () => {
       else setSubmitError(await getApiErrorMessage(response, tQuote.errorQuote));
     } catch (error) {
       console.error('Erreur réseau:', error);
-      setSubmitError(error.message || tForm.errorNetwork);
+      setSubmitError(error.message || tFormErrors.errorNetwork);
     }
   };
 
   const services = tQuote.services || [];
+  const tQuoteForm = tQuote.form || getContactTranslations('FR').quotePage.form;
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
@@ -635,37 +636,37 @@ export const QuotePage = () => {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-3xl font-bold text-on-surface mb-8">Remplissez le formulaire</h2>
+                  <h2 className="text-3xl font-bold text-on-surface mb-8">{tQuoteForm.title}</h2>
                   {submitError && (
                     <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 font-semibold">{submitError}</div>
                   )}
                   <div className="space-y-6">
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Service demandé *</label>
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.service.label}</label>
                       <select name="service" value={formData.service} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface">
-                        <option value="">Sélectionnez un service...</option>
+                        <option value="">{tQuoteForm.service.placeholder}</option>
                         {services.map((s) => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Nom complet *</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="Votre nom" />
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.name.label}</label>
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder={tQuoteForm.name.placeholder} />
                     </div>
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Email *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="votre@email.com" />
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.email.label}</label>
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder={tQuoteForm.email.placeholder} />
                     </div>
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Téléphone *</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="+228 XX XX XX XX" />
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.phone.label}</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder={tQuoteForm.phone.placeholder} />
                     </div>
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Date souhaitée</label>
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.date.label}</label>
                       <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" />
                     </div>
                     <div>
-                      <label className="block text-on-surface font-bold mb-2">Description du projet</label>
-                      <textarea name="description" value={formData.description} onChange={handleChange} rows="5" className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder="Décrivez votre projet en détail..." />
+                      <label className="block text-on-surface font-bold mb-2">{tQuoteForm.description.label}</label>
+                      <textarea name="description" value={formData.description} onChange={handleChange} rows="5" className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface" placeholder={tQuoteForm.description.placeholder} />
                     </div>
                     <button type="submit" className="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
                       {tQuote.submitLabel}

@@ -21,6 +21,7 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
+import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getDevisMovingTranslations } from '../i18n/devisMoving';
 import transport1 from '../assets/realisations/transport1.jpg';
@@ -45,7 +46,8 @@ const PACKAGING_ICONS = [
 ];
 
 export const DemenagementDevisPage = () => {
-  const { language } = useLanguage();
+  const { language, translations: tc } = useLanguage();
+  const tSeo = tc?.devisMoving || {};
   const t = getDevisMovingTranslations(language);
   const [formData, setFormData] = useState({
     departCity: '',
@@ -134,6 +136,12 @@ export const DemenagementDevisPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
+      <SeoHead
+        title={tSeo.hero?.title || 'Devis déménagement'}
+        description={tSeo.seoDescription}
+        path="/demenagement/devis"
+        keywords="devis déménagement Lomé, déménagement entreprise Togo, manutention, Taoman Group Investissement"
+      />
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">

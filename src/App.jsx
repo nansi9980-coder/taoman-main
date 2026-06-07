@@ -10,6 +10,7 @@ import { SplashScreen } from './components/SplashScreen';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { LiveBadge } from './components/LiveBadge';
+import { BackToTop } from './components/BackToTop';
 import { PageTransitionLayout } from './components/PageTransitionLayout';
 import { SimulatorRouteGuard } from './components/SimulatorRouteGuard';
 import { HomePage } from './pages/HomePage';
@@ -29,6 +30,7 @@ const LavageAutoDevisPage = lazy(() => import('./pages/LavageAutoDevisPage').the
 const DemenagementDevisPage = lazy(() => import('./pages/DemenagementDevisPage').then((m) => ({ default: m.DemenagementDevisPage })));
 const DemenagementPersonnelsPage = lazy(() => import('./pages/DemenagementPersonnelsPage').then((m) => ({ default: m.DemenagementPersonnelsPage })));
 const EntretienBureauxPage = lazy(() => import('./pages/EntretienBureauxPage').then((m) => ({ default: m.EntretienBureauxPage })));
+const EntretienClimatisationPage = lazy(() => import('./pages/EntretienClimatisationPage').then((m) => ({ default: m.EntretienClimatisationPage })));
 const PasswordResetPage = lazy(() => import('./pages/PasswordResetPage').then((m) => ({ default: m.PasswordResetPage })));
 const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage').then((m) => ({ default: m.TermsConditionsPage })));
 const TaoEconomicInvestmentPage = lazy(() => import('./pages/TaoEconomicInvestmentPage').then((m) => ({ default: m.TaoEconomicInvestmentPage })));
@@ -72,7 +74,7 @@ function App() {
       <LanguageProvider>
       <HelmetProvider>
         <SiteContentProvider>
-          <SplashScreen minDuration={1800} />
+          <SplashScreen minDuration={1500} once />
           <CustomCursor />
           <ScrollProgressBar />
           <SeoHead />
@@ -80,6 +82,7 @@ function App() {
             <SkipToMainContent />
             <ScrollToTop />
             <LiveBadge />
+            <BackToTop />
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route element={<PageTransitionLayout />}>
@@ -118,7 +121,7 @@ function App() {
                 <Route path="/lavage-auto/devis" element={<LavageAutoDevisPage />} />
                 <Route path="/demenagement/devis" element={<DemenagementDevisPage />} />
                 <Route path="/entretien/bureaux" element={<EntretienBureauxPage />} />
-                <Route path="/entretien/climatisation" element={<Navigate to="/services" replace />} />
+                <Route path="/entretien/climatisation" element={<EntretienClimatisationPage />} />
                 <Route path="/demenagement/personnels" element={<DemenagementPersonnelsPage />} />
 
                 {/* Authentification */}

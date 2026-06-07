@@ -20,11 +20,17 @@ export const ServiceDetailPage = () => {
   const { language } = useLanguage();
   const t = getServiceDetailTranslations(language);
   const [service, setService] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+    setNotFound(false);
+
     const localService = getStaticServiceDetail(serviceId, language);
     if (localService) {
       setService(localService);
+      setLoading(false);
       return;
     }
 
@@ -47,9 +53,17 @@ export const ServiceDetailPage = () => {
             features: mapped?.features || data.features || [],
             details: data.details || [],
           });
+        } else {
+          setNotFound(true);
+          setService(null);
         }
       })
-      .catch((err) => console.error('Erreur fetch service:', err));
+      .catch((err) => {
+        console.error('Erreur fetch service:', err);
+        setNotFound(true);
+        setService(null);
+      })
+      .finally(() => setLoading(false));
   }, [serviceId, language, t.loading]);
 
   const quotePath = () => {
@@ -61,13 +75,35 @@ export const ServiceDetailPage = () => {
     return '/contact';
   };
 
-  if (!service) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center px-6 py-20">
         <div className="flex flex-col items-center gap-4">
           <div className="h-12 w-12 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
           <p className="text-on-surface-variant">{t.loading}</p>
         </div>
+      </div>
+    );
+  }
+
+  if (notFound || !service) {
+    return (
+      <div className="flex flex-col min-h-screen bg-surface">
+        <Header activeLink="services" />
+        <main className="flex-grow pt-24 flex items-center justify-center px-6 py-20">
+          <div className="max-w-lg text-center">
+            <h1 className="text-3xl font-black text-on-surface mb-4">{t.notFoundTitle || 'Service introuvable'}</h1>
+            <p className="text-on-surface-variant mb-8">{t.notFoundDesc || 'Ce service n’existe pas ou n’est plus disponible.'}</p>
+            <button
+              type="button"
+              onClick={() => navigate('/services')}
+              className="rounded-2xl bg-primary px-8 py-3 font-bold text-white hover:opacity-90 transition"
+            >
+              {t.backToServices || 'Retour aux services'}
+            </button>
+          </div>
+        </main>
+        <Footer />
       </div>
     );
   }
