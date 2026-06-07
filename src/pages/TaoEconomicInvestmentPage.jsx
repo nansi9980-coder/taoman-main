@@ -206,7 +206,7 @@ export const TaoEconomicInvestmentPage = () => {
               <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tT.sectors?.eyebrow || 'Diversification'}</p>
               <h2 className="text-4xl md:text-5xl font-black text-on-surface mb-4">{tT.sectors?.title || "Secteurs d'investissement"}</h2>
               <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
-                Cinq secteurs stratégiques portés par TGI — chaque domaine dispose d'une page dédiée avec son contexte, son périmètre et ses opportunités.
+                Sept domaines stratégiques portés par TGI — chaque domaine dispose d'une page dédiée avec son contexte, son périmètre et ses opportunités.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">

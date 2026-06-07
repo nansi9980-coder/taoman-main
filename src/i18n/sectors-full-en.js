@@ -98,4 +98,33 @@ export const SECTORS_FULL_EN = {
     partenaires: ['Taoman Group Investissement', 'Media agencies', 'Trade partners'],
     opportunities: ['International branding', 'Performance digital', 'B2B lead generation'],
   },
+  'education-financiere': {
+    intro:
+      'Taoman Group Investissement delivers financial education programs to help individuals, entrepreneurs and investors make informed financial decisions.',
+    context:
+      'In Togo and West Africa, access to credit, structured savings and investment products is growing faster than financial literacy. Budgeting, SME cash management, fraud prevention and understanding investment programs like TGI remain critical needs.',
+    goal:
+      'Strengthen financial culture among the group’s audiences — clients, TGI investors, entrepreneurs and young professionals — for better inclusion and responsible investment adoption.',
+    perimetre:
+      'Greater Lomé, secondary cities, partner companies and the Togolese diaspora. Formats: group workshops, corporate seminars, TGI investor tracks and e-learning modules.',
+    documents: [
+      'Curriculum by level (beginner, intermediate, investor)',
+      'Training materials and assessments',
+      'Ethics and compliance charter',
+      'Participation and satisfaction reporting',
+    ],
+    cout: 'On quote',
+    financement: 'TGI programs + training offers',
+    partenaires: [
+      'Taoman Group Investissement',
+      'Partner financial institutions',
+      'Chambers of commerce and SME networks',
+      'Togolese diaspora associations',
+    ],
+    opportunities: [
+      'Certified tracks for beginner investors',
+      'Custom in-company training',
+      'Digital modules for diaspora and youth',
+    ],
+  },
 };

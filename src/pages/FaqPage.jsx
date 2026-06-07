@@ -171,7 +171,7 @@ const DEFAULT_FAQ = [
     category: 'groupe',
     question: 'Qu\'est-ce que Taoman Group Investissement ?',
     answer:
-      "Taoman Group Investissement est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport ainsi que les services numériques. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
+      "Taoman Group Investissement est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport, les services numériques, le marketing international et la formation en éducation financière. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
   },
   {
     category: 'groupe',
@@ -214,7 +214,7 @@ const DEFAULT_FAQ = [
     category: 'investissement',
     question: 'Quels secteurs puis-je financer via TGI ?',
     answer:
-      "Cinq secteurs sont actuellement ouverts à l'investissement : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, et Numérique & Services. Vous pouvez répartir votre investissement sur plusieurs secteurs pour diversifier.",
+      "Sept domaines sont actuellement ouverts à l'investissement via TGI : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services, Marketing International et Formation & Éducation financière. Vous pouvez répartir votre investissement sur plusieurs secteurs pour diversifier.",
   },
   {
     category: 'investissement',

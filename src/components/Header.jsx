@@ -33,6 +33,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
     { slug: 'btp-immobilier', href: '/secteurs/btp-immobilier' },
     { slug: 'numerique-services', href: '/secteurs/numerique-services' },
     { slug: 'marketing-international', href: '/secteurs/marketing-international' },
+    { slug: 'education-financiere', href: '/secteurs/education-financiere' },
   ];
   const navigationItems = useMemo(() => {
     const investChildren = [

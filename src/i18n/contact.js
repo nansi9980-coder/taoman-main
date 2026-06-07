@@ -148,7 +148,7 @@ const CONTACT = {
       title:
         'Un groupe togolais multi-activités, des services concrets, des investissements suivis.',
       description:
-        "Services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) + Programme d'investissement TGI sur 5 secteurs (Logistique, Agro, Commerce, BTP, Numérique).",
+        "Services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) + Programme d'investissement TGI sur sept domaines (Logistique, Agro, Commerce, BTP, Numérique, Marketing, Éducation financière).",
       btnServices: 'Voir nos services',
       btnTgi: 'Découvrir TGI',
     },

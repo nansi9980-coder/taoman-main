@@ -93,6 +93,10 @@ function App() {
                   path="/services/marketing-international"
                   element={<Navigate to="/secteurs/marketing-international" replace />}
                 />
+                <Route
+                  path="/services/education-financiere"
+                  element={<Navigate to="/secteurs/education-financiere" replace />}
+                />
                 <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
                 <Route path="/investissement" element={<InvestmentPage />} />
                 <Route path="/investissement/tgi" element={<TaoEconomicInvestmentPage />} />

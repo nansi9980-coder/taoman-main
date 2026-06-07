@@ -190,7 +190,7 @@ const CONTENT = {
         eyebrow: "Secteurs d'investissement",
         title: "Nos secteurs d'activité",
         description:
-          "Une diversification équilibrée portée par des équipes terrain et des projets concrets : logistique, agro, commerce, BTP, numérique.",
+          "Une diversification équilibrée portée par des équipes terrain et des projets concrets : logistique, agro, commerce, BTP, numérique, marketing et éducation financière.",
       },
       discover: 'Découvrir le secteur',
       empty: "Aucun secteur publié pour l'instant.",
@@ -267,6 +267,17 @@ const CONTENT = {
             'Stratégie de marque internationale',
             'Campagnes digitales de performance',
             'Lead generation B2B/B2C',
+          ],
+        },
+        'education-financiere': {
+          title: 'Formation & Éducation financière',
+          tag: 'Finance',
+          short:
+            'Programmes de literacy financière, formation investisseurs et ateliers pour particuliers, PME et diaspora.',
+          highlights: [
+            'Literacy financière : budget, épargne, crédit et arnaques',
+            'Formation investisseurs et lecture des projets TGI',
+            'Ateliers entreprises et dirigeants PME',
           ],
         },
       },
@@ -629,7 +640,7 @@ const CONTENT = {
       detailedDescription: 'Explore each service in depth: scope, steps, team, deadlines and quality commitment.',
     },
     sectors: {
-      hero: { eyebrow: 'Investment sectors', title: 'Our business sectors', description: 'A balanced diversification driven by field teams and concrete projects: logistics, agro, trade, construction, digital.' },
+      hero: { eyebrow: 'Investment sectors', title: 'Our business sectors', description: 'A balanced diversification driven by field teams and concrete projects: logistics, agro, trade, construction, digital, marketing and financial education.' },
       discover: 'Discover the sector',
       empty: 'No sectors published yet.',
       tagFallback: 'Sector',
@@ -703,6 +714,16 @@ const CONTENT = {
             'International brand strategy',
             'Performance digital campaigns',
             'B2B/B2C lead generation',
+          ],
+        },
+        'education-financiere': {
+          title: 'Financial Education & Training',
+          tag: 'Finance',
+          short: 'Financial literacy programs, investor training and workshops for individuals, SMEs and the diaspora.',
+          highlights: [
+            'Financial literacy: budget, savings, credit and fraud prevention',
+            'Investor training and reading TGI projects',
+            'Corporate workshops for SME leaders',
           ],
         },
       },
@@ -1053,7 +1074,7 @@ const CONTENT = {
       detailedDescription: 'Explore cada servicio en profundidad: alcance, etapas, equipo, plazos y compromiso de calidad.',
     },
     sectors: {
-      hero: { eyebrow: 'Sectores de inversión', title: 'Nuestros sectores de actividad', description: 'Una diversificación equilibrada impulsada por equipos sobre el terreno y proyectos concretos: logística, agro, comercio, construcción, digital.' },
+      hero: { eyebrow: 'Sectores de inversión', title: 'Nuestros sectores de actividad', description: 'Una diversificación equilibrada impulsada por equipos sobre el terreno y proyectos concretos: logística, agro, comercio, construcción, digital, marketing y educación financiera.' },
       discover: 'Descubrir el sector',
       empty: 'Aún no hay sectores publicados.',
       tagFallback: 'Sector',
@@ -1127,6 +1148,16 @@ const CONTENT = {
             'Estrategia de marca internacional',
             'Campañas digitales de rendimiento',
             'Generación de leads B2B/B2C',
+          ],
+        },
+        'education-financiere': {
+          title: 'Formación y educación financiera',
+          tag: 'Finanzas',
+          short: 'Programas de alfabetización financiera, formación de inversores y talleres para particulares, PYMES y diáspora.',
+          highlights: [
+            'Alfabetización financiera: presupuesto, ahorro, crédito y fraudes',
+            'Formación de inversores y lectura de proyectos TGI',
+            'Talleres empresariales para directivos de PYMES',
           ],
         },
       },
@@ -1402,7 +1433,7 @@ const CONTENT = {
       detailedDescription: 'Explore cada serviço em profundidade: âmbito, etapas, equipa, prazos e compromisso de qualidade.',
     },
     sectors: {
-      hero: { eyebrow: 'Setores de investimento', title: 'Os nossos setores de atividade', description: 'Uma diversificação equilibrada impulsionada por equipas no terreno e projetos concretos: logística, agro, comércio, construção, digital.' },
+      hero: { eyebrow: 'Setores de investimento', title: 'Os nossos setores de atividade', description: 'Uma diversificação equilibrada impulsionada por equipas no terreno e projetos concretos: logística, agro, comércio, construção, digital, marketing e educação financeira.' },
       discover: 'Descobrir o setor',
       empty: 'Ainda não há setores publicados.',
       tagFallback: 'Setor',
@@ -1476,6 +1507,16 @@ const CONTENT = {
             'Estratégia de marca internacional',
             'Campanhas digitais de performance',
             'Geração de leads B2B/B2C',
+          ],
+        },
+        'education-financiere': {
+          title: 'Formação e educação financeira',
+          tag: 'Finanças',
+          short: 'Programas de literacia financeira, formação de investidores e workshops para particulares, PME e diáspora.',
+          highlights: [
+            'Literacia financeira: orçamento, poupança, crédito e fraudes',
+            'Formação de investidores e leitura de projetos TGI',
+            'Workshops empresariais para líderes de PME',
           ],
         },
       },
@@ -1751,7 +1792,7 @@ const CONTENT = {
       detailedDescription: 'Erkunden Sie jeden Dienst im Detail: Umfang, Schritte, Team, Fristen und Qualitätsversprechen.',
     },
     sectors: {
-      hero: { eyebrow: 'Investitionssektoren', title: 'Unsere Tätigkeitsbereiche', description: 'Eine ausgewogene Diversifizierung, getragen von Vor-Ort-Teams und konkreten Projekten: Logistik, Agro, Handel, Bau, Digital.' },
+      hero: { eyebrow: 'Investitionssektoren', title: 'Unsere Tätigkeitsbereiche', description: 'Eine ausgewogene Diversifizierung, getragen von Vor-Ort-Teams und konkreten Projekten: Logistik, Agro, Handel, Bau, Digital, Marketing und Finanzbildung.' },
       discover: 'Sektor entdecken',
       empty: 'Noch keine Sektoren veröffentlicht.',
       tagFallback: 'Sektor',
@@ -1825,6 +1866,16 @@ const CONTENT = {
             'Internationale Markenstrategie',
             'Performance-Digitalkampagnen',
             'B2B/B2C-Lead-Generierung',
+          ],
+        },
+        'education-financiere': {
+          title: 'Finanzbildung & Schulung',
+          tag: 'Finanzen',
+          short: 'Programme zur Finanzkompetenz, Investorenschulung und Workshops für Privatpersonen, KMU und Diaspora.',
+          highlights: [
+            'Finanzkompetenz: Budget, Sparen, Kredit und Betrugsprävention',
+            'Investorenschulung und Lesen von TGI-Projekten',
+            'Unternehmensworkshops für KMU-Führungskräfte',
           ],
         },
       },
@@ -2100,7 +2151,7 @@ const CONTENT = {
       detailedDescription: 'استكشف كل خدمة بعمق: النطاق، المراحل، الفريق، المهل والالتزام بالجودة.',
     },
     sectors: {
-      hero: { eyebrow: 'قطاعات الاستثمار', title: 'قطاعات نشاطنا', description: 'تنويع متوازن تقوده فرق ميدانية ومشاريع ملموسة: الخدمات اللوجستية، الزراعة، التجارة، البناء، الرقمية.' },
+      hero: { eyebrow: 'قطاعات الاستثمار', title: 'قطاعات نشاطنا', description: 'تنويع متوازن تقوده فرق ميدانية ومشاريع ملموسة: الخدمات اللوجستية، الزراعة، التجارة، البناء، الرقمية، التسويق والتثقيف المالي.' },
       discover: 'اكتشف القطاع',
       empty: 'لا توجد قطاعات منشورة حتى الآن.',
       tagFallback: 'قطاع',
@@ -2174,6 +2225,16 @@ const CONTENT = {
             'استراتيجية العلامة الدولية',
             'حملات رقمية للأداء',
             'توليد عملاء محتملين B2B/B2C',
+          ],
+        },
+        'education-financiere': {
+          title: 'التدريب والتثقيف المالي',
+          tag: 'المالية',
+          short: 'برامج الثقافة المالية وتدريب المستثمرين وورش عمل للأفراد والشركات الصغيرة والجالية.',
+          highlights: [
+            'الثقافة المالية: الميزانية والادخار والائتمان والاحتيال',
+            'تدريب المستثمرين وقراءة مشاريع TGI',
+            'ورش عمل للمديرين في الشركات الصغيرة',
           ],
         },
       },
@@ -2449,7 +2510,7 @@ const CONTENT = {
       detailedDescription: '深入了解每项服务：范围、流程、团队、期限与品质承诺。',
     },
     sectors: {
-      hero: { eyebrow: '投资领域', title: '我们的业务领域', description: '由现场团队推动的多元化布局：物流、农业、贸易、建筑、数字。' },
+      hero: { eyebrow: '投资领域', title: '我们的业务领域', description: '由现场团队推动的多元化布局：物流、农业、贸易、建筑、数字、营销与金融教育。' },
       discover: '了解该领域',
       empty: '暂无发布的领域。',
       tagFallback: '领域',
@@ -2523,6 +2584,16 @@ const CONTENT = {
             '国际品牌战略',
             '效果型数字营销',
             'B2B/B2C 潜客开发',
+          ],
+        },
+        'education-financiere': {
+          title: '金融教育与培训',
+          tag: '金融',
+          short: '金融素养课程、投资者培训及面向个人、中小企业与侨民的研讨会。',
+          highlights: [
+            '金融素养：预算、储蓄、信贷与防诈骗',
+            '投资者培训与 TGI 项目解读',
+            '面向中小企业管理者的企业研讨会',
           ],
         },
       },

@@ -141,7 +141,7 @@ const FAQ = {
         category: 'groupe',
         question: "Qu'est-ce que Taoman Group Investissement ?",
         answer:
-          "Taoman Group Investissement est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport ainsi que les services numériques. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
+          "Taoman Group Investissement est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport, les services numériques, le marketing international et la formation en éducation financière. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
       },
       {
         category: 'groupe',
@@ -183,7 +183,7 @@ const FAQ = {
         category: 'investissement',
         question: 'Quels secteurs puis-je financer via TGI ?',
         answer:
-          "Cinq secteurs sont actuellement ouverts à l'investissement : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, et Numérique & Services. Vous pouvez répartir votre investissement sur plusieurs secteurs pour diversifier.",
+          "Sept domaines sont actuellement ouverts à l'investissement via TGI : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services, Marketing International et Formation & Éducation financière. Vous pouvez répartir votre investissement sur plusieurs secteurs pour diversifier.",
       },
       {
         category: 'investissement',
@@ -254,7 +254,7 @@ const FAQ = {
       { category: 'investissement', question: 'What is the minimum amount to invest with Taoman Group Investissement?', answer: 'The recommended entry ticket is 500,000 FCFA. This allows effective diversification across several projects and optimal tracking via your investor space.' },
       { category: 'investissement', question: 'How does the TGI simulator work?', answer: 'The simulator projects the potential return of an investment over up to 10 months, based on amount, chosen sector and risk profile. Figures shown are indicative and reflect ranges observed on our operated projects.' },
       { category: 'investissement', question: 'Are the displayed returns guaranteed?', answer: 'No. Displayed returns are projections based on expected operational performance of projects. Actual return depends on the project, sector, context and field performance. Any investment carries a risk of partial or total loss of capital.' },
-      { category: 'investissement', question: 'Which sectors can I finance via TGI?', answer: 'Five sectors are currently open for investment: Logistics & Transport, Agro Business, General Trade, Construction & Real Estate, and Digital & Services. You can spread your investment across several sectors to diversify.' },
+      { category: 'investissement', question: 'Which sectors can I finance via TGI?', answer: 'Seven domains are currently open for investment via TGI: Logistics & Transport, Agro Business, General Trade, Construction & Real Estate, Digital & Services, International Marketing and Financial Education & Training. You can spread your investment across several sectors to diversify.' },
       { category: 'investissement', question: 'How do I submit a project for financing?', answer: 'Use the dedicated form on the Submit a Project page. Describe your project, sector, amount sought, timeline and attach supporting documents. Our committee responds within 5 business days with a decision (in-depth review, request for additional information, or reasoned refusal).' },
       { category: 'investissement', question: 'How am I kept informed of my investment progress?', answer: 'Your investor space centralizes everything: real-time portfolio, wallet (deposits, withdrawals, commissions), project reporting (photos, indicators, field comments), PDF documents (contracts, supporting documents). Accessible 24/7 after login.' },
     ],

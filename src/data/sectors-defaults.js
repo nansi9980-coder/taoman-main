@@ -35,6 +35,14 @@ const SLUG_RULES = [
     slug: 'logistique-transports',
     match: (k) => k.includes('logistique') || k.includes('transport') || k.includes('mobilite'),
   },
+  {
+    slug: 'education-financiere',
+    match: (k) =>
+      k.includes('formation') ||
+      k.includes('education') ||
+      k.includes('financier') ||
+      k.includes('literacy'),
+  },
 ];
 
 function inferSectorSlug(item) {
@@ -317,6 +325,49 @@ export const DEFAULT_SECTORS = [
     ],
     range: '14 % – 24 %',
     risk: 'Dynamique',
+  },
+  {
+    slug: 'education-financiere',
+    title: 'Formation & Éducation financière',
+    tag: 'Finance',
+    image: '/images/investissements.jpg',
+    short:
+      "Programmes de literacy financière, formation investisseurs et ateliers pour particuliers, PME et diaspora.",
+    intro:
+      "Taoman Group Investissement développe des parcours de formation en éducation financière pour aider les particuliers, les entrepreneurs et les investisseurs à mieux comprendre, planifier et sécuriser leurs décisions patrimoniales.",
+    context:
+      "Au Togo et en Afrique de l'Ouest, l'accès au crédit, à l'épargne structurée et aux produits d'investissement progresse plus vite que la culture financière. Budget familial, gestion de trésorerie PME, prévention des arnaques, lecture d'un contrat ou compréhension d'un programme d'investissement comme le TGI restent des besoins massifs. Taoman Group Investissement répond à cet enjeu avec des modules pédagogiques concrets, animés par des formateurs certifiés, en présentiel à Lomé et en ligne pour la diaspora. Les contenus couvrent les bases (budget, épargne, crédit responsable), la montée en compétence investisseur et l'accompagnement des dirigeants de PME sur la gouvernance financière.",
+    goal:
+      "Renforcer la culture financière des publics cibles du groupe — clients, investisseurs TGI, entrepreneurs et jeunes actifs — pour des décisions plus éclairées, une meilleure inclusion financière et une adoption responsable des produits d'investissement.",
+    porteur: 'Taoman Group Investissement',
+    perimetre:
+      "Grand Lomé, villes secondaires, entreprises partenaires et diaspora togolaise. Formats : ateliers collectifs, séminaires entreprise, parcours investisseur TGI, modules e-learning et sessions de sensibilisation communautaire.",
+    documents: [
+      'Programme pédagogique par niveau (débutant, intermédiaire, investisseur)',
+      'Supports de formation et évaluations',
+      'Charte éthique et conformité des contenus',
+      'Reporting de participation et satisfaction',
+    ],
+    cout: 'Sur devis',
+    financement: 'Programmes TGI + offres de formation',
+    partenaires: [
+      'Taoman Group Investissement',
+      'Institutions financières partenaires',
+      'Chambres de commerce et réseaux PME',
+      'Associations de diaspora togolaise',
+    ],
+    highlights: [
+      'Literacy financière : budget, épargne, crédit et prévention des arnaques',
+      'Formation investisseurs et lecture des projets TGI',
+      'Ateliers entreprises et dirigeants PME',
+    ],
+    opportunities: [
+      'Parcours certifiants pour investisseurs débutants',
+      'Formations intra-entreprise sur mesure',
+      'Modules digitaux pour diaspora et jeunes actifs',
+    ],
+    range: '10 % – 18 %',
+    risk: 'Modéré',
   },
 ];
 

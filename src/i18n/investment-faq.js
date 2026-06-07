@@ -30,7 +30,7 @@ const FAQ_FR = {
       category: 'groupe',
       question: "Qu'est-ce que Taoman Group Investissement ?",
       answer:
-        "Taoman Group Investissement est un groupe togolais multi-activités. Il combine 5 services opérationnels (Lavage automobile, Déménagement, Entretien de bureaux, Mécanique, Transport) et un programme d'investissement participatif baptisé TGI ouvert sur 5 secteurs stratégiques (Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services).",
+        "Taoman Group Investissement est un groupe togolais multi-activités. Il combine 5 services opérationnels (Lavage automobile, Déménagement, Entretien de bureaux, Mécanique, Transport) et un programme d'investissement participatif baptisé TGI ouvert sur sept domaines stratégiques (Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services, Marketing International, Formation & Éducation financière).",
     },
     {
       category: 'groupe',
@@ -54,7 +54,7 @@ const FAQ_FR = {
       category: 'investissement',
       question: 'Quels secteurs sont accessibles via TGI ?',
       answer:
-        "Cinq secteurs sont ouverts : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, et Numérique & Services. Vous pouvez répartir votre engagement sur un ou plusieurs secteurs.",
+        "Sept domaines sont ouverts via TGI : Logistique & Transports, Agro Business, Commerce général, BTP & Immobilier, Numérique & Services, Marketing International et Formation & Éducation financière. Vous pouvez répartir votre engagement sur un ou plusieurs secteurs.",
     },
     {
       category: 'investissement',
@@ -165,7 +165,7 @@ const FAQ_EN = {
       category: 'groupe',
       question: 'What is Taoman Group Investissement?',
       answer:
-        'Taoman Group Investissement is a multi-activity Togolese group combining five operational services (car wash, moving, office cleaning, mechanics, transport) and a participatory investment program called TGI across five strategic sectors.',
+        'Taoman Group Investissement is a multi-activity Togolese group combining five operational services (car wash, moving, office cleaning, mechanics, transport) and a participatory investment program called TGI across seven strategic domains (logistics, agribusiness, trade, construction, digital, international marketing and financial education).',
     },
     {
       category: 'groupe',
@@ -189,7 +189,7 @@ const FAQ_EN = {
       category: 'investissement',
       question: 'Which sectors are available via TGI?',
       answer:
-        'Five sectors: Logistics & Transport, Agribusiness, General Trade, Construction & Real Estate, and Digital & Services. You may spread across one or several.',
+        'Seven domains are open via TGI: Logistics & Transport, Agribusiness, General Trade, Construction & Real Estate, Digital & Services, International Marketing and Financial Education & Training. You may spread across one or several.',
     },
     {
       category: 'investissement',
