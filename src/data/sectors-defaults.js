@@ -330,7 +330,7 @@ export const DEFAULT_SECTORS = [
     slug: 'education-financiere',
     title: 'Formation & Éducation financière',
     tag: 'Finance',
-    image: '/images/investissements.jpg',
+    image: '/images/education-financiere-hero.png',
     short:
       "Programmes de literacy financière, formation investisseurs et ateliers pour particuliers, PME et diaspora.",
     intro:
