@@ -107,7 +107,7 @@ export const SplashScreen = ({ minDuration = 2200, once = false }) => {
               animate="show"
               className="text-4xl md:text-5xl font-black text-white tracking-[0.2em] mb-2 flex"
             >
-              {"Taoman".split("").map((char, i) => (
+              {BRAND_LINE_1.split("").map((char, i) => (
                 <motion.span key={i} variants={letterAnim} className="inline-block">
                   {char}
                 </motion.span>

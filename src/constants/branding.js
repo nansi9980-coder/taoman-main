@@ -1,11 +1,11 @@
-/** Nom officiel de la marque — toujours utiliser cette constante */
-export const BRAND_NAME = 'Taoman Group Investissement';
-export const BRAND_SHORT = 'Taoman';
-export const BRAND_LEGAL = 'Taoman Group Investissement S.A.';
+/** Nom officiel de la marque — identique dans toutes les langues */
+export const BRAND_NAME = 'TAOMAN GROUP INVESTMENTS';
+export const BRAND_SHORT = 'TAOMAN';
+export const BRAND_LEGAL = 'TAOMAN GROUP INVESTMENTS';
 
 /** Affichage logo / splash (deux lignes) */
-export const BRAND_LINE_1 = 'Taoman';
-export const BRAND_LINE_2 = 'Group Investissement';
+export const BRAND_LINE_1 = 'TAOMAN';
+export const BRAND_LINE_2 = 'GROUP INVESTMENTS';
 
 export const BRAND_TAGLINE = {
   en: 'Strategic investment, partnerships and projects in Togo',
@@ -22,7 +22,7 @@ export const BRAND = {
   legal: BRAND_LEGAL,
 };
 
-/** @param {string} _languageCode — kept for API compatibility */
+/** Nom de marque fixe — ne varie pas selon la langue */
 export function getBrandName(_languageCode = 'FR') {
   return BRAND_NAME;
 }

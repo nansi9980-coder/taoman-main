@@ -191,7 +191,7 @@ const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name || formData.organization || 'Contact Taoman Group Investissement',
+          name: formData.name || formData.organization || 'Contact TAOMAN GROUP INVESTMENTS',
           email: formData.email,
           phone: formData.phone,
           subject: `${topic.serviceTag} – ${formData.projectName || formData.question || topic.title}`,
@@ -411,7 +411,7 @@ export const ContactPage = () => {
         title={tNav.contact}
         description={tContact.seoDescription}
         path="/contact"
-        keywords="contact Taoman Group Investissement, devis Togo, partenariat investissement, soumettre projet Lomé"
+        keywords="contact TAOMAN GROUP INVESTMENTS, devis Togo, partenariat investissement, soumettre projet Lomé"
       />
       <Header activeLink="contact" />
 
@@ -501,7 +501,7 @@ export const ContactPage = () => {
         </section>
         </Reveal>
 
-        {/* BANDEAU GROUPE Taoman Group Investissement */}
+        {/* BANDEAU GROUPE TAOMAN GROUP INVESTMENTS */}
         <Reveal preset="fadeUp">
         <section className="py-16 px-6 bg-gradient-to-br from-primary to-primary-container">
           <div className="max-w-[1200px] mx-auto grid md:grid-cols-[1.4fr_0.8fr] gap-8 items-center text-white">

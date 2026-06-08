@@ -50,7 +50,7 @@ const DEFAULT_FAQ = [
   },
   {
     category: 'lavage',
-    question: 'Combien de temps prend un lavage Taoman Group Investissement ?',
+    question: 'Combien de temps prend un lavage TAOMAN GROUP INVESTMENTS ?',
     answer:
       'Un Lavage Extérieur prend 30 à 60 minutes selon le type de véhicule. Un Lavage Intérieur prend 45 à 75 minutes. Un Lavage Général prend 90 à 150 minutes. Pour une moto, comptez 45 à 60 minutes. Pour les SUV et 4x4, ajoutez 20 minutes au temps de base.',
   },
@@ -169,9 +169,9 @@ const DEFAULT_FAQ = [
   // ---- LE GROUPE ----
   {
     category: 'groupe',
-    question: 'Qu\'est-ce que Taoman Group Investissement ?',
+    question: 'Qu\'est-ce que TAOMAN GROUP INVESTMENTS ?',
     answer:
-      "Taoman Group Investissement est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport, les services numériques, le marketing international et la formation en éducation financière. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
+      "TAOMAN GROUP INVESTMENTS est un groupe togolais multi-activités, spécialisé dans le BTP & l'immobilier, l'agro-business, le commerce général, la logistique & le transport, les services numériques, le marketing international et la formation en éducation financière. Le groupe opère également un programme d'investissement (TGI) ouvert aux particuliers pour financer des projets concrets et générer un rendement régulier.",
   },
   {
     category: 'groupe',
@@ -181,7 +181,7 @@ const DEFAULT_FAQ = [
   },
   {
     category: 'groupe',
-    question: 'Comment puis-je rejoindre Taoman Group Investissement ?',
+    question: 'Comment puis-je rejoindre TAOMAN GROUP INVESTMENTS ?',
     answer:
       "Nous recrutons régulièrement dans nos différents métiers : opérateurs (lavage, déménagement, entretien, mécanique, transport), techniciens, encadrants, fonctions support. Consultez la page « Carrières » du site ou envoyez votre CV via le formulaire de contact.",
   },
@@ -189,12 +189,12 @@ const DEFAULT_FAQ = [
     category: 'groupe',
     question: 'Êtes-vous une entreprise déclarée et formelle ?',
     answer:
-      "Oui. Taoman Group Investissement est une société togolaise régulièrement enregistrée, fiscalement à jour, employeur déclaré à la CNSS, couverte en responsabilité civile professionnelle. Toutes nos prestations donnent lieu à une facture conforme.",
+      "Oui. TAOMAN GROUP INVESTMENTS est une société togolaise régulièrement enregistrée, fiscalement à jour, employeur déclaré à la CNSS, couverte en responsabilité civile professionnelle. Toutes nos prestations donnent lieu à une facture conforme.",
   },
   // ---- INVESTISSEMENT (TGI) ----
   {
     category: 'investissement',
-    question: 'Quel est le montant minimum pour investir avec Taoman Group Investissement ?',
+    question: 'Quel est le montant minimum pour investir avec TAOMAN GROUP INVESTMENTS ?',
     answer:
       'Le ticket de départ recommandé est de 500 000 FCFA. Cela permet une diversification efficace sur plusieurs projets et un suivi optimal via votre espace investisseur.',
   },
@@ -271,7 +271,7 @@ export const FaqPage = () => {
         description={tFaq.seoDescription}
         path="/faq"
         jsonLd={faqLd}
-        keywords="FAQ Taoman Group Investissement, questions fréquentes Togo, investissement Togo FAQ, services Togo"
+        keywords="FAQ TAOMAN GROUP INVESTMENTS, questions fréquentes Togo, investissement Togo FAQ, services Togo"
       />
       <Header activeLink="faq" />
 

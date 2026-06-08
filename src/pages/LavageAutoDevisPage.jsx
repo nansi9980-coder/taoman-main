@@ -119,7 +119,7 @@ export const LavageAutoDevisPage = () => {
         title={tSeo.hero?.title || 'Devis lavage auto'}
         description={tSeo.seoDescription}
         path="/lavage-auto/devis"
-        keywords="devis lavage auto Lomé, lavage moto Togo, lavage à domicile, Taoman Group Investissement"
+        keywords="devis lavage auto Lomé, lavage moto Togo, lavage à domicile, TAOMAN GROUP INVESTMENTS"
       />
       <Header activeLink="services" />
 
@@ -436,7 +436,7 @@ export const LavageAutoDevisPage = () => {
                   </p>
                 </div>
                 <div className="rounded-3xl bg-white text-on-surface p-6 shadow-xl">
-                  <img src={lavage2} alt="Travail Taoman Group Investissement" className="rounded-2xl w-full aspect-[4/3] object-cover mb-4" loading="lazy" />
+                  <img src={lavage2} alt="Travail TAOMAN GROUP INVESTMENTS" className="rounded-2xl w-full aspect-[4/3] object-cover mb-4" loading="lazy" />
                   <h4 className="font-black text-on-surface">{t.sidebar.equipmentTitle}</h4>
                   <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
                     {t.sidebar.equipmentDesc}

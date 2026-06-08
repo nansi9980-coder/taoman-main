@@ -88,7 +88,7 @@ export const EntretienClimatisationPage = () => {
         title={tSeo.hero?.title || 'Devis climatisation'}
         description={tSeo.seoDescription}
         path="/entretien/climatisation"
-        keywords="climatisation Lomé, entretien climatiseur Togo, installation split, Taoman Group Investissement"
+        keywords="climatisation Lomé, entretien climatiseur Togo, installation split, TAOMAN GROUP INVESTMENTS"
       />
       <Header activeLink="services" />
 

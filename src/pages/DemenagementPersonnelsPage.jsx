@@ -69,7 +69,7 @@ export const DemenagementPersonnelsPage = () => {
         title={tM.hero?.title || 'Personnel et flotte déménagement'}
         description={tM.seoDescription}
         path="/demenagement/personnels"
-        keywords="flotte déménagement Lomé, camion déménagement Togo, équipe déménageurs, Taoman Group Investissement"
+        keywords="flotte déménagement Lomé, camion déménagement Togo, équipe déménageurs, TAOMAN GROUP INVESTMENTS"
       />
       <Header activeLink="services" />
 
@@ -85,13 +85,13 @@ export const DemenagementPersonnelsPage = () => {
           <div className="relative z-10 max-w-[1300px] mx-auto grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div className="animate-fade-in-up">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
-                <Truck className="h-4 w-4" /> {tM.hero?.eyebrow || 'Personnel & flotte Taoman Group Investissement'}
+                <Truck className="h-4 w-4" /> {tM.hero?.eyebrow || 'Personnel & flotte TAOMAN GROUP INVESTMENTS'}
               </span>
               <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
                 {tM.hero?.title || 'Une équipe professionnelle de déménagement'}
               </h1>
               <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-8 leading-relaxed">
-                {tM.hero?.description || "Taoman Group Investissement met à votre disposition une flotte de véhicules adaptés et une équipe de déménageurs formés pour vos déménagements à Lomé, en province et dans la sous-région CEDEAO."}
+                {tM.hero?.description || "TAOMAN GROUP INVESTMENTS met à votre disposition une flotte de véhicules adaptés et une équipe de déménageurs formés pour vos déménagements à Lomé, en province et dans la sous-région CEDEAO."}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
@@ -111,7 +111,7 @@ export const DemenagementPersonnelsPage = () => {
             <div className="relative">
               <div className="absolute -inset-4 rounded-[2.5rem] bg-cyan-300/20 blur-2xl" aria-hidden="true" />
               <div className="relative rounded-[2rem] overflow-hidden ring-1 ring-white/20 shadow-2xl">
-                <img src={transport1} alt="Équipe Taoman Group Investissement avec camion de déménagement" className="w-full h-[420px] object-cover" loading="eager" fetchpriority="high" decoding="async" />
+                <img src={transport1} alt="Équipe TAOMAN GROUP INVESTMENTS avec camion de déménagement" className="w-full h-[420px] object-cover" loading="eager" fetchpriority="high" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
                   <span className="rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f]">

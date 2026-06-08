@@ -6,7 +6,7 @@ const FR = Object.fromEntries(
 );
 
 const EN = {
-  'conducteur-01': { title: 'Taoman Group Investissement Driver 01', category: 'Logistics' },
+  'conducteur-01': { title: 'TAOMAN GROUP INVESTMENTS Driver 01', category: 'Logistics' },
   'transport-02': { title: 'Transport Team 02', category: 'Transport' },
   'lavage-03': { title: 'Car Wash Center 03', category: 'Car Wash' },
   'terrain-04': { title: 'Field Operation 04', category: 'Field Team' },
@@ -19,7 +19,7 @@ const EN = {
 };
 
 const ES = {
-  'conducteur-01': { title: 'Conductor Taoman Group Investissement 01', category: 'Logística' },
+  'conducteur-01': { title: 'Conductor TAOMAN GROUP INVESTMENTS 01', category: 'Logística' },
   'transport-02': { title: 'Equipo de transporte 02', category: 'Transporte' },
   'lavage-03': { title: 'Centro de lavado 03', category: 'Lavado de autos' },
   'terrain-04': { title: 'Intervención en campo 04', category: 'Equipo de campo' },
@@ -32,7 +32,7 @@ const ES = {
 };
 
 const PT = {
-  'conducteur-01': { title: 'Motorista Taoman Group Investissement 01', category: 'Logística' },
+  'conducteur-01': { title: 'Motorista TAOMAN GROUP INVESTMENTS 01', category: 'Logística' },
   'transport-02': { title: 'Equipa de transporte 02', category: 'Transporte' },
   'lavage-03': { title: 'Centro de lavagem 03', category: 'Lavagem automóvel' },
   'terrain-04': { title: 'Intervenção de campo 04', category: 'Equipa de campo' },
@@ -45,7 +45,7 @@ const PT = {
 };
 
 const DE = {
-  'conducteur-01': { title: 'Taoman Group Investissement Fahrer 01', category: 'Logistik' },
+  'conducteur-01': { title: 'TAOMAN GROUP INVESTMENTS Fahrer 01', category: 'Logistik' },
   'transport-02': { title: 'Transportteam 02', category: 'Transport' },
   'lavage-03': { title: 'Waschcenter 03', category: 'Autowäsche' },
   'terrain-04': { title: 'Feldeinsatz 04', category: 'Feldpersonal' },
@@ -58,7 +58,7 @@ const DE = {
 };
 
 const AR = {
-  'conducteur-01': { title: 'سائق Taoman Group Investissement 01', category: 'اللوجستيات' },
+  'conducteur-01': { title: 'سائق TAOMAN GROUP INVESTMENTS 01', category: 'اللوجستيات' },
   'transport-02': { title: 'فريق النقل 02', category: 'النقل' },
   'lavage-03': { title: 'مركز غسيل 03', category: 'غسيل السيارات' },
   'terrain-04': { title: 'تدخل ميداني 04', category: 'فريق ميداني' },
@@ -71,7 +71,7 @@ const AR = {
 };
 
 const ZH = {
-  'conducteur-01': { title: 'Taoman Group Investissement 司机 01', category: '物流' },
+  'conducteur-01': { title: 'TAOMAN GROUP INVESTMENTS 司机 01', category: '物流' },
   'transport-02': { title: '运输团队 02', category: '运输' },
   'lavage-03': { title: '洗车中心 03', category: '汽车清洗' },
   'terrain-04': { title: '现场作业 04', category: '现场团队' },

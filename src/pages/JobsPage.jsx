@@ -97,7 +97,7 @@ export const JobsPage = () => {
         title={tJ.title || jobsContent.title || tJobs.filterTitle}
         description={tJ.description || jobsContent.subtitle}
         path="/jobs"
-        keywords="emploi Taoman Group Investissement, carrières Lomé, recrutement Togo"
+        keywords="emploi TAOMAN GROUP INVESTMENTS, carrières Lomé, recrutement Togo"
       />
       <Header activeLink="jobs" />
 
@@ -123,7 +123,7 @@ export const JobsPage = () => {
         </section>
 
         <MarqueeTicker
-          items={[BRAND_NAME, tJobs.filterTitle || 'Carrières', 'Lomé · Togo', 'Rejoignez Taoman']}
+          items={[BRAND_NAME, tJobs.filterTitle || 'Carrières', 'Lomé · Togo', `Rejoignez ${BRAND_NAME}`]}
           speed={30}
         />
 
@@ -163,7 +163,7 @@ export const JobsPage = () => {
                       {job.title}
                     </h3>
                     <p className="text-body-sm text-on-surface-variant mb-md">
-                      Taoman Group Investissement • {job.location || tJobs.defaultLocation}
+                      TAOMAN GROUP INVESTMENTS • {job.location || tJobs.defaultLocation}
                     </p>
                     <span className="inline-block px-md py-xs bg-primary-container/10 text-primary-container rounded-lg text-label-sm font-bold">
                       {job.type}

@@ -150,7 +150,7 @@ export const ServicesPage = () => {
   const servicesJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Services Taoman Group Investissement',
+    name: 'Services TAOMAN GROUP INVESTMENTS',
     itemListElement: services.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,

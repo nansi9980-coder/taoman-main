@@ -8,7 +8,7 @@ const FR = {
   aspects: [
     {
       title: 'Modèle économique éprouvé',
-      desc: "Taoman Group Investissement ne finance que des modèles dont l'unit economics a été validée au Togo. Chaque projet est précédé d'une étude de rentabilité détaillée.",
+      desc: "TAOMAN GROUP INVESTMENTS ne finance que des modèles dont l'unit economics a été validée au Togo. Chaque projet est précédé d'une étude de rentabilité détaillée.",
     },
     {
       title: 'Pilotage par les chiffres',
@@ -29,8 +29,8 @@ const FR = {
     { num: '03', title: 'Déploiement opérationnel', duration: 'Mois 2 – 5', desc: 'Acquisition des actifs, équipe, lancement commercial et premier reporting.' },
     { num: '04', title: 'Exploitation & distribution', duration: 'Mois 5 – 10', desc: 'Pilotage opérationnel, reporting trimestriel et distribution selon l\'échéancier.' },
   ],
-  seoDiscoverService: 'Découvrez {title} chez Taoman Group Investissement.',
-  seoDiscoverSector: 'Découvrez le secteur {title} chez Taoman Group Investissement.',
+  seoDiscoverService: 'Découvrez {title} chez TAOMAN GROUP INVESTMENTS.',
+  seoDiscoverSector: 'Découvrez le secteur {title} chez TAOMAN GROUP INVESTMENTS.',
   serviceTag: 'Service',
   otherServicesTitle: 'Autres offres du Groupe',
   otherServicesSubtitle: 'Découvrir nos services et secteurs',
@@ -38,7 +38,7 @@ const FR = {
 
 const EN = {
   aspects: [
-    { title: 'Proven economic model', desc: 'Taoman Group Investissement only funds models validated in Togo, each preceded by a detailed profitability study.' },
+    { title: 'Proven economic model', desc: 'TAOMAN GROUP INVESTMENTS only funds models validated in Togo, each preceded by a detailed profitability study.' },
     { title: 'Data-driven management', desc: 'Monthly KPIs: revenue, margins, occupancy, customer satisfaction and consolidated cash flow.' },
     { title: 'Secure legal framework', desc: 'Contracted investments, traced flows, formal distributions and certified reporting.' },
     { title: 'Dedicated operational teams', desc: 'Projects run by our teams or performance-contract partners, no uncontrolled subcontracting.' },
@@ -49,8 +49,8 @@ const EN = {
     { num: '03', title: 'Operational deployment', duration: 'Months 2 – 5', desc: 'Asset acquisition, team setup, commercial launch and first reporting.' },
     { num: '04', title: 'Operations & distribution', duration: 'Months 5 – 10', desc: 'Operational steering, quarterly reporting and scheduled distributions.' },
   ],
-  seoDiscoverService: 'Discover {title} at Taoman Group Investissement.',
-  seoDiscoverSector: 'Discover the {title} sector at Taoman Group Investissement.',
+  seoDiscoverService: 'Discover {title} at TAOMAN GROUP INVESTMENTS.',
+  seoDiscoverSector: 'Discover the {title} sector at TAOMAN GROUP INVESTMENTS.',
   serviceTag: 'Service',
   otherServicesTitle: 'Other group offerings',
   otherServicesSubtitle: 'Explore our services and sectors',

@@ -12,11 +12,11 @@ function getCmsV2Default(key) {
 const LEGAL_EN = {
   legal: {
     title: 'Legal Notice',
-    subtitle: 'Legal information for Taoman Group Investissement',
+    subtitle: 'Legal information for TAOMAN GROUP INVESTMENTS',
     blocks: [
       {
         title: '1. Site publisher',
-        body: 'This website is published by Taoman Group Investissement, a services company based in Agoè Cacaveli, Lomé, Togo (opposite Toganim).',
+        body: 'This website is published by TAOMAN GROUP INVESTMENTS, a services company based in Agoè Cacaveli, Lomé, Togo (opposite Toganim).',
         listItems: [
           'Email: taomancontact@gmail.com',
           'Phone: +228 90 42 13 77',
@@ -29,11 +29,11 @@ const LEGAL_EN = {
       },
       {
         title: '3. Intellectual property',
-        body: 'All content on this site (text, images, logos, graphics) is the exclusive property of Taoman Group Investissement and protected by applicable intellectual property laws. Any reproduction without prior authorization is prohibited.',
+        body: 'All content on this site (text, images, logos, graphics) is the exclusive property of TAOMAN GROUP INVESTMENTS and protected by applicable intellectual property laws. Any reproduction without prior authorization is prohibited.',
       },
       {
         title: '4. Limitation of liability',
-        body: 'Taoman Group Investissement strives to keep information accurate and up to date but cannot guarantee completeness. We decline liability for any inaccuracy or omission on this site.',
+        body: 'TAOMAN GROUP INVESTMENTS strives to keep information accurate and up to date but cannot guarantee completeness. We decline liability for any inaccuracy or omission on this site.',
       },
       {
         title: '5. Contact',
@@ -88,11 +88,11 @@ const LEGAL_EN = {
   terms: {
     title: 'Terms & Conditions',
     subtitle: 'Terms of use of our services',
-    footerNote: 'Last updated: May 11, 2026 | Copyright © 2026 Taoman Group Investissement. All rights reserved.',
+    footerNote: 'Last updated: May 11, 2026 | Copyright © 2026 TAOMAN GROUP INVESTMENTS. All rights reserved.',
     blocks: [
       {
         title: '1. Purpose',
-        body: 'These terms govern use of the Taoman Group Investissement website and related services.',
+        body: 'These terms govern use of the TAOMAN GROUP INVESTMENTS website and related services.',
       },
       {
         title: '2. Services',
@@ -114,7 +114,7 @@ const LEGAL_EN = {
   },
   jobs: {
     title: 'Careers',
-    subtitle: 'Join Taoman Group Investissement teams',
+    subtitle: 'Join TAOMAN GROUP INVESTMENTS teams',
     categories: [
       { id: 'all', label: 'All' },
       { id: 'operations', label: 'Operations' },

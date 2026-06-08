@@ -237,7 +237,7 @@ export const HomePage = () => {
       return {
         id: item.id,
         src: imageUrl ? mediaUrl(imageUrl) : null,
-        alt: label || 'Réalisation Taoman Group Investissement',
+        alt: label || 'Réalisation TAOMAN GROUP INVESTMENTS',
         category: category || 'Terrain',
         label: label || 'Réalisation',
         progress: item.progress ?? 70,
@@ -251,7 +251,7 @@ export const HomePage = () => {
     language,
     realisationsSection.footerText,
     t.home?.realisations?.footerText ||
-      "Taoman Group Investissement transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel."
+      "TAOMAN GROUP INVESTMENTS transforme chaque réalisation terrain en valeur durable : pilotage, exécution et reporting professionnel."
   );
 
   const filters = [ALL_FILTER, ...new Set(realisations.map(r => r.category))];
@@ -300,7 +300,7 @@ export const HomePage = () => {
         title={tNav.home}
         description={t.home.seoDescription}
         path="/"
-        keywords="Taoman Group Investissement, investissement Togo, déménagement Lomé, lavage auto Togo, services opérationnels, partenariats public-privé"
+        keywords="TAOMAN GROUP INVESTMENTS, investissement Togo, déménagement Lomé, lavage auto Togo, services opérationnels, partenariats public-privé"
       />
       <Header activeLink="accueil" />
 

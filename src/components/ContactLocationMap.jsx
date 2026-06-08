@@ -22,7 +22,7 @@ export const ContactLocationMap = ({ contactInfo = {}, labels = {} }) => {
   const title   = labels.title   || mapT.title   || 'Où nous trouver';
   const hint    = labels.hint    || mapT.hint    || 'Agoè Cacaveli, en face de Toganim';
   const openBtn = labels.openMaps || mapT.openMaps || 'Ouvrir dans Google Maps';
-  const mapTitle = labels.mapTitle || 'Carte Google Maps — Taoman Group Investissement';
+  const mapTitle = labels.mapTitle || 'Carte Google Maps — TAOMAN GROUP INVESTMENTS';
 
   return (
     <section className="py-16 px-6 bg-surface" aria-labelledby="contact-location-title">
@@ -55,7 +55,7 @@ export const ContactLocationMap = ({ contactInfo = {}, labels = {} }) => {
                 <Navigation className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <div>
-                <p className="text-sm font-black text-on-surface">Taoman Group Investissement</p>
+                <p className="text-sm font-black text-on-surface">TAOMAN GROUP INVESTMENTS</p>
                 <p className="text-xs text-on-surface-variant">{hint}</p>
               </div>
             </div>

@@ -13,7 +13,7 @@ const JOBS = {
     skillsLabel: 'Compétences & Qualifications requises :',
     empty: "Aucune offre d'emploi dans cette catégorie.",
     whyJoin: {
-      title: 'Pourquoi rejoindre Taoman Group Investissement ?',
+      title: 'Pourquoi rejoindre TAOMAN GROUP INVESTMENTS ?',
       items: [
         { title: 'Carrière prometteuse', desc: 'Évolutivité rapide et formation continue' },
         { title: 'Équipe diverse', desc: 'Travailler avec des talents de différentes nationalités' },
@@ -41,7 +41,7 @@ const JOBS = {
     skillsLabel: 'Required skills & qualifications:',
     empty: 'No job offer in this category.',
     whyJoin: {
-      title: 'Why join Taoman Group Investissement?',
+      title: 'Why join TAOMAN GROUP INVESTMENTS?',
       items: [
         { title: 'Promising career', desc: 'Fast progression and continuous training' },
         { title: 'Diverse team', desc: 'Work with talents from various nationalities' },
@@ -68,7 +68,7 @@ const JOBS = {
     skillsLabel: 'Competencias y cualificaciones requeridas:',
     empty: 'No hay ofertas en esta categoría.',
     whyJoin: {
-      title: '¿Por qué unirse a Taoman Group Investissement?',
+      title: '¿Por qué unirse a TAOMAN GROUP INVESTMENTS?',
       items: [
         { title: 'Carrera prometedora', desc: 'Evolución rápida y formación continua' },
         { title: 'Equipo diverso', desc: 'Trabajar con talentos de distintas nacionalidades' },
@@ -95,7 +95,7 @@ const JOBS = {
     skillsLabel: 'Competências e qualificações requeridas:',
     empty: 'Sem oferta de emprego nesta categoria.',
     whyJoin: {
-      title: 'Porque juntar-se à Taoman Group Investissement?',
+      title: 'Porque juntar-se à TAOMAN GROUP INVESTMENTS?',
       items: [
         { title: 'Carreira promissora', desc: 'Progressão rápida e formação contínua' },
         { title: 'Equipa diversa', desc: 'Trabalhar com talentos de várias nacionalidades' },
@@ -123,7 +123,7 @@ const JOBS = {
     skillsLabel: 'Erforderliche Fähigkeiten und Qualifikationen:',
     empty: 'Keine Stellenangebote in dieser Kategorie.',
     whyJoin: {
-      title: 'Warum zu Taoman Group Investissement kommen?',
+      title: 'Warum zu TAOMAN GROUP INVESTMENTS kommen?',
       items: [
         { title: 'Vielversprechende Karriere', desc: 'Schnelle Entwicklung und kontinuierliche Weiterbildung' },
         { title: 'Vielfältiges Team', desc: 'Arbeiten mit Talenten verschiedener Nationalitäten' },
@@ -151,7 +151,7 @@ const JOBS = {
     skillsLabel: 'المهارات والمؤهلات المطلوبة:',
     empty: 'لا توجد عروض عمل في هذه الفئة.',
     whyJoin: {
-      title: 'لماذا الانضمام إلى Taoman Group Investissement؟',
+      title: 'لماذا الانضمام إلى TAOMAN GROUP INVESTMENTS؟',
       items: [
         { title: 'مسيرة واعدة', desc: 'تطور سريع وتدريب مستمر' },
         { title: 'فريق متنوع', desc: 'العمل مع مواهب من جنسيات متعددة' },
@@ -178,7 +178,7 @@ const JOBS = {
     skillsLabel: '所需技能与资格：',
     empty: '此类别下暂无职位。',
     whyJoin: {
-      title: '为什么加入 Taoman Group Investissement？',
+      title: '为什么加入 TAOMAN GROUP INVESTMENTS？',
       items: [
         { title: '充满前景的职业', desc: '快速晋升和持续培训' },
         { title: '多元化团队', desc: '与不同国籍的人才共事' },

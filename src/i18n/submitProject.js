@@ -47,7 +47,7 @@ const SUBMIT_PROJECT = {
       eyebrow: "Besoin d'aide ?",
       title: 'Parlez-en à notre équipe',
       description: 'Notre équipe vous aide à structurer votre dossier avant soumission.',
-      cta: 'Contacter Taoman Group Investissement',
+      cta: 'Contacter TAOMAN GROUP INVESTMENTS',
     },
   },
   EN: {
@@ -94,7 +94,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Need help?',
       title: 'Talk to our team',
       description: 'Our team helps you structure your file before submission.',
-      cta: 'Contact Taoman Group Investissement',
+      cta: 'Contact TAOMAN GROUP INVESTMENTS',
     },
   },
   ES: {
@@ -141,7 +141,7 @@ const SUBMIT_PROJECT = {
       eyebrow: '¿Necesita ayuda?',
       title: 'Hable con nuestro equipo',
       description: 'Nuestro equipo le ayuda a estructurar su expediente antes de presentarlo.',
-      cta: 'Contactar Taoman Group Investissement',
+      cta: 'Contactar TAOMAN GROUP INVESTMENTS',
     },
   },
   PT: {
@@ -188,7 +188,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Precisa de ajuda?',
       title: 'Fale com a nossa equipa',
       description: 'A nossa equipa ajuda-o a estruturar o dossier antes da submissão.',
-      cta: 'Contactar a Taoman Group Investissement',
+      cta: 'Contactar a TAOMAN GROUP INVESTMENTS',
     },
   },
   DE: {
@@ -235,7 +235,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'Brauchen Sie Hilfe?',
       title: 'Sprechen Sie mit unserem Team',
       description: 'Unser Team hilft Ihnen, Ihre Akte vor der Einreichung zu strukturieren.',
-      cta: 'Taoman Group Investissement kontaktieren',
+      cta: 'TAOMAN GROUP INVESTMENTS kontaktieren',
     },
   },
   AR: {
@@ -281,7 +281,7 @@ const SUBMIT_PROJECT = {
       eyebrow: 'بحاجة إلى مساعدة؟',
       title: 'تحدث مع فريقنا',
       description: 'يساعدك فريقنا على هيكلة ملفك قبل التقديم.',
-      cta: 'تواصل مع Taoman Group Investissement',
+      cta: 'تواصل مع TAOMAN GROUP INVESTMENTS',
     },
   },
   ZH: {
@@ -327,7 +327,7 @@ const SUBMIT_PROJECT = {
       eyebrow: '需要帮助？',
       title: '与我们的团队交流',
       description: '我们的团队可以帮助您在提交前梳理您的项目。',
-      cta: '联系 Taoman Group Investissement',
+      cta: '联系 TAOMAN GROUP INVESTMENTS',
     },
   },
 };

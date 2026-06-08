@@ -77,12 +77,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Flottes, déménagement, distribution urbaine et chaînes d'approvisionnement intégrées.",
     intro:
-      "La logistique est l'épine dorsale d'une économie qui s'industrialise. Taoman Group Investissement investit dans les flottes, les services aux entreprises et la distribution urbaine pour générer un revenu opérationnel régulier.",
+      "La logistique est l'épine dorsale d'une économie qui s'industrialise. TAOMAN GROUP INVESTMENTS investit dans les flottes, les services aux entreprises et la distribution urbaine pour générer un revenu opérationnel régulier.",
     context:
-      "Le Togo, par sa position côtière et son Port autonome de Lomé (premier port en eau profonde de la sous-région), constitue une plaque tournante naturelle pour le commerce CEDEAO et le transit vers les pays de l'hinterland (Burkina Faso, Niger, Mali). La demande en logistique de proximité, en transport inter-villes et en distribution urbaine reste largement non satisfaite. Taoman Group Investissement se positionne sur ce marché en finançant et en opérant des flottes de véhicules, des services de déménagement professionnels et des solutions de livraison du dernier kilomètre, en partenariat avec des opérateurs sélectionnés et des PME locales.",
+      "Le Togo, par sa position côtière et son Port autonome de Lomé (premier port en eau profonde de la sous-région), constitue une plaque tournante naturelle pour le commerce CEDEAO et le transit vers les pays de l'hinterland (Burkina Faso, Niger, Mali). La demande en logistique de proximité, en transport inter-villes et en distribution urbaine reste largement non satisfaite. TAOMAN GROUP INVESTMENTS se positionne sur ce marché en finançant et en opérant des flottes de véhicules, des services de déménagement professionnels et des solutions de livraison du dernier kilomètre, en partenariat avec des opérateurs sélectionnés et des PME locales.",
     goal:
       "Bâtir un opérateur logistique privé de référence au Togo, capable de servir aussi bien les particuliers (déménagement, lavage, transport) que les entreprises (livraison, distribution, transferts spécialisés) et de générer un revenu opérationnel régulier pour les investisseurs.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Le programme couvre Lomé, les principales villes du Togo (Kara, Atakpamé, Sokodé, Dapaong) et les couloirs CEDEAO (Bénin, Ghana, Burkina, Côte d'Ivoire, Niger, Mali). Les actifs ciblés incluent des camions, fourgons, utilitaires, motos, ateliers de maintenance et hubs urbains de stockage.",
     documents: [
@@ -94,7 +94,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 1 – 5 millions',
     financement: 'TGI – Investissement participatif',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       'Partenaires logistiques sous-régionaux',
       'Opérateurs Mobile Money',
       'PME togolaises affiliées',
@@ -120,12 +120,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Filières agricoles modernisées : production, transformation et mise en marché de produits togolais à forte valeur.",
     intro:
-      "L'agro-business est un levier clé de souveraineté alimentaire et d'export. Taoman Group Investissement finance des exploitations productives, des unités de transformation et des chaînes de distribution pour structurer des filières rentables.",
+      "L'agro-business est un levier clé de souveraineté alimentaire et d'export. TAOMAN GROUP INVESTMENTS finance des exploitations productives, des unités de transformation et des chaînes de distribution pour structurer des filières rentables.",
     context:
-      "L'agriculture représente près de 30 % du PIB togolais et occupe plus de 60 % de la population active, mais la valeur ajoutée reste concentrée sur la production brute. La transformation locale, le conditionnement, la mise en marque et l'export demeurent des chaînons critiques sous-développés. Taoman Group Investissement intervient sur l'ensemble de la filière : exploitations productives encadrées, unités de transformation agro-alimentaires, conditionnement et plateformes de mise en marché. L'objectif est de capter la valeur ajoutée localement, de créer de l'emploi rural et de structurer des filières exportables vers la sous-région et au-delà.",
+      "L'agriculture représente près de 30 % du PIB togolais et occupe plus de 60 % de la population active, mais la valeur ajoutée reste concentrée sur la production brute. La transformation locale, le conditionnement, la mise en marque et l'export demeurent des chaînons critiques sous-développés. TAOMAN GROUP INVESTMENTS intervient sur l'ensemble de la filière : exploitations productives encadrées, unités de transformation agro-alimentaires, conditionnement et plateformes de mise en marché. L'objectif est de capter la valeur ajoutée localement, de créer de l'emploi rural et de structurer des filières exportables vers la sous-région et au-delà.",
     goal:
       "Structurer des filières agricoles intégrées (production → transformation → distribution → export) capables de générer un revenu stable, de créer de l'emploi rural et de réduire la dépendance aux importations alimentaires.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Le programme couvre les régions Maritime, Plateaux, Centrale et Kara. Les filières prioritaires sont : maraîchage, céréales, élevage avicole, soja, noix de cajou, transformation alimentaire et conditionnement.",
     documents: [
@@ -137,7 +137,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 500 K – 3 M',
     financement: 'TGI + Partenariat agricole',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       "Coopératives agricoles locales",
       'Ministère de l’Agriculture (programmes de soutien)',
       'Acheteurs sous-régionaux',
@@ -163,12 +163,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Import, distribution, négoce et points de vente : capter la consommation togolaise et sous-régionale.",
     intro:
-      "Le commerce général est la voie d'entrée la plus rapide vers le cash-flow. Taoman Group Investissement sélectionne des opérations de négoce, de gros, de demi-gros et de retail avec rotation rapide, marges contrôlées et reporting clair.",
+      "Le commerce général est la voie d'entrée la plus rapide vers le cash-flow. TAOMAN GROUP INVESTMENTS sélectionne des opérations de négoce, de gros, de demi-gros et de retail avec rotation rapide, marges contrôlées et reporting clair.",
     context:
-      "Le commerce général représente le pilier le plus visible de l'économie togolaise : marchés de gros et demi-gros, boutiques de quartier, points de vente urbains, marketplaces digitales. Le Port autonome de Lomé alimente non seulement la consommation togolaise mais également celle des pays enclavés voisins, créant un volume d'import-négoce considérable. Taoman Group Investissement finance des opérations de négoce structurées : containers achetés à l'import, magasins de gros encadrés par des contrats clairs, points de vente en marque propre et plateformes e-commerce. Chaque opération suit une méthode rigoureuse de pilotage et de reporting pour limiter le risque de stock dormant et garantir une rotation rapide.",
+      "Le commerce général représente le pilier le plus visible de l'économie togolaise : marchés de gros et demi-gros, boutiques de quartier, points de vente urbains, marketplaces digitales. Le Port autonome de Lomé alimente non seulement la consommation togolaise mais également celle des pays enclavés voisins, créant un volume d'import-négoce considérable. TAOMAN GROUP INVESTMENTS finance des opérations de négoce structurées : containers achetés à l'import, magasins de gros encadrés par des contrats clairs, points de vente en marque propre et plateformes e-commerce. Chaque opération suit une méthode rigoureuse de pilotage et de reporting pour limiter le risque de stock dormant et garantir une rotation rapide.",
     goal:
       "Capter la consommation togolaise et sous-régionale via des opérations commerciales à rotation rapide, à marges contrôlées et à reporting transparent, tout en générant le cash-flow le plus rapide des cinq programmes.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Couverture commerciale principale : Grand Lomé, Aného, Kpalimé, Atakpamé, Sokodé, Kara. Catégories ciblées : produits alimentaires de grande consommation, produits ménagers, hygiène, fournitures bureau, équipements électroniques abordables, textiles.",
     documents: [
@@ -180,7 +180,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 300 K – 1,5 M',
     financement: 'TGI – Tickets courts',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       "Importateurs partenaires (Asie, Europe)",
       "Réseaux de boutiques et grossistes locaux",
       "Plateformes e-commerce affiliées",
@@ -205,12 +205,12 @@ export const DEFAULT_SECTORS = [
     image: btpIcon,
     short: 'Construction durable, immobilier locatif et infrastructures à haute valeur ajoutée.',
     intro:
-      "Le secteur du bâtiment et de l'immobilier reste l'un des moteurs économiques les plus visibles du Togo. Taoman Group Investissement finance, structure et accompagne des projets de construction, de rénovation et d'exploitation locative à fort impact patrimonial.",
+      "Le secteur du bâtiment et de l'immobilier reste l'un des moteurs économiques les plus visibles du Togo. TAOMAN GROUP INVESTMENTS finance, structure et accompagne des projets de construction, de rénovation et d'exploitation locative à fort impact patrimonial.",
     context:
-      "Le Togo connaît une urbanisation rapide, en particulier à Lomé et dans les villes secondaires (Kara, Atakpamé, Sokodé), qui crée une demande forte en logements, en bureaux, en commerces et en infrastructures d'accueil. Le déficit en logements abordables est estimé à plusieurs dizaines de milliers d'unités. Parallèlement, la classe moyenne émergente recherche des produits immobiliers locatifs sécurisés et structurés. Taoman Group Investissement intervient en finançant des opérations de promotion, de rénovation et de construction patrimoniale, ainsi que des immeubles de rapport gérés sur la durée. Chaque projet est précédé d'une étude de marché locale, d'un plan financier et d'une étude technique pour garantir la valeur de revente et la rentabilité locative.",
+      "Le Togo connaît une urbanisation rapide, en particulier à Lomé et dans les villes secondaires (Kara, Atakpamé, Sokodé), qui crée une demande forte en logements, en bureaux, en commerces et en infrastructures d'accueil. Le déficit en logements abordables est estimé à plusieurs dizaines de milliers d'unités. Parallèlement, la classe moyenne émergente recherche des produits immobiliers locatifs sécurisés et structurés. TAOMAN GROUP INVESTMENTS intervient en finançant des opérations de promotion, de rénovation et de construction patrimoniale, ainsi que des immeubles de rapport gérés sur la durée. Chaque projet est précédé d'une étude de marché locale, d'un plan financier et d'une étude technique pour garantir la valeur de revente et la rentabilité locative.",
     goal:
       "Constituer un portefeuille immobilier diversifié (résidentiel, commercial, mixte) qui combine plus-value patrimoniale et rentes locatives stables, en partenariat avec les acteurs sérieux du marché togolais.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Lomé (Adidogomé, Agoè, Bè-Kpota, Avédji), Kara, Atakpamé et zones industrielles ciblées. Opérations envisagées : immeubles de rapport, programmes résidentiels intermédiaires, bureaux et locaux commerciaux, entrepôts et résidences gérées.",
     documents: [
@@ -222,7 +222,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 800 K – 5 M',
     financement: 'TGI + Co-investissement immobilier',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       "Notaires et géomètres partenaires",
       "Entreprises de construction agréées",
       "Banques locales (financement complémentaire)",
@@ -248,12 +248,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Solutions digitales, services financiers de proximité et plateformes locales à forte croissance.",
     intro:
-      "Le numérique transforme la manière dont les Togolais consomment, paient et travaillent. Taoman Group Investissement cible des plateformes locales, des services Mobile Money de proximité et des outils SaaS pour PME.",
+      "Le numérique transforme la manière dont les Togolais consomment, paient et travaillent. TAOMAN GROUP INVESTMENTS cible des plateformes locales, des services Mobile Money de proximité et des outils SaaS pour PME.",
     context:
-      "Le Togo connaît une accélération forte de l'adoption des services numériques : Mobile Money (Tmoney, Flooz), e-commerce, réseaux d'agents financiers de proximité, plateformes de mise en relation. La pénétration mobile dépasse 80 % de la population et la classe d'âge 18-35 ans, ultra-connectée, demande des services digitaux locaux adaptés. Taoman Group Investissement se positionne sur ce marché émergent en finançant des réseaux d'agents Mobile Money, des plateformes e-commerce locales, des marketplaces et des solutions SaaS destinées aux PME togolaises. L'objectif est de capter la croissance digitale tout en créant des effets de réseau durables et un revenu récurrent.",
+      "Le Togo connaît une accélération forte de l'adoption des services numériques : Mobile Money (Tmoney, Flooz), e-commerce, réseaux d'agents financiers de proximité, plateformes de mise en relation. La pénétration mobile dépasse 80 % de la population et la classe d'âge 18-35 ans, ultra-connectée, demande des services digitaux locaux adaptés. TAOMAN GROUP INVESTMENTS se positionne sur ce marché émergent en finançant des réseaux d'agents Mobile Money, des plateformes e-commerce locales, des marketplaces et des solutions SaaS destinées aux PME togolaises. L'objectif est de capter la croissance digitale tout en créant des effets de réseau durables et un revenu récurrent.",
     goal:
       "Capter la croissance digitale du Togo et de la sous-région en finançant des plateformes, des réseaux d'agents et des outils SaaS qui répondent à une vraie demande locale et qui génèrent des effets de réseau durables.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Couverture : Grand Lomé pour l'amorçage, extension progressive vers les villes secondaires (Kara, Atakpamé). Cibles : agents Mobile Money, marketplaces produits/services, SaaS gestion-facturation-logistique pour PME, plateformes de formation et services digitaux.",
     documents: [
@@ -265,7 +265,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 200 K – 1 M',
     financement: 'TGI – Tickets innovation',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       "Opérateurs Mobile Money (Tmoney, Flooz)",
       "Réseaux d'agents et de boutiques",
       "Startups locales partenaires",
@@ -291,12 +291,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Positionnement international, acquisition clients et déploiement de marque sur les marchés régionaux et globaux.",
     intro:
-      "Taoman Group Investissement développe des stratégies marketing internationales pour accélérer la visibilité des offres et la génération d'opportunités commerciales.",
+      "TAOMAN GROUP INVESTMENTS développe des stratégies marketing internationales pour accélérer la visibilité des offres et la génération d'opportunités commerciales.",
     context:
-      "Les entreprises africaines qui veulent exporter ou attirer des investisseurs doivent professionnaliser leur présence internationale : branding, contenus, campagnes multicanales, tunnels d'acquisition et partenariats média. Taoman Group Investissement accompagne cette montée en gamme avec une approche pilotée par les KPI et la performance.",
+      "Les entreprises africaines qui veulent exporter ou attirer des investisseurs doivent professionnaliser leur présence internationale : branding, contenus, campagnes multicanales, tunnels d'acquisition et partenariats média. TAOMAN GROUP INVESTMENTS accompagne cette montée en gamme avec une approche pilotée par les KPI et la performance.",
     goal:
       "Construire une machine de croissance internationale mesurable pour les activités du groupe et ses partenaires : notoriété, leads qualifiés, conversion commerciale et fidélisation.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Afrique de l'Ouest, Europe et marchés ciblés selon secteur. Leviers : SEO/SEA, social media, branding, contenus multilingues, relations B2B et partenariats stratégiques.",
     documents: [
@@ -308,7 +308,7 @@ export const DEFAULT_SECTORS = [
     cout: '€ 150 K – 800 K',
     financement: 'TGI + partenaires business',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       'Agences médias internationales',
       'Partenaires digitaux et data',
       'Réseau de distribution B2B',
@@ -334,12 +334,12 @@ export const DEFAULT_SECTORS = [
     short:
       "Programmes de literacy financière, formation investisseurs et ateliers pour particuliers, PME et diaspora.",
     intro:
-      "Taoman Group Investissement développe des parcours de formation en éducation financière pour aider les particuliers, les entrepreneurs et les investisseurs à mieux comprendre, planifier et sécuriser leurs décisions patrimoniales.",
+      "TAOMAN GROUP INVESTMENTS développe des parcours de formation en éducation financière pour aider les particuliers, les entrepreneurs et les investisseurs à mieux comprendre, planifier et sécuriser leurs décisions patrimoniales.",
     context:
-      "Au Togo et en Afrique de l'Ouest, l'accès au crédit, à l'épargne structurée et aux produits d'investissement progresse plus vite que la culture financière. Budget familial, gestion de trésorerie PME, prévention des arnaques, lecture d'un contrat ou compréhension d'un programme d'investissement comme le TGI restent des besoins massifs. Taoman Group Investissement répond à cet enjeu avec des modules pédagogiques concrets, animés par des formateurs certifiés, en présentiel à Lomé et en ligne pour la diaspora. Les contenus couvrent les bases (budget, épargne, crédit responsable), la montée en compétence investisseur et l'accompagnement des dirigeants de PME sur la gouvernance financière.",
+      "Au Togo et en Afrique de l'Ouest, l'accès au crédit, à l'épargne structurée et aux produits d'investissement progresse plus vite que la culture financière. Budget familial, gestion de trésorerie PME, prévention des arnaques, lecture d'un contrat ou compréhension d'un programme d'investissement comme le TGI restent des besoins massifs. TAOMAN GROUP INVESTMENTS répond à cet enjeu avec des modules pédagogiques concrets, animés par des formateurs certifiés, en présentiel à Lomé et en ligne pour la diaspora. Les contenus couvrent les bases (budget, épargne, crédit responsable), la montée en compétence investisseur et l'accompagnement des dirigeants de PME sur la gouvernance financière.",
     goal:
       "Renforcer la culture financière des publics cibles du groupe — clients, investisseurs TGI, entrepreneurs et jeunes actifs — pour des décisions plus éclairées, une meilleure inclusion financière et une adoption responsable des produits d'investissement.",
-    porteur: 'Taoman Group Investissement',
+    porteur: 'TAOMAN GROUP INVESTMENTS',
     perimetre:
       "Grand Lomé, villes secondaires, entreprises partenaires et diaspora togolaise. Formats : ateliers collectifs, séminaires entreprise, parcours investisseur TGI, modules e-learning et sessions de sensibilisation communautaire.",
     documents: [
@@ -351,7 +351,7 @@ export const DEFAULT_SECTORS = [
     cout: 'Sur devis',
     financement: 'Programmes TGI + offres de formation',
     partenaires: [
-      'Taoman Group Investissement',
+      'TAOMAN GROUP INVESTMENTS',
       'Institutions financières partenaires',
       'Chambres de commerce et réseaux PME',
       'Associations de diaspora togolaise',

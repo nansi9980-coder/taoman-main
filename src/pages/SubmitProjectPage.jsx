@@ -108,7 +108,7 @@ export const SubmitProjectPage = () => {
           { name: tNav.invest, path: '/investissement' },
           { name: tS.title || t.pageTitle, path: '/investissement/soumettre' },
         ])}
-        keywords="soumettre projet Togo, investissement Taoman Group Investissement, financement projet Lomé"
+        keywords="soumettre projet Togo, investissement TAOMAN GROUP INVESTMENTS, financement projet Lomé"
       />
       <Header activeLink="investissement" />
 

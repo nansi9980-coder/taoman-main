@@ -1,9 +1,9 @@
 /** Traductions page investissement (ES, PT, DE, AR, ZH) */
 const EN_BASE = {
   "default": {
-    "badge": "Invest with Taoman Group Investissement",
-    "title": "Taoman Group Investissement",
-    "description": "Investing with Taoman Group Investissement means joining a structured player with rigorous sector selection, field support and transparent reporting.",
+    "badge": "Invest with TAOMAN GROUP INVESTMENTS",
+    "title": "TAOMAN GROUP INVESTMENTS",
+    "description": "Investing with TAOMAN GROUP INVESTMENTS means joining a structured player with rigorous sector selection, field support and transparent reporting.",
     "stats": [
       {
         "value": "500K CFA",
@@ -26,7 +26,7 @@ const EN_BASE = {
   "quickNav": [
     {
       "id": "programmes",
-      "label": "Taoman Group Investissement TGI"
+      "label": "TAOMAN GROUP INVESTMENTS TGI"
     },
     {
       "id": "opportunites",
@@ -41,16 +41,16 @@ const EN_BASE = {
       "label": "Submit a project"
     }
   ],
-  "tgiLink": "Taoman Group Investissement TGI →",
-  "navAria": "Invest with Taoman Group Investissement - sections",
+  "tgiLink": "TAOMAN GROUP INVESTMENTS TGI →",
+  "navAria": "Invest with TAOMAN GROUP INVESTMENTS - sections",
   "programs": {
-    "intro": "Choose the Taoman Group Investissement program that fits you, or start by simulating your return.",
+    "intro": "Choose the TAOMAN GROUP INVESTMENTS program that fits you, or start by simulating your return.",
     "premium": "Premium",
-    "tgiTitle": "Taoman Group Investissement TGI",
+    "tgiTitle": "TAOMAN GROUP INVESTMENTS TGI",
     "tgiDesc": "Structured investment program with sector diversification, project monitoring and reporting.",
     "tgiCta": "Discover TGI",
     "contactBadge": "Contact",
-    "advisorTitle": "Taoman Group Investissement advisor",
+    "advisorTitle": "TAOMAN GROUP INVESTMENTS advisor",
     "advisorDesc": "Speak directly with a Group advisor to validate your investor profile, choose the right sector and formalize your commitment.",
     "advisorCta": "Request a meeting"
   },
@@ -89,7 +89,7 @@ const EN_BASE = {
     ]
   },
   "opportunities": {
-    "intro": "Taoman Group Investissement structures investments around five priority sectors, each with a dedicated page.",
+    "intro": "TAOMAN GROUP INVESTMENTS structures investments around five priority sectors, each with a dedicated page.",
     "targetReturn": "Target return",
     "profile": "Profile",
     "discoverSector": "Discover sector",
@@ -151,7 +151,7 @@ const EN_BASE = {
   },
   "finalCta": {
     "title": "Ready to invest or submit a project?",
-    "desc": "Talk to a Taoman Group Investissement advisor — response within 48 hours.",
+    "desc": "Talk to a TAOMAN GROUP INVESTMENTS advisor — response within 48 hours.",
     "contact": "Contact us to invest",
     "submit": "Submit a project"
   },
@@ -182,8 +182,8 @@ function t(obj, map) {
   return obj;
 }
 
-export const ES = t(EN_BASE, {"Invest with Taoman Group Investissement":"Invertir con Taoman Group Investissement","Investing with Taoman Group Investissement means joining a structured player with rigorous sector selection, field support and transparent reporting.":"Invertir con Taoman Group Investissement es unirse a un actor estructurado con selección sectorial rigurosa, acompañamiento en el terreno e informes transparentes.","Minimum ticket":"Ticket mínimo","Maximum horizon":"Horizonte máximo","Investment sectors":"Sectores de inversión","Tracking after login":"Seguimiento tras el acceso","Taoman Group Investissement TGI & Simulator":"Taoman Group Investissement TGI y simulador","Submit a project":"Enviar un proyecto","Investment opportunities":"Oportunidades de inversión","Investment criteria":"Criterios de inversión","Invest with Taoman Group Investissement - sections":"Invertir con Taoman Group Investissement - secciones","Choose the Taoman Group Investissement program that fits you, or start by simulating your return.":"Elija el programa Taoman Group Investissement que le convenga o comience simulando su rendimiento.","Discover TGI":"Descubrir el TGI","Request a meeting":"Solicitar una reunión","Fill in the form":"Rellenar el formulario","Talk to an advisor":"Hablar con un asesor","Target return":"Rendimiento objetivo","Discover sector":"Descubrir el sector","Sector":"Sector","Submit your project":"Enviar su proyecto","Contact us to invest":"Contáctenos para invertir","Full FAQ":"FAQ completa","Contact us":"Contáctenos","View full FAQ":"Ver toda la FAQ","Invest with us in Togo":"Invertir con nosotros en Togo","Premium":"Premium","Contact":"Contacto","Taoman Group Investissement advisor":"Asesor Taoman Group Investissement","4-step process":"Proceso en 4 pasos","Profile":"Perfil","Open investment projects":"Proyectos abiertos a inversión","Active project":"Proyecto activo","Target ROI":"ROI objetivo"});
-export const PT = t(EN_BASE, {"Invest with Taoman Group Investissement":"Invertir con Taoman Group Investissement","Investing with Taoman Group Investissement means joining a structured player with rigorous sector selection, field support and transparent reporting.":"Invertir con Taoman Group Investissement es unirse a un actor estructurado con selección sectorial rigurosa, acompañamiento en el terreno e informes transparentes.","Minimum ticket":"Ticket mínimo","Maximum horizon":"Horizonte máximo","Investment sectors":"Sectores de inversión","Tracking after login":"Seguimiento tras el acceso","Taoman Group Investissement TGI & Simulator":"Taoman Group Investissement TGI y simulador","Submit a project":"Enviar un proyecto","Investment opportunities":"Oportunidades de inversión","Investment criteria":"Criterios de inversión","Invest with Taoman Group Investissement - sections":"Invertir con Taoman Group Investissement - secciones","Choose the Taoman Group Investissement program that fits you, or start by simulating your return.":"Elija el programa Taoman Group Investissement que le convenga o comience simulando su rendimiento.","Discover TGI":"Descubrir el TGI","Request a meeting":"Solicitar una reunión","Fill in the form":"Rellenar el formulario","Talk to an advisor":"Hablar con un asesor","Target return":"Rendimiento objetivo","Discover sector":"Descubrir el sector","Sector":"Sector","Submit your project":"Enviar su proyecto","Contact us to invest":"Contáctenos para invertir","Full FAQ":"FAQ completa","Contact us":"Contáctenos","View full FAQ":"Ver toda la FAQ","Invest with us in Togo":"Invertir con nosotros en Togo","Premium":"Premium","Contact":"Contacto","Taoman Group Investissement advisor":"Asesor Taoman Group Investissement","4-step process":"Proceso en 4 pasos","Profile":"Perfil","Open investment projects":"Proyectos abiertos a inversión","Active project":"Proyecto activo","Target ROI":"ROI objetivo","Invertir con Taoman Group Investissement":"Investir com Taoman Group Investissement","Invertir con nosotros en Togo":"Investir connosco no Togo","Contáctenos":"Contacte-nos","Enviar un proyecto":"Submeter um projeto"});
-export const DE = t(EN_BASE, {"Invest with Taoman Group Investissement":"Mit Taoman Group Investissement investieren","Invest with us in Togo":"Mit uns in Togo investieren","Submit a project":"Projekt einreichen","Contact us to invest":"Kontakt für Investition"});
-export const AR = t(EN_BASE, {"Invest with Taoman Group Investissement":"الاستثمار مع Taoman Group Investissement","Invest with us in Togo":"استثمر معنا في توغو","Submit a project":"تقديم مشروع","Contact us to invest":"اتصل بنا للاستثمار"});
-export const ZH = t(EN_BASE, {"Invest with Taoman Group Investissement":"与 Taoman Group Investissement 投资","Invest with us in Togo":"在多哥与我们投资","Submit a project":"提交项目","Contact us to invest":"联系我们投资"});
+export const ES = t(EN_BASE, {"Invest with TAOMAN GROUP INVESTMENTS":"Invertir con TAOMAN GROUP INVESTMENTS","Investing with TAOMAN GROUP INVESTMENTS means joining a structured player with rigorous sector selection, field support and transparent reporting.":"Invertir con TAOMAN GROUP INVESTMENTS es unirse a un actor estructurado con selección sectorial rigurosa, acompañamiento en el terreno e informes transparentes.","Minimum ticket":"Ticket mínimo","Maximum horizon":"Horizonte máximo","Investment sectors":"Sectores de inversión","Tracking after login":"Seguimiento tras el acceso","TAOMAN GROUP INVESTMENTS TGI & Simulator":"TAOMAN GROUP INVESTMENTS TGI y simulador","Submit a project":"Enviar un proyecto","Investment opportunities":"Oportunidades de inversión","Investment criteria":"Criterios de inversión","Invest with TAOMAN GROUP INVESTMENTS - sections":"Invertir con TAOMAN GROUP INVESTMENTS - secciones","Choose the TAOMAN GROUP INVESTMENTS program that fits you, or start by simulating your return.":"Elija el programa TAOMAN GROUP INVESTMENTS que le convenga o comience simulando su rendimiento.","Discover TGI":"Descubrir el TGI","Request a meeting":"Solicitar una reunión","Fill in the form":"Rellenar el formulario","Talk to an advisor":"Hablar con un asesor","Target return":"Rendimiento objetivo","Discover sector":"Descubrir el sector","Sector":"Sector","Submit your project":"Enviar su proyecto","Contact us to invest":"Contáctenos para invertir","Full FAQ":"FAQ completa","Contact us":"Contáctenos","View full FAQ":"Ver toda la FAQ","Invest with us in Togo":"Invertir con nosotros en Togo","Premium":"Premium","Contact":"Contacto","TAOMAN GROUP INVESTMENTS advisor":"Asesor TAOMAN GROUP INVESTMENTS","4-step process":"Proceso en 4 pasos","Profile":"Perfil","Open investment projects":"Proyectos abiertos a inversión","Active project":"Proyecto activo","Target ROI":"ROI objetivo"});
+export const PT = t(EN_BASE, {"Invest with TAOMAN GROUP INVESTMENTS":"Invertir con TAOMAN GROUP INVESTMENTS","Investing with TAOMAN GROUP INVESTMENTS means joining a structured player with rigorous sector selection, field support and transparent reporting.":"Invertir con TAOMAN GROUP INVESTMENTS es unirse a un actor estructurado con selección sectorial rigurosa, acompañamiento en el terreno e informes transparentes.","Minimum ticket":"Ticket mínimo","Maximum horizon":"Horizonte máximo","Investment sectors":"Sectores de inversión","Tracking after login":"Seguimiento tras el acceso","TAOMAN GROUP INVESTMENTS TGI & Simulator":"TAOMAN GROUP INVESTMENTS TGI y simulador","Submit a project":"Enviar un proyecto","Investment opportunities":"Oportunidades de inversión","Investment criteria":"Criterios de inversión","Invest with TAOMAN GROUP INVESTMENTS - sections":"Invertir con TAOMAN GROUP INVESTMENTS - secciones","Choose the TAOMAN GROUP INVESTMENTS program that fits you, or start by simulating your return.":"Elija el programa TAOMAN GROUP INVESTMENTS que le convenga o comience simulando su rendimiento.","Discover TGI":"Descubrir el TGI","Request a meeting":"Solicitar una reunión","Fill in the form":"Rellenar el formulario","Talk to an advisor":"Hablar con un asesor","Target return":"Rendimiento objetivo","Discover sector":"Descubrir el sector","Sector":"Sector","Submit your project":"Enviar su proyecto","Contact us to invest":"Contáctenos para invertir","Full FAQ":"FAQ completa","Contact us":"Contáctenos","View full FAQ":"Ver toda la FAQ","Invest with us in Togo":"Invertir con nosotros en Togo","Premium":"Premium","Contact":"Contacto","TAOMAN GROUP INVESTMENTS advisor":"Asesor TAOMAN GROUP INVESTMENTS","4-step process":"Proceso en 4 pasos","Profile":"Perfil","Open investment projects":"Proyectos abiertos a inversión","Active project":"Proyecto activo","Target ROI":"ROI objetivo","Invertir con TAOMAN GROUP INVESTMENTS":"Investir com TAOMAN GROUP INVESTMENTS","Invertir con nosotros en Togo":"Investir connosco no Togo","Contáctenos":"Contacte-nos","Enviar un proyecto":"Submeter um projeto"});
+export const DE = t(EN_BASE, {"Invest with TAOMAN GROUP INVESTMENTS":"Mit TAOMAN GROUP INVESTMENTS investieren","Invest with us in Togo":"Mit uns in Togo investieren","Submit a project":"Projekt einreichen","Contact us to invest":"Kontakt für Investition"});
+export const AR = t(EN_BASE, {"Invest with TAOMAN GROUP INVESTMENTS":"الاستثمار مع TAOMAN GROUP INVESTMENTS","Invest with us in Togo":"استثمر معنا في توغو","Submit a project":"تقديم مشروع","Contact us to invest":"اتصل بنا للاستثمار"});
+export const ZH = t(EN_BASE, {"Invest with TAOMAN GROUP INVESTMENTS":"与 TAOMAN GROUP INVESTMENTS 投资","Invest with us in Togo":"在多哥与我们投资","Submit a project":"提交项目","Contact us to invest":"联系我们投资"});

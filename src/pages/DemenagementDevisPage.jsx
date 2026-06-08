@@ -140,7 +140,7 @@ export const DemenagementDevisPage = () => {
         title={tSeo.hero?.title || 'Devis déménagement'}
         description={tSeo.seoDescription}
         path="/demenagement/devis"
-        keywords="devis déménagement Lomé, déménagement entreprise Togo, manutention, Taoman Group Investissement"
+        keywords="devis déménagement Lomé, déménagement entreprise Togo, manutention, TAOMAN GROUP INVESTMENTS"
       />
       <Header activeLink="services" />
 
@@ -167,7 +167,7 @@ export const DemenagementDevisPage = () => {
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
               <img
                 src={transport2}
-                alt="Camion Taoman Group Investissement de déménagement"
+                alt="Camion TAOMAN GROUP INVESTMENTS de déménagement"
                 className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
                 loading="lazy"
               />
@@ -211,7 +211,7 @@ export const DemenagementDevisPage = () => {
         <section className="py-20 px-6 bg-gradient-to-b from-surface-container-low to-surface">
           <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
             <div className="relative order-2 lg:order-1">
-              <img src={transport1} alt="Flotte Taoman Group Investissement" className="rounded-3xl shadow-xl w-full aspect-[4/3] object-cover" loading="lazy" />
+              <img src={transport1} alt="Flotte TAOMAN GROUP INVESTMENTS" className="rounded-3xl shadow-xl w-full aspect-[4/3] object-cover" loading="lazy" />
             </div>
             <div className="order-1 lg:order-2">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">

@@ -9,7 +9,7 @@ const CARWASH = {
       eyebrow: 'Le service en quelques mots',
       title: 'Un lavage automobile pensé pour durer, pas seulement pour briller.',
       paragraphs: [
-        "Taoman Group Investissement opère un service de lavage automobile haut de gamme destiné aux particuliers, aux flottes d'entreprise et aux investisseurs qui souhaitent maintenir la valeur de leurs véhicules. Chaque prestation est réalisée par des équipes formées, avec un matériel professionnel et des produits sélectionnés pour leur efficacité comme pour leur respect de la carrosserie.",
+        "TAOMAN GROUP INVESTMENTS opère un service de lavage automobile haut de gamme destiné aux particuliers, aux flottes d'entreprise et aux investisseurs qui souhaitent maintenir la valeur de leurs véhicules. Chaque prestation est réalisée par des équipes formées, avec un matériel professionnel et des produits sélectionnés pour leur efficacité comme pour leur respect de la carrosserie.",
         "Notre conviction est simple : laver un véhicule n'est pas une dépense, c'est un acte d'entretien qui prolonge la durée de vie de la carrosserie, des sièges, des moquettes et des optiques. Un véhicule régulièrement entretenu se revend mieux, consomme moins en frais d'usure et reflète une image plus professionnelle dans la vie quotidienne ou en clientèle.",
         "Nous proposons trois formules complémentaires – Lavage Intérieur, Lavage Extérieur et Lavage Général – ainsi qu'une option à domicile pour les clients qui ne peuvent pas se déplacer. Chaque formule est encadrée par une checklist, un délai annoncé et un contrôle qualité avant remise du véhicule.",
       ],
@@ -71,7 +71,7 @@ const CARWASH = {
       description:
         "Chaque prestation suit la même méthode rigoureuse. Pas d'improvisation. Pas de surprise. Chaque collaborateur connaît sa checklist et son ordre d'intervention.",
       steps: [
-        { num: '01', title: 'Demande de devis', desc: "Vous remplissez le formulaire ou nous contactez par téléphone. Nous notons le type de véhicule, l'état, l'urgence et le lieu d'intervention souhaité (centre Taoman Group Investissement ou domicile)." },
+        { num: '01', title: 'Demande de devis', desc: "Vous remplissez le formulaire ou nous contactez par téléphone. Nous notons le type de véhicule, l'état, l'urgence et le lieu d'intervention souhaité (centre TAOMAN GROUP INVESTMENTS ou domicile)." },
         { num: '02', title: 'Confirmation et planning', desc: 'Nous validons la formule la plus adaptée à votre véhicule, vous communiquons un créneau et un délai indicatif. Vous recevez une confirmation écrite avec le détail du périmètre.' },
         { num: '03', title: 'Accueil et inspection', desc: "À l'arrivée, le responsable d'équipe inspecte le véhicule avec vous, identifie les zones nécessitant un soin particulier (taches anciennes, plastiques jaunis, jantes très sales) et note les éventuels défauts existants." },
         { num: '04', title: 'Exécution par formule', desc: "L'équipe applique la checklist correspondant à la formule choisie. Les produits sont sélectionnés en fonction des matériaux (cuir, alcantara, tissu, plastique souple) pour ne jamais agresser les surfaces." },
@@ -99,7 +99,7 @@ const CARWASH = {
     },
     location: {
       eyebrow: 'Où voulez-vous être lavé(e) ?',
-      title: 'Lavage à domicile ou au centre Taoman Group Investissement : à vous de choisir.',
+      title: 'Lavage à domicile ou au centre TAOMAN GROUP INVESTMENTS : à vous de choisir.',
       description:
         "Les deux options ont leurs avantages. Nous vous proposons le choix selon votre emploi du temps, la disponibilité d'eau et d'espace, et le niveau de service souhaité.",
       home: {
@@ -114,7 +114,7 @@ const CARWASH = {
         ],
       },
       center: {
-        title: 'Centre de lavage Taoman Group Investissement',
+        title: 'Centre de lavage TAOMAN GROUP INVESTMENTS',
         description:
           "Notre centre dispose d'équipements lourds : haute pression industrielle, bras d'aspiration, zones couvertes et éclairées. Vous patientez dans un espace dédié pendant que votre véhicule est traité.",
         bullets: [
@@ -138,7 +138,7 @@ const CARWASH = {
       selectPlaceholder: 'Sélectionner',
       fields: {
         washType: { label: 'Type de lavage', options: ['Lavage Intérieur', 'Lavage Extérieur', 'Lavage Général'] },
-        wish: { label: 'Vous souhaitez', options: ['Un lavage à domicile', 'Au centre de lavage Taoman Group Investissement'] },
+        wish: { label: 'Vous souhaitez', options: ['Un lavage à domicile', 'Au centre de lavage TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Type de véhicule', options: ['Citadine', 'Berline', 'Compacte', 'SUV', '4x4', 'Utilitaire', 'Moto'] },
         brand: { label: 'Marque et modèle', placeholder: 'Ex: Toyota Corolla' },
         date: { label: 'Date souhaitée' },
@@ -150,7 +150,7 @@ const CARWASH = {
       },
     },
     sidebar: {
-      eyebrow: 'Pourquoi Taoman Group Investissement ?',
+      eyebrow: 'Pourquoi TAOMAN GROUP INVESTMENTS ?',
       title: 'Un service pensé pour la durée de vie de votre véhicule',
       description:
         'Nous ne vendons pas seulement un lavage : nous vendons un soin régulier qui protège votre carrosserie, votre habitacle et la valeur de revente de votre véhicule.',
@@ -162,7 +162,7 @@ const CARWASH = {
       eyebrow: 'FAQ Lavage',
       title: 'Vos questions, nos réponses claires',
       items: [
-        { question: 'Quelle est la différence entre un lavage classique et un lavage Taoman Group Investissement ?', answer: "Un lavage classique se limite souvent à un passage d'eau et de mousse. Un lavage Taoman Group Investissement repose sur une checklist, des produits adaptés au matériau, un contrôle qualité et une politique de reprise en cas d'insatisfaction. Nous traitons votre véhicule comme s'il s'agissait du nôtre." },
+        { question: 'Quelle est la différence entre un lavage classique et un lavage TAOMAN GROUP INVESTMENTS ?', answer: "Un lavage classique se limite souvent à un passage d'eau et de mousse. Un lavage TAOMAN GROUP INVESTMENTS repose sur une checklist, des produits adaptés au matériau, un contrôle qualité et une politique de reprise en cas d'insatisfaction. Nous traitons votre véhicule comme s'il s'agissait du nôtre." },
         { question: 'Combien de fois par mois dois-je laver mon véhicule ?', answer: 'En conditions normales urbaines, un Lavage Général tous les 15 jours suffit, complété par un Lavage Extérieur intermédiaire. En conditions agressives (chantier, piste, météo très poussiéreuse), un passage hebdomadaire est recommandé.' },
         { question: 'Le lavage haute pression abîme-t-il la carrosserie ?', answer: "Non, à condition d'utiliser une pression contrôlée et la bonne distance d'application. Nos opérateurs sont formés à cela. Une haute pression mal utilisée peut effectivement décoller un vernis ou un mastic ancien : c'est pourquoi nous inspectons toujours le véhicule avant intervention." },
         { question: 'Mes sièges en tissu sont-ils risqués au shampouinage ?', answer: "Non. Nous utilisons un shampoing doux, un brossage léger et un aspirateur extracteur qui retire l'humidité résiduelle. Vos sièges sont secs en quelques heures et n'auront ni odeur ni rétrécissement." },
@@ -184,7 +184,7 @@ const CARWASH = {
       eyebrow: 'The service in brief',
       title: 'Car washing built to last, not just to shine.',
       paragraphs: [
-        'Taoman Group Investissement operates a premium car wash service for individuals, corporate fleets and investors who want to preserve their vehicles\' value. Every service is delivered by trained teams, with professional equipment and products chosen for effectiveness and respect for the bodywork.',
+        'TAOMAN GROUP INVESTMENTS operates a premium car wash service for individuals, corporate fleets and investors who want to preserve their vehicles\' value. Every service is delivered by trained teams, with professional equipment and products chosen for effectiveness and respect for the bodywork.',
         'Our belief is simple: washing a vehicle is not an expense, it is maintenance that extends the life of the bodywork, seats, carpets and lights. A regularly maintained vehicle resells better, wears less and projects a more professional image in daily life or with clients.',
         'We offer three complementary packages – Interior Wash, Exterior Wash and Full Wash – plus an at-home option for clients who cannot travel. Each package follows a checklist, a stated timeframe and a quality check before handover.',
       ],
@@ -206,7 +206,7 @@ const CARWASH = {
       title: 'From quote to handover, step by step',
       description: 'Every service follows the same rigorous method. No improvisation. No surprises. Every team member knows their checklist and order of work.',
       steps: [
-        { num: '01', title: 'Quote request', desc: 'You fill in the form or contact us by phone. We note the vehicle type, condition, urgency and preferred location (Taoman Group Investissement centre or at home).' },
+        { num: '01', title: 'Quote request', desc: 'You fill in the form or contact us by phone. We note the vehicle type, condition, urgency and preferred location (TAOMAN GROUP INVESTMENTS centre or at home).' },
         { num: '02', title: 'Confirmation and scheduling', desc: 'We confirm the most suitable package, share a time slot and indicative duration. You receive written confirmation with full scope details.' },
         { num: '03', title: 'Welcome and inspection', desc: 'On arrival, the team leader inspects the vehicle with you, identifies areas needing special care (old stains, yellowed plastics, very dirty wheels) and records any existing defects.' },
         { num: '04', title: 'Service execution', desc: 'The team applies the checklist for the chosen package. Products are selected according to materials (leather, alcantara, fabric, soft plastic) to never damage surfaces.' },
@@ -234,10 +234,10 @@ const CARWASH = {
     },
     location: {
       eyebrow: 'Where would you like to be washed?',
-      title: 'At home or at the Taoman Group Investissement centre: your choice.',
+      title: 'At home or at the TAOMAN GROUP INVESTMENTS centre: your choice.',
       description: 'Both options have their advantages. We help you choose based on your schedule, water and space availability, and the service level you want.',
       home: { title: 'At-home wash', description: 'Our team comes to you with self-contained equipment (water supply, vacuum, products). You save time: no travel, no waiting. Ideal for families, business owners and expatriates.', bullets: ['No queue', 'Work can be supervised by you', 'Ideal for 2 or more vehicles at once', 'Transparent travel fees by area'] },
-      center: { title: 'Taoman Group Investissement wash centre', description: 'Our centre has heavy-duty equipment: industrial high pressure, vacuum arms, covered and lit bays. You wait in a dedicated area while your vehicle is treated.', bullets: ['More powerful professional equipment', 'Lower rates than at-home service', 'Comfortable waiting area', 'Walk-in available (subject to capacity)'] },
+      center: { title: 'TAOMAN GROUP INVESTMENTS wash centre', description: 'Our centre has heavy-duty equipment: industrial high pressure, vacuum arms, covered and lit bays. You wait in a dedicated area while your vehicle is treated.', bullets: ['More powerful professional equipment', 'Lower rates than at-home service', 'Comfortable waiting area', 'Walk-in available (subject to capacity)'] },
     },
     form: {
       eyebrow: 'Request a quote', title: 'Complete your request in 2 minutes',
@@ -248,7 +248,7 @@ const CARWASH = {
       selectPlaceholder: 'Select',
       fields: {
         washType: { label: 'Wash type', options: ['Interior Wash', 'Exterior Wash', 'Full Wash'] },
-        wish: { label: 'You would like', options: ['An at-home wash', 'At the Taoman Group Investissement wash centre'] },
+        wish: { label: 'You would like', options: ['An at-home wash', 'At the TAOMAN GROUP INVESTMENTS wash centre'] },
         vehicleType: { label: 'Vehicle type', options: ['City car', 'Sedan', 'Compact', 'SUV', '4x4', 'Van', 'Motorcycle'] },
         brand: { label: 'Make and model', placeholder: 'e.g. Toyota Corolla' },
         date: { label: 'Preferred date' }, time: { label: 'Preferred time' },
@@ -258,11 +258,11 @@ const CARWASH = {
         notes: { label: 'Additional remarks', placeholder: 'Describe vehicle condition, priority areas, time constraints...' },
       },
     },
-    sidebar: { eyebrow: 'Why Taoman Group Investissement?', title: 'A service designed for your vehicle\'s lifetime', description: 'We do not just sell a wash: we sell regular care that protects your bodywork, cabin and resale value.', equipmentTitle: 'Professional equipment', equipmentDesc: 'Controlled high pressure, industrial vacuums, certified microfibre gloves, products suited to modern materials.' },
+    sidebar: { eyebrow: 'Why TAOMAN GROUP INVESTMENTS?', title: 'A service designed for your vehicle\'s lifetime', description: 'We do not just sell a wash: we sell regular care that protects your bodywork, cabin and resale value.', equipmentTitle: 'Professional equipment', equipmentDesc: 'Controlled high pressure, industrial vacuums, certified microfibre gloves, products suited to modern materials.' },
     faq: {
       eyebrow: 'Car wash FAQ', title: 'Your questions, our clear answers',
       items: [
-        { question: 'What is the difference between a standard wash and a Taoman Group Investissement wash?', answer: 'A standard wash is often just water and foam. A Taoman Group Investissement wash follows a checklist, material-appropriate products, quality control and a rework policy if you are not satisfied. We treat your vehicle as if it were our own.' },
+        { question: 'What is the difference between a standard wash and a TAOMAN GROUP INVESTMENTS wash?', answer: 'A standard wash is often just water and foam. A TAOMAN GROUP INVESTMENTS wash follows a checklist, material-appropriate products, quality control and a rework policy if you are not satisfied. We treat your vehicle as if it were our own.' },
         { question: 'How often should I wash my vehicle per month?', answer: 'In normal urban conditions, a Full Wash every 15 days is enough, with an Exterior Wash in between. In harsh conditions (construction site, tracks, very dusty weather), a weekly visit is recommended.' },
         { question: 'Does high-pressure washing damage the bodywork?', answer: 'No, when pressure and distance are controlled. Our operators are trained for this. Misused high pressure can lift old varnish or sealant – which is why we always inspect the vehicle before starting.' },
         { question: 'Are fabric seats at risk with shampooing?', answer: 'No. We use a gentle shampoo, light brushing and an extractor vacuum that removes residual moisture. Your seats dry within hours with no odour or shrinkage.' },
@@ -278,7 +278,7 @@ const CARWASH = {
       eyebrow: 'El servicio en pocas palabras',
       title: 'Un lavado de automóvil pensado para durar, no solo para brillar.',
       paragraphs: [
-        'Taoman Group Investissement ofrece un servicio de lavado de automóviles premium para particulares, flotas empresariales e inversores que desean mantener el valor de sus vehículos. Cada prestación la realizan equipos formados, con material profesional y productos seleccionados por su eficacia y respeto hacia la carrocería.',
+        'TAOMAN GROUP INVESTMENTS ofrece un servicio de lavado de automóviles premium para particulares, flotas empresariales e inversores que desean mantener el valor de sus vehículos. Cada prestación la realizan equipos formados, con material profesional y productos seleccionados por su eficacia y respeto hacia la carrocería.',
         'Nuestra convicción es simple: lavar un vehículo no es un gasto, es un acto de mantenimiento que prolonga la vida de la carrocería, los asientos, las moquetas y los ópticos. Un vehículo mantenido regularmente se revende mejor, consume menos en desgaste y proyecta una imagen más profesional.',
         'Ofrecemos tres fórmulas complementarias – Lavado Interior, Lavado Exterior y Lavado General – además de una opción a domicilio para clientes que no pueden desplazarse. Cada fórmula sigue una checklist, un plazo anunciado y un control de calidad antes de la entrega.',
       ],
@@ -297,7 +297,7 @@ const CARWASH = {
       eyebrow: 'Nuestro proceso', title: 'Del presupuesto a la entrega del vehículo, paso a paso',
       description: 'Cada prestación sigue el mismo método riguroso. Sin improvisación. Sin sorpresas. Cada colaborador conoce su checklist y su orden de intervención.',
       steps: [
-        { num: '01', title: 'Solicitud de presupuesto', desc: 'Rellena el formulario o nos contactas por teléfono. Anotamos el tipo de vehículo, el estado, la urgencia y el lugar de intervención (centro Taoman Group Investissement o domicilio).' },
+        { num: '01', title: 'Solicitud de presupuesto', desc: 'Rellena el formulario o nos contactas por teléfono. Anotamos el tipo de vehículo, el estado, la urgencia y el lugar de intervención (centro TAOMAN GROUP INVESTMENTS o domicilio).' },
         { num: '02', title: 'Confirmación y planificación', desc: 'Validamos la fórmula más adecuada, te comunicamos una franja horaria y un plazo indicativo. Recibes una confirmación escrita con el detalle del alcance.' },
         { num: '03', title: 'Recepción e inspección', desc: 'A la llegada, el responsable inspecciona el vehículo contigo, identifica zonas que requieren cuidado especial (manchas antiguas, plásticos amarillentos, llantas muy sucias) y anota posibles defectos existentes.' },
         { num: '04', title: 'Ejecución según fórmula', desc: 'El equipo aplica la checklist de la fórmula elegida. Los productos se seleccionan según los materiales (cuero, alcántara, tejido, plástico blando) para no dañar las superficies.' },
@@ -323,10 +323,10 @@ const CARWASH = {
       ],
     },
     location: {
-      eyebrow: '¿Dónde desea ser lavado?', title: 'Lavado a domicilio o en el centro Taoman Group Investissement: usted elige.',
+      eyebrow: '¿Dónde desea ser lavado?', title: 'Lavado a domicilio o en el centro TAOMAN GROUP INVESTMENTS: usted elige.',
       description: 'Ambas opciones tienen sus ventajas. Le proponemos la elección según su agenda, la disponibilidad de agua y espacio, y el nivel de servicio deseado.',
       home: { title: 'Lavado a domicilio', description: 'Nuestro equipo se desplaza a su domicilio con material autónomo (reserva de agua, aspirador, productos). Ahorra tiempo: sin desplazamiento ni espera. Ideal para familias, empresarios y expatriados.', bullets: ['Sin colas', 'Trabajo bajo su supervisión posible', 'Ideal para 2 vehículos o más a la vez', 'Gastos de desplazamiento transparentes según la zona'] },
-      center: { title: 'Centro de lavado Taoman Group Investissement', description: 'Nuestro centro dispone de equipos pesados: alta presión industrial, brazos de aspiración, zonas cubiertas e iluminadas. Espera en un espacio dedicado mientras se trata su vehículo.', bullets: ['Material profesional más potente', 'Tarifas reducidas respecto al domicilio', 'Zona de espera confortable', 'Disponible sin cita previa (según afluencia)'] },
+      center: { title: 'Centro de lavado TAOMAN GROUP INVESTMENTS', description: 'Nuestro centro dispone de equipos pesados: alta presión industrial, brazos de aspiración, zonas cubiertas e iluminadas. Espera en un espacio dedicado mientras se trata su vehículo.', bullets: ['Material profesional más potente', 'Tarifas reducidas respecto al domicilio', 'Zona de espera confortable', 'Disponible sin cita previa (según afluencia)'] },
     },
     form: {
       eyebrow: 'Solicitar presupuesto', title: 'Complete su solicitud en 2 minutos',
@@ -337,7 +337,7 @@ const CARWASH = {
       selectPlaceholder: 'Seleccionar',
       fields: {
         washType: { label: 'Tipo de lavado', options: ['Lavado Interior', 'Lavado Exterior', 'Lavado General'] },
-        wish: { label: 'Desea', options: ['Un lavado a domicilio', 'En el centro de lavado Taoman Group Investissement'] },
+        wish: { label: 'Desea', options: ['Un lavado a domicilio', 'En el centro de lavado TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Tipo de vehículo', options: ['Utilitario', 'Berlina', 'Compacto', 'SUV', '4x4', 'Furgoneta', 'Moto'] },
         brand: { label: 'Marca y modelo', placeholder: 'Ej: Toyota Corolla' },
         date: { label: 'Fecha deseada' }, time: { label: 'Hora deseada' },
@@ -347,11 +347,11 @@ const CARWASH = {
         notes: { label: 'Observaciones adicionales', placeholder: 'Indique el estado del vehículo, zonas prioritarias, restricciones horarias...' },
       },
     },
-    sidebar: { eyebrow: '¿Por qué Taoman Group Investissement?', title: 'Un servicio pensado para la vida útil de su vehículo', description: 'No vendemos solo un lavado: vendemos un cuidado regular que protege su carrocería, habitáculo y valor de reventa.', equipmentTitle: 'Equipamiento profesional', equipmentDesc: 'Alta presión controlada, aspiradores industriales, guantes de microfibra certificados, productos adaptados a materiales modernos.' },
+    sidebar: { eyebrow: '¿Por qué TAOMAN GROUP INVESTMENTS?', title: 'Un servicio pensado para la vida útil de su vehículo', description: 'No vendemos solo un lavado: vendemos un cuidado regular que protege su carrocería, habitáculo y valor de reventa.', equipmentTitle: 'Equipamiento profesional', equipmentDesc: 'Alta presión controlada, aspiradores industriales, guantes de microfibra certificados, productos adaptados a materiales modernos.' },
     faq: {
       eyebrow: 'FAQ Lavado', title: 'Sus preguntas, nuestras respuestas claras',
       items: [
-        { question: '¿Cuál es la diferencia entre un lavado clásico y un lavado Taoman Group Investissement?', answer: 'Un lavado clásico suele limitarse a agua y espuma. Un lavado Taoman Group Investissement se basa en una checklist, productos adaptados al material, control de calidad y política de repetición en caso de insatisfacción. Tratamos su vehículo como si fuera nuestro.' },
+        { question: '¿Cuál es la diferencia entre un lavado clásico y un lavado TAOMAN GROUP INVESTMENTS?', answer: 'Un lavado clásico suele limitarse a agua y espuma. Un lavado TAOMAN GROUP INVESTMENTS se basa en una checklist, productos adaptados al material, control de calidad y política de repetición en caso de insatisfacción. Tratamos su vehículo como si fuera nuestro.' },
         { question: '¿Cuántas veces al mes debo lavar mi vehículo?', answer: 'En condiciones urbanas normales, un Lavado General cada 15 días basta, complementado por un Lavado Exterior intermedio. En condiciones agresivas (obra, pista, clima muy polvoriento), se recomienda una visita semanal.' },
         { question: '¿El lavado a alta presión daña la carrocería?', answer: 'No, si se usa presión controlada y la distancia correcta. Nuestros operadores están formados. Una alta presión mal usada puede levantar barniz o sellador antiguo: por eso siempre inspeccionamos el vehículo antes.' },
         { question: '¿Los asientos de tela corren riesgo con el champú?', answer: 'No. Usamos champú suave, cepillado ligero y aspirador extractor que retira la humedad residual. Los asientos secan en pocas horas sin olor ni encogimiento.' },
@@ -367,7 +367,7 @@ const CARWASH = {
       eyebrow: 'O serviço em poucas palavras',
       title: 'Uma lavagem automóvel pensada para durar, não apenas para brilhar.',
       paragraphs: [
-        'A Taoman Group Investissement opera um serviço de lavagem automóvel premium para particulares, frotas empresariais e investidores que desejam manter o valor dos seus veículos. Cada prestação é realizada por equipas formadas, com material profissional e produtos selecionados pela eficácia e respeito pela carroceria.',
+        'A TAOMAN GROUP INVESTMENTS opera um serviço de lavagem automóvel premium para particulares, frotas empresariais e investidores que desejam manter o valor dos seus veículos. Cada prestação é realizada por equipas formadas, com material profissional e produtos selecionados pela eficácia e respeito pela carroceria.',
         'A nossa convicção é simples: lavar um veículo não é uma despesa, é um ato de manutenção que prolonga a vida da carroceria, dos bancos, dos carpetes e dos ópticos. Um veículo regularmente mantido revende-se melhor, consome menos em desgaste e projeta uma imagem mais profissional.',
         'Propomos três fórmulas complementares – Lavagem Interior, Lavagem Exterior e Lavagem Geral – bem como uma opção ao domicílio para clientes que não podem deslocar-se. Cada fórmula segue uma checklist, um prazo anunciado e um controlo de qualidade antes da entrega.',
       ],
@@ -386,7 +386,7 @@ const CARWASH = {
       eyebrow: 'O nosso processo', title: 'Do orçamento à entrega do veículo, passo a passo',
       description: 'Cada prestação segue o mesmo método rigoroso. Sem improvisação. Sem surpresas. Cada colaborador conhece a sua checklist e a ordem de intervenção.',
       steps: [
-        { num: '01', title: 'Pedido de orçamento', desc: 'Preenche o formulário ou contacta-nos por telefone. Registamos o tipo de veículo, o estado, a urgência e o local de intervenção (centro Taoman Group Investissement ou domicílio).' },
+        { num: '01', title: 'Pedido de orçamento', desc: 'Preenche o formulário ou contacta-nos por telefone. Registamos o tipo de veículo, o estado, a urgência e o local de intervenção (centro TAOMAN GROUP INVESTMENTS ou domicílio).' },
         { num: '02', title: 'Confirmação e planeamento', desc: 'Validamos a fórmula mais adequada, comunicamos uma faixa horária e um prazo indicativo. Recebe uma confirmação escrita com o detalhe do âmbito.' },
         { num: '03', title: 'Receção e inspeção', desc: 'À chegada, o responsável inspeciona o veículo consigo, identifica zonas que requerem cuidado especial (manchas antigas, plásticos amarelados, jantes muito sujas) e regista eventuais defeitos existentes.' },
         { num: '04', title: 'Execução por fórmula', desc: 'A equipa aplica a checklist da fórmula escolhida. Os produtos são selecionados conforme os materiais (couro, alcântara, tecido, plástico macio) para nunca agredir as superfícies.' },
@@ -412,10 +412,10 @@ const CARWASH = {
       ],
     },
     location: {
-      eyebrow: 'Onde deseja ser lavado?', title: 'Lavagem ao domicílio ou no centro Taoman Group Investissement: à sua escolha.',
+      eyebrow: 'Onde deseja ser lavado?', title: 'Lavagem ao domicílio ou no centro TAOMAN GROUP INVESTMENTS: à sua escolha.',
       description: 'As duas opções têm as suas vantagens. Propomos a escolha conforme a sua agenda, disponibilidade de água e espaço, e o nível de serviço desejado.',
       home: { title: 'Lavagem ao domicílio', description: 'A nossa equipa desloca-se a si com material autónomo (reserva de água, aspirador, produtos). Poupa tempo: sem deslocação nem espera. Ideal para famílias, empresários e expatriados.', bullets: ['Sem filas de espera', 'Trabalho sob a sua supervisão possível', 'Ideal para 2 veículos ou mais em simultâneo', 'Taxas de deslocação transparentes conforme a zona'] },
-      center: { title: 'Centro de lavagem Taoman Group Investissement', description: 'O nosso centro dispõe de equipamentos pesados: alta pressão industrial, braços de aspiração, zonas cobertas e iluminadas. Aguarda num espaço dedicado enquanto o veículo é tratado.', bullets: ['Material profissional mais potente', 'Tarifas reduzidas face ao domicílio', 'Espaço de espera confortável', 'Disponível sem marcação (conforme afluência)'] },
+      center: { title: 'Centro de lavagem TAOMAN GROUP INVESTMENTS', description: 'O nosso centro dispõe de equipamentos pesados: alta pressão industrial, braços de aspiração, zonas cobertas e iluminadas. Aguarda num espaço dedicado enquanto o veículo é tratado.', bullets: ['Material profissional mais potente', 'Tarifas reduzidas face ao domicílio', 'Espaço de espera confortável', 'Disponível sem marcação (conforme afluência)'] },
     },
     form: {
       eyebrow: 'Pedir orçamento', title: 'Preencha o seu pedido em 2 minutos',
@@ -426,7 +426,7 @@ const CARWASH = {
       selectPlaceholder: 'Selecionar',
       fields: {
         washType: { label: 'Tipo de lavagem', options: ['Lavagem Interior', 'Lavagem Exterior', 'Lavagem Geral'] },
-        wish: { label: 'Deseja', options: ['Uma lavagem ao domicílio', 'No centro de lavagem Taoman Group Investissement'] },
+        wish: { label: 'Deseja', options: ['Uma lavagem ao domicílio', 'No centro de lavagem TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Tipo de veículo', options: ['Citadino', 'Berlina', 'Compacto', 'SUV', '4x4', 'Comercial', 'Mota'] },
         brand: { label: 'Marca e modelo', placeholder: 'Ex: Toyota Corolla' },
         date: { label: 'Data pretendida' }, time: { label: 'Hora pretendida' },
@@ -436,11 +436,11 @@ const CARWASH = {
         notes: { label: 'Observações adicionais', placeholder: 'Indique o estado do veículo, zonas prioritárias, restrições horárias...' },
       },
     },
-    sidebar: { eyebrow: 'Porquê Taoman Group Investissement?', title: 'Um serviço pensado para a vida útil do seu veículo', description: 'Não vendemos apenas uma lavagem: vendemos um cuidado regular que protege a carroceria, a cabina e o valor de revenda.', equipmentTitle: 'Equipamento profissional', equipmentDesc: 'Alta pressão controlada, aspiradores industriais, luvas de microfibra certificadas, produtos adaptados a materiais modernos.' },
+    sidebar: { eyebrow: 'Porquê TAOMAN GROUP INVESTMENTS?', title: 'Um serviço pensado para a vida útil do seu veículo', description: 'Não vendemos apenas uma lavagem: vendemos um cuidado regular que protege a carroceria, a cabina e o valor de revenda.', equipmentTitle: 'Equipamento profissional', equipmentDesc: 'Alta pressão controlada, aspiradores industriais, luvas de microfibra certificadas, produtos adaptados a materiais modernos.' },
     faq: {
       eyebrow: 'FAQ Lavagem', title: 'As suas perguntas, as nossas respostas claras',
       items: [
-        { question: 'Qual é a diferença entre uma lavagem clássica e uma lavagem Taoman Group Investissement?', answer: 'Uma lavagem clássica limita-se muitas vezes a água e espuma. Uma lavagem Taoman Group Investissement baseia-se numa checklist, produtos adaptados ao material, controlo de qualidade e política de repetição em caso de insatisfação. Tratamos o seu veículo como se fosse nosso.' },
+        { question: 'Qual é a diferença entre uma lavagem clássica e uma lavagem TAOMAN GROUP INVESTMENTS?', answer: 'Uma lavagem clássica limita-se muitas vezes a água e espuma. Uma lavagem TAOMAN GROUP INVESTMENTS baseia-se numa checklist, produtos adaptados ao material, controlo de qualidade e política de repetição em caso de insatisfação. Tratamos o seu veículo como se fosse nosso.' },
         { question: 'Quantas vezes por mês devo lavar o meu veículo?', answer: 'Em condições urbanas normais, uma Lavagem Geral a cada 15 dias basta, complementada por uma Lavagem Exterior intermédia. Em condições agressivas (obra, pista, clima muito empoeirado), recomenda-se uma visita semanal.' },
         { question: 'A lavagem de alta pressão danifica a carroceria?', answer: 'Não, com pressão controlada e distância correta. Os nossos operadores estão formados. Alta pressão mal usada pode levantar verniz ou vedante antigo: por isso inspecionamos sempre o veículo antes.' },
         { question: 'Os bancos de tecido correm risco com o shampoo?', answer: 'Não. Usamos shampoo suave, escovagem leve e aspirador extrator que retira a humidade residual. Os bancos secam em poucas horas sem odor nem encolhimento.' },
@@ -456,7 +456,7 @@ const CARWASH = {
       eyebrow: 'Der Service in Kürze',
       title: 'Autowäsche, die hält – nicht nur glänzt.',
       paragraphs: [
-        'Taoman Group Investissement bietet einen Premium-Autowaschservice für Privatkunden, Firmenflotten und Investoren, die den Wert ihrer Fahrzeuge erhalten möchten. Jede Leistung wird von geschulten Teams mit professioneller Ausrüstung und sorgfältig ausgewählten Produkten durchgeführt.',
+        'TAOMAN GROUP INVESTMENTS bietet einen Premium-Autowaschservice für Privatkunden, Firmenflotten und Investoren, die den Wert ihrer Fahrzeuge erhalten möchten. Jede Leistung wird von geschulten Teams mit professioneller Ausrüstung und sorgfältig ausgewählten Produkten durchgeführt.',
         'Unsere Überzeugung ist einfach: Ein Fahrzeug zu waschen ist keine Ausgabe, sondern Wartung, die Karosserie, Sitze, Teppiche und Scheinwerfer länger erhält. Regelmäßig gepflegte Fahrzeuge verkaufen sich besser, verschleißen weniger und wirken professioneller.',
         'Wir bieten drei ergänzende Pakete – Innenreinigung, Außenwäsche und Komplettwäsche – sowie eine Option vor Ort für Kunden, die sich nicht bewegen können. Jedes Paket folgt einer Checkliste, einem angekündigten Zeitrahmen und einer Qualitätskontrolle vor der Übergabe.',
       ],
@@ -475,7 +475,7 @@ const CARWASH = {
       eyebrow: 'Unser Prozess', title: 'Vom Angebot bis zur Fahrzeugübergabe, Schritt für Schritt',
       description: 'Jede Leistung folgt derselben rigorosen Methode. Keine Improvisation. Keine Überraschungen. Jedes Teammitglied kennt seine Checkliste und Reihenfolge.',
       steps: [
-        { num: '01', title: 'Angebotsanfrage', desc: 'Sie füllen das Formular aus oder kontaktieren uns telefonisch. Wir notieren Fahrzeugtyp, Zustand, Dringlichkeit und gewünschten Ort (Taoman Group Investissement-Zentrum oder vor Ort).' },
+        { num: '01', title: 'Angebotsanfrage', desc: 'Sie füllen das Formular aus oder kontaktieren uns telefonisch. Wir notieren Fahrzeugtyp, Zustand, Dringlichkeit und gewünschten Ort (TAOMAN GROUP INVESTMENTS-Zentrum oder vor Ort).' },
         { num: '02', title: 'Bestätigung und Terminplanung', desc: 'Wir bestätigen das passende Paket, teilen einen Zeitfenster und Richtwert mit. Sie erhalten eine schriftliche Bestätigung mit Leistungsumfang.' },
         { num: '03', title: 'Empfang und Inspektion', desc: 'Bei Ankunft inspiziert der Teamleiter das Fahrzeug mit Ihnen, identifiziert Bereiche mit besonderem Pflegebedarf und dokumentiert bestehende Mängel.' },
         { num: '04', title: 'Ausführung nach Paket', desc: 'Das Team wendet die Checkliste des gewählten Pakets an. Produkte werden nach Material (Leder, Alcantara, Stoff, Weichkunststoff) ausgewählt, um Oberflächen nicht zu beschädigen.' },
@@ -501,10 +501,10 @@ const CARWASH = {
       ],
     },
     location: {
-      eyebrow: 'Wo möchten Sie gewaschen werden?', title: 'Vor Ort oder im Taoman Group Investissement-Zentrum: Sie entscheiden.',
+      eyebrow: 'Wo möchten Sie gewaschen werden?', title: 'Vor Ort oder im TAOMAN GROUP INVESTMENTS-Zentrum: Sie entscheiden.',
       description: 'Beide Optionen haben ihre Vorteile. Wir helfen bei der Wahl nach Zeitplan, Wasser- und Platzverfügbarkeit sowie gewünschtem Serviceniveau.',
       home: { title: 'Wäsche vor Ort', description: 'Unser Team kommt mit autarker Ausrüstung (Wasservorrat, Staubsauger, Produkte). Sie sparen Zeit: keine Anfahrt, kein Warten. Ideal für Familien, Unternehmer und Expats.', bullets: ['Keine Warteschlange', 'Arbeit unter Ihrer Aufsicht möglich', 'Ideal für 2 oder mehr Fahrzeuge gleichzeitig', 'Transparente Anfahrtskosten je Zone'] },
-      center: { title: 'Taoman Group Investissement Waschzentrum', description: 'Unser Zentrum verfügt über schwere Ausrüstung: industrieller Hochdruck, Saugarms, überdachte und beleuchtete Boxen. Sie warten in einem eigenen Bereich während der Behandlung.', bullets: ['Leistungsstärkere Profi-Ausrüstung', 'Günstigere Tarife als vor Ort', 'Komfortabler Wartebereich', 'Ohne Termin möglich (je nach Auslastung)'] },
+      center: { title: 'TAOMAN GROUP INVESTMENTS Waschzentrum', description: 'Unser Zentrum verfügt über schwere Ausrüstung: industrieller Hochdruck, Saugarms, überdachte und beleuchtete Boxen. Sie warten in einem eigenen Bereich während der Behandlung.', bullets: ['Leistungsstärkere Profi-Ausrüstung', 'Günstigere Tarife als vor Ort', 'Komfortabler Wartebereich', 'Ohne Termin möglich (je nach Auslastung)'] },
     },
     form: {
       eyebrow: 'Angebot anfordern', title: 'Füllen Sie Ihre Anfrage in 2 Minuten aus',
@@ -515,7 +515,7 @@ const CARWASH = {
       selectPlaceholder: 'Auswählen',
       fields: {
         washType: { label: 'Waschart', options: ['Innenreinigung', 'Außenwäsche', 'Komplettwäsche'] },
-        wish: { label: 'Sie wünschen', options: ['Eine Wäsche vor Ort', 'Im Waschzentrum Taoman Group Investissement'] },
+        wish: { label: 'Sie wünschen', options: ['Eine Wäsche vor Ort', 'Im Waschzentrum TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Fahrzeugtyp', options: ['Kleinwagen', 'Limousine', 'Kompaktwagen', 'SUV', 'Geländewagen', 'Transporter', 'Motorrad'] },
         brand: { label: 'Marke und Modell', placeholder: 'z. B. Toyota Corolla' },
         date: { label: 'Wunschdatum' }, time: { label: 'Wunschuhrzeit' },
@@ -525,11 +525,11 @@ const CARWASH = {
         notes: { label: 'Zusätzliche Anmerkungen', placeholder: 'Fahrzeugzustand, Prioritätsbereiche, zeitliche Einschränkungen...' },
       },
     },
-    sidebar: { eyebrow: 'Warum Taoman Group Investissement?', title: 'Ein Service für die Lebensdauer Ihres Fahrzeugs', description: 'Wir verkaufen nicht nur eine Wäsche: wir verkaufen regelmäßige Pflege, die Karosserie, Innenraum und Wiederverkaufswert schützt.', equipmentTitle: 'Professionelle Ausrüstung', equipmentDesc: 'Kontrollierter Hochdruck, Industriesauger, zertifizierte Mikrofaserhandschuhe, Produkte für moderne Materialien.' },
+    sidebar: { eyebrow: 'Warum TAOMAN GROUP INVESTMENTS?', title: 'Ein Service für die Lebensdauer Ihres Fahrzeugs', description: 'Wir verkaufen nicht nur eine Wäsche: wir verkaufen regelmäßige Pflege, die Karosserie, Innenraum und Wiederverkaufswert schützt.', equipmentTitle: 'Professionelle Ausrüstung', equipmentDesc: 'Kontrollierter Hochdruck, Industriesauger, zertifizierte Mikrofaserhandschuhe, Produkte für moderne Materialien.' },
     faq: {
       eyebrow: 'Wasch-FAQ', title: 'Ihre Fragen, unsere klaren Antworten',
       items: [
-        { question: 'Was ist der Unterschied zwischen einer Standardwäsche und einer Taoman Group Investissement-Wäsche?', answer: 'Eine Standardwäsche beschränkt sich oft auf Wasser und Schaum. Eine Taoman Group Investissement-Wäsche folgt einer Checkliste, materialgerechten Produkten, Qualitätskontrolle und Nachbesserung bei Unzufriedenheit. Wir behandeln Ihr Fahrzeug wie unser eigenes.' },
+        { question: 'Was ist der Unterschied zwischen einer Standardwäsche und einer TAOMAN GROUP INVESTMENTS-Wäsche?', answer: 'Eine Standardwäsche beschränkt sich oft auf Wasser und Schaum. Eine TAOMAN GROUP INVESTMENTS-Wäsche folgt einer Checkliste, materialgerechten Produkten, Qualitätskontrolle und Nachbesserung bei Unzufriedenheit. Wir behandeln Ihr Fahrzeug wie unser eigenes.' },
         { question: 'Wie oft soll ich mein Fahrzeug pro Monat waschen?', answer: 'Unter normalen Stadtbedingungen reicht eine Komplettwäsche alle 15 Tage, ergänzt durch eine Außenwäche dazwischen. Bei harten Bedingungen (Baustelle, Piste, sehr staubiges Wetter) wird ein wöchentlicher Besuch empfohlen.' },
         { question: 'Schadet Hochdruckwäsche der Karosserie?', answer: 'Nein, bei kontrolliertem Druck und richtigem Abstand. Unsere Mitarbeiter sind geschult. Falsch eingesetzter Hochdruck kann alten Lack oder Dichtmasse lösen – deshalb inspizieren wir immer vorher.' },
         { question: 'Sind Stoffsitze beim Shampoonieren gefährdet?', answer: 'Nein. Wir verwenden mildes Shampoo, leichtes Bürsten und einen Extraktorstaubsauger. Ihre Sitze trocknen in wenigen Stunden ohne Geruch oder Einlaufen.' },
@@ -545,7 +545,7 @@ const CARWASH = {
       eyebrow: 'الخدمة باختصار',
       title: 'غسيل سيارات مصمم ليدوم، لا ليلمع فقط.',
       paragraphs: [
-        'تقدّم Taoman Group Investissement خدمة غسيل سيارات فاخرة للأفراد وأساطيل الشركات والمستثمرين الراغبين في الحفاظ على قيمة مركباتهم. تُنفَّذ كل خدمة بواسطة فرق مُدرَّبة، بمعدات احترافية ومنتجات مختارة لفعاليتها واحترامها للهيكل.',
+        'تقدّم TAOMAN GROUP INVESTMENTS خدمة غسيل سيارات فاخرة للأفراد وأساطيل الشركات والمستثمرين الراغبين في الحفاظ على قيمة مركباتهم. تُنفَّذ كل خدمة بواسطة فرق مُدرَّبة، بمعدات احترافية ومنتجات مختارة لفعاليتها واحترامها للهيكل.',
         'قناعتنا بسيطة: غسل المركبة ليس مصروفاً بل صيانة تُطيل عمر الهيكل والمقاعد والسجاد والمصابيح. المركبة المُعتنى بها بانتظام تُباع أفضل وتستهلك أقل في التآكل وتعكس صورة أكثر احترافية.',
         'نقدّم ثلاث صيغ مكمّلة – غسيل داخلي، غسيل خارجي وغسيل شامل – إضافة إلى خيار في المنزل للعملاء الذين لا يستطيعون التنقل. كل صيغة تتبع قائمة تحقق ومدة مُعلَنة ومراقبة جودة قبل التسليم.',
       ],
@@ -564,7 +564,7 @@ const CARWASH = {
       eyebrow: 'عمليتنا', title: 'من عرض السعر إلى تسليم المركبة، خطوة بخطوة',
       description: 'كل خدمة تتبع نفس المنهجية الصارمة. بلا ارتجال. بلا مفاجآت. يعرف كل موظف قائمة التحقق وترتيب التدخل.',
       steps: [
-        { num: '01', title: 'طلب عرض سعر', desc: 'تملأ النموذج أو تتصل بنا هاتفياً. نُسجّل نوع المركبة وحالتها والاستعجال ومكان التدخل (مركز Taoman Group Investissement أو المنزل).' },
+        { num: '01', title: 'طلب عرض سعر', desc: 'تملأ النموذج أو تتصل بنا هاتفياً. نُسجّل نوع المركبة وحالتها والاستعجال ومكان التدخل (مركز TAOMAN GROUP INVESTMENTS أو المنزل).' },
         { num: '02', title: 'تأكيد وجدولة', desc: 'نُؤكد الصيغة الأنسب ونُبلغك بموعد ومدة تقديرية. تتلقى تأكيداً كتابياً بتفاصيل النطاق.' },
         { num: '03', title: 'استقبال وفحص', desc: 'عند الوصول، يفحص المسؤول المركبة معك ويُحدد المناطق التي تحتاج عناية خاصة (بقع قديمة، بلاستيك مصفر، جنوط شديدة الاتساخ) ويُدوّن العيوب الموجودة.' },
         { num: '04', title: 'تنفيذ حسب الصيغة', desc: 'يطبّق الفريق قائمة التحقق للصيغة المختارة. تُختار المنتجات حسب المواد (جلد، ألكانتارا، قماش، بلاستيك ناعم) لعدم إتلاف الأسطح.' },
@@ -590,10 +590,10 @@ const CARWASH = {
       ],
     },
     location: {
-      eyebrow: 'أين تريد الغسيل؟', title: 'في المنزل أو في مركز Taoman Group Investissement: أنت تختار.',
+      eyebrow: 'أين تريد الغسيل؟', title: 'في المنزل أو في مركز TAOMAN GROUP INVESTMENTS: أنت تختار.',
       description: 'للكلا الخيارين مزاياه. نُقترح الاختيار حسب جدولك وتوفر الماء والمساحة ومستوى الخدمة المطلوب.',
       home: { title: 'غسيل في المنزل', description: 'يأتي فريقنا بمعدات مستقلة (ماء، مكنسة، منتجات). توفّر الوقت: بلا تنقل ولا انتظار. مثالي للعائلات ورجال الأعمال والمغتربين.', bullets: ['بلا طوابير', 'إمكانية الإشراف على العمل', 'مثالي لمركبتين أو أكثر معاً', 'رسوم تنقل شفافة حسب المنطقة'] },
-      center: { title: 'مركز غسيل Taoman Group Investissement', description: 'يضم مركزنا معدات ثقيلة: ضغط عالٍ صناعي، أذرع شفط، مناطق مغطاة ومضاءة. تنتظر في مساحة مخصّصة أثناء معالجة مركبتك.', bullets: ['معدات احترافية أقوى', 'أسعار أقل من الخدمة المنزلية', 'منطقة انتظار مريحة', 'متاح بدون موعد (حسب الازدحام)'] },
+      center: { title: 'مركز غسيل TAOMAN GROUP INVESTMENTS', description: 'يضم مركزنا معدات ثقيلة: ضغط عالٍ صناعي، أذرع شفط، مناطق مغطاة ومضاءة. تنتظر في مساحة مخصّصة أثناء معالجة مركبتك.', bullets: ['معدات احترافية أقوى', 'أسعار أقل من الخدمة المنزلية', 'منطقة انتظار مريحة', 'متاح بدون موعد (حسب الازدحام)'] },
     },
     form: {
       eyebrow: 'طلب عرض سعر', title: 'أكمل طلبك في دقيقتين',
@@ -604,7 +604,7 @@ const CARWASH = {
       selectPlaceholder: 'اختيار',
       fields: {
         washType: { label: 'نوع الغسيل', options: ['غسيل داخلي', 'غسيل خارجي', 'غسيل شامل'] },
-        wish: { label: 'ترغب في', options: ['غسيل في المنزل', 'في مركز غسيل Taoman Group Investissement'] },
+        wish: { label: 'ترغب في', options: ['غسيل في المنزل', 'في مركز غسيل TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'نوع المركبة', options: ['سيارة مدينة', 'سيدان', 'مدمجة', 'SUV', 'دفع رباعي', 'شاحنة صغيرة', 'دراجة نارية'] },
         brand: { label: 'العلامة والطراز', placeholder: 'مثال: Toyota Corolla' },
         date: { label: 'التاريخ المطلوب' }, time: { label: 'الوقت المطلوب' },
@@ -614,11 +614,11 @@ const CARWASH = {
         notes: { label: 'ملاحظات إضافية', placeholder: 'حدّد حالة المركبة والمناطق ذات الأولوية والقيود الزمنية...' },
       },
     },
-    sidebar: { eyebrow: 'لماذا Taoman Group Investissement؟', title: 'خدمة مصممة لعمر مركبتك', description: 'لا نبيع غسيلاً فحسب: نبيع عناية منتظمة تحمي الهيكل والمقصورة وقيمة إعادة البيع.', equipmentTitle: 'معدات احترافية', equipmentDesc: 'ضغط عالٍ مُتحكَّم به، مكانس صناعية، قفازات ميكروفايبر معتمدة، منتجات مناسبة للمواد الحديثة.' },
+    sidebar: { eyebrow: 'لماذا TAOMAN GROUP INVESTMENTS؟', title: 'خدمة مصممة لعمر مركبتك', description: 'لا نبيع غسيلاً فحسب: نبيع عناية منتظمة تحمي الهيكل والمقصورة وقيمة إعادة البيع.', equipmentTitle: 'معدات احترافية', equipmentDesc: 'ضغط عالٍ مُتحكَّم به، مكانس صناعية، قفازات ميكروفايبر معتمدة، منتجات مناسبة للمواد الحديثة.' },
     faq: {
       eyebrow: 'الأسئلة الشائعة', title: 'أسئلتكم، إجاباتنا الواضحة',
       items: [
-        { question: 'ما الفرق بين غسيل تقليدي وغسيل Taoman Group Investissement؟', answer: 'الغسيل التقليدي غالباً يقتصر على الماء والرغوة. غسيل Taoman Group Investissement يعتمد على قائمة تحقق ومنتجات مناسبة للمادة ومراقبة جودة وسياسة إعادة العمل عند عدم الرضا. نُعامل مركبتك كأنها لنا.' },
+        { question: 'ما الفرق بين غسيل تقليدي وغسيل TAOMAN GROUP INVESTMENTS؟', answer: 'الغسيل التقليدي غالباً يقتصر على الماء والرغوة. غسيل TAOMAN GROUP INVESTMENTS يعتمد على قائمة تحقق ومنتجات مناسبة للمادة ومراقبة جودة وسياسة إعادة العمل عند عدم الرضا. نُعامل مركبتك كأنها لنا.' },
         { question: 'كم مرة شهرياً يجب غسل مركبتي؟', answer: 'في الظروف الحضرية العادية، يكفي غسيل شامل كل 15 يوماً مع غسيل خارجي بينهما. في الظروف القاسية (ورشة، مسارات، طقس شديد الغبار)، يُوصى بزيارة أسبوعية.' },
         { question: 'هل يُتلف الغسيل بضغط عالٍ الهيكل؟', answer: 'لا، عند ضغط مُتحكَّم به ومسافة صحيحة. مشغّلونا مُدرَّبون. الضغط العالي الخاطئ قد يرفع الطلاء القديم: لذلك نفحص المركبة دائماً قبل البدء.' },
         { question: 'هل مقاعد القماش معرّضة للخطر مع الشامبو؟', answer: 'لا. نستخدم شامبو لطيفاً وفركاً خفيفاً ومكنسة استخراج تزيل الرطوبة. تجف المقاعد في ساعات بلا رائحة أو انكماش.' },
@@ -634,7 +634,7 @@ const CARWASH = {
       eyebrow: '服务简介',
       title: '为持久而设计的洗车，不只是为了闪亮。',
       paragraphs: [
-        'Taoman Group Investissement 为个人、企业车队和希望保持车辆价值的投资人提供高端洗车服务。每项服务均由经过培训的团队完成，配备专业设备和兼顾效果与车身保护的产品。',
+        'TAOMAN GROUP INVESTMENTS 为个人、企业车队和希望保持车辆价值的投资人提供高端洗车服务。每项服务均由经过培训的团队完成，配备专业设备和兼顾效果与车身保护的产品。',
         '我们的理念很简单：洗车不是开支，而是延长车身、座椅、地毯和灯具寿命的保养。定期保养的车辆更易转手、磨损更少，在日常或客户面前也更显专业。',
         '我们提供三种互补方案——内饰清洗、外观清洗和全面清洗——以及为无法到店的客户提供的上门服务。每种方案均有检查清单、明确时限和交车前的质量检验。',
       ],
@@ -653,7 +653,7 @@ const CARWASH = {
       eyebrow: '我们的流程', title: '从报价到交车，步步清晰',
       description: '每项服务遵循同样严谨的方法。不即兴。不意外。每位员工都熟悉自己的检查清单和操作顺序。',
       steps: [
-        { num: '01', title: '索取报价', desc: '填写表格或致电联系我们。我们记录车型、状况、紧急程度及希望的服务地点（Taoman Group Investissement 中心或上门）。' },
+        { num: '01', title: '索取报价', desc: '填写表格或致电联系我们。我们记录车型、状况、紧急程度及希望的服务地点（TAOMAN GROUP INVESTMENTS 中心或上门）。' },
         { num: '02', title: '确认与排期', desc: '我们确认最合适的方案，告知时段和预计时长。您将收到书面确认及服务范围明细。' },
         { num: '03', title: '接待与检查', desc: '到达后，负责人与您一起检查车辆，确定需特别护理的区域（旧渍、发黄塑料、极脏轮毂）并记录已有瑕疵。' },
         { num: '04', title: '按方案执行', desc: '团队按所选方案的检查清单操作。根据材料（皮革、Alcantara、织物、软塑料）选择产品，绝不损伤表面。' },
@@ -679,10 +679,10 @@ const CARWASH = {
       ],
     },
     location: {
-      eyebrow: '您希望在哪里洗车？', title: '上门洗车或 Taoman Group Investissement 中心：由您选择。',
+      eyebrow: '您希望在哪里洗车？', title: '上门洗车或 TAOMAN GROUP INVESTMENTS 中心：由您选择。',
       description: '两种方式各有优势。我们根据您的时间安排、水源和空间条件以及期望的服务水平帮您选择。',
       home: { title: '上门洗车', description: '团队携带独立设备（储水、吸尘器、产品）到您处。节省时间：无需出行和等待。适合家庭、企业主和外籍人士。', bullets: ['无需排队', '可在您监督下作业', '适合同时清洗 2 辆及以上', '按区域透明收取上门费'] },
-      center: { title: 'Taoman Group Investissement 洗车中心', description: '中心配备重型设备：工业高压、吸尘臂、有顶有光的工位。您在专属休息区等候车辆处理。', bullets: ['更强大的专业设备', '价格比上门更优惠', '舒适的等候区', '无需预约（视客流量）'] },
+      center: { title: 'TAOMAN GROUP INVESTMENTS 洗车中心', description: '中心配备重型设备：工业高压、吸尘臂、有顶有光的工位。您在专属休息区等候车辆处理。', bullets: ['更强大的专业设备', '价格比上门更优惠', '舒适的等候区', '无需预约（视客流量）'] },
     },
     form: {
       eyebrow: '索取报价', title: '2 分钟完成您的申请',
@@ -693,7 +693,7 @@ const CARWASH = {
       selectPlaceholder: '请选择',
       fields: {
         washType: { label: '清洗类型', options: ['内饰清洗', '外观清洗', '全面清洗'] },
-        wish: { label: '您希望', options: ['上门洗车', '在 Taoman Group Investissement 洗车中心'] },
+        wish: { label: '您希望', options: ['上门洗车', '在 TAOMAN GROUP INVESTMENTS 洗车中心'] },
         vehicleType: { label: '车型', options: ['微型车', '轿车', '紧凑型', 'SUV', '四驱', '厢式车', '摩托车'] },
         brand: { label: '品牌与型号', placeholder: '例：Toyota Corolla' },
         date: { label: '期望日期' }, time: { label: '期望时间' },
@@ -703,11 +703,11 @@ const CARWASH = {
         notes: { label: '补充说明', placeholder: '请说明车辆状况、优先处理区域、时间限制...' },
       },
     },
-    sidebar: { eyebrow: '为什么选择 Taoman Group Investissement？', title: '为车辆全生命周期而设计的服务', description: '我们不仅销售一次清洗：我们提供定期护理，保护车身、座舱和转售价值。', equipmentTitle: '专业设备', equipmentDesc: '可控高压、工业吸尘器、认证超细纤维手套、适配现代材料的产品。' },
+    sidebar: { eyebrow: '为什么选择 TAOMAN GROUP INVESTMENTS？', title: '为车辆全生命周期而设计的服务', description: '我们不仅销售一次清洗：我们提供定期护理，保护车身、座舱和转售价值。', equipmentTitle: '专业设备', equipmentDesc: '可控高压、工业吸尘器、认证超细纤维手套、适配现代材料的产品。' },
     faq: {
       eyebrow: '洗车常见问题', title: '您的问题，我们清晰的回答',
       items: [
-        { question: '普通洗车和 Taoman Group Investissement 洗车有何不同？', answer: '普通洗车往往只是水和泡沫。Taoman Group Investissement 洗车遵循检查清单、适配材料的产品、质量检验以及不满意免费返工政策。我们把您的车当作自己的车。' },
+        { question: '普通洗车和 TAOMAN GROUP INVESTMENTS 洗车有何不同？', answer: '普通洗车往往只是水和泡沫。TAOMAN GROUP INVESTMENTS 洗车遵循检查清单、适配材料的产品、质量检验以及不满意免费返工政策。我们把您的车当作自己的车。' },
         { question: '每月应洗车几次？', answer: '一般城市条件下，每 15 天全面清洗一次即可，其间辅以外观清洗。恶劣条件（工地、越野、极多尘天气）建议每周一次。' },
         { question: '高压清洗会损伤车身吗？', answer: '不会，在压力可控、距离正确的情况下。我们的操作员均受过培训。误用高压可能掀起旧漆或密封胶——因此我们总是在作业前检查车辆。' },
         { question: '织物座椅洗发有风险吗？', answer: '没有。我们使用温和洗发、轻刷和提取式吸尘器去除残留水分。座椅数小时内干燥，无异味无收缩。' },

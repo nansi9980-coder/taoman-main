@@ -61,13 +61,13 @@ const FALLBACK_SUBTITLE = {
 };
 
 const FALLBACK_KEYWORDS = {
-  FR: 'Taoman Group Investissement, Togo, investissement, services, déménagement, lavage auto, mécanique, transport, logistique, agro business, BTP, numérique',
-  EN: 'Taoman Group Investissement, Togo, investment, services, moving, car wash, mechanics, transport, logistics, agribusiness, construction, digital',
-  ES: 'Taoman Group Investissement, Togo, inversión, servicios, mudanza, lavado auto, mecánica, transporte, logística, agronegocio, construcción, digital',
-  PT: 'Taoman Group Investissement, Togo, investimento, serviços, mudanças, lavagem auto, mecânica, transporte, logística, agronegócio, construção, digital',
-  DE: 'Taoman Group Investissement, Togo, Investition, Dienstleistungen, Umzug, Autowäsche, Mechanik, Transport, Logistik, Agrobusiness, Bau, Digital',
+  FR: 'TAOMAN GROUP INVESTMENTS, Togo, investissement, services, déménagement, lavage auto, mécanique, transport, logistique, agro business, BTP, numérique',
+  EN: 'TAOMAN GROUP INVESTMENTS, Togo, investment, services, moving, car wash, mechanics, transport, logistics, agribusiness, construction, digital',
+  ES: 'TAOMAN GROUP INVESTMENTS, Togo, inversión, servicios, mudanza, lavado auto, mecánica, transporte, logística, agronegocio, construcción, digital',
+  PT: 'TAOMAN GROUP INVESTMENTS, Togo, investimento, serviços, mudanças, lavagem auto, mecânica, transporte, logística, agronegócio, construção, digital',
+  DE: 'TAOMAN GROUP INVESTMENTS, Togo, Investition, Dienstleistungen, Umzug, Autowäsche, Mechanik, Transport, Logistik, Agrobusiness, Bau, Digital',
   AR: 'تاومان، توغو، استثمار، خدمات، نقل، غسيل سيارات، ميكانيكا، نقل، لوجستيات، أعمال زراعية، بناء، رقمي',
-  ZH: 'Taoman Group Investissement, 多哥, 投资, 服务, 搬家, 洗车, 机械, 运输, 物流, 农业, 建筑, 数字',
+  ZH: 'TAOMAN GROUP INVESTMENTS, 多哥, 投资, 服务, 搬家, 洗车, 机械, 运输, 物流, 农业, 建筑, 数字',
 };
 
 const buildOrganizationLd = (taglineForLang) => ({

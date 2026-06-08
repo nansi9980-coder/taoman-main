@@ -240,7 +240,7 @@ export const InvestmentPage = () => {
       },
       {
         src: programmeImg,
-        alt: 'Programme Taoman Group Investissement',
+        alt: 'Programme TAOMAN GROUP INVESTMENTS',
         label: 'Programme TGI',
       },
     ],
@@ -390,7 +390,7 @@ export const InvestmentPage = () => {
         </section>
         </Reveal>
 
-        {/* Taoman Group Investissement Programmes : TGI + Simulateur */}
+        {/* TAOMAN GROUP INVESTMENTS Programmes : TGI + Simulateur */}
         <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
           <div className="mx-auto max-w-[1400px]">
             <Reveal preset="fadeUp">
@@ -546,7 +546,7 @@ export const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* Critères d'investissement Taoman Group Investissement */}
+        {/* Critères d'investissement TAOMAN GROUP INVESTMENTS */}
         <section id="criteres" className="scroll-mt-32 py-20 px-6">
           <div className="mx-auto max-w-[1200px]">
             <div className="text-center mb-12">
@@ -618,7 +618,7 @@ export const InvestmentPage = () => {
           </div>
         </section>
 
-        {/* Engagement Taoman Group Investissement */}
+        {/* Engagement TAOMAN GROUP INVESTMENTS */}
         <section className="bg-[#07111f] py-20 px-6 text-white">
           <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>

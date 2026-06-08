@@ -45,7 +45,7 @@ const FR = {
     'Autre (préciser)',
   ],
   sidebar: {
-    title: 'Pourquoi Taoman Group Investissement ?',
+    title: 'Pourquoi TAOMAN GROUP INVESTMENTS ?',
     intro:
       'Nous vous proposons une expérience client nouvelle basée sur des services techniques professionnels et de qualité.',
     items: [
@@ -106,7 +106,7 @@ const EN = {
     'Other (specify)',
   ],
   sidebar: {
-    title: 'Why Taoman Group Investissement?',
+    title: 'Why TAOMAN GROUP INVESTMENTS?',
     intro:
       'We offer a new customer experience based on professional, high-quality technical services.',
     items: [
