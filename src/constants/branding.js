@@ -31,3 +31,28 @@ export function getBrandTagline(languageCode = 'FR') {
   const code = String(languageCode || 'FR').toUpperCase();
   return code === 'FR' ? BRAND_TAGLINE.fr : BRAND_TAGLINE.en;
 }
+
+/** Anciennes dénominations à remplacer par BRAND_NAME dans le contenu CMS */
+const LEGACY_BRAND_REPLACEMENTS = [
+  [/TAOMAN\s+Groupe\s+Investissement/gi, BRAND_NAME],
+  [/Taoman\s+Groupe\s+Investissement/gi, BRAND_NAME],
+  [/TAOMAN\s+GROUP\s+INVESTISSEMENT/gi, BRAND_NAME],
+  [/Taoman\s+Group\s+Investissement/gi, BRAND_NAME],
+  [/Taoman\s+Group\s+Investments?/gi, BRAND_NAME],
+  [/TAOMAN\s+Groupe(?!\s+Investissement)/gi, BRAND_NAME],
+  [/Taoman\s+Groupe(?!\s+Investissement)/gi, BRAND_NAME],
+];
+
+export function normalizeBrandText(value) {
+  if (typeof value !== 'string' || !value) return value;
+  return LEGACY_BRAND_REPLACEMENTS.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), value);
+}
+
+export function normalizeBrandDeep(value) {
+  if (typeof value === 'string') return normalizeBrandText(value);
+  if (Array.isArray(value)) return value.map(normalizeBrandDeep);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, normalizeBrandDeep(v)]));
+  }
+  return value;
+}

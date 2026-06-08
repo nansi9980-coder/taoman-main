@@ -112,12 +112,15 @@ export const VideoHeroBackground = ({
     light: 'from-[#020d1a]/50 via-[#020d1a]/35 to-[#020d1a]/55',
     medium: 'from-[#020d1a]/65 via-[#020d1a]/45 to-[#020d1a]/70',
     strong: 'from-[#020d1a]/75 via-[#020d1a]/55 to-[#020d1a]/80',
+    max: 'from-[#020d1a]/88 via-[#020d1a]/78 to-[#020d1a]/90',
   };
   const overlayClass = overlayMap[overlayIntensity] || overlayMap.strong;
 
   const horizontalOverlay =
     overlayVariant === 'center'
-      ? 'from-[#020d1a]/80 via-[#020d1a]/60 to-[#020d1a]/80'
+      ? overlayIntensity === 'max'
+        ? 'from-[#020d1a]/92 via-[#020d1a]/82 to-[#020d1a]/92'
+        : 'from-[#020d1a]/80 via-[#020d1a]/60 to-[#020d1a]/80'
       : 'from-[#020d1a]/88 via-[#020d1a]/70 to-[#020d1a]/45';
 
   return (

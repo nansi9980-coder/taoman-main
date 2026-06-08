@@ -5,6 +5,7 @@
 import { getContentTranslations } from '../i18n/content';
 import { getServicesTranslations } from '../i18n/services';
 import { getFaqTranslations } from '../i18n/faq';
+import { normalizeBrandDeep } from '../constants/branding';
 import { getContactTranslations } from '../i18n/contact';
 import { getLocalizedCmsV2Default } from '../i18n/cms-legal-blocks';
 import { getCmsV2Default } from './cmsSectionDefaults';
@@ -301,7 +302,7 @@ export function resolveCmsForLanguage(rawContent, language, sectionKey) {
   const frResolved = applySectionPostProcess(sectionKey, frSource, 'FR');
 
   if (isFrenchLocale(lang)) {
-    return frResolved;
+    return normalizeBrandDeep(frResolved);
   }
 
   let textResolved;
@@ -317,5 +318,5 @@ export function resolveCmsForLanguage(rawContent, language, sectionKey) {
     }
   }
 
-  return inheritFrenchMedia(frResolved, textResolved, sectionKey);
+  return normalizeBrandDeep(inheritFrenchMedia(frResolved, textResolved, sectionKey));
 }

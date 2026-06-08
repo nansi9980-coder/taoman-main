@@ -158,7 +158,13 @@ export const EntretienBureauxPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisBureaux" i18nNamespace="office" />
+        <DevisPageHero
+          sectionKey="devisBureaux"
+          i18nNamespace="office"
+          useVideo={false}
+          photoSrc={BUREAUX_HERO_IMAGE}
+          highContrast
+        />
 
         {/* INTRO */}
         <section className="py-20 px-6 bg-surface">

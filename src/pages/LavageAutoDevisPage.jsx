@@ -23,6 +23,8 @@ import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getCarwashTranslations } from '../i18n/carwash';
 import lavage1 from '../assets/realisations/lavage1.jpg';
+
+const LAVAGE_HERO_IMAGE = '/images/lavage-auto-hero.png';
 import lavage2 from '../assets/realisations/lavage2.jpg';
 
 const FORMULA_ICONS = {
@@ -124,7 +126,13 @@ export const LavageAutoDevisPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisLavage" i18nNamespace="carwash" />
+        <DevisPageHero
+          sectionKey="devisLavage"
+          i18nNamespace="carwash"
+          useVideo={false}
+          photoSrc={LAVAGE_HERO_IMAGE}
+          highContrast
+        />
 
         {/* INTRO – Texte de contexte riche */}
         <section className="py-20 px-6 bg-surface">

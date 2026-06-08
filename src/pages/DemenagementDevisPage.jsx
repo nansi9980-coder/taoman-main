@@ -27,6 +27,8 @@ import { getDevisMovingTranslations } from '../i18n/devisMoving';
 import transport1 from '../assets/realisations/transport1.jpg';
 import transport2 from '../assets/realisations/transport2.jpg';
 
+const DEMENAGEMENT_HERO_IMAGE = '/images/demenagement-hero.png';
+
 const TYPE_ICONS = {
   particulier: <HomeIcon className="h-6 w-6" strokeWidth={2.2} />,
   entreprise: <Building2 className="h-6 w-6" strokeWidth={2.2} />,
@@ -145,7 +147,13 @@ export const DemenagementDevisPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisDemenagement" i18nNamespace="devisMoving" />
+        <DevisPageHero
+          sectionKey="devisDemenagement"
+          i18nNamespace="devisMoving"
+          useVideo={false}
+          photoSrc={DEMENAGEMENT_HERO_IMAGE}
+          highContrast
+        />
 
         {/* INTRO */}
         <section className="py-20 px-6 bg-surface">

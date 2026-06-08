@@ -13,7 +13,7 @@ import { VideoHeroBackground } from './VideoHeroBackground';
 /**
  * Hero premium pour pages devis — vidéo (ou photo en repli), particules, titre animé.
  */
-export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = true }) {
+export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = true, highContrast = false }) {
   const { section } = useSiteContent();
   const { translations: tc, language } = useLanguage();
   const hero = mergeCmsSection(sectionKey, section(sectionKey), language);
@@ -34,7 +34,7 @@ export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = 
           src={media.video}
           poster={media.poster || bgSrc}
           objectPosition={media.objectPosition || 'center center'}
-          overlayIntensity="strong"
+          overlayIntensity={highContrast ? 'max' : 'strong'}
           overlayVariant={media.overlayVariant || 'center'}
           fallbackSources={media.fallbackSources}
           playLabel={playLabel}
@@ -44,16 +44,22 @@ export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = 
           src={bgSrc}
           objectPosition={media?.objectPosition || '75% center'}
           overlayVariant={media?.overlayVariant || 'left'}
-          overlayIntensity="strong"
+          overlayIntensity={highContrast ? 'max' : 'strong'}
         />
       )}
-      <PremiumBackdrop variant="dark" intensity="soft" particles={16} showGrid={false} />
-      <FloatingDecor className="z-[2]" />
-      <AmbientEffects variant="hero" className="z-[2] opacity-60" />
+      <PremiumBackdrop variant="dark" intensity="soft" particles={highContrast ? 8 : 16} showGrid={false} />
+      <FloatingDecor className={`z-[2] ${highContrast ? 'opacity-40' : ''}`} />
+      <AmbientEffects variant="hero" className={`z-[2] ${highContrast ? 'opacity-35' : 'opacity-60'}`} />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto text-center w-full animate-fade-in-up [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
+      <div
+        className={`relative z-10 max-w-[1200px] mx-auto text-center w-full animate-fade-in-up ${
+          highContrast
+            ? 'max-w-4xl rounded-[2rem] border border-white/15 bg-[#020d1a]/55 px-6 py-10 shadow-2xl backdrop-blur-md md:px-12 md:py-12 [text-shadow:0_2px_16px_rgba(0,0,0,0.85)]'
+            : '[text-shadow:0_2px_24px_rgba(0,0,0,0.5)]'
+        }`}
+      >
         {eyebrow && (
-          <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">
+          <p className={`mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.35em] ${highContrast ? 'text-cyan-100' : 'text-cyan-200'}`}>
             {eyebrow}
           </p>
         )}
@@ -61,12 +67,16 @@ export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = 
           <TextReveal
             elementType="span"
             immediate
-            className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent text-shimmer-light"
+            className={
+              highContrast
+                ? 'block text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]'
+                : 'block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent text-shimmer-light'
+            }
             text={title}
           />
         </h1>
         {subtitle && (
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">{subtitle}</p>
+          <p className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${highContrast ? 'text-white' : 'text-white/90'}`}>{subtitle}</p>
         )}
         <div className="mt-8 flex justify-center">
           <span className="inline-flex h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-cyan-300 to-transparent animate-glow-pulse" />

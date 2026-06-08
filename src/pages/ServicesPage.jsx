@@ -35,10 +35,12 @@ import { useLanguage } from '../context/LanguageContext';
 import { getServicesTranslations } from '../i18n/services';
 import lavageCard from '../assets/realisations/lavage1.jpg';
 import lavageCard2 from '../assets/realisations/lavage2.jpg';
-import demenagementCard from '../assets/realisations/transport2.jpg';
-import transportCard from '../assets/realisations/transport1.jpg';
 
 const BUREAUX_CARD_IMAGE = '/images/entretien-bureaux-hero.png';
+const LAVAGE_CARD_IMAGE = '/images/lavage-auto-hero.png';
+const TRANSPORT_CARD_IMAGE = '/images/transport-livraison-hero.png';
+const DEMENAGEMENT_CARD_IMAGE = '/images/demenagement-hero.png';
+const AUDIT_CARD_IMAGE = '/images/audit-reporting-hero.png';
 import { mergeServicesPageHeroSlides } from '../data/services-page-hero-defaults';
 import { mergeOperationalServices } from '../data/operational-services-defaults';
 import { pickLocale, pickLocaleList } from '../utils/pickLocale';
@@ -73,19 +75,19 @@ const SERVICE_ID_TO_HREF = {
 };
 const SERVICE_ID_TO_IMAGE = {};
 
-SERVICE_ID_TO_IMAGE.lavage = lavageCard;
-SERVICE_ID_TO_IMAGE.demenagement = demenagementCard;
+SERVICE_ID_TO_IMAGE.lavage = LAVAGE_CARD_IMAGE;
+SERVICE_ID_TO_IMAGE.demenagement = DEMENAGEMENT_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE['entretien-bureaux'] = BUREAUX_CARD_IMAGE;
-SERVICE_ID_TO_IMAGE.transport = transportCard;
+SERVICE_ID_TO_IMAGE.transport = TRANSPORT_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE.climatisation = lavageCard2;
 SERVICE_ID_TO_IMAGE.conciergerie = lavageCard2;
-SERVICE_ID_TO_IMAGE.audits = BUREAUX_CARD_IMAGE;
+SERVICE_ID_TO_IMAGE.audits = AUDIT_CARD_IMAGE;
 
 const HERO_SLIDES_FALLBACK = {
-  'lavage-1': { src: lavageCard, alt: '' },
+  'lavage-1': { src: LAVAGE_CARD_IMAGE, alt: '' },
   'lavage-2': { src: lavageCard2, alt: '' },
-  demenagement: { src: demenagementCard, alt: '' },
-  transport: { src: transportCard, alt: '' },
+  demenagement: { src: DEMENAGEMENT_CARD_IMAGE, alt: '' },
+  transport: { src: TRANSPORT_CARD_IMAGE, alt: '' },
   equipe: { src: BUREAUX_CARD_IMAGE, alt: '' },
 };
 

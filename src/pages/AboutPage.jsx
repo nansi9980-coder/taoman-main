@@ -94,10 +94,10 @@ export const AboutPage = () => {
   const raw = section('about') || {};
   const d = DEFAULT_ABOUT;
 
-  const title = pickLocale(language, raw.title, tAbout.title || d.title);
-  const description = pickLocale(language, raw.description || raw.subtitle, tAbout.description || d.description);
-  const mission = pickLocale(language, raw.mission, tAbout.mission?.body || d.mission);
-  const vision = pickLocale(language, raw.vision, tAbout.vision?.body || d.vision);
+  const title = pickLocale(language, raw.title, tAbout.title || d.title) || tAbout.title || d.title;
+  const description = pickLocale(language, raw.description || raw.subtitle, tAbout.description || d.description) || tAbout.description || d.description;
+  const mission = pickLocale(language, raw.mission, tAbout.mission?.body || d.mission) || tAbout.mission?.body || d.mission;
+  const vision = pickLocale(language, raw.vision, tAbout.vision?.body || d.vision) || tAbout.vision?.body || d.vision;
   const heroHighlights = pickLocale(language, raw.heroHighlights, tAbout.hero?.highlights) || d.heroHighlights;
   const values =
     pickLocale(language, raw.values, tAbout.values?.items) || d.values;

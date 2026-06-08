@@ -8,6 +8,8 @@ import { Reveal } from '../components/Reveal';
 import { useLanguage } from '../context/LanguageContext';
 import { getServicesTranslations } from '../i18n/services';
 
+const TRANSPORT_HERO_IMAGE = '/images/transport-livraison-hero.png';
+
 export const TransportDevisPage = () => {
   const { language, translations: tc } = useLanguage();
   const tSeo = tc?.transport || {};
@@ -26,7 +28,13 @@ export const TransportDevisPage = () => {
       <Header activeLink="services" />
 
       <main className="flex-grow pt-24">
-        <DevisPageHero sectionKey="devisTransport" i18nNamespace="transport" />
+        <DevisPageHero
+          sectionKey="devisTransport"
+          i18nNamespace="transport"
+          useVideo={false}
+          photoSrc={TRANSPORT_HERO_IMAGE}
+          highContrast
+        />
 
         <section className="py-20 px-6">
           <div className="max-w-[1200px] mx-auto grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
