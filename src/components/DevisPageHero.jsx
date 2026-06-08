@@ -5,7 +5,6 @@ import { pickLocale } from '../utils/pickLocale';
 import { FloatingDecor } from './FloatingDecor';
 import { AmbientEffects } from './AmbientEffects';
 import { TextReveal } from './TextReveal';
-import { PremiumBackdrop } from './PremiumBackdrop';
 import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 import { PhotoHeroBackground } from './PhotoHeroBackground';
 import { VideoHeroBackground } from './VideoHeroBackground';
@@ -26,6 +25,8 @@ export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = 
   const playLabel = tc?.common?.playVideo || 'Lancer la vidéo';
   const bgSrc = photoSrc || media?.poster || HERO_MEDIA_SPECS.services.src;
   const showVideo = useVideo && media?.video;
+  // Panneau texte sombre : overlay photo allégé pour laisser voir l'image de fond.
+  const photoOverlay = highContrast ? 'medium' : 'strong';
 
   return (
     <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
@@ -42,12 +43,11 @@ export function DevisPageHero({ sectionKey, i18nNamespace, photoSrc, useVideo = 
       ) : (
         <PhotoHeroBackground
           src={bgSrc}
-          objectPosition={media?.objectPosition || '75% center'}
-          overlayVariant={media?.overlayVariant || 'left'}
-          overlayIntensity={highContrast ? 'max' : 'strong'}
+          objectPosition={media?.objectPosition || 'center center'}
+          overlayVariant={media?.overlayVariant || 'center'}
+          overlayIntensity={photoOverlay}
         />
       )}
-      <PremiumBackdrop variant="dark" intensity="soft" particles={highContrast ? 8 : 16} showGrid={false} />
       <FloatingDecor className={`z-[2] ${highContrast ? 'opacity-40' : ''}`} />
       <AmbientEffects variant="hero" className={`z-[2] ${highContrast ? 'opacity-35' : 'opacity-60'}`} />
 
