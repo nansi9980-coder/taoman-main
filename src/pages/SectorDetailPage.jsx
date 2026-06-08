@@ -43,8 +43,6 @@ import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { ClipReveal } from '../components/ClipReveal';
 import { TextReveal } from '../components/TextReveal';
-import { FloatingDecor } from '../components/FloatingDecor';
-import { AmbientEffects } from '../components/AmbientEffects';
 import { MagneticButton } from '../components/MagneticButton';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { BRAND_NAME } from '../constants/branding';
@@ -161,20 +159,18 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         </nav>
 
         {/* HERO */}
-        <section className="relative overflow-hidden py-20 px-6 text-white hero-scan-line min-h-[42vh] md:min-h-[48vh] flex items-center">
+        <section className="relative overflow-hidden py-20 px-6 text-white min-h-[42vh] md:min-h-[48vh] flex items-center">
           {sectorVideo?.video && (
             <VideoHeroBackground
               src={sectorVideo.video}
               poster={sector.image}
               objectPosition={sectorVideo.objectPosition || 'center center'}
-              overlayIntensity="medium"
               overlayVariant={sectorVideo.overlayVariant || 'left'}
               fallbackSources={[sectorVideo.video]}
               playLabel={playLabel}
+              clearBackground
             />
           )}
-          <FloatingDecor className="z-[2] opacity-40" />
-          <AmbientEffects variant="hero" className="z-[2] opacity-30" />
 
           <div className="relative z-10 max-w-[1200px] mx-auto w-full grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
             <div>

@@ -88,15 +88,15 @@ export const TaoEconomicInvestmentPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-24 px-6 text-white hero-scan-line">
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-24 px-6 text-white">
           <VideoHeroBackground
             src={HERO_MEDIA_SPECS.tgi.video}
             poster={HERO_MEDIA_SPECS.tgi.poster}
             objectPosition={HERO_MEDIA_SPECS.tgi.objectPosition}
-            overlayIntensity="medium"
             overlayVariant={HERO_MEDIA_SPECS.tgi.overlayVariant}
             fallbackSources={[HERO_MEDIA_SPECS.tgi.video]}
             playLabel={tCommon.playVideo || 'Lancer la vidéo'}
+            clearBackground
           />
 
           <div className="relative z-10 max-w-[1200px] mx-auto text-center animate-fade-in-up [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">

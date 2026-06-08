@@ -23,7 +23,6 @@ import { getInvestmentFaq } from '../i18n/investment-faq';
 import { getInvestPageCopy } from '../i18n/investPage';
 import { VideoHeroBackground } from '../components/VideoHeroBackground';
 import { AnimatedProgressBars } from '../components/AnimatedProgressBars';
-import { FloatingDecor } from '../components/FloatingDecor';
 import { MarqueeTicker } from '../components/MarqueeTicker';
 import { TextReveal } from '../components/TextReveal';
 import { BRAND_NAME } from '../constants/branding';
@@ -297,17 +296,16 @@ export const InvestmentPage = () => {
       <Header activeLink="investissement" />
 
       <main id="main-content" className="flex-grow">
-        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white hero-scan-line">
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-20 px-6 text-white">
           <VideoHeroBackground
             src={HERO_MEDIA_SPECS.investment.video}
             poster={HERO_MEDIA_SPECS.investment.poster}
             objectPosition={HERO_MEDIA_SPECS.investment.objectPosition}
-            overlayIntensity="medium"
             overlayVariant={HERO_MEDIA_SPECS.investment.overlayVariant}
             fallbackSources={[HERO_MEDIA_SPECS.investment.video]}
             playLabel={tCommon.playVideo || 'Lancer la vidéo'}
+            clearBackground
           />
-          <FloatingDecor className="z-[2] opacity-40" />
           <div className="relative z-10 mx-auto max-w-[1100px] text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{badge}</p>
             <h1 className="mb-6 text-4xl md:text-7xl font-black tracking-[-0.05em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">

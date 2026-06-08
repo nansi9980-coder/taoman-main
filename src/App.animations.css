@@ -263,6 +263,10 @@
   display: block;
 }
 
+.hero-video-layer--clear {
+  filter: brightness(1.06) contrast(1.04) saturate(1.05);
+}
+
 .hero-video-playing {
   animation: heroKenBurns 22s ease-in-out infinite alternate;
 }

@@ -16,6 +16,8 @@ export const VideoHeroBackground = ({
   overlayVariant = 'left',
   fallbackSources = DEFAULT_SOURCES,
   playLabel = 'Lancer la vidéo',
+  /** Vidéo nette : pas de grain/vignette/orbes bleus, overlay très léger */
+  clearBackground = false,
 }) => {
   const videoRef = useRef(null);
   const sources = fallbackSources?.length ? fallbackSources : [src];
@@ -109,18 +111,25 @@ export const VideoHeroBackground = ({
   };
 
   const overlayMap = {
-    light: 'from-[#020d1a]/50 via-[#020d1a]/35 to-[#020d1a]/55',
+    subtle: 'from-[#020d1a]/12 via-transparent to-[#020d1a]/20',
+    light: 'from-[#020d1a]/30 via-[#020d1a]/12 to-[#020d1a]/35',
     medium: 'from-[#020d1a]/65 via-[#020d1a]/45 to-[#020d1a]/70',
     strong: 'from-[#020d1a]/75 via-[#020d1a]/55 to-[#020d1a]/80',
     max: 'from-[#020d1a]/88 via-[#020d1a]/78 to-[#020d1a]/90',
   };
-  const overlayClass = overlayMap[overlayIntensity] || overlayMap.strong;
+  const effectiveIntensity = clearBackground ? 'subtle' : overlayIntensity;
+  const overlayClass = overlayMap[effectiveIntensity] || overlayMap.strong;
 
-  const horizontalOverlay =
-    overlayVariant === 'center'
+  const horizontalOverlay = clearBackground
+    ? overlayVariant === 'left'
+      ? 'from-[#020d1a]/50 via-[#020d1a]/12 to-transparent'
+      : 'from-transparent via-transparent to-transparent'
+    : overlayVariant === 'center'
       ? overlayIntensity === 'max'
         ? 'from-[#020d1a]/92 via-[#020d1a]/82 to-[#020d1a]/92'
-        : 'from-[#020d1a]/80 via-[#020d1a]/60 to-[#020d1a]/80'
+        : overlayIntensity === 'light' || overlayIntensity === 'subtle'
+          ? 'from-[#020d1a]/25 via-transparent to-[#020d1a]/25'
+          : 'from-[#020d1a]/80 via-[#020d1a]/60 to-[#020d1a]/80'
       : 'from-[#020d1a]/88 via-[#020d1a]/70 to-[#020d1a]/45';
 
   return (
@@ -141,7 +150,7 @@ export const VideoHeroBackground = ({
         <video
           ref={videoRef}
           src={currentSrc}
-          className="absolute inset-0 z-[1] h-full w-full object-cover hero-video-layer"
+          className={`absolute inset-0 z-[1] h-full w-full object-cover hero-video-layer${clearBackground ? ' hero-video-layer--clear' : ''}`}
           style={{ objectPosition }}
           poster={poster}
           muted
@@ -155,16 +164,25 @@ export const VideoHeroBackground = ({
         />
       )}
 
-      <div className="hero-video-grain z-[2]" />
-      <div className="hero-video-vignette z-[2]" />
-      <div className="scan-line-effect z-[2]" />
-      <div className="hero-video-orb hero-video-orb-a z-[2]" />
-      <div className="hero-video-orb hero-video-orb-b z-[2]" />
+      {!clearBackground && (
+        <>
+          <div className="hero-video-grain z-[2]" />
+          <div className="hero-video-vignette z-[2]" />
+          <div className="scan-line-effect z-[2]" />
+          <div className="hero-video-orb hero-video-orb-a z-[2]" />
+          <div className="hero-video-orb hero-video-orb-b z-[2]" />
+        </>
+      )}
 
       {overlay && (
         <>
           <div className={`absolute inset-0 z-[3] bg-gradient-to-br ${overlayClass} pointer-events-none`} />
-          <div className={`absolute inset-0 z-[3] bg-gradient-to-r ${horizontalOverlay} pointer-events-none`} />
+          {horizontalOverlay !== 'from-transparent via-transparent to-transparent' && (
+            <div className={`absolute inset-0 z-[3] bg-gradient-to-r ${horizontalOverlay} pointer-events-none`} />
+          )}
+          {clearBackground && overlayVariant === 'center' && (
+            <div className="absolute inset-0 z-[3] bg-gradient-to-t from-[#020d1a]/35 via-transparent to-transparent pointer-events-none" />
+          )}
         </>
       )}
 
