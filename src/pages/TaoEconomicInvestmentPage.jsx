@@ -27,6 +27,8 @@ import { resolveInvestmentTgiSection } from '../utils/siteContent';
 import { SeoHead, buildBreadcrumb } from '../components/SeoHead';
 import { Reveal } from '../components/Reveal';
 import { getTgiPageContent } from '../i18n/tgi-page';
+import { VideoHeroBackground } from '../components/VideoHeroBackground';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 
 const STAT_ICONS = [Wallet, TrendingUp, Clock, Target];
 const PILLAR_ICONS = [LineChart, HeartHandshake, Target];
@@ -86,23 +88,26 @@ export const TaoEconomicInvestmentPage = () => {
 
       <main id="main-content" className="flex-grow pt-24">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden bg-[#07111f] py-24 px-6 text-white">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(0,82,204,0.45),transparent_45%),radial-gradient(circle_at_85%_80%,rgba(34,211,238,0.28),transparent_45%)]" />
-            <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-blob" />
-            <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl animate-blob-delay" />
-            <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:48px_48px]" />
-          </div>
+        <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-24 px-6 text-white hero-scan-line">
+          <VideoHeroBackground
+            src={HERO_MEDIA_SPECS.tgi.video}
+            poster={HERO_MEDIA_SPECS.tgi.poster}
+            objectPosition={HERO_MEDIA_SPECS.tgi.objectPosition}
+            overlayIntensity="medium"
+            overlayVariant={HERO_MEDIA_SPECS.tgi.overlayVariant}
+            fallbackSources={[HERO_MEDIA_SPECS.tgi.video]}
+            playLabel={tCommon.playVideo || 'Lancer la vidéo'}
+          />
 
-          <div className="relative z-10 max-w-[1200px] mx-auto text-center animate-fade-in-up">
+          <div className="relative z-10 max-w-[1200px] mx-auto text-center animate-fade-in-up [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
               <Sparkles className="h-4 w-4" /> {tT.hero?.badge || "Programme d'investissement TGI"}
             </span>
-            <h1 className="text-5xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
               {heroTitle}
             </h1>
-            <h2 className="text-2xl md:text-3xl font-bold text-white/90 mb-6">{heroSubtitle}</h2>
-            <p className="text-lg md:text-xl text-white/75 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">{heroSubtitle}</h2>
+            <p className="text-lg md:text-xl text-white max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               {heroDescription}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">

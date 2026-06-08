@@ -28,9 +28,18 @@ export const HERO_MEDIA_SPECS = {
   },
   investment: {
     src: '/images/investissements.jpg',
-    objectPosition: 'center 35%',
+    video: '/video/investsment.mp4',
+    poster: '/images/investissements.jpg',
+    objectPosition: 'center center',
     overlayVariant: 'center',
-    export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 350, note: 'Sujet centré' },
+    export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '15-30', note: 'Hero investissement' },
+  },
+  tgi: {
+    video: '/video/programmeTGI.mp4',
+    poster: '/images/programme-tgi-poster.jpeg',
+    objectPosition: 'center center',
+    overlayVariant: 'center',
+    export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '15-30', note: 'Hero programme TGI' },
   },
   services: {
     src: '/images/services.jpg',
