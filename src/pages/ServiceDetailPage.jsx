@@ -72,6 +72,7 @@ export const ServiceDetailPage = () => {
     if (title.includes('déménagement') || title.includes('demenagement')) return '/demenagement/devis';
     if (title.includes('climatisation')) return '/entretien/climatisation';
     if (title.includes('bureaux')) return '/entretien/bureaux';
+    if (title.includes('transport')) return '/transport/devis';
     return '/contact';
   };
 

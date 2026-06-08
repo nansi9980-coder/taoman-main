@@ -48,7 +48,7 @@ export const OPERATIONAL_SERVICE_TEMPLATES = [
     sla: 'Lomé & sous-région',
     priceFrom: 'Tarifs km',
     bullets: ['Livraison du dernier kilomètre à Lomé', 'Transport B2B vers Cotonou, Accra, Ouaga', 'Suivi GPS et confirmation de livraison'],
-    href: '/contact?topic=info&service=transport',
+    href: '/transport/devis',
     imageUrl: '',
     published: true,
   },

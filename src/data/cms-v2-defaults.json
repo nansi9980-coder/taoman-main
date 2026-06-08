@@ -172,5 +172,9 @@
   "devisClimatisation": {
     "title": "Obtenez votre devis gratuit pour l'entretien de climatisation !",
     "subtitle": "Installation, réparation et maintenance de systèmes de climatisation professionnels"
+  },
+  "devisTransport": {
+    "title": "Demandez votre devis transport & livraison",
+    "subtitle": "Flotte professionnelle, suivi GPS et livraison Lomé – sous-région CEDEAO"
   }
 }

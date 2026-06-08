@@ -72,6 +72,14 @@ export const HERO_MEDIA_SPECS = {
       fallbackSources: ['/video/Hero2.mp4', '/video/Hero.mp4'],
       export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '10-20', note: 'Climatisation / technique' },
     },
+    devisTransport: {
+      video: '/video/transport.mp4',
+      poster: '/realisations/transport1.jpg',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      fallbackSources: ['/video/transport.mp4', '/video/Hero.mp4'],
+      export: { width: 1920, height: 1080, format: 'MP4 H.264', maxSizeMB: 8, durationSec: '15-25', note: 'Transport / livraison / logistique' },
+    },
   },
   projects: {
     src: '/images/projet.jpg',

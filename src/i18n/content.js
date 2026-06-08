@@ -396,6 +396,11 @@ const CONTENT = {
       seoDescription: 'Entretien et installation de climatisation par TAOMAN GROUP INVESTMENTS : techniciens certifiés, contrats annuels et dépannage rapide au Togo.',
       hero: { eyebrow: 'Climatisation', title: 'Devis entretien et installation de climatisation', description: "Techniciens certifiés, contrats annuels, dépannage rapide et installation neuve, à Lomé et dans toute la sous-région." },
     },
+    transport: {
+      seoDescription: 'Devis transport et livraison TAOMAN GROUP INVESTMENTS : flotte camions, fourgons, utilitaires, livraison dernier kilomètre et transport B2B CEDEAO.',
+      hero: { eyebrow: 'Transport & livraison', title: 'Demandez votre devis transport & livraison', description: 'Flotte professionnelle, suivi GPS et livraison Lomé – sous-région CEDEAO.' },
+      ctaContact: 'Demander un devis',
+    },
     jobs: {
       seoDescription: 'Carrières TAOMAN GROUP INVESTMENTS : rejoignez nos équipes terrain, financières et opérationnelles au Togo.',
       hero: { eyebrow: 'Carrières', title: 'Rejoignez les équipes TAOMAN GROUP INVESTMENTS', description: "Découvrez les opportunités pour contribuer à un projet à impact économique réel pour le Togo." },
@@ -842,6 +847,11 @@ const CONTENT = {
       seoDescription: 'TAOMAN GROUP INVESTMENTS air conditioning maintenance and installation: certified technicians, annual contracts and fast repair in Togo.',
       hero: { eyebrow: 'Air conditioning', title: 'Air conditioning maintenance and installation quote', description: 'Certified technicians, annual contracts, fast repair and new installations, in Lomé and across the sub-region.' },
     },
+    transport: {
+      seoDescription: 'TAOMAN GROUP INVESTMENTS transport and delivery quote: truck fleet, vans, last-mile delivery and ECOWAS B2B freight.',
+      hero: { eyebrow: 'Transport & delivery', title: 'Request your transport & delivery quote', description: 'Professional fleet, GPS tracking and delivery across Lomé and the ECOWAS sub-region.' },
+      ctaContact: 'Request a quote',
+    },
     jobs: {
       seoDescription: 'TAOMAN GROUP INVESTMENTS careers: join our field, finance and operations teams in Togo.',
       hero: { eyebrow: 'Careers', title: 'Join the TAOMAN GROUP INVESTMENTS teams', description: 'Discover opportunities to contribute to a project with real economic impact for Togo.' },
@@ -1210,6 +1220,11 @@ const CONTENT = {
       seoDescription: 'Mantenimiento e instalación de climatización TAOMAN GROUP INVESTMENTS: técnicos certificados, contratos anuales y reparación rápida en Togo.',
       hero: { eyebrow: 'Climatización', title: 'Presupuesto de mantenimiento e instalación de climatización', description: 'Técnicos certificados, contratos anuales, reparación rápida e instalación nueva, en Lomé y en toda la subregión.' },
     },
+    transport: {
+      seoDescription: 'Presupuesto de transporte y entrega TAOMAN GROUP INVESTMENTS: flota de camiones, furgonetas, última milla y transporte B2B CEDEAO.',
+      hero: { eyebrow: 'Transporte y entrega', title: 'Solicite su presupuesto de transporte y entrega', description: 'Flota profesional, seguimiento GPS y entrega en Lomé y la subregión CEDEAO.' },
+      ctaContact: 'Solicitar presupuesto',
+    },
     jobs: {
       seoDescription: 'Carreras TAOMAN GROUP INVESTMENTS: únase a nuestros equipos de campo, financieros y operativos en Togo.',
       hero: { eyebrow: 'Carreras', title: 'Únase a los equipos TAOMAN GROUP INVESTMENTS', description: 'Descubra oportunidades para contribuir a un proyecto con impacto económico real en Togo.' },
@@ -1568,6 +1583,11 @@ const CONTENT = {
     aircon: {
       seoDescription: 'Manutenção e instalação de ar condicionado TAOMAN GROUP INVESTMENTS: técnicos certificados, contratos anuais e reparação rápida no Togo.',
       hero: { eyebrow: 'Ar condicionado', title: 'Orçamento de manutenção e instalação de ar condicionado', description: 'Técnicos certificados, contratos anuais, reparação rápida e instalação nova, em Lomé e em toda a sub-região.' },
+    },
+    transport: {
+      seoDescription: 'Orçamento de transporte e entrega TAOMAN GROUP INVESTMENTS: frota de camiões, carrinhas, última milha e transporte B2B CEDEAO.',
+      hero: { eyebrow: 'Transporte e entrega', title: 'Peça o seu orçamento de transporte e entrega', description: 'Frota profissional, rastreio GPS e entrega em Lomé e na sub-região CEDEAO.' },
+      ctaContact: 'Pedir orçamento',
     },
     jobs: {
       seoDescription: 'Carreiras TAOMAN GROUP INVESTMENTS: junte-se às nossas equipas de campo, financeiras e operacionais no Togo.',
@@ -1928,6 +1948,11 @@ const CONTENT = {
       seoDescription: 'TAOMAN GROUP INVESTMENTS Klimaanlagen-Wartung und -Installation: zertifizierte Techniker, Jahresverträge und schnelle Reparatur in Togo.',
       hero: { eyebrow: 'Klimaanlage', title: 'Angebot für Klimaanlagenwartung und -installation', description: 'Zertifizierte Techniker, Jahresverträge, schnelle Reparatur und Neuinstallation in Lomé und in der gesamten Subregion.' },
     },
+    transport: {
+      seoDescription: 'TAOMAN GROUP INVESTMENTS Transport- und Lieferangebot: Lkw-Flotte, Transporter, Last-Mile-Lieferung und ECOWAS-B2B-Fracht.',
+      hero: { eyebrow: 'Transport & Lieferung', title: 'Fordern Sie Ihr Transport- und Lieferangebot an', description: 'Professionelle Flotte, GPS-Tracking und Lieferung in Lomé und der ECOWAS-Subregion.' },
+      ctaContact: 'Angebot anfordern',
+    },
     jobs: {
       seoDescription: 'Karriere bei TAOMAN GROUP INVESTMENTS: Treten Sie unseren Vor-Ort-, Finanz- und Operations-Teams in Togo bei.',
       hero: { eyebrow: 'Karriere', title: 'Treten Sie den TAOMAN GROUP INVESTMENTS-Teams bei', description: 'Entdecken Sie Möglichkeiten, zu einem Projekt mit echter wirtschaftlicher Wirkung für Togo beizutragen.' },
@@ -2287,6 +2312,11 @@ const CONTENT = {
       seoDescription: 'صيانة وتركيب التكييف TAOMAN GROUP INVESTMENTS: فنيون معتمدون، عقود سنوية وإصلاح سريع في توغو.',
       hero: { eyebrow: 'التكييف', title: 'عرض صيانة وتركيب التكييف', description: 'فنيون معتمدون، عقود سنوية، إصلاح سريع وتركيبات جديدة، في لومي وفي جميع أنحاء المنطقة الفرعية.' },
     },
+    transport: {
+      seoDescription: 'عرض النقل والتوصيل TAOMAN GROUP INVESTMENTS: أسطول شاحنات وفانات، الميل الأخير ونقل B2B في CEDEAO.',
+      hero: { eyebrow: 'النقل والتوصيل', title: 'اطلب عرض النقل والتوصيل', description: 'أسطول احترافي، تتبع GPS وتوصيل في لومي ومنطقة CEDEAO.' },
+      ctaContact: 'طلب عرض',
+    },
     jobs: {
       seoDescription: 'وظائف TAOMAN GROUP INVESTMENTS: انضم إلى فرقنا الميدانية والمالية والتشغيلية في توغو.',
       hero: { eyebrow: 'الوظائف', title: 'انضم إلى فرق TAOMAN GROUP INVESTMENTS', description: 'اكتشف الفرص للمساهمة في مشروع له تأثير اقتصادي حقيقي على توغو.' },
@@ -2645,6 +2675,11 @@ const CONTENT = {
     aircon: {
       seoDescription: 'TAOMAN GROUP INVESTMENTS空调维护和安装：认证技师、年度合同和多哥的快速维修。',
       hero: { eyebrow: '空调', title: '空调维护和安装报价', description: '认证技师、年度合同、快速维修和新安装，在洛美及整个次区域。' },
+    },
+    transport: {
+      seoDescription: 'TAOMAN GROUP INVESTMENTS运输与配送报价：卡车车队、厢式车、最后一公里及西非经共体 B2B 货运。',
+      hero: { eyebrow: '运输与配送', title: '索取运输与配送报价', description: '专业车队、GPS 跟踪，覆盖洛美及西非经共体次区域。' },
+      ctaContact: '索取报价',
     },
     jobs: {
       seoDescription: 'TAOMAN GROUP INVESTMENTS职业：加入我们在多哥的现场、财务和运营团队。',

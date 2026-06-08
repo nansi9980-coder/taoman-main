@@ -30,6 +30,7 @@ const DemenagementDevisPage = lazy(() => import('./pages/DemenagementDevisPage')
 const DemenagementPersonnelsPage = lazy(() => import('./pages/DemenagementPersonnelsPage').then((m) => ({ default: m.DemenagementPersonnelsPage })));
 const EntretienBureauxPage = lazy(() => import('./pages/EntretienBureauxPage').then((m) => ({ default: m.EntretienBureauxPage })));
 const EntretienClimatisationPage = lazy(() => import('./pages/EntretienClimatisationPage').then((m) => ({ default: m.EntretienClimatisationPage })));
+const TransportDevisPage = lazy(() => import('./pages/TransportDevisPage').then((m) => ({ default: m.TransportDevisPage })));
 const PasswordResetPage = lazy(() => import('./pages/PasswordResetPage').then((m) => ({ default: m.PasswordResetPage })));
 const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage').then((m) => ({ default: m.TermsConditionsPage })));
 const TaoEconomicInvestmentPage = lazy(() => import('./pages/TaoEconomicInvestmentPage').then((m) => ({ default: m.TaoEconomicInvestmentPage })));
@@ -124,6 +125,7 @@ function App() {
                 <Route path="/demenagement/devis" element={<DemenagementDevisPage />} />
                 <Route path="/entretien/bureaux" element={<EntretienBureauxPage />} />
                 <Route path="/entretien/climatisation" element={<EntretienClimatisationPage />} />
+                <Route path="/transport/devis" element={<TransportDevisPage />} />
                 <Route path="/demenagement/personnels" element={<DemenagementPersonnelsPage />} />
 
                 {/* Authentification */}

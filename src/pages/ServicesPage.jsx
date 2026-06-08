@@ -66,7 +66,7 @@ const SERVICE_ID_TO_HREF = {
   lavage: '/lavage-auto/devis',
   demenagement: '/demenagement/devis',
   'entretien-bureaux': '/entretien/bureaux',
-  transport: '/contact?topic=info&service=transport',
+  transport: '/transport/devis',
   climatisation: '/contact?topic=info&service=climatisation',
   conciergerie: '/contact?topic=info&service=conciergerie',
   audits: '/contact?topic=info&service=audit',

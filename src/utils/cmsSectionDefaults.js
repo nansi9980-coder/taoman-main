@@ -11,6 +11,7 @@ export const CMS_V2_KEYS = [
   'devisDemenagement',
   'devisBureaux',
   'devisClimatisation',
+  'devisTransport',
 ];
 
 export function getCmsV2Default(key) {

@@ -275,6 +275,7 @@ export function getSectionI18nFallback(sectionKey, language) {
     case 'devisDemenagement':
     case 'devisBureaux':
     case 'devisClimatisation':
+    case 'devisTransport':
       raw = legalBlockFromI18n(t, sectionKey, lang);
       break;
     case 'cta':
