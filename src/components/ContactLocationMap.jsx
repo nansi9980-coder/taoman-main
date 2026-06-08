@@ -7,9 +7,7 @@ import {
 } from '../constants/contactLocation';
 
 /**
- * ContactLocationMap — carte Google Maps agrandie + i18n.
- * Hauteur : 480px desktop / 320px mobile (vs 200px avant).
- * Ajout d'un bandeau d'infos visuelles au-dessus de la carte.
+ * ContactLocationMap — carte Google Maps intégrée + lien externe.
  */
 export const ContactLocationMap = ({ contactInfo = {}, labels = {} }) => {
   const { translations: t } = useLanguage();
@@ -70,19 +68,7 @@ export const ContactLocationMap = ({ contactInfo = {}, labels = {} }) => {
             </a>
           </div>
 
-          {/* Carte stylisée Lomé */}
-          <div className="stylized-map" aria-hidden="true">
-            <div className="stylized-map__grid" />
-            <div className="stylized-map__pin">
-              <div className="stylized-map__pin-dot" />
-              <div className="stylized-map__pin-pulse" />
-            </div>
-            <p className="absolute bottom-4 left-6 text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-              Lomé · Togo
-            </p>
-          </div>
-
-          {/* Iframe agrandie */}
+          {/* Carte Google Maps */}
           <iframe
             title={mapTitle}
             src={googleMapsEmbedUrl(lat, lng)}
