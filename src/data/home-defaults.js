@@ -1,4 +1,5 @@
 import { BRAND_NAME } from '../constants/branding';
+import { MOVING_PERSONNEL_FLEET_ENABLED } from '../constants/serviceVisibility';
 
 export const DEFAULT_QUICK_ACCESS = {
   eyebrow: 'Accès rapide',
@@ -9,7 +10,9 @@ export const DEFAULT_QUICK_ACCESS = {
     { label: 'Lavage Auto', href: '/lavage-auto/devis' },
     { label: 'Déménagement', href: '/demenagement/devis' },
     { label: 'Entretien bureaux', href: '/entretien/bureaux' },
-    { label: 'Personnel déménagement', href: '/demenagement/personnels' },
+    ...(MOVING_PERSONNEL_FLEET_ENABLED
+      ? [{ label: 'Personnel déménagement', href: '/demenagement/personnels' }]
+      : []),
     { label: 'Investissement TGI', href: '/investissement/tgi' },
   ],
 };

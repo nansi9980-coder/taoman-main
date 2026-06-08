@@ -6,6 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getBrandName } from '../constants/branding';
 import { getFooterTranslations } from '../i18n/navigation';
 import { useSiteFeatures } from '../hooks/useSiteFeatures';
+import { MOVING_PERSONNEL_FLEET_ENABLED } from '../constants/serviceVisibility';
 
 export const Footer = () => {
   const { section } = useSiteContent();
@@ -34,7 +35,7 @@ export const Footer = () => {
     { name: t.moving, href: '/demenagement/devis' },
     { name: t.officeCare, href: '/entretien/bureaux' },
     { name: t.airConditioning || 'Climatisation', href: '/entretien/climatisation' },
-    { name: t.movingStaff, href: '/demenagement/personnels' },
+    ...(MOVING_PERSONNEL_FLEET_ENABLED ? [{ name: t.movingStaff, href: '/demenagement/personnels' }] : []),
     { name: 'TAOMAN GROUP INVESTMENTS TGI', href: '/investissement/tgi' },
     ...(simulatorPublicVisible ? [{ name: t.simulator, href: '/investissement/simulateur' }] : []),
   ];

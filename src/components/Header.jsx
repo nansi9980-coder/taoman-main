@@ -12,6 +12,7 @@ import { Flag } from './Flag';
 import { DEFAULT_SECTORS, getSectorBySlug } from '../data/sectors-defaults';
 import { localizeSector } from '../utils/localizedSector';
 import { useSiteFeatures } from '../hooks/useSiteFeatures';
+import { MOVING_PERSONNEL_FLEET_ENABLED } from '../constants/serviceVisibility';
 
 export const Header = ({ activeLink = 'accueil' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -87,7 +88,9 @@ export const Header = ({ activeLink = 'accueil' }) => {
           { name: t.quote, desc: t.quoteDesc, href: '/contact' },
           { name: t.carWash, desc: t.carWashDesc, href: '/lavage-auto/devis' },
           { name: t.moving, desc: t.movingDesc, href: '/demenagement/devis' },
-          { name: t.movingPersonnel, desc: t.movingPersonnelDesc, href: '/demenagement/personnels' },
+          ...(MOVING_PERSONNEL_FLEET_ENABLED
+            ? [{ name: t.movingPersonnel, desc: t.movingPersonnelDesc, href: '/demenagement/personnels' }]
+            : []),
           { name: t.officeCare, desc: t.officeCareDesc, href: '/entretien/bureaux' },
           { name: t.transport, desc: t.transportDesc, href: '/transport/devis' },
           { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },

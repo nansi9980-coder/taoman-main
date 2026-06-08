@@ -1,3 +1,5 @@
+import { isOperationalServiceVisible } from '../constants/serviceVisibility';
+
 /** Cartes détaillées page /services — aligné admin operationalServicesDefaults.js */
 export const OPERATIONAL_SERVICE_TEMPLATES = [
   {
@@ -109,13 +111,18 @@ export function mergeOperationalServices(cmsList = []) {
 
   return OPERATIONAL_SERVICE_TEMPLATES.map((t) => {
     const cms = byId.get(t.id);
-    if (!cms) return { ...t };
+    const base = !cms
+      ? { ...t }
+      : {
+          ...t,
+          ...cms,
+          id: t.id,
+          bullets: cms.bullets?.length ? cms.bullets : t.bullets,
+          published: cms.published !== false,
+        };
     return {
-      ...t,
-      ...cms,
-      id: t.id,
-      bullets: cms.bullets?.length ? cms.bullets : t.bullets,
-      published: cms.published !== false,
+      ...base,
+      published: isOperationalServiceVisible(t.id) && base.published !== false,
     };
   });
 }
