@@ -114,7 +114,7 @@ const DEVIS_MOVING = {
       eyebrow: 'Notre flotte',
       title: 'Des véhicules adaptés à chaque volume, à chaque type de bien',
       description:
-        'Notre flotte est entretenue par notre service mécanique en interne. Tous les véhicules sont contrôlés avant chaque déménagement (freins, pneus, attaches, propreté). Aucun bien n\'est transporté dans un véhicule non préparé.',
+        'Notre flotte est entretenue régulièrement par nos équipes techniques. Tous les véhicules sont contrôlés avant chaque déménagement (freins, pneus, attaches, propreté). Aucun bien n\'est transporté dans un véhicule non préparé.',
       items: [
         { title: 'Petits utilitaires (3-6 m³)', desc: 'Studios, déménagements partiels, livraisons rapides en ville.' },
         { title: 'Fourgons (12-20 m³)', desc: "Appartements F1, F2, transferts d'archives et de mobilier de bureau." },
@@ -323,7 +323,7 @@ const DEVIS_MOVING = {
       eyebrow: 'Our fleet',
       title: 'Vehicles suited to every volume and every type of goods',
       description:
-        'Our fleet is maintained by our in-house mechanical service. All vehicles are checked before each move (brakes, tires, tie-downs, cleanliness). No goods are transported in an unprepared vehicle.',
+        'Our fleet is regularly maintained by our technical teams. All vehicles are checked before each move (brakes, tires, tie-downs, cleanliness). No goods are transported in an unprepared vehicle.',
       items: [
         { title: 'Small vans (3-6 m³)', desc: 'Studios, partial moves, fast city deliveries.' },
         { title: 'Box trucks (12-20 m³)', desc: '1-bed, 2-bed flats, archive and office furniture transfers.' },
@@ -504,7 +504,7 @@ const DEVIS_MOVING = {
       eyebrow: 'Nuestra flota',
       title: 'Vehículos adaptados a cada volumen y tipo de bien',
       description:
-        'Nuestra flota es mantenida por nuestro servicio mecánico interno. Todos los vehículos se revisan antes de cada mudanza (frenos, neumáticos, sujeciones, limpieza). Ningún bien se transporta en un vehículo no preparado.',
+        'Nuestra flota es mantenida regularmente por nuestros equipos técnicos. Todos los vehículos se revisan antes de cada mudanza (frenos, neumáticos, sujeciones, limpieza). Ningún bien se transporta en un vehículo no preparado.',
       items: [
         { title: 'Furgonetas pequeñas (3-6 m³)', desc: 'Estudios, mudanzas parciales, entregas rápidas en ciudad.' },
         { title: 'Furgones (12-20 m³)', desc: 'Pisos de 1 y 2 habitaciones, traslado de archivos y mobiliario de oficina.' },
@@ -637,7 +637,7 @@ const DEVIS_MOVING = {
       eyebrow: 'A nossa frota',
       title: 'Veículos adaptados a cada volume e tipo de bem',
       description:
-        'A nossa frota é mantida pelo nosso serviço mecânico interno. Todos os veículos são verificados antes de cada mudança (travões, pneus, amarrações, limpeza). Nenhum bem é transportado num veículo não preparado.',
+        'A nossa frota é mantida regularmente pelas nossas equipas técnicas. Todos os veículos são verificados antes de cada mudança (travões, pneus, amarrações, limpeza). Nenhum bem é transportado num veículo não preparado.',
       items: [
         { title: 'Utilitários pequenos (3-6 m³)', desc: 'Estúdios, mudanças parciais, entregas rápidas na cidade.' },
         { title: 'Furgões (12-20 m³)', desc: 'Apartamentos T1, T2, transferência de arquivos e mobiliário de escritório.' },
@@ -770,7 +770,7 @@ const DEVIS_MOVING = {
       eyebrow: 'Unsere Flotte',
       title: 'Fahrzeuge für jedes Volumen und jeden Gütetyp',
       description:
-        'Unsere Flotte wird von unserer internen Werkstatt gewartet. Alle Fahrzeuge werden vor jedem Umzug geprüft (Bremsen, Reifen, Zurrgurte, Sauberkeit). Keine Güter werden in unvorbereiteten Fahrzeugen transportiert.',
+        'Unsere Flotte wird regelmäßig von unseren technischen Teams gewartet. Alle Fahrzeuge werden vor jedem Umzug geprüft (Bremsen, Reifen, Zurrgurte, Sauberkeit). Keine Güter werden in unvorbereiteten Fahrzeugen transportiert.',
       items: [
         { title: 'Kleine Transporter (3-6 m³)', desc: 'Studios, Teiliumzüge, schnelle Stadtlieferungen.' },
         { title: 'Kastenwagen (12-20 m³)', desc: '1- und 2-Zimmer-Wohnungen, Archiv- und Büromöbeltransport.' },
@@ -903,7 +903,7 @@ const DEVIS_MOVING = {
       eyebrow: 'أسطولنا',
       title: 'مركبات مناسبة لكل حجم ونوع ممتلكات',
       description:
-        'يُصان أسطولنا داخلياً بواسطة قسمنا الميكانيكي. تُفحص جميع المركبات قبل كل انتقال (فرامل، إطارات، تثبيت، نظافة). لا تُنقل ممتلكات في مركبة غير مُعدّة.',
+        'يُصان أسطولنا بانتظام بواسطة فرقنا التقنية. تُفحص جميع المركبات قبل كل انتقال (فرامل، إطارات، تثبيت، نظافة). لا تُنقل ممتلكات في مركبة غير مُعدّة.',
       items: [
         { title: 'شاحنات صغيرة (3-6 م³)', desc: 'استوديوهات، انتقالات جزئية، توصيل سريع في المدينة.' },
         { title: 'شاحنات مغلقة (12-20 م³)', desc: 'شقق بغرفة أو غرفتين، نقل أرشيف وأثاث مكتبي.' },
@@ -1035,7 +1035,7 @@ const DEVIS_MOVING = {
       eyebrow: '我们的车队',
       title: '适应各种体积和物品类型的车辆',
       description:
-        '车队由内部机修部门维护。每次搬迁前检查所有车辆（刹车、轮胎、固定装置、清洁）。不在未准备的车辆中运输物品。',
+        '车队由技术团队定期维护。每次搬迁前检查所有车辆（刹车、轮胎、固定装置、清洁）。不在未准备的车辆中运输物品。',
       items: [
         { title: '小型厢式车（3-6 立方米）', desc: '单间、部分搬迁、市内快速配送。' },
         { title: '厢式货车（12-20 立方米）', desc: '一居、两居公寓，档案及办公家具转运。' },

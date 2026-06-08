@@ -61,13 +61,13 @@ const FALLBACK_SUBTITLE = {
 };
 
 const FALLBACK_KEYWORDS = {
-  FR: 'TAOMAN GROUP INVESTMENTS, Togo, investissement, services, déménagement, lavage auto, mécanique, transport, logistique, agro business, BTP, numérique',
-  EN: 'TAOMAN GROUP INVESTMENTS, Togo, investment, services, moving, car wash, mechanics, transport, logistics, agribusiness, construction, digital',
-  ES: 'TAOMAN GROUP INVESTMENTS, Togo, inversión, servicios, mudanza, lavado auto, mecánica, transporte, logística, agronegocio, construcción, digital',
-  PT: 'TAOMAN GROUP INVESTMENTS, Togo, investimento, serviços, mudanças, lavagem auto, mecânica, transporte, logística, agronegócio, construção, digital',
-  DE: 'TAOMAN GROUP INVESTMENTS, Togo, Investition, Dienstleistungen, Umzug, Autowäsche, Mechanik, Transport, Logistik, Agrobusiness, Bau, Digital',
-  AR: 'تاومان، توغو، استثمار، خدمات، نقل، غسيل سيارات، ميكانيكا، نقل، لوجستيات، أعمال زراعية، بناء، رقمي',
-  ZH: 'TAOMAN GROUP INVESTMENTS, 多哥, 投资, 服务, 搬家, 洗车, 机械, 运输, 物流, 农业, 建筑, 数字',
+  FR: 'TAOMAN GROUP INVESTMENTS, Togo, investissement, services, déménagement, lavage auto, entretien bureaux, transport, logistique, agro business, BTP, numérique',
+  EN: 'TAOMAN GROUP INVESTMENTS, Togo, investment, services, moving, car wash, office care, transport, logistics, agribusiness, construction, digital',
+  ES: 'TAOMAN GROUP INVESTMENTS, Togo, inversión, servicios, mudanza, lavado auto, mantenimiento oficinas, transporte, logística, agronegocio, construcción, digital',
+  PT: 'TAOMAN GROUP INVESTMENTS, Togo, investimento, serviços, mudanças, lavagem auto, manutenção escritórios, transporte, logística, agronegócio, construção, digital',
+  DE: 'TAOMAN GROUP INVESTMENTS, Togo, Investition, Dienstleistungen, Umzug, Autowäsche, Büropflege, Transport, Logistik, Agrobusiness, Bau, Digital',
+  AR: 'تاومان، توغو، استثمار، خدمات، نقل، غسيل سيارات، صيانة مكاتب، نقل، لوجستيات، أعمال زراعية، بناء، رقمي',
+  ZH: 'TAOMAN GROUP INVESTMENTS, 多哥, 投资, 服务, 搬家, 洗车, 办公维护, 运输, 物流, 农业, 建筑, 数字',
 };
 
 const buildOrganizationLd = (taglineForLang) => ({

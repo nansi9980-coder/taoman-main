@@ -32,8 +32,8 @@ import { DevisPageHero } from '../components/DevisPageHero';
 import { SeoHead } from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getOfficeTranslations } from '../i18n/office';
-import mecanique1 from '../assets/realisations/mecanique1.png';
-import mecanique2 from '../assets/realisations/mecanique2.jpg';
+
+const BUREAUX_HERO_IMAGE = '/images/entretien-bureaux-hero.png';
 
 const PRESTATION_ICONS = {
   hebdomadaire: <CalendarDays className="h-6 w-6" strokeWidth={2.2} />,
@@ -179,7 +179,7 @@ export const EntretienBureauxPage = () => {
             <div className="relative">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
               <img
-                src={mecanique1}
+                src={BUREAUX_HERO_IMAGE}
                 alt="Équipe d'entretien TAOMAN GROUP INVESTMENTS"
                 className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
                 loading="lazy"
@@ -273,7 +273,7 @@ export const EntretienBureauxPage = () => {
               </div>
             </div>
             <div className="relative">
-              <img src={mecanique2} alt="Matériel professionnel" className="rounded-3xl shadow-xl w-full aspect-[4/3] object-cover" loading="lazy" />
+              <img src={BUREAUX_HERO_IMAGE} alt="Entretien professionnel de bureaux" className="rounded-3xl shadow-xl w-full aspect-[4/3] object-cover" loading="lazy" />
             </div>
           </div>
         </section>

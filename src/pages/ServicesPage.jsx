@@ -6,7 +6,6 @@ import {
   Sparkles,
   Truck,
   Brush,
-  Wrench,
   Bus,
   Snowflake,
   ShieldCheck,
@@ -37,9 +36,9 @@ import { getServicesTranslations } from '../i18n/services';
 import lavageCard from '../assets/realisations/lavage1.jpg';
 import lavageCard2 from '../assets/realisations/lavage2.jpg';
 import demenagementCard from '../assets/realisations/transport2.jpg';
-import bureauxCard from '../assets/realisations/mecanique1.png';
-import mecaniqueCard from '../assets/realisations/mecanique2.jpg';
 import transportCard from '../assets/realisations/transport1.jpg';
+
+const BUREAUX_CARD_IMAGE = '/images/entretien-bureaux-hero.png';
 import { mergeServicesPageHeroSlides } from '../data/services-page-hero-defaults';
 import { mergeOperationalServices } from '../data/operational-services-defaults';
 import { pickLocale, pickLocaleList } from '../utils/pickLocale';
@@ -48,7 +47,6 @@ const Icons = {
   car: <Sparkles className="w-6 h-6" strokeWidth={2.2} />,
   truck: <Truck className="w-6 h-6" strokeWidth={2.2} />,
   building: <Brush className="w-6 h-6" strokeWidth={2.2} />,
-  wrench: <Wrench className="w-6 h-6" strokeWidth={2.2} />,
   bus: <Bus className="w-6 h-6" strokeWidth={2.2} />,
   snow: <Snowflake className="w-6 h-6" strokeWidth={2.2} />,
   shield: <ShieldCheck className="w-6 h-6" strokeWidth={2.2} />,
@@ -59,7 +57,6 @@ const SERVICE_ID_TO_ICON = {
   lavage: Icons.car,
   demenagement: Icons.truck,
   'entretien-bureaux': Icons.building,
-  mecanique: Icons.wrench,
   transport: Icons.bus,
   climatisation: Icons.snow,
   conciergerie: Icons.shield,
@@ -69,7 +66,6 @@ const SERVICE_ID_TO_HREF = {
   lavage: '/lavage-auto/devis',
   demenagement: '/demenagement/devis',
   'entretien-bureaux': '/entretien/bureaux',
-  mecanique: '/contact?topic=info&service=mecanique',
   transport: '/contact?topic=info&service=transport',
   climatisation: '/contact?topic=info&service=climatisation',
   conciergerie: '/contact?topic=info&service=conciergerie',
@@ -79,20 +75,18 @@ const SERVICE_ID_TO_IMAGE = {};
 
 SERVICE_ID_TO_IMAGE.lavage = lavageCard;
 SERVICE_ID_TO_IMAGE.demenagement = demenagementCard;
-SERVICE_ID_TO_IMAGE['entretien-bureaux'] = bureauxCard;
-SERVICE_ID_TO_IMAGE.mecanique = mecaniqueCard;
+SERVICE_ID_TO_IMAGE['entretien-bureaux'] = BUREAUX_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE.transport = transportCard;
 SERVICE_ID_TO_IMAGE.climatisation = lavageCard2;
-SERVICE_ID_TO_IMAGE.conciergerie = mecaniqueCard;
-SERVICE_ID_TO_IMAGE.audits = bureauxCard;
+SERVICE_ID_TO_IMAGE.conciergerie = lavageCard2;
+SERVICE_ID_TO_IMAGE.audits = BUREAUX_CARD_IMAGE;
 
 const HERO_SLIDES_FALLBACK = {
   'lavage-1': { src: lavageCard, alt: '' },
   'lavage-2': { src: lavageCard2, alt: '' },
   demenagement: { src: demenagementCard, alt: '' },
   transport: { src: transportCard, alt: '' },
-  mecanique: { src: mecaniqueCard, alt: '' },
-  equipe: { src: bureauxCard, alt: '' },
+  equipe: { src: BUREAUX_CARD_IMAGE, alt: '' },
 };
 
 export const ServicesPage = () => {
@@ -165,7 +159,7 @@ export const ServicesPage = () => {
         description={heroDesc || tServ.hero.description}
         path="/services"
         jsonLd={servicesJsonLd}
-        keywords="services Togo, lavage auto Lomé, déménagement Lomé, entretien bureaux, mécanique auto, transport Togo, climatisation, conciergerie"
+        keywords="services Togo, lavage auto Lomé, déménagement Lomé, entretien bureaux, transport Togo, climatisation, conciergerie"
       />
       <Header activeLink="services" />
 

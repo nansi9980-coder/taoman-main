@@ -40,19 +40,6 @@ export const OPERATIONAL_SERVICE_TEMPLATES = [
     published: true,
   },
   {
-    id: 'mecanique',
-    title: 'Mécanique automobile',
-    description:
-      'Atelier multimarques : entretien préventif, vidange, freins, diagnostic OBD. Contrats flotte avec carnet de suivi.',
-    badge: 'Atelier pro',
-    sla: 'Devis 24h',
-    priceFrom: 'Devis transparent',
-    bullets: ['Diagnostic électronique multimarques', 'Pièces neuves ou reconditionnées', "Suivi flotte avec carnet d'entretien digital"],
-    href: '/contact?topic=info&service=mecanique',
-    imageUrl: '',
-    published: true,
-  },
-  {
     id: 'transport',
     title: 'Transport & livraison',
     description:

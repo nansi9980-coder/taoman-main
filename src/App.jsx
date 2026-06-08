@@ -7,7 +7,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
-import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { LiveBadge } from './components/LiveBadge';
 import { BackToTop } from './components/BackToTop';
@@ -75,7 +74,6 @@ function App() {
       <HelmetProvider>
         <SiteContentProvider>
           <SplashScreen minDuration={1500} once />
-          <CustomCursor />
           <ScrollProgressBar />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>

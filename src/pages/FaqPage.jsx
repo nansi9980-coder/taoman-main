@@ -6,7 +6,6 @@ import {
   Sparkles,
   Truck,
   Brush,
-  Wrench,
   Building2,
   TrendingUp,
   HelpCircle,
@@ -33,7 +32,6 @@ const CATEGORY_ICONS = {
   lavage: Sparkles,
   demenagement: Truck,
   entretien: Brush,
-  mecanique: Wrench,
   transport: Truck,
   groupe: Building2,
   investissement: TrendingUp,
@@ -128,25 +126,6 @@ const DEFAULT_FAQ = [
     answer:
       "Oui. Pour les contrats réguliers, vous recevez chaque mois un mini-rapport synthétique : interventions effectuées, taux de présence, anomalies signalées, photos avant/après pour les opérations spéciales, recommandations d'amélioration.",
   },
-  // ---- MÉCANIQUE ----
-  {
-    category: 'mecanique',
-    question: 'Quels types de véhicules votre atelier mécanique prend-il en charge ?',
-    answer:
-      "Notre atelier traite les voitures particulières, les utilitaires légers, les pick-ups, les SUV/4x4 ainsi que les motos. Nous travaillons sur la majorité des marques diffusées au Togo (Toyota, Hyundai, Kia, Renault, Peugeot, Mercedes, Ford, Nissan, Mitsubishi, Suzuki, etc.).",
-  },
-  {
-    category: 'mecanique',
-    question: 'Faites-vous des entretiens préventifs pour les flottes ?',
-    answer:
-      "Oui. Nous proposons des contrats d'entretien préventif pour les flottes d'entreprise (vidange, freins, pneus, suspension, climatisation, diagnostic électronique). Vous bénéficiez d'un suivi par véhicule, d'un planning d'intervention et de tarifs préférentiels.",
-  },
-  {
-    category: 'mecanique',
-    question: 'Diagnostiquez-vous les pannes électroniques ?',
-    answer:
-      "Oui. Nous disposons de valises de diagnostic multimarques permettant d'identifier les codes défauts moteur, ABS, airbag, transmission. Le diagnostic est rapide et permet de proposer une réparation ciblée plutôt qu'un changement à l'aveugle.",
-  },
   // ---- TRANSPORT ----
   {
     category: 'transport',
@@ -183,7 +162,7 @@ const DEFAULT_FAQ = [
     category: 'groupe',
     question: 'Comment puis-je rejoindre TAOMAN GROUP INVESTMENTS ?',
     answer:
-      "Nous recrutons régulièrement dans nos différents métiers : opérateurs (lavage, déménagement, entretien, mécanique, transport), techniciens, encadrants, fonctions support. Consultez la page « Carrières » du site ou envoyez votre CV via le formulaire de contact.",
+      "Nous recrutons régulièrement dans nos différents métiers : opérateurs (lavage, déménagement, entretien, transport), techniciens, encadrants, fonctions support. Consultez la page « Carrières » du site ou envoyez votre CV via le formulaire de contact.",
   },
   {
     category: 'groupe',

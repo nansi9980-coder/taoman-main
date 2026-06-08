@@ -23,7 +23,6 @@ import { HoverSpotlight } from '../components/HoverSpotlight';
 import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, Layers, MapPin, Sparkles as SparklesIcon, ArrowRight, ShieldCheck, Scale, FileText, PieChart, Target, Globe } from 'lucide-react';
 import lavage2    from '../assets/realisations/lavage2.jpg';
-import mecanique2 from '../assets/realisations/mecanique2.jpg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';

@@ -58,7 +58,7 @@ export const HERO_MEDIA_SPECS = {
     },
     devisBureaux: {
       video: '/video/bureaux.mp4',
-      poster: '/images/hero-office-bg.png',
+      poster: '/images/entretien-bureaux-hero.png',
       objectPosition: 'center center',
       overlayVariant: 'center',
       fallbackSources: ['/video/bureaux.mp4', '/video/Hero2.mp4', '/video/Hero.mp4'],

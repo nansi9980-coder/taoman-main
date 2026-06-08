@@ -3,8 +3,7 @@ export const SERVICES_PAGE_HERO_SLIDES = [
   { id: 'lavage-2', title: 'Parking client – activité commerciale', category: 'Lavage', imageUrl: '' },
   { id: 'demenagement', title: 'Camion de déménagement TAOMAN GROUP INVESTMENTS', category: 'Déménagement', imageUrl: '' },
   { id: 'transport', title: 'Conducteur TAOMAN GROUP INVESTMENTS sur le terrain', category: 'Transport', imageUrl: '' },
-  { id: 'mecanique', title: 'Atelier mécanique multimarques', category: 'Mécanique', imageUrl: '' },
-  { id: 'equipe', title: 'Équipe terrain TAOMAN GROUP INVESTMENTS', category: 'Équipe', imageUrl: '' },
+  { id: 'equipe', title: 'Entretien professionnel de bureaux', category: 'Entretien', imageUrl: '' },
 ];
 
 export function mergeServicesPageHeroSlides(cmsList = []) {

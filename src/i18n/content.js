@@ -307,7 +307,7 @@ const CONTENT = {
           'Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN GROUP INVESTMENTS et financé via son programme TGI.',
         operatedByEyebrow: 'Opéré et financé par',
         groupOperatedBody:
-          "Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN GROUP INVESTMENTS et financé via son programme d'investissement participatif TGI. Le groupe combine services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) et financement structuré de projets pour particuliers, entreprises et investisseurs.",
+          "Ce secteur est opéré dans le cadre du groupe multi-activités TAOMAN GROUP INVESTMENTS et financé via son programme d'investissement participatif TGI. Le groupe combine services opérationnels (Lavage, Déménagement, Entretien, Transport) et financement structuré de projets pour particuliers, entreprises et investisseurs.",
         contextEyebrow: 'Contexte et objectifs',
         goalEyebrow: 'But du programme',
         scopeEyebrow: 'Périmètre opérationnel',
@@ -345,7 +345,7 @@ const CONTENT = {
         writeUs: 'Nous écrire',
         ctaGroupTitle: 'Un groupe, plusieurs métiers, une seule exigence.',
         ctaGroupDesc:
-          "TAOMAN GROUP INVESTMENTS combine services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) et programme d'investissement TGI. Cette double identité crée un cercle vertueux : les services terrain financent et valident les modèles que nous proposons ensuite aux investisseurs.",
+          "TAOMAN GROUP INVESTMENTS combine services opérationnels (Lavage, Déménagement, Entretien, Transport) et programme d'investissement TGI. Cette double identité crée un cercle vertueux : les services terrain financent et valident les modèles que nous proposons ensuite aux investisseurs.",
         horizonValue: '10 mois',
         ticketValue: '500K FCFA',
         tagFallback: 'Secteur',
@@ -427,7 +427,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        "TAOMAN GROUP INVESTMENTS — Investissement structuré, partenariats public-privé et services opérationnels (lavage, déménagement, mécanique, transport) au Togo et dans la sous-région CEDEAO.",
+        "TAOMAN GROUP INVESTMENTS — Investissement structuré, partenariats public-privé et services opérationnels (lavage, déménagement, entretien, transport) au Togo et dans la sous-région CEDEAO.",
       hero: {
         liveLabel: 'Live',
         livePill: 'Suivi temps réel',
@@ -753,7 +753,7 @@ const CONTENT = {
           'This sector is operated within the TAOMAN GROUP INVESTMENTS multi-activity group and funded through its TGI program.',
         operatedByEyebrow: 'Operated and funded by',
         groupOperatedBody:
-          'This sector is operated within the TAOMAN GROUP INVESTMENTS multi-activity group and funded through its TGI participatory investment program. The group combines operational services (car wash, moving, office care, mechanics, transport) and structured project financing for individuals, businesses and investors.',
+          'This sector is operated within the TAOMAN GROUP INVESTMENTS multi-activity group and funded through its TGI participatory investment program. The group combines operational services (car wash, moving, office care, transport) and structured project financing for individuals, businesses and investors.',
         contextEyebrow: 'Context and objectives',
         goalEyebrow: 'Program goal',
         scopeEyebrow: 'Operational scope',
@@ -791,7 +791,7 @@ const CONTENT = {
         writeUs: 'Write to us',
         ctaGroupTitle: 'One group, many trades, one standard of excellence.',
         ctaGroupDesc:
-          'TAOMAN GROUP INVESTMENTS combines operational services (car wash, moving, office care, mechanics, transport) and the TGI investment program. This dual identity creates a virtuous circle: field services fund and validate the models we then offer to investors.',
+          'TAOMAN GROUP INVESTMENTS combines operational services (car wash, moving, office care, transport) and the TGI investment program. This dual identity creates a virtuous circle: field services fund and validate the models we then offer to investors.',
         horizonValue: '10 months',
         ticketValue: '500K FCFA',
         tagFallback: 'Sector',
@@ -873,7 +873,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        'TAOMAN GROUP INVESTMENTS — Structured investment, public-private partnerships and operational services (car wash, moving, mechanics, transport) in Togo and the ECOWAS region.',
+        'TAOMAN GROUP INVESTMENTS — Structured investment, public-private partnerships and operational services (car wash, moving, office care, transport) in Togo and the ECOWAS region.',
       hero: {
         liveLabel: 'Live',
         livePill: 'Real-time monitoring',
@@ -1241,7 +1241,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        'TAOMAN GROUP INVESTMENTS — Inversión estructurada, alianzas público-privadas y servicios operativos (lavado, mudanzas, mecánica, transporte) en Togo y la subregión CEDEAO.',
+        'TAOMAN GROUP INVESTMENTS — Inversión estructurada, alianzas público-privadas y servicios operativos (lavado, mudanzas, mantenimiento oficinas, transporte) en Togo y la subregión CEDEAO.',
       hero: {
         liveLabel: 'En vivo',
         livePill: 'Seguimiento en tiempo real',
@@ -1600,7 +1600,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        'TAOMAN GROUP INVESTMENTS — Investimento estruturado, parcerias público-privadas e serviços operacionais (lavagem, mudanças, mecânica, transporte) no Togo e na sub-região CEDEAO.',
+        'TAOMAN GROUP INVESTMENTS — Investimento estruturado, parcerias público-privadas e serviços operacionais (lavagem, mudanças, manutenção escritórios, transporte) no Togo e na sub-região CEDEAO.',
       hero: {
         liveLabel: 'Em direto',
         livePill: 'Monitorização em tempo real',
@@ -1959,7 +1959,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        'TAOMAN GROUP INVESTMENTS — Strukturierte Investitionen, öffentlich-private Partnerschaften und operative Dienste (Autowäsche, Umzüge, Mechanik, Transport) in Togo und der ECOWAS-Region.',
+        'TAOMAN GROUP INVESTMENTS — Strukturierte Investitionen, öffentlich-private Partnerschaften und operative Dienste (Autowäsche, Umzüge, Büropflege, Transport) in Togo und der ECOWAS-Region.',
       hero: {
         liveLabel: 'Live',
         livePill: 'Echtzeit-Überwachung',
@@ -2318,7 +2318,7 @@ const CONTENT = {
     },
     home: {
       seoDescription:
-        'تاومان للاستثمار — استثمار منظم وشراكات بين القطاعين العام والخاص وخدمات تشغيلية (غسيل سيارات، نقل أثاث، ميكانيكا، نقل) في توغو ومنطقة الإيكواس.',
+        'تاومان للاستثمار — استثمار منظم وشراكات بين القطاعين العام والخاص وخدمات تشغيلية (غسيل سيارات، نقل أثاث، صيانة مكاتب، نقل) في توغو ومنطقة الإيكواس.',
       hero: {
         liveLabel: 'مباشر',
         livePill: 'مراقبة فورية',

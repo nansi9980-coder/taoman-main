@@ -20,7 +20,7 @@ const CONTACT = {
         title: "Demande d'information générale",
         headline: 'Une question sur TAOMAN GROUP INVESTMENTS ?',
         desc:
-          "Vous voulez en savoir plus sur le groupe, ses activités, ses services opérationnels (lavage, déménagement, entretien, mécanique, transport) ou son programme d'investissement TGI ? Posez-nous votre question, notre équipe vous répond sous 24 heures.",
+          "Vous voulez en savoir plus sur le groupe, ses activités, ses services opérationnels (lavage, déménagement, entretien, transport) ou son programme d'investissement TGI ? Posez-nous votre question, notre équipe vous répond sous 24 heures.",
         submitLabel: 'Envoyer ma question',
         successText: 'Votre demande a bien été reçue. Notre équipe vous répond sous 24 heures.',
         serviceTag: 'Contact – Information',
@@ -148,7 +148,7 @@ const CONTACT = {
       title:
         'Un groupe togolais multi-activités, des services concrets, des investissements suivis.',
       description:
-        "Services opérationnels (Lavage, Déménagement, Entretien, Mécanique, Transport) + Programme d'investissement TGI sur sept domaines (Logistique, Agro, Commerce, BTP, Numérique, Marketing, Éducation financière).",
+        "Services opérationnels (Lavage, Déménagement, Entretien, Transport) + Programme d'investissement TGI sur sept domaines (Logistique, Agro, Commerce, BTP, Numérique, Marketing, Éducation financière).",
       btnServices: 'Voir nos services',
       btnTgi: 'Découvrir TGI',
     },
@@ -197,7 +197,7 @@ const CONTACT = {
         title: 'General information request',
         headline: 'A question about TAOMAN GROUP INVESTMENTS?',
         desc:
-          "Want to learn more about the group, its activities, its operational services (car wash, moving, cleaning, mechanics, transport) or its TGI investment program? Ask us your question and our team will reply within 24 hours.",
+          "Want to learn more about the group, its activities, its operational services (car wash, moving, cleaning, transport) or its TGI investment program? Ask us your question and our team will reply within 24 hours.",
         submitLabel: 'Send my question',
         successText: 'Your request has been received. Our team will reply within 24 hours.',
         serviceTag: 'Contact – Information',
@@ -323,7 +323,7 @@ const CONTACT = {
       eyebrow: 'TAOMAN GROUP INVESTMENTS',
       title: 'A Togolese multi-business group: real services, monitored investments.',
       description:
-        'Operational services (Car wash, Moving, Cleaning, Mechanics, Transport) + TGI investment program covering 5 sectors (Logistics, Agribusiness, Trade, Construction, Digital).',
+        'Operational services (Car wash, Moving, Cleaning, Transport) + TGI investment program covering seven sectors (Logistics, Agribusiness, Trade, Construction, Digital, Marketing, Financial Education).',
       btnServices: 'See our services',
       btnTgi: 'Discover TGI',
     },
@@ -372,7 +372,7 @@ const CONTACT = {
         title: 'Solicitud de información general',
         headline: '¿Una pregunta sobre TAOMAN GROUP INVESTMENTS?',
         desc:
-          '¿Desea saber más sobre el grupo, sus actividades, sus servicios operativos (lavado, mudanza, mantenimiento, mecánica, transporte) o su programa de inversión TGI? Háganos su pregunta, nuestro equipo responde en menos de 24 horas.',
+          '¿Desea saber más sobre el grupo, sus actividades, sus servicios operativos (lavado, mudanza, mantenimiento, transporte) o su programa de inversión TGI? Háganos su pregunta, nuestro equipo responde en menos de 24 horas.',
         submitLabel: 'Enviar mi pregunta',
         successText: 'Su solicitud ha sido recibida. Nuestro equipo responde en menos de 24 horas.',
         serviceTag: 'Contacto – Información',
@@ -498,7 +498,7 @@ const CONTACT = {
       title:
         'Un grupo togolés multiactividad: servicios concretos, inversiones supervisadas.',
       description:
-        'Servicios operativos (Lavado, Mudanza, Mantenimiento, Mecánica, Transporte) + Programa de inversión TGI en 5 sectores (Logística, Agronegocio, Comercio, Construcción, Digital).',
+        'Servicios operativos (Lavado, Mudanza, Mantenimiento, Transporte) + Programa de inversión TGI en siete sectores (Logística, Agronegocio, Comercio, Construcción, Digital, Marketing, Educación financiera).',
       btnServices: 'Ver nuestros servicios',
       btnTgi: 'Descubrir TGI',
     },
@@ -520,7 +520,7 @@ const CONTACT = {
         title: 'Pedido de informação geral',
         headline: 'Uma pergunta sobre o TAOMAN GROUP INVESTMENTS?',
         desc:
-          'Quer saber mais sobre o grupo, as suas atividades, os seus serviços operacionais (lavagem, mudanças, manutenção, mecânica, transporte) ou o programa de investimento TGI? Coloque-nos a sua pergunta, a nossa equipa responde em 24 horas.',
+          'Quer saber mais sobre o grupo, as suas atividades, os seus serviços operacionais (lavagem, mudanças, manutenção, transporte) ou o programa de investimento TGI? Coloque-nos a sua pergunta, a nossa equipa responde em 24 horas.',
         submitLabel: 'Enviar a minha pergunta',
         successText: 'O seu pedido foi recebido. A nossa equipa responde em 24 horas.',
         serviceTag: 'Contacto – Informação',
@@ -646,7 +646,7 @@ const CONTACT = {
       title:
         'Um grupo togolês multiatividades: serviços concretos, investimentos acompanhados.',
       description:
-        'Serviços operacionais (Lavagem, Mudanças, Manutenção, Mecânica, Transporte) + Programa de investimento TGI em 5 setores (Logística, Agronegócio, Comércio, Construção, Digital).',
+        'Serviços operacionais (Lavagem, Mudanças, Manutenção, Transporte) + Programa de investimento TGI em sete setores (Logística, Agronegócio, Comércio, Construção, Digital, Marketing, Educação financeira).',
       btnServices: 'Ver os nossos serviços',
       btnTgi: 'Descobrir o TGI',
     },
@@ -668,7 +668,7 @@ const CONTACT = {
         title: 'Allgemeine Informationsanfrage',
         headline: 'Eine Frage zu TAOMAN GROUP INVESTMENTS?',
         desc:
-          'Sie möchten mehr über die Gruppe, ihre Aktivitäten, ihre operativen Dienstleistungen (Autowäsche, Umzüge, Reinigung, Mechanik, Transport) oder ihr TGI-Investitionsprogramm erfahren? Stellen Sie uns Ihre Frage – unser Team antwortet innerhalb von 24 Stunden.',
+          'Sie möchten mehr über die Gruppe, ihre Aktivitäten, ihre operativen Dienstleistungen (Autowäsche, Umzüge, Reinigung, Transport) oder ihr TGI-Investitionsprogramm erfahren? Stellen Sie uns Ihre Frage – unser Team antwortet innerhalb von 24 Stunden.',
         submitLabel: 'Frage senden',
         successText: 'Ihre Anfrage wurde empfangen. Unser Team antwortet innerhalb von 24 Stunden.',
         serviceTag: 'Kontakt – Information',
@@ -794,7 +794,7 @@ const CONTACT = {
       title:
         'Eine togoische Multi-Business-Gruppe: konkrete Dienstleistungen, überwachte Investitionen.',
       description:
-        'Operative Services (Autowäsche, Umzüge, Reinigung, Mechanik, Transport) + TGI-Investitionsprogramm in 5 Sektoren (Logistik, Agrobusiness, Handel, Bau, Digital).',
+        'Operative Services (Autowäsche, Umzüge, Reinigung, Transport) + TGI-Investitionsprogramm in sieben Sektoren (Logistik, Agrobusiness, Handel, Bau, Digital, Marketing, Finanzbildung).',
       btnServices: 'Unsere Services',
       btnTgi: 'TGI entdecken',
     },
@@ -815,7 +815,7 @@ const CONTACT = {
         title: 'طلب معلومات عامة',
         headline: 'سؤال حول TAOMAN GROUP INVESTMENTS؟',
         desc:
-          'هل ترغب في معرفة المزيد عن المجموعة وأنشطتها وخدماتها التشغيلية (غسيل السيارات، النقل، الصيانة، الميكانيكا، النقل) أو برنامج الاستثمار TGI؟ اطرح سؤالك وسيرد فريقنا خلال 24 ساعة.',
+          'هل ترغب في معرفة المزيد عن المجموعة وأنشطتها وخدماتها التشغيلية (غسيل السيارات، النقل، الصيانة، النقل) أو برنامج الاستثمار TGI؟ اطرح سؤالك وسيرد فريقنا خلال 24 ساعة.',
         submitLabel: 'إرسال سؤالي',
         successText: 'تم استلام طلبك. سيرد فريقنا خلال 24 ساعة.',
         serviceTag: 'اتصال – معلومات',
@@ -938,7 +938,7 @@ const CONTACT = {
       eyebrow: 'TAOMAN GROUP INVESTMENTS',
       title: 'مجموعة توغولية متعددة الأنشطة: خدمات ملموسة، استثمارات متابعة.',
       description:
-        'خدمات تشغيلية (غسيل السيارات، النقل، الصيانة، الميكانيكا، النقل) + برنامج استثمار TGI في 5 قطاعات (لوجستيات، أعمال زراعية، تجارة، بناء، رقمي).',
+        'خدمات تشغيلية (غسيل السيارات، النقل، الصيانة، النقل) + برنامج استثمار TGI في سبعة قطاعات (لوجستيات، أعمال زراعية، تجارة، بناء، رقمي، تسويق، تعليم مالي).',
       btnServices: 'مشاهدة خدماتنا',
       btnTgi: 'اكتشف TGI',
     },
@@ -959,7 +959,7 @@ const CONTACT = {
         title: '一般信息咨询',
         headline: '关于 TAOMAN GROUP INVESTMENTS 的问题？',
         desc:
-          '您想了解集团及其业务、运营服务（洗车、搬家、维护、机械、运输）或 TGI 投资计划吗？提出您的问题，我们的团队将在 24 小时内回复。',
+          '您想了解集团及其业务、运营服务（洗车、搬家、维护、运输）或 TGI 投资计划吗？提出您的问题，我们的团队将在 24 小时内回复。',
         submitLabel: '发送我的问题',
         successText: '您的请求已收到。我们的团队将在 24 小时内回复。',
         serviceTag: '联系 – 信息',
@@ -1069,7 +1069,7 @@ const CONTACT = {
       eyebrow: 'TAOMAN GROUP INVESTMENTS',
       title: '一家多业务的多哥集团：实在的服务、可追踪的投资。',
       description:
-        '运营服务（洗车、搬家、维护、机械、运输）+ 覆盖 5 个行业的 TGI 投资计划（物流、农业、商业、建筑、数字化）。',
+        '运营服务（洗车、搬家、维护、运输）+ 覆盖 7 个行业的 TGI 投资计划（物流、农业、商业、建筑、数字化、营销、金融教育）。',
       btnServices: '查看我们的服务',
       btnTgi: '了解 TGI',
     },
