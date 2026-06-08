@@ -28,7 +28,14 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useSiteContent } from '../context/SiteContentContext';
 import { useLanguage } from '../context/LanguageContext';
-import { DEFAULT_SECTORS, getSectorBySlug, normalizeSectors, resolveSectorImage } from '../data/sectors-defaults';
+import {
+  DEFAULT_SECTORS,
+  getSectorBySlug,
+  normalizeSectors,
+  resolveSectorImage,
+  resolveSectorVideo,
+} from '../data/sectors-defaults';
+import { VideoHeroBackground } from '../components/VideoHeroBackground';
 import { pickLocale } from '../utils/pickLocale';
 import { localizeSector } from '../utils/localizedSector';
 import { getSectorUi, formatSectorSeo } from '../i18n/sector-ui';
@@ -48,7 +55,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
   const isServicePage = pageContext === 'services';
   const detailPath = isServicePage ? `/services/${slug}` : `/secteurs/${slug}`;
   const { section } = useSiteContent();
-  const { content: tc, nav: tNav, language } = useLanguage();
+  const { content: tc, nav: tNav, language, translations: tAll } = useLanguage();
   const tSec = tc.sectors;
   const td = tSec.detail || {};
   const sectors = normalizeSectors(section('sectors'));
@@ -61,6 +68,8 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
   const sectorUi = getSectorUi(language);
   const sectorBase = localizeSector(baseSector, language);
   const sector = { ...sectorBase, image: resolveSectorImage(sectorBase) };
+  const sectorVideo = resolveSectorVideo(sector.slug);
+  const playLabel = tAll?.common?.playVideo || 'Lancer la vidéo';
 
   const others = sectors
     .filter((item) => item.slug !== sector.slug)
@@ -152,13 +161,22 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
         </nav>
 
         {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#08111d] via-[#0c1830] to-[#08111d] py-20 px-6 text-white hero-scan-line">
-          <FloatingDecor className="z-[1]" />
-          <AmbientEffects variant="hero" className="z-[1] opacity-50" />
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl pointer-events-none" />
+        <section className="relative overflow-hidden py-20 px-6 text-white hero-scan-line min-h-[42vh] md:min-h-[48vh] flex items-center">
+          {sectorVideo?.video && (
+            <VideoHeroBackground
+              src={sectorVideo.video}
+              poster={sector.image}
+              objectPosition={sectorVideo.objectPosition || 'center center'}
+              overlayIntensity="medium"
+              overlayVariant={sectorVideo.overlayVariant || 'left'}
+              fallbackSources={[sectorVideo.video]}
+              playLabel={playLabel}
+            />
+          )}
+          <FloatingDecor className="z-[2] opacity-40" />
+          <AmbientEffects variant="hero" className="z-[2] opacity-30" />
 
-          <div className="relative z-10 max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+          <div className="relative z-10 max-w-[1200px] mx-auto w-full grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-cyan-200 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} />{' '}
@@ -219,7 +237,8 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 src={sector.image}
                 alt={sector.title}
                 className="relative rounded-[2rem] shadow-2xl w-full aspect-[4/3] object-cover ring-1 ring-white/15 animate-ken-burns"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
               />
             </ClipReveal>
           </div>

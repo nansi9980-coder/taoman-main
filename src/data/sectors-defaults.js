@@ -5,6 +5,7 @@ import logistiqueHero from '../assets/sectors/logistique-transports-hero.jpg';
 import commercePhoto from '../assets/realisations/lavage1.jpg';
 import numeriqueImg from '../assets/simulateur.jpeg';
 import { mediaUrl } from '../config';
+import { HERO_MEDIA_SPECS } from '../constants/heroMedia';
 
 function normalizeTitleKey(title = '') {
   return title
@@ -66,6 +67,12 @@ export function resolveSectorImage(sector) {
   if (!sector) return null;
   if (sector.imageUrl) return mediaUrl(sector.imageUrl);
   return sector.image || null;
+}
+
+/** Vidéo hero pour une page détail secteur (slug → config heroMedia). */
+export function resolveSectorVideo(slug) {
+  if (!slug) return null;
+  return HERO_MEDIA_SPECS.sectorHeroes?.[slug] || null;
 }
 
 export const DEFAULT_SECTORS = [

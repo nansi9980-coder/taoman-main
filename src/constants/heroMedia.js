@@ -87,4 +87,42 @@ export const HERO_MEDIA_SPECS = {
     overlayVariant: 'center',
     export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 350, note: 'Sujet centré' },
   },
+  /** Heroes vidéo des pages détail secteur (/secteurs/:slug). */
+  sectorHeroes: {
+    'logistique-transports': {
+      video: '/video/secteur-logistique-transports.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'agro-business': {
+      video: '/video/secteur-agro-business.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'commerce-general': {
+      video: '/video/secteur-commerce-general.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'btp-immobilier': {
+      video: '/video/secteur-btp-immobilier.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'numerique-services': {
+      video: '/video/secteur-numerique-services.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'marketing-international': {
+      video: '/video/secteur-marketing-international.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+    'education-financiere': {
+      video: '/video/secteur-education-financiere.mp4',
+      objectPosition: 'center center',
+      overlayVariant: 'left',
+    },
+  },
 };
