@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import {
   Info,
   TrendingUp,
@@ -404,6 +404,7 @@ export const ContactPage = () => {
   }, [language, tc.sectors]);
   const contactInfo = section('contact') || {};
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const topicId = searchParams.get('topic') || 'info';
   const profilePrefill = searchParams.get('profile') || '';
 
@@ -412,6 +413,10 @@ export const ContactPage = () => {
   const topic = topicsMap[topicId] || topicsMap.info;
 
   const selectTopic = (id) => {
+    if (id === 'project') {
+      navigate('/investissement/soumettre');
+      return;
+    }
     setSearchParams({ topic: id });
     setTimeout(() => {
       const el = document.getElementById('contact-form');
@@ -423,6 +428,16 @@ export const ContactPage = () => {
   const intro = tContactExt.intro || {};
   const cta = tContactExt.cta || {};
   const breadcrumb = tContactExt.breadcrumb || {};
+
+  if (topicId === 'project') {
+    const sector = searchParams.get('sector');
+    return (
+      <Navigate
+        to={sector ? `/investissement/soumettre?sector=${encodeURIComponent(sector)}` : '/investissement/soumettre'}
+        replace
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">

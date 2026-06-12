@@ -89,7 +89,7 @@ export const OPERATIONAL_SERVICE_TEMPLATES = [
     sla: '7 – 21 jours',
     priceFrom: 'Sur devis',
     bullets: ['Audit financier et opérationnel des PME', 'Reporting investisseur structuré', 'Conformité KYC, AML, SYSCOA et CEDEAO'],
-    href: '/contact?topic=info&service=audit',
+    href: '/audits/devis',
     imageUrl: '',
     published: true,
   },

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Download, Mail } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -21,6 +21,7 @@ const SUBMIT_EMAIL = 'taomancontact@gmail.com';
 
 export const SubmitProjectPage = () => {
   const { translations: tc, language, nav: tNav } = useLanguage();
+  const [searchParams] = useSearchParams();
   const tS = tc?.submitProject?.hero || {};
   const t = getSubmitProjectTranslations(language);
   const tAlt = t.altSubmission || {};
@@ -41,6 +42,15 @@ export const SubmitProjectPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const sectorSlug = searchParams.get('sector');
+    if (!sectorSlug) return;
+    const match = DEFAULT_SECTORS.find((s) => s.slug === sectorSlug);
+    if (!match) return;
+    const title = tSectorItems?.[match.slug]?.title || match.title;
+    setFormData((prev) => (prev.sector ? prev : { ...prev, sector: title }));
+  }, [searchParams, tSectorItems]);
 
   const mailtoHref = `mailto:${SUBMIT_EMAIL}?subject=${encodeURIComponent(tAlt.mailSubject || 'Soumission de projet TGI')}`;
 
@@ -398,7 +408,7 @@ export const SubmitProjectPage = () => {
                 <h3 className="mt-3 text-xl font-black text-on-surface">{t.help.title}</h3>
                 <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">{t.help.description}</p>
                 <Link
-                  to="/contact?topic=project"
+                  to="/contact?topic=invest"
                   className="mt-5 inline-flex items-center justify-center w-full rounded-2xl border border-primary px-4 py-3 font-bold text-primary hover:bg-primary hover:text-white transition"
                 >
                   {t.help.cta}

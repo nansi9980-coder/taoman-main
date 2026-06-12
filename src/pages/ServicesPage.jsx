@@ -70,7 +70,7 @@ const SERVICE_ID_TO_HREF = {
   transport: '/transport/devis',
   climatisation: '/contact?topic=info&service=climatisation',
   conciergerie: '/contact?topic=info&service=conciergerie',
-  audits: '/contact?topic=info&service=audit',
+  audits: '/audits/devis',
 };
 const SERVICE_ID_TO_AUDIENCE = {
   lavage: 'both',

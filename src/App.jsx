@@ -6,7 +6,6 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
-import { CustomCursor } from './components/CustomCursor';
 import { SplashScreen } from './components/SplashScreen';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { LiveBadge } from './components/LiveBadge';
@@ -32,6 +31,7 @@ const DemenagementPersonnelsPage = lazy(() => import('./pages/DemenagementPerson
 const EntretienBureauxPage = lazy(() => import('./pages/EntretienBureauxPage').then((m) => ({ default: m.EntretienBureauxPage })));
 const EntretienClimatisationPage = lazy(() => import('./pages/EntretienClimatisationPage').then((m) => ({ default: m.EntretienClimatisationPage })));
 const TransportDevisPage = lazy(() => import('./pages/TransportDevisPage').then((m) => ({ default: m.TransportDevisPage })));
+const AuditsDevisPage = lazy(() => import('./pages/AuditsDevisPage').then((m) => ({ default: m.AuditsDevisPage })));
 const PasswordResetPage = lazy(() => import('./pages/PasswordResetPage').then((m) => ({ default: m.PasswordResetPage })));
 const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage').then((m) => ({ default: m.TermsConditionsPage })));
 const TaoEconomicInvestmentPage = lazy(() => import('./pages/TaoEconomicInvestmentPage').then((m) => ({ default: m.TaoEconomicInvestmentPage })));
@@ -76,7 +76,6 @@ function App() {
       <HelmetProvider>
         <SiteContentProvider>
           <SplashScreen minDuration={1500} once />
-          <CustomCursor />
           <ScrollProgressBar />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -128,6 +127,7 @@ function App() {
                 <Route path="/entretien/bureaux" element={<EntretienBureauxPage />} />
                 <Route path="/entretien/climatisation" element={<EntretienClimatisationPage />} />
                 <Route path="/transport/devis" element={<TransportDevisPage />} />
+                <Route path="/audits/devis" element={<AuditsDevisPage />} />
                 <Route path="/demenagement/personnels" element={<DemenagementPersonnelsPage />} />
 
                 {/* Authentification */}

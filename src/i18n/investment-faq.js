@@ -114,7 +114,7 @@ const FAQ_FR = {
       category: 'process',
       question: 'Comment soumettre un projet à financer ?',
       answer:
-        "Utilisez le formulaire Contact (option « Soumettre un projet »). Notre comité examine chaque dossier et revient sous 5 jours ouvrés.",
+        "Utilisez le formulaire dédié sur la page « Soumettre un projet » (/investissement/soumettre). Décrivez votre projet, le secteur, le montant recherché, l'horizon et joignez vos justificatifs. Notre comité revient vers vous sous 5 jours ouvrés avec une décision (étude approfondie, demande de compléments, ou refus motivé).",
     },
     {
       category: 'process',

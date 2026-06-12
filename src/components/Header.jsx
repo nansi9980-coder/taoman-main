@@ -93,7 +93,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
             : []),
           { name: t.officeCare, desc: t.officeCareDesc, href: '/entretien/bureaux' },
           { name: t.transport, desc: t.transportDesc, href: '/transport/devis' },
-          { name: t.audits, desc: t.auditsDesc, href: '/contact?topic=info&service=audit' },
+          { name: t.audits, desc: t.auditsDesc, href: '/audits/devis' },
         ],
       },
       { name: t.contact, href: '/contact', key: 'contact' },

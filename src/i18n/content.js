@@ -401,6 +401,13 @@ const CONTENT = {
       hero: { eyebrow: 'Transport & livraison', title: 'Demandez votre devis transport & livraison', description: 'Flotte professionnelle, suivi GPS et livraison Lomé – sous-région CEDEAO.' },
       ctaContact: 'Demander un devis',
     },
+    audits: {
+      seoDescription: 'Devis Audits & Reporting TAOMAN GROUP INVESTMENTS : audit financier, opérationnel, KYC, reporting investisseur conforme SYSCOA et CEDEAO.',
+      hero: { eyebrow: 'Audits & Reporting', title: 'Demandez votre devis audit ou reporting', description: 'Transparence financière, contrôle opérationnel et dossiers conformes pour PME, investisseurs et institutions togolaises.' },
+    },
+    devisAudits: {
+      hero: { eyebrow: 'Audits & Reporting', title: 'Demandez votre devis audit ou reporting', description: 'Transparence financière, contrôle opérationnel et dossiers conformes pour PME, investisseurs et institutions togolaises.' },
+    },
     jobs: {
       seoDescription: 'Carrières TAOMAN GROUP INVESTMENTS : rejoignez nos équipes terrain, financières et opérationnelles au Togo.',
       hero: { eyebrow: 'Carrières', title: 'Rejoignez les équipes TAOMAN GROUP INVESTMENTS', description: "Découvrez les opportunités pour contribuer à un projet à impact économique réel pour le Togo." },
@@ -851,6 +858,13 @@ const CONTENT = {
       seoDescription: 'TAOMAN GROUP INVESTMENTS transport and delivery quote: truck fleet, vans, last-mile delivery and ECOWAS B2B freight.',
       hero: { eyebrow: 'Transport & delivery', title: 'Request your transport & delivery quote', description: 'Professional fleet, GPS tracking and delivery across Lomé and the ECOWAS sub-region.' },
       ctaContact: 'Request a quote',
+    },
+    audits: {
+      seoDescription: 'TAOMAN GROUP INVESTMENTS Audits & Reporting quote: financial, operational and KYC audits, investor reporting aligned with SYSCOA and ECOWAS.',
+      hero: { eyebrow: 'Audits & Reporting', title: 'Request your audit or reporting quote', description: 'Financial transparency, operational control and compliant files for SMEs, investors and Togolese institutions.' },
+    },
+    devisAudits: {
+      hero: { eyebrow: 'Audits & Reporting', title: 'Request your audit or reporting quote', description: 'Financial transparency, operational control and compliant files for SMEs, investors and Togolese institutions.' },
     },
     jobs: {
       seoDescription: 'TAOMAN GROUP INVESTMENTS careers: join our field, finance and operations teams in Togo.',

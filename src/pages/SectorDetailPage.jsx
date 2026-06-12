@@ -90,6 +90,8 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
 
   const phases = sector.phases || sectorUi.phases;
 
+  const submitProjectHref = `/investissement/soumettre?sector=${encodeURIComponent(sector.slug)}`;
+
   const indicators = [
     {
       icon: TrendingUp,
@@ -217,7 +219,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                       {td.contactUs || 'Nous contacter'}
                     </MagneticButton>
                     <Link
-                      to="/contact?topic=project"
+                      to={submitProjectHref}
                       className="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium"
                     >
                       <Send className="h-4 w-4" strokeWidth={2.5} />
@@ -544,7 +546,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                     {td.contactInvest || 'Nous contacter pour investir'}
                   </Link>
                   <Link
-                    to="/contact?topic=project"
+                    to={submitProjectHref}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-outline bg-white text-on-surface px-5 py-3 font-bold hover:border-primary hover:text-primary transition-all"
                   >
                     <Send className="h-4 w-4" strokeWidth={2.5} />
@@ -598,7 +600,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
                 {td.talkAdvisor || 'Discuter avec un conseiller'}
               </Link>
               <Link
-                to="/contact?topic=project"
+                to={submitProjectHref}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 font-bold backdrop-blur hover:bg-white hover:text-primary transition"
                 style={{ color: '#ffffff' }}
               >

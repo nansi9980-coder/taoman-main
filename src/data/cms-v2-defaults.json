@@ -176,5 +176,9 @@
   "devisTransport": {
     "title": "Demandez votre devis transport & livraison",
     "subtitle": "Flotte professionnelle, suivi GPS et livraison Lomé – sous-région CEDEAO"
+  },
+  "devisAudits": {
+    "title": "Demandez votre devis Audits & Reporting",
+    "subtitle": "Audits financiers, opérationnels et conformité KYC — reporting investisseur conforme SYSCOA et CEDEAO"
   }
 }

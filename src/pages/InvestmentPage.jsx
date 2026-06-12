@@ -316,7 +316,7 @@ export const InvestmentPage = () => {
               <Link to="/contact?topic=invest" className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition">
                 {tCommon.contactInvest}
               </Link>
-              <Link to="/contact?topic=project" className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition">
+              <Link to="/investissement/soumettre" className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition">
                 {tInv.submit?.cta}
               </Link>
             </div>
@@ -632,7 +632,7 @@ export const InvestmentPage = () => {
                 {ip.finalCta.contact}
               </Link>
               <Link
-                to="/contact?topic=project"
+                to="/investissement/soumettre"
                 className="rounded-2xl border border-white px-8 py-4 font-bold text-white hover:bg-white hover:text-primary inline-flex justify-center items-center"
               >
                 {ip.finalCta.submit}

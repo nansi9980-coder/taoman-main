@@ -89,6 +89,12 @@ export const HERO_MEDIA_SPECS = {
       fallbackSources: ['/video/transport.mp4', '/video/Hero.mp4'],
       export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 400, note: 'Transport / livraison / entrepôt' },
     },
+    devisAudits: {
+      poster: '/images/audit-reporting-hero.png',
+      objectPosition: 'center center',
+      overlayVariant: 'center',
+      export: { width: 1920, height: 1080, format: 'JPG', maxSizeKB: 400, note: 'Audits & reporting / conformité' },
+    },
   },
   projects: {
     src: '/images/projet.jpg',

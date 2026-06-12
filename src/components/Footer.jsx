@@ -36,6 +36,7 @@ export const Footer = () => {
     { name: t.moving, href: '/demenagement/devis' },
     { name: t.officeCare, href: '/entretien/bureaux' },
     { name: t.airConditioning || 'Climatisation', href: '/entretien/climatisation' },
+    { name: t.audits, href: '/audits/devis' },
     ...(MOVING_PERSONNEL_FLEET_ENABLED ? [{ name: t.movingStaff, href: '/demenagement/personnels' }] : []),
     { name: 'TAOMAN GROUP INVESTMENTS TGI', href: '/investissement/tgi' },
     ...(simulatorPublicVisible ? [{ name: t.simulator, href: '/investissement/simulateur' }] : []),
