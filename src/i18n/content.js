@@ -177,8 +177,8 @@ const CONTENT = {
         title: 'Des services terrain clairs, rapides et suivis.',
         description:
           'TAOMAN GROUP INVESTMENTS combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.',
-        btn1: 'Demander un devis',
-        btn2: "Voir l'investissement",
+        btn1: 'Prêt à transformer vos espaces ?',
+        btn2: 'Nous appeler',
       },
       sectionTitle: 'Huit services, une seule promesse',
       detailedTitle: 'Comprendre nos métiers',
@@ -637,8 +637,8 @@ const CONTENT = {
         title: 'Clear, fast and tracked field services.',
         description:
           'TAOMAN GROUP INVESTMENTS combines field teams, structured quotes, controlled quality and client follow-up for individuals, businesses and investors.',
-        btn1: 'Request a quote',
-        btn2: 'View investment',
+        btn1: 'Ready to transform your spaces?',
+        btn2: 'Call us',
       },
       sectionTitle: 'Eight services, one promise',
       detailedTitle: 'Understand our trades',

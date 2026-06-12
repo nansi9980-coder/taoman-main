@@ -18,10 +18,19 @@ const SUBMIT_PROJECT = {
       projectName: { label: 'Nom du projet', placeholder: "Ex: Mini-usine d'huile de palme" },
       sector: { label: 'Secteur' },
       location: { label: 'Localisation', placeholder: 'Ex: Lomé, Kara, Atakpamé' },
-      amount: { label: 'Ticket recherché (FCFA)', placeholder: 'Ex: 5 000 000' },
+      amount: {
+        label: 'Ticket recherché',
+        options: [
+          'Moins de 500 000 FCFA',
+          '500 000 – 2 000 000 FCFA',
+          '2 000 000 – 10 000 000 FCFA',
+          '10 000 000 – 50 000 000 FCFA',
+          'Plus de 50 000 000 FCFA',
+        ],
+      },
       horizon: {
-        label: 'Horizon visé',
-        options: ['3 mois', '6 mois', '10 mois', 'Au-delà de 10 mois'],
+        label: 'Horizon maximum visé',
+        options: ['3 mois', '6 mois', '12 mois', '24 mois', 'Horizon maximum (à préciser)', 'Pas encore décidé'],
       },
       website: { label: 'Site web / Lien (optionnel)', placeholder: 'https://...' },
       description: {
@@ -49,6 +58,16 @@ const SUBMIT_PROJECT = {
       description: 'Notre équipe vous aide à structurer votre dossier avant soumission.',
       cta: 'Contacter TAOMAN GROUP INVESTMENTS',
     },
+    altSubmission: {
+      eyebrow: 'Autres modes de soumission',
+      title: 'Télécharger ou envoyer par e-mail',
+      description: 'Vous pouvez aussi compléter le formulaire PDF et nous le retourner par e-mail.',
+      downloadLabel: 'Télécharger le formulaire PDF',
+      mailLabel: 'Soumettre par e-mail',
+      mailSubject: 'Soumission de projet TGI',
+      attachmentLabel: 'Documents complémentaires (PDF)',
+      attachmentHint: 'Business plan ou étude de faisabilité (PDF, 10 Mo max).',
+    },
   },
   EN: {
     backLink: '← Invest with us',
@@ -65,10 +84,19 @@ const SUBMIT_PROJECT = {
       projectName: { label: 'Project name', placeholder: 'e.g. Mini palm oil factory' },
       sector: { label: 'Sector' },
       location: { label: 'Location', placeholder: 'e.g. Lomé, Kara, Atakpamé' },
-      amount: { label: 'Target ticket (FCFA)', placeholder: 'e.g. 5,000,000' },
+      amount: {
+        label: 'Target ticket',
+        options: [
+          'Less than 500,000 FCFA',
+          '500,000 – 2,000,000 FCFA',
+          '2,000,000 – 10,000,000 FCFA',
+          '10,000,000 – 50,000,000 FCFA',
+          'More than 50,000,000 FCFA',
+        ],
+      },
       horizon: {
-        label: 'Target horizon',
-        options: ['3 months', '6 months', '10 months', 'More than 10 months'],
+        label: 'Maximum target horizon',
+        options: ['3 months', '6 months', '12 months', '24 months', 'Maximum horizon (to specify)', 'Not yet decided'],
       },
       website: { label: 'Website / Link (optional)', placeholder: 'https://...' },
       description: {
@@ -95,6 +123,16 @@ const SUBMIT_PROJECT = {
       title: 'Talk to our team',
       description: 'Our team helps you structure your file before submission.',
       cta: 'Contact TAOMAN GROUP INVESTMENTS',
+    },
+    altSubmission: {
+      eyebrow: 'Other submission methods',
+      title: 'Download or send by email',
+      description: 'You can also complete the PDF form and return it by email.',
+      downloadLabel: 'Download PDF form',
+      mailLabel: 'Submit by email',
+      mailSubject: 'TGI project submission',
+      attachmentLabel: 'Additional documents (PDF)',
+      attachmentHint: 'Business plan or feasibility study (PDF, 10 MB max).',
     },
   },
   ES: {

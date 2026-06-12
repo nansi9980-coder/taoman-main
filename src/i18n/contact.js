@@ -41,7 +41,7 @@ const CONTACT = {
         title: 'Devenir partenaire opérationnel',
         headline: 'Construire un partenariat avec TAOMAN GROUP INVESTMENTS',
         desc:
-          "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec TAOMAN GROUP INVESTMENTS (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition et nous étudions ensemble les synergies possibles.",
+          "Vous représentez une entreprise, une coopérative ou une institution qui souhaite collaborer avec TAOMAN GROUP INVESTMENTS (sous-traitance, distribution, fourniture, services support, projet conjoint) ? Présentez-nous votre proposition — notre responsable partenariats B2B (Flavien) étudie chaque dossier et revient vers vous sous 5 jours ouvrés.",
         submitLabel: 'Envoyer ma proposition',
         successText:
           'Votre proposition de partenariat a bien été reçue. Notre direction étudie chaque dossier et revient vers vous sous 5 jours ouvrés.',
@@ -96,8 +96,8 @@ const CONTACT = {
       },
       sector: { label: 'Secteur concerné', otherOption: 'Autre / Tous secteurs' },
       horizon: {
-        label: 'Horizon envisagé',
-        options: ['3 mois', '6 mois', '10 mois', 'Au-delà de 10 mois', 'Pas encore décidé'],
+        label: 'Horizon maximum envisagé',
+        options: ['3 mois', '6 mois', '12 mois', '24 mois', 'Horizon maximum (à préciser)', 'Pas encore décidé'],
       },
       projectName: { label: 'Nom du projet', placeholder: "Ex : Mini-usine d'huile de palme" },
       location: { label: 'Localisation du projet', placeholder: 'Ex : Lomé, Kara, Atakpamé' },
@@ -129,6 +129,8 @@ const CONTACT = {
       errorNetwork: 'Erreur réseau. Réessayez plus tard.',
       disclaimer: "En envoyant ce formulaire, vous acceptez d'être recontacté par TAOMAN GROUP INVESTMENTS.",
       requiredHint: 'Les champs marqués * sont obligatoires.',
+      attachmentLabel: 'Documents supplémentaires (PDF)',
+      attachmentHint: 'Business plan, étude de faisabilité ou dossier complémentaire (PDF, 10 Mo max).',
     },
     sidebar: {
       eyebrow: 'Nous joindre directement',
@@ -273,8 +275,8 @@ const CONTACT = {
       },
       sector: { label: 'Sector of interest', otherOption: 'Other / All sectors' },
       horizon: {
-        label: 'Target horizon',
-        options: ['3 months', '6 months', '10 months', 'More than 10 months', 'Not yet decided'],
+        label: 'Maximum target horizon',
+        options: ['3 months', '6 months', '12 months', '24 months', 'Maximum horizon (to specify)', 'Not yet decided'],
       },
       projectName: { label: 'Project name', placeholder: 'e.g. Mini palm oil factory' },
       location: { label: 'Project location', placeholder: 'e.g. Lomé, Kara, Atakpamé' },
@@ -305,6 +307,8 @@ const CONTACT = {
       errorNetwork: 'Network error. Please try again later.',
       disclaimer: 'By sending this form, you agree to be contacted by TAOMAN GROUP INVESTMENTS.',
       requiredHint: 'Fields marked * are required.',
+      attachmentLabel: 'Additional documents (PDF)',
+      attachmentHint: 'Business plan, feasibility study or supporting file (PDF, 10 MB max).',
     },
     sidebar: {
       eyebrow: 'Reach us directly',

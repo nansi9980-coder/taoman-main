@@ -27,6 +27,7 @@ export const Footer = () => {
     { name: t.opportunities, href: '/jobs' },
     { name: t.faq, href: '/faq' },
     { name: t.contactLink, href: '/contact' },
+    { name: language === 'FR' ? 'Contact institutionnel' : 'Institutional contact', href: '/contact?topic=invest&profile=Institutionnel' },
     { name: t.about, href: '/about' },
   ];
 
@@ -86,6 +87,7 @@ export const Footer = () => {
 
         <div>
           <h4 className="text-lg font-bold mb-4 text-surface">{t.quickLinks}</h4>
+          <p className="text-sm text-outline-variant mb-3">🚗 🏠 🧹 ❄️ · Services terrain</p>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
@@ -138,30 +140,30 @@ export const Footer = () => {
             <a
               href="mailto:taomancontact@gmail.com"
               aria-label={`${brandName} — email`}
-              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110 text-lg"
             >
-              <span className="text-surface">@</span>
+              <span aria-hidden="true">📧</span>
             </a>
             <a
               href="mailto:taomancontact@gmail.com"
               aria-label={`${brandName} — LinkedIn`}
-              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110 text-lg"
             >
-              <span className="text-surface">in</span>
+              <span aria-hidden="true">💼</span>
             </a>
             <a
               href="tel:+22890421377"
               aria-label={`${brandName} — téléphone`}
-              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110 text-lg"
             >
-              <span className="text-surface">tel</span>
+              <span aria-hidden="true">📱</span>
             </a>
             <a
               href="/contact"
               aria-label={`${brandName} — contact`}
-              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110"
+              className="w-10 h-10 bg-primary-container/20 hover:bg-primary-container rounded-full flex items-center justify-center transition-all hover:scale-110 text-lg"
             >
-              <span className="text-surface">?</span>
+              <span aria-hidden="true">💬</span>
             </a>
           </div>
 

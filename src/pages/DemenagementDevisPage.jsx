@@ -20,8 +20,8 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
-import { DevisPageHero } from '../components/DevisPageHero';
-import { SeoHead } from '../components/SeoHead';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { BRAND_NAME } from '../constants/branding';
 import { useLanguage } from '../context/LanguageContext';
 import { getDevisMovingTranslations } from '../i18n/devisMoving';
 import transport1 from '../assets/realisations/transport1.jpg';
@@ -155,10 +155,19 @@ export const DemenagementDevisPage = () => {
           highContrast
         />
 
-        {/* INTRO */}
+        {/* INTRO – image gauche, texte droite */}
         <section className="py-20 px-6 bg-surface">
-          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-            <div>
+          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
+              <img
+                src={DEMENAGEMENT_HERO_IMAGE}
+                alt="Camion TAOMAN GROUP INVESTMENTS de déménagement"
+                className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover object-center ring-1 ring-black/5"
+                loading="lazy"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
                 <Truck className="h-4 w-4" strokeWidth={2.4} /> {t.intro.eyebrow}
               </p>
@@ -171,14 +180,23 @@ export const DemenagementDevisPage = () => {
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
-              <img
-                src={transport2}
-                alt="Camion TAOMAN GROUP INVESTMENTS de déménagement"
-                className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover ring-1 ring-black/5"
-                loading="lazy"
-              />
+          </div>
+        </section>
+
+        {/* Particuliers & Entreprises */}
+        <section className="py-16 px-6 bg-surface-container-low">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid md:grid-cols-2 gap-6">
+              {types.filter((p) => p.id === 'particulier' || p.id === 'entreprise').map((p) => (
+                <div key={p.id} className="rounded-3xl bg-white border-2 border-primary/20 p-7 hover:shadow-xl transition-all">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">{p.icon}</span>
+                  <p className="mt-3 text-xs font-black uppercase tracking-widest text-primary">
+                    {p.id === 'particulier' ? (language === 'FR' ? 'Particuliers' : 'Individuals') : (language === 'FR' ? 'Entreprises' : 'Businesses')}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-black text-on-surface">{p.title}</h3>
+                  <p className="mt-3 text-on-surface-variant leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -337,6 +355,11 @@ export const DemenagementDevisPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[BRAND_NAME, t.form?.eyebrow || 'Devis', 'Devis sous 24h · Lomé', 'Déménagement particuliers & entreprises'].filter(Boolean)}
+          speed={26}
+        />
 
         {/* FAQ */}
         <section className="py-20 px-6 bg-surface-container-low">

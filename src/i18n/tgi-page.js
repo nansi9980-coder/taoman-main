@@ -18,6 +18,22 @@ const FR = {
   ],
   statsIntro:
     "Des indicateurs simples et transparents pour comprendre en un coup d'œil notre proposition.",
+  whyInvest: {
+    eyebrow: 'Pourquoi investir dans TGI',
+    title: 'Pourquoi investir dans le programme TGI ?',
+    paragraphs: [
+      "TGI structure des opportunités d'investissement adossées à des projets opérationnels réels au Togo : logistique, agro, commerce, BTP, numérique, marketing et éducation financière.",
+      "Vous bénéficiez d'un cadre clair, d'un interlocuteur dédié et d'un reporting régulier — avec un délai de réponse sous 48 h pour toute manifestation d'intérêt.",
+    ],
+  },
+  whyPlace: {
+    eyebrow: 'Pourquoi placer vos investissements chez TAOMAN',
+    title: 'Pourquoi placer vos investissements chez TAOMAN GROUP INVESTMENTS ?',
+    paragraphs: [
+      "Une gouvernance institutionnelle, des contrôles internes et une conformité KYC / SYSCOA / CEDEAO intégrés à chaque dossier.",
+      "Des rendements ciblés, des actifs tangibles et un impact local mesurable — au service des particuliers, de la diaspora et des investisseurs institutionnels.",
+    ],
+  },
   pillarsIntro:
     "Rentabilité, impact et autonomie : nos décisions d'investissement reposent sur cet équilibre.",
   pillars: [
@@ -60,6 +76,22 @@ const EN = {
     { label: 'Average total return', value: '1.5M CFA' },
   ],
   statsIntro: 'Simple, transparent indicators to understand our offer at a glance.',
+  whyInvest: {
+    eyebrow: 'Why invest in TGI',
+    title: 'Why invest in the TGI programme?',
+    paragraphs: [
+      'TGI structures investment opportunities backed by real operational projects in Togo: logistics, agro, trade, construction, digital, marketing and financial education.',
+      'You benefit from a clear framework, a dedicated advisor and regular reporting — with a response within 48 hours for any expression of interest.',
+    ],
+  },
+  whyPlace: {
+    eyebrow: 'Why invest with TAOMAN',
+    title: 'Why place your investments with TAOMAN GROUP INVESTMENTS?',
+    paragraphs: [
+      'Institutional governance, internal controls and KYC / SYSCOA / ECOWAS compliance integrated into every file.',
+      'Targeted returns, tangible assets and measurable local impact — for individuals, diaspora and institutional investors.',
+    ],
+  },
   pillarsIntro: 'Profitability, impact and autonomy: our investment decisions balance these three pillars.',
   pillars: [
     { title: 'Economic profitability', desc: 'Attractive returns based on viable projects tested in Togo with quarterly monitoring.', tone: 'from-blue-500/15 to-cyan-400/10' },

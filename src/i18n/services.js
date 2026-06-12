@@ -203,6 +203,9 @@ const FR = {
     requestQuoteCta: 'Demander un devis',
     badgeAvailable: 'Disponible',
     badgeSoon: 'Bientôt',
+    audienceConsumer: 'Particuliers',
+    audienceBusiness: 'Entreprises',
+    audienceBoth: 'Particuliers & Entreprises',
   },
   detailed: {
     eyebrow: 'Au-delà du devis',
@@ -439,7 +442,9 @@ const EN = {
     priceFromFallback: 'On quote',
     requestQuoteCta: 'Request a quote',
     badgeAvailable: 'Available',
-    badgeSoon: 'Coming soon',
+    audienceConsumer: 'Individuals',
+    audienceBusiness: 'Businesses',
+    audienceBoth: 'Individuals & Businesses',
   },
   detailed: {
     eyebrow: 'Beyond the quote',

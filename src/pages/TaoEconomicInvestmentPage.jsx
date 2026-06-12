@@ -103,7 +103,7 @@ export const TaoEconomicInvestmentPage = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-100 backdrop-blur mb-6">
               <Sparkles className="h-4 w-4" /> {tT.hero?.badge || "Programme d'investissement TGI"}
             </span>
-            <h1 className="text-5xl md:text-6xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
+            <h1 className="text-5xl md:text-7xl font-black tracking-[-0.04em] mb-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
               {heroTitle}
             </h1>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">{heroSubtitle}</h2>
@@ -168,6 +168,37 @@ export const TaoEconomicInvestmentPage = () => {
                 );
               })}
             </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ============ WHY INVEST ============ */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-10">
+            <Reveal preset="fadeUp">
+              <div className="rounded-3xl border border-outline-variant/40 p-8 h-full">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tgiPage.whyInvest?.eyebrow}</p>
+                <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-5">{tgiPage.whyInvest?.title}</h2>
+                <div className="space-y-4 text-on-surface-variant leading-relaxed">
+                  {(tgiPage.whyInvest?.paragraphs || []).map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+            <Reveal preset="fadeUp">
+              <div className="rounded-3xl border border-primary/20 bg-surface-container-low p-8 h-full">
+                <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">{tgiPage.whyPlace?.eyebrow}</p>
+                <h2 className="text-3xl md:text-4xl font-black text-on-surface mb-5">{tgiPage.whyPlace?.title}</h2>
+                <div className="space-y-4 text-on-surface-variant leading-relaxed">
+                  {(tgiPage.whyPlace?.paragraphs || []).map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+                <Link to="/about#governance" className="mt-6 inline-flex items-center gap-2 font-bold text-primary hover:underline">
+                  KYC & gouvernance <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </Reveal>
           </div>
         </section>

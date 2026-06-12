@@ -11,8 +11,7 @@ const DEVIS_MOVING = {
         'Déménager au Togo, sereinement : une logistique cadrée, des équipes formées, des biens protégés.',
       paragraphs: [
         "Le déménagement est l'un des moments les plus stressants de la vie d'un foyer ou d'une entreprise. Cartons mal protégés, équipes improvisées, camions inadaptés, devis flous, retards : les mauvaises surprises sont fréquentes. TAOMAN GROUP INVESTMENTS a structuré son service de déménagement pour éliminer ces risques.",
-        "Nous opérons des déménagements de particuliers, d'entreprises, de transferts spécialisés (administrations, industriels, commerciaux) et de la manutention de volumes ou de poids hors normes. Chaque mission est précédée d'une visite technique gratuite et d'un devis détaillé.",
-        'Notre flotte couvre les déménagements urbains, inter-villes (Lomé, Kara, Atakpamé, Sokodé, Dapaong) et sous-régionaux (UEMOA, CEDEAO). Nous travaillons avec des emballages adaptés à chaque type de bien et nos équipes sont formées à la manutention sécurisée des objets fragiles, encombrants ou lourds.',
+        "Nous opérons des déménagements de particuliers, d'entreprises, de transferts spécialisés (administrations, industriels, commerciaux) et de la manutention de volumes ou de poids hors normes. Chaque mission est précédée d'une visite technique gratuite et d'un devis détaillé. Notre flotte couvre les déménagements urbains, inter-villes (Lomé, Kara, Atakpamé, Sokodé, Dapaong) et sous-régionaux (UEMOA, CEDEAO). Nous travaillons avec des emballages adaptés à chaque type de bien et nos équipes sont formées à la manutention sécurisée des objets fragiles, encombrants ou lourds.",
       ],
     },
     types: {
@@ -220,8 +219,7 @@ const DEVIS_MOVING = {
         'Moving in Togo with peace of mind: structured logistics, trained teams, protected belongings.',
       paragraphs: [
         'Moving is one of the most stressful moments in the life of a household or a business. Poorly protected boxes, improvised crews, unsuitable trucks, vague quotes, delays: unpleasant surprises are common. TAOMAN GROUP INVESTMENTS has structured its moving service to eliminate these risks.',
-        'We handle residential moves, corporate relocations, specialized transfers (government, industrial, commercial) and the handling of oversized volumes or weights. Every job is preceded by a free technical visit and a detailed quote.',
-        'Our fleet covers urban moves, inter-city routes (Lomé, Kara, Atakpamé, Sokodé, Dapaong) and sub-regional operations (UEMOA, CEDEAO). We use packaging suited to each type of item and our teams are trained in safe handling of fragile, bulky or heavy goods.',
+        'We handle residential moves, corporate relocations, specialized transfers (government, industrial, commercial) and the handling of oversized volumes or weights. Every job is preceded by a free technical visit and a detailed quote. Our fleet covers urban moves, inter-city routes (Lomé, Kara, Atakpamé, Sokodé, Dapaong) and sub-regional operations (UEMOA, CEDEAO). We use packaging suited to each type of item and our teams are trained in safe handling of fragile, bulky or heavy goods.',
       ],
     },
     types: {
@@ -429,8 +427,7 @@ const DEVIS_MOVING = {
         'Mudarse en Togo con tranquilidad: logística estructurada, equipos formados, bienes protegidos.',
       paragraphs: [
         'La mudanza es uno de los momentos más estresantes en la vida de un hogar o de una empresa. Cajas mal protegidas, equipos improvisados, camiones inadecuados, presupuestos poco claros, retrasos: las malas sorpresas son frecuentes. TAOMAN GROUP INVESTMENTS ha estructurado su servicio de mudanzas para eliminar estos riesgos.',
-        'Realizamos mudanzas de particulares, de empresas, transferencias especializadas (administraciones, industriales, comerciales) y manipulación de volúmenes o pesos excepcionales. Cada misión va precedida de una visita técnica gratuita y un presupuesto detallado.',
-        'Nuestra flota cubre mudanzas urbanas, interurbanas (Lomé, Kara, Atakpamé, Sokodé, Dapaong) y subregionales (UEMOA, CEDEAO). Trabajamos con embalajes adaptados a cada tipo de bien y nuestros equipos están formados en la manipulación segura de objetos frágiles, voluminosos o pesados.',
+        'Realizamos mudanzas de particulares, de empresas, transferencias especializadas (administraciones, industriales, comerciales) y manipulación de volúmenes o pesos excepcionales. Cada misión va precedida de una visita técnica gratuita y un presupuesto detallado. Nuestra flota cubre mudanzas urbanas, interurbanas (Lomé, Kara, Atakpamé, Sokodé, Dapaong) y subregionales (UEMOA, CEDEAO). Trabajamos con embalajes adaptados a cada tipo de bien y nuestros equipos están formados en la manipulación segura de objetos frágiles, voluminosos o pesados.',
       ],
     },
     types: {
@@ -582,8 +579,7 @@ const DEVIS_MOVING = {
         'Mudar-se no Togo com tranquilidade: logística estruturada, equipas formadas, bens protegidos.',
       paragraphs: [
         'A mudança é um dos momentos mais stressantes na vida de um agregado familiar ou de uma empresa. Caixas mal protegidas, equipas improvisadas, camiões inadequados, orçamentos pouco claros, atrasos: as más surpresas são frequentes. A TAOMAN GROUP INVESTMENTS estruturou o seu serviço de mudanças para eliminar estes riscos.',
-        'Realizamos mudanças de particulares, de empresas, transferências especializadas (administrações, industriais, comerciais) e manuseamento de volumes ou pesos fora do comum. Cada missão é precedida de uma visita técnica gratuita e de um orçamento detalhado.',
-        'A nossa frota cobre mudanças urbanas, intercidades (Lomé, Kara, Atakpamé, Sokodé, Dapaong) e sub-regionais (UEMOA, CEDEAO). Trabalhamos com embalagens adaptadas a cada tipo de bem e as nossas equipas estão formadas no manuseamento seguro de objetos frágeis, volumosos ou pesados.',
+        'Realizamos mudanças de particulares, de empresas, transferências especializadas (administrações, industriais, comerciais) e manuseamento de volumes ou pesos fora do comum. Cada missão é precedida de uma visita técnica gratuita e de um orçamento detalhado. A nossa frota cobre mudanças urbanas, intercidades (Lomé, Kara, Atakpamé, Sokodé, Dapaong) e sub-regionais (UEMOA, CEDEAO). Trabalhamos com embalagens adaptadas a cada tipo de bem e as nossas equipas estão formadas no manuseamento seguro de objetos frágeis, volumosos ou pesados.',
       ],
     },
     types: {
@@ -715,8 +711,7 @@ const DEVIS_MOVING = {
         'Umzug im Togo mit Ruhe: strukturierte Logistik, geschulte Teams, geschützte Güter.',
       paragraphs: [
         'Ein Umzug gehört zu den stressigsten Momenten im Leben eines Haushalts oder eines Unternehmens. Schlecht geschützte Kartons, improvisierte Teams, ungeeignete Lkw, unklare Angebote, Verzögerungen: böse Überraschungen sind häufig. TAOMAN GROUP INVESTMENTS hat seinen Umzugsservice strukturiert, um diese Risiken zu beseitigen.',
-        'Wir führen Privatumzüge, Firmenumzüge, spezialisierte Transfers (Behörden, Industrie, Handel) und die Handhabung außergewöhnlicher Volumen oder Gewichte durch. Jeder Auftrag wird von einem kostenlosen technischen Vor-Ort-Termin und einem detaillierten Angebot begleitet.',
-        'Unsere Flotte deckt Stadtumzüge, Überlandtransporte (Lomé, Kara, Atakpamé, Sokodé, Dapaong) und subregionale Einsätze (UEMOA, CEDEAO) ab. Wir verwenden Verpackungen, die auf jeden Gütetyp abgestimmt sind, und unsere Teams sind in der sicheren Handhabung zerbrechlicher, sperriger oder schwerer Gegenstände geschult.',
+        'Wir führen Privatumzüge, Firmenumzüge, spezialisierte Transfers (Behörden, Industrie, Handel) und die Handhabung außergewöhnlicher Volumen oder Gewichte durch. Jeder Auftrag wird von einem kostenlosen technischen Vor-Ort-Termin und einem detaillierten Angebot begleitet. Unsere Flotte deckt Stadtumzüge, Überlandtransporte (Lomé, Kara, Atakpamé, Sokodé, Dapaong) und subregionale Einsätze (UEMOA, CEDEAO) ab. Wir verwenden Verpackungen, die auf jeden Gütetyp abgestimmt sind, und unsere Teams sind in der sicheren Handhabung zerbrechlicher, sperriger oder schwerer Gegenstände geschult.',
       ],
     },
     types: {
@@ -848,8 +843,7 @@ const DEVIS_MOVING = {
         'الانتقال في توغو باطمئنان: لوجستيات منظمة، فرق مدربة، ممتلكات محمية.',
       paragraphs: [
         'الانتقال من أكثر اللحظات إرهاقاً في حياة الأسرة أو المؤسسة. صناديق غير محمية، فرق عشوائية، شاحنات غير مناسبة، عروض غامضة، تأخيرات: المفاجآت السيئة شائعة. هيكلت TAOMAN GROUP INVESTMENTS خدمة النقل لإزالة هذه المخاطر.',
-        'ننفذ انتقالات الأفراد والشركات والتحويلات المتخصصة (إدارات، صناعية، تجارية) ومناولة الأحجام أو الأوزان الاستثنائية. كل مهمة تسبقها زيارة فنية مجانية وعرض أسعار مفصل.',
-        'تغطي أسطولنا الانتقالات الحضرية وبين المدن (لومي، كارا، أتاكبامي، سوكودي، دابونغ) وعبر المنطقة الفرعية (UEMOA، CEDEAO). نستخدم تغليفاً مناسباً لكل نوع ممتلكات وفرقنا مدربة على المناولة الآمنة للأشياء الهشة أو الضخمة أو الثقيلة.',
+        'ننفذ انتقالات الأفراد والشركات والتحويلات المتخصصة (إدارات، صناعية، تجارية) ومناولة الأحجام أو الأوزان الاستثنائية. كل مهمة تسبقها زيارة فنية مجانية وعرض أسعار مفصل. تغطي أسطولنا الانتقالات الحضرية وبين المدن (لومي، كارا، أتاكبامي، سوكودي، دابونغ) وعبر المنطقة الفرعية (UEMOA، CEDEAO). نستخدم تغليفاً مناسباً لكل نوع ممتلكات وفرقنا مدربة على المناولة الآمنة للأشياء الهشة أو الضخمة أو الثقيلة.',
       ],
     },
     types: {
@@ -980,8 +974,7 @@ const DEVIS_MOVING = {
       title: '在多哥安心搬迁：规范物流、专业团队、财物妥善保护。',
       paragraphs: [
         '搬迁是家庭或企业生活中压力最大的时刻之一。包装不当、临时拼凑的团队、不合适的卡车、模糊的报价、延误：意外时有发生。TAOMAN GROUP INVESTMENTS 已将其搬迁服务结构化，以消除这些风险。',
-        '我们承办个人搬迁、企业搬迁、专业转运（行政、工业、商业）以及超规格体积或重量的搬运。每项任务前均提供免费技术勘察和详细报价。',
-        '我们的车队覆盖市内搬迁、城际线路（Lomé、Kara、Atakpamé、Sokodé、Dapaong）及次区域业务（UEMOA、CEDEAO）。我们使用适合各类物品的包装材料，团队经过培训，可安全搬运易碎、笨重或沉重物品。',
+        '我们承办个人搬迁、企业搬迁、专业转运（行政、工业、商业）以及超规格体积或重量的搬运。每项任务前均提供免费技术勘察和详细报价。 我们的车队覆盖市内搬迁、城际线路（Lomé、Kara、Atakpamé、Sokodé、Dapaong）及次区域业务（UEMOA、CEDEAO）。我们使用适合各类物品的包装材料，团队经过培训，可安全搬运易碎、笨重或沉重物品。',
       ],
     },
     types: {

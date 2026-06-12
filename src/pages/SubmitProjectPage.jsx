@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Download, Mail } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { PageHeroEnhanced } from '../components/PageHeroEnhanced';
@@ -15,10 +16,14 @@ import { DEFAULT_SECTORS } from '../data/sectors-defaults';
 import { useLanguage } from '../context/LanguageContext';
 import { getSubmitProjectTranslations } from '../i18n/submitProject';
 
+const PROJECT_PDF_PATH = '/documents/soumission-projet-tgi.pdf';
+const SUBMIT_EMAIL = 'taomancontact@gmail.com';
+
 export const SubmitProjectPage = () => {
   const { translations: tc, language, nav: tNav } = useLanguage();
   const tS = tc?.submitProject?.hero || {};
   const t = getSubmitProjectTranslations(language);
+  const tAlt = t.altSubmission || {};
   const tSectorItems = tc?.sectors?.items || {};
   const [formData, setFormData] = useState({
     projectName: '',
@@ -32,9 +37,12 @@ export const SubmitProjectPage = () => {
     contactPhone: '',
     website: '',
   });
+  const [attachment, setAttachment] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const mailtoHref = `mailto:${SUBMIT_EMAIL}?subject=${encodeURIComponent(tAlt.mailSubject || 'Soumission de projet TGI')}`;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,28 +55,32 @@ export const SubmitProjectPage = () => {
     setSubmitError('');
 
     try {
+      const payload = new FormData();
+      payload.append('name', formData.contactName);
+      payload.append('phone', formData.contactPhone);
+      payload.append('address', formData.location);
+      payload.append('email', formData.contactEmail);
+      payload.append('title', `Soumission de projet - ${formData.projectName}`);
+      payload.append(
+        'description',
+        [
+          `Secteur: ${formData.sector}`,
+          `Ticket recherché: ${formData.amount}`,
+          `Horizon: ${formData.horizon}`,
+          `Localisation: ${formData.location}`,
+          `Email: ${formData.contactEmail}`,
+          `Site web: ${formData.website || '—'}`,
+          '',
+          'Description:',
+          formData.description,
+        ].join('\n'),
+      );
+      payload.append('service', 'Soumission de projet');
+      if (attachment) payload.append('attachment', attachment);
+
       const response = await fetch(`${API_URL}/quotes/submit`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.contactName,
-          phone: formData.contactPhone,
-          address: formData.location,
-          title: `Soumission de projet - ${formData.projectName}`,
-          description: [
-            `Secteur: ${formData.sector}`,
-            `Ticket recherché: ${formData.amount}`,
-            `Horizon: ${formData.horizon}`,
-            `Localisation: ${formData.location}`,
-            `Email: ${formData.contactEmail}`,
-            `Site web: ${formData.website || '—'}`,
-            '',
-            'Description:',
-            formData.description,
-          ].join('\n'),
-          service: 'Soumission de projet',
-          email: formData.contactEmail,
-        }),
+        body: payload,
       });
 
       if (response.ok) {
@@ -85,6 +97,7 @@ export const SubmitProjectPage = () => {
           contactPhone: '',
           website: '',
         });
+        setAttachment(null);
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         setSubmitError(await getApiErrorMessage(response, t.errorGeneric));
@@ -141,6 +154,27 @@ export const SubmitProjectPage = () => {
             <Reveal preset="fadeUp">
             <PremiumGlowCard className="rounded-3xl">
             <div className="p-8">
+              <div className="mb-8 rounded-2xl border border-primary/20 bg-surface-container-low p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">{tAlt.eyebrow}</p>
+                <h3 className="mt-2 text-lg font-black text-on-surface">{tAlt.title}</h3>
+                <p className="mt-2 text-sm text-on-surface-variant">{tAlt.description}</p>
+                <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={PROJECT_PDF_PATH}
+                    download
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-white px-5 py-3 font-bold text-sm hover:opacity-90 transition"
+                  >
+                    <Download className="h-4 w-4" /> {tAlt.downloadLabel}
+                  </a>
+                  <a
+                    href={mailtoHref}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary text-primary px-5 py-3 font-bold text-sm hover:bg-primary hover:text-white transition"
+                  >
+                    <Mail className="h-4 w-4" /> {tAlt.mailLabel}
+                  </a>
+                </div>
+              </div>
+
               <h2 className="text-2xl font-black text-on-surface mb-2">{t.formTitle}</h2>
               <p className="text-sm text-on-surface-variant mb-6">
                 {t.requiredHint.split('*')[0]}
@@ -195,13 +229,14 @@ export const SubmitProjectPage = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
-                      {t.fields.location.label}
+                      {t.fields.location.label} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
+                      required
                       placeholder={t.fields.location.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
@@ -210,14 +245,19 @@ export const SubmitProjectPage = () => {
                     <label className="block text-sm font-bold text-on-surface mb-2">
                       {t.fields.amount.label}
                     </label>
-                    <input
-                      type="text"
+                    <select
                       name="amount"
                       value={formData.amount}
                       onChange={handleChange}
-                      placeholder={t.fields.amount.placeholder}
                       className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
+                    >
+                      <option value="">{t.selectPlaceholder}</option>
+                      {(t.fields.amount.options || []).map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-on-surface mb-2">
@@ -265,6 +305,17 @@ export const SubmitProjectPage = () => {
                     placeholder={t.fields.description.placeholder}
                     className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-on-surface mb-2">{tAlt.attachmentLabel}</label>
+                  <input
+                    type="file"
+                    accept=".pdf,application/pdf"
+                    onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                    className="w-full px-4 py-3 border border-outline rounded-lg focus:outline-none focus:ring-2 focus:ring-primary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-primary/10 file:text-primary file:font-bold"
+                  />
+                  <p className="mt-2 text-xs text-on-surface-variant">{tAlt.attachmentHint}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -347,7 +398,7 @@ export const SubmitProjectPage = () => {
                 <h3 className="mt-3 text-xl font-black text-on-surface">{t.help.title}</h3>
                 <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">{t.help.description}</p>
                 <Link
-                  to="/contact"
+                  to="/contact?topic=project"
                   className="mt-5 inline-flex items-center justify-center w-full rounded-2xl border border-primary px-4 py-3 font-bold text-primary hover:bg-primary hover:text-white transition"
                 >
                   {t.help.cta}

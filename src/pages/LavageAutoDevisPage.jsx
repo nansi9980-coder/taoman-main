@@ -18,14 +18,13 @@ import { Footer } from '../components/Footer';
 import { API_URL } from '../config';
 import { getApiErrorMessage } from '../utils/apiError';
 import { DevisPageHero } from '../components/DevisPageHero';
-import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 import { SeoHead } from '../components/SeoHead';
+import { MarqueeTicker } from '../components/MarqueeTicker';
+import { BRAND_NAME } from '../constants/branding';
 import { useLanguage } from '../context/LanguageContext';
 import { getCarwashTranslations } from '../i18n/carwash';
-import lavage1 from '../assets/realisations/lavage1.jpg';
 
 const LAVAGE_HERO_IMAGE = '/images/lavage-auto-hero.png';
-import lavage2 from '../assets/realisations/lavage2.jpg';
 
 const FORMULA_ICONS = {
   integral: <Droplets className="h-6 w-6" strokeWidth={2.2} />,
@@ -134,10 +133,19 @@ export const LavageAutoDevisPage = () => {
           highContrast
         />
 
-        {/* INTRO – Texte de contexte riche */}
+        {/* INTRO – image gauche, texte droite */}
         <section className="py-20 px-6 bg-surface">
-          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
-            <div>
+          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
+              <img
+                src={LAVAGE_HERO_IMAGE}
+                alt={t.intro.title}
+                className="relative rounded-[2rem] shadow-xl w-full aspect-[4/3] object-cover object-[center_35%] ring-1 ring-black/5 bg-white"
+                loading="lazy"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.35em] text-primary mb-3">
                 <Sparkles className="h-4 w-4" strokeWidth={2.4} /> {t.intro.eyebrow}
               </p>
@@ -149,16 +157,6 @@ export const LavageAutoDevisPage = () => {
                   <p key={i}>{p}</p>
                 ))}
               </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-3 bg-gradient-to-br from-primary/25 to-cyan-400/15 rounded-[2rem] blur-2xl" aria-hidden="true" />
-              <BeforeAfterSlider
-                beforeSrc={lavage1}
-                afterSrc={lavage2}
-                beforeLabel={isFr ? 'Avant' : 'Before'}
-                afterLabel={isFr ? 'Après' : 'After'}
-                className="relative shadow-xl ring-1 ring-black/5"
-              />
             </div>
           </div>
         </section>
@@ -444,7 +442,7 @@ export const LavageAutoDevisPage = () => {
                   </p>
                 </div>
                 <div className="rounded-3xl bg-white text-on-surface p-6 shadow-xl">
-                  <img src={lavage2} alt="Travail TAOMAN GROUP INVESTMENTS" className="rounded-2xl w-full aspect-[4/3] object-cover mb-4" loading="lazy" />
+                  <img src={LAVAGE_HERO_IMAGE} alt="Travail TAOMAN GROUP INVESTMENTS" className="rounded-2xl w-full aspect-[4/3] object-cover object-[center_35%] mb-4 bg-white" loading="lazy" />
                   <h4 className="font-black text-on-surface">{t.sidebar.equipmentTitle}</h4>
                   <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
                     {t.sidebar.equipmentDesc}
@@ -454,6 +452,16 @@ export const LavageAutoDevisPage = () => {
             </div>
           </div>
         </section>
+
+        <MarqueeTicker
+          items={[
+            BRAND_NAME,
+            isFr ? 'Devis sous 24h' : 'Quote within 24h',
+            isFr ? 'Intervention rapide · Lomé' : 'Fast service · Lomé',
+            isFr ? 'Lavage à domicile ou en centre' : 'Home or centre wash',
+          ]}
+          speed={26}
+        />
 
         {/* FAQ LAVAGE */}
         <section className="py-20 px-6 bg-surface-container-low">

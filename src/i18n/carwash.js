@@ -10,8 +10,7 @@ const CARWASH = {
       title: 'Un lavage automobile pensé pour durer, pas seulement pour briller.',
       paragraphs: [
         "TAOMAN GROUP INVESTMENTS opère un service de lavage automobile haut de gamme destiné aux particuliers, aux flottes d'entreprise et aux investisseurs qui souhaitent maintenir la valeur de leurs véhicules. Chaque prestation est réalisée par des équipes formées, avec un matériel professionnel et des produits sélectionnés pour leur efficacité comme pour leur respect de la carrosserie.",
-        "Notre conviction est simple : laver un véhicule n'est pas une dépense, c'est un acte d'entretien qui prolonge la durée de vie de la carrosserie, des sièges, des moquettes et des optiques. Un véhicule régulièrement entretenu se revend mieux, consomme moins en frais d'usure et reflète une image plus professionnelle dans la vie quotidienne ou en clientèle.",
-        "Nous proposons trois formules complémentaires – Lavage Intérieur, Lavage Extérieur et Lavage Général – ainsi qu'une option à domicile pour les clients qui ne peuvent pas se déplacer. Chaque formule est encadrée par une checklist, un délai annoncé et un contrôle qualité avant remise du véhicule.",
+        "Notre conviction est simple : laver un véhicule n'est pas une dépense, c'est un acte d'entretien qui prolonge la durée de vie de la carrosserie, des sièges, des moquettes et des optiques. Un véhicule régulièrement entretenu se revend mieux, consomme moins en frais d'usure et reflète une image plus professionnelle dans la vie quotidienne ou en clientèle. Nous proposons trois formules complémentaires – Lavage Intérieur, Lavage Extérieur et Lavage Général – ainsi qu'une option à domicile pour les clients qui ne peuvent pas se déplacer. Chaque formule est encadrée par une checklist, un délai annoncé et un contrôle qualité avant remise du véhicule.",
       ],
     },
     formulas: {
@@ -185,8 +184,7 @@ const CARWASH = {
       title: 'Car washing built to last, not just to shine.',
       paragraphs: [
         'TAOMAN GROUP INVESTMENTS operates a premium car wash service for individuals, corporate fleets and investors who want to preserve their vehicles\' value. Every service is delivered by trained teams, with professional equipment and products chosen for effectiveness and respect for the bodywork.',
-        'Our belief is simple: washing a vehicle is not an expense, it is maintenance that extends the life of the bodywork, seats, carpets and lights. A regularly maintained vehicle resells better, wears less and projects a more professional image in daily life or with clients.',
-        'We offer three complementary packages – Interior Wash, Exterior Wash and Full Wash – plus an at-home option for clients who cannot travel. Each package follows a checklist, a stated timeframe and a quality check before handover.',
+        'Our belief is simple: washing a vehicle is not an expense, it is maintenance that extends the life of the bodywork, seats, carpets and lights. A regularly maintained vehicle resells better, wears less and projects a more professional image in daily life or with clients. We offer three complementary packages – Interior Wash, Exterior Wash and Full Wash – plus an at-home option for clients who cannot travel. Each package follows a checklist, a stated timeframe and a quality check before handover.',
       ],
     },
     formulas: {
@@ -279,8 +277,7 @@ const CARWASH = {
       title: 'Un lavado de automóvil pensado para durar, no solo para brillar.',
       paragraphs: [
         'TAOMAN GROUP INVESTMENTS ofrece un servicio de lavado de automóviles premium para particulares, flotas empresariales e inversores que desean mantener el valor de sus vehículos. Cada prestación la realizan equipos formados, con material profesional y productos seleccionados por su eficacia y respeto hacia la carrocería.',
-        'Nuestra convicción es simple: lavar un vehículo no es un gasto, es un acto de mantenimiento que prolonga la vida de la carrocería, los asientos, las moquetas y los ópticos. Un vehículo mantenido regularmente se revende mejor, consume menos en desgaste y proyecta una imagen más profesional.',
-        'Ofrecemos tres fórmulas complementarias – Lavado Interior, Lavado Exterior y Lavado General – además de una opción a domicilio para clientes que no pueden desplazarse. Cada fórmula sigue una checklist, un plazo anunciado y un control de calidad antes de la entrega.',
+        'Nuestra convicción es simple: lavar un vehículo no es un gasto, es un acto de mantenimiento que prolonga la vida de la carrocería, los asientos, las moquetas y los ópticos. Un vehículo mantenido regularmente se revende mejor, consume menos en desgaste y proyecta una imagen más profesional. Ofrecemos tres fórmulas complementarias – Lavado Interior, Lavado Exterior y Lavado General – además de una opción a domicilio para clientes que no pueden desplazarse. Cada fórmula sigue una checklist, un plazo anunciado y un control de calidad antes de la entrega.',
       ],
     },
     formulas: {
@@ -368,8 +365,7 @@ const CARWASH = {
       title: 'Uma lavagem automóvel pensada para durar, não apenas para brilhar.',
       paragraphs: [
         'A TAOMAN GROUP INVESTMENTS opera um serviço de lavagem automóvel premium para particulares, frotas empresariais e investidores que desejam manter o valor dos seus veículos. Cada prestação é realizada por equipas formadas, com material profissional e produtos selecionados pela eficácia e respeito pela carroceria.',
-        'A nossa convicção é simples: lavar um veículo não é uma despesa, é um ato de manutenção que prolonga a vida da carroceria, dos bancos, dos carpetes e dos ópticos. Um veículo regularmente mantido revende-se melhor, consome menos em desgaste e projeta uma imagem mais profissional.',
-        'Propomos três fórmulas complementares – Lavagem Interior, Lavagem Exterior e Lavagem Geral – bem como uma opção ao domicílio para clientes que não podem deslocar-se. Cada fórmula segue uma checklist, um prazo anunciado e um controlo de qualidade antes da entrega.',
+        'A nossa convicção é simples: lavar um veículo não é uma despesa, é um ato de manutenção que prolonga a vida da carroceria, dos bancos, dos carpetes e dos ópticos. Um veículo regularmente mantido revende-se melhor, consome menos em desgaste e projeta uma imagem mais profissional. Propomos três fórmulas complementares – Lavagem Interior, Lavagem Exterior e Lavagem Geral – bem como uma opção ao domicílio para clientes que não podem deslocar-se. Cada fórmula segue uma checklist, um prazo anunciado e um controlo de qualidade antes da entrega.',
       ],
     },
     formulas: {
@@ -457,8 +453,7 @@ const CARWASH = {
       title: 'Autowäsche, die hält – nicht nur glänzt.',
       paragraphs: [
         'TAOMAN GROUP INVESTMENTS bietet einen Premium-Autowaschservice für Privatkunden, Firmenflotten und Investoren, die den Wert ihrer Fahrzeuge erhalten möchten. Jede Leistung wird von geschulten Teams mit professioneller Ausrüstung und sorgfältig ausgewählten Produkten durchgeführt.',
-        'Unsere Überzeugung ist einfach: Ein Fahrzeug zu waschen ist keine Ausgabe, sondern Wartung, die Karosserie, Sitze, Teppiche und Scheinwerfer länger erhält. Regelmäßig gepflegte Fahrzeuge verkaufen sich besser, verschleißen weniger und wirken professioneller.',
-        'Wir bieten drei ergänzende Pakete – Innenreinigung, Außenwäsche und Komplettwäsche – sowie eine Option vor Ort für Kunden, die sich nicht bewegen können. Jedes Paket folgt einer Checkliste, einem angekündigten Zeitrahmen und einer Qualitätskontrolle vor der Übergabe.',
+        'Unsere Überzeugung ist einfach: Ein Fahrzeug zu waschen ist keine Ausgabe, sondern Wartung, die Karosserie, Sitze, Teppiche und Scheinwerfer länger erhält. Regelmäßig gepflegte Fahrzeuge verkaufen sich besser, verschleißen weniger und wirken professioneller. Wir bieten drei ergänzende Pakete – Innenreinigung, Außenwäsche und Komplettwäsche – sowie eine Option vor Ort für Kunden, die sich nicht bewegen können. Jedes Paket folgt einer Checkliste, einem angekündigten Zeitrahmen und einer Qualitätskontrolle vor der Übergabe.',
       ],
     },
     formulas: {
@@ -546,8 +541,7 @@ const CARWASH = {
       title: 'غسيل سيارات مصمم ليدوم، لا ليلمع فقط.',
       paragraphs: [
         'تقدّم TAOMAN GROUP INVESTMENTS خدمة غسيل سيارات فاخرة للأفراد وأساطيل الشركات والمستثمرين الراغبين في الحفاظ على قيمة مركباتهم. تُنفَّذ كل خدمة بواسطة فرق مُدرَّبة، بمعدات احترافية ومنتجات مختارة لفعاليتها واحترامها للهيكل.',
-        'قناعتنا بسيطة: غسل المركبة ليس مصروفاً بل صيانة تُطيل عمر الهيكل والمقاعد والسجاد والمصابيح. المركبة المُعتنى بها بانتظام تُباع أفضل وتستهلك أقل في التآكل وتعكس صورة أكثر احترافية.',
-        'نقدّم ثلاث صيغ مكمّلة – غسيل داخلي، غسيل خارجي وغسيل شامل – إضافة إلى خيار في المنزل للعملاء الذين لا يستطيعون التنقل. كل صيغة تتبع قائمة تحقق ومدة مُعلَنة ومراقبة جودة قبل التسليم.',
+        'قناعتنا بسيطة: غسل المركبة ليس مصروفاً بل صيانة تُطيل عمر الهيكل والمقاعد والسجاد والمصابيح. المركبة المُعتنى بها بانتظام تُباع أفضل وتستهلك أقل في التآكل وتعكس صورة أكثر احترافية. نقدّم ثلاث صيغ مكمّلة – غسيل داخلي، غسيل خارجي وغسيل شامل – إضافة إلى خيار في المنزل للعملاء الذين لا يستطيعون التنقل. كل صيغة تتبع قائمة تحقق ومدة مُعلَنة ومراقبة جودة قبل التسليم.',
       ],
     },
     formulas: {
@@ -635,8 +629,7 @@ const CARWASH = {
       title: '为持久而设计的洗车，不只是为了闪亮。',
       paragraphs: [
         'TAOMAN GROUP INVESTMENTS 为个人、企业车队和希望保持车辆价值的投资人提供高端洗车服务。每项服务均由经过培训的团队完成，配备专业设备和兼顾效果与车身保护的产品。',
-        '我们的理念很简单：洗车不是开支，而是延长车身、座椅、地毯和灯具寿命的保养。定期保养的车辆更易转手、磨损更少，在日常或客户面前也更显专业。',
-        '我们提供三种互补方案——内饰清洗、外观清洗和全面清洗——以及为无法到店的客户提供的上门服务。每种方案均有检查清单、明确时限和交车前的质量检验。',
+        '我们的理念很简单：洗车不是开支，而是延长车身、座椅、地毯和灯具寿命的保养。定期保养的车辆更易转手、磨损更少，在日常或客户面前也更显专业。 我们提供三种互补方案——内饰清洗、外观清洗和全面清洗——以及为无法到店的客户提供的上门服务。每种方案均有检查清单、明确时限和交车前的质量检验。',
       ],
     },
     formulas: {

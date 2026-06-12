@@ -113,7 +113,7 @@ const buildFieldLabels = (tContact, language) => {
     },
     horizon: { label: f.horizon?.label, type: 'select', required: false, options: f.horizon?.options || [] },
     projectName: { label: f.projectName?.label, placeholder: f.projectName?.placeholder, type: 'text', required: true },
-    location: { label: f.location?.label, placeholder: f.location?.placeholder, type: 'text', required: false },
+    location: { label: f.location?.label, placeholder: f.location?.placeholder, type: 'text', required: true },
     stage: { label: f.stage?.label, type: 'select', required: true, options: f.stage?.options || [] },
     question: { label: f.question?.label, placeholder: f.question?.placeholder, type: 'text', required: true },
     message: { label: f.message?.label, placeholder: f.message?.placeholder, type: 'textarea', required: true },
@@ -158,18 +158,21 @@ const ContactCard = ({ topic, onSelect, active, labels }) => {
   );
 };
 
-const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
+const ContactForm = ({ topic, contactInfo, fieldLabels, tContact, profilePrefill }) => {
   const [formData, setFormData] = useState({});
+  const [attachment, setAttachment] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const showAttachment = topic.id === 'invest' || topic.id === 'project';
 
   // Réinitialise quand on change de topic ou de langue
   useEffect(() => {
-    setFormData({});
+    setFormData(profilePrefill ? { profile: profilePrefill } : {});
+    setAttachment(null);
     setSubmitted(false);
     setError('');
-  }, [topic.id]);
+  }, [topic.id, profilePrefill]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -187,21 +190,24 @@ const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
         .map((f) => `${fieldLabels[f]?.label || f} : ${formData[f] || '—'}`);
       const description = `${topic.title}\n${lines.join('\n')}\n\n${formData.message || ''}`.trim();
 
+      const payload = new FormData();
+      payload.append('name', formData.name || formData.organization || 'Contact TAOMAN GROUP INVESTMENTS');
+      payload.append('email', formData.email);
+      payload.append('phone', formData.phone || '');
+      payload.append('subject', `${topic.serviceTag} – ${formData.projectName || formData.question || topic.title}`);
+      payload.append('message', description);
+      payload.append('topic', topic.id);
+      if (attachment) payload.append('attachment', attachment);
+
       const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name || formData.organization || 'Contact TAOMAN GROUP INVESTMENTS',
-          email: formData.email,
-          phone: formData.phone,
-          subject: `${topic.serviceTag} – ${formData.projectName || formData.question || topic.title}`,
-          message: description,
-        }),
+        body: payload,
       });
 
       if (response.ok) {
         setSubmitted(true);
-        setFormData({});
+        setFormData(profilePrefill ? { profile: profilePrefill } : {});
+        setAttachment(null);
         setTimeout(() => setSubmitted(false), 6000);
       } else {
         setError(await getApiErrorMessage(response, tContact.form?.errorGeneric));
@@ -297,6 +303,18 @@ const ContactForm = ({ topic, contactInfo, fieldLabels, tContact }) => {
                 </div>
               );
             })}
+            {showAttachment && (
+              <div className="md:col-span-2">
+                <label className="block text-sm font-bold text-on-surface mb-2">{fm.attachmentLabel}</label>
+                <input
+                  type="file"
+                  accept=".pdf,application/pdf"
+                  onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                  className="w-full px-4 py-3 border border-outline rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-surface text-on-surface file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-primary/10 file:text-primary file:font-bold"
+                />
+                <p className="mt-2 text-xs text-on-surface-variant">{fm.attachmentHint}</p>
+              </div>
+            )}
             <div className="md:col-span-2 mt-1">
               <button
                 type="submit"
@@ -387,6 +405,7 @@ export const ContactPage = () => {
   const contactInfo = section('contact') || {};
   const [searchParams, setSearchParams] = useSearchParams();
   const topicId = searchParams.get('topic') || 'info';
+  const profilePrefill = searchParams.get('profile') || '';
 
   const topicsMap = useMemo(() => buildTopics(tContactExt), [tContactExt]);
   const fieldLabels = useMemo(() => buildFieldLabels(tContactExt, language), [tContactExt, language]);
@@ -428,7 +447,7 @@ export const ContactPage = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/50 bg-[#020d1a]/70 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-cyan-100 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" strokeWidth={2.4} /> {tContact.hero.eyebrow}
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-[-0.04em] leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+            <h1 className="mt-5 text-5xl md:text-7xl font-black tracking-[-0.04em] leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
               <TextReveal
                 elementType="span"
                 immediate
@@ -496,6 +515,7 @@ export const ContactPage = () => {
               contactInfo={contactInfo}
               fieldLabels={fieldLabels}
               tContact={tContactExt}
+              profilePrefill={profilePrefill}
             />
           </div>
         </section>

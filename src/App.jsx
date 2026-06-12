@@ -6,6 +6,7 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { HelmetProvider } from 'react-helmet-async';
 import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
+import { CustomCursor } from './components/CustomCursor';
 import { SplashScreen } from './components/SplashScreen';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { LiveBadge } from './components/LiveBadge';
@@ -75,6 +76,7 @@ function App() {
       <HelmetProvider>
         <SiteContentProvider>
           <SplashScreen minDuration={1500} once />
+          <CustomCursor />
           <ScrollProgressBar />
           <SeoHead />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>

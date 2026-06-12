@@ -34,7 +34,6 @@ import { BRAND_NAME } from '../constants/branding';
 import { useLanguage } from '../context/LanguageContext';
 import { getServicesTranslations } from '../i18n/services';
 import lavageCard from '../assets/realisations/lavage1.jpg';
-import lavageCard2 from '../assets/realisations/lavage2.jpg';
 
 const BUREAUX_CARD_IMAGE = '/images/entretien-bureaux-hero.png';
 const LAVAGE_CARD_IMAGE = '/images/lavage-auto-hero.png';
@@ -73,19 +72,28 @@ const SERVICE_ID_TO_HREF = {
   conciergerie: '/contact?topic=info&service=conciergerie',
   audits: '/contact?topic=info&service=audit',
 };
+const SERVICE_ID_TO_AUDIENCE = {
+  lavage: 'both',
+  demenagement: 'both',
+  'entretien-bureaux': 'business',
+  transport: 'business',
+  climatisation: 'both',
+  conciergerie: 'both',
+  audits: 'business',
+};
 const SERVICE_ID_TO_IMAGE = {};
 
 SERVICE_ID_TO_IMAGE.lavage = LAVAGE_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE.demenagement = DEMENAGEMENT_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE['entretien-bureaux'] = BUREAUX_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE.transport = TRANSPORT_CARD_IMAGE;
-SERVICE_ID_TO_IMAGE.climatisation = lavageCard2;
-SERVICE_ID_TO_IMAGE.conciergerie = lavageCard2;
+SERVICE_ID_TO_IMAGE.climatisation = LAVAGE_CARD_IMAGE;
+SERVICE_ID_TO_IMAGE.conciergerie = LAVAGE_CARD_IMAGE;
 SERVICE_ID_TO_IMAGE.audits = AUDIT_CARD_IMAGE;
 
 const HERO_SLIDES_FALLBACK = {
   'lavage-1': { src: LAVAGE_CARD_IMAGE, alt: '' },
-  'lavage-2': { src: lavageCard2, alt: '' },
+  'lavage-2': { src: LAVAGE_CARD_IMAGE, alt: '' },
   demenagement: { src: DEMENAGEMENT_CARD_IMAGE, alt: '' },
   transport: { src: TRANSPORT_CARD_IMAGE, alt: '' },
   equipe: { src: BUREAUX_CARD_IMAGE, alt: '' },
@@ -102,8 +110,8 @@ export const ServicesPage = () => {
   const heroBadge = pickLocale(language, sp.badge, tPage.badge);
   const heroTitle = pickLocale(language, sp.title, tPage.title);
   const heroDesc = pickLocale(language, sp.description, tPage.description);
-  const btn1 = pickLocale(language, sp.btn1, tPage.btn1 || tServExt.finalCta?.btnQuote);
-  const btn2 = pickLocale(language, sp.btn2, tPage.btn2 || tServExt.finalCta?.btnInvest);
+  const btn1 = pickLocale(language, sp.btn1, tPage.btn1 || tServExt.finalCta?.title);
+  const btn2 = pickLocale(language, sp.btn2, tPage.btn2 || tServExt.finalCta?.btnCall);
 
   const heroSlides = useMemo(() => {
     const merged = mergeServicesPageHeroSlides(sp.heroSlides || []);
@@ -177,7 +185,7 @@ export const ServicesPage = () => {
           <div className="relative z-10 max-w-[1400px] mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             <div>
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{heroBadge}</p>
-              <h1 className="text-4xl md:text-6xl font-black tracking-[-0.04em] text-white mb-6">
+              <h1 className="text-5xl md:text-7xl font-black tracking-[-0.04em] text-white mb-6">
                 <TextReveal
                   elementType="span"
                   immediate
@@ -188,16 +196,16 @@ export const ServicesPage = () => {
               <p className="text-lg text-white/90 mb-8 max-w-2xl">{heroDesc}</p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <MagneticButton
-                  onClick={() => navigate('/contact')}
+                  onClick={() => navigate('/contact?topic=info')}
                   className="rounded-2xl bg-white px-7 py-3.5 text-[#07111f] shadow-xl"
                 >
                   {btn1}
                 </MagneticButton>
                 <button
-                  onClick={() => navigate('/investissement')}
-                  className="rounded-2xl border border-white/20 bg-white/10 px-7 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium"
+                  onClick={() => navigate('/contact?topic=info')}
+                  className="rounded-2xl border border-white/20 bg-white/10 px-7 py-3.5 font-bold text-white backdrop-blur hover:bg-white hover:text-[#07111f] transition hover-card-premium inline-flex items-center justify-center gap-2"
                 >
-                  {btn2}
+                  <Phone className="h-4 w-4" /> {btn2}
                 </button>
               </div>
             </div>
@@ -250,6 +258,13 @@ export const ServicesPage = () => {
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                    <span className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary shadow">
+                      {SERVICE_ID_TO_AUDIENCE[service.id] === 'business'
+                        ? tServExt.labels.audienceBusiness
+                        : SERVICE_ID_TO_AUDIENCE[service.id] === 'both'
+                          ? tServExt.labels.audienceBoth
+                          : tServExt.labels.audienceConsumer}
+                    </span>
                     <span className="absolute top-4 right-4 rounded-full bg-cyan-300 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#07111f] shadow">
                       {service.badge}
                     </span>
@@ -387,12 +402,6 @@ export const ServicesPage = () => {
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-on-primary text-on-primary px-8 py-4 font-bold hover:bg-on-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" /> {tServExt.finalCta.btnCall}
-              </Link>
-              <Link
-                to="/investissement"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/15 backdrop-blur text-on-primary px-8 py-4 font-bold hover:bg-white/25 transition border border-on-primary/30"
-              >
-                {tServExt.finalCta.btnInvest}
               </Link>
             </div>
           </div>
