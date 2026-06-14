@@ -5,6 +5,18 @@
 const SUBMIT_PROJECT = {
   FR: {
     backLink: '← Investir avec nous',
+    intro: {
+      eyebrow: 'Pourquoi nous confier votre projet ?',
+      title: 'Plus qu\'un financement : un partenaire opérationnel au Togo',
+      lead: 'Vous portez un projet concret dans la logistique, l\'agro, le commerce, le BTP ou le numérique ? TAOMAN GROUP INVESTMENTS ne se contente pas d\'allouer des capitaux : nous structurons votre dossier, mobilisons notre réseau terrain et assurons un suivi transparent tout au long de l\'investissement.',
+      points: [
+        'Accès au programme TGI et à un réseau d\'investisseurs structurés',
+        'Analyse rigoureuse par notre comité — réponse sous 5 jours ouvrés',
+        'Accompagnement à la structuration si votre projet est retenu',
+        'Reporting trimestriel et visibilité sur l\'avancement opérationnel',
+      ],
+      closing: 'Le formulaire ci-dessous prend environ 5 minutes. Décrivez l\'essentiel de votre projet : nous reviendrons vers vous avec une réponse claire.',
+    },
     formTitle: 'Formulaire de soumission',
     requiredHint: 'Les champs marqués * sont obligatoires.',
     successText: '✓ Votre projet a bien été reçu. Notre équipe revient vers vous sous 5 jours ouvrés.',
@@ -71,6 +83,18 @@ const SUBMIT_PROJECT = {
   },
   EN: {
     backLink: '← Invest with us',
+    intro: {
+      eyebrow: 'Why entrust us with your project?',
+      title: 'More than funding: an operational partner in Togo',
+      lead: 'Do you have a concrete project in logistics, agro, trade, construction or digital? TAOMAN GROUP INVESTMENTS does not just allocate capital: we structure your file, mobilise our field network and provide transparent tracking throughout the investment.',
+      points: [
+        'Access to the TGI program and a network of structured investors',
+        'Rigorous review by our committee — response within 5 business days',
+        'Structuring support if your project is approved',
+        'Quarterly reporting and visibility on operational progress',
+      ],
+      closing: 'The form below takes about 5 minutes. Describe the essentials of your project — we will get back to you with a clear response.',
+    },
     formTitle: 'Submission form',
     requiredHint: 'Fields marked * are required.',
     successText: '✓ Your project has been received. Our team will get back to you within 5 business days.',
@@ -137,6 +161,18 @@ const SUBMIT_PROJECT = {
   },
   ES: {
     backLink: '← Invertir con nosotros',
+    intro: {
+      eyebrow: '¿Por qué confiarnos su proyecto?',
+      title: 'Más que financiación: un socio operativo en Togo',
+      lead: '¿Tiene un proyecto concreto en logística, agro, comercio, construcción o digital? TAOMAN GROUP INVESTMENTS no se limita a asignar capital: estructuramos su expediente, movilizamos nuestra red en el terreno y garantizamos un seguimiento transparente durante toda la inversión.',
+      points: [
+        'Acceso al programa TGI y a una red de inversores estructurados',
+        'Análisis riguroso por nuestro comité — respuesta en 5 días hábiles',
+        'Acompañamiento en la estructuración si su proyecto es aprobado',
+        'Informes trimestrales y visibilidad sobre el avance operativo',
+      ],
+      closing: 'El formulario siguiente tarda unos 5 minutos. Describa lo esencial de su proyecto: le responderemos con claridad.',
+    },
     formTitle: 'Formulario de presentación',
     requiredHint: 'Los campos marcados con * son obligatorios.',
     successText: '✓ Su proyecto se ha recibido correctamente. Nuestro equipo le responderá en 5 días hábiles.',
@@ -184,6 +220,18 @@ const SUBMIT_PROJECT = {
   },
   PT: {
     backLink: '← Investir connosco',
+    intro: {
+      eyebrow: 'Porquê confiar-nos o seu projeto?',
+      title: 'Mais do que financiamento: um parceiro operacional no Togo',
+      lead: 'Tem um projeto concreto em logística, agro, comércio, construção ou digital? A TAOMAN GROUP INVESTMENTS não se limita a alocar capital: estruturamos o seu dossier, mobilizamos a nossa rede no terreno e garantimos um acompanhamento transparente durante todo o investimento.',
+      points: [
+        'Acesso ao programa TGI e a uma rede de investidores estruturados',
+        'Análise rigorosa pelo nosso comité — resposta em 5 dias úteis',
+        'Apoio à estruturação se o seu projeto for aprovado',
+        'Relatórios trimestrais e visibilidade sobre o avanço operacional',
+      ],
+      closing: 'O formulário abaixo demora cerca de 5 minutos. Descreva o essencial do seu projeto: responderemos com clareza.',
+    },
     formTitle: 'Formulário de submissão',
     requiredHint: 'Os campos marcados com * são obrigatórios.',
     successText: '✓ O seu projeto foi recebido. A nossa equipa responde em 5 dias úteis.',
@@ -231,6 +279,18 @@ const SUBMIT_PROJECT = {
   },
   DE: {
     backLink: '← Mit uns investieren',
+    intro: {
+      eyebrow: 'Warum uns Ihr Projekt anvertrauen?',
+      title: 'Mehr als Finanzierung: ein operativer Partner in Togo',
+      lead: 'Sie haben ein konkretes Projekt in Logistik, Agro, Handel, Bau oder Digital? TAOMAN GROUP INVESTMENTS weist nicht nur Kapital zu: Wir strukturieren Ihre Akte, mobilisieren unser Feldnetzwerk und sorgen für transparente Begleitung während der gesamten Investition.',
+      points: [
+        'Zugang zum TGI-Programm und ein Netzwerk strukturierter Investoren',
+        'Gründliche Prüfung durch unser Komitee — Antwort innerhalb von 5 Werktagen',
+        'Unterstützung bei der Strukturierung, wenn Ihr Projekt angenommen wird',
+        'Quartalsberichte und Transparenz über den operativen Fortschritt',
+      ],
+      closing: 'Das Formular unten dauert etwa 5 Minuten. Beschreiben Sie das Wesentliche Ihres Projekts — wir melden uns mit einer klaren Antwort.',
+    },
     formTitle: 'Einreichungsformular',
     requiredHint: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
     successText: '✓ Ihr Projekt wurde empfangen. Unser Team meldet sich innerhalb von 5 Werktagen.',
@@ -278,6 +338,18 @@ const SUBMIT_PROJECT = {
   },
   AR: {
     backLink: '← استثمر معنا',
+    intro: {
+      eyebrow: 'لماذا تُوكلنا مشروعك؟',
+      title: 'أكثر من تمويل: شريك تشغيلي في توغو',
+      lead: 'هل لديك مشروع ملموس في اللوجستيات أو الزراعة أو التجارة أو البناء أو الرقمي؟ TAOMAN GROUP INVESTMENTS لا تقتصر على تخصيص رأس المال: نُهيكل ملفك، ونُفعّل شبكتنا الميدانية، ونضمن متابعة شفافة طوال فترة الاستثمار.',
+      points: [
+        'الوصول إلى برنامج TGI وشبكة مستثمرين منظمة',
+        'تحليل دقيق من لجنتنا — رد خلال 5 أيام عمل',
+        'دعم في الهيكلة إذا تم قبول مشروعك',
+        'تقارير ربع سنوية ورؤية واضحة للتقدم التشغيلي',
+      ],
+      closing: 'يستغرق النموذج أدناه حوالي 5 دقائق. صف جوهر مشروعك — سنعود إليك برد واضح.',
+    },
     formTitle: 'نموذج التقديم',
     requiredHint: 'الحقول المعلّمة بـ * إلزامية.',
     successText: '✓ تم استلام مشروعك. سيرد فريقنا خلال 5 أيام عمل.',
@@ -324,6 +396,18 @@ const SUBMIT_PROJECT = {
   },
   ZH: {
     backLink: '← 与我们一起投资',
+    intro: {
+      eyebrow: '为什么将项目交给我们？',
+      title: '不仅是融资：更是多哥的操作型合作伙伴',
+      lead: '您在物流、农业、贸易、建筑或数字领域有具体项目吗？TAOMAN GROUP INVESTMENTS 不仅分配资金：我们梳理您的项目材料、调动实地网络，并在整个投资过程中提供透明跟踪。',
+      points: [
+        '接入 TGI 项目及结构化投资者网络',
+        '委员会严格审核 — 5 个工作日内回复',
+        '项目获批后提供结构化支持',
+        '季度报告及运营进展可见性',
+      ],
+      closing: '下方表单约需 5 分钟。请描述项目要点 — 我们将给出明确回复。',
+    },
     formTitle: '提交表单',
     requiredHint: '标有 * 的字段为必填项。',
     successText: '✓ 您的项目已成功收到。我们的团队将在 5 个工作日内与您联系。',

@@ -9,22 +9,22 @@ const CARWASH = {
       eyebrow: 'Le service en quelques mots',
       title: 'Un lavage automobile pensé pour durer, pas seulement pour briller.',
       paragraphs: [
-        "TAOMAN GROUP INVESTMENTS opère un service de lavage automobile haut de gamme destiné aux particuliers, aux flottes d'entreprise et aux investisseurs qui souhaitent maintenir la valeur de leurs véhicules. Chaque prestation est réalisée par des équipes formées, avec un matériel professionnel et des produits sélectionnés pour leur efficacité comme pour leur respect de la carrosserie.",
-        "Notre conviction est simple : laver un véhicule n'est pas une dépense, c'est un acte d'entretien qui prolonge la durée de vie de la carrosserie, des sièges, des moquettes et des optiques. Un véhicule régulièrement entretenu se revend mieux, consomme moins en frais d'usure et reflète une image plus professionnelle dans la vie quotidienne ou en clientèle. Nous proposons trois formules complémentaires – Lavage Intérieur, Lavage Extérieur et Lavage Général – ainsi qu'une option à domicile pour les clients qui ne peuvent pas se déplacer. Chaque formule est encadrée par une checklist, un délai annoncé et un contrôle qualité avant remise du véhicule.",
+        "TAOMAN GROUP INVESTMENTS assure un lavage automobile premium en centre ou à domicile, pour particuliers, flottes et investisseurs.",
+        "Cinq prestations : Lavage Intérieur, Extérieur, Général, Tricycle et Moquette. Équipes formées, matériel professionnel, checklist et contrôle qualité avant restitution.",
       ],
     },
     formulas: {
       eyebrow: 'Nos formules',
       title: "Trois formules, un seul niveau d'exigence",
       description:
-        "Choisissez la formule qui correspond à l'état actuel de votre véhicule et au résultat que vous attendez. Toutes les formules incluent un contrôle visuel par notre responsable d'équipe avant la restitution.",
+        'Trois formules complémentaires et deux prestations spécialisées (Tricycle, Moquette), avec contrôle qualité avant restitution.',
       recommendedBadge: 'Recommandé',
       items: [
         {
           id: 'integral',
           title: 'Lavage Intérieur',
           duration: '45 – 75 min',
-          desc: "Idéal pour les véhicules dont l'extérieur reste correct mais dont l'habitacle a besoin d'un vrai rafraîchissement : poussières, miettes, taches, odeurs.",
+          desc: "Habitacle à rafraîchir : poussières, taches et odeurs.",
           points: [
             'Aspirateur professionnel des sièges, tapis, coffre',
             'Nettoyage vapeur des zones sensibles',
@@ -38,7 +38,7 @@ const CARWASH = {
           id: 'extreme',
           title: 'Lavage Général',
           duration: '90 – 150 min',
-          desc: "La formule la plus complète : intérieur + extérieur. Recommandée pour préparer un long trajet, une réception client ou simplement remettre un véhicule au niveau d'un véhicule neuf.",
+          desc: 'Formule complète intérieur + extérieur, idéale avant un long trajet ou une réception.',
           points: [
             'Tout le Lavage Intérieur inclus',
             'Tout le Lavage Extérieur inclus',
@@ -52,7 +52,7 @@ const CARWASH = {
           id: 'standard',
           title: 'Lavage Extérieur',
           duration: '30 – 60 min',
-          desc: 'Conçu pour les véhicules qui roulent beaucoup en environnement poussiéreux ou pluvieux et qui demandent un rafraîchissement régulier de la carrosserie.',
+          desc: 'Carrosserie en environnement poussiéreux ou pluvieux, entretien régulier.',
           points: [
             'Pré-lavage haute pression',
             'Shampooing carrosserie microfibre',
@@ -68,22 +68,22 @@ const CARWASH = {
       eyebrow: 'Notre processus',
       title: 'Du devis au véhicule restitué, étape par étape',
       description:
-        "Chaque prestation suit la même méthode rigoureuse. Pas d'improvisation. Pas de surprise. Chaque collaborateur connaît sa checklist et son ordre d'intervention.",
+        'Une méthode rigoureuse, de la demande de devis à la restitution du véhicule.',
       steps: [
-        { num: '01', title: 'Demande de devis', desc: "Vous remplissez le formulaire ou nous contactez par téléphone. Nous notons le type de véhicule, l'état, l'urgence et le lieu d'intervention souhaité (centre TAOMAN GROUP INVESTMENTS ou domicile)." },
-        { num: '02', title: 'Confirmation et planning', desc: 'Nous validons la formule la plus adaptée à votre véhicule, vous communiquons un créneau et un délai indicatif. Vous recevez une confirmation écrite avec le détail du périmètre.' },
-        { num: '03', title: 'Accueil et inspection', desc: "À l'arrivée, le responsable d'équipe inspecte le véhicule avec vous, identifie les zones nécessitant un soin particulier (taches anciennes, plastiques jaunis, jantes très sales) et note les éventuels défauts existants." },
-        { num: '04', title: 'Exécution par formule', desc: "L'équipe applique la checklist correspondant à la formule choisie. Les produits sont sélectionnés en fonction des matériaux (cuir, alcantara, tissu, plastique souple) pour ne jamais agresser les surfaces." },
-        { num: '05', title: 'Contrôle qualité', desc: "Avant la restitution, un second collaborateur effectue un contrôle visuel sur l'ensemble des points de la checklist. Si une zone n'est pas conforme, elle est immédiatement reprise." },
-        { num: '06', title: 'Restitution et satisfaction', desc: "Vous récupérez le véhicule sur le parking ou à domicile, nous parcourons ensemble les points clés du lavage, et vous donnez votre retour. En cas d'insatisfaction, nous corrigeons sans frais supplémentaires." },
+        { num: '01', title: 'Demande de devis', desc: 'Formulaire ou appel : type de véhicule, état, lieu (centre ou domicile).' },
+        { num: '02', title: 'Confirmation et planning', desc: 'Formule validée, créneau et confirmation écrite.' },
+        { num: '03', title: 'Accueil et inspection', desc: 'Inspection avec vous et repérage des zones sensibles.' },
+        { num: '04', title: 'Exécution par formule', desc: 'Checklist appliquée avec produits adaptés aux matériaux.' },
+        { num: '05', title: 'Contrôle qualité', desc: 'Vérification complète avant restitution.' },
+        { num: '06', title: 'Restitution et satisfaction', desc: 'Remise du véhicule et correction gratuite si besoin.' },
       ],
     },
     vehicles: {
       eyebrow: 'Pour quel véhicule ?',
       title: 'Citadine, berline, SUV, 4x4, utilitaire ou moto : nous adaptons.',
       paragraphs: [
-        "Le lavage n'est pas un service uniforme. Une citadine en zone urbaine ne subit pas les mêmes agressions qu'un 4x4 qui roule en piste ou qu'un utilitaire de livraison qui sort tous les jours. Nos équipes adaptent la formule, le temps de prestation et les produits selon le type de véhicule, son usage et son état.",
-        "Pour les flottes d'entreprise (10 véhicules et plus), nous proposons des contrats d'entretien périodiques, des tarifs préférentiels, un planning d'intervention sur site et un reporting mensuel à votre service moyens généraux.",
+        'Nous adaptons formule, durée et produits selon le véhicule et son usage.',
+        'Contrats flotte disponibles : tarifs dégressifs, planning fixe et reporting mensuel.',
       ],
       items: [
         { title: 'Citadine', desc: 'Petits volumes, accès facile. Idéal pour un lavage rapide hebdomadaire ou bi-hebdomadaire.' },
@@ -100,11 +100,11 @@ const CARWASH = {
       eyebrow: 'Où voulez-vous être lavé(e) ?',
       title: 'Lavage à domicile ou au centre TAOMAN GROUP INVESTMENTS : à vous de choisir.',
       description:
-        "Les deux options ont leurs avantages. Nous vous proposons le choix selon votre emploi du temps, la disponibilité d'eau et d'espace, et le niveau de service souhaité.",
+        'Centre TAOMAN ou intervention à domicile : choisissez selon votre emploi du temps.',
       home: {
         title: 'Lavage à domicile',
         description:
-          "Notre équipe se déplace chez vous avec son matériel autonome (réserve d'eau, aspirateur, produits). Vous gagnez du temps : pas de déplacement, pas d'attente. Idéal pour les familles, les chefs d'entreprise et les expatriés.",
+          'Équipe mobile avec matériel autonome. Idéal si vous ne pouvez pas vous déplacer.',
         bullets: [
           "Aucune file d'attente",
           'Travail sous votre supervision possible',
@@ -115,7 +115,7 @@ const CARWASH = {
       center: {
         title: 'Centre de lavage TAOMAN GROUP INVESTMENTS',
         description:
-          "Notre centre dispose d'équipements lourds : haute pression industrielle, bras d'aspiration, zones couvertes et éclairées. Vous patientez dans un espace dédié pendant que votre véhicule est traité.",
+          'Équipements industriels, zones couvertes et tarifs avantageux.',
         bullets: [
           'Matériel professionnel plus puissant',
           'Tarifs réduits par rapport au domicile',
@@ -128,7 +128,7 @@ const CARWASH = {
       eyebrow: 'Demander un devis',
       title: 'Remplissez votre demande en 2 minutes',
       description:
-        'Renseignez les informations sur votre véhicule et notre équipe vous recontacte sous 24 heures avec un créneau et un tarif ferme.',
+        'Renseignez votre véhicule : réponse sous 24 h avec créneau et tarif ferme.',
       success: 'Votre devis a été envoyé avec succès ! Nous vous recontacterons sous peu.',
       sending: 'Envoi en cours...',
       submit: 'Envoyer ma demande de devis',
@@ -136,15 +136,15 @@ const CARWASH = {
       errorNetwork: 'Erreur réseau. Réessayez plus tard.',
       selectPlaceholder: 'Sélectionner',
       fields: {
-        washType: { label: 'Type de lavage', options: ['Lavage Intérieur', 'Lavage Extérieur', 'Lavage Général'] },
+        washType: { label: 'Type de lavage', options: ['Lavage Intérieur', 'Lavage Extérieur', 'Lavage Général', 'Tricycle', 'Moquette'] },
         wish: { label: 'Vous souhaitez', options: ['Un lavage à domicile', 'Au centre de lavage TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Type de véhicule', options: ['Citadine', 'Berline', 'Compacte', 'SUV', '4x4', 'Utilitaire', 'Moto'] },
         brand: { label: 'Marque et modèle', placeholder: 'Ex: Toyota Corolla' },
-        date: { label: 'Date souhaitée' },
-        time: { label: 'Heure souhaitée' },
+        date: { label: 'Date de lavage souhaitée' },
+        time: { label: 'Heure de lavage souhaitée' },
         name: { label: 'Votre nom', placeholder: 'Votre nom complet' },
         phone: { label: 'Téléphone', placeholder: '+228 ...' },
-        address: { label: 'Votre adresse', placeholder: 'Votre adresse complète' },
+        address: { label: 'Votre adresse', placeholder: 'exemple: Agoé' },
         notes: { label: 'Remarques additionnelles', placeholder: "Précisez l'état du véhicule, les zones à traiter en priorité, vos contraintes horaires..." },
       },
     },
@@ -152,10 +152,10 @@ const CARWASH = {
       eyebrow: 'Pourquoi TAOMAN GROUP INVESTMENTS ?',
       title: 'Un service pensé pour la durée de vie de votre véhicule',
       description:
-        'Nous ne vendons pas seulement un lavage : nous vendons un soin régulier qui protège votre carrosserie, votre habitacle et la valeur de revente de votre véhicule.',
+        'Un soin régulier qui protège carrosserie, habitacle et valeur de revente.',
       equipmentTitle: 'Équipement professionnel',
       equipmentDesc:
-        'Haute pression contrôlée, aspirateurs industriels, gants microfibre certifiés, produits adaptés aux matériaux modernes.',
+        'Haute pression, aspirateurs industriels et produits adaptés aux matériaux modernes.',
     },
     faq: {
       eyebrow: 'FAQ Lavage',
@@ -245,14 +245,14 @@ const CARWASH = {
       errorGeneric: 'Unable to send your quote request.', errorNetwork: 'Network error. Please try again later.',
       selectPlaceholder: 'Select',
       fields: {
-        washType: { label: 'Wash type', options: ['Interior Wash', 'Exterior Wash', 'Full Wash'] },
+        washType: { label: 'Wash type', options: ['Interior Wash', 'Exterior Wash', 'Full Wash', 'Tricycle', 'Carpet cleaning'] },
         wish: { label: 'You would like', options: ['An at-home wash', 'At the TAOMAN GROUP INVESTMENTS wash centre'] },
         vehicleType: { label: 'Vehicle type', options: ['City car', 'Sedan', 'Compact', 'SUV', '4x4', 'Van', 'Motorcycle'] },
         brand: { label: 'Make and model', placeholder: 'e.g. Toyota Corolla' },
-        date: { label: 'Preferred date' }, time: { label: 'Preferred time' },
+        date: { label: 'Preferred wash date' }, time: { label: 'Preferred wash time' },
         name: { label: 'Your name', placeholder: 'Your full name' },
         phone: { label: 'Phone', placeholder: '+228 ...' },
-        address: { label: 'Your address', placeholder: 'Your full address' },
+        address: { label: 'Your address', placeholder: 'e.g. Agoé' },
         notes: { label: 'Additional remarks', placeholder: 'Describe vehicle condition, priority areas, time constraints...' },
       },
     },
@@ -333,7 +333,7 @@ const CARWASH = {
       errorGeneric: 'No se pudo enviar su solicitud de presupuesto.', errorNetwork: 'Error de red. Inténtelo de nuevo más tarde.',
       selectPlaceholder: 'Seleccionar',
       fields: {
-        washType: { label: 'Tipo de lavado', options: ['Lavado Interior', 'Lavado Exterior', 'Lavado General'] },
+        washType: { label: 'Tipo de lavado', options: ['Lavado Interior', 'Lavado Exterior', 'Lavado General', 'Triciclo', 'Moqueta'] },
         wish: { label: 'Desea', options: ['Un lavado a domicilio', 'En el centro de lavado TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Tipo de vehículo', options: ['Utilitario', 'Berlina', 'Compacto', 'SUV', '4x4', 'Furgoneta', 'Moto'] },
         brand: { label: 'Marca y modelo', placeholder: 'Ej: Toyota Corolla' },
@@ -421,7 +421,7 @@ const CARWASH = {
       errorGeneric: 'Não foi possível enviar o seu pedido de orçamento.', errorNetwork: 'Erro de rede. Tente novamente mais tarde.',
       selectPlaceholder: 'Selecionar',
       fields: {
-        washType: { label: 'Tipo de lavagem', options: ['Lavagem Interior', 'Lavagem Exterior', 'Lavagem Geral'] },
+        washType: { label: 'Tipo de lavagem', options: ['Lavagem Interior', 'Lavagem Exterior', 'Lavagem Geral', 'Triciclo', 'Moqueta'] },
         wish: { label: 'Deseja', options: ['Uma lavagem ao domicílio', 'No centro de lavagem TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Tipo de veículo', options: ['Citadino', 'Berlina', 'Compacto', 'SUV', '4x4', 'Comercial', 'Mota'] },
         brand: { label: 'Marca e modelo', placeholder: 'Ex: Toyota Corolla' },
@@ -509,7 +509,7 @@ const CARWASH = {
       errorGeneric: 'Ihre Angebotsanfrage konnte nicht gesendet werden.', errorNetwork: 'Netzwerkfehler. Bitte versuchen Sie es später erneut.',
       selectPlaceholder: 'Auswählen',
       fields: {
-        washType: { label: 'Waschart', options: ['Innenreinigung', 'Außenwäsche', 'Komplettwäsche'] },
+        washType: { label: 'Waschart', options: ['Innenreinigung', 'Außenwäsche', 'Komplettwäsche', 'Tricycle', 'Teppichreinigung'] },
         wish: { label: 'Sie wünschen', options: ['Eine Wäsche vor Ort', 'Im Waschzentrum TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'Fahrzeugtyp', options: ['Kleinwagen', 'Limousine', 'Kompaktwagen', 'SUV', 'Geländewagen', 'Transporter', 'Motorrad'] },
         brand: { label: 'Marke und Modell', placeholder: 'z. B. Toyota Corolla' },
@@ -597,7 +597,7 @@ const CARWASH = {
       errorGeneric: 'تعذّر إرسال طلب عرض السعر.', errorNetwork: 'خطأ في الشبكة. يُرجى المحاولة لاحقاً.',
       selectPlaceholder: 'اختيار',
       fields: {
-        washType: { label: 'نوع الغسيل', options: ['غسيل داخلي', 'غسيل خارجي', 'غسيل شامل'] },
+        washType: { label: 'نوع الغسيل', options: ['غسيل داخلي', 'غسيل خارجي', 'غسيل شامل', 'دراجة ثلاثية', 'تنظيف السجاد'] },
         wish: { label: 'ترغب في', options: ['غسيل في المنزل', 'في مركز غسيل TAOMAN GROUP INVESTMENTS'] },
         vehicleType: { label: 'نوع المركبة', options: ['سيارة مدينة', 'سيدان', 'مدمجة', 'SUV', 'دفع رباعي', 'شاحنة صغيرة', 'دراجة نارية'] },
         brand: { label: 'العلامة والطراز', placeholder: 'مثال: Toyota Corolla' },
@@ -685,7 +685,7 @@ const CARWASH = {
       errorGeneric: '无法发送您的报价申请。', errorNetwork: '网络错误，请稍后重试。',
       selectPlaceholder: '请选择',
       fields: {
-        washType: { label: '清洗类型', options: ['内饰清洗', '外观清洗', '全面清洗'] },
+        washType: { label: '清洗类型', options: ['内饰清洗', '外观清洗', '全面清洗', '三轮车', '地毯清洗'] },
         wish: { label: '您希望', options: ['上门洗车', '在 TAOMAN GROUP INVESTMENTS 洗车中心'] },
         vehicleType: { label: '车型', options: ['微型车', '轿车', '紧凑型', 'SUV', '四驱', '厢式车', '摩托车'] },
         brand: { label: '品牌与型号', placeholder: '例：Toyota Corolla' },

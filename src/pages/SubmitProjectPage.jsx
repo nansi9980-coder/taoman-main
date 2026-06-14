@@ -160,7 +160,29 @@ export const SubmitProjectPage = () => {
         />
 
         <section className="py-16 px-6">
-          <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-10">
+          <div className="max-w-[1200px] mx-auto">
+            {t.intro && (
+              <Reveal preset="fadeUp">
+                <div className="rounded-3xl border border-outline-variant/40 bg-white p-8 md:p-10 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.35em] text-primary">{t.intro.eyebrow}</p>
+                  <h2 className="mt-3 text-3xl md:text-4xl font-black text-on-surface section-underline">{t.intro.title}</h2>
+                  <p className="mt-5 max-w-4xl text-lg text-on-surface-variant leading-relaxed">{t.intro.lead}</p>
+                  <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+                    {t.intro.points.map((point) => (
+                      <li key={point} className="flex gap-3 rounded-2xl bg-surface-container-low p-4">
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-black text-sm">✓</span>
+                        <span className="text-sm text-on-surface leading-relaxed">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 rounded-2xl border border-primary/15 bg-primary/5 px-5 py-4 text-sm font-semibold text-on-surface leading-relaxed">
+                    {t.intro.closing}
+                  </p>
+                </div>
+              </Reveal>
+            )}
+
+            <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-10">
             <Reveal preset="fadeUp">
             <PremiumGlowCard className="rounded-3xl">
             <div className="p-8">
@@ -416,6 +438,7 @@ export const SubmitProjectPage = () => {
               </div>
             </aside>
             </Reveal>
+            </div>
           </div>
         </section>
       </main>

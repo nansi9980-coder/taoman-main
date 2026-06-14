@@ -354,7 +354,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'Investir avec TAOMAN GROUP INVESTMENTS : programmes structurés, sélection de projets, reporting investisseur et garanties opérationnelles au Togo.',
-      hero: { eyebrow: 'Investir au Togo', title: 'Investissez dans des projets concrets', description: "Programmes structurés par secteur avec reporting trimestriel, KYC, gouvernance et accompagnement personnalisé." },
+      hero: { eyebrow: 'Investir au Togo', title: 'Investissez dans des projets concrets', description: "Programmes structurés par secteur avec reporting trimestriel et accompagnement personnalisé." },
       programs: { eyebrow: 'Programmes TAOMAN GROUP INVESTMENTS', title: "Deux portes d'entrée simples", description: 'Choisissez la modalité qui correspond à votre profil et à votre horizon d’investissement.' },
       submit: { eyebrow: 'Soumettre un projet', title: 'Présenter votre porteur de projet à TAOMAN GROUP INVESTMENTS', cta: 'Soumettre mon projet' },
       opportunities: { eyebrow: "Opportunités d'investissement", title: 'Projets disponibles et secteurs prioritaires' },
@@ -812,7 +812,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'Invest with TAOMAN GROUP INVESTMENTS: structured programs, project selection, investor reporting and operational guarantees in Togo.',
-      hero: { eyebrow: 'Invest in Togo', title: 'Invest in concrete projects', description: 'Sector-structured programs with quarterly reporting, KYC, governance and personalized support.' },
+      hero: { eyebrow: 'Invest in Togo', title: 'Invest in concrete projects', description: 'Sector-structured programs with quarterly reporting and personalized support.' },
       programs: { eyebrow: 'TAOMAN GROUP INVESTMENTS Programs', title: 'Two simple entry points', description: 'Choose the option that matches your profile and your investment horizon.' },
       submit: { eyebrow: 'Submit a project', title: 'Present your project sponsor to TAOMAN GROUP INVESTMENTS', cta: 'Submit my project' },
       opportunities: { eyebrow: 'Investment opportunities', title: 'Available projects and priority sectors' },
@@ -1192,7 +1192,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'Invierta con TAOMAN GROUP INVESTMENTS: programas estructurados, selección de proyectos, informes para inversores y garantías operativas en Togo.',
-      hero: { eyebrow: 'Invertir en Togo', title: 'Invierta en proyectos concretos', description: 'Programas estructurados por sector con informes trimestrales, KYC, gobernanza y acompañamiento personalizado.' },
+      hero: { eyebrow: 'Invertir en Togo', title: 'Invierta en proyectos concretos', description: 'Programas estructurados por sector con informes trimestrales y acompañamiento personalizado.' },
       programs: { eyebrow: 'Programas TAOMAN GROUP INVESTMENTS', title: 'Dos puertas de entrada simples', description: 'Elija la modalidad que corresponde a su perfil y horizonte de inversión.' },
       submit: { eyebrow: 'Enviar un proyecto', title: 'Presente su portador de proyecto a TAOMAN GROUP INVESTMENTS', cta: 'Enviar mi proyecto' },
       opportunities: { eyebrow: 'Oportunidades de inversión', title: 'Proyectos disponibles y sectores prioritarios' },
@@ -1556,7 +1556,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'Invista com a TAOMAN GROUP INVESTMENTS: programas estruturados, seleção de projetos, relatórios para investidores e garantias operacionais no Togo.',
-      hero: { eyebrow: 'Investir no Togo', title: 'Invista em projetos concretos', description: 'Programas estruturados por setor com relatórios trimestrais, KYC, governança e acompanhamento personalizado.' },
+      hero: { eyebrow: 'Investir no Togo', title: 'Invista em projetos concretos', description: 'Programas estruturados por setor com relatórios trimestrais e acompanhamento personalizado.' },
       programs: { eyebrow: 'Programas TAOMAN GROUP INVESTMENTS', title: 'Duas portas de entrada simples', description: 'Escolha a modalidade que corresponde ao seu perfil e ao seu horizonte de investimento.' },
       submit: { eyebrow: 'Enviar um projeto', title: 'Apresente o portador do seu projeto à TAOMAN GROUP INVESTMENTS', cta: 'Enviar meu projeto' },
       opportunities: { eyebrow: 'Oportunidades de investimento', title: 'Projetos disponíveis e setores prioritários' },
@@ -1920,7 +1920,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'Investieren mit TAOMAN GROUP INVESTMENTS: strukturierte Programme, Projektauswahl, Investor-Reporting und operative Garantien in Togo.',
-      hero: { eyebrow: 'In Togo investieren', title: 'Investieren Sie in konkrete Projekte', description: 'Sektorenstrukturierte Programme mit Quartalsberichten, KYC, Governance und persönlicher Betreuung.' },
+      hero: { eyebrow: 'In Togo investieren', title: 'Investieren Sie in konkrete Projekte', description: 'Sektorenstrukturierte Programme mit Quartalsberichten und persönlicher Betreuung.' },
       programs: { eyebrow: 'TAOMAN GROUP INVESTMENTS-Programme', title: 'Zwei einfache Einstiegsmöglichkeiten', description: 'Wählen Sie die Modalität, die Ihrem Profil und Ihrem Anlagehorizont entspricht.' },
       submit: { eyebrow: 'Projekt einreichen', title: 'Stellen Sie Ihren Projektträger TAOMAN GROUP INVESTMENTS vor', cta: 'Mein Projekt einreichen' },
       opportunities: { eyebrow: 'Investitionsmöglichkeiten', title: 'Verfügbare Projekte und Schwerpunktsektoren' },
@@ -2284,7 +2284,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: 'استثمر مع TAOMAN GROUP INVESTMENTS: برامج منظمة، اختيار المشاريع، تقارير المستثمرين والضمانات التشغيلية في توغو.',
-      hero: { eyebrow: 'الاستثمار في توغو', title: 'استثمر في مشاريع ملموسة', description: 'برامج منظمة حسب القطاع مع تقارير ربع سنوية، KYC، حوكمة ودعم شخصي.' },
+      hero: { eyebrow: 'الاستثمار في توغو', title: 'استثمر في مشاريع ملموسة', description: 'برامج منظمة حسب القطاع مع تقارير ربع سنوية ودعم شخصي.' },
       programs: { eyebrow: 'برامج TAOMAN GROUP INVESTMENTS', title: 'بابان بسيطان للدخول', description: 'اختر الطريقة التي تتوافق مع ملفك الشخصي وأفق استثمارك.' },
       submit: { eyebrow: 'تقديم مشروع', title: 'قدّم حامل مشروعك إلى TAOMAN GROUP INVESTMENTS', cta: 'تقديم مشروعي' },
       opportunities: { eyebrow: 'فرص الاستثمار', title: 'المشاريع المتاحة والقطاعات ذات الأولوية' },
@@ -2648,7 +2648,7 @@ const CONTENT = {
     },
     invest: {
       seoDescription: '与TAOMAN GROUP INVESTMENTS一起投资：结构化项目、项目筛选、投资者报告和多哥的运营保障。',
-      hero: { eyebrow: '在多哥投资', title: '投资于具体项目', description: '按行业结构化的项目，包括季度报告、KYC、治理和个性化支持。' },
+      hero: { eyebrow: '在多哥投资', title: '投资于具体项目', description: '按行业结构化的项目，包括季度报告和个性化支持。' },
       programs: { eyebrow: 'TAOMAN GROUP INVESTMENTS项目', title: '两个简单的入口', description: '选择符合您的个人资料和投资期限的方式。' },
       submit: { eyebrow: '提交项目', title: '向 TAOMAN GROUP INVESTMENTS 介绍您的项目发起人', cta: '提交我的项目' },
       opportunities: { eyebrow: '投资机会', title: '可用项目与优先行业' },

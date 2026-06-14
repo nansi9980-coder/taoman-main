@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulaire de soumission de projet — TAOMAN GROUP INVESTMENTS</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 16mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: #0f172a;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 3px solid #0047ab;
+      margin-bottom: 18px;
+    }
+
+    .header-logo img {
+      width: 92px;
+      height: auto;
+      display: block;
+    }
+
+    .header-brand h1 {
+      margin: 0;
+      font-size: 17pt;
+      letter-spacing: 0.04em;
+      color: #0047ab;
+      font-weight: 800;
+    }
+
+    .header-brand p {
+      margin: 4px 0 0;
+      font-size: 9pt;
+      color: #475569;
+    }
+
+    .header-contact {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .header-contact strong {
+      display: block;
+      color: #0047ab;
+      font-size: 9pt;
+      margin-bottom: 4px;
+    }
+
+    .doc-title {
+      background: linear-gradient(135deg, #0047ab 0%, #002366 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .doc-title h2 {
+      margin: 0 0 6px;
+      font-size: 14pt;
+      font-weight: 800;
+    }
+
+    .doc-title p {
+      margin: 0;
+      font-size: 9.5pt;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .intro {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 9.5pt;
+      color: #334155;
+    }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 800;
+      color: #0047ab;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 16px;
+      margin-bottom: 8px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 9pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+
+    .field .line {
+      border-bottom: 1.5px solid #64748b;
+      min-height: 22px;
+    }
+
+    .field .box {
+      border: 1.5px solid #64748b;
+      border-radius: 6px;
+      min-height: 110px;
+    }
+
+    .field .hint {
+      margin-top: 4px;
+      font-size: 8pt;
+      color: #64748b;
+    }
+
+    .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 6px;
+      font-size: 8.8pt;
+      color: #334155;
+    }
+
+    .checkbox-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .checkbox-row i {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border: 1.5px solid #64748b;
+      border-radius: 2px;
+      font-style: normal;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .process-step {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 8.2pt;
+    }
+
+    .process-step strong {
+      display: block;
+      color: #0047ab;
+      margin-bottom: 3px;
+      font-size: 8.8pt;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 2px solid #0047ab;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 8.5pt;
+      color: #475569;
+    }
+
+    .footer strong {
+      color: #0047ab;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .legal {
+      margin-top: 14px;
+      font-size: 7.8pt;
+      color: #64748b;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header-logo">
+        <img src="./logo-tgi.png" alt="TAOMAN GROUP INVESTMENTS" />
+      </div>
+      <div class="header-brand">
+        <h1>TAOMAN GROUP INVESTMENTS</h1>
+        <p>Investissement structuré · Programmes TGI · Togo &amp; CEDEAO</p>
+      </div>
+      <div class="header-contact">
+        <strong>Contacts</strong>
+        Agoè Cacaveli, face à Toganim<br />
+        Lomé, Togo<br />
+        +228 90 42 13 77<br />
+        taomancontact@gmail.com<br />
+        www.taomaninvestment.com
+      </div>
+    </header>
+
+    <div class="doc-title">
+      <h2>Formulaire de soumission de projet — Programme TGI</h2>
+      <p>Complétez ce document et retournez-le par e-mail à taomancontact@gmail.com. Notre comité revient vers vous sous 5 jours ouvrés.</p>
+    </div>
+
+    <div class="intro">
+      Ce formulaire permet de présenter un projet concret à TAOMAN GROUP INVESTMENTS (logistique, agro, commerce, BTP, numérique, marketing).
+      Joignez si possible un business plan ou une note de synthèse (PDF). Les champs marqués (*) sont obligatoires.
+    </div>
+
+    <h3 class="section-title">1. Informations projet</h3>
+    <div class="grid-2">
+      <div class="field">
+        <label>Nom du projet *</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Secteur *</label>
+        <div class="line"></div>
+        <div class="checkbox-row">
+          <span><i></i> Transport</span>
+          <span><i></i> Agro</span>
+          <span><i></i> Commerce</span>
+          <span><i></i> BTP</span>
+          <span><i></i> Numérique</span>
+          <span><i></i> Autre</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Localisation *</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Site web / lien (optionnel)</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Ticket recherché (FCFA)</label>
+        <div class="line"></div>
+        <div class="checkbox-row">
+          <span><i></i> &lt; 500 K</span>
+          <span><i></i> 500 K – 2 M</span>
+          <span><i></i> 2 M – 10 M</span>
+          <span><i></i> 10 M – 50 M</span>
+          <span><i></i> &gt; 50 M</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Horizon maximum visé</label>
+        <div class="line"></div>
+        <div class="checkbox-row">
+          <span><i></i> 3 mois</span>
+          <span><i></i> 6 mois</span>
+          <span><i></i> 12 mois</span>
+          <span><i></i> 24 mois</span>
+          <span><i></i> Autre</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-title">2. Description du projet *</h3>
+    <div class="field">
+      <label>Produit / service, marché, modèle économique, équipe, état d'avancement</label>
+      <div class="box"></div>
+    </div>
+
+    <h3 class="section-title">3. Notre processus d'étude</h3>
+    <div class="process">
+      <div class="process-step"><strong>1. Réception</strong>Accusé sous 24 h</div>
+      <div class="process-step"><strong>2. Analyse</strong>Comité — 5 jours ouvrés</div>
+      <div class="process-step"><strong>3. Échange</strong>Appel ou rendez-vous</div>
+      <div class="process-step"><strong>4. Décision</strong>Termes et calendrier</div>
+    </div>
+  </div>
+
+  <div class="page">
+    <header class="header">
+      <div class="header-logo">
+        <img src="./logo-tgi.png" alt="TAOMAN GROUP INVESTMENTS" />
+      </div>
+      <div class="header-brand">
+        <h1>TAOMAN GROUP INVESTMENTS</h1>
+        <p>Formulaire de soumission de projet — suite</p>
+      </div>
+      <div class="header-contact">
+        <strong>Contacts</strong>
+        +228 90 42 13 77 · taomancontact@gmail.com
+      </div>
+    </header>
+
+    <h3 class="section-title">4. Coordonnées du porteur de projet</h3>
+    <div class="grid-2">
+      <div class="field">
+        <label>Nom et prénom du contact *</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Fonction / rôle dans le projet</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Adresse e-mail *</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Téléphone (WhatsApp) *</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Raison sociale / structure (si applicable)</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Numéro RCCM / NIF (si disponible)</label>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <h3 class="section-title">5. Documents joints</h3>
+    <div class="field">
+      <label>Liste des pièces annexées (business plan, étude, photos, devis…)</label>
+      <div class="box" style="min-height: 70px;"></div>
+      <p class="hint">Format accepté : PDF — 10 Mo maximum par fichier.</p>
+    </div>
+
+    <h3 class="section-title">6. Déclaration</h3>
+    <p style="font-size: 9pt; color: #334155; margin: 0 0 12px;">
+      Je certifie que les informations fournies sont exactes et autorise TAOMAN GROUP INVESTMENTS à les traiter
+      dans le cadre de l'étude de mon dossier, conformément à la réglementation en vigueur.
+    </p>
+
+    <div class="signature-grid">
+      <div class="field">
+        <label>Fait à</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Le (date)</label>
+        <div class="line"></div>
+      </div>
+      <div class="field">
+        <label>Signature du porteur de projet</label>
+        <div class="line" style="min-height: 42px;"></div>
+      </div>
+      <div class="field">
+        <label>Cachet de la structure (optionnel)</label>
+        <div class="line" style="min-height: 42px;"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        <strong>TAOMAN GROUP INVESTMENTS</strong><br />
+        Siège : Agoè Cacaveli, en face de Toganim — Lomé, Togo<br />
+        Disponibilité : 24h/24, 7j/7
+      </div>
+      <div style="text-align: right;">
+        <strong>Retour du dossier</strong><br />
+        E-mail : taomancontact@gmail.com<br />
+        Tél. : +228 90 42 13 77<br />
+        Web : www.taomaninvestment.com
+      </div>
+    </div>
+
+    <p class="legal">
+      Document interne TAOMAN GROUP INVESTMENTS — Programme TGI. Toute reproduction ou diffusion sans autorisation est interdite.
+      Les données collectées sont utilisées exclusivement pour l'instruction des dossiers de projet.
+    </p>
+  </div>
+</body>
+</html>

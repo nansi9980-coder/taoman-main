@@ -9,7 +9,7 @@ const FR_ITEMS = makeItems([
     id: 'lavage',
     title: 'Lavage automobile & moto',
     description:
-      'Nettoyage intérieur et extérieur premium, vitres, jantes, pneus, polissage carrosserie. En centre TAOMAN GROUP INVESTMENTS ou en mobile à domicile pour les particuliers, et contrats flotte multi-véhicules pour les entreprises et institutions.',
+      'Lavage intérieur, extérieur, général, tricycle et moquette — en centre ou à domicile, contrats flotte disponibles.',
     sla: '45 – 90 min',
     badge: 'Populaire',
     bullets: [
@@ -23,7 +23,7 @@ const FR_ITEMS = makeItems([
     id: 'demenagement',
     title: 'Déménagement & aménagement',
     description:
-      "Déménagement de particuliers, d'entreprises et institutionnels. Emballage, démontage / remontage du mobilier, transport sécurisé Lomé – villes intérieures – sous-région CEDEAO. Visite technique gratuite à domicile.",
+      "Déménagement particuliers et entreprises : emballage, transport sécurisé Lomé – CEDEAO, visite technique gratuite.",
     sla: 'Sur rendez-vous',
     badge: 'Équipe dédiée',
     bullets: [
@@ -37,7 +37,7 @@ const FR_ITEMS = makeItems([
     id: 'entretien-bureaux',
     title: 'Entretien des bureaux',
     description:
-      'Nettoyage professionnel régulier de bureaux, commerces, cliniques et écoles. Contrats journaliers, hebdomadaires ou mensuels avec reporting photo, contrôle qualité terrain et superviseur dédié.',
+      'Entretien régulier de bureaux, commerces et cliniques — contrats journaliers, hebdo ou mensuels avec reporting.',
     sla: 'Journalier / hebdo',
     badge: 'Contrat pro',
     bullets: [
@@ -51,7 +51,7 @@ const FR_ITEMS = makeItems([
     id: 'transport',
     title: 'Transport & livraison',
     description:
-      'Flotte de camions, fourgons, utilitaires et VTC. Transport de marchandises B2B, livraison du dernier kilomètre, déplacements professionnels et navettes inter-villes au Togo et dans la sous-région CEDEAO.',
+      'Flotte camions, fourgons et VTC : livraison dernier kilomètre, transport B2B et navettes inter-villes Togo / CEDEAO.',
     sla: 'Lomé & sous-région',
     badge: 'Flotte propre',
     bullets: [
@@ -65,7 +65,7 @@ const FR_ITEMS = makeItems([
     id: 'climatisation',
     title: 'Climatisation & froid',
     description:
-      'Installation, entretien et dépannage de climatiseurs split et VRV pour bureaux, commerces et résidences. Maintenance de vitrines réfrigérées et chambres froides pour restaurateurs et distributeurs.',
+      'Installation, entretien et dépannage split / VRV — bureaux, commerces, résidences et chambres froides.',
     sla: 'Intervention 48h',
     badge: 'Maintenance',
     bullets: [
@@ -79,7 +79,7 @@ const FR_ITEMS = makeItems([
     id: 'conciergerie',
     title: 'Conciergerie & gardiennage',
     description:
-      'Services de conciergerie pour résidences, immeubles et entreprises : gardiennage, accueil visiteurs, gestion courrier, petite manutention, jardinage et entretien des parties communes.',
+      'Gardiennage, accueil visiteurs, gestion courrier et entretien des parties communes — 24/7.',
     sla: '24/7 disponible',
     badge: 'Nouveau',
     bullets: [
@@ -93,7 +93,7 @@ const FR_ITEMS = makeItems([
     id: 'audits',
     title: 'Audits & Reporting',
     description:
-      'Audits financiers, opérationnels et conformité KYC pour PME, investisseurs et institutions. Reporting structuré (mensuel, trimestriel, annuel) conforme aux standards SYSCOA et CEDEAO. Tableaux de bord investisseur, alertes de performance et accompagnement à la gouvernance.',
+      'Audits financiers et opérationnels, reporting investisseur conforme SYSCOA et CEDEAO.',
     sla: '7 – 21 jours',
     badge: 'Conformité',
     bullets: [
@@ -110,86 +110,84 @@ const FR_DETAILED_ITEMS = [
     id: 'lavage',
     title: 'Lavage automobile & moto',
     intro:
-      'Notre centre de lavage TAOMAN GROUP INVESTMENTS combine équipements professionnels, produits adaptés à chaque type de carrosserie et personnel formé.',
+      'Centre de lavage TAOMAN : équipements pro, produits adaptés et personnel formé.',
     points: [
-      'Trois formules : Express (15 min), Premium (45 min, intérieur + extérieur), Complet (90 min avec polish et protection).',
-      "Service mobile à domicile sur rendez-vous, avec eau et matériel apportés par l'équipe.",
-      'Contrats flotte mensuels pour entreprises : tarif dégressif, planning fixe, reporting photographique.',
-      'Produits biodégradables certifiés et eau recyclée — démarche écologique réelle.',
+      'Formules Intérieur, Extérieur, Général, Tricycle et Moquette.',
+      'Service mobile à domicile sur rendez-vous.',
+      'Contrats flotte : tarif dégressif et planning fixe.',
+      'Produits biodégradables et eau recyclée.',
     ],
   },
   {
     id: 'demenagement',
     title: 'Déménagement & aménagement',
     intro:
-      'Un déménagement bien préparé représente 80 % de la réussite. Nous appliquons un protocole strict de la visite technique au remontage final.',
+      'Protocole strict de la visite technique au remontage final.',
     points: [
-      'Visite technique gratuite à domicile : mesure du volume, identification des objets fragiles, repérage des accès.',
-      'Fourniture incluse : cartons standards et grands modèles, papier bulle, couvertures, sangles, diables.',
-      'Démontage des meubles, transport sécurisé en camion bâché, remontage et réinstallation chez vous.',
-      'Trajets longue distance Lomé – Kara – Atakpamé – Cotonou – Accra avec assurance marchandise incluse.',
+      'Visite technique gratuite et devis détaillé.',
+      'Cartons, papier bulle et couvertures fournis.',
+      'Démontage, transport bâché et remontage.',
+      'Trajets Lomé – Kara – Cotonou – Accra assurés.',
     ],
   },
   {
     id: 'entretien-bureaux',
     title: 'Entretien de bureaux',
     intro:
-      "Un environnement de travail propre booste la productivité. Nos contrats sont conçus pour s'intégrer sans perturber votre activité.",
+      "Contrats d'entretien adaptés à vos locaux, sans perturber votre activité.",
     points: [
-      'Passage journalier (matin avant ouverture), hebdomadaire ou bi-hebdomadaire selon votre besoin.',
-      'Prestations incluses : sols, surfaces, sanitaires, vitres, vidage corbeilles, désinfection des points de contact.',
-      'Équipes en uniforme TAOMAN GROUP INVESTMENTS, identifiables, et superviseur dédié joignable 24/7.',
-      "Reporting mensuel avec photos avant/après, suivi qualité et plan d'amélioration trimestriel.",
+      'Passage journalier, hebdomadaire ou bi-hebdomadaire.',
+      'Sols, sanitaires, vitres et désinfection des points de contact.',
+      'Équipes en uniforme et superviseur joignable 24/7.',
+      'Reporting mensuel avec photos avant/après.',
     ],
   },
   {
     id: 'transport',
     title: 'Transport & livraison',
     intro:
-      'Notre flotte couvre toute la chaîne logistique du dernier kilomètre au transport international vers la sous-région CEDEAO.',
+      'Flotte couvrant le dernier kilomètre et le transport régional CEDEAO.',
     points: [
-      'Livraison du dernier kilomètre à Lomé : utilisation de motos, fourgons et VTC selon le volume.',
-      'Transport B2B vers Cotonou, Accra, Ouagadougou, Niamey, Abidjan avec dédouanement coordonné.',
-      'Suivi GPS en temps réel, confirmation de livraison signée et preuve photo si demandé.',
-      'Tarification kilométrique transparente, sans frais cachés.',
+      'Livraison dernier kilomètre à Lomé (moto, fourgon, VTC).',
+      'Transport B2B vers Cotonou, Accra, Ouagadougou, Abidjan.',
+      'Suivi GPS et confirmation de livraison signée.',
+      'Tarification kilométrique transparente.',
     ],
   },
   {
     id: 'climatisation',
     title: 'Climatisation & froid',
     intro:
-      'Le climat togolais exige des installations adaptées et un entretien régulier pour garantir performance et longévité.',
+      'Installations et entretien adaptés au climat togolais.',
     points: [
-      'Installation neuve : étude thermique, choix du modèle (split, multi-split, VRV), pose certifiée.',
-      'Maintenance préventive : nettoyage filtres, vérification gaz, contrôle des sécurités électriques.',
-      'Dépannage rapide avec stock de pièces des principales marques disponibles à Lomé.',
-      'Contrats annuels pour bureaux, commerces, restaurants et chambres froides avec passages programmés.',
+      'Installation split, multi-split et VRV certifiée.',
+      'Maintenance préventive : filtres, gaz et sécurités.',
+      'Dépannage rapide avec pièces disponibles à Lomé.',
+      'Contrats annuels bureaux, commerces et chambres froides.',
     ],
   },
   {
     id: 'conciergerie',
     title: 'Conciergerie & gardiennage',
     intro:
-      'Sécurité physique, accueil et entretien des espaces communs : un service unique pour vos immeubles et résidences.',
+      'Sécurité, accueil et entretien des espaces communs en un seul service.',
     points: [
-      "Gardiennage 24/7 avec relève d'équipe, registre d'entrée/sortie et rondes signées.",
-      'Accueil visiteurs, gestion des accès, distribution du courrier et signalement des incidents.',
-      'Petite manutention, jardinage, entretien des parties communes (escaliers, hall, parking).',
-      'Coordination directe avec le syndic ou le propriétaire via une application mobile dédiée.',
+      "Gardiennage 24/7 avec rondes et registre d'accès.",
+      'Accueil visiteurs, courrier et signalement des incidents.',
+      'Manutention légère, jardinage et parties communes.',
+      'Coordination avec le syndic via application dédiée.',
     ],
   },
   {
     id: 'audits',
     title: 'Audits & Reporting',
     intro:
-      "TAOMAN GROUP INVESTMENTS met son expertise opérationnelle et financière au service des PME, investisseurs et institutions togolaises qui ont besoin de transparence et de structuration. Nos audits débouchent sur des plans d'action concrets et nos rapports sont conformes aux standards SYSCOA et CEDEAO.",
+      'Audits et reporting pour PME, investisseurs et institutions — conformité SYSCOA et CEDEAO.',
     points: [
-      'Audit financier complet : analyse des comptes, contrôle des flux de trésorerie, identification des risques cachés et recommandations chiffrées avec plan de remédiation à 90 jours.',
-      'Audit opérationnel : revue des processus métier, contrôle qualité terrain, audit RH, conformité interne et cartographie des risques opérationnels.',
-      'Reporting investisseur structuré : tableaux de bord mensuels, rapports trimestriels PDF, indicateurs de performance (KPI), alertes automatiques en cas de déviation et reporting consolidé annuel.',
-      "Conformité réglementaire et KYC : vérifications d'identité, lutte anti-blanchiment (AML), conformité SYSCOA, normes CEDEAO et préparation des dossiers d'investisseur institutionnel.",
-      "Accompagnement à la gouvernance : préparation des conseils d'administration, rédaction des comptes-rendus, structuration des comités d'audit et formation des dirigeants à la lecture financière.",
-      'Outils digitaux : accès à notre portail web sécurisé avec téléchargement des rapports, suivi des KPI en temps réel et notifications WhatsApp en cas de seuil critique.',
+      'Audit financier : comptes, trésorerie et plan de remédiation.',
+      'Audit opérationnel : processus, qualité terrain et risques.',
+      'Reporting investisseur : tableaux de bord et rapports PDF.',
+      'Conformité KYC / AML et dossiers institutionnels.',
     ],
   },
 ];
@@ -210,7 +208,7 @@ const FR = {
   detailed: {
     eyebrow: 'Au-delà du devis',
     description:
-      'Au-delà du devis, nous croyons à la transparence : voici comment nous travaillons, ce que nous incluons, et pourquoi nos clients renouvellent leurs contrats avec TAOMAN GROUP INVESTMENTS.',
+      'Transparence sur notre méthode, nos prestations et nos engagements.',
     items: FR_DETAILED_ITEMS,
   },
   method: {

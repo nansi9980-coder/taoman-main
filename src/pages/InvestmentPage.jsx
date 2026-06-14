@@ -369,74 +369,6 @@ export const InvestmentPage = () => {
         </section>
         </Reveal>
 
-        {/* TAOMAN GROUP INVESTMENTS Programmes : TGI + Simulateur */}
-        <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
-          <div className="mx-auto max-w-[1400px]">
-            <Reveal preset="fadeUp">
-            <div className="mb-12 text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow}</p>
-              <h2 className="mt-3 text-4xl font-black text-on-surface section-underline">{tInv.programs?.title}</h2>
-              <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant">{ip.programs.intro}</p>
-            </div>
-            </Reveal>
-            <Reveal preset="fadeUp" childSelector=".program-card" stagger={0.15}>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#0047AB] to-[#002366] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,71,171,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
-
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                    <img src={programmeImg} alt="TGI" className="w-full h-full object-cover rounded-lg" loading="lazy" decoding="async" />
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10">
-                    <span className="text-xs font-bold text-white tracking-widest uppercase">{ip.programs.premium}</span>
-                  </div>
-                </div>
-
-                <h3 className="text-4xl text-white font-bold mb-4 tracking-tight">{ip.programs.tgiTitle}</h3>
-                <p className="text-lg text-white/80 mb-10 leading-relaxed font-light">{ip.programs.tgiDesc}</p>
-
-                <button
-                  onClick={() => navigate('/investissement/tgi')}
-                  className="group/btn relative w-full overflow-hidden bg-white text-[#0047AB] py-5 rounded-2xl font-bold text-lg shadow-xl transition-all duration-300 hover:shadow-white/20 active:scale-95"
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    {ip.programs.tgiCta}
-                    <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                  </span>
-                </button>
-              </div>
-
-              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#333333] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-16 -mb-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
-
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
-                    <svg className="w-12 h-12 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 21l1.3-3.9A8.96 8.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10">
-                    <span className="text-xs font-bold text-white tracking-widest uppercase">{ip.programs.contactBadge}</span>
-                  </div>
-                </div>
-
-                <h3 className="text-4xl text-white font-bold mb-4 tracking-tight">{ip.programs.advisorTitle}</h3>
-                <p className="text-lg text-white/80 mb-10 leading-relaxed font-light">{ip.programs.advisorDesc}</p>
-
-                <Link
-                  to="/contact?topic=invest"
-                  className="group/btn relative block w-full overflow-hidden bg-white text-[#1A1A1A] py-5 rounded-2xl font-bold text-lg shadow-xl transition-all duration-300 hover:shadow-white/20 active:scale-95 text-center"
-                >
-                  <span className="relative z-10 inline-flex items-center justify-center gap-2">
-                    {ip.programs.advisorCta}
-                    <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                  </span>
-                </Link>
-              </div>
-            </div>
-            </Reveal>
-          </div>
-        </section>
-
         {/* Opportunités d'investissement */}
         <section id="opportunites" className="scroll-mt-32 py-20 px-6 bg-surface-container-low">
           <div className="mx-auto max-w-[1400px]">
@@ -522,6 +454,74 @@ export const InvestmentPage = () => {
                 </div>
               </div>
             )}
+          </div>
+        </section>
+
+        {/* TAOMAN GROUP INVESTMENTS Programmes : TGI + Simulateur */}
+        <section id="programmes" className="scroll-mt-32 bg-surface-container-low py-20 px-6">
+          <div className="mx-auto max-w-[1400px]">
+            <Reveal preset="fadeUp">
+            <div className="mb-12 text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.35em] text-primary">{tInv.programs?.eyebrow}</p>
+              <h2 className="mt-3 text-4xl font-black text-on-surface section-underline">{tInv.programs?.title}</h2>
+              <p className="mt-3 max-w-2xl mx-auto text-on-surface-variant">{ip.programs.intro}</p>
+            </div>
+            </Reveal>
+            <Reveal preset="fadeUp" childSelector=".program-card" stagger={0.15}>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#0047AB] to-[#002366] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,71,171,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
+
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                    <img src={programmeImg} alt="TGI" className="w-full h-full object-cover rounded-lg" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10">
+                    <span className="text-xs font-bold text-white tracking-widest uppercase">{ip.programs.premium}</span>
+                  </div>
+                </div>
+
+                <h3 className="text-4xl text-white font-bold mb-4 tracking-tight">{ip.programs.tgiTitle}</h3>
+                <p className="text-lg text-white/80 mb-10 leading-relaxed font-light">{ip.programs.tgiDesc}</p>
+
+                <button
+                  onClick={() => navigate('/investissement/tgi')}
+                  className="group/btn relative w-full overflow-hidden bg-white text-[#0047AB] py-5 rounded-2xl font-bold text-lg shadow-xl transition-all duration-300 hover:shadow-white/20 active:scale-95"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {ip.programs.tgiCta}
+                    <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                  </span>
+                </button>
+              </div>
+
+              <div className="program-card group relative overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#333333] p-10 rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 transform hover:-translate-y-3 interactive interactive-lift hover-glow motion-reduce:hover:translate-y-0">
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-16 -mb-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
+
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-inner group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
+                    <svg className="w-12 h-12 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 21l1.3-3.9A8.96 8.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10">
+                    <span className="text-xs font-bold text-white tracking-widest uppercase">{ip.programs.contactBadge}</span>
+                  </div>
+                </div>
+
+                <h3 className="text-4xl text-white font-bold mb-4 tracking-tight">{ip.programs.advisorTitle}</h3>
+                <p className="text-lg text-white/80 mb-10 leading-relaxed font-light">{ip.programs.advisorDesc}</p>
+
+                <Link
+                  to="/contact?topic=invest"
+                  className="group/btn relative block w-full overflow-hidden bg-white text-[#1A1A1A] py-5 rounded-2xl font-bold text-lg shadow-xl transition-all duration-300 hover:shadow-white/20 active:scale-95 text-center"
+                >
+                  <span className="relative z-10 inline-flex items-center justify-center gap-2">
+                    {ip.programs.advisorCta}
+                    <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                  </span>
+                </Link>
+              </div>
+            </div>
+            </Reveal>
           </div>
         </section>
 

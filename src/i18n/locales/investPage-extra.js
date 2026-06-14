@@ -25,12 +25,12 @@ const EN_BASE = {
   },
   "quickNav": [
     {
-      "id": "programmes",
-      "label": "TAOMAN GROUP INVESTMENTS TGI"
-    },
-    {
       "id": "opportunites",
       "label": "Investment opportunities"
+    },
+    {
+      "id": "programmes",
+      "label": "TAOMAN GROUP INVESTMENTS TGI"
     },
     {
       "id": "criteres",

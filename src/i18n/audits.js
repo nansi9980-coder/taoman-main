@@ -7,8 +7,8 @@ const FR = {
     eyebrow: 'Le service en quelques mots',
     title: 'Audits, reporting et conformité : la transparence au service de vos décisions.',
     paragraphs: [
-      "TAOMAN GROUP INVESTMENTS accompagne PME, investisseurs et institutions togolaises qui ont besoin de visibilité financière, de contrôle opérationnel et de dossiers conformes aux standards SYSCOA et CEDEAO.",
-      "Nos missions débouchent sur des plans d'action concrets, des tableaux de bord investisseur et des rapports PDF structurés — avec un délai de réponse sous 7 à 21 jours selon le périmètre.",
+      'TAOMAN GROUP INVESTMENTS accompagne PME, investisseurs et institutions en audits financiers, opérationnels et conformité SYSCOA / CEDEAO.',
+      'Livrables concrets : rapports PDF, tableaux de bord et plans d\'action — délai de 7 à 21 jours selon le périmètre.',
     ],
   },
   offers: {

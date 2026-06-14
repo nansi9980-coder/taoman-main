@@ -10,15 +10,15 @@ const DEVIS_MOVING = {
       title:
         'Déménager au Togo, sereinement : une logistique cadrée, des équipes formées, des biens protégés.',
       paragraphs: [
-        "Le déménagement est l'un des moments les plus stressants de la vie d'un foyer ou d'une entreprise. Cartons mal protégés, équipes improvisées, camions inadaptés, devis flous, retards : les mauvaises surprises sont fréquentes. TAOMAN GROUP INVESTMENTS a structuré son service de déménagement pour éliminer ces risques.",
-        "Nous opérons des déménagements de particuliers, d'entreprises, de transferts spécialisés (administrations, industriels, commerciaux) et de la manutention de volumes ou de poids hors normes. Chaque mission est précédée d'une visite technique gratuite et d'un devis détaillé. Notre flotte couvre les déménagements urbains, inter-villes (Lomé, Kara, Atakpamé, Sokodé, Dapaong) et sous-régionaux (UEMOA, CEDEAO). Nous travaillons avec des emballages adaptés à chaque type de bien et nos équipes sont formées à la manutention sécurisée des objets fragiles, encombrants ou lourds.",
+        "TAOMAN GROUP INVESTMENTS organise vos déménagements particuliers, d'entreprise et transferts spécialisés avec visite technique gratuite et devis détaillé.",
+        'Emballage, transport sécurisé et remontage : Lomé, villes intérieures et sous-région CEDEAO.',
       ],
     },
     types: {
       eyebrow: 'Nos prestations',
       title: 'Quatre types de déménagement, une seule exigence : zéro casse',
       description:
-        "Que vous soyez un particulier qui change d'appartement, un cadre expatrié, une PME qui transfère ses bureaux ou une administration qui réorganise ses locaux, nous adaptons l'équipe, le matériel et la méthode.",
+        'Particuliers, entreprises ou transferts spécialisés : une équipe et une méthode adaptées.',
       items: [
         {
           id: 'particulier',
@@ -70,7 +70,7 @@ const DEVIS_MOVING = {
       eyebrow: 'Notre processus',
       title: 'Sept étapes claires, du devis au verre du salon remis à sa place',
       description:
-        'Notre méthode est éprouvée. Elle évite les mauvaises surprises, les retards et les casses. Vous savez à tout moment ce qui se passe et qui fait quoi.',
+        'Sept étapes claires, de la demande au rangement final.',
       steps: [
         {
           num: '01',

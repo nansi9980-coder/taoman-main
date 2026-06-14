@@ -19,8 +19,8 @@ const FR = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN GROUP INVESTMENTS TGI' },
     { id: 'opportunites', label: "Opportunités d'investissement" },
+    { id: 'programmes', label: 'TAOMAN GROUP INVESTMENTS TGI' },
     { id: 'criteres', label: "Critères d'investissement" },
     { id: 'soumettre', label: 'Soumettre un projet' },
   ],
@@ -123,8 +123,8 @@ const EN = {
     ],
   },
   quickNav: [
-    { id: 'programmes', label: 'TAOMAN GROUP INVESTMENTS TGI' },
     { id: 'opportunites', label: 'Investment opportunities' },
+    { id: 'programmes', label: 'TAOMAN GROUP INVESTMENTS TGI' },
     { id: 'criteres', label: 'Investment criteria' },
     { id: 'soumettre', label: 'Submit a project' },
   ],

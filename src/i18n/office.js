@@ -9,16 +9,15 @@ const OFFICE = {
       eyebrow: 'Le service en quelques mots',
       title: 'Des bureaux propres, en permanence : le quotidien de vos équipes commence par un environnement sain.',
       paragraphs: [
-        "Un bureau propre, c'est plus qu'une question d'esthétique. C'est un environnement de travail sain pour vos collaborateurs, une image professionnelle pour vos clients et fournisseurs, et un facteur reconnu de productivité, de bien-être et de fidélisation des équipes.",
-        "TAOMAN GROUP INVESTMENTS opère des contrats d'entretien professionnel pour PME, cabinets, administrations, commerces, centres médicaux et établissements scolaires. Nos équipes sont formées à la propreté professionnelle, équipées de matériel adapté et engagées par des contrats clairs.",
-        "Que vous ayez besoin d'un nettoyage ponctuel après travaux, d'un entretien quotidien avant l'ouverture des bureaux, d'un grand nettoyage trimestriel ou d'un contrat sur mesure pour un site sensible (laboratoire, salle informatique, cuisine professionnelle), nous structurons une prestation à votre exigence.",
+        'Un bureau propre, c\'est un environnement sain, une image professionnelle et des équipes plus productives.',
+        "TAOMAN GROUP INVESTMENTS assure l'entretien de bureaux, commerces, cliniques et écoles : ponctuel, quotidien, hebdomadaire ou sur mesure, avec équipes identifiées et contrôle qualité.",
       ],
     },
     prestations: {
       eyebrow: 'Nos prestations',
       title: "Quatre formules d'entretien, une seule constance dans la qualité",
       description:
-        "Chaque entreprise a ses rythmes, ses contraintes et ses exigences. Nous proposons quatre formules complémentaires pour couvrir tous les besoins, du nettoyage de routine à l'intervention exceptionnelle.",
+        'Quatre formules pour couvrir routine, sites à forte fréquentation et interventions ponctuelles.',
       items: [
         {
           id: 'hebdomadaire',
