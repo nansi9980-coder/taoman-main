@@ -369,7 +369,7 @@ const CONTENT = {
       pillars: { eyebrow: 'Trois piliers', title: 'Une promesse simple et lisible' },
       sectors: { eyebrow: 'Secteurs financés', title: 'Où vont vos investissements', returnLabel: 'Rendement' },
       benefits: { eyebrow: 'Avantages investisseurs', title: 'Pourquoi rejoindre TGI' },
-      cta: { title: 'Prêt à investir avec TAOMAN GROUP INVESTMENTS ?', description: 'Un conseiller vous présente le programme et vos opportunités sous 48 h.', button: 'Parler à un conseiller' },
+      cta: { title: 'Prêt à investir avec TAOMAN GROUP INVESTMENTS ?', description: 'Un conseiller vous présente le programme et vos opportunités sous 48h.', button: 'Parler à un conseiller' },
     },
     moving: {
       seoDescription: 'Personnel et flotte de déménagement TAOMAN GROUP INVESTMENTS : véhicules adaptés, équipes formées, services pour particuliers, entreprises et commerces.',
@@ -1207,7 +1207,7 @@ const CONTENT = {
       pillars: { eyebrow: 'Tres pilares', title: 'Una promesa simple y legible' },
       sectors: { eyebrow: 'Sectores financiados', title: 'A dónde van sus inversiones', returnLabel: 'Rendimiento' },
       benefits: { eyebrow: 'Ventajas para inversores', title: 'Por qué unirse a TGI' },
-      cta: { title: '¿Listo para invertir con TAOMAN GROUP INVESTMENTS?', description: 'Un asesor le presenta el programa y sus oportunidades en 48 h.', button: 'Hablar con un asesor' },
+      cta: { title: '¿Listo para invertir con TAOMAN GROUP INVESTMENTS?', description: 'Un asesor le presenta el programa y sus oportunidades en 48h.', button: 'Hablar con un asesor' },
     },
     moving: {
       seoDescription: 'Personal y flota de mudanzas TAOMAN GROUP INVESTMENTS: vehículos adaptados, equipos formados, servicios para particulares, empresas y comercios.',
@@ -1571,7 +1571,7 @@ const CONTENT = {
       pillars: { eyebrow: 'Três pilares', title: 'Uma promessa simples e legível' },
       sectors: { eyebrow: 'Setores financiados', title: 'Para onde vão os seus investimentos', returnLabel: 'Rendimento' },
       benefits: { eyebrow: 'Vantagens para investidores', title: 'Por que aderir ao TGI' },
-      cta: { title: 'Pronto para investir com a TAOMAN GROUP INVESTMENTS?', description: 'Um consultor apresenta-lhe o programa e as suas oportunidades em 48 h.', button: 'Falar com um consultor' },
+      cta: { title: 'Pronto para investir com a TAOMAN GROUP INVESTMENTS?', description: 'Um consultor apresenta-lhe o programa e as suas oportunidades em 48h.', button: 'Falar com um consultor' },
     },
     moving: {
       seoDescription: 'Pessoal e frota de mudanças TAOMAN GROUP INVESTMENTS: veículos adaptados, equipas treinadas, serviços para particulares, empresas e comércios.',

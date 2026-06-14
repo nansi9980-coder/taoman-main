@@ -23,7 +23,7 @@ const FR = {
     title: 'Pourquoi investir dans le programme TGI ?',
     paragraphs: [
       "TGI structure des opportunités d'investissement adossées à des projets opérationnels réels au Togo : logistique, agro, commerce, BTP, numérique, marketing et éducation financière.",
-      "Vous bénéficiez d'un cadre clair, d'un interlocuteur dédié et d'un reporting régulier — avec un délai de réponse sous 48 h pour toute manifestation d'intérêt.",
+      "Vous bénéficiez d'un cadre clair, d'un interlocuteur dédié et d'un reporting régulier — avec un délai de réponse sous 48h pour toute manifestation d'intérêt.",
     ],
   },
   whyPlace: {

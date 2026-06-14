@@ -359,7 +359,10 @@ export const TaoEconomicInvestmentPage = () => {
           <div className="max-w-[1200px] mx-auto text-center animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-black mb-5">{tT.cta?.title || 'Prêt à commencer ?'}</h2>
             <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              {tT.cta?.description || `Rejoignez les investisseurs qui construisent leur avenir financier avec ${BRAND_NAME}.`}
+              {(tT.cta?.description || `Rejoignez les investisseurs qui construisent leur avenir financier avec ${BRAND_NAME}.`).replace(
+                /(\d+)\s+(h\.?)/gi,
+                '$1$2',
+              )}
             </p>
             <div className="flex gap-4 flex-col sm:flex-row justify-center">
               <button
