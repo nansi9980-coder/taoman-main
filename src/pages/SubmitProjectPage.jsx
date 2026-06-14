@@ -66,29 +66,19 @@ export const SubmitProjectPage = () => {
 
     try {
       const payload = new FormData();
-      payload.append('name', formData.contactName);
-      payload.append('phone', formData.contactPhone);
-      payload.append('address', formData.location);
-      payload.append('email', formData.contactEmail);
-      payload.append('title', `Soumission de projet - ${formData.projectName}`);
-      payload.append(
-        'description',
-        [
-          `Secteur: ${formData.sector}`,
-          `Ticket recherché: ${formData.amount}`,
-          `Horizon: ${formData.horizon}`,
-          `Localisation: ${formData.location}`,
-          `Email: ${formData.contactEmail}`,
-          `Site web: ${formData.website || '—'}`,
-          '',
-          'Description:',
-          formData.description,
-        ].join('\n'),
-      );
-      payload.append('service', 'Soumission de projet');
+      payload.append('projectName', formData.projectName);
+      payload.append('sector', formData.sector);
+      payload.append('location', formData.location);
+      payload.append('amount', formData.amount);
+      payload.append('horizon', formData.horizon);
+      payload.append('website', formData.website);
+      payload.append('description', formData.description);
+      payload.append('contactName', formData.contactName);
+      payload.append('contactEmail', formData.contactEmail);
+      payload.append('contactPhone', formData.contactPhone);
       if (attachment) payload.append('attachment', attachment);
 
-      const response = await fetch(`${API_URL}/quotes/submit`, {
+      const response = await fetch(`${API_URL}/project-submissions/submit`, {
         method: 'POST',
         body: payload,
       });
