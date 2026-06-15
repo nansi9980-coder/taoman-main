@@ -22,12 +22,13 @@ export function NavDropdownDesktop({ link, activeLink }) {
   const { nav: t } = useLanguage();
   const isActive = activeLink === link.key;
   const showShortInvest = link.key === 'investissement' && link.children && t?.investShort;
+  const showShortProjects = link.key === 'projets' && link.children && t?.projectsShort;
 
   return (
     <div className="group relative shrink-0">
       <Link
         to={link.href}
-        className={`nav-link-hover interactive relative flex cursor-pointer items-center gap-0.5 rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
+        className={`nav-link-hover interactive relative flex cursor-pointer items-center gap-0.5 rounded-full px-2 py-2 text-sm font-bold leading-tight transition-all duration-300 lg:px-2.5 xl:px-3 xl:py-2.5 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
           isActive
             ? 'bg-primary/10 text-primary'
             : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
@@ -36,6 +37,11 @@ export function NavDropdownDesktop({ link, activeLink }) {
         {showShortInvest ? (
           <>
             <span className="xl:hidden">{t.investShort}</span>
+            <span className="hidden xl:inline">{link.name}</span>
+          </>
+        ) : showShortProjects ? (
+          <>
+            <span className="xl:hidden">{t.projectsShort}</span>
             <span className="hidden xl:inline">{link.name}</span>
           </>
         ) : (

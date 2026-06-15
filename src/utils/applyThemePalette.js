@@ -37,7 +37,10 @@ export function applyThemePalette(theme) {
   const background = theme.background || "#eef2ff";
   const onSurface = textOnBackground(surface);
   const onSurfaceVariant = textMutedOnBackground(surface);
-  const onPrimary = textOnBackground(primary);
+  const container = secondary || primary;
+  const contrastBackground =
+    luminance(primary) <= luminance(container) ? primary : container;
+  const onPrimary = textOnBackground(contrastBackground);
 
   root.style.setProperty("--color-primary", primary);
   root.style.setProperty("--color-primary-container", secondary);

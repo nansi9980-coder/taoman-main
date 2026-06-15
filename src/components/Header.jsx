@@ -158,7 +158,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
         </Link>
 
         <nav
-          className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-0 overflow-visible px-1"
+          className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-0.5 overflow-visible px-1 xl:gap-0"
           aria-label="Navigation principale"
         >
           {navigationItems.map((link) =>
@@ -172,7 +172,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
               <Link
                 key={`${link.key}-${link.name}`}
                 to={link.href}
-                className={`nav-link-hover hover-link-shine interactive relative shrink-0 cursor-pointer rounded-full px-3 py-2.5 text-sm font-bold leading-tight transition-all duration-300 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
+                className={`nav-link-hover hover-link-shine interactive relative shrink-0 cursor-pointer rounded-full px-2 py-2 text-sm font-bold leading-tight transition-all duration-300 lg:px-2.5 xl:px-3 xl:py-2.5 xl:text-[15px] whitespace-nowrap motion-reduce:transition-none ${
                   activeLink === link.key
                     ? 'bg-primary/10 text-primary'
                     : 'text-on-surface hover:bg-surface-container-low hover:text-primary'
@@ -184,15 +184,15 @@ export const Header = ({ activeLink = 'accueil' }) => {
           )}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 xl:gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5 lg:ml-2 xl:gap-2">
           <div className="group relative hidden md:block">
             <button
               type="button"
-              className="interactive inline-flex items-center gap-1.5 cursor-pointer rounded-xl border border-outline-variant bg-surface px-2 py-2 text-sm font-bold text-on-surface shadow-sm transition-all duration-300 hover:border-primary hover:text-primary xl:px-3"
+              className="interactive inline-flex items-center gap-1 cursor-pointer rounded-xl border border-outline-variant bg-surface px-1.5 py-1.5 text-sm font-bold text-on-surface shadow-sm transition-all duration-300 hover:border-primary hover:text-primary xl:gap-1.5 xl:px-3 xl:py-2"
               aria-label={t.chooseLanguage}
             >
               <Flag code={currentLanguage.code} className="h-4 w-5 lg:h-4 lg:w-6" />
-              <span className="font-mono text-xs font-bold tracking-wide">{language}</span>
+              <span className="hidden xl:inline font-mono text-xs font-bold tracking-wide">{language}</span>
             </button>
             <div className="pointer-events-none absolute right-0 top-full z-40 h-3 w-full" aria-hidden="true" />
             <div className="invisible absolute right-0 top-full z-50 mt-2 w-52 origin-top-right scale-95 rounded-2xl border border-outline-variant/40 bg-surface p-2 opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none">
@@ -218,7 +218,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
           <button
             type="button"
             onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-            className="interactive inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-outline-variant bg-surface px-2 text-on-surface shadow-sm transition-all duration-300 hover:border-primary sm:px-2.5 xl:h-10 xl:w-10 xl:px-0"
+            className="interactive inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-outline-variant bg-surface text-on-surface shadow-sm transition-all duration-300 hover:border-primary md:h-9 md:w-9 xl:h-10 xl:w-10"
             aria-label={colorMode === 'dark' ? t.lightModeAria : t.darkModeAria}
             title={colorMode === 'dark' ? t.light : t.dark}
           >
@@ -227,7 +227,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
             ) : (
               <Moon className="h-4 w-4 xl:h-5 xl:w-5" aria-hidden="true" />
             )}
-            <span className="text-xs font-bold xl:hidden">{colorMode === 'dark' ? t.light : t.dark}</span>
+            <span className="sr-only">{colorMode === 'dark' ? t.light : t.dark}</span>
           </button>
 
           {user ? (
@@ -254,13 +254,13 @@ export const Header = ({ activeLink = 'accueil' }) => {
             <>
               <Link
                 to="/connexion"
-                className="interactive hidden cursor-pointer rounded-xl border-2 border-primary px-2.5 py-2 text-xs font-bold text-primary transition-all duration-300 hover:bg-primary hover:text-white md:inline-block xl:px-4 xl:py-2 xl:text-sm"
+                className="interactive hidden cursor-pointer rounded-lg border-2 border-primary px-2 py-1.5 text-[11px] font-bold leading-tight text-primary transition-all duration-300 hover:bg-primary hover:text-white md:inline-block lg:rounded-xl xl:px-4 xl:py-2 xl:text-sm"
               >
                 {t.login}
               </Link>
               <Link
                 to="/inscription"
-                className="interactive hidden cursor-pointer rounded-xl bg-gradient-to-r from-primary to-primary-container px-2.5 py-2 text-xs font-bold text-white shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg md:inline-block xl:px-4 xl:py-2 xl:text-sm"
+                className="interactive hidden cursor-pointer rounded-lg bg-gradient-to-r from-primary to-primary-container px-2 py-1.5 text-[11px] font-bold leading-tight text-white shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg md:inline-block lg:rounded-xl xl:px-4 xl:py-2 xl:text-sm"
               >
                 {t.register}
               </Link>

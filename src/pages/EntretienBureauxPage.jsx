@@ -412,17 +412,17 @@ export const EntretienBureauxPage = () => {
         {/* CTA */}
         <section className="bg-gradient-to-br from-primary to-primary-container py-16 px-6">
           <div className="max-w-[1100px] mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-black text-on-primary mb-3">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
               Confiez l'entretien de vos bureaux à des professionnels
             </h2>
-            <p className="text-lg text-on-primary/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Visite technique gratuite, devis détaillé, contrat clair. Vos équipes méritent un environnement de travail sain et nous savons le maintenir dans la durée.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Link to="/contact" className="rounded-2xl bg-on-primary text-primary px-8 py-4 font-bold hover:opacity-90 transition">
+              <Link to="/contact" className="rounded-2xl bg-white text-primary px-8 py-4 font-bold hover:opacity-90 transition">
                 Demander une visite
               </Link>
-              <Link to="/services" className="rounded-2xl border border-on-primary text-on-primary px-8 py-4 font-bold hover:bg-on-primary hover:text-primary transition inline-flex justify-center items-center">
+              <Link to="/services" className="rounded-2xl border border-white text-white px-8 py-4 font-bold hover:bg-white hover:text-primary transition inline-flex justify-center items-center">
                 Voir tous les services
               </Link>
             </div>

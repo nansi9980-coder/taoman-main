@@ -384,22 +384,22 @@ export const ServicesPage = () => {
         {/* CTA */}
         <section className="bg-gradient-to-br from-primary to-primary-container py-20 px-6">
           <div className="max-w-[1200px] mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-on-primary mb-4">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
               {tServExt.finalCta.title}
             </h2>
-            <p className="text-lg md:text-xl text-on-primary/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
               {tServExt.finalCta.description}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-on-primary text-primary px-8 py-4 font-bold hover:scale-105 hover:shadow-xl transition"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-primary px-8 py-4 font-bold hover:scale-105 hover:shadow-xl transition"
               >
                 {tServExt.finalCta.btnQuote} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact?topic=info"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-on-primary text-on-primary px-8 py-4 font-bold hover:bg-on-primary hover:text-primary transition"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white text-white px-8 py-4 font-bold hover:bg-white hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" /> {tServExt.finalCta.btnCall}
               </Link>

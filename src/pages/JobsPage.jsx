@@ -140,7 +140,7 @@ export const JobsPage = () => {
                   onClick={() => setSelectedCategory(cat.value)}
                   className={`px-lg py-md rounded-lg font-label-md transition-all ${
                     selectedCategory === cat.value
-                      ? 'bg-primary text-on-primary'
+                      ? 'bg-primary text-white'
                       : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
                   }`}
                 >
@@ -246,14 +246,14 @@ export const JobsPage = () => {
         {/* CTA */}
         <section className="bg-primary py-xxl">
           <div className="max-w-[1200px] mx-auto px-lg text-center">
-            <h2 className="text-headline-lg text-on-primary font-bold mb-md">
+            <h2 className="text-headline-lg text-white font-bold mb-md">
               {tJobs.cta.title}
             </h2>
-            <p className="text-body-lg text-on-primary/90 mb-xl">
+            <p className="text-body-lg text-white/90 mb-xl">
               {tJobs.cta.description}
             </p>
             <MagneticButton
-              className="bg-on-primary text-primary px-xl py-md rounded-lg font-label-md"
+              className="bg-white text-primary px-xl py-md rounded-lg font-label-md"
               onClick={() => applyForJob('')}
             >
               {tJobs.cta.button}

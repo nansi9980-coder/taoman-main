@@ -83,6 +83,7 @@ const NAV = {
     client: 'Client',
     submenuPrefix: 'Sous-menu',
     investShort: 'Investir',
+    projectsShort: 'Projets',
   },
   EN: {
     home: 'Home',
@@ -158,6 +159,7 @@ const NAV = {
     client: 'Client',
     submenuPrefix: 'Submenu',
     investShort: 'Invest',
+    projectsShort: 'Projects',
   },
   ES: {
     home: 'Inicio',
