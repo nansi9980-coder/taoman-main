@@ -309,7 +309,7 @@ export const InvestmentPage = () => {
           <div className="relative z-10 mx-auto max-w-[1100px] text-center px-4 py-6 md:px-8 md:py-10 rounded-3xl bg-[#020d1a]/45 backdrop-blur-md border border-white/10 shadow-2xl [text-shadow:0_2px_20px_rgba(0,0,0,0.85)]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{badge}</p>
             <h1 className="mb-6 text-4xl md:text-7xl font-black tracking-[-0.05em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-              <TextReveal elementType="span" immediate className="block text-white" text={title} />
+              <TextReveal elementType="span" immediate center className="block text-white" text={title} />
             </h1>
             <p className="mb-10 mx-auto max-w-2xl text-xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">{description}</p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">

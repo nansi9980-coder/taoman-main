@@ -114,6 +114,7 @@ export const JobsPage = () => {
               <TextReveal
                 elementType="span"
                 immediate
+                center
                 className="block bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent"
                 text={tJ.title || jobsContent.title}
               />

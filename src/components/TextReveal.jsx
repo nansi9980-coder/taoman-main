@@ -7,6 +7,7 @@ export const TextReveal = ({
   elementType = 'span',
   delay = 0,
   immediate = false,
+  center = false,
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-5%' });
@@ -43,13 +44,15 @@ export const TextReveal = ({
 
   const Tag = motion[elementType] || motion.span;
 
+  const layoutClass = center ? 'flex flex-wrap justify-center w-full' : 'inline-flex flex-wrap';
+
   return (
     <Tag
       ref={ref}
       variants={container}
       initial={immediate ? 'visible' : 'hidden'}
       animate={shouldShow ? 'visible' : 'hidden'}
-      className={`inline-flex flex-wrap ${className}`}
+      className={`${layoutClass} ${className}`}
     >
       {words.map((word, index) => (
         <span key={`${word}-${index}`} className="overflow-hidden inline-flex mr-[0.25em] last:mr-0">

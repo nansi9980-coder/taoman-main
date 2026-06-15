@@ -466,6 +466,7 @@ export const ContactPage = () => {
               <TextReveal
                 elementType="span"
                 immediate
+                center
                 className="block text-white"
                 text={tContact.hero.title}
               />
