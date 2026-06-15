@@ -439,6 +439,10 @@ export const ContactPage = () => {
     );
   }
 
+  if (topicId === 'invest' && profilePrefill === 'Institutionnel') {
+    return <Navigate to="/contact-institutionnel" replace />;
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <SeoHead

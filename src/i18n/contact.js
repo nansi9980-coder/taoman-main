@@ -161,6 +161,85 @@ const CONTACT = {
       openMaps: 'Ouvrir dans Google Maps',
       mapTitle: 'Carte — TAOMAN GROUP INVESTMENTS',
     },
+    institutional: {
+      seoDescription:
+        'Contact institutionnel TAOMAN GROUP INVESTMENTS : partenariats public-privé, investissement, coopération et relations avec les institutions au Togo.',
+      hero: {
+        eyebrow: 'Contact institutionnel',
+        title: 'Échangeons avec votre institution',
+        description:
+          'Ministères, ambassades, bailleurs, fonds et grandes entreprises : notre direction institutionnelle étudie chaque demande et revient vers vous sous 5 jours ouvrés.',
+      },
+      quickAccess: {
+        eyebrow: 'Explorer le groupe',
+        title: 'Accès rapide à l’écosystème TAOMAN',
+        description:
+          'Retrouvez en un clic les pages clés du site : gouvernance, secteurs, investissement, services opérationnels et soumission de projet.',
+      },
+      quickLinks: {
+        about: { title: 'Profil & gouvernance', desc: 'Mission, vision et organisation du groupe' },
+        sectors: { title: 'Nos secteurs & projets', desc: 'Logistique, agro, BTP, numérique et plus' },
+        invest: { title: 'Investir avec nous', desc: 'Programmes, critères et opportunités' },
+        tgi: { title: 'Programme TGI', desc: 'Investissement participatif structuré' },
+        submit: { title: 'Soumettre un projet', desc: 'Dossier pour le comité d’investissement' },
+        services: { title: 'Services opérationnels', desc: 'Lavage, déménagement, entretien, transport' },
+        devis: { title: 'Demander un devis', desc: 'Formulaires dédiés par service' },
+        faq: { title: 'Centre d’aide', desc: 'Questions fréquentes investisseurs et clients' },
+      },
+      form: {
+        badge: 'Institutionnel',
+        headline: 'Votre demande institutionnelle',
+        desc:
+          'Présentez votre organisation, le type de collaboration envisagée et vos attentes. Un interlocuteur dédié vous recontacte pour organiser un échange.',
+        submitLabel: 'Envoyer ma demande institutionnelle',
+        successText:
+          'Votre demande institutionnelle a bien été reçue. Notre direction revient vers vous sous 5 jours ouvrés.',
+        serviceTag: 'Contact – Institutionnel',
+      },
+      fields: {
+        organization: { label: 'Institution / organisation', placeholder: 'Ex : Ministère du Commerce' },
+        institutionType: {
+          label: 'Type d’institution',
+          options: [
+            'Administration publique',
+            'Ambassade / Représentation diplomatique',
+            'Bailleur / Agence de développement',
+            'Banque / Fonds d’investissement',
+            'ONG / Organisation internationale',
+            'Grande entreprise',
+            'Chambre de commerce / Fédération',
+            'Autre',
+          ],
+        },
+        name: { label: 'Nom du référent', placeholder: 'Ex : Komla Mensah' },
+        role: { label: 'Fonction', placeholder: 'Ex : Directeur des partenariats' },
+        email: { label: 'Email professionnel', placeholder: 'contact@institution.tg' },
+        phone: { label: 'Téléphone', placeholder: '+228 90 00 00 00' },
+        country: { label: 'Pays', placeholder: 'Ex : Togo' },
+        interestArea: {
+          label: 'Objet de la collaboration',
+          options: [
+            'Partenariat public-privé (PPP)',
+            'Investissement institutionnel',
+            'Coopération technique / appui de projet',
+            'Sous-traitance ou marché cadre',
+            'Mécénat ou RSE',
+            'Échange institutionnel / visite',
+            'Autre',
+          ],
+        },
+        message: {
+          label: 'Votre message',
+          placeholder:
+            'Décrivez le contexte, le calendrier souhaité et toute information utile pour préparer notre échange.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'Parcourir le site',
+        generalContact: 'Contact grand public',
+        generalContactDesc: 'Formulaires information, investissement et partenariat opérationnel',
+      },
+    },
     quotePage: {
       title: 'Demander un devis',
       subtitle: 'Service gratuit et sans engagement',
@@ -357,6 +436,85 @@ const CONTACT = {
       openMaps: 'Open in Google Maps',
       mapTitle: 'Map — TAOMAN GROUP INVESTMENTS',
     },
+    institutional: {
+      seoDescription:
+        'TAOMAN GROUP INVESTMENTS institutional contact: public-private partnerships, investment, cooperation and institutional relations in Togo.',
+      hero: {
+        eyebrow: 'Institutional contact',
+        title: 'Let’s connect with your institution',
+        description:
+          'Ministries, embassies, donors, funds and large companies: our institutional team reviews each request and replies within 5 business days.',
+      },
+      quickAccess: {
+        eyebrow: 'Explore the group',
+        title: 'Quick access to the TAOMAN ecosystem',
+        description:
+          'Key site pages in one click: governance, sectors, investment, operational services and project submission.',
+      },
+      quickLinks: {
+        about: { title: 'Profile & governance', desc: 'Mission, vision and group organisation' },
+        sectors: { title: 'Our sectors & projects', desc: 'Logistics, agro, construction, digital and more' },
+        invest: { title: 'Invest with us', desc: 'Programs, criteria and opportunities' },
+        tgi: { title: 'TGI program', desc: 'Structured participatory investment' },
+        submit: { title: 'Submit a project', desc: 'File for the investment committee' },
+        services: { title: 'Operational services', desc: 'Car wash, moving, cleaning, transport' },
+        devis: { title: 'Request a quote', desc: 'Dedicated forms per service' },
+        faq: { title: 'Help center', desc: 'Frequently asked questions' },
+      },
+      form: {
+        badge: 'Institutional',
+        headline: 'Your institutional request',
+        desc:
+          'Introduce your organisation, the type of cooperation you have in mind and your expectations. A dedicated contact will follow up to schedule a discussion.',
+        submitLabel: 'Send my institutional request',
+        successText:
+          'Your institutional request has been received. Our management team will reply within 5 business days.',
+        serviceTag: 'Contact – Institutional',
+      },
+      fields: {
+        organization: { label: 'Institution / organisation', placeholder: 'e.g. Ministry of Trade' },
+        institutionType: {
+          label: 'Institution type',
+          options: [
+            'Public administration',
+            'Embassy / Diplomatic mission',
+            'Donor / Development agency',
+            'Bank / Investment fund',
+            'NGO / International organisation',
+            'Large company',
+            'Chamber of commerce / Federation',
+            'Other',
+          ],
+        },
+        name: { label: 'Contact name', placeholder: 'e.g. John Doe' },
+        role: { label: 'Position', placeholder: 'e.g. Partnership Director' },
+        email: { label: 'Professional email', placeholder: 'contact@institution.tg' },
+        phone: { label: 'Phone', placeholder: '+228 90 00 00 00' },
+        country: { label: 'Country', placeholder: 'e.g. Togo' },
+        interestArea: {
+          label: 'Purpose of cooperation',
+          options: [
+            'Public-private partnership (PPP)',
+            'Institutional investment',
+            'Technical cooperation / project support',
+            'Subcontracting or framework contract',
+            'Sponsorship or CSR',
+            'Institutional exchange / visit',
+            'Other',
+          ],
+        },
+        message: {
+          label: 'Your message',
+          placeholder:
+            'Describe the context, desired timeline and any information useful to prepare our discussion.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'Browse the site',
+        generalContact: 'General contact',
+        generalContactDesc: 'Information, investment and operational partnership forms',
+      },
+    },
     quotePage: {
       title: 'Request a quote',
       subtitle: 'Free service with no obligation',
@@ -544,6 +702,85 @@ const CONTACT = {
       btnServices: 'Ver nuestros servicios',
       btnTgi: 'Descubrir TGI',
     },
+    institutional: {
+      seoDescription:
+        'Contacto institucional de TAOMAN GROUP INVESTMENTS: alianzas público-privadas, inversión, cooperación y relaciones institucionales en Togo.',
+      hero: {
+        eyebrow: 'Contacto institucional',
+        title: 'Conversemos con su institución',
+        description:
+          'Ministerios, embajadas, donantes, fondos y grandes empresas: nuestro equipo institucional estudia cada solicitud y responde en un plazo de 5 días hábiles.',
+      },
+      quickAccess: {
+        eyebrow: 'Explorar el grupo',
+        title: 'Acceso rápido al ecosistema TAOMAN',
+        description:
+          'Páginas clave del sitio en un clic: gobernanza, sectores, inversión, servicios operativos y presentación de proyectos.',
+      },
+      quickLinks: {
+        about: { title: 'Perfil y gobernanza', desc: 'Misión, visión y organización del grupo' },
+        sectors: { title: 'Nuestros sectores y proyectos', desc: 'Logística, agro, construcción, digital y más' },
+        invest: { title: 'Invertir con nosotros', desc: 'Programas, criterios y oportunidades' },
+        tgi: { title: 'Programa TGI', desc: 'Inversión participativa estructurada' },
+        submit: { title: 'Presentar un proyecto', desc: 'Expediente para el comité de inversión' },
+        services: { title: 'Servicios operativos', desc: 'Lavado, mudanzas, mantenimiento, transporte' },
+        devis: { title: 'Solicitar presupuesto', desc: 'Formularios dedicados por servicio' },
+        faq: { title: 'Centro de ayuda', desc: 'Preguntas frecuentes de inversores y clientes' },
+      },
+      form: {
+        badge: 'Institucional',
+        headline: 'Su solicitud institucional',
+        desc:
+          'Presente su organización, el tipo de colaboración prevista y sus expectativas. Un interlocutor dedicado le contactará para organizar un intercambio.',
+        submitLabel: 'Enviar mi solicitud institucional',
+        successText:
+          'Su solicitud institucional ha sido recibida. Nuestra dirección le responderá en un plazo de 5 días hábiles.',
+        serviceTag: 'Contacto – Institucional',
+      },
+      fields: {
+        organization: { label: 'Institución / organización', placeholder: 'Ej.: Ministerio de Comercio' },
+        institutionType: {
+          label: 'Tipo de institución',
+          options: [
+            'Administración pública',
+            'Embajada / Misión diplomática',
+            'Donante / Agencia de desarrollo',
+            'Banco / Fondo de inversión',
+            'ONG / Organización internacional',
+            'Gran empresa',
+            'Cámara de comercio / Federación',
+            'Otro',
+          ],
+        },
+        name: { label: 'Nombre del referente', placeholder: 'Ej.: Juan Pérez' },
+        role: { label: 'Cargo', placeholder: 'Ej.: Director de alianzas' },
+        email: { label: 'Correo profesional', placeholder: 'contacto@institucion.tg' },
+        phone: { label: 'Teléfono', placeholder: '+228 90 00 00 00' },
+        country: { label: 'País', placeholder: 'Ej.: Togo' },
+        interestArea: {
+          label: 'Objeto de la colaboración',
+          options: [
+            'Alianza público-privada (APP)',
+            'Inversión institucional',
+            'Cooperación técnica / apoyo al proyecto',
+            'Subcontratación o contrato marco',
+            'Mecenazgo o RSC',
+            'Intercambio institucional / visita',
+            'Otro',
+          ],
+        },
+        message: {
+          label: 'Su mensaje',
+          placeholder:
+            'Describa el contexto, el calendario deseado y cualquier información útil para preparar nuestro intercambio.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'Recorrer el sitio',
+        generalContact: 'Contacto general',
+        generalContactDesc: 'Formularios de información, inversión y alianza operativa',
+      },
+    },
   },
 
   PT: {
@@ -691,6 +928,85 @@ const CONTACT = {
         'Serviços operacionais (Lavagem, Mudanças, Manutenção, Transporte) + Programa de investimento TGI em sete setores (Logística, Agronegócio, Comércio, Construção, Digital, Marketing, Educação financeira).',
       btnServices: 'Ver os nossos serviços',
       btnTgi: 'Descobrir o TGI',
+    },
+    institutional: {
+      seoDescription:
+        'Contacto institucional TAOMAN GROUP INVESTMENTS: parcerias público-privadas, investimento, cooperação e relações institucionais no Togo.',
+      hero: {
+        eyebrow: 'Contacto institucional',
+        title: 'Vamos conversar com a sua instituição',
+        description:
+          'Ministérios, embaixadas, doadores, fundos e grandes empresas: a nossa equipa institucional analisa cada pedido e responde em 5 dias úteis.',
+      },
+      quickAccess: {
+        eyebrow: 'Explorar o grupo',
+        title: 'Acesso rápido ao ecossistema TAOMAN',
+        description:
+          'Páginas-chave do site num clique: governação, setores, investimento, serviços operacionais e submissão de projetos.',
+      },
+      quickLinks: {
+        about: { title: 'Perfil e governação', desc: 'Missão, visão e organização do grupo' },
+        sectors: { title: 'Os nossos setores e projetos', desc: 'Logística, agro, construção, digital e mais' },
+        invest: { title: 'Investir connosco', desc: 'Programas, critérios e oportunidades' },
+        tgi: { title: 'Programa TGI', desc: 'Investimento participativo estruturado' },
+        submit: { title: 'Submeter um projeto', desc: 'Dossiê para o comité de investimento' },
+        services: { title: 'Serviços operacionais', desc: 'Lavagem, mudanças, manutenção, transporte' },
+        devis: { title: 'Pedir orçamento', desc: 'Formulários dedicados por serviço' },
+        faq: { title: 'Centro de ajuda', desc: 'Perguntas frequentes de investidores e clientes' },
+      },
+      form: {
+        badge: 'Institucional',
+        headline: 'O seu pedido institucional',
+        desc:
+          'Apresente a sua organização, o tipo de colaboração prevista e as suas expectativas. Um interlocutor dedicado entrará em contacto para agendar uma conversa.',
+        submitLabel: 'Enviar o meu pedido institucional',
+        successText:
+          'O seu pedido institucional foi recebido. A nossa direção responderá em 5 dias úteis.',
+        serviceTag: 'Contacto – Institucional',
+      },
+      fields: {
+        organization: { label: 'Instituição / organização', placeholder: 'Ex.: Ministério do Comércio' },
+        institutionType: {
+          label: 'Tipo de instituição',
+          options: [
+            'Administração pública',
+            'Embaixada / Missão diplomática',
+            'Doador / Agência de desenvolvimento',
+            'Banco / Fundo de investimento',
+            'ONG / Organização internacional',
+            'Grande empresa',
+            'Câmara de comércio / Federação',
+            'Outro',
+          ],
+        },
+        name: { label: 'Nome do referente', placeholder: 'Ex.: João Silva' },
+        role: { label: 'Função', placeholder: 'Ex.: Diretor de parcerias' },
+        email: { label: 'Email profissional', placeholder: 'contacto@instituicao.tg' },
+        phone: { label: 'Telefone', placeholder: '+228 90 00 00 00' },
+        country: { label: 'País', placeholder: 'Ex.: Togo' },
+        interestArea: {
+          label: 'Objeto da colaboração',
+          options: [
+            'Parceria público-privada (PPP)',
+            'Investimento institucional',
+            'Cooperação técnica / apoio ao projeto',
+            'Subcontratação ou contrato-quadro',
+            'Mecenato ou RSE',
+            'Intercâmbio institucional / visita',
+            'Outro',
+          ],
+        },
+        message: {
+          label: 'A sua mensagem',
+          placeholder:
+            'Descreva o contexto, o calendário pretendido e qualquer informação útil para preparar a nossa conversa.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'Percorrer o site',
+        generalContact: 'Contacto geral',
+        generalContactDesc: 'Formulários de informação, investimento e parceria operacional',
+      },
     },
   },
 
@@ -840,6 +1156,85 @@ const CONTACT = {
       btnServices: 'Unsere Services',
       btnTgi: 'TGI entdecken',
     },
+    institutional: {
+      seoDescription:
+        'Institutioneller Kontakt TAOMAN GROUP INVESTMENTS: öffentlich-private Partnerschaften, Investition, Zusammenarbeit und institutionelle Beziehungen in Togo.',
+      hero: {
+        eyebrow: 'Institutioneller Kontakt',
+        title: 'Lassen Sie uns mit Ihrer Institution in Kontakt treten',
+        description:
+          'Ministerien, Botschaften, Geber, Fonds und Großunternehmen: Unser institutionelles Team prüft jede Anfrage und antwortet innerhalb von 5 Werktagen.',
+      },
+      quickAccess: {
+        eyebrow: 'Gruppe erkunden',
+        title: 'Schnellzugriff auf das TAOMAN-Ökosystem',
+        description:
+          'Wichtige Seiten mit einem Klick: Governance, Sektoren, Investition, operative Dienstleistungen und Projekteinreichung.',
+      },
+      quickLinks: {
+        about: { title: 'Profil & Governance', desc: 'Mission, Vision und Organisation der Gruppe' },
+        sectors: { title: 'Unsere Sektoren & Projekte', desc: 'Logistik, Agro, Bau, Digital und mehr' },
+        invest: { title: 'Mit uns investieren', desc: 'Programme, Kriterien und Chancen' },
+        tgi: { title: 'TGI-Programm', desc: 'Strukturierte partizipative Investition' },
+        submit: { title: 'Projekt einreichen', desc: 'Dossier für das Investitionskomitee' },
+        services: { title: 'Operative Dienstleistungen', desc: 'Autowäsche, Umzug, Reinigung, Transport' },
+        devis: { title: 'Angebot anfordern', desc: 'Dedizierte Formulare pro Service' },
+        faq: { title: 'Hilfezentrum', desc: 'Häufige Fragen von Investoren und Kunden' },
+      },
+      form: {
+        badge: 'Institutionell',
+        headline: 'Ihre institutionelle Anfrage',
+        desc:
+          'Stellen Sie Ihre Organisation, die Art der geplanten Zusammenarbeit und Ihre Erwartungen vor. Ein dedizierter Ansprechpartner meldet sich für ein Gespräch.',
+        submitLabel: 'Meine institutionelle Anfrage senden',
+        successText:
+          'Ihre institutionelle Anfrage wurde empfangen. Unsere Geschäftsleitung antwortet innerhalb von 5 Werktagen.',
+        serviceTag: 'Kontakt – Institutionell',
+      },
+      fields: {
+        organization: { label: 'Institution / Organisation', placeholder: 'z. B. Handelsministerium' },
+        institutionType: {
+          label: 'Institutionstyp',
+          options: [
+            'Öffentliche Verwaltung',
+            'Botschaft / Diplomatische Vertretung',
+            'Geber / Entwicklungsagentur',
+            'Bank / Investmentfonds',
+            'NGO / Internationale Organisation',
+            'Großunternehmen',
+            'Handelskammer / Verband',
+            'Sonstiges',
+          ],
+        },
+        name: { label: 'Name des Ansprechpartners', placeholder: 'z. B. Max Mustermann' },
+        role: { label: 'Position', placeholder: 'z. B. Leiter Partnerschaften' },
+        email: { label: 'Geschäftliche E-Mail', placeholder: 'kontakt@institution.tg' },
+        phone: { label: 'Telefon', placeholder: '+228 90 00 00 00' },
+        country: { label: 'Land', placeholder: 'z. B. Togo' },
+        interestArea: {
+          label: 'Zweck der Zusammenarbeit',
+          options: [
+            'Öffentlich-private Partnerschaft (ÖPP)',
+            'Institutionelle Investition',
+            'Technische Zusammenarbeit / Projektunterstützung',
+            'Unterauftrag oder Rahmenvertrag',
+            'Sponsoring oder CSR',
+            'Institutioneller Austausch / Besuch',
+            'Sonstiges',
+          ],
+        },
+        message: {
+          label: 'Ihre Nachricht',
+          placeholder:
+            'Beschreiben Sie den Kontext, den gewünschten Zeitplan und alle Informationen, die unser Gespräch vorbereiten.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'Website durchsuchen',
+        generalContact: 'Allgemeiner Kontakt',
+        generalContactDesc: 'Formulare für Information, Investition und operative Partnerschaft',
+      },
+    },
   },
 
   AR: {
@@ -984,6 +1379,85 @@ const CONTACT = {
       btnServices: 'مشاهدة خدماتنا',
       btnTgi: 'اكتشف TGI',
     },
+    institutional: {
+      seoDescription:
+        'الاتصال المؤسسي لـ TAOMAN GROUP INVESTMENTS: شراكات القطاعين العام والخاص، الاستثمار، التعاون والعلاقات المؤسسية في توغو.',
+      hero: {
+        eyebrow: 'اتصال مؤسسي',
+        title: 'لنتواصل مع مؤسستكم',
+        description:
+          'الوزارات والسفارات والمانحون والصناديق والشركات الكبرى: يدرس فريقنا المؤسسي كل طلب ويرد خلال 5 أيام عمل.',
+      },
+      quickAccess: {
+        eyebrow: 'استكشاف المجموعة',
+        title: 'وصول سريع إلى منظومة TAOMAN',
+        description:
+          'صفحات الموقع الرئيسية بنقرة واحدة: الحوكمة، القطاعات، الاستثمار، الخدمات التشغيلية وتقديم المشاريع.',
+      },
+      quickLinks: {
+        about: { title: 'الملف والحوكمة', desc: 'المهمة والرؤية وتنظيم المجموعة' },
+        sectors: { title: 'قطاعاتنا ومشاريعنا', desc: 'لوجستيات، زراعة، بناء، رقمي والمزيد' },
+        invest: { title: 'الاستثمار معنا', desc: 'البرامج والمعايير والفرص' },
+        tgi: { title: 'برنامج TGI', desc: 'استثمار تشاركي منظم' },
+        submit: { title: 'تقديم مشروع', desc: 'ملف للجنة الاستثمار' },
+        services: { title: 'الخدمات التشغيلية', desc: 'غسيل السيارات، النقل، الصيانة، النقل' },
+        devis: { title: 'طلب عرض سعر', desc: 'نماذج مخصصة لكل خدمة' },
+        faq: { title: 'مركز المساعدة', desc: 'أسئلة شائعة للمستثمرين والعملاء' },
+      },
+      form: {
+        badge: 'مؤسسي',
+        headline: 'طلبكم المؤسسي',
+        desc:
+          'قدّموا مؤسستكم ونوع التعاون المطلوب وتوقعاتكم. سيتواصل معكم محاور مخصص لترتيب نقاش.',
+        submitLabel: 'إرسال طلبي المؤسسي',
+        successText:
+          'تم استلام طلبكم المؤسسي. سترد عليكم إدارتنا خلال 5 أيام عمل.',
+        serviceTag: 'اتصال – مؤسسي',
+      },
+      fields: {
+        organization: { label: 'المؤسسة / المنظمة', placeholder: 'مثال: وزارة التجارة' },
+        institutionType: {
+          label: 'نوع المؤسسة',
+          options: [
+            'إدارة عامة',
+            'سفارة / بعثة دبلوماسية',
+            'مانح / وكالة تنمية',
+            'بنك / صندوق استثمار',
+            'منظمة غير حكومية / منظمة دولية',
+            'شركة كبرى',
+            'غرفة تجارة / اتحاد',
+            'أخرى',
+          ],
+        },
+        name: { label: 'اسم المسؤول', placeholder: 'مثال: أحمد محمد' },
+        role: { label: 'المنصب', placeholder: 'مثال: مدير الشراكات' },
+        email: { label: 'البريد المهني', placeholder: 'contact@institution.tg' },
+        phone: { label: 'الهاتف', placeholder: '+228 90 00 00 00' },
+        country: { label: 'البلد', placeholder: 'مثال: توغو' },
+        interestArea: {
+          label: 'موضوع التعاون',
+          options: [
+            'شراكة القطاعين العام والخاص',
+            'استثمار مؤسسي',
+            'تعاون تقني / دعم مشروع',
+            'تعاقد من الباطن أو عقد إطاري',
+            'رعاية أو مسؤولية اجتماعية',
+            'تبادل مؤسسي / زيارة',
+            'أخرى',
+          ],
+        },
+        message: {
+          label: 'رسالتكم',
+          placeholder:
+            'صفوا السياق والجدول الزمني المطلوب وأي معلومات مفيدة لتحضير نقاشنا.',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: 'تصفح الموقع',
+        generalContact: 'اتصال عام',
+        generalContactDesc: 'نماذج المعلومات والاستثمار والشراكة التشغيلية',
+      },
+    },
   },
 
   ZH: {
@@ -1115,6 +1589,85 @@ const CONTACT = {
       btnServices: '查看我们的服务',
       btnTgi: '了解 TGI',
     },
+    institutional: {
+      seoDescription:
+        'TAOMAN GROUP INVESTMENTS 机构联系：多哥的公私合作、投资、协作及机构关系。',
+      hero: {
+        eyebrow: '机构联系',
+        title: '与贵机构建立联系',
+        description:
+          '部委、使馆、捐助方、基金和大型企业：我们的机构团队审核每项请求，并在 5 个工作日内回复。',
+      },
+      quickAccess: {
+        eyebrow: '探索集团',
+        title: '快速访问 TAOMAN 生态',
+        description:
+          '一键直达关键页面：治理、行业、投资、运营服务及项目提交。',
+      },
+      quickLinks: {
+        about: { title: '概况与治理', desc: '使命、愿景与集团组织' },
+        sectors: { title: '我们的行业与项目', desc: '物流、农业、建筑、数字化等' },
+        invest: { title: '与我们投资', desc: '计划、标准与机会' },
+        tgi: { title: 'TGI 计划', desc: '结构化参与式投资' },
+        submit: { title: '提交项目', desc: '提交给投资委员会的材料' },
+        services: { title: '运营服务', desc: '洗车、搬家、维护、运输' },
+        devis: { title: '申请报价', desc: '各服务专属表单' },
+        faq: { title: '帮助中心', desc: '投资者与客户的常见问题' },
+      },
+      form: {
+        badge: '机构',
+        headline: '您的机构请求',
+        desc:
+          '介绍贵机构、拟议合作类型及期望。专属联系人将跟进并安排交流。',
+        submitLabel: '发送我的机构请求',
+        successText:
+          '您的机构请求已收到。管理团队将在 5 个工作日内回复。',
+        serviceTag: '联系 – 机构',
+      },
+      fields: {
+        organization: { label: '机构 / 组织', placeholder: '例：贸易部' },
+        institutionType: {
+          label: '机构类型',
+          options: [
+            '公共行政',
+            '使馆 / 外交机构',
+            '捐助方 / 发展机构',
+            '银行 / 投资基金',
+            '非政府组织 / 国际组织',
+            '大型企业',
+            '商会 / 联合会',
+            '其他',
+          ],
+        },
+        name: { label: '联系人姓名', placeholder: '例：张三' },
+        role: { label: '职位', placeholder: '例：合作总监' },
+        email: { label: '工作邮箱', placeholder: 'contact@institution.tg' },
+        phone: { label: '电话', placeholder: '+228 90 00 00 00' },
+        country: { label: '国家', placeholder: '例：多哥' },
+        interestArea: {
+          label: '合作目的',
+          options: [
+            '公私合作（PPP）',
+            '机构投资',
+            '技术合作 / 项目支持',
+            '分包或框架合同',
+            '赞助或企业社会责任',
+            '机构交流 / 访问',
+            '其他',
+          ],
+        },
+        message: {
+          label: '您的留言',
+          placeholder:
+            '请描述背景、期望时间表及有助于我们交流的任何信息。',
+        },
+      },
+      sidebar: {
+        quickLinksTitle: '浏览网站',
+        generalContact: '公众联系',
+        generalContactDesc: '信息、投资及运营合作表单',
+      },
+    },
   },
 };
 
@@ -1126,6 +1679,7 @@ export const getContactTranslations = (language) => {
     location: pack.location || en.location || CONTACT.FR.location,
     form: pack.form || en.form || CONTACT.FR.form,
     quotePage: pack.quotePage || en.quotePage || CONTACT.FR.quotePage,
+    institutional: pack.institutional || en.institutional || CONTACT.FR.institutional,
   };
 };
 

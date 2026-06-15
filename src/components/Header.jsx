@@ -56,7 +56,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
         children: [
           { name: t.profile, desc: t.profileDesc, href: '/about#profile' },
           { name: t.governance, desc: t.governanceDesc, href: '/about#governance' },
-          { name: t.institutionalContact, desc: t.institutionalContactDesc, href: '/contact?topic=invest&profile=Institutionnel' },
+          { name: t.institutionalContact, desc: t.institutionalContactDesc, href: '/contact-institutionnel' },
         ],
       },
       {

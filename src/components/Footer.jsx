@@ -27,7 +27,7 @@ export const Footer = () => {
     { name: t.opportunities, href: '/jobs' },
     { name: t.faq, href: '/faq' },
     { name: t.contactLink, href: '/contact' },
-    { name: language === 'FR' ? 'Contact institutionnel' : 'Institutional contact', href: '/contact?topic=invest&profile=Institutionnel' },
+    { name: t.institutionalContact || (language === 'FR' ? 'Contact institutionnel' : 'Institutional contact'), href: '/contact-institutionnel' },
     { name: t.about, href: '/about' },
   ];
 
