@@ -233,7 +233,7 @@ const FR = {
     ],
   },
   finalCta: {
-    title: 'Prêt à transformer vos espaces ?',
+    title: 'Besoin d’un service opérationnel ?',
     description:
       "Contactez-nous aujourd'hui pour un devis gratuit et sans engagement. Notre équipe vous rappelle dans la journée.",
     btnQuote: 'Demander un devis',
@@ -472,7 +472,7 @@ const EN = {
     ],
   },
   finalCta: {
-    title: 'Ready to transform your spaces?',
+    title: 'Need a field service?',
     description:
       'Contact us today for a free, no-obligation quote. Our team will call you back the same day.',
     btnQuote: 'Request a quote',
@@ -507,7 +507,7 @@ const ES = {
   detailed: { eyebrow: 'Más allá del presupuesto', description: 'Más allá del presupuesto, creemos en la transparencia: así trabajamos, qué incluimos y por qué nuestros clientes renuevan sus contratos con TAOMAN GROUP INVESTMENTS.', items: ES_DETAILED_ITEMS },
   method: { eyebrow: 'Método', title: 'Del presupuesto al seguimiento, un recorrido claro', description: 'Aplicamos el mismo método en cada prestación para garantizar una calidad constante.', steps: [{ title: 'Diagnóstico', desc: 'Lugar, volumen, restricciones, plazos y resultado esperado — analizado in situ o a distancia.' }, { title: 'Presupuesto', desc: 'Precio, alcance, planificación, equipo y condiciones claras, sin costes ocultos.' }, { title: 'Ejecución', desc: 'Lista de control, material adaptado y responsable identificado en terreno.' }, { title: 'Control', desc: 'Feedback del cliente, fotos antes/después, seguimiento y correcciones post-servicio.' }] },
   whyUs: { eyebrow: 'Por qué TAOMAN GROUP INVESTMENTS', title: 'Tres compromisos simples', description: 'Disponibilidad, profesionalismo y seguimiento: nuestros tres pilares de calidad.', items: [{ title: 'Disponibilidad', desc: 'Servicio día y noche, 7 días a la semana, soporte WhatsApp y teléfono.' }, { title: 'Profesional', desc: 'Equipo formado e identificado, equipos adaptados, procedimientos de calidad claros.' }, { title: 'Seguimiento cliente', desc: 'Control tras la intervención, fotos documentadas y feedback integrado al plan de mejora.' }] },
-  finalCta: { title: '¿Listo para transformar sus espacios?', description: 'Contáctenos hoy para un presupuesto gratuito y sin compromiso. Nuestro equipo le devolverá la llamada en el día.', btnQuote: 'Solicitar presupuesto', btnCall: 'Llamarnos', btnInvest: 'Ver inversión' },
+  finalCta: { title: '¿Necesita un servicio operativo?', description: 'Contáctenos hoy para un presupuesto gratuito y sin compromiso. Nuestro equipo le devolverá la llamada en el día.', btnQuote: 'Solicitar presupuesto', btnCall: 'Llamarnos', btnInvest: 'Ver inversión' },
 };
 
 const PT_ITEMS = makeItems([
@@ -536,7 +536,7 @@ const PT = {
   detailed: { eyebrow: 'Para além do orçamento', description: 'Para além do orçamento, acreditamos na transparência: eis como trabalhamos, o que incluímos e por que os nossos clientes renovam os contratos com a TAOMAN GROUP INVESTMENTS.', items: PT_DETAILED_ITEMS },
   method: { eyebrow: 'Método', title: 'Do orçamento ao acompanhamento, um percurso claro', description: 'Aplicamos o mesmo método a cada prestação para garantir uma qualidade constante.', steps: [{ title: 'Diagnóstico', desc: 'Local, volume, restrições, prazos e resultado esperado — analisado no local ou à distância.' }, { title: 'Orçamento', desc: 'Preço, âmbito, planeamento, equipa e condições claras, sem custos ocultos.' }, { title: 'Execução', desc: 'Checklist, material adaptado e responsável identificado em terreno.' }, { title: 'Controlo', desc: 'Feedback do cliente, fotos antes/depois, acompanhamento e correções pós-prestação.' }] },
   whyUs: { eyebrow: 'Porquê TAOMAN GROUP INVESTMENTS', title: 'Três compromissos simples', description: 'Disponibilidade, profissionalismo e acompanhamento: os nossos três pilares de qualidade.', items: [{ title: 'Disponibilidade', desc: 'Serviço dia e noite, 7 dias por semana, suporte WhatsApp e telefone.' }, { title: 'Profissional', desc: 'Equipa formada e identificada, equipamentos adaptados, procedimentos de qualidade claros.' }, { title: 'Acompanhamento cliente', desc: 'Controlo após intervenção, fotos documentadas e feedback integrado no plano de melhoria.' }] },
-  finalCta: { title: 'Pronto para transformar os seus espaços?', description: 'Contacte-nos hoje para um orçamento gratuito e sem compromisso. A nossa equipa liga-lhe no mesmo dia.', btnQuote: 'Pedir orçamento', btnCall: 'Ligar-nos', btnInvest: 'Ver investimento' },
+  finalCta: { title: 'Precisa de um serviço operacional?', description: 'Contacte-nos hoje para um orçamento gratuito e sem compromisso. A nossa equipa liga-lhe no mesmo dia.', btnQuote: 'Pedir orçamento', btnCall: 'Ligar-nos', btnInvest: 'Ver investimento' },
 };
 
 const DE_ITEMS = makeItems([
@@ -565,7 +565,7 @@ const DE = {
   detailed: { eyebrow: 'Über das Angebot hinaus', description: 'Über das Angebot hinaus setzen wir auf Transparenz: So arbeiten wir, was wir einschließen und warum unsere Kunden ihre Verträge mit TAOMAN GROUP INVESTMENTS verlängern.', items: DE_DETAILED_ITEMS },
   method: { eyebrow: 'Methode', title: 'Vom Angebot zur Nachverfolgung — ein klarer Weg', description: 'Wir wenden dieselbe Methode bei jeder Leistung an, um konstante Qualität zu gewährleisten.', steps: [{ title: 'Diagnose', desc: 'Ort, Umfang, Einschränkungen, Fristen und erwartetes Ergebnis — vor Ort oder remote analysiert.' }, { title: 'Angebot', desc: 'Preis, Umfang, Planung, Team und klare Bedingungen ohne versteckte Kosten.' }, { title: 'Ausführung', desc: 'Checkliste, passendes Material und identifizierter Verantwortlicher vor Ort.' }, { title: 'Kontrolle', desc: 'Kundenfeedback, Vorher/Nachher-Fotos, Nachverfolgung und Korrekturen nach der Leistung.' }] },
   whyUs: { eyebrow: 'Warum TAOMAN GROUP INVESTMENTS', title: 'Drei einfache Verpflichtungen', description: 'Verfügbarkeit, Professionalität und Nachverfolgung: unsere drei Qualitätssäulen.', items: [{ title: 'Verfügbarkeit', desc: 'Service Tag und Nacht, 7 Tage die Woche, WhatsApp- und Telefon-Support.' }, { title: 'Professionell', desc: 'Geschultes, identifizierbares Team, passende Ausrüstung, klare Qualitätsverfahren.' }, { title: 'Kundenbetreuung', desc: 'Kontrolle nach dem Eingriff, dokumentierte Fotos und Feedback im Verbesserungsplan.' }] },
-  finalCta: { title: 'Bereit, Ihre Räume zu transformieren?', description: 'Kontaktieren Sie uns heute für ein kostenloses, unverbindliches Angebot. Unser Team ruft Sie noch am selben Tag zurück.', btnQuote: 'Angebot anfordern', btnCall: 'Uns anrufen', btnInvest: 'Investition ansehen' },
+  finalCta: { title: 'Benötigen Sie einen operativen Service?', description: 'Kontaktieren Sie uns heute für ein kostenloses, unverbindliches Angebot. Unser Team ruft Sie noch am selben Tag zurück.', btnQuote: 'Angebot anfordern', btnCall: 'Uns anrufen', btnInvest: 'Investition ansehen' },
 };
 
 const AR_ITEMS = makeItems([
@@ -594,7 +594,7 @@ const AR = {
   detailed: { eyebrow: 'ما بعد عرض السعر', description: 'ما بعد عرض السعر، نؤمن بالشفافية: هكذا نعمل، ما نقدمه، ولماذا يجدد عملاؤنا عقودهم مع TAOMAN GROUP INVESTMENTS.', items: AR_DETAILED_ITEMS },
   method: { eyebrow: 'المنهجية', title: 'من العرض إلى المتابعة، مسار واضح', description: 'نطبق نفس المنهجية في كل خدمة لضمان جودة ثابتة.', steps: [{ title: 'التشخيص', desc: 'المكان، الحجم، القيود، المواعيد والنتيجة المتوقعة — تحليل ميداني أو عن بُعد.' }, { title: 'العرض', desc: 'السعر، النطاق، التخطيط، الفريق والشروط الواضحة دون رسوم خفية.' }, { title: 'التنفيذ', desc: 'قائمة تحقق، معدات مناسبة ومسؤول معرّف في الميدان.' }, { title: 'المراقبة', desc: 'ملاحظات العميل، صور قبل/بعد، متابعة وتصحيحات بعد الخدمة.' }] },
   whyUs: { eyebrow: 'لماذا TAOMAN GROUP INVESTMENTS', title: 'ثلاث التزامات بسيطة', description: 'التوفر، الاحترافية والمتابعة: ركائزنا الثلاث للجودة.', items: [{ title: 'التوفر', desc: 'خدمة ليلاً ونهاراً، 7 أيام في الأسبوع، دعم WhatsApp والهاتف.' }, { title: 'احترافي', desc: 'فريق مدرب ومعرّف، معدات مناسبة، إجراءات جودة واضحة.' }, { title: 'متابعة العميل', desc: 'مراقبة بعد التدخل، صور موثقة وملاحظات مدمجة في خطة التحسين.' }] },
-  finalCta: { title: 'مستعدون لتحويل مساحاتكم؟', description: 'تواصلوا معنا اليوم للحصول على عرض مجاني دون التزام. سيتصل بكم فريقنا في نفس اليوم.', btnQuote: 'طلب عرض سعر', btnCall: 'اتصل بنا', btnInvest: 'عرض الاستثمار' },
+  finalCta: { title: 'هل تحتاجون إلى خدمة تشغيلية؟', description: 'تواصلوا معنا اليوم للحصول على عرض مجاني دون التزام. سيتصل بكم فريقنا في نفس اليوم.', btnQuote: 'طلب عرض سعر', btnCall: 'اتصل بنا', btnInvest: 'عرض الاستثمار' },
 };
 
 const ZH_ITEMS = makeItems([
@@ -623,7 +623,7 @@ const ZH = {
   detailed: { eyebrow: '超越报价', description: '超越报价，我们坚持透明：我们的工作方式、包含内容，以及客户为何与 TAOMAN GROUP INVESTMENTS 续约。', items: ZH_DETAILED_ITEMS },
   method: { eyebrow: '方法', title: '从报价到跟进，路径清晰', description: '每项服务采用相同方法，确保持续稳定的质量。', steps: [{ title: '诊断', desc: '地点、规模、约束、期限与预期结果——现场或远程分析。' }, { title: '报价', desc: '价格、范围、计划、团队及清晰条款，无隐藏费用。' }, { title: '执行', desc: '检查清单、适配设备及现场明确负责人。' }, { title: '质控', desc: '客户反馈、前后照片、跟进及服务后修正。' }] },
   whyUs: { eyebrow: '为何选择 TAOMAN GROUP INVESTMENTS', title: '三项简单承诺', description: '可用性、专业性与跟进：我们的三大质量支柱。', items: [{ title: '可用性', desc: '日夜服务，每周 7 天，WhatsApp 与电话支持。' }, { title: '专业', desc: '培训可识别团队、适配设备、清晰质量流程。' }, { title: '客户跟进', desc: '服务后检查、存档照片及反馈纳入改进计划。' }] },
-  finalCta: { title: '准备好改造您的空间？', description: '立即联系我们获取免费无约束报价。团队将在当天回电。', btnQuote: '索取报价', btnCall: '致电我们', btnInvest: '查看投资' },
+  finalCta: { title: '需要运营服务？', description: '立即联系我们获取免费无约束报价。团队将在当天回电。', btnQuote: '索取报价', btnCall: '致电我们', btnInvest: '查看投资' },
 };
 
 const SERVICES = { FR, EN, ES, PT, DE, AR, ZH };

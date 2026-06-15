@@ -142,9 +142,9 @@ const CONTENT = {
         'Contactez TAOMAN GROUP INVESTMENTS : siège à Lomé, équipe terrain, partenariats public-privé et formulaires dédiés.',
       hero: {
         eyebrow: 'Contact',
-        title: 'Parlons de votre projet',
+        title: 'Contactez notre équipe',
         description:
-          "Une équipe dédiée vous répond sous 24 h. Choisissez le canal le plus adapté à votre demande.",
+          "Pour plus d'informations, veuillez remplir le formulaire ci-dessous pour nous contacter.",
       },
       forms: {
         investTitle: 'Investir avec TAOMAN GROUP INVESTMENTS',
@@ -177,7 +177,7 @@ const CONTENT = {
         title: 'Des services terrain clairs, rapides et suivis.',
         description:
           'TAOMAN GROUP INVESTMENTS combine équipes terrain, devis structurés, qualité contrôlée et suivi client pour les particuliers, entreprises et investisseurs.',
-        btn1: 'Prêt à transformer vos espaces ?',
+        btn1: 'Demandez un devis gratuit',
         btn2: 'Nous appeler',
       },
       sectionTitle: 'Huit services, une seule promesse',
@@ -628,7 +628,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: 'Contact TAOMAN GROUP INVESTMENTS: Lomé headquarters, field teams, public-private partnerships and dedicated forms.',
-      hero: { eyebrow: 'Contact', title: "Let's talk about your project", description: 'A dedicated team responds within 24 hours. Choose the channel that best matches your request.' },
+      hero: { eyebrow: 'Contact', title: 'Contact our team', description: 'For more information, please fill in the form below to contact us.' },
       forms: { investTitle: 'Invest with TAOMAN GROUP INVESTMENTS', quoteTitle: 'Request a quote', infoTitle: 'Information request', partnershipTitle: 'Institutional partnership' },
     },
     faq: {
@@ -644,7 +644,7 @@ const CONTENT = {
         title: 'Clear, fast and tracked field services.',
         description:
           'TAOMAN GROUP INVESTMENTS combines field teams, structured quotes, controlled quality and client follow-up for individuals, businesses and investors.',
-        btn1: 'Ready to transform your spaces?',
+        btn1: 'Request a free quote',
         btn2: 'Call us',
       },
       sectionTitle: 'Eight services, one promise',
@@ -1082,7 +1082,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: 'Contacte TAOMAN GROUP INVESTMENTS: sede en Lomé, equipo de campo, alianzas público-privadas y formularios dedicados.',
-      hero: { eyebrow: 'Contacto', title: 'Hablemos de su proyecto', description: 'Un equipo dedicado responde en 24 h. Elija el canal más adecuado a su consulta.' },
+      hero: { eyebrow: 'Contacto', title: 'Contacte con nuestro equipo', description: 'Para más información, rellene el formulario de abajo para contactarnos.' },
       forms: { investTitle: 'Invertir con TAOMAN GROUP INVESTMENTS', quoteTitle: 'Solicitar presupuesto', infoTitle: 'Solicitud de información', partnershipTitle: 'Alianza institucional' },
     },
     faq: {
@@ -1446,7 +1446,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: 'Contacte TAOMAN GROUP INVESTMENTS: sede em Lomé, equipa no terreno, parcerias público-privadas e formulários dedicados.',
-      hero: { eyebrow: 'Contacto', title: 'Vamos falar do seu projeto', description: 'Uma equipa dedicada responde em 24 h. Escolha o canal mais adequado ao seu pedido.' },
+      hero: { eyebrow: 'Contacto', title: 'Contacte a nossa equipa', description: 'Para mais informações, preencha o formulário abaixo para nos contactar.' },
       forms: { investTitle: 'Investir com a TAOMAN GROUP INVESTMENTS', quoteTitle: 'Pedir orçamento', infoTitle: 'Pedido de informação', partnershipTitle: 'Parceria institucional' },
     },
     faq: {
@@ -1810,7 +1810,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: 'Kontaktieren Sie TAOMAN GROUP INVESTMENTS: Hauptsitz Lomé, Vor-Ort-Team, öffentlich-private Partnerschaften und dedizierte Formulare.',
-      hero: { eyebrow: 'Kontakt', title: 'Sprechen wir über Ihr Projekt', description: 'Ein engagiertes Team antwortet innerhalb von 24 Std. Wählen Sie den passenden Kanal für Ihre Anfrage.' },
+      hero: { eyebrow: 'Kontakt', title: 'Kontaktieren Sie unser Team', description: 'Für weitere Informationen füllen Sie bitte das Formular unten aus, um uns zu kontaktieren.' },
       forms: { investTitle: 'Mit TAOMAN GROUP INVESTMENTS investieren', quoteTitle: 'Angebot anfordern', infoTitle: 'Informationsanfrage', partnershipTitle: 'Institutionelle Partnerschaft' },
     },
     faq: {
@@ -2174,7 +2174,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: 'تواصل مع تاومان للاستثمار: المقر في لومي، فريق ميداني، شراكات بين القطاعين العام والخاص ونماذج مخصصة.',
-      hero: { eyebrow: 'تواصل', title: 'لنتحدث عن مشروعك', description: 'فريق مخصص يرد خلال 24 ساعة. اختر القناة الأنسب لطلبك.' },
+      hero: { eyebrow: 'تواصل', title: 'تواصل مع فريقنا', description: 'لمزيد من المعلومات، يرجى ملء النموذج أدناه للتواصل معنا.' },
       forms: { investTitle: 'استثمر مع تاومان', quoteTitle: 'اطلب عرض سعر', infoTitle: 'طلب معلومات', partnershipTitle: 'شراكة مؤسسية' },
     },
     faq: {
@@ -2538,7 +2538,7 @@ const CONTENT = {
     },
     contact: {
       seoDescription: '联系 TAOMAN GROUP INVESTMENTS：洛美总部、现场团队、公私合作伙伴关系和专属表单。',
-      hero: { eyebrow: '联系', title: '与我们谈谈您的项目', description: '专属团队 24 小时内回复。请选择最适合您的渠道。' },
+      hero: { eyebrow: '联系', title: '联系我们的团队', description: '如需更多信息，请填写下方表单与我们联系。' },
       forms: { investTitle: '与 TAOMAN GROUP INVESTMENTS 投资', quoteTitle: '获取报价', infoTitle: '咨询信息', partnershipTitle: '机构合作伙伴' },
     },
     faq: {

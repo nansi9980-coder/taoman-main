@@ -85,7 +85,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
         key: 'services',
         children: [
           { name: t.allServices, desc: t.allServicesDesc, href: '/services' },
-          { name: t.quote, desc: t.quoteDesc, href: '/contact' },
+          { name: t.quote, desc: t.quoteDesc, href: '/devis' },
           { name: t.carWash, desc: t.carWashDesc, href: '/lavage-auto/devis' },
           { name: t.moving, desc: t.movingDesc, href: '/demenagement/devis' },
           ...(MOVING_PERSONNEL_FLEET_ENABLED

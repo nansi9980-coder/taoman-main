@@ -43,6 +43,7 @@ const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then((m
 const DashboardPage = lazy(() => import('./pages/DashboardPage').then((m) => ({ default: m.DashboardPage })));
 const AdminDashboardPage = lazy(() => import('./pages/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage })));
 const FaqPage = lazy(() => import('./pages/FaqPage').then((m) => ({ default: m.FaqPage })));
+const DevisPage = lazy(() => import('./pages/DevisPage').then((m) => ({ default: m.DevisPage })));
 
 function RouteFallback() {
   const { translations } = useLanguage();
@@ -121,6 +122,7 @@ function App() {
                 {/* Pages Secondaires */}
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/devis" element={<DevisPage />} />
                 <Route path="/faq" element={<FaqPage />} />
                 <Route path="/lavage-auto/devis" element={<LavageAutoDevisPage />} />
                 <Route path="/demenagement/devis" element={<DemenagementDevisPage />} />

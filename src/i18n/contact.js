@@ -164,13 +164,32 @@ const CONTACT = {
     quotePage: {
       title: 'Demander un devis',
       subtitle: 'Service gratuit et sans engagement',
+      hubEyebrow: 'Services opérationnels',
+      hubTitle: 'Choisissez votre service',
+      hubDescription:
+        'Accédez au formulaire détaillé du service qui vous intéresse, ou remplissez le formulaire général ci-dessous pour contacter notre équipe.',
+      cardsIntro:
+        'Chaque service dispose d’un formulaire dédié pour un devis précis. Cliquez sur la carte correspondante.',
+      cardsCta: 'Formulaire détaillé',
+      formDivider: 'Ou demandez un devis en ligne',
+      formDividerDesc:
+        'Un formulaire unique pour tous nos services. Notre équipe vous rappelle sous 24 h avec un devis indicatif.',
       successTitle: 'Demande envoyée !',
       successText:
         'Votre demande de devis a bien été soumise. Vous recevrez une réponse par email dans les plus brefs délais.',
       anotherRequest: 'Faire une autre demande',
-      submitLabel: 'Demander un devis',
+      submitLabel: 'Envoyer ma demande de devis',
       errorQuote: "Impossible d'envoyer votre demande de devis.",
-      services: ['Lavage Auto', 'Déménagement', 'Entretien Bureau', 'Autre'],
+      services: [
+        'Lavage automobile & moto',
+        'Déménagement & aménagement',
+        'Entretien des bureaux',
+        'Transport & livraison',
+        'Climatisation & froid',
+        'Conciergerie & gardiennage',
+        'Audits & Reporting',
+        'Autre',
+      ],
       form: {
         title: 'Remplissez le formulaire',
         service: { label: 'Service demandé *', placeholder: 'Sélectionnez un service...' },
@@ -178,7 +197,7 @@ const CONTACT = {
         email: { label: 'Email *', placeholder: 'votre@email.com' },
         phone: { label: 'Téléphone *', placeholder: '+228 XX XX XX XX' },
         date: { label: 'Date souhaitée' },
-        description: { label: 'Description du projet', placeholder: 'Décrivez votre projet en détail...' },
+        description: { label: 'Description de votre besoin', placeholder: 'Décrivez votre besoin en détail...' },
       },
     },
   },
@@ -341,13 +360,32 @@ const CONTACT = {
     quotePage: {
       title: 'Request a quote',
       subtitle: 'Free service with no obligation',
+      hubEyebrow: 'Operational services',
+      hubTitle: 'Choose your service',
+      hubDescription:
+        'Open the detailed form for the service you need, or fill in the general form below to contact our team.',
+      cardsIntro:
+        'Each service has a dedicated form for an accurate quote. Click the matching card.',
+      cardsCta: 'Detailed form',
+      formDivider: 'Or request a quote online',
+      formDividerDesc:
+        'One form for all our services. Our team will call you back within 24 hours with an indicative quote.',
       successTitle: 'Request sent!',
       successText:
         'Your quote request has been submitted. You will receive a reply by email as soon as possible.',
       anotherRequest: 'Submit another request',
-      submitLabel: 'Request a quote',
+      submitLabel: 'Send my quote request',
       errorQuote: 'Unable to send your quote request.',
-      services: ['Car wash', 'Moving', 'Office cleaning', 'Other'],
+      services: [
+        'Car & motorcycle wash',
+        'Moving & fit-out',
+        'Office cleaning',
+        'Transport & delivery',
+        'Air conditioning & refrigeration',
+        'Concierge & security',
+        'Audits & Reporting',
+        'Other',
+      ],
       form: {
         title: 'Fill in the form',
         service: { label: 'Requested service *', placeholder: 'Select a service...' },
@@ -355,7 +393,7 @@ const CONTACT = {
         email: { label: 'Email *', placeholder: 'you@email.com' },
         phone: { label: 'Phone *', placeholder: '+228 XX XX XX XX' },
         date: { label: 'Preferred date' },
-        description: { label: 'Project description', placeholder: 'Describe your project in detail...' },
+        description: { label: 'Description of your need', placeholder: 'Describe your need in detail...' },
       },
     },
   },

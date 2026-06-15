@@ -68,8 +68,8 @@ const SERVICE_ID_TO_HREF = {
   demenagement: '/demenagement/devis',
   'entretien-bureaux': '/entretien/bureaux',
   transport: '/transport/devis',
-  climatisation: '/contact?topic=info&service=climatisation',
-  conciergerie: '/contact?topic=info&service=conciergerie',
+  climatisation: '/entretien/climatisation',
+  conciergerie: '/devis#formulaire-devis',
   audits: '/audits/devis',
 };
 const SERVICE_ID_TO_AUDIENCE = {
