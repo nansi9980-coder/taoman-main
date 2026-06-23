@@ -8,12 +8,39 @@ import { useLanguage } from './LanguageContext';
 
 const SiteContentContext = createContext(null);
 
+const CONTENT_CACHE_KEY = 'taoman-content-cache';
+
+function loadContentCache() {
+  try {
+    const raw = localStorage.getItem(CONTENT_CACHE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+function saveContentCache(texts, services) {
+  try {
+    localStorage.setItem(CONTENT_CACHE_KEY, JSON.stringify({ texts, services }));
+  } catch {}
+}
+
 export function SiteContentProvider({ children }) {
   const { language } = useLanguage();
-  const [content, setContent] = useState({});
+
+  const [content, setContent] = useState(() => {
+    const cache = loadContentCache();
+    return cache ? parseSiteContentMap(cache.texts) : {};
+  });
   const [overrides, setOverrides] = useState(() => loadContentOverrides());
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [services, setServices] = useState(() => {
+    const cache = loadContentCache();
+    return cache && Array.isArray(cache.services)
+      ? cache.services.filter((s) => s.published !== false)
+      : [];
+  });
+  const [loading, setLoading] = useState(() => loadContentCache() === null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -24,22 +51,22 @@ export function SiteContentProvider({ children }) {
         'Expires': '0',
       };
       const [textsRes, servicesRes] = await Promise.all([
-        fetch(`${API_URL}/content/texts`, { 
+        fetch(`${API_URL}/content/texts`, {
           cache: 'no-store',
           headers: cacheHeaders,
         }),
-        fetch(`${API_URL}/content/services`, { 
+        fetch(`${API_URL}/content/services`, {
           cache: 'no-store',
           headers: cacheHeaders,
         }),
       ]);
       const texts = textsRes.ok ? await textsRes.json() : [];
       const svc = servicesRes.ok ? await servicesRes.json() : [];
+      saveContentCache(texts, svc);
       setContent(parseSiteContentMap(texts));
       setServices(Array.isArray(svc) ? svc.filter((s) => s.published !== false) : []);
     } catch {
-      setContent({});
-      setServices([]);
+      // Garde le cache en cas d'erreur réseau
     } finally {
       setLoading(false);
     }
