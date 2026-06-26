@@ -26,7 +26,7 @@ import lavage2    from '../assets/realisations/lavage2.jpg';
 import agroIcon from '../assets/agro_sector.jpeg';
 import transportSector from '../assets/transport_sector.jpeg';
 import numeriqueImg from '../assets/simulateur.jpeg';
-import { API_URL, mediaUrl } from "../config";
+import { API_URL, ADMIN_URL, mediaUrl } from "../config";
 import { normalizeItemsSection } from "../utils/siteContent";
 import { pickLocale, pickLocaleList, isFrenchLocale } from "../utils/pickLocale";
 import { useSiteContent } from "../context/SiteContentContext";
@@ -776,13 +776,21 @@ export const HomePage = () => {
             </>
             )}
 
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
               <button
                 onClick={() => navigate(isAuthenticated ? '/dashboard' : '/connexion')}
                 className="rounded-2xl bg-white px-8 py-4 font-bold text-[#07111f] shadow-xl hover:scale-105 transition-transform"
               >
                 {isAuthenticated ? t.home.realisations.ctaAuth : t.home.realisations.ctaGuest}
               </button>
+              <a
+                href={`${ADMIN_URL}/contenu#realisations-terrain`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white shadow-xl transition hover:bg-white/20"
+              >
+                Ouvrir le dashboard admin
+              </a>
             </div>
             <p className="mt-5 max-w-3xl mx-auto text-center text-sm md:text-base text-white/75">
               {realisationsFooterText}

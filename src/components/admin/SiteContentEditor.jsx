@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSiteContent } from '../../context/SiteContentContext';
 import { DEFAULT_QUICK_ACCESS, DEFAULT_HERO } from '../../data/home-defaults';
 import { saveContentOverride, clearContentOverride, loadContentOverrides } from '../../utils/siteContentOverrides';
-import { API_URL, apiAuthFetch } from '../../config';
+import { ADMIN_URL, apiAuthFetch } from '../../config';
 import { DEFAULT_SECTORS as SECTORS_SEED } from '../../data/sectors-defaults';
 import { DEFAULT_MEDIA_SETTINGS } from '../../hooks/useMediaSettings';
 
@@ -102,12 +102,16 @@ export function SiteContentEditor() {
           <p className="mt-2 text-on-surface-variant">
             Accès rapide (accueil), textes d’accroche et liens — sans climatisation ni aperçu dashboard.
           </p>
-        </div>
-
-        <div className="rounded-3xl bg-white p-8 shadow-lg border border-outline-variant/30">
-          <h3 className="text-xl font-black text-on-surface mb-6">Section Accès rapide (page d’accueil)</h3>
-          <div className="grid gap-4 md:grid-cols-2 mb-6">
-            <label className="block">
+            <div className="mt-5">
+              <a
+                href={`${ADMIN_URL}/contenu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-primary px-4 py-3 text-sm font-bold text-primary transition hover:bg-primary/10"
+              >
+                Ouvrir le dashboard admin
+              </a>
+            </div>
               <span className="text-xs font-bold uppercase text-on-surface-variant">Surtitre</span>
               <input
                 className="mt-1 w-full rounded-xl border border-outline-variant px-4 py-3"
