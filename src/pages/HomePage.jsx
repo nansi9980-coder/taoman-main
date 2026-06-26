@@ -783,14 +783,6 @@ export const HomePage = () => {
               >
                 {isAuthenticated ? t.home.realisations.ctaAuth : t.home.realisations.ctaGuest}
               </button>
-              <a
-                href={`${ADMIN_URL}/contenu#realisations-terrain`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white shadow-xl transition hover:bg-white/20"
-              >
-                Ouvrir le dashboard admin
-              </a>
             </div>
             <p className="mt-5 max-w-3xl mx-auto text-center text-sm md:text-base text-white/75">
               {realisationsFooterText}

@@ -63,14 +63,6 @@ export const AdminDashboardPage = () => {
             <p className="mt-6 text-xl text-white/75">
               Le gestionnaire de contenu est accessible via l’interface d’administration dédiée. Vous allez être redirigé automatiquement.
             </p>
-            <a
-              href={ADMIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex rounded-2xl bg-cyan-300 px-8 py-4 font-black text-[#06101d] shadow-xl transition hover:-translate-y-1"
-            >
-              Ouvrir le dashboard admin
-            </a>
           </div>
         </section>
       </main>

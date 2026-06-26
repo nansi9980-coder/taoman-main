@@ -102,16 +102,6 @@ export function SiteContentEditor() {
           <p className="mt-2 text-on-surface-variant">
             Accès rapide (accueil), textes d’accroche et liens — sans climatisation ni aperçu dashboard.
           </p>
-            <div className="mt-5">
-              <a
-                href={`${ADMIN_URL}/contenu`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-primary px-4 py-3 text-sm font-bold text-primary transition hover:bg-primary/10"
-              >
-                Ouvrir le dashboard admin
-              </a>
-            </div>
               <span className="text-xs font-bold uppercase text-on-surface-variant">Surtitre</span>
               <input
                 className="mt-1 w-full rounded-xl border border-outline-variant px-4 py-3"

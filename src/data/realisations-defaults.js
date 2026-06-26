@@ -35,14 +35,18 @@ function inferRealisationId(item) {
 
 export function mergeRealisationSlides(cmsList = []) {
   const byId = new Map();
+  const extras = [];
   (Array.isArray(cmsList) ? cmsList : []).forEach((item) => {
     const id = inferRealisationId(item);
-    if (!id) return;
+    if (!id) {
+      extras.push(item);
+      return;
+    }
     const prev = byId.get(id);
     byId.set(id, prev ? { ...prev, ...item, id } : { ...item, id });
   });
 
-  return REALISATION_SLIDE_TEMPLATES.map((t) => {
+  const merged = REALISATION_SLIDE_TEMPLATES.map((t) => {
     const cms = byId.get(t.id);
     return {
       id: t.id,
@@ -53,6 +57,19 @@ export function mergeRealisationSlides(cmsList = []) {
       staticPath: t.staticPath,
     };
   });
+
+  extras.forEach((item, index) => {
+    merged.push({
+      id: item.id || `extra-${index}`,
+      title: item.title || `Réalisation ${merged.length + 1}`,
+      category: item.category || 'Terrain',
+      progress: item.progress ?? 70,
+      imageUrl: item.imageUrl || '',
+      staticPath: '',
+    });
+  });
+
+  return merged;
 }
 
 /** Priorité imageUrl FR héritée, puis locale — pas de staticPath mort. */
