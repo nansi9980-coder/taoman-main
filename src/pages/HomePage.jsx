@@ -93,8 +93,8 @@ export const HomePage = () => {
   useEffect(() => {
     setIsLoaded(true);
 
-    // Fetch Realisations with proper cache-busting headers
-    fetch(`${API_URL}/media`, {
+    // Fetch Realisations from /realisations endpoint with metadata
+    fetch(`${API_URL}/realisations`, {
       cache: 'no-store',
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -105,22 +105,54 @@ export const HomePage = () => {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
-          const allImages = data.filter(m => m.type && m.type.startsWith('image/'));
-          const realisationImages = allImages.filter(m => m.category === 'realisation');
-          if (realisationImages.length === 0) return;
-          const images = realisationImages.map(m => ({
-            src: mediaUrl(m.url || m.path || m.src),
-            alt: m.name,
-            category: m.category === 'realisation' ? 'Réalisation' : (m.category || 'Terrain'),
-            label: m.name?.split('.')[0] || 'Réalisation',
-            progress: m.progress || 72,
-          })).filter(m => m.src);
+          const images = data
+            .filter(r => r.imageUrl && r.imageUrl.trim())
+            .map(r => ({
+              src: r.imageUrl.startsWith('http') ? r.imageUrl : mediaUrl(r.imageUrl),
+              alt: r.title || 'Réalisation TAOMAN GROUP INVESTMENTS',
+              category: r.category || 'Terrain',
+              label: r.title || 'Réalisation',
+              progress: r.progress || 70,
+              id: r.id,
+            }));
           if (images.length > 0) {
+            console.log('✅ Realisations loaded:', images.length);
             setApiRealisations(images);
+            return;
           }
         }
       })
-      .catch(err => console.error("Error fetching media:", err));
+      .catch(err => {
+        console.error("Error fetching realisations:", err);
+        // Fallback to /media if /realisations fails
+        fetch(`${API_URL}/media`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          },
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (Array.isArray(data) && data.length > 0) {
+              const allImages = data.filter(m => m.type && m.type.startsWith('image/'));
+              const realisationImages = allImages.filter(m => m.category === 'realisation');
+              if (realisationImages.length === 0) return;
+              const images = realisationImages.map(m => ({
+                src: mediaUrl(m.url || m.path || m.src),
+                alt: m.name,
+                category: m.category === 'realisation' ? 'Réalisation' : (m.category || 'Terrain'),
+                label: m.name?.split('.')[0] || 'Réalisation',
+                progress: m.progress || 72,
+              })).filter(m => m.src);
+              if (images.length > 0) {
+                setApiRealisations(images);
+              }
+            }
+          })
+          .catch(err => console.error("Error fetching media:", err));
+      });
   }, []);
 
   const activeFallback = HOME_SERVICE_FALLBACKS[language] || HOME_SERVICE_FALLBACKS.FR;
