@@ -53,7 +53,7 @@ export const AdminDashboardPage = () => {
     <div className="flex min-h-screen flex-col bg-surface">
       <Header activeLink="admin" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <section className="relative overflow-hidden bg-[#06101d] px-6 py-16 text-white">
           <div className="absolute -left-20 top-0 h-80 w-80 rounded-full bg-primary/30 blur-3xl"></div>
           <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl"></div>

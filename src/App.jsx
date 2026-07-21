@@ -8,6 +8,7 @@ import { SeoHead } from './components/SeoHead';
 import { ScrollToTop } from './components/ScrollToTop';
 import { SplashScreen } from './components/SplashScreen';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { PromoBanner } from './components/PromoBanner';
 import { LiveBadge } from './components/LiveBadge';
 import { BackToTop } from './components/BackToTop';
 import { PageTransitionLayout } from './components/PageTransitionLayout';
@@ -85,6 +86,7 @@ function App() {
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <SkipToMainContent />
             <ScrollToTop />
+            <PromoBanner />
             <LiveBadge />
             <BackToTop />
             <Suspense fallback={<RouteFallback />}>

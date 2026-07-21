@@ -254,7 +254,7 @@ export const FaqPage = () => {
       />
       <Header activeLink="faq" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         <section className="relative overflow-hidden py-20 px-6 text-white hero-scan-line">
           <PremiumBackdrop variant="dark" intensity="normal" particles={12} />
           <FloatingDecor className="z-[1]" />

@@ -129,7 +129,7 @@ export const AuditsDevisPage = () => {
       />
       <Header activeLink="services" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <DevisPageHero
           sectionKey="devisAudits"
           i18nNamespace="audits"

@@ -141,7 +141,7 @@ export const InvestmentSimulatorPage = () => {
       <SeoHead title={tHero.title} description={tSim.seoDescription || tHero.description} path="/investissement/simulateur" />
       <Header activeLink="investissement" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <section className="relative overflow-hidden py-20 px-6 text-white">
           <div className="absolute -left-24 top-10 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl" />
           <div className="absolute right-0 top-16 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />

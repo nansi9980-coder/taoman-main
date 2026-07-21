@@ -146,7 +146,7 @@ export const DemenagementDevisPage = () => {
       />
       <Header activeLink="services" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <DevisPageHero
           sectionKey="devisDemenagement"
           i18nNamespace="devisMoving"

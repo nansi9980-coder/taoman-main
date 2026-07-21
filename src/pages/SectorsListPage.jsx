@@ -41,7 +41,7 @@ export const SectorsListPage = () => {
       />
       <Header activeLink="projets" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         <PageHeroEnhanced
           photoProps={{
             src: HERO_MEDIA_SPECS.projects.src,

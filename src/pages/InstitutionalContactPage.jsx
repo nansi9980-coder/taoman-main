@@ -357,7 +357,7 @@ export const InstitutionalContactPage = () => {
       />
       <Header activeLink="about" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-16 px-6 text-white hero-scan-line">
           <PhotoHeroBackground
             src={HERO_MEDIA_SPECS.contact.src}

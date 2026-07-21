@@ -73,7 +73,7 @@ export const DemenagementPersonnelsPage = () => {
       />
       <Header activeLink="services" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         {/* ============ HERO ============ */}
         <section className="relative overflow-hidden bg-[#07111f] py-20 px-6 text-white">
           <div className="absolute inset-0">

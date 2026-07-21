@@ -125,7 +125,7 @@ export const SubmitProjectPage = () => {
       />
       <Header activeLink="investissement" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         <PageHeroEnhanced
           photoProps={{
             src: HERO_MEDIA_SPECS.investment.src,

@@ -86,7 +86,7 @@ export const TaoEconomicInvestmentPage = () => {
       />
       <Header activeLink="investissement" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         {/* ============ HERO ============ */}
         <section className="relative overflow-hidden min-h-[42vh] md:min-h-[48vh] flex items-center py-24 px-6 text-white">
           <VideoHeroBackground

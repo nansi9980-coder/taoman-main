@@ -282,7 +282,7 @@ export const InvestmentPage = () => {
     }));
 
   return (
-    <div className="flex flex-col min-h-screen bg-surface pt-[80px]">
+    <div className="flex flex-col min-h-screen bg-surface pt-[116px]">
       <SeoHead
         title={pickLocale(language, inv.seoTitle, tInv.seoTitle || ip.seoTitle)}
         description={pickLocale(language, inv.seoDescription, tInv.seoDescription || ip.seoDescription)}

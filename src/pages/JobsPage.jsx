@@ -92,7 +92,7 @@ export const JobsPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background pt-[80px]">
+    <div className="flex flex-col min-h-screen bg-background pt-[116px]">
       <SeoHead
         title={tJ.title || jobsContent.title || tJobs.filterTitle}
         description={tJ.description || jobsContent.subtitle}

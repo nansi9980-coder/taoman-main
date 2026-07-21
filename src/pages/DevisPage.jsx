@@ -153,7 +153,7 @@ export const DevisPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background pt-[80px]">
+    <div className="flex flex-col min-h-screen bg-background pt-[116px]">
       <SeoHead
         title={tQuote.title}
         description={tQuote.hubDescription || tQuote.subtitle}

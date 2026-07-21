@@ -122,7 +122,7 @@ export const AboutPage = () => {
       />
       <Header activeLink="about" />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         {/* ============ HERO PREMIUM ============ */}
         <section id="profile" className="relative overflow-hidden min-h-[45vh] md:min-h-[50vh] flex items-center py-20 px-6 text-white hero-scan-line">
           <PhotoHeroBackground

@@ -163,7 +163,7 @@ export const ServicesPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background pt-[80px]">
+    <div className="flex flex-col min-h-screen bg-background pt-[116px]">
       <SeoHead
         title={heroTitle || tServ.hero.title}
         description={heroDesc || tServ.hero.description}

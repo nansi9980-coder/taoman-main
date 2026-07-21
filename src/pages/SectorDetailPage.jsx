@@ -143,7 +143,7 @@ export const SectorDetailPage = ({ slugOverride, pageContext = 'secteurs' }) => 
       />
       <Header activeLink={isServicePage ? 'services' : 'projets'} />
 
-      <main id="main-content" className="flex-grow pt-24">
+      <main id="main-content" className="flex-grow pt-[132px]">
         {/* BREADCRUMB */}
         <nav className="bg-surface-container-low border-b border-outline-variant/30 px-6 py-3">
           <div className="max-w-[1200px] mx-auto flex items-center gap-2 text-sm text-on-surface-variant flex-wrap">

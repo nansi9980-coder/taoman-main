@@ -133,7 +133,7 @@ export const Header = ({ activeLink = 'accueil' }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300 ${
+      className={`fixed top-9 left-0 right-0 z-50 overflow-visible transition-all duration-300 ${
         scrolled ? 'header-glass shadow-lg' : 'bg-transparent'
       }`}
     >

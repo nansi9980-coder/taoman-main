@@ -27,7 +27,7 @@ export const TransportDevisPage = () => {
       />
       <Header activeLink="services" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <DevisPageHero
           sectionKey="devisTransport"
           i18nNamespace="transport"

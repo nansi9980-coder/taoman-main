@@ -117,7 +117,7 @@ export const DashboardPage = () => {
   return (
     <div className="flex min-h-screen flex-col bg-surface">
       <Header activeLink="dashboard" />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <section className="relative overflow-hidden bg-[#07111f] px-6 py-20 text-white">
           <div className="relative z-10 mx-auto max-w-[1400px]">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.35em] text-cyan-200">{t.eyebrow}</p>

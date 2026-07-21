@@ -92,7 +92,7 @@ export const ServiceDetailPage = () => {
     return (
       <div className="flex flex-col min-h-screen bg-surface">
         <Header activeLink="services" />
-        <main className="flex-grow pt-24 flex items-center justify-center px-6 py-20">
+        <main className="flex-grow pt-[132px] flex items-center justify-center px-6 py-20">
           <div className="max-w-lg text-center">
             <h1 className="text-3xl font-black text-on-surface mb-4">{t.notFoundTitle || 'Service introuvable'}</h1>
             <p className="text-on-surface-variant mb-8">{t.notFoundDesc || 'Ce service n’existe pas ou n’est plus disponible.'}</p>
@@ -114,7 +114,7 @@ export const ServiceDetailPage = () => {
     <div className="flex flex-col min-h-screen bg-surface">
       <Header activeLink="services" />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-[132px]">
         <PageHeroEnhanced
           photoProps={{
             src: HERO_MEDIA_SPECS.services.src,
